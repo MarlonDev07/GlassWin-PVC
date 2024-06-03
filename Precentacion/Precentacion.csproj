@@ -418,6 +418,7 @@
     <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelectDiseñoPuertaBaño.Designer.cs">
       <DependentUpon>frmSelectDiseñoPuertaBaño.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\SeleccionDesign.cs" />
     <Compile Include="User\Quote\Windows\Seleccion Sistema\frmSelectSystem.cs">
       <SubType>Form</SubType>
     </Compile>

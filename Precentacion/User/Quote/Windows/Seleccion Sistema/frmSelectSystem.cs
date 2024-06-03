@@ -227,5 +227,20 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();
         }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblVtNormal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PanelContenedorSistemaTradicional_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

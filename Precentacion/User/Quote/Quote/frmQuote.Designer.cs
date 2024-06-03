@@ -102,7 +102,7 @@
             this.txtConditional5.BackColor = System.Drawing.SystemColors.Window;
             this.txtConditional5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConditional5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConditional5.Location = new System.Drawing.Point(59, 377);
+            this.txtConditional5.Location = new System.Drawing.Point(59, 355);
             this.txtConditional5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConditional5.Name = "txtConditional5";
             this.txtConditional5.ReadOnly = true;
@@ -115,7 +115,7 @@
             this.txtConditional4.BackColor = System.Drawing.SystemColors.Window;
             this.txtConditional4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConditional4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConditional4.Location = new System.Drawing.Point(59, 348);
+            this.txtConditional4.Location = new System.Drawing.Point(59, 326);
             this.txtConditional4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConditional4.Name = "txtConditional4";
             this.txtConditional4.ReadOnly = true;
@@ -128,7 +128,7 @@
             this.txtConditional3.BackColor = System.Drawing.SystemColors.Window;
             this.txtConditional3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConditional3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConditional3.Location = new System.Drawing.Point(59, 318);
+            this.txtConditional3.Location = new System.Drawing.Point(59, 296);
             this.txtConditional3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConditional3.Name = "txtConditional3";
             this.txtConditional3.ReadOnly = true;
@@ -141,7 +141,7 @@
             this.txtConditional2.BackColor = System.Drawing.SystemColors.Window;
             this.txtConditional2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConditional2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConditional2.Location = new System.Drawing.Point(59, 288);
+            this.txtConditional2.Location = new System.Drawing.Point(59, 266);
             this.txtConditional2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConditional2.Name = "txtConditional2";
             this.txtConditional2.ReadOnly = true;
@@ -154,7 +154,7 @@
             this.txtConditional1.BackColor = System.Drawing.SystemColors.Window;
             this.txtConditional1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConditional1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConditional1.Location = new System.Drawing.Point(59, 257);
+            this.txtConditional1.Location = new System.Drawing.Point(59, 235);
             this.txtConditional1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConditional1.Name = "txtConditional1";
             this.txtConditional1.ReadOnly = true;
@@ -168,7 +168,7 @@
             this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnBuscar.Location = new System.Drawing.Point(1435, 42);
+            this.btnBuscar.Location = new System.Drawing.Point(1436, 26);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(42, 40);
@@ -182,7 +182,7 @@
             this.txtSubtotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubtotal.Location = new System.Drawing.Point(1219, 809);
+            this.txtSubtotal.Location = new System.Drawing.Point(1217, 780);
             this.txtSubtotal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.ReadOnly = true;
@@ -196,7 +196,7 @@
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(1081, 809);
+            this.label5.Location = new System.Drawing.Point(1079, 780);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 37);
@@ -208,7 +208,7 @@
             this.txtIVA.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIVA.Location = new System.Drawing.Point(1219, 863);
+            this.txtIVA.Location = new System.Drawing.Point(1217, 834);
             this.txtIVA.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtIVA.Name = "txtIVA";
             this.txtIVA.ReadOnly = true;
@@ -222,7 +222,7 @@
             this.btnSistemas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSistemas.FlatAppearance.BorderSize = 2;
             this.btnSistemas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSistemas.Location = new System.Drawing.Point(59, 555);
+            this.btnSistemas.Location = new System.Drawing.Point(59, 534);
             this.btnSistemas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSistemas.Name = "btnSistemas";
             this.btnSistemas.Size = new System.Drawing.Size(51, 46);
@@ -237,7 +237,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(1315, 618);
+            this.label1.Location = new System.Drawing.Point(1313, 589);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 39);
@@ -250,7 +250,7 @@
             this.txtManoObra.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtManoObra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtManoObra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtManoObra.Location = new System.Drawing.Point(1223, 618);
+            this.txtManoObra.Location = new System.Drawing.Point(1221, 589);
             this.txtManoObra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtManoObra.Name = "txtManoObra";
             this.txtManoObra.Size = new System.Drawing.Size(92, 35);
@@ -263,7 +263,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(1081, 618);
+            this.label2.Location = new System.Drawing.Point(1079, 589);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 39);
@@ -276,7 +276,7 @@
             this.txtTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(1219, 920);
+            this.txtTotal.Location = new System.Drawing.Point(1217, 891);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
@@ -290,7 +290,7 @@
             this.lblTotalPago.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTotalPago.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPago.ForeColor = System.Drawing.Color.Black;
-            this.lblTotalPago.Location = new System.Drawing.Point(1081, 920);
+            this.lblTotalPago.Location = new System.Drawing.Point(1079, 891);
             this.lblTotalPago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalPago.Name = "lblTotalPago";
             this.lblTotalPago.Size = new System.Drawing.Size(128, 37);
@@ -305,7 +305,7 @@
             this.btnRefrescar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRefrescar.FlatAppearance.BorderSize = 2;
             this.btnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefrescar.Location = new System.Drawing.Point(131, 555);
+            this.btnRefrescar.Location = new System.Drawing.Point(131, 534);
             this.btnRefrescar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(54, 46);
@@ -320,7 +320,7 @@
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(1165, 957);
+            this.btnGuardar.Location = new System.Drawing.Point(1163, 928);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(102, 85);
@@ -353,7 +353,7 @@
             this.dgCotizaciones.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgCotizaciones.EnableHeadersVisualStyles = false;
             this.dgCotizaciones.GridColor = System.Drawing.Color.Silver;
-            this.dgCotizaciones.Location = new System.Drawing.Point(59, 603);
+            this.dgCotizaciones.Location = new System.Drawing.Point(59, 589);
             this.dgCotizaciones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgCotizaciones.Name = "dgCotizaciones";
             this.dgCotizaciones.ReadOnly = true;
@@ -415,7 +415,7 @@
             this.lblCondicion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCondicion.Font = new System.Drawing.Font("Impact", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCondicion.ForeColor = System.Drawing.Color.Orange;
-            this.lblCondicion.Location = new System.Drawing.Point(59, 214);
+            this.lblCondicion.Location = new System.Drawing.Point(59, 193);
             this.lblCondicion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCondicion.Name = "lblCondicion";
             this.lblCondicion.Size = new System.Drawing.Size(1366, 37);
@@ -428,7 +428,7 @@
             this.txtTelefono.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(949, 83);
+            this.txtTelefono.Location = new System.Drawing.Point(950, 67);
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(476, 35);
@@ -439,7 +439,7 @@
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(949, 126);
+            this.txtEmail.Location = new System.Drawing.Point(950, 110);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(476, 35);
@@ -452,7 +452,7 @@
             this.lblEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblEmail.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.ForeColor = System.Drawing.Color.Black;
-            this.lblEmail.Location = new System.Drawing.Point(817, 129);
+            this.lblEmail.Location = new System.Drawing.Point(818, 113);
             this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(116, 37);
@@ -467,7 +467,7 @@
             this.lblTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTelefono.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefono.ForeColor = System.Drawing.Color.Black;
-            this.lblTelefono.Location = new System.Drawing.Point(817, 86);
+            this.lblTelefono.Location = new System.Drawing.Point(818, 70);
             this.lblTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(116, 37);
@@ -482,7 +482,7 @@
             this.lblCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCliente.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCliente.ForeColor = System.Drawing.Color.Black;
-            this.lblCliente.Location = new System.Drawing.Point(817, 43);
+            this.lblCliente.Location = new System.Drawing.Point(818, 27);
             this.lblCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(116, 37);
@@ -495,7 +495,7 @@
             this.txtProjetName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtProjetName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProjetName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProjetName.Location = new System.Drawing.Point(217, 126);
+            this.txtProjetName.Location = new System.Drawing.Point(218, 110);
             this.txtProjetName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtProjetName.Name = "txtProjetName";
             this.txtProjetName.Size = new System.Drawing.Size(442, 35);
@@ -508,7 +508,7 @@
             this.lblDireccionDP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDireccionDP.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDireccionDP.ForeColor = System.Drawing.Color.Black;
-            this.lblDireccionDP.Location = new System.Drawing.Point(59, 129);
+            this.lblDireccionDP.Location = new System.Drawing.Point(60, 113);
             this.lblDireccionDP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDireccionDP.Name = "lblDireccionDP";
             this.lblDireccionDP.Size = new System.Drawing.Size(148, 36);
@@ -523,7 +523,7 @@
             this.lblNCotizacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblNCotizacion.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNCotizacion.ForeColor = System.Drawing.Color.Black;
-            this.lblNCotizacion.Location = new System.Drawing.Point(59, 45);
+            this.lblNCotizacion.Location = new System.Drawing.Point(60, 29);
             this.lblNCotizacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNCotizacion.Name = "lblNCotizacion";
             this.lblNCotizacion.Size = new System.Drawing.Size(148, 36);
@@ -538,7 +538,7 @@
             this.lblDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDate.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.Black;
-            this.lblDate.Location = new System.Drawing.Point(59, 86);
+            this.lblDate.Location = new System.Drawing.Point(60, 70);
             this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(148, 34);
@@ -552,7 +552,7 @@
             this.txtidQuote.BackColor = System.Drawing.SystemColors.Window;
             this.txtidQuote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtidQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtidQuote.Location = new System.Drawing.Point(217, 43);
+            this.txtidQuote.Location = new System.Drawing.Point(218, 27);
             this.txtidQuote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtidQuote.Name = "txtidQuote";
             this.txtidQuote.ReadOnly = true;
@@ -566,7 +566,7 @@
             this.txtDate.BackColor = System.Drawing.SystemColors.Window;
             this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDate.Location = new System.Drawing.Point(217, 85);
+            this.txtDate.Location = new System.Drawing.Point(218, 69);
             this.txtDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDate.Name = "txtDate";
             this.txtDate.ReadOnly = true;
@@ -580,7 +580,7 @@
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label10.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(59, 171);
+            this.label10.Location = new System.Drawing.Point(60, 155);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(148, 37);
@@ -593,7 +593,7 @@
             this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(217, 169);
+            this.txtAddress.Location = new System.Drawing.Point(218, 153);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(442, 35);
@@ -604,7 +604,7 @@
             this.txtidClient.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtidClient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtidClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtidClient.Location = new System.Drawing.Point(949, 42);
+            this.txtidClient.Location = new System.Drawing.Point(950, 26);
             this.txtidClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtidClient.Name = "txtidClient";
             this.txtidClient.Size = new System.Drawing.Size(476, 35);
@@ -616,7 +616,7 @@
             this.txtAdreesClient.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAdreesClient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAdreesClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdreesClient.Location = new System.Drawing.Point(949, 169);
+            this.txtAdreesClient.Location = new System.Drawing.Point(950, 153);
             this.txtAdreesClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAdreesClient.Name = "txtAdreesClient";
             this.txtAdreesClient.Size = new System.Drawing.Size(476, 35);
@@ -629,7 +629,7 @@
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label11.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(817, 172);
+            this.label11.Location = new System.Drawing.Point(818, 156);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(116, 37);
@@ -648,7 +648,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(1315, 677);
+            this.label3.Location = new System.Drawing.Point(1313, 648);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 39);
@@ -661,7 +661,7 @@
             this.txtDescuento.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDescuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescuento.Location = new System.Drawing.Point(1223, 677);
+            this.txtDescuento.Location = new System.Drawing.Point(1221, 648);
             this.txtDescuento.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(92, 35);
@@ -674,7 +674,7 @@
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(1081, 678);
+            this.label12.Location = new System.Drawing.Point(1079, 649);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(128, 37);
@@ -688,7 +688,7 @@
             this.btnApply.BackColor = System.Drawing.Color.Black;
             this.btnApply.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(1081, 723);
+            this.btnApply.Location = new System.Drawing.Point(1079, 694);
             this.btnApply.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(288, 71);
@@ -707,7 +707,7 @@
             "Opcion 1 ",
             "Opcion 2",
             "Opcion 3"});
-            this.cbOpcion.Location = new System.Drawing.Point(1382, 257);
+            this.cbOpcion.Location = new System.Drawing.Point(1382, 235);
             this.cbOpcion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbOpcion.Name = "cbOpcion";
             this.cbOpcion.Size = new System.Drawing.Size(134, 25);
@@ -720,7 +720,7 @@
             this.txtConditional6.BackColor = System.Drawing.SystemColors.Window;
             this.txtConditional6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConditional6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConditional6.Location = new System.Drawing.Point(59, 406);
+            this.txtConditional6.Location = new System.Drawing.Point(59, 384);
             this.txtConditional6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConditional6.Name = "txtConditional6";
             this.txtConditional6.ReadOnly = true;
@@ -733,7 +733,7 @@
             this.txtConditional7.BackColor = System.Drawing.SystemColors.Window;
             this.txtConditional7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConditional7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConditional7.Location = new System.Drawing.Point(59, 435);
+            this.txtConditional7.Location = new System.Drawing.Point(59, 413);
             this.txtConditional7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConditional7.Name = "txtConditional7";
             this.txtConditional7.ReadOnly = true;
@@ -746,7 +746,7 @@
             this.txtConditional10.BackColor = System.Drawing.SystemColors.Window;
             this.txtConditional10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConditional10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConditional10.Location = new System.Drawing.Point(59, 525);
+            this.txtConditional10.Location = new System.Drawing.Point(59, 503);
             this.txtConditional10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConditional10.Name = "txtConditional10";
             this.txtConditional10.ReadOnly = true;
@@ -759,7 +759,7 @@
             this.txtConditional9.BackColor = System.Drawing.SystemColors.Window;
             this.txtConditional9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConditional9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConditional9.Location = new System.Drawing.Point(59, 495);
+            this.txtConditional9.Location = new System.Drawing.Point(59, 473);
             this.txtConditional9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConditional9.Name = "txtConditional9";
             this.txtConditional9.ReadOnly = true;
@@ -772,7 +772,7 @@
             this.txtConditional8.BackColor = System.Drawing.SystemColors.Window;
             this.txtConditional8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConditional8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConditional8.Location = new System.Drawing.Point(59, 466);
+            this.txtConditional8.Location = new System.Drawing.Point(59, 444);
             this.txtConditional8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConditional8.Name = "txtConditional8";
             this.txtConditional8.ReadOnly = true;
@@ -785,7 +785,7 @@
             this.btnExclusivo.BackColor = System.Drawing.Color.Transparent;
             this.btnExclusivo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExclusivo.ForeColor = System.Drawing.Color.Black;
-            this.btnExclusivo.Location = new System.Drawing.Point(668, 558);
+            this.btnExclusivo.Location = new System.Drawing.Point(668, 537);
             this.btnExclusivo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExclusivo.Name = "btnExclusivo";
             this.btnExclusivo.Size = new System.Drawing.Size(117, 43);
@@ -800,7 +800,7 @@
             this.btnViaticos.BackColor = System.Drawing.Color.Transparent;
             this.btnViaticos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViaticos.ForeColor = System.Drawing.Color.Black;
-            this.btnViaticos.Location = new System.Drawing.Point(199, 557);
+            this.btnViaticos.Location = new System.Drawing.Point(199, 536);
             this.btnViaticos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnViaticos.Name = "btnViaticos";
             this.btnViaticos.Size = new System.Drawing.Size(150, 43);
@@ -815,7 +815,7 @@
             this.btnSanBlast.BackColor = System.Drawing.Color.Transparent;
             this.btnSanBlast.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSanBlast.ForeColor = System.Drawing.Color.Black;
-            this.btnSanBlast.Location = new System.Drawing.Point(359, 557);
+            this.btnSanBlast.Location = new System.Drawing.Point(359, 536);
             this.btnSanBlast.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSanBlast.Name = "btnSanBlast";
             this.btnSanBlast.Size = new System.Drawing.Size(150, 43);
@@ -836,7 +836,7 @@
             "8%",
             "10%",
             "13%"});
-            this.cbIva.Location = new System.Drawing.Point(1082, 869);
+            this.cbIva.Location = new System.Drawing.Point(1080, 840);
             this.cbIva.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbIva.Name = "cbIva";
             this.cbIva.Size = new System.Drawing.Size(126, 28);
@@ -849,7 +849,7 @@
             this.btnPrefabricado.BackColor = System.Drawing.Color.Transparent;
             this.btnPrefabricado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrefabricado.ForeColor = System.Drawing.Color.Black;
-            this.btnPrefabricado.Location = new System.Drawing.Point(517, 557);
+            this.btnPrefabricado.Location = new System.Drawing.Point(517, 536);
             this.btnPrefabricado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPrefabricado.Name = "btnPrefabricado";
             this.btnPrefabricado.Size = new System.Drawing.Size(142, 43);
@@ -870,7 +870,7 @@
             this.linkLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.linkLabel1.ImageKey = "(ninguno)";
             this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(1000, 565);
+            this.linkLabel1.Location = new System.Drawing.Point(1000, 544);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(148, 29);
@@ -885,12 +885,13 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.Font = new System.Drawing.Font("Impact", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Orange;
             this.label4.Location = new System.Drawing.Point(59, -31);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(1366, 69);
+            this.label4.Size = new System.Drawing.Size(1366, 47);
             this.label4.TabIndex = 184;
             this.label4.Text = "Nueva Proforma\r\n";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

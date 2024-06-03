@@ -1,4 +1,6 @@
 ﻿using Dominio.Model.ClassWindows;
+using MaterialSkin.Controls;
+using Precentacion.User.Quote.Windows.Seleccion_Diseño;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +13,12 @@ using System.Windows.Forms;
 
 namespace Precentacion.User.Quote.Windows
 {
-    public partial class frmSelectDesing : Form
+    public partial class frmSelectDesing : MaterialForm
     {
         public frmSelectDesing()
         {
             InitializeComponent();
+            SeleccionDesign.loadMaterial(this);
         }
 
         private void btnFijoMovi_Click(object sender, EventArgs e)

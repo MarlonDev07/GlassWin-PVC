@@ -43,7 +43,7 @@ namespace Precentacion.User.Quote.Quote
         #region Constructor
 
         // Propiedades para el borde personalizado
-        private const int borderWidth = 43; // Grosor del borde
+        private const int borderWidth = 45; // Grosor del borde
         private Color borderColor = Color.Orange; // Color del borde
 
         // Botones personalizados
