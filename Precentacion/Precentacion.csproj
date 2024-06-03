@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{187BEC42-06A7-4D5D-A35A-7FF40900B086}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Precentacion</RootNamespace>
+    <AssemblyName>GlassWin</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>ftp://138.59.135.48/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>GlassWin</ProductName>
+    <PublisherName>GlassWin</PublisherName>
+    <SuiteName>GlassWin</SuiteName>
+    <WebPage>publish.htm</WebPage>
+    <AutorunEnabled>true</AutorunEnabled>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>0.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IconApp.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>18AE7466231F80991CD044AF07412F0BB8C186CA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Precentacion_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.4.2.13, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.4.2\lib\netstandard2.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net48\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress, Version=0.37.2.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCompress.0.37.2\lib\net462\SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.8.0.0\lib\net462\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Twilio, Version=6.15.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.6.15.0\lib\net451\Twilio.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdSharp, Version=0.8.0.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.8.0\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\DashBoard\frmAdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\DashBoard\frmAdminDashboard.Designer.cs">
+      <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Product Manager\frmNewProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Product Manager\frmNewProduct.Designer.cs">
+      <DependentUpon>frmNewProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Product Manager\frmUpdateProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Product Manager\frmUpdateProduct.Designer.cs">
+      <DependentUpon>frmUpdateProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SettingsPrice\frmNewSettingsPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\SettingsPrice\frmNewSettingsPrice.Designer.cs">
+      <DependentUpon>frmNewSettingsPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SettingsPrice\frmUpdateSettingPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\SettingsPrice\frmUpdateSettingPrice.Designer.cs">
+      <DependentUpon>frmUpdateSettingPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SettingsPrice\frmViewSettingsPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\SettingsPrice\frmViewSettingsPrice.Designer.cs">
+      <DependentUpon>frmViewSettingsPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Users and Company\Company\frmNewCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Users and Company\Company\frmNewCompany.Designer.cs">
+      <DependentUpon>frmNewCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Users and Company\Users\frmNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Users and Company\Users\frmNewUser.Designer.cs">
+      <DependentUpon>frmNewUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Users and Company\Users\frmUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Users and Company\Users\frmUpdateUser.Designer.cs">
+      <DependentUpon>frmUpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Users and Company\Users\frmViewsUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Users and Company\Users\frmViewsUsers.Designer.cs">
+      <DependentUpon>frmViewsUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\frmActualizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\frmActualizacion.Designer.cs">
+      <DependentUpon>frmActualizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Login\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Login\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Product Manager\frmViewProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Product Manager\frmViewProducts.Designer.cs">
+      <DependentUpon>frmViewProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Login\RestorePass\frmValidateIdentity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\RestorePass\frmValidateIdentity.Designer.cs">
+      <DependentUpon>frmValidateIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pruebas\frmPruebaDimensionar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pruebas\frmPruebaDimensionar.Designer.cs">
+      <DependentUpon>frmPruebaDimensionar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Accounts\frmCxCNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Accounts\frmCxCNew.Designer.cs">
+      <DependentUpon>frmCxCNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Accounts\frmManagerCxC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Accounts\frmManagerCxC.Designer.cs">
+      <DependentUpon>frmManagerCxC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\AdmProyecto\frmAdmProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\AdmProyecto\frmAdmProyecto.Designer.cs">
+      <DependentUpon>frmAdmProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\AgregarFactura\frmAgregarFacturaProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\AgregarFactura\frmAgregarFacturaProveedor.Designer.cs">
+      <DependentUpon>frmAgregarFacturaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Bill\frmFacturar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Bill\frmFacturar.Designer.cs">
+      <DependentUpon>frmFacturar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Bill\frmOrdenProduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Bill\frmOrdenProduccion.Designer.cs">
+      <DependentUpon>frmOrdenProduccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Client\SystemUI.cs" />
+    <Compile Include="User\Client\frmManagerClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Client\frmManagerClient.Designer.cs">
+      <DependentUpon>frmManagerClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\DashBoard\frmDashUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\DashBoard\frmDashUser.Designer.cs">
+      <DependentUpon>frmDashUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Employer\frmInfo24Hrs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Employer\frmInfo24Hrs.Designer.cs">
+      <DependentUpon>frmInfo24Hrs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Employer\frmManagerEmployers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Employer\frmManagerEmployers.Designer.cs">
+      <DependentUpon>frmManagerEmployers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Accesorios\frmArticuloExclusivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Accesorios\frmArticuloExclusivo.Designer.cs">
+      <DependentUpon>frmArticuloExclusivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Accesorios\frmListaAcesorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Accesorios\frmListaAcesorios.Designer.cs">
+      <DependentUpon>frmListaAcesorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Accesorios\frmMedidasVidrio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Accesorios\frmMedidasVidrio.Designer.cs">
+      <DependentUpon>frmMedidasVidrio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Accesorios\frmTablaViaticos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Accesorios\frmTablaViaticos.Designer.cs">
+      <DependentUpon>frmTablaViaticos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Prefabricado\frmPrefabricado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Prefabricado\frmPrefabricado.Designer.cs">
+      <DependentUpon>frmPrefabricado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Quote\frmManagerQuotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Quote\frmManagerQuotes.Designer.cs">
+      <DependentUpon>frmManagerQuotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Quote\frmQuote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Quote\frmQuote.Designer.cs">
+      <DependentUpon>frmQuote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Quote\QuoteUI.cs" />
+    <Compile Include="User\Quote\SandBlasting\frmCalcPriceSandBlasting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\SandBlasting\frmCalcPriceSandBlasting.Designer.cs">
+      <DependentUpon>frmCalcPriceSandBlasting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\SandBlasting\frmSelectDesingSB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\SandBlasting\frmSelectDesingSB.Designer.cs">
+      <DependentUpon>frmSelectDesingSB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\SandBlasting\frmSelectSystemSB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\SandBlasting\frmSelectSystemSB.Designer.cs">
+      <DependentUpon>frmSelectSystemSB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceVentanasFijas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceVentanasFijas.Designer.cs">
+      <DependentUpon>frmCalcPriceVentanasFijas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceVentila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceVentila.Designer.cs">
+      <DependentUpon>frmCalcPriceVentila.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceWindows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceWindows.Designer.cs">
+      <DependentUpon>frmCalcPriceWindows.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\frmCalcPuertaBaño.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\frmCalcPuertaBaño.Designer.cs">
+      <DependentUpon>frmCalcPuertaBaño.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingCedazo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingCedazo.Designer.cs">
+      <DependentUpon>frmSelecDesingCedazo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingPuertLujo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingPuertLujo.Designer.cs">
+      <DependentUpon>frmSelecDesingPuertLujo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingVentanaFija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingVentanaFija.Designer.cs">
+      <DependentUpon>frmSelecDesingVentanaFija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelectDesing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelectDesing.Designer.cs">
+      <DependentUpon>frmSelectDesing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelectDesingVentila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelectDesingVentila.Designer.cs">
+      <DependentUpon>frmSelectDesingVentila.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelectDiseñoPuertaBaño.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelectDiseñoPuertaBaño.Designer.cs">
+      <DependentUpon>frmSelectDiseñoPuertaBaño.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Sistema\frmSelectSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Sistema\frmSelectSystem.Designer.cs">
+      <DependentUpon>frmSelectSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Seleccion Sistema\SeleccionUI.cs" />
+    <Compile Include="User\RegProveedor\frmRegistroProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\RegProveedor\frmRegistroProveedor.Designer.cs">
+      <DependentUpon>frmRegistroProveedor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin\DashBoard\frmAdminDashboard.resx">
+      <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Product Manager\frmNewProduct.resx">
+      <DependentUpon>frmNewProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Product Manager\frmUpdateProduct.resx">
+      <DependentUpon>frmUpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\SettingsPrice\frmNewSettingsPrice.resx">
+      <DependentUpon>frmNewSettingsPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\SettingsPrice\frmUpdateSettingPrice.resx">
+      <DependentUpon>frmUpdateSettingPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\SettingsPrice\frmViewSettingsPrice.resx">
+      <DependentUpon>frmViewSettingsPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Users and Company\Company\frmNewCompany.resx">
+      <DependentUpon>frmNewCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Users and Company\Users\frmNewUser.resx">
+      <DependentUpon>frmNewUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Users and Company\Users\frmUpdateUser.resx">
+      <DependentUpon>frmUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Users and Company\Users\frmViewsUsers.resx">
+      <DependentUpon>frmViewsUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\frmActualizacion.resx">
+      <DependentUpon>frmActualizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Login\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Product Manager\frmViewProducts.resx">
+      <DependentUpon>frmViewProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Login\RestorePass\frmValidateIdentity.resx">
+      <DependentUpon>frmValidateIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pruebas\frmPruebaDimensionar.resx">
+      <DependentUpon>frmPruebaDimensionar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Accounts\frmCxCNew.resx">
+      <DependentUpon>frmCxCNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Accounts\frmManagerCxC.resx">
+      <DependentUpon>frmManagerCxC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\AdmProyecto\frmAdmProyecto.resx">
+      <DependentUpon>frmAdmProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\AgregarFactura\frmAgregarFacturaProveedor.resx">
+      <DependentUpon>frmAgregarFacturaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Bill\frmFacturar.resx">
+      <DependentUpon>frmFacturar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Bill\frmOrdenProduccion.resx">
+      <DependentUpon>frmOrdenProduccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Client\frmManagerClient.resx">
+      <DependentUpon>frmManagerClient.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\DashBoard\frmDashUser.resx">
+      <DependentUpon>frmDashUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Employer\frmInfo24Hrs.resx">
+      <DependentUpon>frmInfo24Hrs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Employer\frmManagerEmployers.resx">
+      <DependentUpon>frmManagerEmployers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Accesorios\frmArticuloExclusivo.resx">
+      <DependentUpon>frmArticuloExclusivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Accesorios\frmListaAcesorios.resx">
+      <DependentUpon>frmListaAcesorios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Accesorios\frmMedidasVidrio.resx">
+      <DependentUpon>frmMedidasVidrio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Accesorios\frmTablaViaticos.resx">
+      <DependentUpon>frmTablaViaticos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Prefabricado\frmPrefabricado.resx">
+      <DependentUpon>frmPrefabricado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Quote\frmManagerQuotes.resx">
+      <DependentUpon>frmManagerQuotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Quote\frmQuote.resx">
+      <DependentUpon>frmQuote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\SandBlasting\frmCalcPriceSandBlasting.resx">
+      <DependentUpon>frmCalcPriceSandBlasting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\SandBlasting\frmSelectDesingSB.resx">
+      <DependentUpon>frmSelectDesingSB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\SandBlasting\frmSelectSystemSB.resx">
+      <DependentUpon>frmSelectSystemSB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceVentanasFijas.resx">
+      <DependentUpon>frmCalcPriceVentanasFijas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceVentila.resx">
+      <DependentUpon>frmCalcPriceVentila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceWindows.resx">
+      <DependentUpon>frmCalcPriceWindows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Calculos de Precio\frmCalcPuertaBaño.resx">
+      <DependentUpon>frmCalcPuertaBaño.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingCedazo.resx">
+      <DependentUpon>frmSelecDesingCedazo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingPuertLujo.resx">
+      <DependentUpon>frmSelecDesingPuertLujo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingVentanaFija.resx">
+      <DependentUpon>frmSelecDesingVentanaFija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Seleccion Diseño\frmSelectDesing.resx">
+      <DependentUpon>frmSelectDesing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Seleccion Diseño\frmSelectDesingVentila.resx">
+      <DependentUpon>frmSelectDesingVentila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Seleccion Diseño\frmSelectDiseñoPuertaBaño.resx">
+      <DependentUpon>frmSelectDiseñoPuertaBaño.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Seleccion Sistema\frmSelectSystem.resx">
+      <DependentUpon>frmSelectSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\RegProveedor\frmRegistroProveedor.resx">
+      <DependentUpon>frmRegistroProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Precentacion_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{80ef29d0-5e19-4181-aad3-ab5a6cdc026c}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{038160bd-a218-40cb-80c4-180e453e9ca5}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IconApp.ico" />
+    <None Include="Resources\150-cogs.png" />
+    <None Include="Resources\btnMini.Image.png" />
+    <None Include="Resources\pictureBox1.Image.png" />
+    <None Include="Resources\btnSave.BackgroundImage.png" />
+    <None Include="Resources\btnRestore.Image.png" />
+    <None Include="Resources\btnBack.BackgroundImage.png" />
+    <None Include="Resources\btnMaxi.Image.png" />
+    <None Include="Resources\btnClose.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

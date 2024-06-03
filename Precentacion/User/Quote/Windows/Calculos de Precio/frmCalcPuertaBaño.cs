@@ -1,0 +1,299 @@
+﻿using Dominio.Model.PuertaBaño;
+using Negocio.LoadProduct;
+using System;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
+using Negocio.LoadProduct;
+using Dominio.Model.ClassWindows;
+using Precentacion.User.Quote.Quote;
+using System.Linq;
+
+namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
+{
+    public partial class frmCalcPuertaBaño : MaterialSkin.Controls.MaterialForm
+    {
+        string Url = "";
+        decimal Price = 0;
+        decimal TempPrice = 0;
+        public frmCalcPuertaBaño()
+        {
+            InitializeComponent();
+            Fn_Inicializacion();
+        }
+
+        #region Fn_Iniciales
+        private void Fn_Inicializacion() 
+        {
+          Fn_CargarImagen();
+          Fn_CargarVidrios();
+          FN_SelectComboIndex();
+        }
+
+        private void Fn_CargarImagen ()
+        {
+            try
+            {
+                string path = Application.StartupPath + @"\Images\Windows\PB "+clsPuertaBaño.Desing+".jpg";
+                Url = path;
+                picPuertaBaño.Image = Image.FromFile(path);
+                picPuertaBaño.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la imagen: " + ex.Message);
+            }
+        }
+        private void Fn_CargarVidrios()
+        {
+            N_LoadProduct n_LoadProduct = new N_LoadProduct();
+            DataTable dt = n_LoadProduct.loadOnlyGlass();
+            if (dt.Rows.Count > 0)
+            {
+                try
+                {
+                    cbVidrio.DataSource = dt;
+                    cbVidrio.DisplayMember = "Description";
+                    cbVidrio.ValueMember = "Description";
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Error al cargar los vidrios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+        private void FN_SelectComboIndex() 
+        {
+            cbColor.SelectedIndex = 0;
+            cbLaminaPlastica.SelectedIndex = 0;
+            cbColorLamina.SelectedIndex = 0;
+            cbSupplier.SelectedIndex = 0;
+        }
+        #endregion
+
+        #region Eventos
+        private void PuntoDecimal_TextChanged(object sender, EventArgs e)
+        {
+            //Validar el punto decimal
+            TextBox TextBox = (TextBox)sender;
+            string text = TextBox.Text;
+            text = text.Replace(".", ",");
+            TextBox.Text = text;
+            TextBox.SelectionStart = TextBox.Text.Length;
+
+            //Asignar el valor a la clase clsPuertaBaño
+            string Name = TextBox.Name;
+            if (TextBox.Text != string.Empty || TextBox.Text != "")
+            {
+                decimal Valor = Convert.ToDecimal(TextBox.Text);
+                switch (Name)
+                {
+                    case "txtAncho":
+                        clsPuertaBaño.WeightTotal = Valor;
+                        break;
+                    case "txtAnchoPanel":
+                        clsPuertaBaño.WeightPanel = Valor;
+                        break;
+                    case "txtAlto":
+                        clsPuertaBaño.heigt = Valor;
+                        break;
+                }
+            }     
+            
+        }
+        #endregion
+
+        #region KeyPress
+        private void KeyPressTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Validar que se presione la tecla Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                TextBox TextBox = (TextBox)sender;
+                //Obtener el Nombre del TextBox
+                string Name = TextBox.Name;
+                switch (Name)
+                {
+                    case "txtAncho":
+                        txtAnchoPanel.Focus();
+                        break;
+                    case "txtAnchoPanel":
+                        txtAlto.Focus();
+                        break;
+                    case "txtAlto":
+                        cbColor.Focus();
+                        cbColor.DroppedDown = true;
+                        break;
+
+                }
+            }
+        }
+
+        private void ComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Validar que se presione la tecla Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                ComboBox ComboBox = (ComboBox)sender;
+                //Obtener el Nombre del TextBox
+                string Name = ComboBox.Name;
+                switch (Name)
+                {
+                    case "cbColor":
+                        cbVidrio.Focus();
+                        cbVidrio.DroppedDown = true;
+                        break;
+                    case "cbVidrio":
+                        cbLaminaPlastica.Focus();
+                        cbLaminaPlastica.DroppedDown = true;
+                        break;
+                    case "cbLaminaPlastica":
+                        cbColorLamina.Focus();
+                        cbColorLamina.DroppedDown = true;
+                        break;
+                    case "cbColorLamina":
+                        cbSupplier.Focus();
+                        cbSupplier.DroppedDown = true;
+                        break;
+
+                }
+            }
+        }
+        #endregion
+
+        #region Metodos
+        private bool ValidarCampos() 
+        {
+            if (txtAncho.Text == string.Empty)
+            {
+               MessageBox.Show("Debe ingresar el ancho de la puerta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAncho.Focus();
+                return false;
+            }
+            if (txtAnchoPanel.Text == string.Empty)
+            {
+                MessageBox.Show("Debe ingresar el ancho del panel", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAnchoPanel.Focus();
+                return false;
+            }
+            if (txtAlto.Text == string.Empty)
+            {
+                MessageBox.Show("Debe ingresar el alto de la puerta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAlto.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        private void SumarValores(DataTable dtAluminio, DataTable dtVidrio, DataTable dtAccesorios)
+        {
+            DataTable dataTableAluminio = dtAluminio;
+            //Sumar los valores de la tabla Aluminio
+            clsPuertaBaño.Price = 0;
+            foreach (DataRow row in dataTableAluminio.Rows)
+            {
+                clsPuertaBaño.Price += Convert.ToDecimal(row["TotalPrice"]);
+            }
+
+            //Sumar los valores de la tabla Vidrio
+            DataTable dataTableVidrio = dtVidrio;
+            foreach (DataRow row in dataTableVidrio.Rows)
+            {
+                clsPuertaBaño.Price += Convert.ToDecimal(row["TotalPrice"]);
+            }
+
+            //Sumar los valores de la tabla Accesorios
+            DataTable dataTableAccesorios = dtAccesorios;
+            foreach (DataRow row in dataTableAccesorios.Rows)
+            {
+                clsPuertaBaño.Price += Convert.ToDecimal(row["TotalPrice"]);
+            }
+
+
+            txtTotalPrice.Text = clsPuertaBaño.Price.ToString("C");
+        }
+        #endregion
+
+        #region Botones
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            if (ValidarCampos())
+            {
+                N_LoadProduct n_LoadProduct = new N_LoadProduct();
+                //Aluminio
+                DataTable dtAluminio = n_LoadProduct.loadAluminio(cbColor.Text, clsPuertaBaño.System, cbSupplier.Text);
+                dgvAluminio.DataSource = dtAluminio;
+                dgvAluminio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+             
+
+                //Vidrio
+                DataTable dtVidrio = n_LoadProduct.loadPricesGlass(cbSupplier.Text, cbVidrio.Text);
+                dgvVidrio.DataSource = dtVidrio;
+                dgvVidrio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                //Accesorios
+                DataTable dtAccesorios = n_LoadProduct.loadAccesorios(clsPuertaBaño.System, cbSupplier.Text);
+                dgvAccesorios.DataSource = dtAccesorios;
+                dgvAccesorios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+
+
+                SumarValores(dtAluminio,dtVidrio,dtAccesorios);
+
+
+
+            }
+        }
+        #endregion
+
+        private void btnDesglose_Click(object sender, EventArgs e)
+        {
+            panelDesglose.Visible = true;
+        }
+
+        private void btnOcultar_Click(object sender, EventArgs e)
+        {
+            panelDesglose.Visible = false;
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            N_LoadProduct n_LoadProduct = new N_LoadProduct();
+            //Crear Descripcion
+            string Description= "";
+            Description = "Puerta de Baño " + clsPuertaBaño.Desing+"\n";
+            Description += "Ancho: " + clsPuertaBaño.WeightTotal + "\n";
+            Description += "Alto: " + clsPuertaBaño.heigt + "\n";
+            Description += "Ancho Panel: " + clsPuertaBaño.WeightPanel + "\n";
+            Description += "Vidrio: " + cbVidrio.Text + "\n";
+            Description += "Lamina Plastica: " + cbLaminaPlastica.Text + "\n";
+            Description += "Color Lamina: " + cbColorLamina.Text + "\n";
+            Description += "Color Aluminio: " + cbColor.Text + "\n";
+
+            clsPuertaBaño.Price = TempPrice;
+            if (n_LoadProduct.insertWindows(Description,Url,clsPuertaBaño.WeightTotal,clsPuertaBaño.heigt,cbVidrio.Text,cbColor.Text,"",clsPuertaBaño.Price,ClsWindows.IDQuote,clsPuertaBaño.System,clsPuertaBaño.Desing))
+            {
+                Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
+                if (frm != null)
+                {
+                    ((frmQuote)frm).loadWindows();
+                }
+                MessageBox.Show("Puerta de Baño Guardada", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error al guardar la puerta de baño", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void txtCantidad_ValueChanged(object sender, EventArgs e)
+        {
+            TempPrice = 0;
+            TempPrice = clsPuertaBaño.Price * Convert.ToDecimal(txtCantidad.Value);
+            txtTotalPrice.Text = TempPrice.ToString("C");
+        }
+    }
+}
