@@ -1,5 +1,6 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Precentacion.Login
         private string ftpUrl = "ftp://138.59.135.48/";
         private string ftpUsername = "ftpUser";
         private string ftpPassword = "GlassWinFTP0192";
+      
         // Versiones
         Version versionNueva;
         Version versionActual;
@@ -20,7 +22,8 @@ namespace Precentacion.Login
         public frmActualizacion()
         {
             InitializeComponent();
-           
+            label1.Text = "Verificando actualizaciones...";
+
         }
 
         private async void frmActualizacion_Load(object sender, EventArgs e)
@@ -44,6 +47,7 @@ namespace Precentacion.Login
             // Descargar archivos de actualización si hay actualizaciones disponibles
             if (actualizacionesDisponibles)
             {
+                label1.Text = "Nueva versión disponible: " + versionNueva.ToString() + " Descargando...";
                 bool descargaExitosa = await DescargarArchivosActualizacion();
 
                 if (descargaExitosa)
@@ -102,6 +106,7 @@ namespace Precentacion.Login
                 // Comparar versiones
                 if (versionNueva > versionActual)
                 {
+                   
                     return true;
                 }
                 else
@@ -119,27 +124,22 @@ namespace Precentacion.Login
         }
 
         // Método para descargar archivos de actualización desde el servidor FTP
+        // Método para descargar archivos de actualización desde el servidor FTP
         public async Task<bool> DescargarArchivosActualizacion()
         {
-            // URL del archivo ZIP en el servidor FTP
             string archivoZipUrl = ftpUrl + "GlassWin" + versionNueva.ToString() + ".zip";
-
-            // Directorio de Documentos
             string parentDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             try
             {
-                // Ruta del archivo ZIP de destino
                 string archivoZipDestino = Path.Combine(parentDirectory, "GlassWin" + versionNueva.ToString() + ".zip");
 
-                // Descargar el archivo ZIP desde el servidor FTP
                 using (WebClient client = new WebClient())
                 {
                     client.Credentials = new NetworkCredential(ftpUsername, ftpPassword);
                     client.DownloadFile(archivoZipUrl, archivoZipDestino);
                 }
 
-                // Descomprimir el archivo ZIP en el directorio de documentos
                 using (ZipInputStream zipStream = new ZipInputStream(File.OpenRead(archivoZipDestino)))
                 {
                     ZipEntry entry;
@@ -168,7 +168,6 @@ namespace Precentacion.Login
                     }
                 }
 
-                //Eliminar la carpeta anterior
                 try
                 {
                     string oldFolder = Path.Combine(parentDirectory, "GlassWin" + versionActual);
@@ -181,17 +180,35 @@ namespace Precentacion.Login
                 {
                 }
 
-                // Eliminar el archivo ZIP después de descomprimirlo
                 File.Delete(archivoZipDestino);
 
-                //Crear un Acceso directo en el escritorio de la aplicación GlassWin.exe
-                string shortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GlassWin.lnk");
+                string oldShortcut = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GlassWin" + versionActual.ToString() + ".lnk");
+                string newShortcut = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GlassWin" + versionNueva.ToString() + ".lnk");
                 string targetPath = Path.Combine(parentDirectory + "\\GlassWin" + versionNueva, "GlassWin.exe");
-                CrearAccesoDirecto(shortcutPath, targetPath);
 
-                MessageBox.Show("Actualización completada. Por favor reinicia la aplicación.", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CrearAccesoDirecto(newShortcut, targetPath);
 
-                // Salir de la aplicación
+                string scriptPath = Path.Combine(parentDirectory, "update_script.bat");
+                using (StreamWriter writer = new StreamWriter(scriptPath))
+                {
+                    writer.WriteLine("@echo off");
+                    writer.WriteLine("timeout /t 2 /nobreak > nul");
+                    writer.WriteLine($"del \"{oldShortcut}\"");
+                    writer.WriteLine($"start \"\" \"{newShortcut}\"");
+                    writer.WriteLine("exit");
+                }
+
+
+                ProcessStartInfo procInfo = new ProcessStartInfo()
+                {
+                    FileName = scriptPath,
+                    CreateNoWindow = true,
+                    UseShellExecute = false
+                };
+                Process.Start(procInfo);
+
+                Application.Exit();
+
                 return true;
             }
             catch (UnauthorizedAccessException ex)
@@ -209,13 +226,15 @@ namespace Precentacion.Login
         // Método para crear un acceso directo en el escritorio
         private void CrearAccesoDirecto(string shortcutPath, string targetPath)
         {
-            // Crear un objeto WshShell
             dynamic shell = Activator.CreateInstance(Type.GetTypeFromProgID("WScript.Shell"));
-
-            // Crear el acceso directo
             dynamic shortcut = shell.CreateShortcut(shortcutPath);
             shortcut.TargetPath = targetPath;
+            shortcut.WorkingDirectory = Path.GetDirectoryName(targetPath);
+            shortcut.IconLocation = targetPath;
             shortcut.Save();
         }
+
+
+
     }
 }

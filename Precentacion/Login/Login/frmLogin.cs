@@ -27,27 +27,6 @@ namespace Precentacion.Login
             this.BackColor = borderColor;
 
         }
-        #region Control. de Verciones
-     
-        private void frmLogin_Load_1(object sender, EventArgs e)
-        {
-
-
-        }
-        #endregion
-
-        #region NameComputer
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            string NameComputer = Environment.MachineName;
-            //Imprimir el nombre de la computadora en Consola
-            Console.WriteLine(NameComputer);
-            if (true)
-            {
-
-            }
-        }
-        #endregion
 
         #region Drag From
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]

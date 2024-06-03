@@ -36,19 +36,19 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 13);
+            this.label1.Location = new System.Drawing.Point(5, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(225, 25);
+            this.label1.Size = new System.Drawing.Size(599, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Buscando Actualizacion";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(6, 53);
+            this.progressBar1.Location = new System.Drawing.Point(12, 37);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(220, 23);
+            this.progressBar1.Size = new System.Drawing.Size(583, 23);
             this.progressBar1.TabIndex = 1;
             // 
             // timer1
@@ -59,7 +59,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(232, 92);
+            this.ClientSize = new System.Drawing.Size(607, 73);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -68,7 +68,6 @@
             this.Text = "frmActualizacion";
             this.Load += new System.EventHandler(this.frmActualizacion_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

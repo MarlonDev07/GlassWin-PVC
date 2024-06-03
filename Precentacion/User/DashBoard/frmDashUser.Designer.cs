@@ -52,10 +52,9 @@
             this.btnOrdenProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOrdenProd.FlatAppearance.BorderSize = 0;
             this.btnOrdenProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrdenProd.Location = new System.Drawing.Point(1076, 18);
-            this.btnOrdenProd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnOrdenProd.Location = new System.Drawing.Point(716, 21);
             this.btnOrdenProd.Name = "btnOrdenProd";
-            this.btnOrdenProd.Size = new System.Drawing.Size(90, 92);
+            this.btnOrdenProd.Size = new System.Drawing.Size(60, 60);
             this.btnOrdenProd.TabIndex = 22;
             this.btnOrdenProd.Tag = "Calendario";
             this.toolTip1.SetToolTip(this.btnOrdenProd, "Calendario");
@@ -70,10 +69,9 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(964, 18);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Location = new System.Drawing.Point(641, 20);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 92);
+            this.button2.Size = new System.Drawing.Size(60, 60);
             this.button2.TabIndex = 21;
             this.button2.Tag = "Situacion del Proyeto";
             this.toolTip1.SetToolTip(this.button2, "Situacion del Proyeto");
@@ -88,10 +86,9 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(850, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(567, 19);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 92);
+            this.button1.Size = new System.Drawing.Size(60, 60);
             this.button1.TabIndex = 20;
             this.button1.Tag = "Situacion del Proyeto";
             this.toolTip1.SetToolTip(this.button1, "Situacion del Proyeto");
@@ -106,10 +103,9 @@
             this.btnCalendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCalendar.FlatAppearance.BorderSize = 0;
             this.btnCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalendar.Location = new System.Drawing.Point(741, 14);
-            this.btnCalendar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCalendar.Location = new System.Drawing.Point(494, 19);
             this.btnCalendar.Name = "btnCalendar";
-            this.btnCalendar.Size = new System.Drawing.Size(90, 92);
+            this.btnCalendar.Size = new System.Drawing.Size(60, 60);
             this.btnCalendar.TabIndex = 14;
             this.btnCalendar.Tag = "Calendario";
             this.toolTip1.SetToolTip(this.btnCalendar, "Calendario");
@@ -126,10 +122,9 @@
             this.btnAdmProyecto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdmProyecto.FlatAppearance.BorderSize = 0;
             this.btnAdmProyecto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdmProyecto.Location = new System.Drawing.Point(621, 11);
-            this.btnAdmProyecto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAdmProyecto.Location = new System.Drawing.Point(414, 17);
             this.btnAdmProyecto.Name = "btnAdmProyecto";
-            this.btnAdmProyecto.Size = new System.Drawing.Size(90, 92);
+            this.btnAdmProyecto.Size = new System.Drawing.Size(60, 60);
             this.btnAdmProyecto.TabIndex = 18;
             this.btnAdmProyecto.Tag = "Situacion del Proyeto";
             this.toolTip1.SetToolTip(this.btnAdmProyecto, "Situacion del Proyeto");
@@ -146,10 +141,9 @@
             this.btnEmployer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEmployer.FlatAppearance.BorderSize = 0;
             this.btnEmployer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployer.Location = new System.Drawing.Point(496, 9);
-            this.btnEmployer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEmployer.Location = new System.Drawing.Point(331, 16);
             this.btnEmployer.Name = "btnEmployer";
-            this.btnEmployer.Size = new System.Drawing.Size(90, 92);
+            this.btnEmployer.Size = new System.Drawing.Size(60, 60);
             this.btnEmployer.TabIndex = 16;
             this.btnEmployer.Tag = "Empleados";
             this.toolTip1.SetToolTip(this.btnEmployer, "Empleados");
@@ -167,10 +161,9 @@
             this.btnClient.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnClient.FlatAppearance.BorderSize = 0;
             this.btnClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClient.Location = new System.Drawing.Point(9, 11);
-            this.btnClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClient.Location = new System.Drawing.Point(6, 17);
             this.btnClient.Name = "btnClient";
-            this.btnClient.Size = new System.Drawing.Size(90, 92);
+            this.btnClient.Size = new System.Drawing.Size(60, 60);
             this.btnClient.TabIndex = 9;
             this.btnClient.Tag = "Clientes";
             this.toolTip1.SetToolTip(this.btnClient, "Clientes");
@@ -187,10 +180,9 @@
             this.btnCxC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCxC.FlatAppearance.BorderSize = 0;
             this.btnCxC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCxC.Location = new System.Drawing.Point(369, 9);
-            this.btnCxC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCxC.Location = new System.Drawing.Point(246, 16);
             this.btnCxC.Name = "btnCxC";
-            this.btnCxC.Size = new System.Drawing.Size(90, 92);
+            this.btnCxC.Size = new System.Drawing.Size(60, 60);
             this.btnCxC.TabIndex = 12;
             this.btnCxC.Tag = "Cuentas Contables";
             this.toolTip1.SetToolTip(this.btnCxC, "Cuentas Contables");
@@ -207,10 +199,9 @@
             this.btnManagerQuotes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnManagerQuotes.FlatAppearance.BorderSize = 0;
             this.btnManagerQuotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManagerQuotes.Location = new System.Drawing.Point(254, 11);
-            this.btnManagerQuotes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnManagerQuotes.Location = new System.Drawing.Point(169, 17);
             this.btnManagerQuotes.Name = "btnManagerQuotes";
-            this.btnManagerQuotes.Size = new System.Drawing.Size(90, 92);
+            this.btnManagerQuotes.Size = new System.Drawing.Size(60, 60);
             this.btnManagerQuotes.TabIndex = 11;
             this.btnManagerQuotes.Tag = "Facturacion";
             this.toolTip1.SetToolTip(this.btnManagerQuotes, "Facturacion");
@@ -227,10 +218,9 @@
             this.btnNewQuote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnNewQuote.FlatAppearance.BorderSize = 0;
             this.btnNewQuote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewQuote.Location = new System.Drawing.Point(130, 11);
-            this.btnNewQuote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNewQuote.Location = new System.Drawing.Point(87, 17);
             this.btnNewQuote.Name = "btnNewQuote";
-            this.btnNewQuote.Size = new System.Drawing.Size(90, 92);
+            this.btnNewQuote.Size = new System.Drawing.Size(60, 60);
             this.btnNewQuote.TabIndex = 10;
             this.btnNewQuote.Tag = "Proformas";
             this.toolTip1.SetToolTip(this.btnNewQuote, "Proformas");
@@ -247,10 +237,9 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(1186, 18);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button3.Location = new System.Drawing.Point(791, 21);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 92);
+            this.button3.Size = new System.Drawing.Size(60, 60);
             this.button3.TabIndex = 23;
             this.button3.Tag = "Proformas";
             this.toolTip1.SetToolTip(this.button3, "Proformas");
@@ -260,11 +249,11 @@
             // 
             // frmDashUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1287, 122);
+            this.ClientSize = new System.Drawing.Size(858, 95);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnOrdenProd);
             this.Controls.Add(this.button2);
@@ -279,7 +268,6 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmDashUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.ResumeLayout(false);

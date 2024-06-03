@@ -39,8 +39,7 @@
             this.pbUserName = new System.Windows.Forms.PictureBox();
             this.pbPassword = new System.Windows.Forms.PictureBox();
             this.lblUserName = new System.Windows.Forms.Label();
-            this.lblPassWord = new System.Windows.Forms.Label();
-            this.lblForgetPassword = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnViewPassWord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserName)).BeginInit();
@@ -49,7 +48,7 @@
             // 
             // btnAccess
             // 
-            this.btnAccess.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnAccess.BackColor = System.Drawing.Color.DarkGreen;
             this.btnAccess.ForeColor = System.Drawing.Color.White;
             this.btnAccess.Location = new System.Drawing.Point(452, 199);
             this.btnAccess.Name = "btnAccess";
@@ -78,7 +77,7 @@
             // 
             this.txtPassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassWord.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.txtPassWord.Location = new System.Drawing.Point(431, 142);
+            this.txtPassWord.Location = new System.Drawing.Point(431, 158);
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.Size = new System.Drawing.Size(222, 26);
             this.txtPassWord.TabIndex = 6;
@@ -92,7 +91,7 @@
             // 
             this.btnViewPassWord.BackColor = System.Drawing.Color.White;
             this.btnViewPassWord.Image = ((System.Drawing.Image)(resources.GetObject("btnViewPassWord.Image")));
-            this.btnViewPassWord.Location = new System.Drawing.Point(626, 144);
+            this.btnViewPassWord.Location = new System.Drawing.Point(626, 161);
             this.btnViewPassWord.Name = "btnViewPassWord";
             this.btnViewPassWord.Size = new System.Drawing.Size(26, 21);
             this.btnViewPassWord.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -105,7 +104,7 @@
             // Logo
             // 
             this.Logo.Image = ((System.Drawing.Image)(resources.GetObject("Logo.Image")));
-            this.Logo.Location = new System.Drawing.Point(42, 49);
+            this.Logo.Location = new System.Drawing.Point(33, 30);
             this.Logo.Name = "Logo";
             this.Logo.Size = new System.Drawing.Size(247, 188);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -135,36 +134,24 @@
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblUserName.Location = new System.Drawing.Point(501, 54);
+            this.lblUserName.Location = new System.Drawing.Point(431, 130);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(75, 17);
-            this.lblUserName.TabIndex = 7;
-            this.lblUserName.Text = "UserName";
+            this.lblUserName.Size = new System.Drawing.Size(104, 25);
+            this.lblUserName.TabIndex = 11;
+            this.lblUserName.Text = "PassWord";
             // 
-            // lblPassWord
+            // label1
             // 
-            this.lblPassWord.AutoSize = true;
-            this.lblPassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassWord.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPassWord.Location = new System.Drawing.Point(501, 119);
-            this.lblPassWord.Name = "lblPassWord";
-            this.lblPassWord.Size = new System.Drawing.Size(73, 17);
-            this.lblPassWord.TabIndex = 8;
-            this.lblPassWord.Text = "PassWord";
-            // 
-            // lblForgetPassword
-            // 
-            this.lblForgetPassword.AutoSize = true;
-            this.lblForgetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForgetPassword.Location = new System.Drawing.Point(475, 254);
-            this.lblForgetPassword.Name = "lblForgetPassword";
-            this.lblForgetPassword.Size = new System.Drawing.Size(137, 15);
-            this.lblForgetPassword.TabIndex = 12;
-            this.lblForgetPassword.TabStop = true;
-            this.lblForgetPassword.Text = "¿Olvido su Contraseña?";
-            this.lblForgetPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblForgetPassword_LinkClicked);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(431, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 25);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "UserName:";
             // 
             // frmLogin
             // 
@@ -172,11 +159,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkOrange;
-            this.ClientSize = new System.Drawing.Size(698, 317);
-            this.Controls.Add(this.btnViewPassWord);
-            this.Controls.Add(this.lblForgetPassword);
-            this.Controls.Add(this.lblPassWord);
+            this.ClientSize = new System.Drawing.Size(686, 253);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblUserName);
+            this.Controls.Add(this.btnViewPassWord);
             this.Controls.Add(this.txtPassWord);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.btnAccess);
@@ -189,7 +175,6 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.frmLogin_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.btnViewPassWord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserName)).EndInit();
@@ -207,9 +192,8 @@
         private System.Windows.Forms.Button btnAccess;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtPassWord;
-        private System.Windows.Forms.Label lblUserName;
-        private System.Windows.Forms.Label lblPassWord;
-        private System.Windows.Forms.LinkLabel lblForgetPassword;
         private System.Windows.Forms.PictureBox btnViewPassWord;
+        private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.Label label1;
     }
 }
