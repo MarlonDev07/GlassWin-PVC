@@ -8,15 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
+
+using Precentacion.User.Quote.Windows.Seleccion_Diseño;
 
 namespace Precentacion.User.Quote.Windows
 {
-    public partial class frmSelecDesingPuertLujo : MaterialSkin.Controls.MaterialForm
+    public partial class frmSelecDesingPuertLujo : MaterialForm
     {
         public frmSelecDesingPuertLujo()
         {
             InitializeComponent();
             BloquearBotones();
+            SeleccionDesign.loadMaterial(this);
         }
 
         private void BloquearBotones()

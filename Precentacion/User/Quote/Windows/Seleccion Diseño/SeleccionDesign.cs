@@ -104,8 +104,14 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
             {
                 panel6.BackColor = Color.White;
 
+            }
+            Panel pSeleccionarPL = actualForm.Controls.Find("pSeleccionarPL", true).FirstOrDefault() as Panel;
+            if (pSeleccionarPL != null)
+            {
+                pSeleccionarPL.BackColor = Color.White;
 
             }
+
 
         }
         private static void ApplyFormattingToControls(Control.ControlCollection controls)
