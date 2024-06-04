@@ -195,5 +195,10 @@ namespace Precentacion.Product_Manager
                 cbSystem.Enabled = true;
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
