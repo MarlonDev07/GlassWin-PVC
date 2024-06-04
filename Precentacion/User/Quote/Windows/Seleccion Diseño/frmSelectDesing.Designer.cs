@@ -88,10 +88,10 @@
             this.PanelSeleccionDiseño.Controls.Add(this.fijoMovilMovilFijo);
             this.PanelSeleccionDiseño.Controls.Add(this.btnFijoMovilFijo);
             this.PanelSeleccionDiseño.Controls.Add(this.MovilFijoMovil);
-            this.PanelSeleccionDiseño.Location = new System.Drawing.Point(4, 5);
+            this.PanelSeleccionDiseño.Location = new System.Drawing.Point(0, 5);
             this.PanelSeleccionDiseño.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PanelSeleccionDiseño.Name = "PanelSeleccionDiseño";
-            this.PanelSeleccionDiseño.Size = new System.Drawing.Size(4709, 280);
+            this.PanelSeleccionDiseño.Size = new System.Drawing.Size(4713, 319);
             this.PanelSeleccionDiseño.TabIndex = 42;
             // 
             // FijoMovilMovil
@@ -101,7 +101,7 @@
             this.FijoMovilMovil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FijoMovilMovil.BackgroundImage")));
             this.FijoMovilMovil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.FijoMovilMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FijoMovilMovil.Location = new System.Drawing.Point(2318, 16);
+            this.FijoMovilMovil.Location = new System.Drawing.Point(2318, 35);
             this.FijoMovilMovil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FijoMovilMovil.Name = "FijoMovilMovil";
             this.FijoMovilMovil.Size = new System.Drawing.Size(412, 268);
@@ -115,7 +115,7 @@
             this.FijoMovilMovilMovilMovilFijo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FijoMovilMovilMovilMovilFijo.BackgroundImage")));
             this.FijoMovilMovilMovilMovilFijo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.FijoMovilMovilMovilMovilFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FijoMovilMovilMovilMovilFijo.Location = new System.Drawing.Point(3862, 17);
+            this.FijoMovilMovilMovilMovilFijo.Location = new System.Drawing.Point(3862, 36);
             this.FijoMovilMovilMovilMovilFijo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FijoMovilMovilMovilMovilFijo.Name = "FijoMovilMovilMovilMovilFijo";
             this.FijoMovilMovilMovilMovilFijo.Size = new System.Drawing.Size(819, 268);
@@ -129,7 +129,7 @@
             this.btnFijoMovi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoMovi.BackgroundImage")));
             this.btnFijoMovi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoMovi.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoMovi.Location = new System.Drawing.Point(26, 16);
+            this.btnFijoMovi.Location = new System.Drawing.Point(26, 35);
             this.btnFijoMovi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFijoMovi.Name = "btnFijoMovi";
             this.btnFijoMovi.Size = new System.Drawing.Size(303, 268);
@@ -143,7 +143,7 @@
             this.btnMovilMovil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMovilMovil.BackgroundImage")));
             this.btnMovilMovil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMovilMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMovilMovil.Location = new System.Drawing.Point(608, 16);
+            this.btnMovilMovil.Location = new System.Drawing.Point(608, 35);
             this.btnMovilMovil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMovilMovil.Name = "btnMovilMovil";
             this.btnMovilMovil.Size = new System.Drawing.Size(303, 268);
@@ -157,7 +157,7 @@
             this.fijoMovilMovilFijo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fijoMovilMovilFijo.BackgroundImage")));
             this.fijoMovilMovilFijo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.fijoMovilMovilFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fijoMovilMovilFijo.Location = new System.Drawing.Point(2816, 17);
+            this.fijoMovilMovilFijo.Location = new System.Drawing.Point(2816, 36);
             this.fijoMovilMovilFijo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.fijoMovilMovilFijo.Name = "fijoMovilMovilFijo";
             this.fijoMovilMovilFijo.Size = new System.Drawing.Size(759, 268);
@@ -171,7 +171,7 @@
             this.btnFijoMovilFijo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoMovilFijo.BackgroundImage")));
             this.btnFijoMovilFijo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoMovilFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoMovilFijo.Location = new System.Drawing.Point(1102, 16);
+            this.btnFijoMovilFijo.Location = new System.Drawing.Point(1102, 35);
             this.btnFijoMovilFijo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFijoMovilFijo.Name = "btnFijoMovilFijo";
             this.btnFijoMovilFijo.Size = new System.Drawing.Size(412, 268);
@@ -185,7 +185,7 @@
             this.MovilFijoMovil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MovilFijoMovil.BackgroundImage")));
             this.MovilFijoMovil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.MovilFijoMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MovilFijoMovil.Location = new System.Drawing.Point(1761, 16);
+            this.MovilFijoMovil.Location = new System.Drawing.Point(1761, 35);
             this.MovilFijoMovil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MovilFijoMovil.Name = "MovilFijoMovil";
             this.MovilFijoMovil.Size = new System.Drawing.Size(412, 268);
@@ -213,7 +213,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1247, 861);
+            this.ClientSize = new System.Drawing.Size(1269, 917);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
