@@ -28,53 +28,48 @@ namespace Negocio.Products
             
         }
 
-        public DataTable Find(string code, string System, string Category, string Color)
+        public DataTable Find(string code, string system, string category, string color, string description)
         {
             try
             {
                 DataTable dt = new DataTable();
                 CD_Products products = new CD_Products();
-                StringBuilder Query = new StringBuilder("SELECT Product.*, Price.* FROM Product JOIN Price ON Product.idProduct = Price.idProduct WHERE");
+                StringBuilder query = new StringBuilder("SELECT Product.*, Price.* FROM Product JOIN Price ON Product.idProduct = Price.idProduct WHERE 1=1");
 
                 if (!string.IsNullOrEmpty(code))
                 {
-                    Query.Append($" Product.idProduct = '{code}'");
+                    query.Append($" AND Product.idProduct = '{code}'");
                 }
 
-                if (!string.IsNullOrEmpty(System))
+                if (!string.IsNullOrEmpty(system))
                 {
-                    Query.Append($" Product.System = '{System}'");
+                    query.Append($" AND Product.System = '{system}'");
                 }
 
-                if (!string.IsNullOrEmpty(Category))
+                if (!string.IsNullOrEmpty(category))
                 {
-                    if (!string.IsNullOrEmpty(System))
-                    {
-                        Query.Append(" AND");
-                    }
-                    Query.Append($" Product.Category = '{Category}'");
+                    query.Append($" AND Product.Category = '{category}'");
                 }
 
-                if (!string.IsNullOrEmpty(Color) )
+                if (!string.IsNullOrEmpty(color))
                 {
-                    if (!string.IsNullOrEmpty(System) || !string.IsNullOrEmpty(Category))
-                    {
-                        Query.Append(" AND");
-                    }
-                    Query.Append($" Price.Color = '{Color}'");
+                    query.Append($" AND Price.Color = '{color}'");
                 }
 
+                if (!string.IsNullOrEmpty(description))
+                {
+                    query.Append($" AND Product.Description LIKE '%{description}%'");
+                }
 
-
-                dt = products.Find(Query.ToString());
+                dt = products.Find(query.ToString());
                 return dt;
             }
             catch (Exception)
             {
-
                 return null;
             }
         }
+
         #endregion
 
         #region Create

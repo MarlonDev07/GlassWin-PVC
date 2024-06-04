@@ -118,15 +118,16 @@ namespace Precentacion.Product_Manager
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            if (txtCode.Text != "" || cbSystem.SelectedIndex == 0 || cbCategory.SelectedIndex == 0 || cbColor.SelectedIndex != 0)
+            if (txtDescription.Text != "" || txtCode.Text != "" || cbSystem.SelectedIndex != 0 || cbCategory.SelectedIndex != 0 || cbColor.SelectedIndex != 0)
             {
                 dgProducts.DataSource = null;
                 DataTable table = new DataTable();
                 N_Products products = new N_Products();
-                table = products.Find(txtCode.Text, cbSystem.Text, cbCategory.Text, cbColor.Text);
+                table = products.Find(txtCode.Text, cbSystem.Text, cbCategory.Text, cbColor.Text, txtDescription.Text);
                 dgProducts.DataSource = table;
             }
         }
+
 
         private void txtCode_TextChanged(object sender, EventArgs e)
         {
@@ -176,8 +177,23 @@ namespace Precentacion.Product_Manager
         }
 
 
+
         #endregion
 
-       
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDescription.Text != "")
+            {
+                cbCategory.Enabled = false;
+                cbColor.Enabled = false;
+                cbSystem.Enabled = false;
+            }
+            else
+            {
+                cbCategory.Enabled = true;
+                cbColor.Enabled = true;
+                cbSystem.Enabled = true;
+            }
+        }
     }
 }

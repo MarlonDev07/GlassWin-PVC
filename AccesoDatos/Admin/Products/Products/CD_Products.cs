@@ -81,26 +81,26 @@ namespace AccesoDatos.Products
 
         #region Read
 
-        public DataTable Find(string Query)
+        public DataTable Find(string query)
         {
             try
             {
-                DataTable Table = new DataTable();
-                SqlDataReader Read;
+                DataTable table = new DataTable();
+                SqlDataReader read;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Cnn.OpenConecction();
-                cmd.CommandText = Query;
-                Read = cmd.ExecuteReader();
-                Table.Load(Read);
+                cmd.CommandText = query;
+                read = cmd.ExecuteReader();
+                table.Load(read);
                 Cnn.CloseConnection();
-                return Table;
+                return table;
             }
             catch (Exception)
             {
                 return null;
             }
-
         }
+
 
         public DataTable View()
         {
