@@ -130,6 +130,7 @@
             this.ClientSize = new System.Drawing.Size(1200, 555);
             this.Controls.Add(this.panelContenedor);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "frmSelecDesingPuertLujo";
             this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

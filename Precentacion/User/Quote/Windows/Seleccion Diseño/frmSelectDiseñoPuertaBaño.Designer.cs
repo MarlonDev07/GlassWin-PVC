@@ -51,7 +51,8 @@
             // PanelSeleccionDiseño
             // 
             this.PanelSeleccionDiseño.AutoScroll = true;
-            this.PanelSeleccionDiseño.BackColor = System.Drawing.Color.Black;
+            this.PanelSeleccionDiseño.BackColor = System.Drawing.Color.White;
+            this.PanelSeleccionDiseño.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PanelSeleccionDiseño.Controls.Add(this.FijoMovilMovil);
             this.PanelSeleccionDiseño.Controls.Add(this.btnMovilMovil);
             this.PanelSeleccionDiseño.Location = new System.Drawing.Point(12, 22);
@@ -67,7 +68,7 @@
             this.FijoMovilMovil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FijoMovilMovil.BackgroundImage")));
             this.FijoMovilMovil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.FijoMovilMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FijoMovilMovil.Location = new System.Drawing.Point(684, 8);
+            this.FijoMovilMovil.Location = new System.Drawing.Point(684, 6);
             this.FijoMovilMovil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FijoMovilMovil.Name = "FijoMovilMovil";
             this.FijoMovilMovil.Size = new System.Drawing.Size(412, 268);
@@ -82,7 +83,7 @@
             this.btnMovilMovil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMovilMovil.BackgroundImage")));
             this.btnMovilMovil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMovilMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMovilMovil.Location = new System.Drawing.Point(26, 8);
+            this.btnMovilMovil.Location = new System.Drawing.Point(26, 6);
             this.btnMovilMovil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMovilMovil.Name = "btnMovilMovil";
             this.btnMovilMovil.Size = new System.Drawing.Size(303, 268);
@@ -97,6 +98,7 @@
             this.ClientSize = new System.Drawing.Size(1200, 562);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "frmSelectDiseñoPuertaBaño";
             this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

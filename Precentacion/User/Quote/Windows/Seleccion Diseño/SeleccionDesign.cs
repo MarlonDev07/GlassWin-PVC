@@ -111,6 +111,12 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
                 pSeleccionarPL.BackColor = Color.White;
 
             }
+            Panel pSelVen = actualForm.Controls.Find("pSelVen", true).FirstOrDefault() as Panel;
+            if (pSelVen != null)
+            {
+                pSelVen.BackColor = Color.White;
+
+            }
 
 
         }

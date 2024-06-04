@@ -68,6 +68,7 @@
             // 
             this.PanelSeleccionDiseño.AutoScroll = true;
             this.PanelSeleccionDiseño.BackColor = System.Drawing.Color.Black;
+            this.PanelSeleccionDiseño.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PanelSeleccionDiseño.Controls.Add(this.btnFijoMovi);
             this.PanelSeleccionDiseño.Controls.Add(this.fijoMovilMovilFijo);
             this.PanelSeleccionDiseño.Location = new System.Drawing.Point(0, 0);
@@ -83,7 +84,7 @@
             this.btnFijoMovi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoMovi.BackgroundImage")));
             this.btnFijoMovi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoMovi.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoMovi.Location = new System.Drawing.Point(15, 23);
+            this.btnFijoMovi.Location = new System.Drawing.Point(15, 21);
             this.btnFijoMovi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFijoMovi.Name = "btnFijoMovi";
             this.btnFijoMovi.Size = new System.Drawing.Size(303, 250);
@@ -98,7 +99,7 @@
             this.fijoMovilMovilFijo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fijoMovilMovilFijo.BackgroundImage")));
             this.fijoMovilMovilFijo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.fijoMovilMovilFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fijoMovilMovilFijo.Location = new System.Drawing.Point(405, 23);
+            this.fijoMovilMovilFijo.Location = new System.Drawing.Point(405, 21);
             this.fijoMovilMovilFijo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.fijoMovilMovilFijo.Name = "fijoMovilMovilFijo";
             this.fijoMovilMovilFijo.Size = new System.Drawing.Size(747, 250);
