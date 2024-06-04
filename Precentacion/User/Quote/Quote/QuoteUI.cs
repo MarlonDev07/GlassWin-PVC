@@ -45,7 +45,7 @@ namespace Precentacion.User.Quote.Quote
         {
             foreach (Control control in controls)
             {
-                if (control is Label label && label.Name != "lblAgenda" && label.Name != "lblTitleNew" && label.Name != "lblBusquedaNombre" && label.Name != "lblTitleEdit")
+                if (control is Label label && label.Name != "lblAgenda" && label.Name != "lblTitleNew" && label.Name != "lblBusquedaNombre" && label.Name != "lblTitleEdit" && label.Name != "lblBuscar") //lblBuscar
                 {
                     label.Font = new Font("Arial", 14, FontStyle.Regular);
                     label.ForeColor = Color.Black;
@@ -73,6 +73,11 @@ namespace Precentacion.User.Quote.Quote
                 {
                     label5.Font = new Font("Arial", 19, FontStyle.Bold);
                     label5.ForeColor = Color.Orange;
+                }
+                else if (control is Label label6 && label6.Name == "lblBuscar")
+                {
+                    label6.Font = new Font("Arial", 13, FontStyle.Regular);
+                    label6.ForeColor = Color.Orange;
                 }
 
                 // Llama recursivamente si el control tiene controles hijos

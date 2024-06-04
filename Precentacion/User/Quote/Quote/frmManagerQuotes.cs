@@ -8,10 +8,12 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using MaterialSkin.Controls;
+using System.Drawing;
 
 namespace Precentacion.User.Quote.Quote
 {
-    public partial class frmManagerQuotes : MaterialSkin.Controls.MaterialForm
+    public partial class frmManagerQuotes : MaterialForm
     {
         #region Variables
         bool EventClose = true;
@@ -25,13 +27,17 @@ namespace Precentacion.User.Quote.Quote
         {
             InitializeComponent();
             frmManagerQuotes_Load(null, null);
+            QuoteUI.loadMaterial(this);
+
+            // Suscribe el evento RowPrePaint
+            dgvQuotes.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dgvQuotes_RowPrePaint);
         }
         #endregion
 
         #region Load Functions
         public void frmManagerQuotes_Load(object sender, EventArgs e)
         {
-           DataTable dataTable = NQuote.LoadQuotes();
+            DataTable dataTable = NQuote.LoadQuotes();
             if (dataTable != null)
             {
                 dgvQuotes.DataSource = dataTable;
@@ -50,9 +56,24 @@ namespace Precentacion.User.Quote.Quote
                 //Ajustar las columnas al Ancho del formulario
                 dgvQuotes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-
+                // Configura el color de la fila seleccionada
+                dgvQuotes.DefaultCellStyle.SelectionBackColor = Color.Green;
+                dgvQuotes.DefaultCellStyle.SelectionForeColor = Color.Green;
             }
-           
+        }
+        #endregion
+
+        #region RowPrePaint Event Handler
+        private void dgvQuotes_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+            {
+                dgvQuotes.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+            }
+            else
+            {
+                dgvQuotes.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Orange;
+            }
         }
         #endregion
 
@@ -100,7 +121,6 @@ namespace Precentacion.User.Quote.Quote
                 ((frmFacturar)frm).btnBuscar_Click(null, null);
                 ((frmFacturar)frm).InitializeComponents_Click(null, null);
                 EventClose = false;
-
             }
             else
             {
@@ -154,21 +174,22 @@ namespace Precentacion.User.Quote.Quote
                     r.Visible = rowVisible;
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-
+                // Manejar excepción
             }
-
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            // Método vacío, posiblemente no necesario
         }
 
         private void dgvQuotes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            // Método vacío, posiblemente no necesario
         }
     }
+
+
 }
