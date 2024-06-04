@@ -8,14 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
 
 namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
 {
-    public partial class frmSelecDesingCedazo : MaterialSkin.Controls.MaterialForm
+    public partial class frmSelecDesingCedazo : MaterialForm
     {
         public frmSelecDesingCedazo()
         {
             InitializeComponent();
+            SeleccionDesign.loadMaterial(this);
         }
 
         private void btnFijoMovi_Click(object sender, EventArgs e)

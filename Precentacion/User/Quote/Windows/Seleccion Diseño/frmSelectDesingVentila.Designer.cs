@@ -490,7 +490,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSelectDesingVentila";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Seleccion del Diseño Vt";
+            this.Text = "Seleccion del Diseño Ventila";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
