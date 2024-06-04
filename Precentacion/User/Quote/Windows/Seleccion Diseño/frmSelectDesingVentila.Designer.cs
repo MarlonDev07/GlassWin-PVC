@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSelectDesingVentila));
-            this.lblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
@@ -38,12 +37,12 @@
             this.btn2HojaHorizontal = new System.Windows.Forms.Button();
             this.btn3HojaHorizontal = new System.Windows.Forms.Button();
             this.btn1HojaHorizontal = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblVentilaH = new System.Windows.Forms.Label();
+            this.lblVentilaHF = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnVentila1Fijo = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblVentilaE = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnVT5Euro = new System.Windows.Forms.Button();
@@ -52,12 +51,13 @@
             this.btnVT2Euro = new System.Windows.Forms.Button();
             this.btnVT3Euro = new System.Windows.Forms.Button();
             this.btnVT1Euro = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblVentilaV = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btn3HojasVertical = new System.Windows.Forms.Button();
             this.btn1Hoja = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -66,32 +66,19 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.BackColor = System.Drawing.Color.Black;
-            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitle.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(1603, 75);
-            this.lblTitle.TabIndex = 39;
-            this.lblTitle.Text = "Seleccione el Diseño";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(45, 212);
+            this.panel1.Location = new System.Drawing.Point(33, 80);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1512, 410);
+            this.panel1.Size = new System.Drawing.Size(1203, 410);
             this.panel1.TabIndex = 40;
             // 
             // panel2
@@ -198,42 +185,44 @@
             this.btn1HojaHorizontal.UseVisualStyleBackColor = false;
             this.btn1HojaHorizontal.Click += new System.EventHandler(this.btn1HojaHorizontal_Click);
             // 
-            // label1
+            // lblVentilaH
             // 
-            this.label1.BackColor = System.Drawing.Color.Silver;
-            this.label1.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(45, 138);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1514, 75);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Ventila Horizontal";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVentilaH.BackColor = System.Drawing.Color.Silver;
+            this.lblVentilaH.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblVentilaH.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVentilaH.ForeColor = System.Drawing.Color.Black;
+            this.lblVentilaH.Location = new System.Drawing.Point(34, 0);
+            this.lblVentilaH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVentilaH.Name = "lblVentilaH";
+            this.lblVentilaH.Size = new System.Drawing.Size(1202, 75);
+            this.lblVentilaH.TabIndex = 42;
+            this.lblVentilaH.Text = "Ventila Horizontal";
+            this.lblVentilaH.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lblVentilaHF
             // 
-            this.label2.BackColor = System.Drawing.Color.Silver;
-            this.label2.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(45, 1128);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1514, 75);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "Ventila Horizontal Con Fijos";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVentilaHF.BackColor = System.Drawing.Color.Silver;
+            this.lblVentilaHF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblVentilaHF.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVentilaHF.ForeColor = System.Drawing.Color.Black;
+            this.lblVentilaHF.Location = new System.Drawing.Point(33, 1001);
+            this.lblVentilaHF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVentilaHF.Name = "lblVentilaHF";
+            this.lblVentilaHF.Size = new System.Drawing.Size(1203, 75);
+            this.lblVentilaHF.TabIndex = 44;
+            this.lblVentilaHF.Text = "Ventila Horizontal Con Fijos";
+            this.lblVentilaHF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.Color.Black;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(45, 1202);
+            this.panel3.Location = new System.Drawing.Point(33, 1080);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1512, 410);
+            this.panel3.Size = new System.Drawing.Size(1202, 410);
             this.panel3.TabIndex = 43;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -261,29 +250,30 @@
             this.btnVentila1Fijo.UseVisualStyleBackColor = false;
             this.btnVentila1Fijo.Click += new System.EventHandler(this.btnVentila1Fijo_Click);
             // 
-            // label3
+            // lblVentilaE
             // 
-            this.label3.BackColor = System.Drawing.Color.Silver;
-            this.label3.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(45, 1626);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1514, 75);
-            this.label3.TabIndex = 46;
-            this.label3.Text = "Ventila Europa";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVentilaE.BackColor = System.Drawing.Color.Silver;
+            this.lblVentilaE.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblVentilaE.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVentilaE.ForeColor = System.Drawing.Color.Black;
+            this.lblVentilaE.Location = new System.Drawing.Point(33, 1496);
+            this.lblVentilaE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVentilaE.Name = "lblVentilaE";
+            this.lblVentilaE.Size = new System.Drawing.Size(1203, 75);
+            this.lblVentilaE.TabIndex = 46;
+            this.lblVentilaE.Text = "Ventila Europa";
+            this.lblVentilaE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel5
             // 
             this.panel5.AutoScroll = true;
             this.panel5.BackColor = System.Drawing.Color.Black;
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Location = new System.Drawing.Point(45, 1700);
+            this.panel5.Location = new System.Drawing.Point(33, 1576);
             this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1512, 410);
+            this.panel5.Size = new System.Drawing.Size(1203, 410);
             this.panel5.TabIndex = 45;
             // 
             // panel6
@@ -390,29 +380,30 @@
             this.btnVT1Euro.UseVisualStyleBackColor = false;
             this.btnVT1Euro.Click += new System.EventHandler(this.btnVT1Euro_Click);
             // 
-            // label4
+            // lblVentilaV
             // 
-            this.label4.BackColor = System.Drawing.Color.Silver;
-            this.label4.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(45, 628);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(1514, 75);
-            this.label4.TabIndex = 46;
-            this.label4.Text = "Ventila Vertical";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVentilaV.BackColor = System.Drawing.Color.Silver;
+            this.lblVentilaV.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblVentilaV.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVentilaV.ForeColor = System.Drawing.Color.Black;
+            this.lblVentilaV.Location = new System.Drawing.Point(33, 506);
+            this.lblVentilaV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVentilaV.Name = "lblVentilaV";
+            this.lblVentilaV.Size = new System.Drawing.Size(1203, 75);
+            this.lblVentilaV.TabIndex = 46;
+            this.lblVentilaV.Text = "Ventila Vertical";
+            this.lblVentilaV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel7
             // 
             this.panel7.AutoScroll = true;
             this.panel7.BackColor = System.Drawing.Color.Black;
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(45, 702);
+            this.panel7.Location = new System.Drawing.Point(33, 586);
             this.panel7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1512, 410);
+            this.panel7.Size = new System.Drawing.Size(1203, 410);
             this.panel7.TabIndex = 45;
             // 
             // panel8
@@ -471,23 +462,32 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel9
+            // 
+            this.panel9.AutoScroll = true;
+            this.panel9.Controls.Add(this.lblVentilaH);
+            this.panel9.Controls.Add(this.panel5);
+            this.panel9.Controls.Add(this.lblVentilaE);
+            this.panel9.Controls.Add(this.lblVentilaV);
+            this.panel9.Controls.Add(this.panel7);
+            this.panel9.Controls.Add(this.panel3);
+            this.panel9.Controls.Add(this.lblVentilaHF);
+            this.panel9.Controls.Add(this.panel1);
+            this.panel9.Location = new System.Drawing.Point(6, 134);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1291, 594);
+            this.panel9.TabIndex = 47;
+            // 
             // frmSelectDesingVentila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1629, 717);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel7);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lblTitle);
+            this.ClientSize = new System.Drawing.Size(1309, 1106);
+            this.Controls.Add(this.panel9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "frmSelectDesingVentila";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccion del Diseño Vt";
@@ -499,12 +499,12 @@
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btn5HojaHorizontal;
@@ -513,12 +513,12 @@
         private System.Windows.Forms.Button btn3HojaHorizontal;
         private System.Windows.Forms.Button btn1HojaHorizontal;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblVentilaH;
+        private System.Windows.Forms.Label lblVentilaHF;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnVentila1Fijo;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblVentilaE;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnVT5Euro;
@@ -527,11 +527,12 @@
         private System.Windows.Forms.Button btnVT2Euro;
         private System.Windows.Forms.Button btnVT3Euro;
         private System.Windows.Forms.Button btnVT1Euro;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblVentilaV;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn1Hoja;
         private System.Windows.Forms.Button btn3HojasVertical;
+        private System.Windows.Forms.Panel panel9;
     }
 }

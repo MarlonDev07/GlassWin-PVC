@@ -1,15 +1,18 @@
 ﻿using Dominio.Model.ClassWindows;
+using MaterialSkin.Controls;
 using Precentacion.User.Quote.Windows.Calculos_de_Precio;
+using Precentacion.User.Quote.Windows.Seleccion_Diseño;
 using System;
 using System.Windows.Forms;
 
 namespace Precentacion.User.Quote.Windows
 {
-    public partial class frmSelectDesingVentila : Form
+    public partial class frmSelectDesingVentila : MaterialForm
     {
         public frmSelectDesingVentila()
         {
             InitializeComponent();
+            SeleccionDesign.loadMaterial(this);
         }
 
         private void btn1HojaHorizontal_Click(object sender, EventArgs e)

@@ -43,7 +43,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btn5Fijo);
             this.panel1.Controls.Add(this.btn6Fijo);
             this.panel1.Controls.Add(this.btn4Fijo);
@@ -159,7 +159,7 @@
             // 
             // frmSelecDesingVentanaFija
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 350);
             this.Controls.Add(this.panelContenedor);
