@@ -93,5 +93,63 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();   
         }
+
+        private void btnFijoMovi_Click_1(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoMovil";
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Show();
+            this.Close();
+
+        }
+
+        private void btnMovilMovil_Click_1(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "MovilMovil";
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnFijoMovilFijo_Click_1(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoMovilFijo";
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Show();
+            this.Close();
+        }
+
+        private void MovilFijoMovil_Click_1(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "MovilFijoMovil";
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Show();
+            this.Close();
+        }
+
+        private void FijoMovilMovil_Click_1(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoMovilMovil";
+
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Show();
+            this.Close();
+        }
+
+        private void fijoMovilMovilFijo_Click_1(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoMovilMovilFijo";
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Show();
+            this.Close();
+        }
+
+        private void FijoMovilMovilMovilMovilFijo_Click_1(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoMovilMovilMovilMovilFijo";
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Show();
+            this.Close();
+        }
     }
 }

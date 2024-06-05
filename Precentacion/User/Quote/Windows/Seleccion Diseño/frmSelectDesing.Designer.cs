@@ -107,6 +107,7 @@
             this.FijoMovilMovil.Size = new System.Drawing.Size(412, 268);
             this.FijoMovilMovil.TabIndex = 40;
             this.FijoMovilMovil.UseVisualStyleBackColor = false;
+            this.FijoMovilMovil.Click += new System.EventHandler(this.FijoMovilMovil_Click_1);
             // 
             // FijoMovilMovilMovilMovilFijo
             // 
@@ -121,6 +122,7 @@
             this.FijoMovilMovilMovilMovilFijo.Size = new System.Drawing.Size(819, 268);
             this.FijoMovilMovilMovilMovilFijo.TabIndex = 39;
             this.FijoMovilMovilMovilMovilFijo.UseVisualStyleBackColor = false;
+            this.FijoMovilMovilMovilMovilFijo.Click += new System.EventHandler(this.FijoMovilMovilMovilMovilFijo_Click_1);
             // 
             // btnFijoMovi
             // 
@@ -135,6 +137,7 @@
             this.btnFijoMovi.Size = new System.Drawing.Size(303, 268);
             this.btnFijoMovi.TabIndex = 34;
             this.btnFijoMovi.UseVisualStyleBackColor = false;
+            this.btnFijoMovi.Click += new System.EventHandler(this.btnFijoMovi_Click_1);
             // 
             // btnMovilMovil
             // 
@@ -149,6 +152,7 @@
             this.btnMovilMovil.Size = new System.Drawing.Size(303, 268);
             this.btnMovilMovil.TabIndex = 35;
             this.btnMovilMovil.UseVisualStyleBackColor = false;
+            this.btnMovilMovil.Click += new System.EventHandler(this.btnMovilMovil_Click_1);
             // 
             // fijoMovilMovilFijo
             // 
@@ -163,6 +167,7 @@
             this.fijoMovilMovilFijo.Size = new System.Drawing.Size(759, 268);
             this.fijoMovilMovilFijo.TabIndex = 38;
             this.fijoMovilMovilFijo.UseVisualStyleBackColor = false;
+            this.fijoMovilMovilFijo.Click += new System.EventHandler(this.fijoMovilMovilFijo_Click_1);
             // 
             // btnFijoMovilFijo
             // 
@@ -177,6 +182,7 @@
             this.btnFijoMovilFijo.Size = new System.Drawing.Size(412, 268);
             this.btnFijoMovilFijo.TabIndex = 36;
             this.btnFijoMovilFijo.UseVisualStyleBackColor = false;
+            this.btnFijoMovilFijo.Click += new System.EventHandler(this.btnFijoMovilFijo_Click_1);
             // 
             // MovilFijoMovil
             // 
@@ -191,6 +197,7 @@
             this.MovilFijoMovil.Size = new System.Drawing.Size(412, 268);
             this.MovilFijoMovil.TabIndex = 37;
             this.MovilFijoMovil.UseVisualStyleBackColor = false;
+            this.MovilFijoMovil.Click += new System.EventHandler(this.MovilFijoMovil_Click_1);
             // 
             // btnBackSistema
             // 
@@ -213,7 +220,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1269, 917);
+            this.ClientSize = new System.Drawing.Size(1291, 973);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
