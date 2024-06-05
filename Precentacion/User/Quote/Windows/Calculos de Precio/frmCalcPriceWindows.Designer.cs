@@ -195,7 +195,7 @@
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUbicacion.Location = new System.Drawing.Point(941, 9);
             this.txtUbicacion.Name = "txtUbicacion";
-            this.txtUbicacion.Size = new System.Drawing.Size(120, 23);
+            this.txtUbicacion.Size = new System.Drawing.Size(103, 23);
             this.txtUbicacion.TabIndex = 46;
             // 
             // panelCerradura
@@ -1006,7 +1006,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(264, 3);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(189, 34);
+            this.lblDescripcion.Size = new System.Drawing.Size(172, 34);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripcion";
             // 
@@ -1015,7 +1015,7 @@
             this.btnBackSistmas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBackSistmas.BackColor = System.Drawing.Color.Orange;
             this.btnBackSistmas.Image = ((System.Drawing.Image)(resources.GetObject("btnBackSistmas.Image")));
-            this.btnBackSistmas.Location = new System.Drawing.Point(1101, 3);
+            this.btnBackSistmas.Location = new System.Drawing.Point(1084, 3);
             this.btnBackSistmas.Name = "btnBackSistmas";
             this.btnBackSistmas.Size = new System.Drawing.Size(33, 31);
             this.btnBackSistmas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1032,7 +1032,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(799, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 29);
+            this.label1.Size = new System.Drawing.Size(85, 29);
             this.label1.TabIndex = 63;
             this.label1.Text = "Ubicacion:";
             // 
@@ -1145,7 +1145,7 @@
             this.dgVidrioAdd.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgVidrioAdd.EnableHeadersVisualStyles = false;
             this.dgVidrioAdd.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgVidrioAdd.Location = new System.Drawing.Point(586, 476);
+            this.dgVidrioAdd.Location = new System.Drawing.Point(586, 497);
             this.dgVidrioAdd.Name = "dgVidrioAdd";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.SteelBlue;
@@ -1161,7 +1161,7 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             this.dgVidrioAdd.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgVidrioAdd.Size = new System.Drawing.Size(399, 47);
+            this.dgVidrioAdd.Size = new System.Drawing.Size(399, 68);
             this.dgVidrioAdd.TabIndex = 129;
             // 
             // dgvCerradura
@@ -1189,7 +1189,7 @@
             this.dgvCerradura.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvCerradura.EnableHeadersVisualStyles = false;
             this.dgvCerradura.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvCerradura.Location = new System.Drawing.Point(586, 575);
+            this.dgvCerradura.Location = new System.Drawing.Point(586, 597);
             this.dgvCerradura.Name = "dgvCerradura";
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.SteelBlue;
@@ -1214,7 +1214,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(745, 537);
+            this.label4.Location = new System.Drawing.Point(741, 568);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 26);
             this.label4.TabIndex = 126;
@@ -1306,7 +1306,7 @@
             dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
             this.dgAccesorios.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.dgAccesorios.Size = new System.Drawing.Size(434, 236);
+            this.dgAccesorios.Size = new System.Drawing.Size(434, 258);
             this.dgAccesorios.TabIndex = 124;
             // 
             // btnHidePanelDG
@@ -1376,7 +1376,7 @@
             dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
             this.dgVidrio.RowsDefaultCellStyle = dataGridViewCellStyle24;
-            this.dgVidrio.Size = new System.Drawing.Size(399, 47);
+            this.dgVidrio.Size = new System.Drawing.Size(399, 79);
             this.dgVidrio.TabIndex = 118;
             // 
             // lblVidrioMetricas

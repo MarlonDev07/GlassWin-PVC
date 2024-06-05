@@ -96,6 +96,7 @@ namespace Precentacion.User.Quote.Windows
 
         private void btnFijoMovi_Click_1(object sender, EventArgs e)
         {
+            
             ClsWindows.Desing = "FijoMovil";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
             frm.Show();
