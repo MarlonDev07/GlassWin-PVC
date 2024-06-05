@@ -80,6 +80,68 @@ namespace AccesoDatos.Products
         #endregion
 
         #region Read
+        public DataTable GetAllColors()
+        {
+            try
+            {
+                DataTable table = new DataTable();
+                string query = "SELECT DISTINCT Price.Color FROM Product INNER JOIN Price ON Product.idProduct = Price.idProduct";
+                using (SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction()))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    table.Load(reader);
+                    Cnn.CloseConnection();
+                }
+                return table;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public DataTable GetAllCategories()
+        {
+            try
+            {
+                DataTable table = new DataTable();
+                string query = "SELECT DISTINCT Category FROM Product";
+                using (SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction()))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    table.Load(reader);
+                    Cnn.CloseConnection();
+                }
+                return table;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public DataTable GetAllSystems()
+        {
+            try
+            {
+                DataTable table = new DataTable();
+                string query = "SELECT DISTINCT System FROM Product";
+                using (SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction()))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    table.Load(reader);
+                    Cnn.CloseConnection();
+                }
+                return table;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
 
         public DataTable Find(string query)
         {

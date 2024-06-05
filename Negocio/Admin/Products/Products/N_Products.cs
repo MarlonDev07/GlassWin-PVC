@@ -28,6 +28,27 @@ namespace Negocio.Products
             
         }
 
+        public DataTable GetAllColors()
+        {
+            CD_Products data = new CD_Products();
+            return data.GetAllColors();
+        }
+
+
+        public DataTable GetAllCategories()
+        {
+            CD_Products data = new CD_Products();
+            return data.GetAllCategories();
+        }
+
+        public DataTable GetAllSystems()
+        {
+            CD_Products data = new CD_Products();
+            return data.GetAllSystems();
+        }
+
+
+
         public DataTable Find(string code, string system, string category, string color, string description)
         {
             try

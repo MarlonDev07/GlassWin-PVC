@@ -20,6 +20,10 @@ namespace Precentacion.Product_Manager
         {
             InitializeComponent();
             ViewProducts();
+            LoadSystems();
+            LoadCategories();
+            LoadColors();
+
         }
 
         #region Drag From
@@ -175,6 +179,50 @@ namespace Precentacion.Product_Manager
 
 
         }
+        private void LoadSystems()
+        {
+            N_Products products = new N_Products();
+            DataTable systems = products.GetAllSystems();
+            if (systems != null)
+            {
+                DataRow emptyRow = systems.NewRow();
+                emptyRow["System"] = "";
+                systems.Rows.InsertAt(emptyRow, 0);
+
+                cbSystem.DataSource = systems;
+                cbSystem.DisplayMember = "System";
+                cbSystem.ValueMember = "System";
+            }
+        }
+        private void LoadCategories()
+        {
+            N_Products products = new N_Products();
+            DataTable category = products.GetAllCategories();
+            if (category != null)
+            {
+                cbCategory.DataSource = category;
+                cbCategory.DisplayMember = "Category";
+                cbCategory.ValueMember = "Category";
+            }
+        }
+        private void LoadColors()
+        {
+            N_Products products = new N_Products();
+            DataTable colors = products.GetAllColors();
+
+            if (colors != null)
+            {
+                DataRow emptyRow = colors.NewRow();
+                emptyRow["Color"] = ""; 
+                colors.Rows.InsertAt(emptyRow, 0);
+
+                cbColor.DataSource = colors;
+                cbColor.DisplayMember = "Color";
+                cbColor.ValueMember = "Color";
+            }
+        }
+
+
 
 
 
