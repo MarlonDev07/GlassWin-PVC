@@ -62,7 +62,45 @@ namespace Precentacion.User.Quote.Quote
             // Crear y configurar los botones personalizados
             InitializeCustomButtons();
 
+            //Se agregó esto
+            // Suscribirse a los eventos
+            dgCotizaciones.CellValueChanged += dgCotizaciones_CellValueChanged;
+            dgCotizaciones.EditingControlShowing += dgCotizaciones_EditingControlShowing;
+
         }
+
+        //Esto se agregó
+        private void dgCotizaciones_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgCotizaciones.Columns["Price"].Index)
+            {
+                CalcPrices();
+            }
+        }
+        //Esto se agregó
+        private void dgCotizaciones_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dgCotizaciones.CurrentCell.ColumnIndex == dgCotizaciones.Columns["Price"].Index)
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.TextChanged -= TextBox_TextChanged;
+                    tb.TextChanged += TextBox_TextChanged;
+                }
+            }
+        }
+        //Esto se agregó
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse((sender as TextBox).Text, out decimal newValue))
+            {
+                dgCotizaciones.CurrentCell.Value = newValue;
+                CalcPrices();
+            }
+        }
+
+
         #endregion
         private void InitializeCustomButtons()
         {
@@ -158,17 +196,17 @@ namespace Precentacion.User.Quote.Quote
         #region LoadFunctions
         private void loadFunction()
         {
-            cbIva.SelectedIndex = 0; 
+            cbIva.SelectedIndex = 0;
             txtManoObra.Text = "0";
             txtDescuento.Text = "0";
-            if (txtidQuote.Text == "") 
+            if (txtidQuote.Text == "")
             {
                 loadIDQuote();
             }
             loadDate();
             loadWindows();
             LoadConditionals();
-            if(UserCache.Name == "VitroTaller")
+            if (UserCache.Name == "VitroTaller")
             {
                 btnSistemas.Visible = false;
             }
@@ -206,7 +244,7 @@ namespace Precentacion.User.Quote.Quote
 
 
         }
-        public void LoadConditionals() 
+        public void LoadConditionals()
         {
             //Vidrios Maky
             if (CompanyCache.IdCompany == 205150849 || CompanyCache.IdCompany == 3101794685)
@@ -240,8 +278,8 @@ namespace Precentacion.User.Quote.Quote
             //Aluvi
             if (CompanyCache.IdCompany == 31025820)
             {
-                    
-                cbOpcion.Visible = false; 
+
+                cbOpcion.Visible = false;
                 txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
                 txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
                 txtConditional3.Text = "3.Se cotizan productos marca Extralum";
@@ -268,7 +306,7 @@ namespace Precentacion.User.Quote.Quote
                 txtConditional7.Text = "7.Validez de cotización 8 días";
                 txtConditional8.Text = "8.Precio puede variar según aumentos del mercado";
                 txtConditional9.Text = "9.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
-                txtConditional10 .Visible = false;
+                txtConditional10.Visible = false;
 
             }
             //Vidrios Maky
@@ -321,7 +359,7 @@ namespace Precentacion.User.Quote.Quote
             }
 
         }
-        public void LoadDataQuote() 
+        public void LoadDataQuote()
         {
             DataTable dtQuote = new DataTable();
             dtQuote = NQuote.LoadDataQuote(Convert.ToInt32(txtidQuote.Text));
@@ -367,7 +405,7 @@ namespace Precentacion.User.Quote.Quote
                     frm.EventFormClose = false;
                     frm.Show();
                 }
-                
+
             }
             catch (Exception)
             {
@@ -410,15 +448,15 @@ namespace Precentacion.User.Quote.Quote
 
                 if (res)
                 {
-         
-                        res = NQuote.EditQuote(Convert.ToInt32(txtidQuote.Text), Date, txtProjetName.Text, txtAddress.Text, "", Convert.ToDecimal(txtDescuento.Text), Convert.ToDecimal(txtManoObra.Text), IVA, SubTotal, Total, IdClient);
-                        if (res)
-                        {
-                            QuoteSave = 1;
-                            MessageBox.Show("Cotizacion Guardada", "Proforma Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            SendQuoteforWhathsaap();
-                            this.Close();
-                        } 
+
+                    res = NQuote.EditQuote(Convert.ToInt32(txtidQuote.Text), Date, txtProjetName.Text, txtAddress.Text, "", Convert.ToDecimal(txtDescuento.Text), Convert.ToDecimal(txtManoObra.Text), IVA, SubTotal, Total, IdClient);
+                    if (res)
+                    {
+                        QuoteSave = 1;
+                        MessageBox.Show("Cotizacion Guardada", "Proforma Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SendQuoteforWhathsaap();
+                        this.Close();
+                    }
                 }
                 else
                 {
@@ -429,7 +467,7 @@ namespace Precentacion.User.Quote.Quote
 
         private void txtidQuote_TextChanged(object sender, EventArgs e)
         {
-           loadWindows();
+            loadWindows();
         }
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -477,7 +515,7 @@ namespace Precentacion.User.Quote.Quote
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Preguntar si desea eliminar la ventana
-            DialogResult result = MessageBox.Show("¿Desea eliminar la ventana n° "+ dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString()+"?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Desea eliminar la ventana n° " + dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString() + "?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 //Obtener el id de la ventana seleccionada
@@ -498,11 +536,11 @@ namespace Precentacion.User.Quote.Quote
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            
+
             //Validar si txtManoObrea y txtDescuento son numeros
             if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
             {
-                
+
                 SubTotal = 0;
                 IVA = 0;
                 Discount = 0;
@@ -511,8 +549,8 @@ namespace Precentacion.User.Quote.Quote
                 Descuento = 0;
                 ManoObra = 0;
 
-                Discount = descuento/100;
-                Labour = manoObra/100;
+                Discount = descuento / 100;
+                Labour = manoObra / 100;
 
 
                 loadWindows();
@@ -543,15 +581,15 @@ namespace Precentacion.User.Quote.Quote
 
                             using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
                             {
-                     
-                                int anchoCelda = dgCotizaciones.Columns[1].Width ;
+
+                                int anchoCelda = dgCotizaciones.Columns[1].Width;
                                 int altoCelda = dgCotizaciones.Rows[e.RowIndex].Height;
                                 int anchoImagen = img.Width;
                                 int altoImagen = img.Height;
 
                                 // Ajustar el tamaño de la imagen si es necesario
                                 if (anchoImagen > anchoCelda || altoImagen > altoCelda)
-                                {  
+                                {
                                     float proporcionAncho = (float)anchoCelda / anchoImagen;
                                     float proporcionAlto = (float)altoCelda / altoImagen;
                                     float proporcion = Math.Min(proporcionAncho, proporcionAlto);
@@ -575,7 +613,7 @@ namespace Precentacion.User.Quote.Quote
 
         private void cbOpcion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbOpcion.SelectedIndex == 0) 
+            if (cbOpcion.SelectedIndex == 0)
             {
                 txtConditional1.Text = "1.50% por concepto de adelanto para inicio de producción e instalación, y 50% contra entrega del proyecto.";
             }
@@ -594,7 +632,7 @@ namespace Precentacion.User.Quote.Quote
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-               btnBuscar_Click(sender, e);
+                btnBuscar_Click(sender, e);
             }
         }
 
@@ -625,7 +663,7 @@ namespace Precentacion.User.Quote.Quote
                     }
                 }
             }
-           
+
         }
 
         private void frmQuote_Load(object sender, EventArgs e)
@@ -660,15 +698,15 @@ namespace Precentacion.User.Quote.Quote
 
         private void cbIva_SelectedIndexChanged(object sender, EventArgs e)
         {
-           //Obtener el Numero Antes del % en El comboBox
+            //Obtener el Numero Antes del % en El comboBox
             string Iva = cbIva.SelectedItem.ToString();
             string IvaNumber = Iva.Substring(0, Iva.Length - 1);
             if (IvaNumber != "")
             {
                 decimal IvaDecimal = Convert.ToDecimal(IvaNumber);
-                IVA = SubTotal * (IvaDecimal / 100);               
+                IVA = SubTotal * (IvaDecimal / 100);
                 Total = SubTotal + IVA;
-              
+
                 if (UserCache.Name == "VitroTaller")
                 {
                     txtTotal.Text = "Precio Restringido";
@@ -705,6 +743,17 @@ namespace Precentacion.User.Quote.Quote
 
         }
 
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //Abre el HiperVinculo
+            System.Diagnostics.Process.Start("C:\\GlassWin\\Debug\\Medidas de Fabricacion");
+        }
+
         private void btnViaticos_Click(object sender, EventArgs e)
         {
             frmTablaViaticos frm = new frmTablaViaticos();
@@ -715,51 +764,24 @@ namespace Precentacion.User.Quote.Quote
         #endregion
 
         #region Metodos
-        private void CalcPrices() { 
-             decimal total = 0;
-            if (Descuento != 0 || ManoObra != 0 )
+        //Se modificó
+        private void CalcPrices()
+        {
+            decimal total = 0;
+            if (Descuento != 0 || ManoObra != 0)
             {
                 foreach (DataGridViewRow row in dgCotizaciones.Rows)
                 {
-                    //Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-                    decimal priceWithLabour = price +(price+ManoObra);
-                    decimal priceWithDiscount = priceWithLabour - (price * Descuento);
-                    decimal TotalPriceWindows = ((priceWithLabour + priceWithDiscount));
+                    decimal priceWithLabour = price + ManoObra;
+                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Descuento);
+                    decimal TotalPriceWindows = priceWithDiscount;
                     row.Cells["Price"].Value = TotalPriceWindows;
-                    //Sumar el total de la columna Price
                     total += Convert.ToDecimal(row.Cells["Price"].Value);
                 }
                 SubTotal = total;
-                
-                Total = total ;
-                if (UserCache.Name == "VitroTaller")
-                {
-                    txtSubtotal.Text = "Precio Restringido";
-                    txtTotal.Text = "Precio Restringido";
-                }else
-                {
-
-                    txtSubtotal.Text = total.ToString("c");
-                    txtTotal.Text = Total.ToString("c");
-                }      
-                btnApply_Click(null, null);
-            }
-            else
-            {
-                foreach (DataGridViewRow row in dgCotizaciones.Rows)
-                {
-                    //Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
-                    decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-                    decimal priceWithLabour = price + (price * Labour);
-                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
-                    row.Cells["Price"].Value = priceWithDiscount;
-                    //Sumar el total de la columna Price
-                    total += Convert.ToDecimal(row.Cells["Price"].Value);
-                }
-                SubTotal = total;
-               
                 Total = total;
+
                 if (UserCache.Name == "VitroTaller")
                 {
                     txtSubtotal.Text = "Precio Restringido";
@@ -767,7 +789,32 @@ namespace Precentacion.User.Quote.Quote
                 }
                 else
                 {
+                    txtSubtotal.Text = total.ToString("c");
+                    txtTotal.Text = Total.ToString("c");
+                }
 
+                btnApply_Click(null, null);
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dgCotizaciones.Rows)
+                {
+                    decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+                    decimal priceWithLabour = price + (price * Labour);
+                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
+                    row.Cells["Price"].Value = priceWithDiscount;
+                    total += Convert.ToDecimal(row.Cells["Price"].Value);
+                }
+                SubTotal = total;
+                Total = total;
+
+                if (UserCache.Name == "VitroTaller")
+                {
+                    txtSubtotal.Text = "Precio Restringido";
+                    txtTotal.Text = "Precio Restringido";
+                }
+                else
+                {
                     txtSubtotal.Text = total.ToString("c");
                     txtTotal.Text = Total.ToString("c");
                 }
@@ -829,7 +876,7 @@ namespace Precentacion.User.Quote.Quote
                 string url = "https://api.whatsapp.com/send?phone=506" + txtTelefono.Text + "&text=" + message;
                 System.Diagnostics.Process.Start(url);
             }
-           
+
         }
 
 
@@ -873,7 +920,7 @@ namespace Precentacion.User.Quote.Quote
 
             try
             {
-            #region Encabezado
+                #region Encabezado
                 // Crea una tabla con dos columnas
                 PdfPTable Encabezado = new PdfPTable(2);
                 Encabezado.WidthPercentage = 120;
@@ -882,7 +929,7 @@ namespace Precentacion.User.Quote.Quote
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\AluviLogo.png";    
+                    string Url = "\\Images\\Logos\\AluviLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -899,7 +946,7 @@ namespace Precentacion.User.Quote.Quote
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\MakyLogo.png";
-                    rutaLogo = ruta + Url;                
+                    rutaLogo = ruta + Url;
                 }
                 if (CompanyCache.IdCompany == 112540885)
                 {
@@ -962,24 +1009,24 @@ namespace Precentacion.User.Quote.Quote
                 imageCell.HorizontalAlignment = Element.ALIGN_CENTER;
                 Encabezado.AddCell(imageCell);
 
-            // Crea un nuevo objeto Font para los textos
-            iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
-            iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                // Crea un nuevo objeto Font para los textos
+                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
+                iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
-            // Agrega los textos a la segunda celda
-            PdfPCell textCell = new PdfPCell();
-            textCell.Border = PdfPCell.NO_BORDER;
+                // Agrega los textos a la segunda celda
+                PdfPCell textCell = new PdfPCell();
+                textCell.Border = PdfPCell.NO_BORDER;
 
-            // Alinea el contenido de la celda al centro
-            textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                // Alinea el contenido de la celda al centro
+                textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
 
-            // Agrega el párrafo y los chunks al documento
-            Paragraph paragraph = new Paragraph(); 
-            paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
-            paragraph.Add(Chunk.NEWLINE);// Salto de línea
+                // Agrega el párrafo y los chunks al documento
+                Paragraph paragraph = new Paragraph();
+                paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
                 if (CompanyCache.IdCompany == 205150849)
                 {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-897998" , textFont));
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-897998", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
                     paragraph.Add(Chunk.NEWLINE);
@@ -995,190 +1042,190 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
-            textCell.AddElement(paragraph);
-            Encabezado.AddCell(textCell);
+                textCell.AddElement(paragraph);
+                Encabezado.AddCell(textCell);
 
-            // Establece el ancho de la celda de la tabla (ajusta según tus necesidades)
-            Encabezado.SetWidths(new float[] { 3f, 4f }); // Primer valor es el ancho de la celda de la imagen
+                // Establece el ancho de la celda de la tabla (ajusta según tus necesidades)
+                Encabezado.SetWidths(new float[] { 3f, 4f }); // Primer valor es el ancho de la celda de la imagen
 
-            // Agrega la tabla al documento
-            document.Add(Encabezado);
+                // Agrega la tabla al documento
+                document.Add(Encabezado);
 
-            // Añade la palabra "COTIZACIÓN" debajo de la tabla
-            Paragraph cotizacionParagraph = new Paragraph("COTIZACIÓN", titleFont);
-            cotizacionParagraph.Alignment = Element.ALIGN_CENTER;
-            document.Add(cotizacionParagraph);
-            document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+                // Añade la palabra "COTIZACIÓN" debajo de la tabla
+                Paragraph cotizacionParagraph = new Paragraph("COTIZACIÓN", titleFont);
+                cotizacionParagraph.Alignment = Element.ALIGN_CENTER;
+                document.Add(cotizacionParagraph);
+                document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
 
-            #endregion
+                #endregion
 
-            #region Tabla de Informacion 
-            // Crear una tabla para los datos del proyecto y la información del cliente
-            PdfPTable datosTable = new PdfPTable(2);
-            datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
-            datosTable.LockedWidth = true;
+                #region Tabla de Informacion 
+                // Crear una tabla para los datos del proyecto y la información del cliente
+                PdfPTable datosTable = new PdfPTable(2);
+                datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
+                datosTable.LockedWidth = true;
 
-            // Celda 1: Datos del Proyecto
-            PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
-            {
-                BackgroundColor = new BaseColor(70, 130, 180),
-                BorderWidth = 1f,
-                //Colspan = 1, // Fusionar una columna para "Datos del Proyecto"
-                HorizontalAlignment = Element.ALIGN_CENTER,
-                VerticalAlignment = Element.ALIGN_CENTER
-            };
-            datosTable.AddCell(cellDatosProyecto);
+                // Celda 1: Datos del Proyecto
+                PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                {
+                    BackgroundColor = new BaseColor(70, 130, 180),
+                    BorderWidth = 1f,
+                    //Colspan = 1, // Fusionar una columna para "Datos del Proyecto"
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_CENTER
+                };
+                datosTable.AddCell(cellDatosProyecto);
 
-            // Celda 2: Información del Cliente
-            PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Cliente", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
-            {
-                BackgroundColor = new BaseColor(70, 130, 180),
-                BorderWidth = 1f,
-                Colspan = 1, // Fusionar una columna para "Información del Cliente"
-                HorizontalAlignment = Element.ALIGN_CENTER,
-                VerticalAlignment = Element.ALIGN_MIDDLE
-            };
-            datosTable.AddCell(cellDatosCliente);
+                // Celda 2: Información del Cliente
+                PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Cliente", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                {
+                    BackgroundColor = new BaseColor(70, 130, 180),
+                    BorderWidth = 1f,
+                    Colspan = 1, // Fusionar una columna para "Información del Cliente"
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellDatosCliente);
 
-            // Celda 3: Etiqueta "Cotización"
-            PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            {
-                BorderWidth = 1,
-                HorizontalAlignment = Element.ALIGN_LEFT,
-                VerticalAlignment = Element.ALIGN_MIDDLE
-            };
-            datosTable.AddCell(cellEtiquetaCotizacion);
+                // Celda 3: Etiqueta "Cotización"
+                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCotizacion);
 
-            // Celda 4: Etiqueta "Cliente"
-            PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Cliente: " + txtidClient.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            {
-                BorderWidth = 1,
-                HorizontalAlignment = Element.ALIGN_LEFT,
-                VerticalAlignment = Element.ALIGN_MIDDLE
-            };
-            datosTable.AddCell(cellEtiquetaCliente);
+                // Celda 4: Etiqueta "Cliente"
+                PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Cliente: " + txtidClient.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCliente);
 
-            // Celda 5: Etiqueta "Forma Pago"
-            PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            {
-                BorderWidth = 1,
-                HorizontalAlignment = Element.ALIGN_LEFT,
-                VerticalAlignment = Element.ALIGN_MIDDLE
-            };
-            datosTable.AddCell(cellEtiquetaFormaPago);
+                // Celda 5: Etiqueta "Forma Pago"
+                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaFormaPago);
 
-            // Celda 6: Etiqueta "Teléfono"
-            PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            {
-                BorderWidth = 1,
-                HorizontalAlignment = Element.ALIGN_LEFT,
-                VerticalAlignment = Element.ALIGN_MIDDLE
-            };
-            datosTable.AddCell(cellEtiquetaTelefono);
+                // Celda 6: Etiqueta "Teléfono"
+                PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaTelefono);
 
-            // Celda 6: Etiqueta "Dirección"
-            PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            {
-                BorderWidth = 1,
-                HorizontalAlignment = Element.ALIGN_LEFT,
-                VerticalAlignment = Element.ALIGN_MIDDLE
-            };
-            datosTable.AddCell(cellEtiquetaDireccion);
+                // Celda 6: Etiqueta "Dirección"
+                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaDireccion);
 
-            // Celda 7: Etiqueta "Correo"
-            PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-            {
-                BorderWidth = 1,
-                HorizontalAlignment = Element.ALIGN_LEFT,
-                VerticalAlignment = Element.ALIGN_MIDDLE
-            };
-            datosTable.AddCell(cellEtiquetaCorreo);
-            document.Add(datosTable);
-            document.Add(new Paragraph(" "));
-         
-            #endregion
+                // Celda 7: Etiqueta "Correo"
+                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCorreo);
+                document.Add(datosTable);
+                document.Add(new Paragraph(" "));
 
-            #region Tabla de Productos
-            PdfPTable tabla = new PdfPTable(dgCotizaciones.Columns.Count);
-            tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades     
-            tabla.LockedWidth = true;
-            float[] tablaW = { 0f, 160f, 180f, 60f }; // Ancho de las columnas
-            tabla.SetWidths(tablaW);
-            
+                #endregion
 
-            // Agregar encabezados de columna
-            for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
-            {
-                PdfPCell celda = new PdfPCell(new Phrase(dgCotizaciones.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
-                celda.HorizontalAlignment = Element.ALIGN_CENTER;
-                celda.BackgroundColor = new BaseColor(70, 130, 180);
-                tabla.AddCell(celda);
-            }
+                #region Tabla de Productos
+                PdfPTable tabla = new PdfPTable(dgCotizaciones.Columns.Count);
+                tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades     
+                tabla.LockedWidth = true;
+                float[] tablaW = { 0f, 160f, 180f, 60f }; // Ancho de las columnas
+                tabla.SetWidths(tablaW);
 
-            // Agregar filas y celdas de datos con imágenes
-            for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
-            {
+
+                // Agregar encabezados de columna
+                for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
+                {
+                    PdfPCell celda = new PdfPCell(new Phrase(dgCotizaciones.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
+                    celda.HorizontalAlignment = Element.ALIGN_CENTER;
+                    celda.BackgroundColor = new BaseColor(70, 130, 180);
+                    tabla.AddCell(celda);
+                }
+
+                // Agregar filas y celdas de datos con imágenes
+                for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
+                {
 
                     bool UrlExist = false;
                     for (int j = 0; j < dgCotizaciones.Columns.Count; j++)
-                {
-                        if (dgCotizaciones[j, i].Value != null)
                     {
-                        // Si es la columna de imagen (ajusta según tu estructura de datos)
-                        if (dgCotizaciones.Columns[j].HeaderText == "URL")
+                        if (dgCotizaciones[j, i].Value != null)
                         {
-                            string rutaImagen = dgCotizaciones[j, i].Value.ToString();
-                            if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+                            // Si es la columna de imagen (ajusta según tu estructura de datos)
+                            if (dgCotizaciones.Columns[j].HeaderText == "URL")
                             {
-                                UrlExist = true;
-                                // Agregar la imagen al PDF y ajustar su tamaño
-                                iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaImagen);
-                                img.ScaleToFit(100, 100); // Cambia el tamaño deseado aquí
-                                PdfPCell celdaImagen = new PdfPCell(img);
-                                celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
-                                celdaImagen.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                tabla.AddCell(celdaImagen);
+                                string rutaImagen = dgCotizaciones[j, i].Value.ToString();
+                                if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+                                {
+                                    UrlExist = true;
+                                    // Agregar la imagen al PDF y ajustar su tamaño
+                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaImagen);
+                                    img.ScaleToFit(100, 100); // Cambia el tamaño deseado aquí
+                                    PdfPCell celdaImagen = new PdfPCell(img);
+                                    celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
+                                    celdaImagen.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                    tabla.AddCell(celdaImagen);
+                                }
+                                else
+                                {
+                                    //Agregar una celda Con texto que diga sin Imagen
+                                    PdfPCell celda = new PdfPCell(new Phrase("Sin Imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                                    celda.HorizontalAlignment = Element.ALIGN_CENTER;
+                                    celda.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                    //Reducir el tamaño de la celda de la imagen
+                                    celda.FixedHeight = 10f; // Aumentamos la altura a 150 unidades
+
+                                    tabla.AddCell(celda);
+
+                                }
                             }
                             else
                             {
-                                //Agregar una celda Con texto que diga sin Imagen
-                                PdfPCell celda = new PdfPCell(new Phrase("Sin Imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
-                                celda.HorizontalAlignment = Element.ALIGN_CENTER;
-                                celda.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                  //Reducir el tamaño de la celda de la imagen
-                                  celda.FixedHeight = 10f; // Aumentamos la altura a 150 unidades
+                                PdfPCell cell = null;
 
-                                tabla.AddCell(celda);
+                                if (dgCotizaciones.Columns[j].HeaderText == "Descripcion")
+                                {
+                                    // Para la columna "Descripción", alinea el texto a la izquierda
+                                    cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
+                                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                                }
 
-                            }
-                        }
-                        else
-                        {
-                            PdfPCell cell = null;
+                                if (dgCotizaciones.Columns[j].HeaderText == "Precio")
+                                {
+                                    // Para la columna "Descripción", alinea el texto a la izquierda
+                                    decimal Prices = Convert.ToDecimal(dgCotizaciones[j, i].Value);
+                                    //Limitar Prices a dos decimales
+                                    Prices = Math.Round(Prices, 2);
+                                    cell = new PdfPCell(new Phrase("¢" + Prices.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                                }
+                                else
+                                {
+                                    cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                }
 
-                            if (dgCotizaciones.Columns[j].HeaderText == "Descripcion")
-                            {
-                                // Para la columna "Descripción", alinea el texto a la izquierda
-                                cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
-                                cell.HorizontalAlignment = Element.ALIGN_LEFT;
-                            }
-
-                            if (dgCotizaciones.Columns[j].HeaderText == "Precio")
-                            {
-                                // Para la columna "Descripción", alinea el texto a la izquierda
-                                decimal Prices = Convert.ToDecimal(dgCotizaciones[j, i].Value);
-                                //Limitar Prices a dos decimales
-                                Prices = Math.Round(Prices, 2);
-                                cell = new PdfPCell(new Phrase("¢" + Prices.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
-                                cell.HorizontalAlignment = Element.ALIGN_LEFT;
-                            }
-                            else
-                            {
-                                cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
-                                cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                            }
-
-                                if (UrlExist) 
+                                if (UrlExist)
                                 {
                                     // Ajusta el tamaño de las celdas
                                     cell.FixedHeight = 170f; // Aumentamos la altura a 150 unidades
@@ -1190,64 +1237,64 @@ namespace Precentacion.User.Quote.Quote
                                     cell.FixedHeight = 50f; // Aumentamos la altura a 150 unidades
                                     cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
                                 }
-                                
+
 
                                 // Centrar contenido verticalmente
                                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                                 tabla.AddCell(cell);
+                            }
                         }
                     }
                 }
-            }
 
-            // Agregar la tabla al documento
-            document.Add(tabla);
+                // Agregar la tabla al documento
+                document.Add(tabla);
 
-            document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+                document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
                 #endregion
 
-            #region Precios
-            // Crear una tabla
-            PdfPTable tablePrecio = new PdfPTable(3); // 3 columnas
+                #region Precios
+                // Crear una tabla
+                PdfPTable tablePrecio = new PdfPTable(3); // 3 columnas
 
-            // Configurar la tabla
+                // Configurar la tabla
 
-            tablePrecio.WidthPercentage = 96;
-            tablePrecio.HorizontalAlignment = Element.ALIGN_CENTER;
+                tablePrecio.WidthPercentage = 96;
+                tablePrecio.HorizontalAlignment = Element.ALIGN_CENTER;
 
-            // Configurar el fondo de las celdas
-            BaseColor fondoCelda = new BaseColor(192, 192, 192); // Color de fondo gris claro
+                // Configurar el fondo de las celdas
+                BaseColor fondoCelda = new BaseColor(192, 192, 192); // Color de fondo gris claro
 
-            // Configurar la celda
-            PdfPCell cellp = new PdfPCell();
+                // Configurar la celda
+                PdfPCell cellp = new PdfPCell();
 
-            // Configurar el color de fondo
-            cellp.BackgroundColor = fondoCelda;
+                // Configurar el color de fondo
+                cellp.BackgroundColor = fondoCelda;
 
-            // Agregar los datos a la tabla
-            cellp.Phrase = new Phrase("SubTotal :");
-            cellp.HorizontalAlignment = Element.ALIGN_CENTER;
-            tablePrecio.AddCell(cellp);
-            cellp.Phrase = new Phrase("IVA");
-            tablePrecio.AddCell(cellp);
+                // Agregar los datos a la tabla
+                cellp.Phrase = new Phrase("SubTotal :");
+                cellp.HorizontalAlignment = Element.ALIGN_CENTER;
+                tablePrecio.AddCell(cellp);
+                cellp.Phrase = new Phrase("IVA");
+                tablePrecio.AddCell(cellp);
 
-            cellp.Phrase = new Phrase("Total :");
-            tablePrecio.AddCell(cellp);
-            cellp.Phrase = new Phrase("¢" + txtSubtotal.Text);
-            tablePrecio.AddCell(cellp);
+                cellp.Phrase = new Phrase("Total :");
+                tablePrecio.AddCell(cellp);
+                cellp.Phrase = new Phrase("¢" + txtSubtotal.Text);
+                tablePrecio.AddCell(cellp);
 
-            cellp.Phrase = new Phrase("¢" + txtIVA.Text);
-            tablePrecio.AddCell(cellp);
-            cellp.Phrase = new Phrase("¢" + txtTotal.Text);
-            tablePrecio.AddCell(cellp);
+                cellp.Phrase = new Phrase("¢" + txtIVA.Text);
+                tablePrecio.AddCell(cellp);
+                cellp.Phrase = new Phrase("¢" + txtTotal.Text);
+                tablePrecio.AddCell(cellp);
 
-            // Agregar la tabla al documento
-            document.Add(tablePrecio);
-            document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+                // Agregar la tabla al documento
+                document.Add(tablePrecio);
+                document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
 
                 #endregion
 
-            #region Condiciones, Notas y Cuentas
+                #region Condiciones, Notas y Cuentas
 
                 //Agregar las Condiciones desde el txtConditional1 hasta el txtConditional7 en una tabla
                 PdfPTable tableCondiciones = new PdfPTable(1); // 1 columna
@@ -1284,7 +1331,7 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(tableCondiciones);
                 document.Add(new Paragraph(" "));
 
-               
+
                 if (CompanyCache.IdCompany == 205150849)
                 {
                     Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
@@ -1335,7 +1382,7 @@ namespace Precentacion.User.Quote.Quote
                     tablaCuentas.AddCell(new PdfPCell(new Phrase("Nombre: Vidrios e Instalaciones Maky S.A", textFont)));
                     tablaCuentas.AddCell(new PdfPCell(new Phrase("Num.Identificacion: 3-101-897-998", textFont)));
                     tablaCuentas.AddCell(new PdfPCell(new Phrase("Num.Identificacion: 3-101-897-998", textFont)));
-                  
+
 
                     // Agregar tabla al documento
                     document.Add(tablaCuentas);
@@ -1380,7 +1427,7 @@ namespace Precentacion.User.Quote.Quote
                     Detalle2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Detalle2Paragraph);
                 }
-               
+
 
                 //J123
                 if (CompanyCache.IdCompany == 1230123)
@@ -1425,7 +1472,7 @@ namespace Precentacion.User.Quote.Quote
                 }
 
 
-                if (CompanyCache.IdCompany == 31025820) 
+                if (CompanyCache.IdCompany == 31025820)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
@@ -1521,20 +1568,20 @@ namespace Precentacion.User.Quote.Quote
                 }
                 #endregion
 
-            #region Cerrar el documento
+                #region Cerrar el documento
                 // Cerrar el documento
                 document.Close();
-             return true;
+                return true;
             }
             catch (Exception ex)
             {
-  
+
                 MessageBox.Show("Error al Generar el PDF, Error: " + ex.Message);
                 return false;
-                
+
             }
             #endregion
-            }
+        }
 
         #endregion
     }
