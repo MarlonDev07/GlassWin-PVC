@@ -342,6 +342,7 @@
             this.cbSupplier.Items.AddRange(new object[] {
             "Seleccion Proveedor",
             "Extralum",
+            "Macopa",
             "Aluma",
             "Aluvi",
             "Rocha"});

@@ -192,6 +192,7 @@
             this.cbSupplier.FormattingEnabled = true;
             this.cbSupplier.Items.AddRange(new object[] {
             "Seleccion Proveedor",
+            "Macopa",
             "Extralum",
             "Aluma"});
             this.cbSupplier.Location = new System.Drawing.Point(624, 32);
