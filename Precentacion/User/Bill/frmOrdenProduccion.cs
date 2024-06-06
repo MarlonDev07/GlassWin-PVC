@@ -19,7 +19,7 @@ using Dominio.Model.ClassWindows;
 
 namespace Precentacion.User.Bill
 {
-    public partial class frmOrdenProduccion : Form //MaterialFoarm
+    public partial class frmOrdenProduccion : MaterialForm //MaterialFoarm
     {
         N_Quote NQuote = new N_Quote();
         N_OrdenProduccion NOrden = new N_OrdenProduccion();
@@ -31,7 +31,7 @@ namespace Precentacion.User.Bill
         public frmOrdenProduccion()
         {
             InitializeComponent();
-            //SystemUI.loadMaterial(this);
+            BillUI.loadMaterial(this);
             // Formato a las fechas
             dtpFechaInicio.Format = DateTimePickerFormat.Custom;
             dtpFechaInicio.CustomFormat = "dddd, dd MMMM yyyy - hh:mm tt";
@@ -371,6 +371,16 @@ namespace Precentacion.User.Bill
             {
                 MessageBox.Show("Ocurrió un error al generar la hoja de producción: " + ex.Message);
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

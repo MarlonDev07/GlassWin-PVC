@@ -261,6 +261,7 @@
     <Compile Include="User\AgregarFactura\frmAgregarFacturaProveedor.Designer.cs">
       <DependentUpon>frmAgregarFacturaProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\Bill\BillUI.cs" />
     <Compile Include="User\Bill\frmFacturar.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -22,6 +22,7 @@ namespace Precentacion.Admin.Product_Manager
         {
             InitializeComponent();
             LoadStyleDataGrid();
+            txtCode.KeyDown += new KeyEventHandler(txtCode_KeyDown);
         }
 
         #region Drag From
@@ -313,6 +314,29 @@ namespace Precentacion.Admin.Product_Manager
                 MessageBox.Show("Error de Datos: " + ex.Message);
             }
         }
+
+        private void txtCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine("KeyDown event triggered"); // Línea de depuración
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Evita que el sonido de 'ding' se reproduzca
+                if (txtCode.Text != "")
+                {
+                    bool res;
+                    res = LoadDataProduct();
+                    if (res == true)
+                    {
+                        res = LoadColorProduct();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese un numero para la Busqueda ", "Codigo Invalido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }
 
