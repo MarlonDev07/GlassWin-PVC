@@ -41,6 +41,21 @@ namespace AccesoDatos.Company.Accounts
             }
         }
 
+        public DataTable GetSupplyers()
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = Cnn.OpenConecction();
+            cmd.CommandText = "select distinct Supplyer from AccountPayable where IdCompany = @IdCompany";
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@IdCompany", CompanyCache.IdCompany);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            Cnn.CloseConnection();
+            return dt;
+        }
+
+
         //Seleccionar CxP 
         public DataTable SelectBySupplyer(string Supplyer)
         {

@@ -236,6 +236,7 @@
     <Compile Include="Pruebas\frmPruebaDimensionar.Designer.cs">
       <DependentUpon>frmPruebaDimensionar.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\Accounts\AccountsUI.cs" />
     <Compile Include="User\Accounts\frmCxCNew.cs">
       <SubType>Form</SubType>
     </Compile>

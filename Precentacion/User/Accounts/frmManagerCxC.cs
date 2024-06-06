@@ -11,11 +11,12 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Precentacion.User.Accounts
 {
-    public partial class frmManagerCxC : MaterialSkin.Controls.MaterialForm
+    public partial class frmManagerCxC : MaterialForm
     {
         #region Variables
         N_CxC N_CxC = new N_CxC();
@@ -30,6 +31,8 @@ namespace Precentacion.User.Accounts
         {
             InitializeComponent();
             LoadClient();
+            AccountsUI.loadMaterial(this);
+            LoadSupplyers();
         }
         #endregion
 
@@ -573,6 +576,20 @@ namespace Precentacion.User.Accounts
                 }
             }
         }
+
+        public void LoadSupplyers()
+        {
+            N_CxP supplyerLogic = new N_CxP();
+            DataTable dtSupplyers = supplyerLogic.GetSupplyers();
+
+            txtSupplyer.Items.Clear();
+            foreach (DataRow row in dtSupplyers.Rows)
+            {
+                txtSupplyer.Items.Add(row["Supplyer"].ToString());
+            }
+        }
+
+
         private void btnList_Click(object sender, EventArgs e)
         {
             LoadDGV();

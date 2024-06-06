@@ -30,6 +30,16 @@ namespace Negocio.Company.Account
             return AD_CxP.SelectBySupplyer(Supplyer);
         }
 
+       
+
+       public DataTable GetSupplyers()
+       {
+            AD_CxP dal = new AD_CxP();
+           return dal.GetSupplyers();
+       }
+        
+
+
         public DataTable SelectAll()
         {
             return AD_CxP.SelectAll();
