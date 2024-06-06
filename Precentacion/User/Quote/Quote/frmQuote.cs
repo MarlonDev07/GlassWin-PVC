@@ -638,30 +638,22 @@ namespace Precentacion.User.Quote.Quote
 
         private void frmQuote_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (EventClose)
+            frmDashUser frm = new frmDashUser();
+            if (QuoteSave == 0 && EventClose == true)
             {
-                Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmDashUser);
-                if (Edit)
+                DialogResult result = MessageBox.Show("¿Desea Salir sin Guardar la Cotizacion?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
                 {
-
+                    e.Cancel = true;
                 }
                 else
                 {
-                    if (frm != null)
-                    {
-                        if (Edit == false)
-                        {
-                            //ELIAR LA PROFORMA
-                            if (QuoteSave == 0)
-                            {
-                                NQuote.DeleteQuote(Convert.ToInt32(txtidQuote.Text));
-                            }
-                        }
-                        frm.WindowState = FormWindowState.Normal;
-                        frm.Show();
-
-                    }
+                    frm.Show();
                 }
+            }
+            else
+            {
+                frm.Show();
             }
 
         }

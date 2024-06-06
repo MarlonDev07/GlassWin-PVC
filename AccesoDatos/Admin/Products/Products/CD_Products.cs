@@ -372,7 +372,7 @@ namespace AccesoDatos.Products
 
                     // Crear una consulta dinámica para la lista de nombres
                     StringBuilder queryBuilder = new StringBuilder();
-                    queryBuilder.Append("SELECT pr.Description ,p.* FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE (");
+                    queryBuilder.Append("SELECT pr.Description ,p.*, pr.Category FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE (");
 
                     for (int i = 0; i < List.Count; i++)
                     {

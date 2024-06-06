@@ -18,6 +18,7 @@ using System.IO;
 using System.Xml.Linq;
 using Dominio.ClassFunction.InputBox;
 using Negocio.Company.Account;
+using Precentacion.User.DashBoard;
 
 namespace Precentacion.User.AgregarFactura
 {
@@ -834,6 +835,12 @@ namespace Precentacion.User.AgregarFactura
                 Facturas = "Cancelada";
             }
            
+        }
+
+        private void frmAgregarFacturaProveedor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmDashUser frmDashUser = new frmDashUser();
+            frmDashUser.Show();
         }
     }
 }

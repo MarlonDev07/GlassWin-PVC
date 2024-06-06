@@ -15,6 +15,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.IO;
 using Dominio.Model.ClassWindows;
+using Precentacion.User.DashBoard;
 
 
 namespace Precentacion.User.Bill
@@ -381,6 +382,12 @@ namespace Precentacion.User.Bill
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmOrdenProduccion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmDashUser frmDash = new frmDashUser();
+            frmDash.Show();
         }
     }
 }

@@ -235,6 +235,7 @@ namespace Precentacion.User.Bill
                             {
                                 DataRow[] rows = dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'");
                                 rows[0]["Metraje"] = Convert.ToDecimal(rows[0]["Metraje"]) + Convert.ToDecimal(item["Metraje"]);
+                                
                             }
                             else
                             {
@@ -253,6 +254,8 @@ namespace Precentacion.User.Bill
                     foreach (DataRow item in dtAccesorios.Rows)
                     {
                         item["Metraje"] = Convert.ToDecimal(item["Metraje"]) * Convert.ToDecimal(Cantidad);
+                                              
+
                     }
 
                     //Validar todos las Celdas del dtAccesorios para agregarlas al dtTotalDesglose                    
@@ -269,6 +272,8 @@ namespace Precentacion.User.Bill
                             {
                                 DataRow[] rows = dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'");
                                 rows[0]["Metraje"] = Convert.ToDecimal(rows[0]["Metraje"]) + Convert.ToDecimal(item["Metraje"]);
+                                
+
                             }
                             else
                             {
@@ -298,6 +303,7 @@ namespace Precentacion.User.Bill
                             {
                                 DataRow[] rows = dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'");
                                 rows[0]["Metraje"] = Convert.ToDecimal(rows[0]["Metraje"]) + Convert.ToDecimal(item["Metraje"]);
+                                
                             }
                             else
                             {
@@ -312,13 +318,17 @@ namespace Precentacion.User.Bill
                 //Cargar el dtTotalAluminio en el dgv
                 dgvDesglose.DataSource = dtTotalDesglose;
 
-               
+                //Redonder todos los Metrajes a dos decimales 
+                foreach (DataGridViewRow row in dgvDesglose.Rows)
+                {
+                    row.Cells[2].Value = Convert.ToDecimal(row.Cells[2].Value).ToString("N2");
+                }
+
             }
 
             catch (Exception)
             {
-
-                throw;
+                MessageBox.Show("Error al Cargar el Desglose", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
         }
@@ -348,41 +358,7 @@ namespace Precentacion.User.Bill
 
         }
 
-        private void ConfigdgvHojaProduccion() 
-        {
-            //Cargar solo Url, Descripcion, Ancho y Alto en el dgv
-            dgvVentanasHojaFabricacion.DataSource = dt;
-
-            //Permitir saltos de linea en el dgv
-            dgvVentanasHojaFabricacion.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
-            //Ajustar el Alto de la celda a su contenido
-            dgvVentanasHojaFabricacion.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-
-            //Ajustar el Ancho de la celda al ancho del Formulario
-            dgvVentanasHojaFabricacion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            //Ocultar las columnas que no se necesitan
-            dgvVentanasHojaFabricacion.Columns[0].Visible = false;
-            dgvVentanasHojaFabricacion.Columns[1].Visible = true;
-            dgvVentanasHojaFabricacion.Columns[2].Visible = true;
-            dgvVentanasHojaFabricacion.Columns[3].Visible = true;
-            dgvVentanasHojaFabricacion.Columns[4].Visible = true;
-            dgvVentanasHojaFabricacion.Columns[5].Visible = false;
-            dgvVentanasHojaFabricacion.Columns[6].Visible = false;
-            dgvVentanasHojaFabricacion.Columns[7].Visible = false;
-            dgvVentanasHojaFabricacion.Columns[8].Visible = false;
-            dgvVentanasHojaFabricacion.Columns[9].Visible = false;
-            dgvVentanasHojaFabricacion.Columns[10].Visible = false;
-            dgvVentanasHojaFabricacion.Columns[11].Visible = false;
-            dgvVentanasHojaFabricacion.Columns[12].Visible = false;
-
-            //Ordenar las columas para que sea primero la 2 y luego la 1 y 8
-            dgvVentanasHojaFabricacion.Columns[1].DisplayIndex = 2;
-            dgvVentanasHojaFabricacion.Columns[2].DisplayIndex = 1;
-            dgvVentanasHojaFabricacion.Columns[8].DisplayIndex = 3;
-
-        }
+      
         private void dgvRectificacionLoad()
         {
             //Cargar solo Url, Descripcion, Ancho y Alto en el dgv
@@ -798,8 +774,7 @@ namespace Precentacion.User.Bill
             }
             if (tabControl.SelectedIndex == 3)
             {
-                ConfigdgvHojaProduccion();
-                GenerarPdfHojaProduccion();
+               
             }
         }
 
@@ -818,7 +793,7 @@ namespace Precentacion.User.Bill
                         {
                             Tamaño = Tamaño.ToString().Replace(".", ",");
                         }
-
+            
                         decimal Resultado = Metraje / Convert.ToDecimal(Tamaño);
                         //Redondear siempre a la Unidad mayor
                         Resultado = Math.Ceiling(Resultado);
@@ -1070,9 +1045,12 @@ namespace Precentacion.User.Bill
                 // Convertir el DataTable a un diccionario para una búsqueda rápida
                 Dictionary<string, decimal> tamanos = new Dictionary<string, decimal>();
                 foreach (DataRow row in dt.Rows)
-                {
+                {                                           
                     string nombre = row["Description"].ToString().Trim(); // Asegúrate de usar el nombre correcto de la columna de descripción
+                
                     decimal tamaño = Convert.ToDecimal(row["Tamaño"]);
+
+                 
                     if (!tamanos.ContainsKey(nombre))
                     {
                         tamanos.Add(nombre, tamaño);
@@ -1092,6 +1070,8 @@ namespace Precentacion.User.Bill
                         else
                         {
                             row.Cells[4].Value = row.Cells[2].Value;
+                            row.Cells[5].Value = row.Cells[2].Value;
+
                         }
                     }
                 }
@@ -2388,6 +2368,12 @@ namespace Precentacion.User.Bill
         private void cbProveedorDesglose_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarTamañoPieza();
+        }
+
+        private void frmFacturar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmDashUser frm = new frmDashUser();
+            frm.Show();
         }
     }
 }

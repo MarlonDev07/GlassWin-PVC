@@ -195,7 +195,7 @@
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUbicacion.Location = new System.Drawing.Point(941, 9);
             this.txtUbicacion.Name = "txtUbicacion";
-            this.txtUbicacion.Size = new System.Drawing.Size(103, 23);
+            this.txtUbicacion.Size = new System.Drawing.Size(86, 23);
             this.txtUbicacion.TabIndex = 46;
             // 
             // panelCerradura
@@ -1006,7 +1006,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(264, 3);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(172, 34);
+            this.lblDescripcion.Size = new System.Drawing.Size(155, 34);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripcion";
             // 
@@ -1015,7 +1015,7 @@
             this.btnBackSistmas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBackSistmas.BackColor = System.Drawing.Color.Orange;
             this.btnBackSistmas.Image = ((System.Drawing.Image)(resources.GetObject("btnBackSistmas.Image")));
-            this.btnBackSistmas.Location = new System.Drawing.Point(1084, 3);
+            this.btnBackSistmas.Location = new System.Drawing.Point(1067, 3);
             this.btnBackSistmas.Name = "btnBackSistmas";
             this.btnBackSistmas.Size = new System.Drawing.Size(33, 31);
             this.btnBackSistmas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1032,7 +1032,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(799, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 29);
+            this.label1.Size = new System.Drawing.Size(68, 29);
             this.label1.TabIndex = 63;
             this.label1.Text = "Ubicacion:";
             // 

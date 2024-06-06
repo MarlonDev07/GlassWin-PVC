@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio.Model.Proveedor;
 using Negocio.Company.RegProveedor;
+using Precentacion.User.DashBoard;
 
 
 namespace Precentacion.User.RegProveedor
@@ -357,6 +358,13 @@ namespace Precentacion.User.RegProveedor
         private void txtRegDireccion_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmRegistroProveedor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmDashUser frmDashUser = new frmDashUser();
+            frmDashUser.Show();
+           
         }
     }
 }

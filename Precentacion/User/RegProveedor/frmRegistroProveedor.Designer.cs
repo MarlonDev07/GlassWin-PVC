@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistroProveedor));
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
             this.tabPageLista = new System.Windows.Forms.TabPage();
@@ -41,30 +41,30 @@
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageConsulta = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtConsSaldoActual = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.txtConsDescargo = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtConsFechaUltimoPago = new System.Windows.Forms.TextBox();
-            this.txtConsCargos = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtConsDocUltimoPago = new System.Windows.Forms.TextBox();
-            this.txtConsSaldoInicia = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.txtConsFechaUltimaCompra = new System.Windows.Forms.TextBox();
-            this.txtConsFechaApertura = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtConsDocUltimaCompra = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtConsSaldoInicia = new System.Windows.Forms.TextBox();
+            this.txtConsDescargo = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtConsCargos = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtConsLimite = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.txtConsDiasCredito = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtConsFechaApertura = new System.Windows.Forms.TextBox();
+            this.txtConsDocUltimoPago = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtConsFechaUltimaCompra = new System.Windows.Forms.TextBox();
+            this.txtConsDocUltimaCompra = new System.Windows.Forms.TextBox();
+            this.txtConsFechaUltimoPago = new System.Windows.Forms.TextBox();
             this.txtConsApt = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.txtConsTelefono = new System.Windows.Forms.TextBox();
@@ -120,8 +120,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedor)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.tabPageConsulta.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tabPageRegistrar.SuspendLayout();
             this.tabPageEditar.SuspendLayout();
             this.SuspendLayout();
@@ -153,27 +153,27 @@
             // 
             // dgvProveedor
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.dgvProveedor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dgvProveedor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProveedor.ContextMenuStrip = this.contextMenuStrip;
             this.dgvProveedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProveedor.Location = new System.Drawing.Point(3, 3);
             this.dgvProveedor.Name = "dgvProveedor";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.MenuBar;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Salmon;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProveedor.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Salmon;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvProveedor.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.MenuBar;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Salmon;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProveedor.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Salmon;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvProveedor.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProveedor.Size = new System.Drawing.Size(897, 381);
             this.dgvProveedor.TabIndex = 0;
             // 
@@ -217,251 +217,6 @@
             this.tabPageConsulta.Text = "Consulta";
             this.tabPageConsulta.UseVisualStyleBackColor = true;
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.IndianRed;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.txtConsSaldoActual);
-            this.panel1.Controls.Add(this.label19);
-            this.panel1.Controls.Add(this.label30);
-            this.panel1.Controls.Add(this.txtConsSaldoInicia);
-            this.panel1.Controls.Add(this.txtConsDescargo);
-            this.panel1.Controls.Add(this.label17);
-            this.panel1.Controls.Add(this.txtConsCargos);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Location = new System.Drawing.Point(584, 162);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(301, 138);
-            this.panel1.TabIndex = 3;
-            // 
-            // txtConsSaldoActual
-            // 
-            this.txtConsSaldoActual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsSaldoActual.BackColor = System.Drawing.Color.White;
-            this.txtConsSaldoActual.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsSaldoActual.Location = new System.Drawing.Point(155, 102);
-            this.txtConsSaldoActual.Name = "txtConsSaldoActual";
-            this.txtConsSaldoActual.ReadOnly = true;
-            this.txtConsSaldoActual.Size = new System.Drawing.Size(140, 22);
-            this.txtConsSaldoActual.TabIndex = 33;
-            // 
-            // label30
-            // 
-            this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label30.BackColor = System.Drawing.Color.IndianRed;
-            this.label30.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label30.Location = new System.Drawing.Point(7, 104);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(142, 20);
-            this.label30.TabIndex = 32;
-            this.label30.Text = "Saldo Actual:";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtConsDescargo
-            // 
-            this.txtConsDescargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsDescargo.BackColor = System.Drawing.Color.White;
-            this.txtConsDescargo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsDescargo.Location = new System.Drawing.Point(155, 71);
-            this.txtConsDescargo.Name = "txtConsDescargo";
-            this.txtConsDescargo.ReadOnly = true;
-            this.txtConsDescargo.Size = new System.Drawing.Size(140, 22);
-            this.txtConsDescargo.TabIndex = 31;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.BackColor = System.Drawing.Color.DarkGray;
-            this.label14.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label14.Location = new System.Drawing.Point(3, 195);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(109, 22);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Ultimo Pago:";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.BackColor = System.Drawing.Color.IndianRed;
-            this.label15.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label15.Location = new System.Drawing.Point(7, 73);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(143, 20);
-            this.label15.TabIndex = 30;
-            this.label15.Text = "Descargos:";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtConsFechaUltimoPago
-            // 
-            this.txtConsFechaUltimoPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsFechaUltimoPago.BackColor = System.Drawing.Color.White;
-            this.txtConsFechaUltimoPago.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsFechaUltimoPago.Location = new System.Drawing.Point(118, 195);
-            this.txtConsFechaUltimoPago.Name = "txtConsFechaUltimoPago";
-            this.txtConsFechaUltimoPago.ReadOnly = true;
-            this.txtConsFechaUltimoPago.Size = new System.Drawing.Size(139, 22);
-            this.txtConsFechaUltimoPago.TabIndex = 17;
-            // 
-            // txtConsCargos
-            // 
-            this.txtConsCargos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsCargos.BackColor = System.Drawing.Color.White;
-            this.txtConsCargos.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsCargos.Location = new System.Drawing.Point(155, 40);
-            this.txtConsCargos.Name = "txtConsCargos";
-            this.txtConsCargos.ReadOnly = true;
-            this.txtConsCargos.Size = new System.Drawing.Size(140, 22);
-            this.txtConsCargos.TabIndex = 29;
-            // 
-            // label16
-            // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.BackColor = System.Drawing.Color.DarkGray;
-            this.label16.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label16.Location = new System.Drawing.Point(4, 234);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(109, 21);
-            this.label16.TabIndex = 18;
-            this.label16.Text = "R.Ultimo Pago:";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.BackColor = System.Drawing.Color.IndianRed;
-            this.label17.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label17.Location = new System.Drawing.Point(7, 43);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(143, 19);
-            this.label17.TabIndex = 28;
-            this.label17.Text = "Cargos:";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtConsDocUltimoPago
-            // 
-            this.txtConsDocUltimoPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsDocUltimoPago.BackColor = System.Drawing.Color.White;
-            this.txtConsDocUltimoPago.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsDocUltimoPago.Location = new System.Drawing.Point(117, 232);
-            this.txtConsDocUltimoPago.Name = "txtConsDocUltimoPago";
-            this.txtConsDocUltimoPago.ReadOnly = true;
-            this.txtConsDocUltimoPago.Size = new System.Drawing.Size(140, 22);
-            this.txtConsDocUltimoPago.TabIndex = 19;
-            // 
-            // txtConsSaldoInicia
-            // 
-            this.txtConsSaldoInicia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsSaldoInicia.BackColor = System.Drawing.Color.White;
-            this.txtConsSaldoInicia.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsSaldoInicia.Location = new System.Drawing.Point(156, 7);
-            this.txtConsSaldoInicia.Name = "txtConsSaldoInicia";
-            this.txtConsSaldoInicia.ReadOnly = true;
-            this.txtConsSaldoInicia.Size = new System.Drawing.Size(140, 22);
-            this.txtConsSaldoInicia.TabIndex = 27;
-            // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.BackColor = System.Drawing.Color.DarkGray;
-            this.label18.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label18.Location = new System.Drawing.Point(263, 196);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(114, 22);
-            this.label18.TabIndex = 20;
-            this.label18.Text = "Ultima Compra:";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.BackColor = System.Drawing.Color.IndianRed;
-            this.label19.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label19.Location = new System.Drawing.Point(7, 9);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(143, 22);
-            this.label19.TabIndex = 26;
-            this.label19.Text = "Saldo de Inicio Mes:";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtConsFechaUltimaCompra
-            // 
-            this.txtConsFechaUltimaCompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsFechaUltimaCompra.BackColor = System.Drawing.Color.White;
-            this.txtConsFechaUltimaCompra.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsFechaUltimaCompra.Location = new System.Drawing.Point(397, 195);
-            this.txtConsFechaUltimaCompra.Name = "txtConsFechaUltimaCompra";
-            this.txtConsFechaUltimaCompra.ReadOnly = true;
-            this.txtConsFechaUltimaCompra.Size = new System.Drawing.Size(183, 22);
-            this.txtConsFechaUltimaCompra.TabIndex = 21;
-            // 
-            // txtConsFechaApertura
-            // 
-            this.txtConsFechaApertura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsFechaApertura.BackColor = System.Drawing.Color.White;
-            this.txtConsFechaApertura.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsFechaApertura.Location = new System.Drawing.Point(130, 160);
-            this.txtConsFechaApertura.Name = "txtConsFechaApertura";
-            this.txtConsFechaApertura.ReadOnly = true;
-            this.txtConsFechaApertura.Size = new System.Drawing.Size(201, 22);
-            this.txtConsFechaApertura.TabIndex = 25;
-            // 
-            // label20
-            // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.BackColor = System.Drawing.Color.DarkGray;
-            this.label20.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label20.Location = new System.Drawing.Point(263, 234);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(128, 21);
-            this.label20.TabIndex = 22;
-            this.label20.Text = "D.Ultima Compra: ";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label21
-            // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.BackColor = System.Drawing.Color.DarkGray;
-            this.label21.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label21.Location = new System.Drawing.Point(3, 162);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(121, 20);
-            this.label21.TabIndex = 24;
-            this.label21.Text = "Fecha Apertura:";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtConsDocUltimaCompra
-            // 
-            this.txtConsDocUltimaCompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsDocUltimaCompra.BackColor = System.Drawing.Color.White;
-            this.txtConsDocUltimaCompra.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsDocUltimaCompra.Location = new System.Drawing.Point(397, 232);
-            this.txtConsDocUltimaCompra.Name = "txtConsDocUltimaCompra";
-            this.txtConsDocUltimaCompra.ReadOnly = true;
-            this.txtConsDocUltimaCompra.Size = new System.Drawing.Size(183, 22);
-            this.txtConsDocUltimaCompra.TabIndex = 23;
-            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -500,6 +255,126 @@
             this.panel2.Size = new System.Drawing.Size(897, 374);
             this.panel2.TabIndex = 2;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.IndianRed;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtConsSaldoActual);
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Controls.Add(this.label30);
+            this.panel1.Controls.Add(this.txtConsSaldoInicia);
+            this.panel1.Controls.Add(this.txtConsDescargo);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.txtConsCargos);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Location = new System.Drawing.Point(584, 162);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(301, 138);
+            this.panel1.TabIndex = 3;
+            // 
+            // txtConsSaldoActual
+            // 
+            this.txtConsSaldoActual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConsSaldoActual.BackColor = System.Drawing.Color.White;
+            this.txtConsSaldoActual.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsSaldoActual.Location = new System.Drawing.Point(155, 102);
+            this.txtConsSaldoActual.Name = "txtConsSaldoActual";
+            this.txtConsSaldoActual.ReadOnly = true;
+            this.txtConsSaldoActual.Size = new System.Drawing.Size(140, 22);
+            this.txtConsSaldoActual.TabIndex = 33;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.BackColor = System.Drawing.Color.IndianRed;
+            this.label19.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label19.Location = new System.Drawing.Point(7, 9);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(143, 22);
+            this.label19.TabIndex = 26;
+            this.label19.Text = "Saldo de Inicio Mes:";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label30
+            // 
+            this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label30.BackColor = System.Drawing.Color.IndianRed;
+            this.label30.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label30.Location = new System.Drawing.Point(7, 104);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(142, 20);
+            this.label30.TabIndex = 32;
+            this.label30.Text = "Saldo Actual:";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtConsSaldoInicia
+            // 
+            this.txtConsSaldoInicia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConsSaldoInicia.BackColor = System.Drawing.Color.White;
+            this.txtConsSaldoInicia.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsSaldoInicia.Location = new System.Drawing.Point(156, 7);
+            this.txtConsSaldoInicia.Name = "txtConsSaldoInicia";
+            this.txtConsSaldoInicia.ReadOnly = true;
+            this.txtConsSaldoInicia.Size = new System.Drawing.Size(140, 22);
+            this.txtConsSaldoInicia.TabIndex = 27;
+            // 
+            // txtConsDescargo
+            // 
+            this.txtConsDescargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConsDescargo.BackColor = System.Drawing.Color.White;
+            this.txtConsDescargo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsDescargo.Location = new System.Drawing.Point(155, 71);
+            this.txtConsDescargo.Name = "txtConsDescargo";
+            this.txtConsDescargo.ReadOnly = true;
+            this.txtConsDescargo.Size = new System.Drawing.Size(140, 22);
+            this.txtConsDescargo.TabIndex = 31;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.BackColor = System.Drawing.Color.IndianRed;
+            this.label17.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label17.Location = new System.Drawing.Point(7, 43);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(143, 19);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "Cargos:";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtConsCargos
+            // 
+            this.txtConsCargos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConsCargos.BackColor = System.Drawing.Color.White;
+            this.txtConsCargos.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsCargos.Location = new System.Drawing.Point(155, 40);
+            this.txtConsCargos.Name = "txtConsCargos";
+            this.txtConsCargos.ReadOnly = true;
+            this.txtConsCargos.Size = new System.Drawing.Size(140, 22);
+            this.txtConsCargos.TabIndex = 29;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.BackColor = System.Drawing.Color.IndianRed;
+            this.label15.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label15.Location = new System.Drawing.Point(7, 73);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(143, 20);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "Descargos:";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // txtConsLimite
             // 
             this.txtConsLimite.BackColor = System.Drawing.Color.White;
@@ -522,6 +397,20 @@
             this.label22.Text = "Limite Credito:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.BackColor = System.Drawing.Color.DarkGray;
+            this.label14.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label14.Location = new System.Drawing.Point(3, 195);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(109, 22);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Ultimo Pago:";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // txtConsDiasCredito
             // 
             this.txtConsDiasCredito.BackColor = System.Drawing.Color.White;
@@ -531,6 +420,20 @@
             this.txtConsDiasCredito.ReadOnly = true;
             this.txtConsDiasCredito.Size = new System.Drawing.Size(102, 22);
             this.txtConsDiasCredito.TabIndex = 13;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.BackColor = System.Drawing.Color.DarkGray;
+            this.label16.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label16.Location = new System.Drawing.Point(4, 234);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(109, 21);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "R.Ultimo Pago:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label23
             // 
@@ -543,6 +446,103 @@
             this.label23.TabIndex = 12;
             this.label23.Text = "Dias Credito:";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.BackColor = System.Drawing.Color.DarkGray;
+            this.label18.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label18.Location = new System.Drawing.Point(263, 196);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(114, 22);
+            this.label18.TabIndex = 20;
+            this.label18.Text = "Ultima Compra:";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtConsFechaApertura
+            // 
+            this.txtConsFechaApertura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConsFechaApertura.BackColor = System.Drawing.Color.White;
+            this.txtConsFechaApertura.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsFechaApertura.Location = new System.Drawing.Point(130, 160);
+            this.txtConsFechaApertura.Name = "txtConsFechaApertura";
+            this.txtConsFechaApertura.ReadOnly = true;
+            this.txtConsFechaApertura.Size = new System.Drawing.Size(201, 22);
+            this.txtConsFechaApertura.TabIndex = 25;
+            // 
+            // txtConsDocUltimoPago
+            // 
+            this.txtConsDocUltimoPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConsDocUltimoPago.BackColor = System.Drawing.Color.White;
+            this.txtConsDocUltimoPago.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsDocUltimoPago.Location = new System.Drawing.Point(117, 232);
+            this.txtConsDocUltimoPago.Name = "txtConsDocUltimoPago";
+            this.txtConsDocUltimoPago.ReadOnly = true;
+            this.txtConsDocUltimoPago.Size = new System.Drawing.Size(140, 22);
+            this.txtConsDocUltimoPago.TabIndex = 19;
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.BackColor = System.Drawing.Color.DarkGray;
+            this.label21.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label21.Location = new System.Drawing.Point(3, 162);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(121, 20);
+            this.label21.TabIndex = 24;
+            this.label21.Text = "Fecha Apertura:";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.BackColor = System.Drawing.Color.DarkGray;
+            this.label20.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label20.Location = new System.Drawing.Point(263, 234);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(128, 21);
+            this.label20.TabIndex = 22;
+            this.label20.Text = "D.Ultima Compra: ";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtConsFechaUltimaCompra
+            // 
+            this.txtConsFechaUltimaCompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConsFechaUltimaCompra.BackColor = System.Drawing.Color.White;
+            this.txtConsFechaUltimaCompra.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsFechaUltimaCompra.Location = new System.Drawing.Point(397, 195);
+            this.txtConsFechaUltimaCompra.Name = "txtConsFechaUltimaCompra";
+            this.txtConsFechaUltimaCompra.ReadOnly = true;
+            this.txtConsFechaUltimaCompra.Size = new System.Drawing.Size(183, 22);
+            this.txtConsFechaUltimaCompra.TabIndex = 21;
+            // 
+            // txtConsDocUltimaCompra
+            // 
+            this.txtConsDocUltimaCompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConsDocUltimaCompra.BackColor = System.Drawing.Color.White;
+            this.txtConsDocUltimaCompra.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsDocUltimaCompra.Location = new System.Drawing.Point(397, 232);
+            this.txtConsDocUltimaCompra.Name = "txtConsDocUltimaCompra";
+            this.txtConsDocUltimaCompra.ReadOnly = true;
+            this.txtConsDocUltimaCompra.Size = new System.Drawing.Size(183, 22);
+            this.txtConsDocUltimaCompra.TabIndex = 23;
+            // 
+            // txtConsFechaUltimoPago
+            // 
+            this.txtConsFechaUltimoPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConsFechaUltimoPago.BackColor = System.Drawing.Color.White;
+            this.txtConsFechaUltimoPago.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsFechaUltimoPago.Location = new System.Drawing.Point(118, 195);
+            this.txtConsFechaUltimoPago.Name = "txtConsFechaUltimoPago";
+            this.txtConsFechaUltimoPago.ReadOnly = true;
+            this.txtConsFechaUltimoPago.Size = new System.Drawing.Size(139, 22);
+            this.txtConsFechaUltimoPago.TabIndex = 17;
             // 
             // txtConsApt
             // 
@@ -1148,15 +1148,16 @@
             this.Name = "frmRegistroProveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Proveedor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRegistroProveedor_FormClosing);
             this.tabControlPrincipal.ResumeLayout(false);
             this.tabPageLista.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedor)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
             this.tabPageConsulta.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tabPageRegistrar.ResumeLayout(false);
             this.tabPageRegistrar.PerformLayout();
             this.tabPageEditar.ResumeLayout(false);

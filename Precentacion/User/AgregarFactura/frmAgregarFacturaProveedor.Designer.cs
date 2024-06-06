@@ -488,6 +488,7 @@
             this.Name = "frmAgregarFacturaProveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modulo de Cuentas  por Pagar";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAgregarFacturaProveedor_FormClosing);
             this.tabControlPrincipal.ResumeLayout(false);
             this.tabPageLista.ResumeLayout(false);
             this.tabPageLista.PerformLayout();

@@ -131,23 +131,13 @@ namespace Precentacion.User.Client
         }
         private void formclosing(object sender, FormClosingEventArgs e)
         {
-            //Validar que el evento sea necesario
-            if (EventFormClose == true)
+            frmDashUser frm = new frmDashUser();
+            if (EventFormClose)
             {
-                //Validar que el form de DashBoard este abierto
-                frmDashUser frm = Application.OpenForms.OfType<frmDashUser>().FirstOrDefault();
-                if (frm != null)
-                {
-                    //Si esta abierto, cambiar el estado a normal
-                    frm.WindowState = FormWindowState.Normal;
-                }
-                else
-                {
-                    //Si no esta abierto, crear una instancia y mostrarlo
-                    frmDashUser frmDash = new frmDashUser();
-                    frmDash.Show();
-                }
+                frm.Show();
+                
             }
+
         }
         #endregion
 

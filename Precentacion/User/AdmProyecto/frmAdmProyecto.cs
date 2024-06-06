@@ -415,23 +415,13 @@ namespace Precentacion.User.AdmProyecto
 
         private void frmAdmProyecto_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Validar si el formulario DashUser esta abierto
-            if (Application.OpenForms.OfType<frmDashUser>().Count() == 1)
-            {
-                //Si esta abierto
-                //Obtener el formulario DashUser
-                frmDashUser frmDashUser = Application.OpenForms.OfType<frmDashUser>().FirstOrDefault();
-                //Mostrar el formulario DashUser
-                frmDashUser.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
+ 
                 //Si no esta abierto
                 //Crear un nuevo formulario DashUser
                 frmDashUser frmDashUser = new frmDashUser();
                 //Mostrar el formulario DashUser
                 frmDashUser.Show();
-            }
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

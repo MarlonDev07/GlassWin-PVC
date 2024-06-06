@@ -31,261 +31,264 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashUser));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnOrdenProd = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnCalendar = new System.Windows.Forms.Button();
-            this.btnAdmProyecto = new System.Windows.Forms.Button();
-            this.btnEmployer = new System.Windows.Forms.Button();
-            this.btnClient = new System.Windows.Forms.Button();
-            this.btnCxC = new System.Windows.Forms.Button();
-            this.btnManagerQuotes = new System.Windows.Forms.Button();
-            this.btnNewQuote = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnFactProveedor = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCalendario = new System.Windows.Forms.PictureBox();
+            this.btnProyecto = new System.Windows.Forms.PictureBox();
+            this.btnEmpleado = new System.Windows.Forms.PictureBox();
+            this.btnCxC = new System.Windows.Forms.PictureBox();
+            this.BarraSuperior = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
+            this.btnFactura = new System.Windows.Forms.PictureBox();
+            this.btnOrden = new System.Windows.Forms.PictureBox();
+            this.btnCliente = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFactProveedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalendario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProyecto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEmpleado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCxC)).BeginInit();
+            this.BarraSuperior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFactura)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOrden)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCliente)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnOrdenProd
+            // pictureBox3
             // 
-            this.btnOrdenProd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnOrdenProd.BackColor = System.Drawing.Color.Transparent;
-            this.btnOrdenProd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOrdenProd.BackgroundImage")));
-            this.btnOrdenProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnOrdenProd.FlatAppearance.BorderSize = 0;
-            this.btnOrdenProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrdenProd.Location = new System.Drawing.Point(716, 21);
-            this.btnOrdenProd.Name = "btnOrdenProd";
-            this.btnOrdenProd.Size = new System.Drawing.Size(60, 60);
-            this.btnOrdenProd.TabIndex = 22;
-            this.btnOrdenProd.Tag = "Calendario";
-            this.toolTip1.SetToolTip(this.btnOrdenProd, "Calendario");
-            this.btnOrdenProd.UseVisualStyleBackColor = false;
-            this.btnOrdenProd.Click += new System.EventHandler(this.btnOrdenProd_Click);
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(-91, 55);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(67, 63);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 47;
+            this.pictureBox3.TabStop = false;
             // 
-            // button2
+            // pictureBox2
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(641, 20);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(60, 60);
-            this.button2.TabIndex = 21;
-            this.button2.Tag = "Situacion del Proyeto";
-            this.toolTip1.SetToolTip(this.button2, "Situacion del Proyeto");
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.btnFactura_Click);
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(882, 31);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(67, 63);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 46;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.btnOrdenProd_Click);
             // 
-            // button1
+            // btnFactProveedor
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(567, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 60);
-            this.button1.TabIndex = 20;
-            this.button1.Tag = "Situacion del Proyeto";
-            this.toolTip1.SetToolTip(this.button1, "Situacion del Proyeto");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnRegProveedor_Click);
+            this.btnFactProveedor.Image = ((System.Drawing.Image)(resources.GetObject("btnFactProveedor.Image")));
+            this.btnFactProveedor.Location = new System.Drawing.Point(784, 31);
+            this.btnFactProveedor.Name = "btnFactProveedor";
+            this.btnFactProveedor.Size = new System.Drawing.Size(67, 63);
+            this.btnFactProveedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnFactProveedor.TabIndex = 45;
+            this.btnFactProveedor.TabStop = false;
+            this.btnFactProveedor.Click += new System.EventHandler(this.btnFactura_Click);
+            this.btnFactProveedor.MouseEnter += new System.EventHandler(this.btnFactProveedor_MouseEnter);
+            this.btnFactProveedor.MouseLeave += new System.EventHandler(this.btnFactProveedor_MouseLeave);
             // 
-            // btnCalendar
+            // pictureBox1
             // 
-            this.btnCalendar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCalendar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCalendar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCalendar.BackgroundImage")));
-            this.btnCalendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCalendar.FlatAppearance.BorderSize = 0;
-            this.btnCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalendar.Location = new System.Drawing.Point(494, 19);
-            this.btnCalendar.Name = "btnCalendar";
-            this.btnCalendar.Size = new System.Drawing.Size(60, 60);
-            this.btnCalendar.TabIndex = 14;
-            this.btnCalendar.Tag = "Calendario";
-            this.toolTip1.SetToolTip(this.btnCalendar, "Calendario");
-            this.btnCalendar.UseVisualStyleBackColor = false;
-            this.btnCalendar.Click += new System.EventHandler(this.btnCalendar_Click);
-            this.btnCalendar.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
-            this.btnCalendar.MouseHover += new System.EventHandler(this.Buttons_MouseHover);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(686, 31);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(67, 63);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 44;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.btnRegProveedor_Click);
             // 
-            // btnAdmProyecto
+            // btnCalendario
             // 
-            this.btnAdmProyecto.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAdmProyecto.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdmProyecto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdmProyecto.BackgroundImage")));
-            this.btnAdmProyecto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdmProyecto.FlatAppearance.BorderSize = 0;
-            this.btnAdmProyecto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdmProyecto.Location = new System.Drawing.Point(414, 17);
-            this.btnAdmProyecto.Name = "btnAdmProyecto";
-            this.btnAdmProyecto.Size = new System.Drawing.Size(60, 60);
-            this.btnAdmProyecto.TabIndex = 18;
-            this.btnAdmProyecto.Tag = "Situacion del Proyeto";
-            this.toolTip1.SetToolTip(this.btnAdmProyecto, "Situacion del Proyeto");
-            this.btnAdmProyecto.UseVisualStyleBackColor = false;
-            this.btnAdmProyecto.Click += new System.EventHandler(this.btnAdmProyecto_Click);
-            this.btnAdmProyecto.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
-            this.btnAdmProyecto.MouseHover += new System.EventHandler(this.Buttons_MouseHover);
+            this.btnCalendario.Image = ((System.Drawing.Image)(resources.GetObject("btnCalendario.Image")));
+            this.btnCalendario.Location = new System.Drawing.Point(588, 31);
+            this.btnCalendario.Name = "btnCalendario";
+            this.btnCalendario.Size = new System.Drawing.Size(67, 63);
+            this.btnCalendario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCalendario.TabIndex = 43;
+            this.btnCalendario.TabStop = false;
+            this.btnCalendario.Click += new System.EventHandler(this.btnCalendar_Click);
+            this.btnCalendario.MouseEnter += new System.EventHandler(this.btnCalendario_MouseEnter);
+            this.btnCalendario.MouseLeave += new System.EventHandler(this.btnCalendario_MouseLeave);
             // 
-            // btnEmployer
+            // btnProyecto
             // 
-            this.btnEmployer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnEmployer.BackColor = System.Drawing.Color.Transparent;
-            this.btnEmployer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmployer.BackgroundImage")));
-            this.btnEmployer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEmployer.FlatAppearance.BorderSize = 0;
-            this.btnEmployer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployer.Location = new System.Drawing.Point(331, 16);
-            this.btnEmployer.Name = "btnEmployer";
-            this.btnEmployer.Size = new System.Drawing.Size(60, 60);
-            this.btnEmployer.TabIndex = 16;
-            this.btnEmployer.Tag = "Empleados";
-            this.toolTip1.SetToolTip(this.btnEmployer, "Empleados");
-            this.btnEmployer.UseVisualStyleBackColor = false;
-            this.btnEmployer.Click += new System.EventHandler(this.btnEmployer_Click);
-            this.btnEmployer.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
-            this.btnEmployer.MouseHover += new System.EventHandler(this.Buttons_MouseHover);
+            this.btnProyecto.Image = ((System.Drawing.Image)(resources.GetObject("btnProyecto.Image")));
+            this.btnProyecto.Location = new System.Drawing.Point(490, 31);
+            this.btnProyecto.Name = "btnProyecto";
+            this.btnProyecto.Size = new System.Drawing.Size(67, 63);
+            this.btnProyecto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnProyecto.TabIndex = 42;
+            this.btnProyecto.TabStop = false;
+            this.btnProyecto.Click += new System.EventHandler(this.btnAdmProyecto_Click);
+            this.btnProyecto.MouseEnter += new System.EventHandler(this.btnProyecto_MouseEnter);
+            this.btnProyecto.MouseLeave += new System.EventHandler(this.btnProyecto_MouseLeave);
             // 
-            // btnClient
+            // btnEmpleado
             // 
-            this.btnClient.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnClient.BackColor = System.Drawing.Color.Transparent;
-            this.btnClient.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClient.BackgroundImage")));
-            this.btnClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClient.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnClient.FlatAppearance.BorderSize = 0;
-            this.btnClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClient.Location = new System.Drawing.Point(6, 17);
-            this.btnClient.Name = "btnClient";
-            this.btnClient.Size = new System.Drawing.Size(60, 60);
-            this.btnClient.TabIndex = 9;
-            this.btnClient.Tag = "Clientes";
-            this.toolTip1.SetToolTip(this.btnClient, "Clientes");
-            this.btnClient.UseVisualStyleBackColor = false;
-            this.btnClient.Click += new System.EventHandler(this.btnClient_Click);
-            this.btnClient.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
-            this.btnClient.MouseHover += new System.EventHandler(this.Buttons_MouseHover);
+            this.btnEmpleado.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpleado.Image")));
+            this.btnEmpleado.Location = new System.Drawing.Point(392, 31);
+            this.btnEmpleado.Name = "btnEmpleado";
+            this.btnEmpleado.Size = new System.Drawing.Size(67, 63);
+            this.btnEmpleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnEmpleado.TabIndex = 41;
+            this.btnEmpleado.TabStop = false;
+            this.btnEmpleado.Click += new System.EventHandler(this.btnEmployer_Click);
+            this.btnEmpleado.MouseEnter += new System.EventHandler(this.btnEmpleado_MouseHover);
+            this.btnEmpleado.MouseLeave += new System.EventHandler(this.btnEmpleado_MouseLeave);
             // 
             // btnCxC
             // 
-            this.btnCxC.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCxC.BackColor = System.Drawing.Color.Transparent;
-            this.btnCxC.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCxC.BackgroundImage")));
-            this.btnCxC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCxC.FlatAppearance.BorderSize = 0;
-            this.btnCxC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCxC.Location = new System.Drawing.Point(246, 16);
+            this.btnCxC.Image = ((System.Drawing.Image)(resources.GetObject("btnCxC.Image")));
+            this.btnCxC.Location = new System.Drawing.Point(294, 31);
             this.btnCxC.Name = "btnCxC";
-            this.btnCxC.Size = new System.Drawing.Size(60, 60);
-            this.btnCxC.TabIndex = 12;
-            this.btnCxC.Tag = "Cuentas Contables";
-            this.toolTip1.SetToolTip(this.btnCxC, "Cuentas Contables");
-            this.btnCxC.UseVisualStyleBackColor = false;
+            this.btnCxC.Size = new System.Drawing.Size(67, 63);
+            this.btnCxC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCxC.TabIndex = 40;
+            this.btnCxC.TabStop = false;
             this.btnCxC.Click += new System.EventHandler(this.btnCxC_Click);
-            this.btnCxC.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
-            this.btnCxC.MouseHover += new System.EventHandler(this.Buttons_MouseHover);
+            this.btnCxC.MouseEnter += new System.EventHandler(this.btnCxC_MouseEnter);
+            this.btnCxC.MouseLeave += new System.EventHandler(this.btnCxC_MouseLeave);
             // 
-            // btnManagerQuotes
+            // BarraSuperior
             // 
-            this.btnManagerQuotes.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnManagerQuotes.BackColor = System.Drawing.Color.Transparent;
-            this.btnManagerQuotes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnManagerQuotes.BackgroundImage")));
-            this.btnManagerQuotes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnManagerQuotes.FlatAppearance.BorderSize = 0;
-            this.btnManagerQuotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManagerQuotes.Location = new System.Drawing.Point(169, 17);
-            this.btnManagerQuotes.Name = "btnManagerQuotes";
-            this.btnManagerQuotes.Size = new System.Drawing.Size(60, 60);
-            this.btnManagerQuotes.TabIndex = 11;
-            this.btnManagerQuotes.Tag = "Facturacion";
-            this.toolTip1.SetToolTip(this.btnManagerQuotes, "Facturacion");
-            this.btnManagerQuotes.UseVisualStyleBackColor = false;
-            this.btnManagerQuotes.Click += new System.EventHandler(this.ManagerQuotes_Click);
-            this.btnManagerQuotes.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
-            this.btnManagerQuotes.MouseHover += new System.EventHandler(this.Buttons_MouseHover);
+            this.BarraSuperior.BackColor = System.Drawing.Color.Orange;
+            this.BarraSuperior.Controls.Add(this.label1);
+            this.BarraSuperior.Controls.Add(this.btnCerrar);
+            this.BarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.BarraSuperior.Name = "BarraSuperior";
+            this.BarraSuperior.Size = new System.Drawing.Size(949, 27);
+            this.BarraSuperior.TabIndex = 39;
+            this.BarraSuperior.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraSuperior_MouseDown);
+            this.BarraSuperior.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BarraSuperior_MouseMove);
+            this.BarraSuperior.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BarraSuperior_MouseUp);
             // 
-            // btnNewQuote
+            // label1
             // 
-            this.btnNewQuote.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnNewQuote.BackColor = System.Drawing.Color.Transparent;
-            this.btnNewQuote.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNewQuote.BackgroundImage")));
-            this.btnNewQuote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNewQuote.FlatAppearance.BorderSize = 0;
-            this.btnNewQuote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewQuote.Location = new System.Drawing.Point(87, 17);
-            this.btnNewQuote.Name = "btnNewQuote";
-            this.btnNewQuote.Size = new System.Drawing.Size(60, 60);
-            this.btnNewQuote.TabIndex = 10;
-            this.btnNewQuote.Tag = "Proformas";
-            this.toolTip1.SetToolTip(this.btnNewQuote, "Proformas");
-            this.btnNewQuote.UseVisualStyleBackColor = false;
-            this.btnNewQuote.Click += new System.EventHandler(this.btnNewQuote_Click);
-            this.btnNewQuote.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
-            this.btnNewQuote.MouseHover += new System.EventHandler(this.Buttons_MouseHover);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 20);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "GlassWin";
             // 
-            // button3
+            // btnCerrar
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(791, 21);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 60);
-            this.button3.TabIndex = 23;
-            this.button3.Tag = "Proformas";
-            this.toolTip1.SetToolTip(this.button3, "Proformas");
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
+            this.btnCerrar.Location = new System.Drawing.Point(906, 3);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(36, 21);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCerrar.TabIndex = 28;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseEnter += new System.EventHandler(this.btnCerrar_MouseEnter);
+            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
+            // 
+            // btnFactura
+            // 
+            this.btnFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnFactura.Image")));
+            this.btnFactura.Location = new System.Drawing.Point(196, 31);
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Size = new System.Drawing.Size(67, 63);
+            this.btnFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnFactura.TabIndex = 38;
+            this.btnFactura.TabStop = false;
+            this.btnFactura.Click += new System.EventHandler(this.ManagerQuotes_Click);
+            this.btnFactura.MouseEnter += new System.EventHandler(this.btnFactura_MouseHover);
+            this.btnFactura.MouseLeave += new System.EventHandler(this.btnFactura_MouseLeave);
+            // 
+            // btnOrden
+            // 
+            this.btnOrden.Image = ((System.Drawing.Image)(resources.GetObject("btnOrden.Image")));
+            this.btnOrden.Location = new System.Drawing.Point(98, 31);
+            this.btnOrden.Name = "btnOrden";
+            this.btnOrden.Size = new System.Drawing.Size(67, 63);
+            this.btnOrden.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnOrden.TabIndex = 37;
+            this.btnOrden.TabStop = false;
+            this.btnOrden.Click += new System.EventHandler(this.btnNewQuote_Click);
+            this.btnOrden.MouseEnter += new System.EventHandler(this.btnOrden_MouseEnter);
+            this.btnOrden.MouseLeave += new System.EventHandler(this.btnOrden_MouseLeave);
+            // 
+            // btnCliente
+            // 
+            this.btnCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnCliente.Image")));
+            this.btnCliente.Location = new System.Drawing.Point(2, 31);
+            this.btnCliente.Name = "btnCliente";
+            this.btnCliente.Size = new System.Drawing.Size(67, 63);
+            this.btnCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCliente.TabIndex = 36;
+            this.btnCliente.TabStop = false;
+            this.btnCliente.Click += new System.EventHandler(this.btnClient_Click);
+            this.btnCliente.MouseEnter += new System.EventHandler(this.btnCliente_MouseEnter);
+            this.btnCliente.MouseLeave += new System.EventHandler(this.btnCliente_MouseLeave);
             // 
             // frmDashUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkGray;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(858, 95);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.btnOrdenProd);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnCalendar);
-            this.Controls.Add(this.btnAdmProyecto);
-            this.Controls.Add(this.btnEmployer);
-            this.Controls.Add(this.btnClient);
+            this.ClientSize = new System.Drawing.Size(950, 97);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnFactProveedor);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnCalendario);
+            this.Controls.Add(this.btnProyecto);
+            this.Controls.Add(this.btnEmpleado);
             this.Controls.Add(this.btnCxC);
-            this.Controls.Add(this.btnManagerQuotes);
-            this.Controls.Add(this.btnNewQuote);
+            this.Controls.Add(this.BarraSuperior);
+            this.Controls.Add(this.btnFactura);
+            this.Controls.Add(this.btnOrden);
+            this.Controls.Add(this.btnCliente);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDashUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFactProveedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalendario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProyecto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEmpleado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCxC)).EndInit();
+            this.BarraSuperior.ResumeLayout(false);
+            this.BarraSuperior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFactura)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOrden)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCliente)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnCxC;
-        private System.Windows.Forms.Button btnManagerQuotes;
-        private System.Windows.Forms.Button btnNewQuote;
-        private System.Windows.Forms.Button btnClient;
-        private System.Windows.Forms.Button btnCalendar;
-        private System.Windows.Forms.Button btnEmployer;
-        private System.Windows.Forms.Button btnAdmProyecto;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnOrdenProd;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox btnFactProveedor;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnCalendario;
+        private System.Windows.Forms.PictureBox btnProyecto;
+        private System.Windows.Forms.PictureBox btnEmpleado;
+        private System.Windows.Forms.PictureBox btnCxC;
+        private System.Windows.Forms.Panel BarraSuperior;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox btnCerrar;
+        private System.Windows.Forms.PictureBox btnFactura;
+        private System.Windows.Forms.PictureBox btnOrden;
+        private System.Windows.Forms.PictureBox btnCliente;
     }
 }

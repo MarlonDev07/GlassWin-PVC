@@ -146,12 +146,8 @@ namespace Precentacion.User.Quote.Quote
         {
             if (EventClose)
             {
-                //Validar si el formulario frmDashUser esta abierto
-                frmDashUser frm = Application.OpenForms.OfType<frmDashUser>().FirstOrDefault();
-                if (frm != null)
-                {
-                    frm.WindowState = FormWindowState.Normal;
-                }
+                frmDashUser frmDashUser = new frmDashUser();
+                frmDashUser.Show();
             }
         }
 

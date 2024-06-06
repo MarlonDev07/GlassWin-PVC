@@ -93,19 +93,8 @@ namespace Precentacion.User.Employer
             //Validar que el evento sea necesario
             if (EventFormClose == true)
             {
-                //Validar que el form de DashBoard este abierto
-                frmDashUser frm = System.Windows.Forms.Application.OpenForms.OfType<frmDashUser>().FirstOrDefault();
-                if (frm != null)
-                {
-                    //Si esta abierto, cambiar el estado a normal
-                    frm.WindowState = FormWindowState.Normal;
-                }
-                else
-                {
-                    //Si no esta abierto, crear una instancia y mostrarlo
-                    frmDashUser frmDash = new frmDashUser();
-                    frmDash.Show();
-                }
+                frmDashUser frmDashUser = new frmDashUser();
+                frmDashUser.Show();
             }
         }
         #endregion
