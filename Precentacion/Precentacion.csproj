@@ -287,6 +287,7 @@
     <Compile Include="User\DashBoard\frmDashUser.Designer.cs">
       <DependentUpon>frmDashUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\Employer\EmplyeeUI.cs" />
     <Compile Include="User\Employer\frmInfo24Hrs.cs">
       <SubType>Form</SubType>
     </Compile>

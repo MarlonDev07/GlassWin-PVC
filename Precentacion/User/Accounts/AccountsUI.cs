@@ -26,23 +26,12 @@ namespace Precentacion.User.Accounts
                 TextShade.WHITE
             );
 
-            // Agregar un control MaterialScrollBar al formulario
-            MaterialScrollBar materialScrollBar1 = new MaterialScrollBar();
-            materialScrollBar1.Dock = DockStyle.Right;
-            actualForm.Controls.Add(materialScrollBar1);
-
-            // Manejar el evento Scroll del MaterialScrollBar para desplazar el contenido del formulario
-            materialScrollBar1.Scroll += (sender, e) =>
-            {
-                // Ajusta la posición del formulario al desplazar la barra de desplazamiento vertical
-                actualForm.VerticalScroll.Value = materialScrollBar1.Value;
-            };
-
+          
+           
             // Aplica formato a los textos en los controles del formulario
             ApplyFormattingToControls(actualForm.Controls);
 
-            // Agrega una barra de desplazamiento vertical al formulario
-            actualForm.AutoScroll = true;
+           
         }
 
         private static void ApplyFormattingToControls(Control.ControlCollection controls)

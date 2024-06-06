@@ -42,6 +42,13 @@ namespace Precentacion.User.Employer
         private void Initialize()
         {
             LoadEmployers();
+            EmplyeeUI.loadMaterial(this);
+        }
+        private void ConfigureDataGridView()
+        {
+            // Supongamos que tu DataGridView se llama dataGridView1
+            dgvEmployers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEmployers.MultiSelect = false; // Si deseas permitir la selección de una sola fila
         }
         private void LoadEmployers()
         {
