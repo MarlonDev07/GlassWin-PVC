@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Negocio.Products;
 using Precentacion.Admin;
 using Precentacion.Admin.Product_Manager;
+using Precentacion.User.Bill;
 
 namespace Precentacion.Product_Manager
 {
@@ -200,6 +201,10 @@ namespace Precentacion.Product_Manager
             DataTable category = products.GetAllCategories();
             if (category != null)
             {
+                DataRow emptyRow = category.NewRow();
+                emptyRow["Category"] = "";
+                category.Rows.InsertAt(emptyRow, 0);
+
                 cbCategory.DataSource = category;
                 cbCategory.DisplayMember = "Category";
                 cbCategory.ValueMember = "Category";
@@ -245,6 +250,11 @@ namespace Precentacion.Product_Manager
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
