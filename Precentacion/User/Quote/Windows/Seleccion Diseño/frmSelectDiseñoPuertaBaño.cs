@@ -35,5 +35,10 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
             frm.Show();
             this.Close();
         }
+
+        private void btnBackSistema_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

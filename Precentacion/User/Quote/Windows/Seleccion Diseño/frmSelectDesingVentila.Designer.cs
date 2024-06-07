@@ -58,6 +58,7 @@
             this.btn1Hoja = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.btnBackSistema = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -408,6 +409,7 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.btnBackSistema);
             this.panel8.Controls.Add(this.btn3HojasVertical);
             this.panel8.Controls.Add(this.btn1Hoja);
             this.panel8.Controls.Add(this.button1);
@@ -478,12 +480,27 @@
             this.panel9.Size = new System.Drawing.Size(1291, 594);
             this.panel9.TabIndex = 47;
             // 
+            // btnBackSistema
+            // 
+            this.btnBackSistema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackSistema.BackColor = System.Drawing.Color.Silver;
+            this.btnBackSistema.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBackSistema.BackgroundImage")));
+            this.btnBackSistema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBackSistema.FlatAppearance.BorderSize = 0;
+            this.btnBackSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackSistema.Location = new System.Drawing.Point(1014, -8);
+            this.btnBackSistema.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBackSistema.Name = "btnBackSistema";
+            this.btnBackSistema.Size = new System.Drawing.Size(178, 98);
+            this.btnBackSistema.TabIndex = 48;
+            this.btnBackSistema.UseVisualStyleBackColor = false;
+            // 
             // frmSelectDesingVentila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1331, 1106);
+            this.ClientSize = new System.Drawing.Size(1353, 852);
             this.Controls.Add(this.panel9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -491,6 +508,7 @@
             this.Name = "frmSelectDesingVentila";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccion del Diseño Ventila";
+            this.Load += new System.EventHandler(this.frmSelectDesingVentila_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -534,5 +552,6 @@
         private System.Windows.Forms.Button btn1Hoja;
         private System.Windows.Forms.Button btn3HojasVertical;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button btnBackSistema;
     }
 }

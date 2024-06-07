@@ -75,5 +75,10 @@ namespace Precentacion.User.Quote.Windows
         {
 
         }
+
+        private void btnBackSistema_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

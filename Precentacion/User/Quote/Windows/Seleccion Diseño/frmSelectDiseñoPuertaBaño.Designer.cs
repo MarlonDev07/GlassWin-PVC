@@ -33,6 +33,7 @@
             this.PanelSeleccionDiseño = new System.Windows.Forms.Panel();
             this.FijoMovilMovil = new System.Windows.Forms.Button();
             this.btnMovilMovil = new System.Windows.Forms.Button();
+            this.btnBackSistema = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.PanelSeleccionDiseño.SuspendLayout();
             this.SuspendLayout();
@@ -91,11 +92,28 @@
             this.btnMovilMovil.UseVisualStyleBackColor = false;
             this.btnMovilMovil.Click += new System.EventHandler(this.btnMovilMovil_Click);
             // 
+            // btnBackSistema
+            // 
+            this.btnBackSistema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackSistema.BackColor = System.Drawing.Color.Transparent;
+            this.btnBackSistema.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBackSistema.BackgroundImage")));
+            this.btnBackSistema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBackSistema.FlatAppearance.BorderSize = 0;
+            this.btnBackSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackSistema.Location = new System.Drawing.Point(1043, 467);
+            this.btnBackSistema.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBackSistema.Name = "btnBackSistema";
+            this.btnBackSistema.Size = new System.Drawing.Size(148, 71);
+            this.btnBackSistema.TabIndex = 43;
+            this.btnBackSistema.UseVisualStyleBackColor = false;
+            this.btnBackSistema.Click += new System.EventHandler(this.btnBackSistema_Click);
+            // 
             // frmSelectDiseñoPuertaBaño
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 562);
+            this.Controls.Add(this.btnBackSistema);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
@@ -115,5 +133,6 @@
         private System.Windows.Forms.Panel PanelSeleccionDiseño;
         private System.Windows.Forms.Button FijoMovilMovil;
         private System.Windows.Forms.Button btnMovilMovil;
+        private System.Windows.Forms.Button btnBackSistema;
     }
 }

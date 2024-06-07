@@ -74,7 +74,7 @@
             this.PanelSeleccionDiseño.Location = new System.Drawing.Point(0, 0);
             this.PanelSeleccionDiseño.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PanelSeleccionDiseño.Name = "PanelSeleccionDiseño";
-            this.PanelSeleccionDiseño.Size = new System.Drawing.Size(1184, 316);
+            this.PanelSeleccionDiseño.Size = new System.Drawing.Size(1184, 300);
             this.PanelSeleccionDiseño.TabIndex = 42;
             // 
             // btnFijoMovi
@@ -84,7 +84,7 @@
             this.btnFijoMovi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoMovi.BackgroundImage")));
             this.btnFijoMovi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoMovi.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoMovi.Location = new System.Drawing.Point(15, 21);
+            this.btnFijoMovi.Location = new System.Drawing.Point(15, 13);
             this.btnFijoMovi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFijoMovi.Name = "btnFijoMovi";
             this.btnFijoMovi.Size = new System.Drawing.Size(303, 250);
@@ -99,7 +99,7 @@
             this.fijoMovilMovilFijo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fijoMovilMovilFijo.BackgroundImage")));
             this.fijoMovilMovilFijo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.fijoMovilMovilFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fijoMovilMovilFijo.Location = new System.Drawing.Point(405, 21);
+            this.fijoMovilMovilFijo.Location = new System.Drawing.Point(405, 13);
             this.fijoMovilMovilFijo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.fijoMovilMovilFijo.Name = "fijoMovilMovilFijo";
             this.fijoMovilMovilFijo.Size = new System.Drawing.Size(747, 250);
@@ -121,6 +121,7 @@
             this.btnBackSistema.Size = new System.Drawing.Size(178, 98);
             this.btnBackSistema.TabIndex = 42;
             this.btnBackSistema.UseVisualStyleBackColor = false;
+            this.btnBackSistema.Click += new System.EventHandler(this.btnBackSistema_Click);
             // 
             // frmSelecDesingCedazo
             // 

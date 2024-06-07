@@ -35,6 +35,7 @@
             this.btn1HojaDivicion = new System.Windows.Forms.Button();
             this.btn2Hoja = new System.Windows.Forms.Button();
             this.btn1Hoja = new System.Windows.Forms.Button();
+            this.btnBackSistema = new System.Windows.Forms.Button();
             this.panelContenedor.SuspendLayout();
             this.pSeleccionarPL.SuspendLayout();
             this.SuspendLayout();
@@ -123,11 +124,28 @@
             this.btn1Hoja.UseVisualStyleBackColor = false;
             this.btn1Hoja.Click += new System.EventHandler(this.btn1Fijo_Click);
             // 
+            // btnBackSistema
+            // 
+            this.btnBackSistema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackSistema.BackColor = System.Drawing.Color.Transparent;
+            this.btnBackSistema.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBackSistema.BackgroundImage")));
+            this.btnBackSistema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBackSistema.FlatAppearance.BorderSize = 0;
+            this.btnBackSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackSistema.Location = new System.Drawing.Point(1064, 519);
+            this.btnBackSistema.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBackSistema.Name = "btnBackSistema";
+            this.btnBackSistema.Size = new System.Drawing.Size(129, 78);
+            this.btnBackSistema.TabIndex = 43;
+            this.btnBackSistema.UseVisualStyleBackColor = false;
+            this.btnBackSistema.Click += new System.EventHandler(this.btnBackSistema_Click);
+            // 
             // frmSelecDesingPuertLujo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 555);
+            this.ClientSize = new System.Drawing.Size(1200, 622);
+            this.Controls.Add(this.btnBackSistema);
             this.Controls.Add(this.panelContenedor);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
@@ -149,5 +167,6 @@
         private System.Windows.Forms.Button btn1HojaDivicion;
         private System.Windows.Forms.Button btn2Hoja;
         private System.Windows.Forms.Button btn1Hoja;
+        private System.Windows.Forms.Button btnBackSistema;
     }
 }

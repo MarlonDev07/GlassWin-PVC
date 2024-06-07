@@ -152,5 +152,10 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();
         }
+
+        private void btnBackSistema_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

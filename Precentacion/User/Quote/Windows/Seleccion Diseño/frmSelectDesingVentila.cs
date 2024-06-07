@@ -153,5 +153,10 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();
         }
+
+        private void frmSelectDesingVentila_Load(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
