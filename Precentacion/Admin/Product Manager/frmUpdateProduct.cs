@@ -139,19 +139,45 @@ namespace Precentacion.Admin.Product_Manager
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtCode.Text != "")
+            try
             {
-                N_Products products = new N_Products();
-                bool Res;
-                Res = products.UpdateProduct(txtCode.Text, txtDescription.Text, cbSystem.Text, cbCategory.Text);
-                if (Res)
+                // Validar y corregir los valores de las columnas especificadas
+                foreach (DataGridViewRow fila in dgColor.Rows)
                 {
-                    LoadListPrice();
-                    Res = products.UpdatePriceProduct(listaPrecios);
+                    if (!fila.IsNewRow)
+                    {
+                        List<string> columnas = new List<string> { "Tamaño", "BasePrice", "Discount", "Cost", "SalePrice", "SalePrice2" };
+                        foreach (var columna in columnas)
+                        {
+                            string valor = Convert.ToString(fila.Cells[columna].Value);
+                            if (valor.Contains("."))
+                            {
+                                valor = valor.Replace('.', ',');
+                                fila.Cells[columna].Value = valor;
+                            }
+                        }
+                    }
+                }
+
+                if (txtCode.Text != "")
+                {
+                    N_Products products = new N_Products();
+                    bool Res;
+                    Res = products.UpdateProduct(txtCode.Text, txtDescription.Text, cbSystem.Text, cbCategory.Text);
                     if (Res)
                     {
-                        CleanScreen();
-                        MessageBox.Show("Los Datos se han Actualizado Correctamente", "Guardado Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadListPrice();
+                        Res = products.UpdatePriceProduct(listaPrecios);
+                        if (Res)
+                        {
+                            CleanScreen();
+                            MessageBox.Show("Los Datos se han Actualizado Correctamente", "Guardado Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            listaPrecios.Clear();
+                            MessageBox.Show("Los Datos no se han Actualizado Correctamente", "Guardado Fallido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                     else
                     {
@@ -159,13 +185,14 @@ namespace Precentacion.Admin.Product_Manager
                         MessageBox.Show("Los Datos no se han Actualizado Correctamente", "Guardado Fallido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                else
-                {
-                    listaPrecios.Clear();
-                    MessageBox.Show("Los Datos no se han Actualizado Correctamente", "Guardado Fallido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar los datos: " + ex.Message);
             }
         }
+
+
 
         private void btnBack_Click_1(object sender, EventArgs e)
         {
