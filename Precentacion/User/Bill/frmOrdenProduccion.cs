@@ -16,6 +16,8 @@ using iTextSharp.text;
 using System.IO;
 using Dominio.Model.ClassWindows;
 using Precentacion.User.DashBoard;
+using Rectangle = iTextSharp.text.Rectangle;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 
 namespace Precentacion.User.Bill
@@ -39,6 +41,8 @@ namespace Precentacion.User.Bill
             dtpFechaSalida.Format = DateTimePickerFormat.Custom;
             dtpFechaSalida.CustomFormat = "dddd, dd MMMM yyyy - hh:mm tt";
 
+            cbProyecto.SelectedIndexChanged += cbProyecto_SelectedIndexChanged;
+
 
         }
         private void LoadProjects()
@@ -49,6 +53,12 @@ namespace Precentacion.User.Bill
 
                 if (projects != null)
                 {
+                    // Crear una nueva fila con valores en blanco
+                    DataRow blankRow = projects.NewRow();
+                    blankRow["ProjectName"] = "";
+                    blankRow["IdQuote"] = DBNull.Value; // O el valor que consideres apropiado para un ID vacío
+                    projects.Rows.InsertAt(blankRow, 0); // Insertar la fila al inicio del DataTable
+
                     cbProyecto.DataSource = projects;
                     cbProyecto.DisplayMember = "ProjectName";
                     cbProyecto.ValueMember = "IdQuote";
@@ -57,14 +67,15 @@ namespace Precentacion.User.Bill
                 }
                 else
                 {
-                    MessageBox.Show("No se encontraron proyectos para la compañía seleccionada.");
+                    MessageBox.Show("No se encontraron proyectos para la compañía seleccionada.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error al cargar los proyectos: " + ex.Message);
+                MessageBox.Show("Ocurrió un error al cargar los proyectos: " + ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void LoadWindowsData()
         {
@@ -165,13 +176,14 @@ namespace Precentacion.User.Bill
                 }
                 else
                 {
-                    MessageBox.Show("No se encontraron ventanas para el proyecto seleccionado.");
+                    MessageBox.Show("No hay ventanas para el proyecto seleccionado.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error al cargar las ventanas: " + ex.Message);
+                MessageBox.Show("Ocurrió un error al cargar las ventanas: " + ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -186,6 +198,18 @@ namespace Precentacion.User.Bill
             {
                 try
                 {
+                    // Cargar el IdQuote en txtOrden
+                    if (cbProyecto.SelectedIndex > 0)
+                    {
+                        int idQuote = Convert.ToInt32(cbProyecto.SelectedValue);
+                        txtOrden.Text = idQuote.ToString();
+                    }
+                    else
+                    {
+                        txtOrden.Clear(); // Limpiar el campo si no hay proyecto seleccionado
+                    }
+
+                    // Limpiar y recargar los datos en el DataGridView dgvOrdenProduccion
                     dgvOrdenProduccion.Rows.Clear();
                     ResultadosRebajo.Clear();
                     ResultadosCantidad.Clear();
@@ -198,9 +222,35 @@ namespace Precentacion.User.Bill
             }
         }
 
+
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            GenerarPdfHojaProduccion();
+            try
+            {
+                if (txtOrden.Text != "" || cbProyecto.Text != "")
+                {
+                    // Verificar si la fecha de inicio es mayor que la fecha de salida
+                    if (dtpFechaInicio.Value > dtpFechaSalida.Value)
+                    {
+                        MessageBox.Show("La fecha de inicio no puede ser mayor que la fecha de salida", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        GenerarPdfHojaProduccion();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe llenar los campos antes de imprimir", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+
         }
 
 
@@ -248,28 +298,92 @@ namespace Precentacion.User.Bill
                 #endregion
 
                 #region Tabla de Información 
-                // Agregar un Título con el Sistema, Color y Diseño de la Ventana
-                PdfPTable datosTable = new PdfPTable(1)
+                // Crear tabla para información adicional
+                PdfPTable infoTable = new PdfPTable(2)
                 {
-                    TotalWidth = 500f, // Ajusta el ancho total según tus necesidades
+                    TotalWidth = 500f,
                     LockedWidth = true
                 };
+                infoTable.SpacingBefore = 10f;
+                infoTable.SpacingAfter = 10f;
 
-                // Celda 1: Datos del Proyecto
-                PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Orden de Producción del Proyecto: " + cbProyecto.Text, FontFactory.GetFont(FontFactory.HELVETICA, 16, iTextSharp.text.BaseColor.WHITE)))
-                {
-                    BackgroundColor = new iTextSharp.text.BaseColor(70, 130, 180),
-                    BorderWidth = 1f,
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_CENTER
-                };
-                datosTable.AddCell(cellDatosProyecto);
-                document.Add(datosTable);
+                // Crear tabla para la información adicional
+                PdfPTable infoTable2 = new PdfPTable(2);
+                infoTable2.WidthPercentage = 100;
+                infoTable2.SpacingBefore = 10f;
+                infoTable2.SpacingAfter = 10f;
+
+                // Celda: Orden (Referencia FA)
+                PdfPCell cellOrdenTitulo = new PdfPCell(new Phrase("Orden (Referencia FA):", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.BLACK)));
+                cellOrdenTitulo.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                cellOrdenTitulo.HorizontalAlignment = Element.ALIGN_LEFT;
+                infoTable2.AddCell(cellOrdenTitulo);
+
+                PdfPCell cellOrdenValor = new PdfPCell(new Phrase(txtOrden.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12, iTextSharp.text.BaseColor.BLACK)));
+                cellOrdenValor.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                cellOrdenValor.HorizontalAlignment = Element.ALIGN_LEFT;
+                infoTable2.AddCell(cellOrdenValor);
+
+                // Celda: Proyecto
+                PdfPCell cellProyectoTitulo = new PdfPCell(new Phrase("Proyecto:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.BLACK)));
+                cellProyectoTitulo.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                cellProyectoTitulo.HorizontalAlignment = Element.ALIGN_LEFT;
+                infoTable2.AddCell(cellProyectoTitulo);
+
+                PdfPCell cellProyectoValor = new PdfPCell(new Phrase(cbProyecto.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12, iTextSharp.text.BaseColor.BLACK)));
+                cellProyectoValor.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                cellProyectoValor.HorizontalAlignment = Element.ALIGN_LEFT;
+                infoTable2.AddCell(cellProyectoValor);
+
+                // Celda: Fecha Inicial
+                PdfPCell cellFechaInicialTitulo = new PdfPCell(new Phrase("Fecha Inicial:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.BLACK)));
+                cellFechaInicialTitulo.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                cellFechaInicialTitulo.HorizontalAlignment = Element.ALIGN_LEFT;
+                infoTable2.AddCell(cellFechaInicialTitulo);
+
+                PdfPCell cellFechaInicialValor = new PdfPCell(new Phrase(dtpFechaInicio.Value.ToString("dd/MM/yyyy"), FontFactory.GetFont(FontFactory.HELVETICA, 12, iTextSharp.text.BaseColor.BLACK)));
+                cellFechaInicialValor.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                cellFechaInicialValor.HorizontalAlignment = Element.ALIGN_LEFT;
+                infoTable2.AddCell(cellFechaInicialValor);
+
+                // Celda: Fecha Salida
+                PdfPCell cellFechaSalidaTitulo = new PdfPCell(new Phrase("Fecha Salida:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.BLACK)));
+                cellFechaSalidaTitulo.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                cellFechaSalidaTitulo.HorizontalAlignment = Element.ALIGN_LEFT;
+                infoTable2.AddCell(cellFechaSalidaTitulo);
+
+                PdfPCell cellFechaSalidaValor = new PdfPCell(new Phrase(dtpFechaSalida.Value.ToString("dd/MM/yyyy"), FontFactory.GetFont(FontFactory.HELVETICA, 12, iTextSharp.text.BaseColor.BLACK)));
+                cellFechaSalidaValor.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                cellFechaSalidaValor.HorizontalAlignment = Element.ALIGN_LEFT;
+                infoTable2.AddCell(cellFechaSalidaValor);
+
+                // Agregar la tabla al documento
+                document.Add(infoTable2);
                 document.Add(new Paragraph(" "));
                 #endregion
 
                 #region Tabla de Ventanas
                 #region Tabla 5020
+                // Título para la Tabla 5020
+                PdfPTable tituloTable5020 = new PdfPTable(1);
+                tituloTable5020.TotalWidth = 800f;
+                tituloTable5020.LockedWidth = true;
+
+                PdfPCell tituloCell5020 = new PdfPCell(new Phrase("Orden de Producción 5020", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                {
+                    BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_MIDDLE,
+                    Border = iTextSharp.text.Rectangle.NO_BORDER,
+                    Padding = 10f
+                };
+
+                tituloTable5020.AddCell(tituloCell5020);
+                document.Add(tituloTable5020);
+
+                // Espacio después del título
+                document.Add(new Paragraph(" "));
+
                 // Agregar al Documento los Datos del dgvOrdenProduccion
                 PdfPTable table = new PdfPTable(dgvOrdenProduccion.Columns.Count)
                 {
@@ -278,15 +392,15 @@ namespace Precentacion.User.Bill
                 };
 
                 // Ancho personalizado para cada una de las 19 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas = new float[] { 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f };
+                float[] anchosColumnas = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f };
                 table.SetWidths(anchosColumnas);
 
                 // Celda 1: Encabezados de las columnas
                 foreach (DataGridViewColumn column in dgvOrdenProduccion.Columns)
                 {
-                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 9, iTextSharp.text.BaseColor.WHITE)))
+                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
                     {
-                        BackgroundColor = new iTextSharp.text.BaseColor(70, 130, 180),
+                        BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                         BorderWidth = 1f,
                         HorizontalAlignment = Element.ALIGN_CENTER,
                         VerticalAlignment = Element.ALIGN_CENTER
@@ -318,19 +432,43 @@ namespace Precentacion.User.Bill
                 #endregion
 
                 #region Tabla 8025
-                // Agregar al Documento los Datos del dgvOrdenProduccion
+                // Título para la Tabla 8025
+                PdfPTable tituloTable8025 = new PdfPTable(1);
+                tituloTable8025.TotalWidth = 800f;
+                tituloTable8025.LockedWidth = true;
+
+                PdfPCell tituloCell8025 = new PdfPCell(new Phrase("Orden de Producción 8025", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                {
+                    BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_MIDDLE,
+                    Border = Rectangle.NO_BORDER,
+                    Padding = 10f
+                };
+
+                tituloTable8025.AddCell(tituloCell8025);
+                document.Add(tituloTable8025);
+
+                // Espacio después del título
+                document.Add(new Paragraph(" "));
+
+                // Agregar al Documento los Datos del dgvOrdenProduccion8025
                 PdfPTable table8025 = new PdfPTable(dgvOrdenProduccion8025.Columns.Count)
                 {
                     TotalWidth = 800f, // Ajusta el ancho total según tus necesidades
                     LockedWidth = true
                 };
 
+                // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
+                float[] anchosColumnas2 = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f };
+                table8025.SetWidths(anchosColumnas2);
+
                 // Celda 1: Encabezados de las columnas
                 foreach (DataGridViewColumn column8025 in dgvOrdenProduccion8025.Columns)
                 {
-                    PdfPCell cell8025 = new PdfPCell(new Phrase(column8025.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 9, iTextSharp.text.BaseColor.WHITE)))
+                    PdfPCell cell8025 = new PdfPCell(new Phrase(column8025.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
                     {
-                        BackgroundColor = new iTextSharp.text.BaseColor(70, 130, 180),
+                        BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                         BorderWidth = 1f,
                         HorizontalAlignment = Element.ALIGN_CENTER,
                         VerticalAlignment = Element.ALIGN_CENTER
@@ -373,6 +511,8 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("Ocurrió un error al generar la hoja de producción: " + ex.Message);
             }
         }
+
+
 
         private void label3_Click(object sender, EventArgs e)
         {
