@@ -62,45 +62,7 @@ namespace Precentacion.User.Quote.Quote
             // Crear y configurar los botones personalizados
             InitializeCustomButtons();
 
-            //Se agregó esto
-            // Suscribirse a los eventos
-            dgCotizaciones.CellValueChanged += dgCotizaciones_CellValueChanged;
-            dgCotizaciones.EditingControlShowing += dgCotizaciones_EditingControlShowing;
-
         }
-
-        //Esto se agregó
-        private void dgCotizaciones_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgCotizaciones.Columns["Price"].Index)
-            {
-                CalcPrices();
-            }
-        }
-        //Esto se agregó
-        private void dgCotizaciones_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            if (dgCotizaciones.CurrentCell.ColumnIndex == dgCotizaciones.Columns["Price"].Index)
-            {
-                TextBox tb = e.Control as TextBox;
-                if (tb != null)
-                {
-                    tb.TextChanged -= TextBox_TextChanged;
-                    tb.TextChanged += TextBox_TextChanged;
-                }
-            }
-        }
-        //Esto se agregó
-        private void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (decimal.TryParse((sender as TextBox).Text, out decimal newValue))
-            {
-                dgCotizaciones.CurrentCell.Value = newValue;
-                CalcPrices();
-            }
-        }
-
-
         #endregion
         private void InitializeCustomButtons()
         {
@@ -638,22 +600,30 @@ namespace Precentacion.User.Quote.Quote
 
         private void frmQuote_FormClosing(object sender, FormClosingEventArgs e)
         {
-            frmDashUser frm = new frmDashUser();
-            if (QuoteSave == 0 && EventClose == true)
+            if (EventClose)
             {
-                DialogResult result = MessageBox.Show("¿Desea Salir sin Guardar la Cotizacion?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.No)
+                Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmDashUser);
+                if (Edit)
                 {
-                    e.Cancel = true;
+
                 }
                 else
                 {
-                    frm.Show();
+                    if (frm != null)
+                    {
+                        if (Edit == false)
+                        {
+                            //ELIAR LA PROFORMA
+                            if (QuoteSave == 0)
+                            {
+                                NQuote.DeleteQuote(Convert.ToInt32(txtidQuote.Text));
+                            }
+                        }
+                        frm.WindowState = FormWindowState.Normal;
+                        frm.Show();
+
+                    }
                 }
-            }
-            else
-            {
-                frm.Show();
             }
 
         }
@@ -735,17 +705,6 @@ namespace Precentacion.User.Quote.Quote
 
         }
 
-        private void txtTotal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            //Abre el HiperVinculo
-            System.Diagnostics.Process.Start("C:\\GlassWin\\Debug\\Medidas de Fabricacion");
-        }
-
         private void btnViaticos_Click(object sender, EventArgs e)
         {
             frmTablaViaticos frm = new frmTablaViaticos();
@@ -756,7 +715,6 @@ namespace Precentacion.User.Quote.Quote
         #endregion
 
         #region Metodos
-        //Se modificó
         private void CalcPrices()
         {
             decimal total = 0;
@@ -764,16 +722,18 @@ namespace Precentacion.User.Quote.Quote
             {
                 foreach (DataGridViewRow row in dgCotizaciones.Rows)
                 {
+                    //Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-                    decimal priceWithLabour = price + ManoObra;
-                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Descuento);
-                    decimal TotalPriceWindows = priceWithDiscount;
+                    decimal priceWithLabour = price + (price + ManoObra);
+                    decimal priceWithDiscount = priceWithLabour - (price * Descuento);
+                    decimal TotalPriceWindows = ((priceWithLabour + priceWithDiscount));
                     row.Cells["Price"].Value = TotalPriceWindows;
+                    //Sumar el total de la columna Price
                     total += Convert.ToDecimal(row.Cells["Price"].Value);
                 }
                 SubTotal = total;
-                Total = total;
 
+                Total = total;
                 if (UserCache.Name == "VitroTaller")
                 {
                     txtSubtotal.Text = "Precio Restringido";
@@ -781,25 +741,27 @@ namespace Precentacion.User.Quote.Quote
                 }
                 else
                 {
+
                     txtSubtotal.Text = total.ToString("c");
                     txtTotal.Text = Total.ToString("c");
                 }
-
                 btnApply_Click(null, null);
             }
             else
             {
                 foreach (DataGridViewRow row in dgCotizaciones.Rows)
                 {
+                    //Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
                     decimal priceWithLabour = price + (price * Labour);
                     decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
                     row.Cells["Price"].Value = priceWithDiscount;
+                    //Sumar el total de la columna Price
                     total += Convert.ToDecimal(row.Cells["Price"].Value);
                 }
                 SubTotal = total;
-                Total = total;
 
+                Total = total;
                 if (UserCache.Name == "VitroTaller")
                 {
                     txtSubtotal.Text = "Precio Restringido";
@@ -807,6 +769,7 @@ namespace Precentacion.User.Quote.Quote
                 }
                 else
                 {
+
                     txtSubtotal.Text = total.ToString("c");
                     txtTotal.Text = Total.ToString("c");
                 }
