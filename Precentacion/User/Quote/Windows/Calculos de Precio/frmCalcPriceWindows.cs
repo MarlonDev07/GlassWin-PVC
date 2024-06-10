@@ -1023,20 +1023,43 @@ namespace Precentacion.User.Quote.Windows
         }
         private void txtTotal_TextChanged(object sender, EventArgs e)
         {
-            try
-            {           
-               totalPrice = SubTotal + priceNewGlass;
-                if (txtDescuento.Text != "")
-                {
-                    decimal Descuento = Convert.ToDecimal(txtDescuento.Text) / 100;
-                    totalPrice = totalPrice - (totalPrice * Descuento);
-                }    
-               txtTotalPrice.Text = totalPrice.ToString("C");
-            }
-            catch (Exception)
+            if (cbSupplier.Text == "Default") 
             {
+                try
+                {
+                    SubTotal = Convert.ToDecimal(txtTotal.Text);
+                    priceNewGlass = Convert.ToDecimal(txtPecioFijo.Text);
+                    totalPrice = SubTotal + priceNewGlass;
+                    if (txtDescuento.Text != "")
+                    {
+                        decimal Descuento = Convert.ToDecimal(txtDescuento.Text) / 100;
+                        totalPrice = totalPrice - (totalPrice * Descuento);
+                    }
+                    txtTotalPrice.Text = totalPrice.ToString("C");
+                }
+                catch (Exception)
+                {
 
+                }
             }
+            else
+            {
+                try
+                {
+                    totalPrice = SubTotal + priceNewGlass;
+                    if (txtDescuento.Text != "")
+                    {
+                        decimal Descuento = Convert.ToDecimal(txtDescuento.Text) / 100;
+                        totalPrice = totalPrice - (totalPrice * Descuento);
+                    }
+                    txtTotalPrice.Text = totalPrice.ToString("C");
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+           
         }
        
         private void Timer_Tick(object sender, EventArgs e)
@@ -2299,6 +2322,22 @@ namespace Precentacion.User.Quote.Windows
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbSupplier.Text == "Default") 
+            {
+                txtTotal.Enabled = true;
+                txtTotal.Text = "0";
+                txtPecioFijo.Enabled = true;
+                txtPecioFijo.Text = "0";
+            }
+            else
+            {
+                txtTotal.Enabled = false;
+                txtPecioFijo.Enabled = false;
+            }
         }
     }      
 }
