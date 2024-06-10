@@ -45,7 +45,27 @@ namespace AccesoDatos.Company.Quotes
             try
             {
                 DataTable dataTable = new DataTable();
-                string query = "select Q.IdClient,Q.IdQuote,C.Name,Q.ProjectName,Q.Address,Q.SubTotal,Q.IVA,Q.Total from Quote Q Inner Join Client C ON Q.IdClient = C.IdClient where C.IdCompany = @IdCompany and State = 'Pending'";
+                string query = "select Q.IdClient,Q.IdQuote,Q.Date,C.Name,Q.ProjectName,Q.Address,Q.SubTotal,Q.IVA,Q.Total from Quote Q Inner Join Client C ON Q.IdClient = C.IdClient where C.IdCompany = @IdCompany and State = 'Pending'";
+                SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdCompany", CompanyCache.IdCompany);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+        public DataTable LoadQuotesFacturadas()
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                string query = "select Q.IdClient,Q.IdQuote,Q.Date,C.Name,Q.ProjectName,Q.Address,Q.SubTotal,Q.IVA,Q.Total from Quote Q Inner Join Client C ON Q.IdClient = C.IdClient where C.IdCompany = @IdCompany and State = 'Factura'";
                 SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdCompany", CompanyCache.IdCompany);

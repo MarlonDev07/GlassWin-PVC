@@ -17,6 +17,7 @@ namespace Precentacion.User.Quote.Quote
     {
         #region Variables
         bool EventClose = true;
+        string Busqueda = "Pending";
         N_Quote NQuote = new N_Quote();
         N_Bill N_Bill = new N_Bill();
         N_CxC N_CxC = new N_CxC();
@@ -46,12 +47,13 @@ namespace Precentacion.User.Quote.Quote
 
                 //Cambiar Nombre de las Columnas
                 dgvQuotes.Columns[1].HeaderText = "N° Proforma";
-                dgvQuotes.Columns[2].HeaderText = "Nombre del Cliente";
-                dgvQuotes.Columns[3].HeaderText = "Nombre del Proyecto";
-                dgvQuotes.Columns[4].HeaderText = "Direcccion";
-                dgvQuotes.Columns[5].HeaderText = "Subtotal";
-                dgvQuotes.Columns[6].HeaderText = "Impuesto";
-                dgvQuotes.Columns[7].HeaderText = "Total";
+                dgvQuotes.Columns[2].HeaderText = "Fecha";
+                dgvQuotes.Columns[3].HeaderText = "Nombre del Cliente";
+                dgvQuotes.Columns[4].HeaderText = "Nombre del Proyecto";
+                dgvQuotes.Columns[5].HeaderText = "Direcccion";
+                dgvQuotes.Columns[6].HeaderText = "Subtotal";
+                dgvQuotes.Columns[7].HeaderText = "Impuesto";
+                dgvQuotes.Columns[8].HeaderText = "Total";
 
                 //Ajustar las columnas al Ancho del formulario
                 dgvQuotes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -59,6 +61,7 @@ namespace Precentacion.User.Quote.Quote
                 // Configura el color de la fila seleccionada
                 dgvQuotes.DefaultCellStyle.SelectionBackColor = Color.Green;
                 dgvQuotes.DefaultCellStyle.SelectionForeColor = Color.Green;
+                CargarTotales();
             }
         }
         #endregion
@@ -175,15 +178,75 @@ namespace Precentacion.User.Quote.Quote
                 // Manejar excepción
             }
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
             // Método vacío, posiblemente no necesario
         }
-
         private void dgvQuotes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Método vacío, posiblemente no necesario
+        }
+
+        private void btnVerEstadosProforma_Click(object sender, EventArgs e)
+        {
+            if (Busqueda == "Pending")
+            {
+                Busqueda = "Facturas";
+                dgvQuotes.DataSource = NQuote.LoadQuotesFacturas();
+                CargarTotales();
+                btnVerEstadosProforma.Text = "Ver Proformas Pendientes";
+            }
+            else
+            {
+                Busqueda = "Pending";
+                dgvQuotes.DataSource = NQuote.LoadQuotes();
+                CargarTotales();
+                btnVerEstadosProforma.Text = "Ver Facturas";
+            }
+        }
+
+        private void dtInicio_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dataTable = dgvQuotes.DataSource as DataTable;
+
+                if (dataTable != null)
+                {
+                    string fechaInicio = dtInicio.Value.ToString("yyyy-MM-dd");
+                    string fechaFin = dtFin.Value.ToString("yyyy-MM-dd");
+
+                    dataTable.DefaultView.RowFilter = string.Format("Date >= #{0}# AND Date <= #{1}#", fechaInicio, fechaFin);
+                    dgvQuotes.DataSource = dataTable;
+                    CargarTotales();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+           
+            
+        }
+
+        private void CargarTotales()
+        {
+            decimal Subtotal = 0;
+            decimal IVA = 0;
+            decimal Total = 0;
+
+            foreach (DataGridViewRow row in dgvQuotes.Rows)
+            {
+                Subtotal += Convert.ToDecimal(row.Cells[6].Value);
+                IVA += Convert.ToDecimal(row.Cells[7].Value);
+                Total += Convert.ToDecimal(row.Cells[8].Value);
+            }
+
+            txtSubtotal.Text = Subtotal.ToString();
+            txtIva.Text = IVA.ToString();
+            txtTotal.Text = Total.ToString();
         }
     }
 

@@ -25,6 +25,15 @@ namespace Negocio.Company.Quote
             }
             catch { return null; }
         }
+
+        public DataTable LoadQuotesFacturas()
+        {
+            try
+            {
+                return ADQuote.LoadQuotesFacturadas();
+            }
+            catch { return null; }
+        }
         public int InsertQuoteAndGetLastID(DateTime Date, string ProjetName, string Address, string Condition, decimal Discount, decimal Labour, decimal IVA, decimal SubTotal, decimal Total, int IdClient)
         {
             try
