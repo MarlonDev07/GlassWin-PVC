@@ -40,13 +40,11 @@
             this.btnEmpleado = new System.Windows.Forms.PictureBox();
             this.btnCxC = new System.Windows.Forms.PictureBox();
             this.BarraSuperior = new System.Windows.Forms.Panel();
-            this.btnMini = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnFactura = new System.Windows.Forms.PictureBox();
             this.btnOrden = new System.Windows.Forms.PictureBox();
             this.btnCliente = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactProveedor)).BeginInit();
@@ -56,12 +54,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEmpleado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCxC)).BeginInit();
             this.BarraSuperior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOrden)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCliente)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox3
@@ -164,11 +160,6 @@
             // BarraSuperior
             // 
             this.BarraSuperior.BackColor = System.Drawing.Color.Orange;
-<<<<<<< HEAD
-            this.BarraSuperior.Controls.Add(this.pictureBox4);
-=======
-            this.BarraSuperior.Controls.Add(this.btnMini);
->>>>>>> d3a7fd708ccd280186bf78f8e693a2d4fc4f8225
             this.BarraSuperior.Controls.Add(this.label1);
             this.BarraSuperior.Controls.Add(this.btnCerrar);
             this.BarraSuperior.Location = new System.Drawing.Point(0, 0);
@@ -178,19 +169,6 @@
             this.BarraSuperior.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraSuperior_MouseDown);
             this.BarraSuperior.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BarraSuperior_MouseMove);
             this.BarraSuperior.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BarraSuperior_MouseUp);
-            // 
-            // btnMini
-            // 
-            this.btnMini.Image = ((System.Drawing.Image)(resources.GetObject("btnMini.Image")));
-            this.btnMini.Location = new System.Drawing.Point(853, 3);
-            this.btnMini.Name = "btnMini";
-            this.btnMini.Size = new System.Drawing.Size(36, 21);
-            this.btnMini.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnMini.TabIndex = 30;
-            this.btnMini.TabStop = false;
-            this.btnMini.Click += new System.EventHandler(this.btnMini_Click);
-            this.btnMini.MouseEnter += new System.EventHandler(this.btnMini_MouseEnter);
-            this.btnMini.MouseLeave += new System.EventHandler(this.btnMini_MouseLeave);
             // 
             // label1
             // 
@@ -254,19 +232,6 @@
             this.btnCliente.MouseEnter += new System.EventHandler(this.btnCliente_MouseEnter);
             this.btnCliente.MouseLeave += new System.EventHandler(this.btnCliente_MouseLeave);
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(859, 3);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(41, 22);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 30;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            this.pictureBox4.MouseEnter += new System.EventHandler(this.pictureBox4_MouseEnter);
-            this.pictureBox4.MouseLeave += new System.EventHandler(this.pictureBox4_MouseLeave);
-            // 
             // frmDashUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,12 +266,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCxC)).EndInit();
             this.BarraSuperior.ResumeLayout(false);
             this.BarraSuperior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMini)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOrden)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCliente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -327,10 +290,5 @@
         private System.Windows.Forms.PictureBox btnFactura;
         private System.Windows.Forms.PictureBox btnOrden;
         private System.Windows.Forms.PictureBox btnCliente;
-<<<<<<< HEAD
-        private System.Windows.Forms.PictureBox pictureBox4;
-=======
-        private System.Windows.Forms.PictureBox btnMini;
->>>>>>> d3a7fd708ccd280186bf78f8e693a2d4fc4f8225
     }
 }
