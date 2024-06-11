@@ -944,6 +944,11 @@ namespace Precentacion.User.Accounts
 
         private void textBusquedaNombre_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void txtBusquedaNombre2_TextChanged(object sender, EventArgs e)
+        {
             dgvClient.CurrentCell = null;
             try
             {
@@ -952,7 +957,7 @@ namespace Precentacion.User.Accounts
                     bool rowVisible = false;
                     foreach (DataGridViewCell c in r.Cells)
                     {
-                        if (c.Value != null && c.Value.ToString().ToUpper().Contains(txtBusquedaNombre.Text.ToUpper()))
+                        if (c.Value != null && c.Value.ToString().ToUpper().Contains(txtBusquedaNombre2.Text.ToUpper()))
                         {
                             rowVisible = true;
                             break;
