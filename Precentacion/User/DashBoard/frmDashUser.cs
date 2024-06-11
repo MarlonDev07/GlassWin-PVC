@@ -364,6 +364,7 @@ namespace Precentacion.User.DashBoard
             frmAdminDashboard.Show();
             this.Hide();
         }
+<<<<<<< HEAD
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
@@ -379,5 +380,7 @@ namespace Precentacion.User.DashBoard
         {
             //pictureBox4.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize.png");
         }
+=======
+>>>>>>> 6eb100b6a2cecc484acf86f7c70bb781e5868ee0
     }
 }
