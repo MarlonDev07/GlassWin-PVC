@@ -47,25 +47,25 @@ namespace Precentacion.User.DashBoard
                 btnCxC.Visible = false;
                 btnCalendario.Visible = false;
                 btnProyecto.Visible = false;
-           
+
                 btnFactura.Visible = false;
 
                 //Posicion de los Botones
                 btnOrden.Location = new Point(339, 6);
 
-               
+
 
 
             }
-        }   
+        }
         #endregion
-       
+
 
 
         #region Functions
         private void LoadNameUser()
         {
-            
+
         }
         #endregion
 
@@ -106,16 +106,16 @@ namespace Precentacion.User.DashBoard
         private void btnPlanilla_Click(object sender, EventArgs e)
         {
             Int64 IdCompany = CompanyCache.IdCompany;
-           Clipboard.SetText(IdCompany.ToString());
-           //Abrir Otra Aplicacion
-           System.Diagnostics.Process.Start("C:\\Users\\-Marlon\\Desktop\\GlassWin Proyect\\Contabilidad VitroStudio\\Presentacion\\bin\\Debug\\Presentacion.exe");
+            Clipboard.SetText(IdCompany.ToString());
+            //Abrir Otra Aplicacion
+            System.Diagnostics.Process.Start("C:\\Users\\-Marlon\\Desktop\\GlassWin Proyect\\Contabilidad VitroStudio\\Presentacion\\bin\\Debug\\Presentacion.exe");
             this.Hide();
 
         }
         private void btnCalendar_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://calendar.google.com/calendar/u/0/r/tasks");
-            
+
         }
 
 
@@ -143,7 +143,7 @@ namespace Precentacion.User.DashBoard
         //Crear funcion MouseHover 
         private void Buttons_MouseHover(object sender, EventArgs e)
         {
-           
+
             //cuando se seleccione cambiar el color del a trasparencia
             ((Button)sender).FlatStyle = FlatStyle.Popup;
             ((Button)sender).FlatAppearance.MouseDownBackColor = Color.Transparent;
@@ -364,8 +364,6 @@ namespace Precentacion.User.DashBoard
             frmAdminDashboard.Show();
             this.Hide();
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
@@ -381,9 +379,5 @@ namespace Precentacion.User.DashBoard
         {
             //pictureBox4.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize.png");
         }
-=======
->>>>>>> 6eb100b6a2cecc484acf86f7c70bb781e5868ee0
-=======
->>>>>>> parent of 26fad57 (RENDERIZACION DE IMAGEN EN PROFORMA REALIZADA)
     }
 }
