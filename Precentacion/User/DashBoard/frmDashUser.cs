@@ -372,12 +372,12 @@ namespace Precentacion.User.DashBoard
 
         private void pictureBox4_MouseEnter(object sender, EventArgs e)
         {
-            pictureBox4.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize.gif");
+            //pictureBox4.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize.gif");
         }
 
         private void pictureBox4_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox4.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize.png");
+            //pictureBox4.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize.png");
         }
     }
 }
