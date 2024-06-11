@@ -527,7 +527,7 @@ namespace Precentacion.User.Quote.Quote
 
         #region Eventos
         // Factor de conversión de metros a píxeles (ajústalo según tu necesidad)
-        private int MetrosAPixeles = 100; // Ajusta esto según sea necesario
+        private int MetrosAPixeles = 80; // Ajusta esto según sea necesario
 
         private void dgCotizaciones_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -575,8 +575,6 @@ namespace Precentacion.User.Quote.Quote
                 }
             }
         }
-
-
 
         private void cbOpcion_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1141,7 +1139,7 @@ namespace Precentacion.User.Quote.Quote
                 PdfPTable tabla = new PdfPTable(dgCotizaciones.Columns.Count);
                 tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades     
                 tabla.LockedWidth = true;
-                float[] tablaW = { 0f, 160f, 180f, 60f }; // Ancho de las columnas
+                float[] tablaW = { 0f, 190f, 140f, 50f }; // Ancho de las columnas
                 tabla.SetWidths(tablaW);
 
                 // Agregar encabezados de columna
@@ -1222,8 +1220,8 @@ namespace Precentacion.User.Quote.Quote
                                 }
 
                                 // Ajusta el tamaño de las celdas
-                                cell.FixedHeight = 100f; // Ajusta la altura según sea necesario
-                                cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
+                                cell.FixedHeight = 150f; // Ajusta la altura según sea necesario
+                                cell.PaddingLeft = 10f; // Agrega un relleno a la izquierda para alinear el texto correctamente
                                                        // Centrar contenido verticalmente
                                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                                 tabla.AddCell(cell);
