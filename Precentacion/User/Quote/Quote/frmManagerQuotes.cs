@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MaterialSkin.Controls;
 using System.Drawing;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
 
 namespace Precentacion.User.Quote.Quote
 {
@@ -116,11 +119,11 @@ namespace Precentacion.User.Quote.Quote
             {
                 ((frmFacturar)frm).txtidClient.Text = dgvQuotes.CurrentRow.Cells[0].Value.ToString();
                 ((frmFacturar)frm).txtidQuote.Text = dgvQuotes.CurrentRow.Cells[1].Value.ToString();
-                ((frmFacturar)frm).txtProjetName.Text = dgvQuotes.CurrentRow.Cells[3].Value.ToString();
-                ((frmFacturar)frm).txtAddress.Text = dgvQuotes.CurrentRow.Cells[4].Value.ToString();
-                ((frmFacturar)frm).Subtotal = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[5].Value.ToString());
-                ((frmFacturar)frm).IVA = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[6].Value.ToString());
-                ((frmFacturar)frm).Total = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[7].Value.ToString());
+                ((frmFacturar)frm).txtProjetName.Text = dgvQuotes.CurrentRow.Cells[4].Value.ToString();
+                ((frmFacturar)frm).txtAddress.Text = dgvQuotes.CurrentRow.Cells[5].Value.ToString();
+                ((frmFacturar)frm).Subtotal = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[6].Value.ToString());
+                ((frmFacturar)frm).IVA = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[7].Value.ToString());
+                ((frmFacturar)frm).Total = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[8].Value.ToString());
                 ((frmFacturar)frm).btnBuscar_Click(null, null);
                 ((frmFacturar)frm).InitializeComponents_Click(null, null);
                 EventClose = false;
@@ -130,11 +133,11 @@ namespace Precentacion.User.Quote.Quote
                 frmFacturar frmFacturar = new frmFacturar();
                 frmFacturar.txtidClient.Text = dgvQuotes.CurrentRow.Cells[0].Value.ToString();
                 frmFacturar.txtidQuote.Text = dgvQuotes.CurrentRow.Cells[1].Value.ToString();
-                frmFacturar.txtProjetName.Text = dgvQuotes.CurrentRow.Cells[3].Value.ToString();
-                frmFacturar.txtAddress.Text = dgvQuotes.CurrentRow.Cells[4].Value.ToString();
-                frmFacturar.Subtotal = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[5].Value.ToString());
-                frmFacturar.IVA = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[6].Value.ToString());
-                frmFacturar.Total = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[7].Value.ToString());
+                frmFacturar.txtProjetName.Text = dgvQuotes.CurrentRow.Cells[4].Value.ToString();
+                frmFacturar.txtAddress.Text = dgvQuotes.CurrentRow.Cells[5].Value.ToString();
+                frmFacturar.Subtotal = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[6].Value.ToString());
+                frmFacturar.IVA = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[7].Value.ToString());
+                frmFacturar.Total = Convert.ToDecimal(dgvQuotes.CurrentRow.Cells[8].Value.ToString());
 
                 frmFacturar.btnBuscar_Click(null, null);
                 frmFacturar.InitializeComponents_Click(null, null);
@@ -227,8 +230,8 @@ namespace Precentacion.User.Quote.Quote
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-           
-            
+
+
         }
 
         private void CargarTotales()
@@ -247,6 +250,157 @@ namespace Precentacion.User.Quote.Quote
             txtSubtotal.Text = Subtotal.ToString();
             txtIva.Text = IVA.ToString();
             txtTotal.Text = Total.ToString();
+        }
+
+        private void imprimirRegistroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                #region Crear el documento
+                // Obtener el directorio del escritorio y las carpetas necesarias
+                string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string CarpetaFactura = Path.Combine(escritorio, "Reporte de Facturas");
+
+                string NameFile = "Reporte" + ".pdf";
+
+                // Verificar si la carpeta "Orden Produccion" existe, si no, crearla
+                if (!Directory.Exists(CarpetaFactura))
+                {
+                    Directory.CreateDirectory(CarpetaFactura);
+                }
+
+
+
+                // Crear la ruta completa del archivo PDF
+                string rutaArchivoPDF = Path.Combine(CarpetaFactura, NameFile);
+
+                // Crear el documento en modo horizontal (landscape)
+                Document document = new Document(PageSize.A4.Rotate());
+                // Crear un nuevo objeto PdfWriter para escribir el documento en un archivo
+                PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
+
+                // Abrir el documento
+                document.Open();
+                #endregion
+
+                #region Crear el contenido del documento
+                // Título para la Tabla 5020
+                PdfPTable tituloTable5020 = new PdfPTable(1);
+                tituloTable5020.TotalWidth = 800f;
+                tituloTable5020.LockedWidth = true;
+
+                PdfPCell tituloCell5020 = new PdfPCell(new Phrase("Reportes de Facturas", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                {
+                    BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_MIDDLE,
+                    Border = iTextSharp.text.Rectangle.NO_BORDER,
+                    Padding = 10f
+                };
+
+                tituloTable5020.AddCell(tituloCell5020);
+                document.Add(tituloTable5020);
+
+                // Espacio después del título
+                document.Add(new Paragraph(" "));
+
+                // Agregar al Documento los Datos del dgvOrdenProduccion
+                PdfPTable table = new PdfPTable(dgvQuotes.Columns.Count)
+                {
+                    TotalWidth = 800f, // Ajusta el ancho total según tus necesidades
+                    LockedWidth = true
+                };
+
+                // Ancho personalizado para cada una de las 19 columnas (ajusta los valores según tus necesidades)
+                float[] anchosColumnas = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f };
+                table.SetWidths(anchosColumnas);
+
+                // Celda 1: Encabezados de las columnas
+                foreach (DataGridViewColumn column in dgvQuotes.Columns)
+                {
+                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                    {
+                        BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
+                        BorderWidth = 1f,
+                        HorizontalAlignment = Element.ALIGN_CENTER,
+                        VerticalAlignment = Element.ALIGN_CENTER
+                    };
+                    table.AddCell(cell);
+                }
+
+                // Celda 2: Datos de las filas
+                foreach (DataGridViewRow row in dgvQuotes.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        // Validar si la celda es nula
+                        if (cell.Value == null)
+                        {
+                            cell.Value = " ";
+                        }
+                        PdfPCell celda = new PdfPCell(new Phrase(cell.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 9, iTextSharp.text.BaseColor.BLACK)))
+                        {
+                            BorderWidth = 1f,
+                            HorizontalAlignment = Element.ALIGN_CENTER,
+                            VerticalAlignment = Element.ALIGN_CENTER
+                        };
+                        table.AddCell(celda);
+                    }
+                }
+                document.Add(table);
+                document.Add(new Paragraph(" "));
+                #endregion
+
+                #region Precios
+                // Crear una tabla
+                PdfPTable tablePrecio = new PdfPTable(3); // 3 columnas
+
+                // Configurar la tabla
+
+                tablePrecio.WidthPercentage = 96;
+                tablePrecio.HorizontalAlignment = Element.ALIGN_CENTER;
+
+                // Configurar el fondo de las celdas
+                BaseColor fondoCelda = new BaseColor(192, 192, 192); // Color de fondo gris claro
+
+                // Configurar la celda
+                PdfPCell cellp = new PdfPCell();
+
+                // Configurar el color de fondo
+                cellp.BackgroundColor = fondoCelda;
+
+                // Agregar los datos a la tabla
+                cellp.Phrase = new Phrase("SubTotal: ");
+                cellp.HorizontalAlignment = Element.ALIGN_CENTER;
+                tablePrecio.AddCell(cellp);
+                cellp.Phrase = new Phrase("Iva: ");
+                tablePrecio.AddCell(cellp);
+                cellp.Phrase = new Phrase("Total: ");
+                tablePrecio.AddCell(cellp);
+                cellp.Phrase = new Phrase("¢" + txtSubtotal.Text.ToString());
+                tablePrecio.AddCell(cellp);
+
+                cellp.Phrase = new Phrase("¢" + txtIva.Text.ToString());
+
+                tablePrecio.AddCell(cellp);
+                cellp.Phrase = new Phrase("¢" + txtTotal.Text.ToString());
+                tablePrecio.AddCell(cellp);
+
+                // Agregar la tabla al documento
+                document.Add(tablePrecio);
+
+                #endregion
+
+                #region Cerrar Documento
+                document.Close();
+                MessageBox.Show("Hoja de Producción Generada Correctamente", "Hoja de Producción", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                #endregion
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar la hoja de producción: " + EX.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 
