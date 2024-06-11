@@ -48,7 +48,6 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtIva = new System.Windows.Forms.TextBox();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
-            this.imprimirRegistroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuotes)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -104,29 +103,28 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cotizarToolStripMenuItem,
             this.editarProformaToolStripMenuItem,
-            this.facturarProformaToolStripMenuItem,
-            this.imprimirRegistroToolStripMenuItem});
+            this.facturarProformaToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 70);
             // 
             // cotizarToolStripMenuItem
             // 
             this.cotizarToolStripMenuItem.Name = "cotizarToolStripMenuItem";
-            this.cotizarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cotizarToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.cotizarToolStripMenuItem.Text = "Cotizar";
             this.cotizarToolStripMenuItem.Click += new System.EventHandler(this.cotizarToolStripMenuItem_Click);
             // 
             // editarProformaToolStripMenuItem
             // 
             this.editarProformaToolStripMenuItem.Name = "editarProformaToolStripMenuItem";
-            this.editarProformaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarProformaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.editarProformaToolStripMenuItem.Text = "Editar Proforma";
             this.editarProformaToolStripMenuItem.Click += new System.EventHandler(this.editarProformaToolStripMenuItem_Click);
             // 
             // facturarProformaToolStripMenuItem
             // 
             this.facturarProformaToolStripMenuItem.Name = "facturarProformaToolStripMenuItem";
-            this.facturarProformaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.facturarProformaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.facturarProformaToolStripMenuItem.Text = "Facturar Proforma";
             this.facturarProformaToolStripMenuItem.Click += new System.EventHandler(this.facturarProformaToolStripMenuItem_Click);
             // 
@@ -134,7 +132,7 @@
             // 
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscar.Location = new System.Drawing.Point(49, 74);
+            this.lblBuscar.Location = new System.Drawing.Point(49, 75);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(63, 20);
             this.lblBuscar.TabIndex = 4;
@@ -145,7 +143,7 @@
             // 
             this.txtBuscar.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(10, 97);
+            this.txtBuscar.Location = new System.Drawing.Point(10, 98);
             this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(147, 21);
@@ -155,7 +153,7 @@
             // dtInicio
             // 
             this.dtInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtInicio.Location = new System.Drawing.Point(325, 99);
+            this.dtInicio.Location = new System.Drawing.Point(325, 100);
             this.dtInicio.Name = "dtInicio";
             this.dtInicio.Size = new System.Drawing.Size(103, 20);
             this.dtInicio.TabIndex = 6;
@@ -164,7 +162,7 @@
             // dtFin
             // 
             this.dtFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFin.Location = new System.Drawing.Point(455, 99);
+            this.dtFin.Location = new System.Drawing.Point(455, 100);
             this.dtFin.Name = "dtFin";
             this.dtFin.Size = new System.Drawing.Size(106, 20);
             this.dtFin.TabIndex = 7;
@@ -173,7 +171,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(325, 76);
+            this.label1.Location = new System.Drawing.Point(325, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(236, 20);
             this.label1.TabIndex = 8;
@@ -182,7 +180,7 @@
             // 
             // btnVerEstadosProforma
             // 
-            this.btnVerEstadosProforma.Location = new System.Drawing.Point(755, 67);
+            this.btnVerEstadosProforma.Location = new System.Drawing.Point(755, 68);
             this.btnVerEstadosProforma.Name = "btnVerEstadosProforma";
             this.btnVerEstadosProforma.Size = new System.Drawing.Size(157, 64);
             this.btnVerEstadosProforma.TabIndex = 9;
@@ -216,13 +214,6 @@
             this.txtSubtotal.Size = new System.Drawing.Size(100, 20);
             this.txtSubtotal.TabIndex = 12;
             this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // imprimirRegistroToolStripMenuItem
-            // 
-            this.imprimirRegistroToolStripMenuItem.Name = "imprimirRegistroToolStripMenuItem";
-            this.imprimirRegistroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.imprimirRegistroToolStripMenuItem.Text = "Imprimir Registro";
-            this.imprimirRegistroToolStripMenuItem.Click += new System.EventHandler(this.imprimirRegistroToolStripMenuItem_Click);
             // 
             // frmManagerQuotes
             // 
@@ -269,6 +260,5 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.TextBox txtIva;
         private System.Windows.Forms.TextBox txtSubtotal;
-        private System.Windows.Forms.ToolStripMenuItem imprimirRegistroToolStripMenuItem;
     }
 }

@@ -224,25 +224,6 @@ namespace AccesoDatos.Company.Quotes
             catch { return false; }
         }
 
-        public bool ActualizarMedidasVentana(int IdVentana, decimal Ancho, decimal Alto) 
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = Cnn.OpenConecction();
-                cmd.CommandText = "Update Windows set Width = @Width, Height = @Height where IdWindows = @Id";
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@Id", IdVentana);
-                cmd.Parameters.AddWithValue("@Width", Ancho);
-                cmd.Parameters.AddWithValue("@Height", Alto);
-                cmd.ExecuteNonQuery();
-                Cnn.CloseConnection();
-                return true;
-
-            }
-            catch { return false; }
-        }
-
         public bool DeleteWindows(int IdWindows)
         {
             try

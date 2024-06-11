@@ -190,7 +190,7 @@ namespace Precentacion.User.Quote.Quote
             dgCotizaciones.DataSource = dt;
             dgCotizaciones.RowTemplate.Height = 250;
             dgCotizaciones.Columns[0].Width = 90;
-            dgCotizaciones.Columns[1].Width = 300;
+            dgCotizaciones.Columns[1].Width = 270;
             dgCotizaciones.Columns[2].Width = 200;
             dgCotizaciones.Columns[3].Width = 115;
             if (UserCache.Name == "VitroTaller")
@@ -417,8 +417,7 @@ namespace Precentacion.User.Quote.Quote
                         QuoteSave = 1;
                         MessageBox.Show("Cotizacion Guardada", "Proforma Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         SendQuoteforWhathsaap();
-                        LimpiarCampos();
-
+                        this.Close();
                     }
                 }
                 else
@@ -526,9 +525,12 @@ namespace Precentacion.User.Quote.Quote
         #endregion
 
         #region Eventos
+<<<<<<< HEAD
         // Factor de conversión de metros a píxeles (ajústalo según tu necesidad)
         private int MetrosAPixeles = 80; // Ajusta esto según sea necesario
 
+=======
+>>>>>>> parent of 26fad57 (RENDERIZACION DE IMAGEN EN PROFORMA REALIZADA)
         private void dgCotizaciones_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 1)
@@ -547,21 +549,22 @@ namespace Precentacion.User.Quote.Quote
 
                             using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
                             {
-                                // Obtener dimensiones del usuario y convertirlas a píxeles
-                                decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
-                                decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
-                                int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
-                                int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
 
-                                // Mostrar dimensiones calculadas para depuración
-                                Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
+                                int anchoCelda = dgCotizaciones.Columns[1].Width;
+                                int altoCelda = dgCotizaciones.Rows[e.RowIndex].Height;
+                                int anchoImagen = img.Width;
+                                int altoImagen = img.Height;
 
-                                // Ajustar el tamaño de la imagen a las dimensiones especificadas por el usuario
-                                int anchoImagen = anchoVentana;
-                                int altoImagen = altoVentana;
+                                // Ajustar el tamaño de la imagen si es necesario
+                                if (anchoImagen > anchoCelda || altoImagen > altoCelda)
+                                {
+                                    float proporcionAncho = (float)anchoCelda / anchoImagen;
+                                    float proporcionAlto = (float)altoCelda / altoImagen;
+                                    float proporcion = Math.Min(proporcionAncho, proporcionAlto);
 
-                                // Mostrar dimensiones de la imagen ajustada para depuración
-                                Console.WriteLine($"Ancho imagen ajustada: {anchoImagen}, Alto imagen ajustada: {altoImagen}");
+                                    anchoImagen = (int)(anchoImagen * proporcion);
+                                    altoImagen = (int)(altoImagen * proporcion);
+                                }
 
                                 int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
                                 int y = e.CellBounds.Top + (e.CellBounds.Height - altoImagen) / 2;
@@ -837,38 +840,7 @@ namespace Precentacion.User.Quote.Quote
 
         }
 
-        private void LimpiarCampos() 
-        {
-            dgCotizaciones.DataSource = null;
-            txtidClient.Text = "";
-            txtProjetName.Text = "";
-            txtAdreesClient.Text = "";
-            txtTelefono.Text = "";
-            txtEmail.Text = "";
-            txtManoObra.Text = "0";
-            txtDescuento.Text = "0";
-            txtAddress.Text = "";
-            txtSubtotal.Text = "";
-            txtIVA.Text = "";
-            txtTotal.Text = "";
-        }
-        private decimal ObtenerAncho(string Descripcion) 
-        {
-            string patternAncho = @"\nAncho:\s*([\d,\.]+)";
-            System.Text.RegularExpressions.Match matchAncho = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAncho);
-            string Ancho = matchAncho.Groups[1].Value.Replace(",", ".");
-            decimal AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".",","));
-            return AnchoDecimal;
-        }
-        private decimal ObtenerAlto(string Descripcion)
-        {
-            string patternAlto = @"\nAlto:\s*([\d,\.]+)";
-            System.Text.RegularExpressions.Match matchAlto = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAlto);
-            string Alto = matchAlto.Groups[1].Value.Replace(",", ".");
-            decimal AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
-            return AltoDecimal;
-           
-        }
+
         #endregion
 
         #region Generacion de pdf
@@ -1135,12 +1107,12 @@ namespace Precentacion.User.Quote.Quote
                 #endregion
 
                 #region Tabla de Productos
-                // Crear una tabla con el número de columnas de tu DataGridView
                 PdfPTable tabla = new PdfPTable(dgCotizaciones.Columns.Count);
                 tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades     
                 tabla.LockedWidth = true;
                 float[] tablaW = { 0f, 190f, 140f, 50f }; // Ancho de las columnas
                 tabla.SetWidths(tablaW);
+
 
                 // Agregar encabezados de columna
                 for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
@@ -1154,61 +1126,56 @@ namespace Precentacion.User.Quote.Quote
                 // Agregar filas y celdas de datos con imágenes
                 for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
                 {
+
+                    bool UrlExist = false;
                     for (int j = 0; j < dgCotizaciones.Columns.Count; j++)
                     {
                         if (dgCotizaciones[j, i].Value != null)
                         {
-                            PdfPCell cell = null;
-
+                            // Si es la columna de imagen (ajusta según tu estructura de datos)
                             if (dgCotizaciones.Columns[j].HeaderText == "URL")
                             {
                                 string rutaImagen = dgCotizaciones[j, i].Value.ToString();
                                 if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
                                 {
-                                    // Obtener dimensiones en metros y convertirlas a píxeles
-                                    decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
-                                    decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
-                                    int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
-                                    int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
-
-                                    // Mostrar dimensiones calculadas para depuración
-                                    Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
-
-                                    // Cargar la imagen y ajustar su tamaño
+                                    UrlExist = true;
+                                    // Agregar la imagen al PDF y ajustar su tamaño
                                     iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaImagen);
-
-                                    // Ajustar el tamaño de la imagen con ScaleAbsolute
-                                    img.ScaleAbsolute(anchoVentana, altoVentana);
-
+                                    img.ScaleToFit(100, 100); // Cambia el tamaño deseado aquí
                                     PdfPCell celdaImagen = new PdfPCell(img);
                                     celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
                                     celdaImagen.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                    celdaImagen.FixedHeight = altoVentana; // Ajustar la altura de la celda para coincidir con la imagen
                                     tabla.AddCell(celdaImagen);
                                 }
                                 else
                                 {
-                                    // Agregar una celda con texto "Sin Imagen"
-                                    cell = new PdfPCell(new Phrase("Sin Imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
-                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                    // Ajustar el tamaño de la celda de la imagen
-                                    cell.FixedHeight = 50f; // Ajusta la altura según sea necesario
-                                    tabla.AddCell(cell);
+                                    //Agregar una celda Con texto que diga sin Imagen
+                                    PdfPCell celda = new PdfPCell(new Phrase("Sin Imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                                    celda.HorizontalAlignment = Element.ALIGN_CENTER;
+                                    celda.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                    //Reducir el tamaño de la celda de la imagen
+                                    celda.FixedHeight = 10f; // Aumentamos la altura a 150 unidades
+
+                                    tabla.AddCell(celda);
+
                                 }
                             }
                             else
                             {
+                                PdfPCell cell = null;
+
                                 if (dgCotizaciones.Columns[j].HeaderText == "Descripcion")
                                 {
                                     // Para la columna "Descripción", alinea el texto a la izquierda
                                     cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                 }
-                                else if (dgCotizaciones.Columns[j].HeaderText == "Precio")
+
+                                if (dgCotizaciones.Columns[j].HeaderText == "Precio")
                                 {
-                                    // Para la columna "Precio", alinea el texto a la izquierda y redondea a dos decimales
+                                    // Para la columna "Descripción", alinea el texto a la izquierda
                                     decimal Prices = Convert.ToDecimal(dgCotizaciones[j, i].Value);
+                                    //Limitar Prices a dos decimales
                                     Prices = Math.Round(Prices, 2);
                                     cell = new PdfPCell(new Phrase("¢" + Prices.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -1219,10 +1186,28 @@ namespace Precentacion.User.Quote.Quote
                                     cell.HorizontalAlignment = Element.ALIGN_CENTER;
                                 }
 
+<<<<<<< HEAD
                                 // Ajusta el tamaño de las celdas
                                 cell.FixedHeight = 150f; // Ajusta la altura según sea necesario
                                 cell.PaddingLeft = 10f; // Agrega un relleno a la izquierda para alinear el texto correctamente
                                                        // Centrar contenido verticalmente
+=======
+                                if (UrlExist)
+                                {
+                                    // Ajusta el tamaño de las celdas
+                                    cell.FixedHeight = 170f; // Aumentamos la altura a 150 unidades
+                                    cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
+                                }
+                                else
+                                {
+                                    // Ajusta el tamaño de las celdas
+                                    cell.FixedHeight = 50f; // Aumentamos la altura a 150 unidades
+                                    cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
+                                }
+
+
+                                // Centrar contenido verticalmente
+>>>>>>> parent of 26fad57 (RENDERIZACION DE IMAGEN EN PROFORMA REALIZADA)
                                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                                 tabla.AddCell(cell);
                             }
@@ -1233,8 +1218,7 @@ namespace Precentacion.User.Quote.Quote
                 // Agregar la tabla al documento
                 document.Add(tabla);
 
-                document.Add(new Paragraph(" ")); // Esto agrega un espacio en blanco en el documento
-
+                document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
                 #endregion
 
                 #region Precios

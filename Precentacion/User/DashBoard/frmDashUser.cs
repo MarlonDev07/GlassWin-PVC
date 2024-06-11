@@ -365,6 +365,7 @@ namespace Precentacion.User.DashBoard
             this.Hide();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
@@ -382,5 +383,7 @@ namespace Precentacion.User.DashBoard
         }
 =======
 >>>>>>> 6eb100b6a2cecc484acf86f7c70bb781e5868ee0
+=======
+>>>>>>> parent of 26fad57 (RENDERIZACION DE IMAGEN EN PROFORMA REALIZADA)
     }
 }
