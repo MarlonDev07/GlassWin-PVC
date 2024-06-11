@@ -45,6 +45,7 @@
             this.btnFactura = new System.Windows.Forms.PictureBox();
             this.btnOrden = new System.Windows.Forms.PictureBox();
             this.btnCliente = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactProveedor)).BeginInit();
@@ -58,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOrden)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox3
@@ -160,6 +162,7 @@
             // BarraSuperior
             // 
             this.BarraSuperior.BackColor = System.Drawing.Color.Orange;
+            this.BarraSuperior.Controls.Add(this.btnMinimizar);
             this.BarraSuperior.Controls.Add(this.label1);
             this.BarraSuperior.Controls.Add(this.btnCerrar);
             this.BarraSuperior.Location = new System.Drawing.Point(0, 0);
@@ -232,6 +235,19 @@
             this.btnCliente.MouseEnter += new System.EventHandler(this.btnCliente_MouseEnter);
             this.btnCliente.MouseLeave += new System.EventHandler(this.btnCliente_MouseLeave);
             // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
+            this.btnMinimizar.Location = new System.Drawing.Point(864, 3);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(36, 21);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnMinimizar.TabIndex = 30;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            this.btnMinimizar.MouseEnter += new System.EventHandler(this.btnMinimizar_MouseEnter);
+            this.btnMinimizar.MouseLeave += new System.EventHandler(this.btnMinimizar_MouseLeave);
+            // 
             // frmDashUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,6 +286,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnFactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOrden)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -290,5 +307,6 @@
         private System.Windows.Forms.PictureBox btnFactura;
         private System.Windows.Forms.PictureBox btnOrden;
         private System.Windows.Forms.PictureBox btnCliente;
+        private System.Windows.Forms.PictureBox btnMinimizar;
     }
 }
