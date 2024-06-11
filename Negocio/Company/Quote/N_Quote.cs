@@ -132,7 +132,18 @@ namespace Negocio.Company.Quote
                 return false;
             }
         }
+        public bool ActualizarMedidasVentanas(int IdWindows, decimal Width, decimal Height)
+        {
+            try
+            {
+                return ADQuote.ActualizarMedidasVentana(Convert.ToInt32(IdWindows), Width, Height);
+            }
+            catch (Exception)
+            {
 
+                return false;
+            }
+        }
         public bool FindWindows(int IdWindows)
         {
             try

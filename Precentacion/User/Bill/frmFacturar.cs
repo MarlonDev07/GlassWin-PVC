@@ -2355,16 +2355,6 @@ namespace Precentacion.User.Bill
 
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            GenerarPdfHojaProduccion();
-        }
-
-        private void lblTitleFactura_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void cbProveedorDesglose_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarTamañoPieza();
@@ -2374,6 +2364,35 @@ namespace Precentacion.User.Bill
         {
             frmDashUser frm = new frmDashUser();
             frm.Show();
+        }
+
+        private void actualizarMedidasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarMedidasVentana();
+        }
+
+        private void ActualizarMedidasVentana() 
+        {
+            //Guardar en una Lista los Id de la Ventan del dgvRectificacion
+            List<int> IdVentana = new List<int>();
+            List<decimal> Anchos = new List<decimal>();
+            List<decimal> Altos = new List<decimal>();
+            for (int i = 0; i < dgvRectificacion.Rows.Count; i++)
+            {
+                IdVentana.Add(Convert.ToInt32(dgvRectificacion.Rows[i].Cells[0].Value));
+                Anchos.Add(Convert.ToDecimal(dgvRectificacion.Rows[i].Cells[3].Value));
+                Altos.Add(Convert.ToDecimal(dgvRectificacion.Rows[i].Cells[4].Value));
+            }
+
+            //Recorrer la lista de IdVentana y Actualizar las Medidas 
+            for (int i = 0; i < IdVentana.Count; i++)
+            {
+                //Actualizar las Medidas de la Ventana
+                NQuote.ActualizarMedidasVentanas(IdVentana[i], Anchos[i], Altos[i]);
+
+            }
+            MessageBox.Show("Medidas Actualizadas Correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            InitializeComponents_Click(null, null);
         }
     }
 }

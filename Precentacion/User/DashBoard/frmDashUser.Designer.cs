@@ -40,6 +40,7 @@
             this.btnEmpleado = new System.Windows.Forms.PictureBox();
             this.btnCxC = new System.Windows.Forms.PictureBox();
             this.BarraSuperior = new System.Windows.Forms.Panel();
+            this.btnMini = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnFactura = new System.Windows.Forms.PictureBox();
@@ -54,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEmpleado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCxC)).BeginInit();
             this.BarraSuperior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOrden)).BeginInit();
@@ -160,6 +162,7 @@
             // BarraSuperior
             // 
             this.BarraSuperior.BackColor = System.Drawing.Color.Orange;
+            this.BarraSuperior.Controls.Add(this.btnMini);
             this.BarraSuperior.Controls.Add(this.label1);
             this.BarraSuperior.Controls.Add(this.btnCerrar);
             this.BarraSuperior.Location = new System.Drawing.Point(0, 0);
@@ -169,6 +172,19 @@
             this.BarraSuperior.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraSuperior_MouseDown);
             this.BarraSuperior.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BarraSuperior_MouseMove);
             this.BarraSuperior.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BarraSuperior_MouseUp);
+            // 
+            // btnMini
+            // 
+            this.btnMini.Image = ((System.Drawing.Image)(resources.GetObject("btnMini.Image")));
+            this.btnMini.Location = new System.Drawing.Point(853, 3);
+            this.btnMini.Name = "btnMini";
+            this.btnMini.Size = new System.Drawing.Size(36, 21);
+            this.btnMini.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnMini.TabIndex = 30;
+            this.btnMini.TabStop = false;
+            this.btnMini.Click += new System.EventHandler(this.btnMini_Click);
+            this.btnMini.MouseEnter += new System.EventHandler(this.btnMini_MouseEnter);
+            this.btnMini.MouseLeave += new System.EventHandler(this.btnMini_MouseLeave);
             // 
             // label1
             // 
@@ -266,6 +282,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCxC)).EndInit();
             this.BarraSuperior.ResumeLayout(false);
             this.BarraSuperior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMini)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOrden)).EndInit();
@@ -290,5 +307,6 @@
         private System.Windows.Forms.PictureBox btnFactura;
         private System.Windows.Forms.PictureBox btnOrden;
         private System.Windows.Forms.PictureBox btnCliente;
+        private System.Windows.Forms.PictureBox btnMini;
     }
 }

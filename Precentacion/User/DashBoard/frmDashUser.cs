@@ -364,5 +364,20 @@ namespace Precentacion.User.DashBoard
             frmAdminDashboard.Show();
             this.Hide();
         }
+
+        private void btnMini_MouseEnter(object sender, EventArgs e)
+        {
+            btnMini.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\mini Gift.gif");
+        }
+
+        private void btnMini_MouseLeave(object sender, EventArgs e)
+        {
+            btnMini.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\mini Static.png");
+        }
+
+        private void btnMini_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
