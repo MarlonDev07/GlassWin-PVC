@@ -518,5 +518,10 @@ namespace Precentacion.User.Quote.Windows
             TempPrecio = PrecioTotal * Convert.ToDecimal(txtCantidad.Value);
             txtTotal.Text = TempPrecio.ToString("c");
         }
+
+        private void lblDescripcion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
