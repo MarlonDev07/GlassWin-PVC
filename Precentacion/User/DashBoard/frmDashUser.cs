@@ -382,12 +382,12 @@ namespace Precentacion.User.DashBoard
 
         private void btnMinimizar_MouseEnter(object sender, EventArgs e)
         {
-            btnMinimizar.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize.gif");
+            btnMinimizar.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize Gift.gif");
         }
 
         private void btnMinimizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize.png");
+            btnMinimizar.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize Static.png");
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)

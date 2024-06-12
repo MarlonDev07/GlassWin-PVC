@@ -97,22 +97,22 @@ namespace Precentacion.User.Bill
         {
             dt = NQuote.WindowsData(Convert.ToInt32(txtidQuote.Text));
         }
-          
+
         private void dgvWindowsLoad()
         {
-            //Cargar el DataGridView
+            // Cargar el DataGridView
             dgvGlass.DataSource = dt;
 
-            //Permitir saltos de linea en el dgv
+            //Cambiar el Alto
+            dgvGlass.RowTemplate.Height = 300;
+
+            // Permitir saltos de línea en el dgv
             dgvGlass.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
-            //Ajustar el Alto de la celda a su contenido
-            dgvGlass.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-
-            //Ajustar el Ancho de la celda al ancho del Formulario
+            // Ajustar el Ancho de la celda al ancho del Formulario
             dgvGlass.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            //Ocultar las columnas que no se necesitan
+            // Ocultar las columnas que no se necesitan
             dgvGlass.Columns[0].Visible = false;
             dgvGlass.Columns[1].Visible = true;
             dgvGlass.Columns[2].Visible = true;
@@ -127,17 +127,18 @@ namespace Precentacion.User.Bill
             dgvGlass.Columns[11].Visible = false;
             dgvGlass.Columns[12].Visible = false;
 
-            //Ordenar las columas para que sea primero la 2 y luego la 1 y 8
+            // Ordenar las columnas para que sea primero la 2 y luego la 1 y 8
             dgvGlass.Columns[1].DisplayIndex = 2;
             dgvGlass.Columns[2].DisplayIndex = 1;
             dgvGlass.Columns[8].DisplayIndex = 3;
 
-            //Cambiar Nombres
+            // Cambiar Nombres
             dgvGlass.Columns[1].HeaderText = "Descripción";
             dgvGlass.Columns[8].HeaderText = "Precio";
             dgvGlass.Columns[3].HeaderText = "Ancho";
             dgvGlass.Columns[4].HeaderText = "Alto";
 
+            
         }
         private void CargarDesglose()
         {
@@ -356,9 +357,7 @@ namespace Precentacion.User.Bill
 
 
 
-        }
-
-      
+        }      
         private void dgvRectificacionLoad()
         {
             //Cargar solo Url, Descripcion, Ancho y Alto en el dgv
@@ -406,8 +405,10 @@ namespace Precentacion.User.Bill
         #endregion
 
         #region Events
+        private int MetrosAPixeles = 50; // Ajusta esto según sea necesario
         private void dgvGlass_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
+
             if (e.RowIndex >= 0 && e.ColumnIndex == 2)
             {
                 if (dgvGlass.Rows[e.RowIndex].Cells[2].Value != null && !string.IsNullOrEmpty(dgvGlass.Rows[e.RowIndex].Cells[2].Value.ToString()))
@@ -424,22 +425,21 @@ namespace Precentacion.User.Bill
 
                             using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
                             {
+                                // Obtener dimensiones del usuario y convertirlas a píxeles
+                                decimal anchoEnMetros = ObtenerAncho(dgvGlass.Rows[e.RowIndex].Cells[1].Value.ToString());
+                                decimal alturaEnMetros = ObtenerAlto(dgvGlass.Rows[e.RowIndex].Cells[1].Value.ToString());
+                                int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
+                                int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
 
-                                int anchoCelda = dgvGlass.Columns[2].Width;
-                                int altoCelda = dgvGlass.Rows[e.RowIndex].Height;
-                                int anchoImagen = img.Width;
-                                int altoImagen = img.Height;
+                                // Mostrar dimensiones calculadas para depuración
+                                Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
 
-                                // Ajustar el tamaño de la imagen si es necesario
-                                if (anchoImagen > anchoCelda || altoImagen > altoCelda)
-                                {
-                                    float proporcionAncho = (float)anchoCelda / anchoImagen;
-                                    float proporcionAlto = (float)altoCelda / altoImagen;
-                                    float proporcion = Math.Min(proporcionAncho, proporcionAlto);
+                                // Ajustar el tamaño de la imagen a las dimensiones especificadas por el usuario
+                                int anchoImagen = anchoVentana;
+                                int altoImagen = altoVentana;
 
-                                    anchoImagen = (int)(anchoImagen * proporcion);
-                                    altoImagen = (int)(altoImagen * proporcion);
-                                }
+                                // Mostrar dimensiones de la imagen ajustada para depuración
+                                Console.WriteLine($"Ancho imagen ajustada: {anchoImagen}, Alto imagen ajustada: {altoImagen}");
 
                                 int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
                                 int y = e.CellBounds.Top + (e.CellBounds.Height - altoImagen) / 2;
@@ -2374,6 +2374,23 @@ namespace Precentacion.User.Bill
         {
             frmDashUser frm = new frmDashUser();
             frm.Show();
+        }
+        private decimal ObtenerAncho(string Descripcion)
+        {
+            string patternAncho = @"\nAncho:\s*([\d,\.]+)";
+            System.Text.RegularExpressions.Match matchAncho = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAncho);
+            string Ancho = matchAncho.Groups[1].Value.Replace(",", ".");
+            decimal AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".", ","));
+            return AnchoDecimal;
+        }
+        private decimal ObtenerAlto(string Descripcion)
+        {
+            string patternAlto = @"\nAlto:\s*([\d,\.]+)";
+            System.Text.RegularExpressions.Match matchAlto = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAlto);
+            string Alto = matchAlto.Groups[1].Value.Replace(",", ".");
+            decimal AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
+            return AltoDecimal;
+
         }
     }
 }
