@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AccesoDatos.Company.Bill.Accounts
 {
@@ -74,7 +75,6 @@ namespace AccesoDatos.Company.Bill.Accounts
                 return false;
             }
         }
-
         public DataTable FindCxCforClient(int IdClient)
         {
             try
@@ -82,7 +82,21 @@ namespace AccesoDatos.Company.Bill.Accounts
                 DataTable dt = new DataTable();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Cnn.OpenConecction();
-                cmd.CommandText = "select * from AccountReceivable where IdBill in (select IdBill from Bill where IdClient = @IdClient)";
+                cmd.CommandText = @"
+                    SELECT 
+                        ar.IdAccount,
+                        ar.IdBill,
+                        ar.InitialAmount,
+                        ar.OutstandingBalance,
+                        ar.Proyecto,
+                        b.Date,
+                        b.ExprirationDate
+                    FROM 
+                        AccountReceivable ar
+                    JOIN 
+                        Bill b ON ar.IdBill = b.IdBill
+                    WHERE 
+                        b.IdClient = @IdClient";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdClient", IdClient);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -95,8 +109,28 @@ namespace AccesoDatos.Company.Bill.Accounts
 
                 return null;
             }
-            
+
         }
+
+        public void ActualizarFechaVencimiento(int idCuenta, DateTime nuevaFecha)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = Cnn.OpenConecction();
+                cmd.CommandText = "UPDATE Bill SET ExprirationDate = @nuevaFecha WHERE IdBill = (SELECT IdBill FROM AccountReceivable WHERE IdAccount = @idCuenta)";
+                cmd.Parameters.AddWithValue("@nuevaFecha", nuevaFecha);
+                cmd.Parameters.AddWithValue("@idCuenta", idCuenta);
+                cmd.ExecuteNonQuery();
+                Cnn.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar la fecha de vencimiento: " + ex.Message);
+            }
+        }
+
+
 
         public int LastIdCxC()
         {
