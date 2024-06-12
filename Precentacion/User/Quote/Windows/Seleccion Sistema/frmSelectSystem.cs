@@ -39,6 +39,7 @@ namespace Precentacion.User.Quote.Windows
             ClsWindows.System = "Ventila";
             frmSelectDesingVentila frm = new frmSelectDesingVentila();
             frm.Show();
+            this.Close();
 
         }
 

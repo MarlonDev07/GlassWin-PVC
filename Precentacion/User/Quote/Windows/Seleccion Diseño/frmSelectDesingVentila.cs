@@ -156,7 +156,6 @@ namespace Precentacion.User.Quote.Windows
 
         private void frmSelectDesingVentila_Load(object sender, EventArgs e)
         {
-            this.Close();
         }
     }
 }
