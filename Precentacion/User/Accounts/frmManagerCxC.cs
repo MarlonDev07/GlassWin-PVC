@@ -13,6 +13,7 @@ using System.Linq;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Data.SqlClient;
 
 namespace Precentacion.User.Accounts
 {
@@ -33,6 +34,7 @@ namespace Precentacion.User.Accounts
             LoadClient();
             AccountsUI.loadMaterial(this);
             LoadSupplyers();
+            //LoadCxC();
         }
         #endregion
 
@@ -80,31 +82,56 @@ namespace Precentacion.User.Accounts
 
 
         }
-        private void LoadCxC() 
+        private void LoadCxC()
         {
-            //Cargar CxC en un DataTable
+            // Cargar CxC en un DataTable
             DataTable dataTable = N_CxC.FindCxCforClient(Convert.ToInt32(txtId.Text));
             if (dataTable != null)
             {
-                //Cargar los datos del DataTable en el DataGridView
+                // Cargar los datos del DataTable en el DataGridView
                 dgvCxC.DataSource = dataTable;
 
+                // Configurar el DataGrid después de cargar los datos
+                ConfigDataGrid();
             }
         }
-        private void ConfigDataGrid() 
+
+        private void ConfigDataGrid()
         {
-            //Cambiar Nombre de las Columnas
+            if (dgvCxC.Columns.Count == 0) return;  // Verificar que haya columnas
+
+            // Cambiar Nombre de las Columnas
             dgvCxC.Columns[0].HeaderText = "Id Cuenta";
             dgvCxC.Columns[1].HeaderText = "Id Factura";
             dgvCxC.Columns[2].HeaderText = "Monto Inicial";
-            dgvCxC.Columns[3].HeaderText = "Monto Pendiente";
+            dgvCxC.Columns[3].HeaderText = "Saldo Pendiente";
+            dgvCxC.Columns[4].HeaderText = "Proyecto";
+            dgvCxC.Columns[5].HeaderText = "Fecha";
+            dgvCxC.Columns[6].HeaderText = "Fecha de Vencimiento";
 
-            //Ajustar las columnas al Ancho del formulario
+            // Ajustar las columnas al Ancho del formulario
             dgvCxC.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            //Seleccionar todas la filas
+            // Seleccionar todas las filas
             dgvCxC.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Hacer que la columna "Fecha de Vencimiento" sea editable
+            dgvCxC.Columns[6].ReadOnly = false;
+
+            // Asegurar que las demás columnas no sean editables
+            for (int i = 0; i < dgvCxC.Columns.Count; i++)
+            {
+                if (i != 6)
+                {
+                    dgvCxC.Columns[i].ReadOnly = true;
+                }
+            }
         }
+
+
+
+
+
         private void LoadBalance() 
         { 
             //sumar eL Balance de las Cuentas por Cobrar
@@ -969,6 +996,79 @@ namespace Precentacion.User.Accounts
             catch (Exception)
             {
                 //MessageBox.Show("Error al eliminar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvCxC_CellEndEdit_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 6) // Verificar si es la columna "Fecha de Vencimiento"
+            {
+                try
+                {
+                    int idCuenta = Convert.ToInt32(dgvCxC.Rows[e.RowIndex].Cells[0].Value); // Obtener Id Cuenta
+                    DateTime nuevaFecha = Convert.ToDateTime(dgvCxC.Rows[e.RowIndex].Cells[6].Value); // Obtener la nueva fecha de vencimiento
+
+                    // Llamar al método para actualizar la base de datos
+                    N_CxC.ActualizarFechaVencimiento(idCuenta, nuevaFecha);
+
+                    MessageBox.Show("Fecha de vencimiento actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al actualizar la fecha de vencimiento: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void dgvCxC_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+
+        }
+
+        private void dgvCxC_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvCxC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Obtener la celda actualmente seleccionada
+            DataGridViewCell currentCell = dgvCxC.CurrentCell;
+
+            // Verificar si la celda actual es la columna "Fecha de Vencimiento"
+            if (currentCell != null && currentCell.ColumnIndex == 6)
+            {
+                // Habilitar la edición de la celda
+                currentCell.ReadOnly = false;
+            }
+        }
+
+  
+
+        private void dgvCxC_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // Obtener la celda actualmente seleccionada
+            DataGridViewCell currentCell = dgvCxC.CurrentCell;
+
+            // Verificar si la celda actual es la columna "Fecha de Vencimiento"
+            if (currentCell != null && currentCell.ColumnIndex == 6)
+            {
+                // Habilitar la edición de la celda
+                currentCell.ReadOnly = false;
+            }
+        }
+
+        private void dgvCxC_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Obtener la celda actualmente seleccionada
+            DataGridViewCell currentCell = dgvCxC.CurrentCell;
+
+            // Verificar si la celda actual es la columna "Fecha de Vencimiento"
+            if (currentCell != null && currentCell.ColumnIndex == 6)
+            {
+                dgvCxC.Columns[6].ReadOnly = false; // Asegúrate de que la columna "Fecha de Vencimiento" no esté bloqueada para edición
+                currentCell.ReadOnly = false; // Asegúrate de que la celda actual no esté bloqueada para edición
+
             }
         }
     }

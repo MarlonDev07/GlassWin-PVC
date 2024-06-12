@@ -42,6 +42,9 @@ namespace Negocio.Company.Account
         {
             return _CxC.DeleteCxC(IdAccount);
         }
-
+        public void ActualizarFechaVencimiento(int idCuenta, DateTime nuevaFecha)
+        {
+            _CxC.ActualizarFechaVencimiento(idCuenta, nuevaFecha);
+        }
     }
 }
