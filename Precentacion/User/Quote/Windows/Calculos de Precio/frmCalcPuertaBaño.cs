@@ -295,5 +295,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             TempPrice = clsPuertaBaño.Price * Convert.ToDecimal(txtCantidad.Value);
             txtTotalPrice.Text = TempPrice.ToString("C");
         }
+
+        private void frmCalcPuertaBaño_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
