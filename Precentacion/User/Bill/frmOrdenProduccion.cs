@@ -210,7 +210,9 @@ namespace Precentacion.User.Bill
                     }
 
                     // Limpiar y recargar los datos en el DataGridView dgvOrdenProduccion
+    
                     dgvOrdenProduccion.Rows.Clear();
+                    dgvOrdenProduccion8025.Rows.Clear();
                     ResultadosRebajo.Clear();
                     ResultadosCantidad.Clear();
                     LoadWindowsData();
