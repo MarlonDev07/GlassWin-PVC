@@ -535,6 +535,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.PanelMedidas);
             this.Controls.Add(this.picPuertaBaño);
+            this.MaximizeBox = false;
             this.Name = "frmCalcPuertaBaño";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cotizador Puerta Baño";

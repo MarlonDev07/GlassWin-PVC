@@ -534,6 +534,7 @@
             this.Controls.Add(this.PanelMedidas);
             this.Controls.Add(this.pbVentila);
             this.Controls.Add(this.btnGuardar);
+            this.MaximizeBox = false;
             this.Name = "frmCalcPriceVentila";
             this.Text = "Cotizador Ventila con Fijos";
             ((System.ComponentModel.ISupportInitialize)(this.pbVentila)).EndInit();
