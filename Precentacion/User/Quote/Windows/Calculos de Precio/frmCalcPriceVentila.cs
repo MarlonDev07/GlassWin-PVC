@@ -192,5 +192,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
            TempPrecio = precioTotal * Convert.ToDecimal(txtCantidad.Value);
             txtTotalPrice.Text = TempPrecio.ToString("C");
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            panelDetalle.Enabled = false;
+        }
     }
 }
