@@ -174,6 +174,8 @@ namespace Precentacion.User.Employer
             {
                 IdEmployer = Convert.ToInt32(dgvEmployers.CurrentRow.Cells[0].Value.ToString());
                 txtEmployerName.Text = dgvEmployers.CurrentRow.Cells[1].Value.ToString() + " " + dgvEmployers.CurrentRow.Cells[2].Value.ToString();
+                txtEmpleadoVac.Text = dgvEmployers.CurrentRow.Cells[1].Value.ToString() + " " + dgvEmployers.CurrentRow.Cells[2].Value.ToString();
+                txtEmpleadoAgui.Text = dgvEmployers.CurrentRow.Cells[1].Value.ToString() + " " + dgvEmployers.CurrentRow.Cells[2].Value.ToString();
                 txtSalaryBase.Text = dgvEmployers.CurrentRow.Cells[3].Value.ToString();
                 txtSalaryPay.Text = dgvEmployers.CurrentRow.Cells[11].Value.ToString();
                 SalaryxHoursPay = Convert.ToDecimal(dgvEmployers.CurrentRow.Cells[12].Value);

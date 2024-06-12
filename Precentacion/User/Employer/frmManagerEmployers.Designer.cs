@@ -161,6 +161,12 @@
             this.label41 = new System.Windows.Forms.Label();
             this.txtDispAgui = new System.Windows.Forms.TextBox();
             this.dgvAguinaldo = new System.Windows.Forms.DataGridView();
+            this.label38 = new System.Windows.Forms.Label();
+            this.txtEmpleadoVac = new System.Windows.Forms.TextBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.txtEmpleadoAgui = new System.Windows.Forms.TextBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tabControlManager.SuspendLayout();
             this.tabEployers.SuspendLayout();
             this.tabControlEmployers.SuspendLayout();
@@ -190,6 +196,8 @@
             this.tabAgui.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAguinaldo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlManager
@@ -1447,6 +1455,9 @@
             // 
             // tabVacation
             // 
+            this.tabVacation.Controls.Add(this.label38);
+            this.tabVacation.Controls.Add(this.txtEmpleadoVac);
+            this.tabVacation.Controls.Add(this.pictureBox4);
             this.tabVacation.Controls.Add(this.dgvVacation1);
             this.tabVacation.Controls.Add(this.panel5);
             this.tabVacation.ImageIndex = 5;
@@ -1482,10 +1493,10 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvVacation1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvVacation1.EnableHeadersVisualStyles = false;
-            this.dgvVacation1.Location = new System.Drawing.Point(3, 7);
+            this.dgvVacation1.Location = new System.Drawing.Point(3, 69);
             this.dgvVacation1.Name = "dgvVacation1";
             this.dgvVacation1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVacation1.Size = new System.Drawing.Size(612, 484);
+            this.dgvVacation1.Size = new System.Drawing.Size(612, 422);
             this.dgvVacation1.TabIndex = 19;
             // 
             // panel5
@@ -1560,6 +1571,9 @@
             // 
             // tabAgui
             // 
+            this.tabAgui.Controls.Add(this.label39);
+            this.tabAgui.Controls.Add(this.txtEmpleadoAgui);
+            this.tabAgui.Controls.Add(this.pictureBox5);
             this.tabAgui.Controls.Add(this.panel7);
             this.tabAgui.Controls.Add(this.dgvAguinaldo);
             this.tabAgui.ImageIndex = 6;
@@ -1685,11 +1699,67 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAguinaldo.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvAguinaldo.EnableHeadersVisualStyles = false;
-            this.dgvAguinaldo.Location = new System.Drawing.Point(5, 3);
+            this.dgvAguinaldo.Location = new System.Drawing.Point(5, 79);
             this.dgvAguinaldo.Name = "dgvAguinaldo";
             this.dgvAguinaldo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAguinaldo.Size = new System.Drawing.Size(611, 491);
+            this.dgvAguinaldo.Size = new System.Drawing.Size(611, 415);
             this.dgvAguinaldo.TabIndex = 16;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(92, 12);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(71, 16);
+            this.label38.TabIndex = 22;
+            this.label38.Text = "Empleado";
+            // 
+            // txtEmpleadoVac
+            // 
+            this.txtEmpleadoVac.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmpleadoVac.Location = new System.Drawing.Point(92, 31);
+            this.txtEmpleadoVac.Name = "txtEmpleadoVac";
+            this.txtEmpleadoVac.Size = new System.Drawing.Size(166, 32);
+            this.txtEmpleadoVac.TabIndex = 21;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(6, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(80, 60);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 20;
+            this.pictureBox4.TabStop = false;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(91, 19);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(71, 16);
+            this.label39.TabIndex = 20;
+            this.label39.Text = "Empleado";
+            // 
+            // txtEmpleadoAgui
+            // 
+            this.txtEmpleadoAgui.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmpleadoAgui.Location = new System.Drawing.Point(91, 38);
+            this.txtEmpleadoAgui.Name = "txtEmpleadoAgui";
+            this.txtEmpleadoAgui.Size = new System.Drawing.Size(166, 32);
+            this.txtEmpleadoAgui.TabIndex = 19;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(5, 10);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(80, 60);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 18;
+            this.pictureBox5.TabStop = false;
             // 
             // frmManagerEmployers
             // 
@@ -1728,15 +1798,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabVacation.ResumeLayout(false);
+            this.tabVacation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVacation1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nvacaciones)).EndInit();
             this.tabAgui.ResumeLayout(false);
+            this.tabAgui.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAguinaldo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1865,5 +1939,11 @@
         private System.Windows.Forms.TextBox txtComision;
         private System.Windows.Forms.ToolStripMenuItem eliminarEmpleadoToolStripMenuItem;
         private System.Windows.Forms.CheckBox cbkccss;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox txtEmpleadoVac;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox txtEmpleadoAgui;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }
