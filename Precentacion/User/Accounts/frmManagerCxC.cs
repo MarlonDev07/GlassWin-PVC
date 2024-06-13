@@ -25,6 +25,7 @@ namespace Precentacion.User.Accounts
         N_AdmProyecto N_AdmProyecto = new N_AdmProyecto();
         N_Client N_Client = new N_Client();
         bool EventFormClose = true;
+        private TabPage hiddenTab;
         #endregion
 
         #region Constructor
@@ -34,9 +35,18 @@ namespace Precentacion.User.Accounts
             LoadClient();
             AccountsUI.loadMaterial(this);
             LoadSupplyers();
+            HideLastTab();
             //LoadCxC();
         }
         #endregion
+        private void HideLastTab()
+        {
+            if (TabControl.TabPages.Count > 2)
+            {
+                hiddenTab = TabControl.TabPages[2];
+                TabControl.TabPages.RemoveAt(2);
+            }
+        }
 
         #region CxC
 
