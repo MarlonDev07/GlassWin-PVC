@@ -57,6 +57,8 @@
             this.lblTitleNew = new System.Windows.Forms.Label();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.txtNameEdit = new System.Windows.Forms.TextBox();
             this.txtEmailEdit = new System.Windows.Forms.TextBox();
@@ -69,8 +71,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblTitleEdit = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).BeginInit();
@@ -88,11 +88,10 @@
             this.tabControl.Controls.Add(this.tabEdit);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.ImageList = this.imageList;
-            this.tabControl.Location = new System.Drawing.Point(4, 98);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabControl.Location = new System.Drawing.Point(3, 64);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1230, 762);
+            this.tabControl.Size = new System.Drawing.Size(819, 495);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -103,10 +102,9 @@
             this.tabLista.Controls.Add(this.dgvClient);
             this.tabLista.ImageIndex = 2;
             this.tabLista.Location = new System.Drawing.Point(4, 32);
-            this.tabLista.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabLista.Name = "tabLista";
-            this.tabLista.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabLista.Size = new System.Drawing.Size(1222, 726);
+            this.tabLista.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabLista.Size = new System.Drawing.Size(811, 459);
             this.tabLista.TabIndex = 0;
             this.tabLista.Text = "Lista";
             this.tabLista.ToolTipText = "Lista de Clientes";
@@ -114,20 +112,18 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 34);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.Location = new System.Drawing.Point(6, 22);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 26);
+            this.textBox1.Size = new System.Drawing.Size(173, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lblBusquedaNombre
             // 
             this.lblBusquedaNombre.AutoSize = true;
-            this.lblBusquedaNombre.Location = new System.Drawing.Point(4, 9);
-            this.lblBusquedaNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBusquedaNombre.Location = new System.Drawing.Point(3, 6);
             this.lblBusquedaNombre.Name = "lblBusquedaNombre";
-            this.lblBusquedaNombre.Size = new System.Drawing.Size(169, 20);
+            this.lblBusquedaNombre.Size = new System.Drawing.Size(113, 13);
             this.lblBusquedaNombre.TabIndex = 1;
             this.lblBusquedaNombre.Text = "Busqueda por Nombre";
             // 
@@ -155,13 +151,12 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvClient.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClient.EnableHeadersVisualStyles = false;
-            this.dgvClient.Location = new System.Drawing.Point(4, 69);
-            this.dgvClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvClient.Location = new System.Drawing.Point(3, 45);
             this.dgvClient.Name = "dgvClient";
             this.dgvClient.ReadOnly = true;
             this.dgvClient.RowHeadersWidth = 62;
             this.dgvClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClient.Size = new System.Drawing.Size(1210, 633);
+            this.dgvClient.Size = new System.Drawing.Size(806, 411);
             this.dgvClient.TabIndex = 0;
             this.dgvClient.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClient_CellDoubleClick);
             // 
@@ -173,26 +168,26 @@
             this.editarClienteToolStripMenuItem,
             this.eliminarClienteToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(205, 100);
+            this.contextMenuStrip.Size = new System.Drawing.Size(158, 70);
             // 
             // cotizarToolStripMenuItem
             // 
             this.cotizarToolStripMenuItem.Name = "cotizarToolStripMenuItem";
-            this.cotizarToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.cotizarToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.cotizarToolStripMenuItem.Text = "Cotizar";
             this.cotizarToolStripMenuItem.Click += new System.EventHandler(this.cotizarToolStripMenuItem_Click);
             // 
             // editarClienteToolStripMenuItem
             // 
             this.editarClienteToolStripMenuItem.Name = "editarClienteToolStripMenuItem";
-            this.editarClienteToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.editarClienteToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.editarClienteToolStripMenuItem.Text = "Editar Cliente";
             this.editarClienteToolStripMenuItem.Click += new System.EventHandler(this.editarClienteToolStripMenuItem_Click);
             // 
             // eliminarClienteToolStripMenuItem
             // 
             this.eliminarClienteToolStripMenuItem.Name = "eliminarClienteToolStripMenuItem";
-            this.eliminarClienteToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.eliminarClienteToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.eliminarClienteToolStripMenuItem.Text = "Eliminar Cliente";
             this.eliminarClienteToolStripMenuItem.Click += new System.EventHandler(this.eliminarClienteToolStripMenuItem_Click);
             // 
@@ -202,10 +197,9 @@
             this.tabNew.Controls.Add(this.lblTitleNew);
             this.tabNew.ImageIndex = 6;
             this.tabNew.Location = new System.Drawing.Point(4, 32);
-            this.tabNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabNew.Name = "tabNew";
-            this.tabNew.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabNew.Size = new System.Drawing.Size(1222, 726);
+            this.tabNew.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabNew.Size = new System.Drawing.Size(811, 459);
             this.tabNew.TabIndex = 1;
             this.tabNew.Text = "Nuevo";
             this.tabNew.UseVisualStyleBackColor = true;
@@ -227,20 +221,18 @@
             this.PanelDataNew.Controls.Add(this.lblAddress);
             this.PanelDataNew.Controls.Add(this.lblPhone);
             this.PanelDataNew.Controls.Add(this.lblName);
-            this.PanelDataNew.Location = new System.Drawing.Point(4, 74);
-            this.PanelDataNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PanelDataNew.Location = new System.Drawing.Point(3, 48);
             this.PanelDataNew.Name = "PanelDataNew";
-            this.PanelDataNew.Size = new System.Drawing.Size(1214, 622);
+            this.PanelDataNew.Size = new System.Drawing.Size(809, 405);
             this.PanelDataNew.TabIndex = 1;
             // 
             // lblAgenda
             // 
             this.lblAgenda.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAgenda.AutoSize = true;
-            this.lblAgenda.Location = new System.Drawing.Point(529, 364);
-            this.lblAgenda.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAgenda.Location = new System.Drawing.Point(352, 237);
             this.lblAgenda.Name = "lblAgenda";
-            this.lblAgenda.Size = new System.Drawing.Size(182, 20);
+            this.lblAgenda.Size = new System.Drawing.Size(123, 13);
             this.lblAgenda.TabIndex = 10;
             this.lblAgenda.TabStop = true;
             this.lblAgenda.Text = "Agendar cita con Cliente";
@@ -253,10 +245,10 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(1025, 461);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(684, 283);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 88);
+            this.button1.Size = new System.Drawing.Size(91, 83);
             this.button1.TabIndex = 9;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -264,41 +256,37 @@
             // txtName
             // 
             this.txtName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtName.Location = new System.Drawing.Point(50, 67);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.Location = new System.Drawing.Point(32, 44);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(533, 41);
+            this.txtName.Size = new System.Drawing.Size(357, 28);
             this.txtName.TabIndex = 1;
             // 
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmail.Location = new System.Drawing.Point(628, 189);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEmail.Location = new System.Drawing.Point(418, 123);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(533, 41);
+            this.txtEmail.Size = new System.Drawing.Size(357, 28);
             this.txtEmail.TabIndex = 7;
             // 
             // txtAddress
             // 
             this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtAddress.Location = new System.Drawing.Point(50, 189);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAddress.Location = new System.Drawing.Point(32, 123);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(533, 132);
+            this.txtAddress.Size = new System.Drawing.Size(357, 87);
             this.txtAddress.TabIndex = 5;
             // 
             // txtPhone
             // 
             this.txtPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPhone.Location = new System.Drawing.Point(628, 67);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPhone.Location = new System.Drawing.Point(418, 44);
             this.txtPhone.Multiline = true;
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(533, 41);
+            this.txtPhone.Size = new System.Drawing.Size(357, 28);
             this.txtPhone.TabIndex = 3;
             // 
             // btnAcceptNew
@@ -308,10 +296,10 @@
             this.btnAcceptNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAcceptNew.FlatAppearance.BorderSize = 0;
             this.btnAcceptNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAcceptNew.Location = new System.Drawing.Point(50, 461);
-            this.btnAcceptNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAcceptNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAcceptNew.Image")));
+            this.btnAcceptNew.Location = new System.Drawing.Point(33, 291);
             this.btnAcceptNew.Name = "btnAcceptNew";
-            this.btnAcceptNew.Size = new System.Drawing.Size(136, 88);
+            this.btnAcceptNew.Size = new System.Drawing.Size(88, 66);
             this.btnAcceptNew.TabIndex = 8;
             this.btnAcceptNew.UseVisualStyleBackColor = true;
             this.btnAcceptNew.Click += new System.EventHandler(this.btnNewClient_Click);
@@ -320,10 +308,9 @@
             // 
             this.lblEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEmail.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(546, 132);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmail.Location = new System.Drawing.Point(363, 86);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(255, 52);
+            this.lblEmail.Size = new System.Drawing.Size(170, 34);
             this.lblEmail.TabIndex = 6;
             this.lblEmail.Text = "Correo";
             this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -332,10 +319,9 @@
             // 
             this.lblAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAddress.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(43, 137);
-            this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddress.Location = new System.Drawing.Point(28, 89);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(153, 47);
+            this.lblAddress.Size = new System.Drawing.Size(102, 31);
             this.lblAddress.TabIndex = 4;
             this.lblAddress.Text = "Direccion";
             this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -344,10 +330,9 @@
             // 
             this.lblPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPhone.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(621, 19);
-            this.lblPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPhone.Location = new System.Drawing.Point(413, 12);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(132, 48);
+            this.lblPhone.Size = new System.Drawing.Size(88, 31);
             this.lblPhone.TabIndex = 2;
             this.lblPhone.Text = "Telefono";
             this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -356,10 +341,9 @@
             // 
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblName.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(43, 19);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(28, 12);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(137, 43);
+            this.lblName.Size = new System.Drawing.Size(91, 28);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Nombre";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -369,10 +353,9 @@
             this.lblTitleNew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTitleNew.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTitleNew.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleNew.Location = new System.Drawing.Point(4, 5);
-            this.lblTitleNew.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitleNew.Location = new System.Drawing.Point(3, 3);
             this.lblTitleNew.Name = "lblTitleNew";
-            this.lblTitleNew.Size = new System.Drawing.Size(1214, 64);
+            this.lblTitleNew.Size = new System.Drawing.Size(805, 42);
             this.lblTitleNew.TabIndex = 0;
             this.lblTitleNew.Text = "Nuevo Cliente";
             this.lblTitleNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -383,9 +366,8 @@
             this.tabEdit.Controls.Add(this.lblTitleEdit);
             this.tabEdit.ImageIndex = 7;
             this.tabEdit.Location = new System.Drawing.Point(4, 32);
-            this.tabEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabEdit.Name = "tabEdit";
-            this.tabEdit.Size = new System.Drawing.Size(1222, 726);
+            this.tabEdit.Size = new System.Drawing.Size(811, 459);
             this.tabEdit.TabIndex = 2;
             this.tabEdit.Text = "Editar";
             this.tabEdit.UseVisualStyleBackColor = true;
@@ -408,11 +390,31 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(4, 69);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(3, 45);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1214, 622);
+            this.panel1.Size = new System.Drawing.Size(809, 405);
             this.panel1.TabIndex = 3;
+            // 
+            // txtId
+            // 
+            this.txtId.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(32, 47);
+            this.txtId.Multiline = true;
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(357, 28);
+            this.txtId.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(28, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 28);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "ID";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button2
             // 
@@ -421,10 +423,10 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(1025, 461);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(685, 289);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 88);
+            this.button2.Size = new System.Drawing.Size(90, 85);
             this.button2.TabIndex = 9;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -432,41 +434,37 @@
             // txtNameEdit
             // 
             this.txtNameEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtNameEdit.Location = new System.Drawing.Point(628, 73);
-            this.txtNameEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNameEdit.Location = new System.Drawing.Point(418, 47);
             this.txtNameEdit.Multiline = true;
             this.txtNameEdit.Name = "txtNameEdit";
-            this.txtNameEdit.Size = new System.Drawing.Size(533, 41);
+            this.txtNameEdit.Size = new System.Drawing.Size(357, 28);
             this.txtNameEdit.TabIndex = 1;
             // 
             // txtEmailEdit
             // 
             this.txtEmailEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmailEdit.Location = new System.Drawing.Point(628, 189);
-            this.txtEmailEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEmailEdit.Location = new System.Drawing.Point(418, 123);
             this.txtEmailEdit.Multiline = true;
             this.txtEmailEdit.Name = "txtEmailEdit";
-            this.txtEmailEdit.Size = new System.Drawing.Size(533, 41);
+            this.txtEmailEdit.Size = new System.Drawing.Size(357, 28);
             this.txtEmailEdit.TabIndex = 7;
             // 
             // txtAddressEdit
             // 
             this.txtAddressEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtAddressEdit.Location = new System.Drawing.Point(50, 189);
-            this.txtAddressEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAddressEdit.Location = new System.Drawing.Point(32, 123);
             this.txtAddressEdit.Multiline = true;
             this.txtAddressEdit.Name = "txtAddressEdit";
-            this.txtAddressEdit.Size = new System.Drawing.Size(533, 132);
+            this.txtAddressEdit.Size = new System.Drawing.Size(357, 87);
             this.txtAddressEdit.TabIndex = 5;
             // 
             // txtPhoneEdit
             // 
             this.txtPhoneEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPhoneEdit.Location = new System.Drawing.Point(628, 283);
-            this.txtPhoneEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPhoneEdit.Location = new System.Drawing.Point(418, 184);
             this.txtPhoneEdit.Multiline = true;
             this.txtPhoneEdit.Name = "txtPhoneEdit";
-            this.txtPhoneEdit.Size = new System.Drawing.Size(533, 41);
+            this.txtPhoneEdit.Size = new System.Drawing.Size(357, 28);
             this.txtPhoneEdit.TabIndex = 3;
             // 
             // button3
@@ -476,10 +474,10 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(50, 461);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(22, 289);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(136, 88);
+            this.button3.Size = new System.Drawing.Size(91, 79);
             this.button3.TabIndex = 8;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -488,10 +486,9 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(546, 132);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(363, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(255, 52);
+            this.label1.Size = new System.Drawing.Size(170, 34);
             this.label1.TabIndex = 6;
             this.label1.Text = "Correo";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -500,10 +497,9 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 137);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(28, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 47);
+            this.label2.Size = new System.Drawing.Size(102, 31);
             this.label2.TabIndex = 4;
             this.label2.Text = "Direccion";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -512,10 +508,9 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(621, 235);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(413, 153);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 48);
+            this.label3.Size = new System.Drawing.Size(88, 31);
             this.label3.TabIndex = 2;
             this.label3.Text = "Telefono";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -524,10 +519,9 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(621, 25);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(413, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 43);
+            this.label4.Size = new System.Drawing.Size(91, 28);
             this.label4.TabIndex = 0;
             this.label4.Text = "Nombre";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -538,9 +532,8 @@
             this.lblTitleEdit.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTitleEdit.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitleEdit.Location = new System.Drawing.Point(0, 0);
-            this.lblTitleEdit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitleEdit.Name = "lblTitleEdit";
-            this.lblTitleEdit.Size = new System.Drawing.Size(1222, 64);
+            this.lblTitleEdit.Size = new System.Drawing.Size(811, 42);
             this.lblTitleEdit.TabIndex = 2;
             this.lblTitleEdit.Text = "Editar Cliente";
             this.lblTitleEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -558,41 +551,16 @@
             this.imageList.Images.SetKeyName(6, "Agregar.png");
             this.imageList.Images.SetKeyName(7, "Prueba_Editar.png");
             // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(43, 25);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 43);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "ID";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtId
-            // 
-            this.txtId.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(50, 73);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtId.Multiline = true;
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(533, 41);
-            this.txtId.TabIndex = 11;
-            // 
             // frmManagerClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1238, 865);
+            this.ClientSize = new System.Drawing.Size(825, 562);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MinimumSize = new System.Drawing.Size(1238, 743);
+            this.MinimumSize = new System.Drawing.Size(825, 483);
             this.Name = "frmManagerClient";
-            this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formclosing);
