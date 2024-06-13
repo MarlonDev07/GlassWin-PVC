@@ -143,7 +143,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 if (txtAlto.Text != "")
                 {
                     //Detectar si el usuario ingreso un punto en vez de una coma
-                    //DetectarPunto();
+                    DetectarPunto();
                     ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
                     redimension_Click(sender, e);
 
@@ -152,7 +152,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 if (txtAncho.Text != "")
                 {
                     //Detectar si el usuario ingreso un punto en vez de una coma
-                    //DetectarPunto();
+                    DetectarPunto();
                     ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
                     redimension_Click(sender, e);
                 }

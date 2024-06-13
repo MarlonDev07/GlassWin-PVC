@@ -206,9 +206,9 @@
             this.PanelMedidas.Controls.Add(this.label4);
             this.PanelMedidas.Controls.Add(this.cbColorLamina);
             this.PanelMedidas.Controls.Add(this.label2);
-            this.PanelMedidas.Controls.Add(this.cbLaminaPlastica);
             this.PanelMedidas.Controls.Add(this.label1);
             this.PanelMedidas.Controls.Add(this.txtAnchoPanel);
+            this.PanelMedidas.Controls.Add(this.cbLaminaPlastica);
             this.PanelMedidas.Controls.Add(this.label9);
             this.PanelMedidas.Controls.Add(this.btnCargar);
             this.PanelMedidas.Controls.Add(this.lblColor);
@@ -299,7 +299,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(121, 25);
+            this.label1.Location = new System.Drawing.Point(3, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 20);
             this.label1.TabIndex = 42;
@@ -310,7 +310,7 @@
             // 
             this.txtAnchoPanel.BackColor = System.Drawing.Color.White;
             this.txtAnchoPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnchoPanel.Location = new System.Drawing.Point(121, 48);
+            this.txtAnchoPanel.Location = new System.Drawing.Point(3, 48);
             this.txtAnchoPanel.Name = "txtAnchoPanel";
             this.txtAnchoPanel.Size = new System.Drawing.Size(90, 23);
             this.txtAnchoPanel.TabIndex = 43;
@@ -362,7 +362,7 @@
             this.lblAncho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAncho.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAncho.ForeColor = System.Drawing.Color.Black;
-            this.lblAncho.Location = new System.Drawing.Point(5, 25);
+            this.lblAncho.Location = new System.Drawing.Point(121, 25);
             this.lblAncho.Name = "lblAncho";
             this.lblAncho.Size = new System.Drawing.Size(90, 20);
             this.lblAncho.TabIndex = 39;
@@ -373,7 +373,7 @@
             // 
             this.txtAncho.BackColor = System.Drawing.Color.White;
             this.txtAncho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAncho.Location = new System.Drawing.Point(5, 48);
+            this.txtAncho.Location = new System.Drawing.Point(121, 48);
             this.txtAncho.Name = "txtAncho";
             this.txtAncho.Size = new System.Drawing.Size(90, 23);
             this.txtAncho.TabIndex = 40;
@@ -464,7 +464,7 @@
             this.panelDesglose.Controls.Add(this.btnOcultar);
             this.panelDesglose.Controls.Add(this.dgvAluminio);
             this.panelDesglose.Controls.Add(this.label5);
-            this.panelDesglose.Location = new System.Drawing.Point(0, 67);
+            this.panelDesglose.Location = new System.Drawing.Point(191, 450);
             this.panelDesglose.Name = "panelDesglose";
             this.panelDesglose.Size = new System.Drawing.Size(1043, 710);
             this.panelDesglose.TabIndex = 65;

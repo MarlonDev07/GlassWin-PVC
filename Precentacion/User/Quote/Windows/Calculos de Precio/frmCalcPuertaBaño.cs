@@ -8,6 +8,8 @@ using Negocio.LoadProduct;
 using Dominio.Model.ClassWindows;
 using Precentacion.User.Quote.Quote;
 using System.Linq;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 {
@@ -16,6 +18,9 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         string Url = "";
         decimal Price = 0;
         decimal TempPrice = 0;
+        // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
+        private const decimal MetrosAPixeles = 1000.0m;
+        private const decimal CentimetrosAPixeles = 100.0m;
         public frmCalcPuertaBaño()
         {
             InitializeComponent();
@@ -85,26 +90,139 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
             //Asignar el valor a la clase clsPuertaBaño
             string Name = TextBox.Name;
-            if (TextBox.Text != string.Empty || TextBox.Text != "")
+
+            try
             {
-                decimal Valor = Convert.ToDecimal(TextBox.Text);
-                switch (Name)
+                if (TextBox.Text != string.Empty || TextBox.Text != "")
                 {
-                    case "txtAncho":
-                        clsPuertaBaño.WeightTotal = Valor;
-                        break;
-                    case "txtAnchoPanel":
-                        clsPuertaBaño.WeightPanel = Valor;
-                        break;
-                    case "txtAlto":
-                        clsPuertaBaño.heigt = Valor;
-                        break;
+                    decimal Valor = Convert.ToDecimal(TextBox.Text);
+                    switch (Name)
+                    {
+                        case "txtAncho":
+                            clsPuertaBaño.WeightTotal = Valor;
+                            break;
+                        case "txtAnchoPanel":
+                            clsPuertaBaño.WeightPanel = Valor;
+                            break;
+                        case "txtAlto":
+                            clsPuertaBaño.heigt = Valor;
+                            break;
+                    }
                 }
-            }     
-            
+
+                if (txtAlto.Text != "")
+                {
+                    //Detectar si el usuario ingreso un punto en vez de una coma
+                    DetectarPunto();
+                    ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
+                    redimension_Click(sender, e);
+
+
+                }
+                if (txtAncho.Text != "")
+                {
+                    //Detectar si el usuario ingreso un punto en vez de una coma
+                    DetectarPunto();
+                    ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
+                    redimension_Click(sender, e);
+                }
+                //Advertencias();
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+        }
+        private void redimension_Click(object sender, EventArgs e)
+        {
+            if (picPuertaBaño.Image != null)
+            {
+                try
+                {
+                    if (decimal.TryParse(txtAncho.Text, out decimal anchoEnMetros) &&
+                        decimal.TryParse(txtAlto.Text, out decimal alturaEnMetros))
+                    {
+                        int newWidth = (int)(anchoEnMetros * MetrosAPixeles);
+                        int newHeight = (int)(alturaEnMetros * MetrosAPixeles);
+
+                        if (newWidth > 0 && newHeight > 0)
+                        {
+                            var resizedImage = ResizeImage(picPuertaBaño.Image, newWidth, newHeight);
+                            picPuertaBaño.Image = resizedImage;
+                            picPuertaBaño.SizeMode = PictureBoxSizeMode.Zoom;  // Ajusta según sea necesario
+                            picPuertaBaño.Refresh(); // Forzar actualización del PictureBox
+                        }
+                        else
+                        {
+                            //MessageBox.Show("Las dimensiones deben ser mayores que cero.");
+                        }
+                    }
+                    else
+                    {
+                        //MessageBox.Show("Por favor, ingresa valores numéricos válidos para el ancho y la altura.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show($"Ocurrió un error al redimensionar la imagen: {ex.Message}");
+                }
+            }
+            else
+            {
+                //MessageBox.Show("No hay ninguna imagen cargada en el PictureBox.");
+            }
         }
         #endregion
+        private void DetectarPunto()
+        {
+            if (txtAncho.Text.Contains("."))
+            {
+                txtAncho.Text = txtAncho.Text.Replace(".", ",");
+                //Posicionar el cursor al final del texto
+                txtAncho.SelectionStart = txtAncho.Text.Length;
+            }
+            if (txtAlto.Text.Contains("."))
+            {
+                txtAlto.Text = txtAlto.Text.Replace(".", ",");
+                //Posicionar el cursor al final del texto
+                txtAlto.SelectionStart = txtAlto.Text.Length;
+            }
 
+        }
+        private Bitmap ResizeImage(Image image, int width, int height)
+        {
+            // Rectángulo de destino para la imagen redimensionada
+            var destRect = new Rectangle(0, 0, width, height);
+            // Crear un nuevo objeto Bitmap para la imagen redimensionada
+            var destImage = new Bitmap(width, height);
+
+            // Establecer la resolución del nuevo Bitmap igual a la resolución de la imagen original
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            // Crear un objeto Graphics para la imagen redimensionada
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                // Configurar la calidad de composición, interpolación, suavizado y compensación de píxeles para el objeto Graphics
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                // Configurar el modo de envoltura de imagen para el objeto Graphics
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    // Dibujar la imagen original redimensionada en el rectángulo de destino utilizando el objeto Graphics
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            // Devolver la imagen redimensionada
+            return destImage;
+        }
         #region KeyPress
         private void KeyPressTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
