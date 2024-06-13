@@ -51,13 +51,13 @@
             this.lblDetalle = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.cbSupplier = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnDesglose = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.pbVentana = new System.Windows.Forms.PictureBox();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.panelDetalle = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvAccesorios = new System.Windows.Forms.DataGridView();
@@ -206,6 +206,7 @@
             // 
             this.txtAncho.BackColor = System.Drawing.Color.White;
             this.txtAncho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAncho.ForeColor = System.Drawing.Color.White;
             this.txtAncho.Location = new System.Drawing.Point(15, 56);
             this.txtAncho.Name = "txtAncho";
             this.txtAncho.Size = new System.Drawing.Size(108, 23);
@@ -278,6 +279,7 @@
             // 
             this.txtAlto.BackColor = System.Drawing.Color.White;
             this.txtAlto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlto.ForeColor = System.Drawing.Color.Black;
             this.txtAlto.Location = new System.Drawing.Point(171, 56);
             this.txtAlto.Name = "txtAlto";
             this.txtAlto.Size = new System.Drawing.Size(108, 23);
@@ -394,6 +396,22 @@
             this.panel2.Size = new System.Drawing.Size(1162, 127);
             this.panel2.TabIndex = 70;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSalir.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.Color.White;
+            this.btnSalir.Location = new System.Drawing.Point(867, 70);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(129, 30);
+            this.btnSalir.TabIndex = 71;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // cbSupplier
             // 
             this.cbSupplier.BackColor = System.Drawing.SystemColors.ScrollBar;
@@ -460,6 +478,7 @@
             // pbVentana
             // 
             this.pbVentana.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbVentana.BackColor = System.Drawing.Color.Transparent;
             this.pbVentana.Image = ((System.Drawing.Image)(resources.GetObject("pbVentana.Image")));
             this.pbVentana.Location = new System.Drawing.Point(434, 241);
             this.pbVentana.Name = "pbVentana";
@@ -467,22 +486,6 @@
             this.pbVentana.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbVentana.TabIndex = 64;
             this.pbVentana.TabStop = false;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSalir.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(867, 70);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(129, 30);
-            this.btnSalir.TabIndex = 71;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // panelDetalle
             // 

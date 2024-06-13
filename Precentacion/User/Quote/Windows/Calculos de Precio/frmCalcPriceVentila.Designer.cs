@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalcPriceVentila));
             this.pbVentila = new System.Windows.Forms.PictureBox();
             this.PanelMedidas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,7 +63,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.Vidriodt = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.Aluminiodt = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pbVentila)).BeginInit();
             this.PanelMedidas.SuspendLayout();
@@ -76,9 +77,11 @@
             // 
             // pbVentila
             // 
-            this.pbVentila.Location = new System.Drawing.Point(388, 211);
+            this.pbVentila.Image = ((System.Drawing.Image)(resources.GetObject("pbVentila.Image")));
+            this.pbVentila.Location = new System.Drawing.Point(378, 190);
             this.pbVentila.Name = "pbVentila";
-            this.pbVentila.Size = new System.Drawing.Size(450, 241);
+            this.pbVentila.Size = new System.Drawing.Size(470, 338);
+            this.pbVentila.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbVentila.TabIndex = 0;
             this.pbVentila.TabStop = false;
             // 
@@ -107,7 +110,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(210, 27);
+            this.label1.Location = new System.Drawing.Point(20, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(151, 29);
             this.label1.TabIndex = 42;
@@ -118,7 +121,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(210, 60);
+            this.textBox1.Location = new System.Drawing.Point(20, 61);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(151, 23);
             this.textBox1.TabIndex = 43;
@@ -169,9 +172,9 @@
             this.lblAncho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAncho.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAncho.ForeColor = System.Drawing.Color.Black;
-            this.lblAncho.Location = new System.Drawing.Point(18, 28);
+            this.lblAncho.Location = new System.Drawing.Point(207, 28);
             this.lblAncho.Name = "lblAncho";
-            this.lblAncho.Size = new System.Drawing.Size(153, 29);
+            this.lblAncho.Size = new System.Drawing.Size(150, 29);
             this.lblAncho.TabIndex = 39;
             this.lblAncho.Text = "Ancho Total";
             this.lblAncho.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -180,7 +183,7 @@
             // 
             this.txtAncho.BackColor = System.Drawing.Color.White;
             this.txtAncho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAncho.Location = new System.Drawing.Point(17, 60);
+            this.txtAncho.Location = new System.Drawing.Point(206, 60);
             this.txtAncho.Name = "txtAncho";
             this.txtAncho.Size = new System.Drawing.Size(151, 23);
             this.txtAncho.TabIndex = 40;
@@ -412,7 +415,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGuardar.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(537, 493);
+            this.btnGuardar.Location = new System.Drawing.Point(474, 555);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(151, 30);
             this.btnGuardar.TabIndex = 44;
@@ -428,12 +431,12 @@
             this.panelDetalle.Controls.Add(this.label8);
             this.panelDetalle.Controls.Add(this.label10);
             this.panelDetalle.Controls.Add(this.Vidriodt);
-            this.panelDetalle.Controls.Add(this.button2);
+            this.panelDetalle.Controls.Add(this.btnSalir);
             this.panelDetalle.Controls.Add(this.Aluminiodt);
-            this.panelDetalle.Location = new System.Drawing.Point(-1, 58);
+            this.panelDetalle.Location = new System.Drawing.Point(-1, 63);
             this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1140, 720);
-            this.panelDetalle.TabIndex = 75;
+            this.panelDetalle.Size = new System.Drawing.Size(1140, 682);
+            this.panelDetalle.TabIndex = 77;
             this.panelDetalle.Visible = false;
             // 
             // label4
@@ -500,20 +503,20 @@
             this.Vidriodt.Size = new System.Drawing.Size(675, 89);
             this.Vidriodt.TabIndex = 73;
             // 
-            // button2
+            // btnSalir
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(526, 526);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(129, 45);
-            this.button2.TabIndex = 72;
-            this.button2.Text = "Salir";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSalir.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.Color.White;
+            this.btnSalir.Location = new System.Drawing.Point(526, 507);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(129, 45);
+            this.btnSalir.TabIndex = 72;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
             // 
             // Aluminiodt
             // 
@@ -587,7 +590,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView Vidriodt;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DataGridView Aluminiodt;
     }
 }

@@ -4,6 +4,8 @@ using Precentacion.User.Quote.Quote;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -15,6 +17,9 @@ namespace Precentacion.User.Quote.Windows
         decimal PrecioTotal;
         decimal TempPrecio;
         string URL;
+        // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
+        private const decimal MetrosAPixeles = 1000.0m;
+        private const decimal CentimetrosAPixeles = 100.0m;
         N_LoadProduct n_LoadProduct = new N_LoadProduct();
         #endregion
 
@@ -205,48 +210,138 @@ namespace Precentacion.User.Quote.Windows
         {
             try
             {
-                ValidarPunto();
                 if (txtAlto.Text != "")
                 {
+                    //Detectar si el usuario ingreso un punto en vez de una coma
+                    DetectarPunto();
                     ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
+                    button2_Click(sender, e);
+
+
                 }
+                if (txtAncho.Text != "")
+                {
+                    //Detectar si el usuario ingreso un punto en vez de una coma
+                    DetectarPunto();
+                    ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
+                    button2_Click(sender, e);
+                }
+                //Advertencias();
             }
             catch (Exception)
             {
-                    MessageBox.Show("El Valor Ingresado no es Valido", "Valor no Valido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtAlto.Text = "";
-                    txtAlto.Focus();
-               
+
+            }
+
+        }
+        private void DetectarPunto()
+        {
+            if (txtAncho.Text.Contains("."))
+            {
+                txtAncho.Text = txtAncho.Text.Replace(".", ",");
+                //Posicionar el cursor al final del texto
+                txtAncho.SelectionStart = txtAncho.Text.Length;
+            }
+            if (txtAlto.Text.Contains("."))
+            {
+                txtAlto.Text = txtAlto.Text.Replace(".", ",");
+                //Posicionar el cursor al final del texto
+                txtAlto.SelectionStart = txtAlto.Text.Length;
             }
             
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (pbVentana.Image != null)
+            {
+                try
+                {
 
+                    // Convertir las dimensiones ingresadas por el usuario a píxeles
+                    decimal anchoEnMetros = decimal.Parse(txtAncho.Text);
+                    decimal alturaEnMetros = decimal.Parse(txtAlto.Text);
+
+                    int newWidth = (int)(anchoEnMetros * MetrosAPixeles);
+                    int newHeight = (int)(alturaEnMetros * MetrosAPixeles);
+                    //Redirecciona a la funcion
+                    var resizedImage = ResizeImage(pbVentana.Image, newWidth, newHeight);
+                    //La imagen que devuelve la funcion va a ser la nueva imagen del pictureBox
+                    pbVentana.Image = resizedImage;
+                }
+                catch (FormatException)
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay ninguna imagen cargada en el PictureBox.");
+            }
+        }
+        #region Función para redimensionar la imagen
+        private Bitmap ResizeImage(Image image, int width, int height)
+        {
+            // Rectángulo de destino para la imagen redimensionada
+            var destRect = new Rectangle(0, 0, width, height);
+            // Crear un nuevo objeto Bitmap para la imagen redimensionada
+            var destImage = new Bitmap(width, height);
+
+            // Establecer la resolución del nuevo Bitmap igual a la resolución de la imagen original
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            // Crear un objeto Graphics para la imagen redimensionada
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                // Configurar la calidad de composición, interpolación, suavizado y compensación de píxeles para el objeto Graphics
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                // Configurar el modo de envoltura de imagen para el objeto Graphics
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    // Dibujar la imagen original redimensionada en el rectángulo de destino utilizando el objeto Graphics
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            // Devolver la imagen redimensionada
+            return destImage;
+        }
+        #endregion
         private void txtAncho_textChanged(object sender, EventArgs e)
         {
             try
             {
-                ValidarPunto();
+                if (txtAlto.Text != "")
+                {
+                    //Detectar si el usuario ingreso un punto en vez de una coma
+                    DetectarPunto();
+                    ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
+                    button2_Click(sender, e);
+
+
+                }
                 if (txtAncho.Text != "")
                 {
+                    //Detectar si el usuario ingreso un punto en vez de una coma
+                    DetectarPunto();
                     ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
+                    button2_Click(sender, e);
                 }
-                
+                //Advertencias();
             }
             catch (Exception)
             {
-                if (txtAncho.Text != "")
-                {
-                    MessageBox.Show("El Valor Ingresado no es Valido", "Valor no Valido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtAncho.Text = "";
-                    txtAncho.Focus();
-                }
-               
+
             }
-            
+
         }
-
-
         #endregion
+
 
         #region Metodos
         private void CargarPrecio()
