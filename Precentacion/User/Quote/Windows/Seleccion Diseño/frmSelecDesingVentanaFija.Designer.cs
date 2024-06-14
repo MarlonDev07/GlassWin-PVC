@@ -167,17 +167,17 @@
             this.btnBackSistema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBackSistema.FlatAppearance.BorderSize = 0;
             this.btnBackSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackSistema.Location = new System.Drawing.Point(1090, 367);
+            this.btnBackSistema.Location = new System.Drawing.Point(1125, 367);
             this.btnBackSistema.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBackSistema.Name = "btnBackSistema";
-            this.btnBackSistema.Size = new System.Drawing.Size(119, 60);
+            this.btnBackSistema.Size = new System.Drawing.Size(84, 60);
             this.btnBackSistema.TabIndex = 43;
             this.btnBackSistema.UseVisualStyleBackColor = false;
             this.btnBackSistema.Click += new System.EventHandler(this.btnBackSistema_Click);
             // 
             // frmSelecDesingVentanaFija
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 435);
             this.Controls.Add(this.btnBackSistema);

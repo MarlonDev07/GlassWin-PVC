@@ -447,7 +447,7 @@
             this.panel9.Controls.Add(this.lblVentilaHF);
             this.panel9.Controls.Add(this.panel1);
             this.panel9.Location = new System.Drawing.Point(4, 87);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(861, 386);
             this.panel9.TabIndex = 47;
@@ -455,9 +455,9 @@
             // button2
             // 
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(396, 501);
+            this.button2.Location = new System.Drawing.Point(396, 487);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 45);
+            this.button2.Size = new System.Drawing.Size(99, 59);
             this.button2.TabIndex = 48;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -467,7 +467,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(876, 563);
+            this.ClientSize = new System.Drawing.Size(892, 602);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

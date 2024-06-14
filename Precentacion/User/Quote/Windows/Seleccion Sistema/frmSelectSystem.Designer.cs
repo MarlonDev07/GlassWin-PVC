@@ -205,9 +205,9 @@
             this.btnBackSistema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBackSistema.FlatAppearance.BorderSize = 0;
             this.btnBackSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackSistema.Location = new System.Drawing.Point(755, 391);
+            this.btnBackSistema.Location = new System.Drawing.Point(788, 391);
             this.btnBackSistema.Name = "btnBackSistema";
-            this.btnBackSistema.Size = new System.Drawing.Size(109, 47);
+            this.btnBackSistema.Size = new System.Drawing.Size(75, 47);
             this.btnBackSistema.TabIndex = 29;
             this.btnBackSistema.Text = " ";
             this.btnBackSistema.UseVisualStyleBackColor = false;
@@ -540,7 +540,7 @@
             this.panel6.Controls.Add(this.lblSistemasEuropa);
             this.panel6.Controls.Add(this.panel2);
             this.panel6.Location = new System.Drawing.Point(26, 66);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(868, 441);
             this.panel6.TabIndex = 45;

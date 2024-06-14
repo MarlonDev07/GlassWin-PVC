@@ -106,77 +106,85 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(4, 98);
+            this.groupBox1.Location = new System.Drawing.Point(3, 64);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1653, 272);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(1123, 177);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // btnImprimir
             // 
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
-            this.btnImprimir.Location = new System.Drawing.Point(24, 191);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImprimir.Location = new System.Drawing.Point(16, 124);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(92, 74);
+            this.btnImprimir.Size = new System.Drawing.Size(61, 48);
             this.btnImprimir.TabIndex = 9;
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // dtpFechaSalida
             // 
-            this.dtpFechaSalida.Location = new System.Drawing.Point(262, 120);
+            this.dtpFechaSalida.Location = new System.Drawing.Point(175, 78);
+            this.dtpFechaSalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaSalida.Name = "dtpFechaSalida";
-            this.dtpFechaSalida.Size = new System.Drawing.Size(292, 26);
+            this.dtpFechaSalida.Size = new System.Drawing.Size(196, 20);
             this.dtpFechaSalida.TabIndex = 8;
             // 
             // dtpFechaInicio
             // 
-            this.dtpFechaInicio.Location = new System.Drawing.Point(262, 88);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(175, 57);
+            this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(292, 26);
+            this.dtpFechaInicio.Size = new System.Drawing.Size(196, 20);
             this.dtpFechaInicio.TabIndex = 7;
             // 
             // cbProyecto
             // 
             this.cbProyecto.FormattingEnabled = true;
-            this.cbProyecto.Location = new System.Drawing.Point(262, 54);
+            this.cbProyecto.Location = new System.Drawing.Point(175, 35);
+            this.cbProyecto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbProyecto.Name = "cbProyecto";
-            this.cbProyecto.Size = new System.Drawing.Size(292, 28);
+            this.cbProyecto.Size = new System.Drawing.Size(196, 21);
             this.cbProyecto.TabIndex = 6;
             this.cbProyecto.SelectedIndexChanged += new System.EventHandler(this.cbProyecto_SelectedIndexChanged);
             // 
             // txtOrden
             // 
-            this.txtOrden.Location = new System.Drawing.Point(262, 23);
+            this.txtOrden.Location = new System.Drawing.Point(175, 15);
+            this.txtOrden.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtOrden.Name = "txtOrden";
-            this.txtOrden.Size = new System.Drawing.Size(292, 26);
+            this.txtOrden.Size = new System.Drawing.Size(196, 20);
             this.txtOrden.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 129);
+            this.label5.Location = new System.Drawing.Point(11, 84);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 20);
+            this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha de Salida";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 98);
+            this.label4.Location = new System.Drawing.Point(11, 64);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 20);
+            this.label4.Size = new System.Drawing.Size(80, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Fecha de Inicio";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 66);
+            this.label3.Location = new System.Drawing.Point(11, 43);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 20);
+            this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Proyecto";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -184,9 +192,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 34);
+            this.label2.Location = new System.Drawing.Point(11, 22);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 20);
+            this.label2.Size = new System.Drawing.Size(113, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Orden (Referencia FA)";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -196,10 +205,9 @@
             this.panelContenedor.AutoScroll = true;
             this.panelContenedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelContenedor.Controls.Add(this.panel1);
-            this.panelContenedor.Location = new System.Drawing.Point(9, 438);
-            this.panelContenedor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelContenedor.Location = new System.Drawing.Point(6, 285);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1565, 450);
+            this.panelContenedor.Size = new System.Drawing.Size(1044, 293);
             this.panelContenedor.TabIndex = 1;
             // 
             // panel1
@@ -208,19 +216,19 @@
             this.panel1.Controls.Add(this.dgvOrdenProduccion8025);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.dgvOrdenProduccion);
-            this.panel1.Location = new System.Drawing.Point(12, 5);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(8, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1473, 954);
+            this.panel1.Size = new System.Drawing.Size(982, 620);
             this.panel1.TabIndex = 0;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 451);
+            this.label7.Location = new System.Drawing.Point(2, 293);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(325, 29);
+            this.label7.Size = new System.Drawing.Size(222, 20);
             this.label7.TabIndex = 12;
             this.label7.Text = "Orden de Producción 8025";
             // 
@@ -249,11 +257,12 @@
             this.Cantidad,
             this.PisaAlfombra,
             this.dataGridViewTextBoxColumn19});
-            this.dgvOrdenProduccion8025.Location = new System.Drawing.Point(3, 494);
+            this.dgvOrdenProduccion8025.Location = new System.Drawing.Point(2, 321);
+            this.dgvOrdenProduccion8025.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvOrdenProduccion8025.Name = "dgvOrdenProduccion8025";
             this.dgvOrdenProduccion8025.RowHeadersWidth = 62;
             this.dgvOrdenProduccion8025.RowTemplate.Height = 28;
-            this.dgvOrdenProduccion8025.Size = new System.Drawing.Size(1461, 354);
+            this.dgvOrdenProduccion8025.Size = new System.Drawing.Size(974, 230);
             this.dgvOrdenProduccion8025.TabIndex = 11;
             // 
             // dataGridViewTextBoxColumn1
@@ -407,9 +416,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 12);
+            this.label6.Location = new System.Drawing.Point(2, 8);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(325, 29);
+            this.label6.Size = new System.Drawing.Size(222, 20);
             this.label6.TabIndex = 10;
             this.label6.Text = "Orden de Producción 5020";
             // 
@@ -436,11 +446,12 @@
             this.Column17,
             this.Column18,
             this.Column19});
-            this.dgvOrdenProduccion.Location = new System.Drawing.Point(3, 55);
+            this.dgvOrdenProduccion.Location = new System.Drawing.Point(2, 36);
+            this.dgvOrdenProduccion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvOrdenProduccion.Name = "dgvOrdenProduccion";
             this.dgvOrdenProduccion.RowHeadersWidth = 62;
             this.dgvOrdenProduccion.RowTemplate.Height = 28;
-            this.dgvOrdenProduccion.Size = new System.Drawing.Size(1461, 354);
+            this.dgvOrdenProduccion.Size = new System.Drawing.Size(974, 230);
             this.dgvOrdenProduccion.TabIndex = 1;
             // 
             // Column1
@@ -578,17 +589,17 @@
             // 
             // frmOrdenProduccion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1661, 1098);
+            this.ClientSize = new System.Drawing.Size(1129, 766);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "frmOrdenProduccion";
-            this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Orden de Producción";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOrdenProduccion_FormClosing);
