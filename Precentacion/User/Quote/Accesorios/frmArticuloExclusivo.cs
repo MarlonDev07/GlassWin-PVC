@@ -20,7 +20,8 @@ namespace Precentacion.User.Quote.Accesorios
         public frmArticuloExclusivo()
         {
             InitializeComponent();
-            CargarDatostxtDescripcion();
+            //CargarDatostxtDescripcion();
+            AccesoriosUI.loadMaterial(this);
         }
         #endregion
 
@@ -93,7 +94,9 @@ namespace Precentacion.User.Quote.Accesorios
                     pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
 
                     //Guardamos la ruta de la imagen
-                    rutaImagen = "Images\\Articulos Exclusivos\\"+dialog.SafeFileName;
+                    //rutaImagen = "Images\\Articulos Exclusivos\\"+dialog.SafeFileName;
+                    rutaImagen = "EXCLUSIVO:Images\\Articulos Exclusivos\\" + dialog.SafeFileName;
+
                 }
             }
             catch (Exception)
@@ -104,13 +107,12 @@ namespace Precentacion.User.Quote.Accesorios
 
         }
         #endregion
-
         #region Funciones
         private bool ValidarCampos()
         {
-            if (string.IsNullOrEmpty(txtDescripcion.Text))
+            if (string.IsNullOrEmpty(txtDescripcion.Text)/* || !CamposDescripcionCompletos()*/)
             {
-                MessageBox.Show("El campo de la descripción no puede estar vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Todos los campos de la descripción deben estar completos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (string.IsNullOrEmpty(txtPrecio.Text))
@@ -125,8 +127,25 @@ namespace Precentacion.User.Quote.Accesorios
             }
             return true;
         }
+
+        private bool CamposDescripcionCompletos()
+        {
+            string[] lineas = txtDescripcion.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            if (lineas.Length < 5) return false;
+
+            // Verifica que cada campo tiene un valor después del título
+            if (string.IsNullOrWhiteSpace(lineas[0].Substring("Nombre: ".Length))) return false;
+            if (string.IsNullOrWhiteSpace(lineas[1].Substring("Color: ".Length))) return false;
+            if (string.IsNullOrWhiteSpace(lineas[2].Substring("Ancho: ".Length))) return false;
+            if (string.IsNullOrWhiteSpace(lineas[3].Substring("Alto: ".Length))) return false;
+            if (string.IsNullOrWhiteSpace(lineas[4].Substring("Vidrio: ".Length))) return false;
+
+            return true;
+        }
         #endregion
 
-       
+
+
     }
 }

@@ -47,7 +47,7 @@ namespace Precentacion.User.Quote.Quote
             {
                 if (control is Label label && label.Name != "lblAgenda" && label.Name != "lblTitleNew" && label.Name != "lblBusquedaNombre" && label.Name != "lblTitleEdit" && label.Name != "lblBuscar") //lblBuscar
                 {
-                    label.Font = new Font("Arial", 14, FontStyle.Regular);
+                    label.Font = new Font("Arial", 14, FontStyle.Bold);
                     label.ForeColor = Color.Black;
                 }
                 else if (control is Label label2 && label2.Name == "lblTitleEdit")

@@ -300,6 +300,7 @@
     <Compile Include="User\Employer\frmManagerEmployers.Designer.cs">
       <DependentUpon>frmManagerEmployers.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\Quote\Accesorios\AccesoriosUI.cs" />
     <Compile Include="User\Quote\Accesorios\frmArticuloExclusivo.cs">
       <SubType>Form</SubType>
     </Compile>

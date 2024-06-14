@@ -539,6 +539,12 @@ namespace Precentacion.User.Quote.Quote
 
                     if (!string.IsNullOrEmpty(rutaRelativa))
                     {
+                        bool esExclusivo = rutaRelativa.StartsWith("EXCLUSIVO:");
+                        if (esExclusivo)
+                        {
+                            rutaRelativa = rutaRelativa.Replace("EXCLUSIVO:", "");
+                        }
+
                         string rutaAbsoluta = Path.GetFullPath(rutaRelativa);
 
                         if (File.Exists(rutaAbsoluta))
@@ -547,21 +553,30 @@ namespace Precentacion.User.Quote.Quote
 
                             using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
                             {
-                                // Obtener dimensiones del usuario y convertirlas a píxeles
-                                decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
-                                decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
-                                int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
-                                int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
+                                int anchoImagen = img.Width;
+                                int altoImagen = img.Height;
 
-                                // Mostrar dimensiones calculadas para depuración
-                                Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
+                                if (!esExclusivo)
+                                {
+                                    // Obtener dimensiones del usuario y convertirlas a píxeles
+                                    decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
+                                    decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
+                                    int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
+                                    int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
 
-                                // Ajustar el tamaño de la imagen a las dimensiones especificadas por el usuario
-                                int anchoImagen = anchoVentana;
-                                int altoImagen = altoVentana;
+                                    anchoImagen = anchoVentana;
+                                    altoImagen = altoVentana;
+                                }
+                                else
+                                {
+                                    // Ajustar el tamaño de la imagen para que se ajuste a la celda sin perder la relación de aspecto
+                                    float ratio = Math.Min((float)e.CellBounds.Width / anchoImagen, (float)e.CellBounds.Height / altoImagen);
+                                    anchoImagen = (int)(anchoImagen * ratio);
+                                    altoImagen = (int)(altoImagen * ratio);
+                                }
 
                                 // Mostrar dimensiones de la imagen ajustada para depuración
-                                Console.WriteLine($"Ancho imagen ajustada: {anchoImagen}, Alto imagen ajustada: {altoImagen}");
+                                Console.WriteLine($"Ancho imagen: {anchoImagen}, Alto imagen: {altoImagen}");
 
                                 int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
                                 int y = e.CellBounds.Top + (e.CellBounds.Height - altoImagen) / 2;
@@ -575,6 +590,8 @@ namespace Precentacion.User.Quote.Quote
                 }
             }
         }
+
+
 
         private void cbOpcion_SelectedIndexChanged(object sender, EventArgs e)
         {
