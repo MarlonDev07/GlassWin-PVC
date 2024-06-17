@@ -874,7 +874,23 @@ namespace Precentacion.User.Quote.Quote
             string patternAncho = @"\nAncho:\s*([\d,\.]+)";
             System.Text.RegularExpressions.Match matchAncho = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAncho);
             string Ancho = matchAncho.Groups[1].Value.Replace(",", ".");
-            decimal AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".", ","));
+            decimal AnchoDecimal = 0;
+            if(Ancho != "") 
+            {
+                if (Ancho.Contains("."))
+                {
+                    AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".", ","));
+                }
+                else
+                {
+                    AnchoDecimal = Convert.ToDecimal(Ancho);
+                }
+            }
+            else
+            {
+                AnchoDecimal = 1;
+            }
+
             return AnchoDecimal;
         }
         private decimal ObtenerAlto(string Descripcion)
@@ -882,7 +898,22 @@ namespace Precentacion.User.Quote.Quote
             string patternAlto = @"\nAlto:\s*([\d,\.]+)";
             System.Text.RegularExpressions.Match matchAlto = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAlto);
             string Alto = matchAlto.Groups[1].Value.Replace(",", ".");
-            decimal AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
+            decimal AltoDecimal = 0;
+            if (Alto != "")
+            {
+                if (Alto.Contains("."))
+                {
+                    AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
+                }
+                else
+                {
+                    AltoDecimal = Convert.ToDecimal(Alto);
+                }
+            }
+            else
+            {
+                AltoDecimal = 1;
+            }
             return AltoDecimal;
 
         }
