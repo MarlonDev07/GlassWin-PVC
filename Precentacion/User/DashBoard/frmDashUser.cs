@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -39,23 +40,36 @@ namespace Precentacion.User.DashBoard
         #region Restrinciones de Roll
         private void Roles()
         {
-            if (UserCache.Name == "VitroTaller")
+            string User = UserCache.Name;
+
+            switch (User) 
             {
-                //Ocultar todos los Botones menos el de Proformas
-                btnCliente.Visible = false;
-                btnEmpleado.Visible = false;
-                btnCxC.Visible = false;
-                btnCalendario.Visible = false;
-                btnProyecto.Visible = false;
-
-                btnFactura.Visible = false;
-
-                //Posicion de los Botones
-                btnOrden.Location = new Point(339, 6);
-
-
-
-
+                case "VitroTaller":
+                    //Ocultar todos los Botones menos el de Proformas
+                    btnCliente.Visible = false;
+                    btnEmpleado.Visible = false;
+                    btnCxC.Visible = false;
+                    btnCalendario.Visible = false;
+                    btnProyecto.Visible = false;
+                    btnFactura.Visible = false;
+                    //Posicion de los Botones
+                    btnOrden.Location = new Point(339, 6);
+                    break;
+                case "Rodolfo Quesada ":
+                    //Mostrar el Boton btnAdmin
+                    pbAdmin.Visible = true;
+                    //Agrandar el Panel
+                    this.Size = new Size(1042, 97);
+                    break;
+                case "Aluvi":
+                    //Mostrar el Boton btnAdmin
+                    pbAdmin.Visible = true;
+                    //Agrandar el Panel
+                    this.Size = new Size(1042, 97);
+                    break;
+                default:
+                    this.Size = new Size(953, 97);
+                    break;
             }
         }
         #endregion
@@ -393,6 +407,15 @@ namespace Precentacion.User.DashBoard
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox4_Click_1(object sender, EventArgs e)
+        {
+            frmAdminDashboard frmDashUser = new frmAdminDashboard();
+            frmDashUser.Owner = this;
+            frmDashUser.Show();
+            this.Hide();
+
         }
     }
 }

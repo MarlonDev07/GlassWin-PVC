@@ -12,8 +12,24 @@ namespace AccesoDatos.DataBase
 
         public ClsConnection()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["GlassWinDB"].ConnectionString;
-            Conexion = new SqlConnection(connectionString);
+            if (CompanyCache.IdCompany == 112540885) 
+            {
+                connectionString = ConfigurationManager.ConnectionStrings["VidriosAltura"].ConnectionString;
+                Conexion = new SqlConnection(connectionString);
+            }
+            else
+            {
+                if (CompanyCache.IdCompany == 31025820)
+                {
+                    connectionString = ConfigurationManager.ConnectionStrings["GWAluvi"].ConnectionString;
+                    Conexion = new SqlConnection(connectionString);
+                }
+                else
+                {
+                    connectionString = ConfigurationManager.ConnectionStrings["GlassWinDB"].ConnectionString;
+                    Conexion = new SqlConnection(connectionString);
+                }
+            }
         }
 
         public SqlConnection OpenConecction()

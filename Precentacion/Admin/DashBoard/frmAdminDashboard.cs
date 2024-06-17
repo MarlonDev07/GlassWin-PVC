@@ -22,6 +22,7 @@ namespace Precentacion.Admin
         {
             InitializeComponent();
             LoadNameUser();
+            Roles();
             //soundPlayClass.SoundPlay("Welcome");
 
 
@@ -137,6 +138,18 @@ namespace Precentacion.Admin
         private void LoadNameUser()
         {
             lblNameUser.Text = UserCache.Name;
+        }
+
+        private void Roles()
+        {
+            if (UserCache.Roll == "User")
+            {
+                txtUserandCompany.Visible = false;
+            }
+            else
+            {
+                txtUserandCompany.Visible = true;
+            }
         }
 
 
