@@ -155,6 +155,15 @@ namespace Precentacion.User.Quote.Windows
 
         private void btnBackSistema_Click_1(object sender, EventArgs e)
         {
+            frmSelectSystem frmSelectSystem = new frmSelectSystem();
+            frmSelectSystem.Show();
+            this.Close();
+        }
+
+        private void frmSelectDesing_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmSelectSystem frmSelectSystem = new frmSelectSystem();
+            frmSelectSystem.Show();
             this.Close();
         }
     }

@@ -131,13 +131,13 @@ namespace Precentacion.User.Client
         }
         private void formclosing(object sender, FormClosingEventArgs e)
         {
-            frmDashUser frm = new frmDashUser();
+            frmDashUser frm = frmDashUser.Instance;
             if (EventFormClose)
             {
+                frm.WindowState = FormWindowState.Normal;
                 frm.Show();
-                
+                frm.BringToFront();
             }
-
         }
         #endregion
 

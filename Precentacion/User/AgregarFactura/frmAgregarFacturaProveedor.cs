@@ -839,8 +839,11 @@ namespace Precentacion.User.AgregarFactura
 
         private void frmAgregarFacturaProveedor_FormClosing(object sender, FormClosingEventArgs e)
         {
-            frmDashUser frmDashUser = new frmDashUser();
-            frmDashUser.Show();
+            frmDashUser frm = frmDashUser.Instance;
+            frm.WindowState = FormWindowState.Normal;
+            frm.Show();
+            frm.BringToFront();
+            
         }
     }
 }

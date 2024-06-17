@@ -69,34 +69,17 @@ namespace Precentacion.User.Quote.Accesorios
         {
             try
             {
-                //Buscamos la imagen en una Carpeta Especifica
-
+               //Abrir un dialogo para seleccionar la imagen
                 OpenFileDialog dialog = new OpenFileDialog();
-                //Filtramos para que solo se muestren los archivos de tipo Imagen
-                dialog.Filter = "Archivos de Imagen|*.jpg;*.gif;*.png;*.bmp;*.jpeg";
+                dialog.Filter = "Archivos de imagen|*.jpg;*.png";
+                dialog.Title = "Seleccione una imagen";
+                dialog.Multiselect = false;
 
-                //Abrir la Ruta de Accesorios Exclusivos
-                
-                    //Obtener la Ruta Principal
-                    string ruta = Application.StartupPath;
-
-                    //Abrir la Ruta de Accesorios Exclusivos
-                    dialog.InitialDirectory = ruta + "\\Images\\Articulos Exclusivos";
-
-                DialogResult result = dialog.ShowDialog();
-                //Si seleccionamos una imagen
-                if (result == DialogResult.OK)
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    //Asignamos la imagen a nuestro PictureBox
-                    pbAccesorioExclusivo.Image = Image.FromFile(dialog.FileName);
-
-                    //Ajustamos la imagen al tamaño del PictureBox
+                    rutaImagen = dialog.FileName;
+                    pbAccesorioExclusivo.Image = Image.FromFile(rutaImagen);
                     pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
-
-                    //Guardamos la ruta de la imagen
-                    //rutaImagen = "Images\\Articulos Exclusivos\\"+dialog.SafeFileName;
-                    rutaImagen = "EXCLUSIVO:Images\\Articulos Exclusivos\\" + dialog.SafeFileName;
-
                 }
             }
             catch (Exception)

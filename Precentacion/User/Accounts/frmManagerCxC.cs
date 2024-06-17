@@ -226,11 +226,12 @@ namespace Precentacion.User.Accounts
 
         private void frmManagerCxC_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Validar que el evento sea necesario
-            if (EventFormClose == true)
+            frmDashUser frm = frmDashUser.Instance;
+            if (EventFormClose)
             {
-                frmDashUser frm = new frmDashUser();
+                frm.WindowState = FormWindowState.Normal;
                 frm.Show();
+                frm.BringToFront();
             }
         }
         #endregion

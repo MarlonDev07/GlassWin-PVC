@@ -620,30 +620,12 @@ namespace Precentacion.User.Quote.Quote
 
         private void frmQuote_FormClosing(object sender, FormClosingEventArgs e)
         {
+            frmDashUser frm = frmDashUser.Instance;
             if (EventClose)
             {
-                Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmDashUser);
-                if (Edit)
-                {
-
-                }
-                else
-                {
-                    if (frm != null)
-                    {
-                        if (Edit == false)
-                        {
-                            //ELIAR LA PROFORMA
-                            if (QuoteSave == 0)
-                            {
-                                NQuote.DeleteQuote(Convert.ToInt32(txtidQuote.Text));
-                            }
-                        }
-                        frm.WindowState = FormWindowState.Normal;
-                        frm.Show();
-
-                    }
-                }
+                frm.WindowState = FormWindowState.Normal;
+                frm.Show();
+                frm.BringToFront();      
             }
 
         }
@@ -868,6 +850,8 @@ namespace Precentacion.User.Quote.Quote
             txtSubtotal.Text = "";
             txtIVA.Text = "";
             txtTotal.Text = "";
+            loadIDQuote();
+            
         }
         private decimal ObtenerAncho(string Descripcion)
         {
@@ -888,7 +872,7 @@ namespace Precentacion.User.Quote.Quote
             }
             else
             {
-                AnchoDecimal = 1;
+                AnchoDecimal = 1.5m;
             }
 
             return AnchoDecimal;
@@ -912,7 +896,7 @@ namespace Precentacion.User.Quote.Quote
             }
             else
             {
-                AltoDecimal = 1;
+                AltoDecimal = 1.5m;
             }
             return AltoDecimal;
 

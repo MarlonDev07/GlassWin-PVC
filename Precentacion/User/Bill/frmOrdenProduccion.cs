@@ -528,8 +528,11 @@ namespace Precentacion.User.Bill
 
         private void frmOrdenProduccion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            frmDashUser frmDash = new frmDashUser();
-            frmDash.Show();
+            frmDashUser frm = frmDashUser.Instance;
+            frm.WindowState = FormWindowState.Normal;
+            frm.Show();
+            frm.BringToFront();
         }
+                  
     }
 }

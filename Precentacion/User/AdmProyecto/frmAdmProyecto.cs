@@ -415,12 +415,10 @@ namespace Precentacion.User.AdmProyecto
 
         private void frmAdmProyecto_FormClosing(object sender, FormClosingEventArgs e)
         {
- 
-                //Si no esta abierto
-                //Crear un nuevo formulario DashUser
-                frmDashUser frmDashUser = new frmDashUser();
-                //Mostrar el formulario DashUser
-                frmDashUser.Show();
+            frmDashUser frm = frmDashUser.Instance;
+            frm.WindowState = FormWindowState.Normal;
+            frm.Show();
+            frm.BringToFront();
             
         }
 

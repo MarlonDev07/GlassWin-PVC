@@ -107,10 +107,10 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 64);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1123, 177);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(1155, 177);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -127,7 +127,7 @@
             // dtpFechaSalida
             // 
             this.dtpFechaSalida.Location = new System.Drawing.Point(175, 78);
-            this.dtpFechaSalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaSalida.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaSalida.Name = "dtpFechaSalida";
             this.dtpFechaSalida.Size = new System.Drawing.Size(196, 20);
             this.dtpFechaSalida.TabIndex = 8;
@@ -135,7 +135,7 @@
             // dtpFechaInicio
             // 
             this.dtpFechaInicio.Location = new System.Drawing.Point(175, 57);
-            this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(196, 20);
             this.dtpFechaInicio.TabIndex = 7;
@@ -144,7 +144,7 @@
             // 
             this.cbProyecto.FormattingEnabled = true;
             this.cbProyecto.Location = new System.Drawing.Point(175, 35);
-            this.cbProyecto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbProyecto.Margin = new System.Windows.Forms.Padding(2);
             this.cbProyecto.Name = "cbProyecto";
             this.cbProyecto.Size = new System.Drawing.Size(196, 21);
             this.cbProyecto.TabIndex = 6;
@@ -153,7 +153,7 @@
             // txtOrden
             // 
             this.txtOrden.Location = new System.Drawing.Point(175, 15);
-            this.txtOrden.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtOrden.Margin = new System.Windows.Forms.Padding(2);
             this.txtOrden.Name = "txtOrden";
             this.txtOrden.Size = new System.Drawing.Size(196, 20);
             this.txtOrden.TabIndex = 5;
@@ -258,7 +258,7 @@
             this.PisaAlfombra,
             this.dataGridViewTextBoxColumn19});
             this.dgvOrdenProduccion8025.Location = new System.Drawing.Point(2, 321);
-            this.dgvOrdenProduccion8025.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvOrdenProduccion8025.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrdenProduccion8025.Name = "dgvOrdenProduccion8025";
             this.dgvOrdenProduccion8025.RowHeadersWidth = 62;
             this.dgvOrdenProduccion8025.RowTemplate.Height = 28;
@@ -447,7 +447,7 @@
             this.Column18,
             this.Column19});
             this.dgvOrdenProduccion.Location = new System.Drawing.Point(2, 36);
-            this.dgvOrdenProduccion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvOrdenProduccion.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrdenProduccion.Name = "dgvOrdenProduccion";
             this.dgvOrdenProduccion.RowHeadersWidth = 62;
             this.dgvOrdenProduccion.RowTemplate.Height = 28;
@@ -593,11 +593,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1129, 766);
+            this.ClientSize = new System.Drawing.Size(1161, 844);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmOrdenProduccion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

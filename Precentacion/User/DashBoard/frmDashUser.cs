@@ -30,6 +30,19 @@ namespace Precentacion.User.DashBoard
         private int borderSize = 2;
         private Color borderColor = Color.FromArgb(224, 224, 224);
         SoundPlayClass soundPlayClass = new SoundPlayClass();
+        private static frmDashUser _instance;
+
+        public static frmDashUser Instance
+        {
+            get
+            {
+                if (_instance == null || _instance.IsDisposed)
+                {
+                    _instance = new frmDashUser();
+                }
+                return _instance;
+            }
+        }
         public frmDashUser()
         {
             InitializeComponent();
@@ -88,34 +101,34 @@ namespace Precentacion.User.DashBoard
         {
             frmManagerClient frmManagerClient = new frmManagerClient();
             frmManagerClient.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
 
         }
         private void btnNewQuote_Click(object sender, EventArgs e)
         {
             frmQuote frmQuote = new frmQuote();
             frmQuote.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void ManagerQuotes_Click(object sender, EventArgs e)
         {
             frmManagerQuotes frmManagerQuotes = new frmManagerQuotes();
             frmManagerQuotes.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void btnCxC_Click(object sender, EventArgs e)
         {
             frmManagerCxC frmCxC = new frmManagerCxC();
             frmCxC.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
         private void btnEmployer_Click(object sender, EventArgs e)
         {
             frmManagerEmployers frmViewEmployer = new frmManagerEmployers();
             frmViewEmployer.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
         private void btnPlanilla_Click(object sender, EventArgs e)
         {
@@ -123,7 +136,7 @@ namespace Precentacion.User.DashBoard
             Clipboard.SetText(IdCompany.ToString());
             //Abrir Otra Aplicacion
             System.Diagnostics.Process.Start("C:\\Users\\-Marlon\\Desktop\\GlassWin Proyect\\Contabilidad VitroStudio\\Presentacion\\bin\\Debug\\Presentacion.exe");
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
 
         }
         private void btnCalendar_Click(object sender, EventArgs e)
@@ -143,14 +156,14 @@ namespace Precentacion.User.DashBoard
         private void btnLibroBancos_Click(object sender, EventArgs e)
         {
             btnPlanilla_Click(sender, e);
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void btnAdmProyecto_Click(object sender, EventArgs e)
         {
             frmAdmProyecto frmAdmProyecto = new frmAdmProyecto();
             frmAdmProyecto.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
 
         }
 
@@ -173,14 +186,14 @@ namespace Precentacion.User.DashBoard
         {
             frmRegistroProveedor frmRegistroProveedor = new frmRegistroProveedor();
             frmRegistroProveedor.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void btnFactura_Click(object sender, EventArgs e)
         {
             frmAgregarFacturaProveedor frmAgregarFacturaProveedor = new frmAgregarFacturaProveedor();
             frmAgregarFacturaProveedor.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void btnOrdenProd_Click(object sender, EventArgs e)
@@ -200,7 +213,7 @@ namespace Precentacion.User.DashBoard
             //frmOrdenProduccion.FormBorderStyle = FormBorderStyle.None; // Sin bordes
             frmOrdenProduccion.TopMost = true; // Siempre en el tope
             frmOrdenProduccion.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -333,7 +346,7 @@ namespace Precentacion.User.DashBoard
             frmOrdenProduccion frmOrdenProduccion = new frmOrdenProduccion();
             frmOrdenProduccion.Owner = this;
             frmOrdenProduccion.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
 
         }
 
@@ -376,7 +389,7 @@ namespace Precentacion.User.DashBoard
             frmAdminDashboard frmAdminDashboard = new frmAdminDashboard();
             frmAdminDashboard.Owner = this;
             frmAdminDashboard.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -414,7 +427,7 @@ namespace Precentacion.User.DashBoard
             frmAdminDashboard frmDashUser = new frmAdminDashboard();
             frmDashUser.Owner = this;
             frmDashUser.Show();
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
 
         }
     }

@@ -12,6 +12,7 @@ using Negocio.LoadProduct;
 using Negocio.Products;
 using Precentacion.User.Client;
 using Precentacion.User.DashBoard;
+using Precentacion.User.Quote.Quote;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -2372,15 +2373,32 @@ namespace Precentacion.User.Bill
 
         private void frmFacturar_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmDashUser frm = new frmDashUser();
-            frm.Show();
+          frmManagerQuotes frmManagerQuotes = new frmManagerQuotes();
+          frmManagerQuotes.Show();
+
         }
         private decimal ObtenerAncho(string Descripcion)
         {
             string patternAncho = @"\nAncho:\s*([\d,\.]+)";
             System.Text.RegularExpressions.Match matchAncho = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAncho);
             string Ancho = matchAncho.Groups[1].Value.Replace(",", ".");
-            decimal AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".", ","));
+            decimal AnchoDecimal = 0;
+            if (Ancho != "")
+            {
+                if (Ancho.Contains("."))
+                {
+                    AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".", ","));
+                }
+                else
+                {
+                    AnchoDecimal = Convert.ToDecimal(Ancho);
+                }
+            }
+            else
+            {
+                AnchoDecimal = 1;
+            }
+
             return AnchoDecimal;
         }
         private decimal ObtenerAlto(string Descripcion)
@@ -2388,9 +2406,23 @@ namespace Precentacion.User.Bill
             string patternAlto = @"\nAlto:\s*([\d,\.]+)";
             System.Text.RegularExpressions.Match matchAlto = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAlto);
             string Alto = matchAlto.Groups[1].Value.Replace(",", ".");
-            decimal AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
+            decimal AltoDecimal = 0;
+            if (Alto != "")
+            {
+                if (Alto.Contains("."))
+                {
+                    AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
+                }
+                else
+                {
+                    AltoDecimal = Convert.ToDecimal(Alto);
+                }
+            }
+            else
+            {
+                AltoDecimal = 1;
+            }
             return AltoDecimal;
-
         }
     }
 }

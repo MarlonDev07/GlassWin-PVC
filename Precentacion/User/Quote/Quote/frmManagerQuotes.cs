@@ -150,10 +150,12 @@ namespace Precentacion.User.Quote.Quote
 
         private void frmManagerQuotes_FormClosing(object sender, FormClosingEventArgs e)
         {
+            frmDashUser frm = frmDashUser.Instance;
             if (EventClose)
             {
-                frmDashUser frmDashUser = new frmDashUser();
-                frmDashUser.Show();
+                frm.WindowState = FormWindowState.Normal;
+                frm.Show();
+                frm.BringToFront();
             }
         }
 

@@ -105,9 +105,10 @@ namespace Precentacion.Login
 
                         if (UserCache.Roll == "User")
                         {  
-                           frmDashUser dashUser = new frmDashUser();
-                           dashUser.Show();
-                           this.Hide();
+                            frmDashUser frm = frmDashUser.Instance;
+                            frm.Show();
+                            frm.BringToFront();
+                            this.Hide();
                         }
                     }
                     else
