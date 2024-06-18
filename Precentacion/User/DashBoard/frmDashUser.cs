@@ -1,6 +1,5 @@
 ﻿using Dominio.ClassSoundPlay;
 using Precentacion.Admin;
-using Precentacion.Pruebas;
 using Precentacion.User.Accounts;
 using Precentacion.User.AdmProyecto;
 using Precentacion.User.AgregarFactura;
@@ -10,16 +9,7 @@ using Precentacion.User.Employer;
 using Precentacion.User.Quote.Quote;
 using Precentacion.User.RegProveedor;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Precentacion.User.DashBoard
@@ -216,11 +206,7 @@ namespace Precentacion.User.DashBoard
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            frmPruebaDimensionar frm = new frmPruebaDimensionar();
-            frm.Show();
-        }
+       
 
         private void btnCliente_MouseEnter(object sender, EventArgs e)
         {
