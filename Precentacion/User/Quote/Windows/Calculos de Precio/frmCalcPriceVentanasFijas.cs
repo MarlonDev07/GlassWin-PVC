@@ -1,5 +1,6 @@
 ﻿using Dominio.Model.ClassWindows;
 using Negocio.LoadProduct;
+using Negocio.Proveedor;
 using Precentacion.User.Quote.Quote;
 using System;
 using System.Data;
@@ -28,6 +29,7 @@ namespace Precentacion.User.Quote.Windows
         {
             InitializeComponent();
             frmCalcPriceVentanasFijas_Load(null, null);
+            CargarProveedores();
         }
         #endregion
 
@@ -617,7 +619,12 @@ namespace Precentacion.User.Quote.Windows
         {
 
         }
-
+        private void CargarProveedores() 
+        {
+            LN_Proveedor ln_Proveedor = new LN_Proveedor();
+            cbSupplier.DataSource = ln_Proveedor.CargarProveedor();
+            cbSupplier.DisplayMember = "Nombre";
+        }
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbSupplier.SelectedIndex == 2) 

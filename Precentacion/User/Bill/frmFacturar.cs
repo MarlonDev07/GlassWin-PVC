@@ -10,6 +10,7 @@ using Negocio.Company.Bill;
 using Negocio.Company.Quote;
 using Negocio.LoadProduct;
 using Negocio.Products;
+using Negocio.Proveedor;
 using Precentacion.User.Client;
 using Precentacion.User.DashBoard;
 using Precentacion.User.Quote.Quote;
@@ -44,6 +45,7 @@ namespace Precentacion.User.Bill
         public frmFacturar()
         {
             InitializeComponent();
+            CargarProveedor();
         }
         #endregion
 
@@ -2356,6 +2358,16 @@ namespace Precentacion.User.Bill
 
         #endregion
 
+        private void CargarProveedor() 
+        {
+            LN_Proveedor lN_Proveedor = new LN_Proveedor();
+            DataTable dt = lN_Proveedor.CargarProveedor();
+            cbProveedor.DataSource = dt;
+            cbProveedor.DisplayMember = "Nombre";
+
+            cbProveedorDesglose.DataSource = dt;
+            cbProveedorDesglose.DisplayMember = "Nombre";
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             GenerarPdfHojaProduccion();

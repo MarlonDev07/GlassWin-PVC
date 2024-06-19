@@ -339,13 +339,6 @@
             this.cbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSupplier.FormattingEnabled = true;
-            this.cbSupplier.Items.AddRange(new object[] {
-            "Seleccion Proveedor",
-            "Extralum",
-            "Macopa",
-            "Aluma",
-            "Aluvi",
-            "Rocha"});
             this.cbSupplier.Location = new System.Drawing.Point(694, 33);
             this.cbSupplier.Name = "cbSupplier";
             this.cbSupplier.Size = new System.Drawing.Size(130, 28);

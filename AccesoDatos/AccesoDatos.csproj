@@ -65,6 +65,7 @@
     <Compile Include="Company\Fact.Proveedor\AD_FactProveedor.cs" />
     <Compile Include="Company\LoadProducts\AD_LoadProduct.cs" />
     <Compile Include="Company\OrdenCompra\AD_OrdenProduccion.cs" />
+    <Compile Include="Company\Proveedor\AD_Proveedor.cs" />
     <Compile Include="Company\Quotes\AD_Quote.cs" />
     <Compile Include="DataBase\CD_ConecctionDB.cs" />
     <Compile Include="Admin\User\Login\CD_Login.cs" />

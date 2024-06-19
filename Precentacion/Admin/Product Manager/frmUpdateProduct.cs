@@ -8,6 +8,8 @@ using Negocio.Products;
 using System.Collections.Generic;
 using Dominio.Product;
 using Dominio.PriceProduct;
+using Negocio.Proveedor;
+using System.Data;
 
 namespace Precentacion.Admin.Product_Manager
 {
@@ -22,6 +24,7 @@ namespace Precentacion.Admin.Product_Manager
         {
             InitializeComponent();
             LoadStyleDataGrid();
+            CargarProveedor();
             txtCode.KeyDown += new KeyEventHandler(txtCode_KeyDown);
         }
 
@@ -362,6 +365,14 @@ namespace Precentacion.Admin.Product_Manager
                     MessageBox.Show("Ingrese un numero para la Busqueda ", "Codigo Invalido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void CargarProveedor() 
+        {
+            LN_Proveedor proveedor = new LN_Proveedor();
+            DataTable dt = proveedor.CargarProveedor();
+            cbSupplier.DataSource = dt;
+            cbSupplier.DisplayMember = "Nombre";
         }
 
     }

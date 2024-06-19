@@ -1,4 +1,5 @@
-﻿using Negocio.SettingPrice;
+﻿using Negocio.Proveedor;
+using Negocio.SettingPrice;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace Precentacion.Admin.SettingsPrice
         public frmNewSettingsPrice()
         {
             InitializeComponent();
+            CargarProveedor();
         }
 
         #region Drag From
@@ -145,6 +147,12 @@ namespace Precentacion.Admin.SettingsPrice
             }
         }
 
+        private void CargarProveedor() 
+        {
+            LN_Proveedor proveedor = new LN_Proveedor();
+            cbSupplier.DataSource = proveedor.CargarProveedor();
+            cbSupplier.DisplayMember = "Name";
+        }
         private void txtValue_TextChanged(object sender, EventArgs e)
         {
             decimal Percentage = 0;

@@ -56,23 +56,23 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.Aluminiodt = new System.Windows.Forms.DataGridView();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.Vidriodt = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dgvAccesorios = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
             this.panelDetalle = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgvAccesorios = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.Vidriodt = new System.Windows.Forms.DataGridView();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.Aluminiodt = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pbVentila)).BeginInit();
             this.PanelMedidas.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Aluminiodt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Vidriodt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).BeginInit();
             this.panelDetalle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Vidriodt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Aluminiodt)).BeginInit();
             this.SuspendLayout();
             // 
             // pbVentila
@@ -425,16 +425,23 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // Aluminiodt
+            // panelDetalle
             // 
-            this.Aluminiodt.BackgroundColor = System.Drawing.Color.White;
-            this.Aluminiodt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Aluminiodt.Location = new System.Drawing.Point(264, 43);
-            this.Aluminiodt.Name = "Aluminiodt";
-            this.Aluminiodt.Size = new System.Drawing.Size(675, 117);
-            this.Aluminiodt.TabIndex = 0;
+            this.panelDetalle.Controls.Add(this.label4);
+            this.panelDetalle.Controls.Add(this.dgvAccesorios);
+            this.panelDetalle.Controls.Add(this.label7);
+            this.panelDetalle.Controls.Add(this.label8);
+            this.panelDetalle.Controls.Add(this.label10);
+            this.panelDetalle.Controls.Add(this.Vidriodt);
+            this.panelDetalle.Controls.Add(this.btnSalir);
+            this.panelDetalle.Controls.Add(this.Aluminiodt);
+            this.panelDetalle.Location = new System.Drawing.Point(-1, 35);
+            this.panelDetalle.Name = "panelDetalle";
+            this.panelDetalle.Size = new System.Drawing.Size(1140, 707);
+            this.panelDetalle.TabIndex = 78;
+            this.panelDetalle.Visible = false;
             // 
-            // btnSalir
+            // label4
             // 
             this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -442,23 +449,23 @@
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(527, 519);
+            this.btnSalir.Location = new System.Drawing.Point(526, 519);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(129, 45);
             this.btnSalir.TabIndex = 72;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
             // 
-            // Vidriodt
+            // dgvAccesorios
             // 
-            this.Vidriodt.BackgroundColor = System.Drawing.Color.White;
-            this.Vidriodt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Vidriodt.Location = new System.Drawing.Point(264, 335);
-            this.Vidriodt.Name = "Vidriodt";
-            this.Vidriodt.Size = new System.Drawing.Size(675, 89);
-            this.Vidriodt.TabIndex = 73;
+            this.dgvAccesorios.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAccesorios.Location = new System.Drawing.Point(264, 189);
+            this.dgvAccesorios.Name = "dgvAccesorios";
+            this.dgvAccesorios.Size = new System.Drawing.Size(675, 117);
+            this.dgvAccesorios.TabIndex = 77;
             // 
-            // label10
+            // label7
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label10.Dock = System.Windows.Forms.DockStyle.Top;
@@ -466,7 +473,7 @@
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(1142, 25);
+            this.label10.Size = new System.Drawing.Size(1140, 25);
             this.label10.TabIndex = 74;
             this.label10.Text = "Detalle";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -482,38 +489,44 @@
             this.label8.Text = "Aluminio";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // label10
             // 
-            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(190, 372);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 20);
-            this.label7.TabIndex = 76;
-            this.label7.Text = "Vidrio";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label10.Font = new System.Drawing.Font("Impact", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(0, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(1140, 25);
+            this.label10.TabIndex = 74;
+            this.label10.Text = "Detalle";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dgvAccesorios
+            // Vidriodt
             // 
-            this.dgvAccesorios.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAccesorios.Location = new System.Drawing.Point(264, 189);
-            this.dgvAccesorios.Name = "dgvAccesorios";
-            this.dgvAccesorios.Size = new System.Drawing.Size(675, 117);
-            this.dgvAccesorios.TabIndex = 77;
+            this.Vidriodt.BackgroundColor = System.Drawing.Color.White;
+            this.Vidriodt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Vidriodt.Location = new System.Drawing.Point(264, 335);
+            this.Vidriodt.Name = "Vidriodt";
+            this.Vidriodt.Size = new System.Drawing.Size(675, 89);
+            this.Vidriodt.TabIndex = 73;
             // 
-            // label4
+            // btnSalir
             // 
-            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(176, 242);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 20);
-            this.label4.TabIndex = 78;
-            this.label4.Text = "Accesorios";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSalir.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.Color.White;
+            this.btnSalir.Location = new System.Drawing.Point(526, 519);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(129, 45);
+            this.btnSalir.TabIndex = 72;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
             // 
-            // panelDetalle
+            // Aluminiodt
             // 
             this.panelDetalle.Controls.Add(this.label4);
             this.panelDetalle.Controls.Add(this.dgvAccesorios);
@@ -523,9 +536,9 @@
             this.panelDetalle.Controls.Add(this.Vidriodt);
             this.panelDetalle.Controls.Add(this.btnSalir);
             this.panelDetalle.Controls.Add(this.Aluminiodt);
-            this.panelDetalle.Location = new System.Drawing.Point(-1, 67);
+            this.panelDetalle.Location = new System.Drawing.Point(-1, 63);
             this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1142, 707);
+            this.panelDetalle.Size = new System.Drawing.Size(1140, 707);
             this.panelDetalle.TabIndex = 77;
             this.panelDetalle.Visible = false;
             // 
@@ -548,10 +561,10 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Aluminiodt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Vidriodt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
             this.panelDetalle.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Vidriodt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Aluminiodt)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -585,14 +598,14 @@
         private System.Windows.Forms.Button btnGuardar;
         public System.Windows.Forms.NumericUpDown txtCantidad;
         private System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.DataGridView Aluminiodt;
-        private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.DataGridView Vidriodt;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dgvAccesorios;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelDetalle;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvAccesorios;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView Vidriodt;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.DataGridView Aluminiodt;
     }
 }

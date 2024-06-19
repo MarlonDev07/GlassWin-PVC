@@ -91,6 +91,7 @@
     <Compile Include="Function\SMS, WhatsApp,Email\N_SMSTwilio.cs" />
     <Compile Include="Admin\Users\Users\N_RestoreUser.cs" />
     <Compile Include="Admin\Users\Users\N_Users.cs" />
+    <Compile Include="Proveedor\LN_Proveedor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">

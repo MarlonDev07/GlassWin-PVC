@@ -9,6 +9,8 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Reflection.Emit;
 using Dominio.Product;
+using Negocio.Proveedor;
+using System.Data;
 
 namespace Precentacion.Admin.Product_Manager
 {
@@ -23,6 +25,7 @@ namespace Precentacion.Admin.Product_Manager
         {
             InitializeComponent();
             LoadStyleDataGrid();
+            CargarProvedor();
         }
 
         #region Drag From
@@ -224,7 +227,15 @@ namespace Precentacion.Admin.Product_Manager
 
         #endregion
 
+        private void CargarProvedor() 
+        {
+            LN_Proveedor proveedor = new LN_Proveedor();
+            DataTable dt = proveedor.CargarProveedor();
+            cbSupplier.DataSource = dt;
+            cbSupplier.DisplayMember = "Nombre";
 
+
+        }
         private void btnAddColor_Click(object sender, EventArgs e)
         {
             ConfigureAddColor();
