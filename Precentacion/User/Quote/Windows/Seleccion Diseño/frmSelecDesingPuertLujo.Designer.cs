@@ -71,7 +71,7 @@
             this.btnHojaDivicion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHojaDivicion.BackgroundImage")));
             this.btnHojaDivicion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHojaDivicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHojaDivicion.Location = new System.Drawing.Point(822, 14);
+            this.btnHojaDivicion.Location = new System.Drawing.Point(813, 14);
             this.btnHojaDivicion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnHojaDivicion.Name = "btnHojaDivicion";
             this.btnHojaDivicion.Size = new System.Drawing.Size(322, 201);
@@ -86,10 +86,10 @@
             this.btn1HojaDivicion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn1HojaDivicion.BackgroundImage")));
             this.btn1HojaDivicion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn1HojaDivicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1HojaDivicion.Location = new System.Drawing.Point(288, 14);
+            this.btn1HojaDivicion.Location = new System.Drawing.Point(304, 14);
             this.btn1HojaDivicion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn1HojaDivicion.Name = "btn1HojaDivicion";
-            this.btn1HojaDivicion.Size = new System.Drawing.Size(225, 201);
+            this.btn1HojaDivicion.Size = new System.Drawing.Size(168, 201);
             this.btn1HojaDivicion.TabIndex = 37;
             this.btn1HojaDivicion.UseVisualStyleBackColor = false;
             this.btn1HojaDivicion.Click += new System.EventHandler(this.btn1HojaDivicion_Click);
@@ -101,7 +101,7 @@
             this.btn2Hoja.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn2Hoja.BackgroundImage")));
             this.btn2Hoja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn2Hoja.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn2Hoja.Location = new System.Drawing.Point(603, 14);
+            this.btn2Hoja.Location = new System.Drawing.Point(562, 14);
             this.btn2Hoja.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn2Hoja.Name = "btn2Hoja";
             this.btn2Hoja.Size = new System.Drawing.Size(168, 201);

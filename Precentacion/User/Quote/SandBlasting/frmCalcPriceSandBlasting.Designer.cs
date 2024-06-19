@@ -320,6 +320,7 @@
             this.btnOcultar.Size = new System.Drawing.Size(69, 54);
             this.btnOcultar.TabIndex = 32;
             this.btnOcultar.UseVisualStyleBackColor = false;
+            this.btnOcultar.Click += new System.EventHandler(this.btnOcultar_Click_1);
             // 
             // dgvDesglose
             // 

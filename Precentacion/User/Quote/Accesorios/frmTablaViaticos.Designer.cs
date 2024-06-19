@@ -127,9 +127,9 @@
             // lblDistK
             // 
             this.lblDistK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDistK.Location = new System.Drawing.Point(185, 101);
+            this.lblDistK.Location = new System.Drawing.Point(176, 101);
             this.lblDistK.Name = "lblDistK";
-            this.lblDistK.Size = new System.Drawing.Size(159, 16);
+            this.lblDistK.Size = new System.Drawing.Size(181, 16);
             this.lblDistK.TabIndex = 3;
             this.lblDistK.Text = "Distancia en Kilómentros";
             this.lblDistK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -155,7 +155,7 @@
             this.lblPPK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPPK.Location = new System.Drawing.Point(391, 101);
             this.lblPPK.Name = "lblPPK";
-            this.lblPPK.Size = new System.Drawing.Size(148, 16);
+            this.lblPPK.Size = new System.Drawing.Size(168, 16);
             this.lblPPK.TabIndex = 5;
             this.lblPPK.Text = "Precio por Kilómentros";
             this.lblPPK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

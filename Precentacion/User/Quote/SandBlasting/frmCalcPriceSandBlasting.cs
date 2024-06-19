@@ -219,5 +219,10 @@ namespace Precentacion.User.Quote.SandBlasting
                 throw;
             }
         }
+
+        private void btnOcultar_Click_1(object sender, EventArgs e)
+        {
+            PanelDesglose.Visible = false;
+        }
     }
 }

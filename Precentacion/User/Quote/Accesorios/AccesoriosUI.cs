@@ -190,7 +190,7 @@ namespace Precentacion.User.Quote.Accesorios
                 if (control is Label label7 && label7.Name == "lblTotalT")
                 {
                     label7.Font = new Font("Arial", 14, FontStyle.Bold);
-                    label7.ForeColor = Color.NavajoWhite;
+                    label7.ForeColor = Color.Orange;
                 }
 
                 // Llama recursivamente si el control tiene controles hijos

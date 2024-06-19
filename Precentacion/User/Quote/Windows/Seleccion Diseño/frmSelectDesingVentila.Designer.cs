@@ -390,7 +390,7 @@
             this.panel8.Controls.Add(this.button1);
             this.panel8.Location = new System.Drawing.Point(6, 14);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(2459, 222);
+            this.panel8.Size = new System.Drawing.Size(2397, 222);
             this.panel8.TabIndex = 0;
             // 
             // btn3HojasVertical
@@ -400,7 +400,7 @@
             this.btn3HojasVertical.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn3HojasVertical.BackgroundImage")));
             this.btn3HojasVertical.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn3HojasVertical.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn3HojasVertical.Location = new System.Drawing.Point(437, 12);
+            this.btn3HojasVertical.Location = new System.Drawing.Point(340, 16);
             this.btn3HojasVertical.Name = "btn3HojasVertical";
             this.btn3HojasVertical.Size = new System.Drawing.Size(120, 199);
             this.btn3HojasVertical.TabIndex = 53;
@@ -414,7 +414,7 @@
             this.btn1Hoja.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn1Hoja.BackgroundImage")));
             this.btn1Hoja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn1Hoja.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1Hoja.Location = new System.Drawing.Point(240, 16);
+            this.btn1Hoja.Location = new System.Drawing.Point(173, 16);
             this.btn1Hoja.Name = "btn1Hoja";
             this.btn1Hoja.Size = new System.Drawing.Size(120, 199);
             this.btn1Hoja.TabIndex = 52;
@@ -428,7 +428,7 @@
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(38, 16);
+            this.button1.Location = new System.Drawing.Point(7, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 199);
             this.button1.TabIndex = 51;
