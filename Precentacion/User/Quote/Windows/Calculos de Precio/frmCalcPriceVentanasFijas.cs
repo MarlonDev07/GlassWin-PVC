@@ -434,7 +434,6 @@ namespace Precentacion.User.Quote.Windows
                 MessageBox.Show("Hubo un Error al Guardar", "Guardado Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Information);
               
             }
-#pragma warning restore CS0168 // La variable está declarada pero nunca se usa
         }
         private string CrearDescripcion()
         {
@@ -611,12 +610,66 @@ namespace Precentacion.User.Quote.Windows
         {
             TempPrecio = 0;
             TempPrecio = PrecioTotal * Convert.ToDecimal(txtCantidad.Value);
-            txtTotal.Text = TempPrecio.ToString("c");
+            txtTotal.Text = TempPrecio.ToString();
         }
 
         private void lblDescripcion_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbSupplier.SelectedIndex == 2) 
+            {
+                txtTotal.Enabled = true;
+            }
+            else
+            {
+                txtTotal.Enabled = false;
+            }
+        }
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(TempPrecio == 0) 
+                {
+                    if (txtTotal.Text != "")
+                    {
+                        //Validar que solo se ingresen numeros, Puntos y Comas
+                        if (System.Text.RegularExpressions.Regex.IsMatch(txtTotal.Text, "[^0-9^.^,]"))
+                        {
+                            MessageBox.Show("Por Favor Solo Ingrese Numeros", "Solo Numeros", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtTotal.Text = txtTotal.Text.Remove(txtTotal.Text.Length - 1);
+                            txtTotal.SelectionStart = txtTotal.Text.Length;
+                        }
+                        else
+                        {
+                            //Verificar si hay un punto y cambiarlo por una coma
+                            if (txtTotal.Text.Contains("."))
+                            {
+                                txtTotal.Text = txtTotal.Text.Replace(".", ",");
+                                txtTotal.SelectionStart = txtTotal.Text.Length;
+                                PrecioTotal = Convert.ToDecimal(txtTotal.Text);
+                            }
+                            else
+                            {
+                                PrecioTotal = Convert.ToDecimal(txtTotal.Text);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        txtTotal.Text = TempPrecio.ToString();
+                    }
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al Ingresar el Precio: "+EX.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

@@ -78,7 +78,15 @@ namespace Precentacion.User.Quote.Windows
 
         private void btnBackSistema_Click(object sender, EventArgs e)
         {
+            frmSelectSystem frm = new frmSelectSystem();
+            frm.Show();
             this.Close();
+        }
+
+        private void frmSelecDesingVentanaFija_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmSelectSystem frm = new frmSelectSystem();
+            frm.Show();
         }
     }
 }

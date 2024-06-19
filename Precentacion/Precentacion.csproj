@@ -230,12 +230,6 @@
     <Compile Include="Login\RestorePass\frmValidateIdentity.Designer.cs">
       <DependentUpon>frmValidateIdentity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pruebas\frmPruebaDimensionar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pruebas\frmPruebaDimensionar.Designer.cs">
-      <DependentUpon>frmPruebaDimensionar.cs</DependentUpon>
-    </Compile>
     <Compile Include="User\Accounts\AccountsUI.cs" />
     <Compile Include="User\Accounts\frmCxCNew.cs">
       <SubType>Form</SubType>
@@ -487,9 +481,6 @@
     </Compile>
     <EmbeddedResource Include="Login\RestorePass\frmValidateIdentity.resx">
       <DependentUpon>frmValidateIdentity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pruebas\frmPruebaDimensionar.resx">
-      <DependentUpon>frmPruebaDimensionar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Accounts\frmCxCNew.resx">
       <DependentUpon>frmCxCNew.cs</DependentUpon>
