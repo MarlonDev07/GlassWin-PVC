@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuote));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtConditional5 = new System.Windows.Forms.TextBox();
             this.txtConditional4 = new System.Windows.Forms.TextBox();
             this.txtConditional3 = new System.Windows.Forms.TextBox();
@@ -91,6 +91,8 @@
             this.btnPrefabricado = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgCotizaciones)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -317,42 +319,42 @@
             this.dgCotizaciones.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgCotizaciones.BackgroundColor = System.Drawing.Color.White;
             this.dgCotizaciones.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCotizaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCotizaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgCotizaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCotizaciones.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCotizaciones.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCotizaciones.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgCotizaciones.EnableHeadersVisualStyles = false;
             this.dgCotizaciones.GridColor = System.Drawing.Color.Silver;
             this.dgCotizaciones.Location = new System.Drawing.Point(39, 383);
             this.dgCotizaciones.Name = "dgCotizaciones";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCotizaciones.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCotizaciones.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgCotizaciones.RowHeadersWidth = 62;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCotizaciones.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCotizaciones.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgCotizaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgCotizaciones.Size = new System.Drawing.Size(675, 285);
             this.dgCotizaciones.TabIndex = 0;
@@ -740,11 +742,12 @@
             this.btnExclusivo.BackColor = System.Drawing.Color.Transparent;
             this.btnExclusivo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExclusivo.ForeColor = System.Drawing.Color.Black;
-            this.btnExclusivo.Location = new System.Drawing.Point(445, 349);
+            this.btnExclusivo.Image = ((System.Drawing.Image)(resources.GetObject("btnExclusivo.Image")));
+            this.btnExclusivo.Location = new System.Drawing.Point(387, 347);
             this.btnExclusivo.Name = "btnExclusivo";
-            this.btnExclusivo.Size = new System.Drawing.Size(78, 28);
+            this.btnExclusivo.Size = new System.Drawing.Size(65, 30);
             this.btnExclusivo.TabIndex = 178;
-            this.btnExclusivo.Text = "Insertar";
+            this.toolTip1.SetToolTip(this.btnExclusivo, "Insertar");
             this.btnExclusivo.UseVisualStyleBackColor = false;
             this.btnExclusivo.Click += new System.EventHandler(this.btnExclusivo_Click);
             // 
@@ -754,11 +757,12 @@
             this.btnViaticos.BackColor = System.Drawing.Color.Transparent;
             this.btnViaticos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViaticos.ForeColor = System.Drawing.Color.Black;
-            this.btnViaticos.Location = new System.Drawing.Point(133, 348);
+            this.btnViaticos.Image = ((System.Drawing.Image)(resources.GetObject("btnViaticos.Image")));
+            this.btnViaticos.Location = new System.Drawing.Point(133, 347);
             this.btnViaticos.Name = "btnViaticos";
-            this.btnViaticos.Size = new System.Drawing.Size(100, 28);
+            this.btnViaticos.Size = new System.Drawing.Size(65, 30);
             this.btnViaticos.TabIndex = 179;
-            this.btnViaticos.Text = "Viaticos";
+            this.toolTip1.SetToolTip(this.btnViaticos, "Viáticos\r\n");
             this.btnViaticos.UseVisualStyleBackColor = false;
             this.btnViaticos.Click += new System.EventHandler(this.btnViaticos_Click);
             // 
@@ -768,11 +772,12 @@
             this.btnSanBlast.BackColor = System.Drawing.Color.Transparent;
             this.btnSanBlast.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSanBlast.ForeColor = System.Drawing.Color.Black;
-            this.btnSanBlast.Location = new System.Drawing.Point(239, 348);
+            this.btnSanBlast.Image = ((System.Drawing.Image)(resources.GetObject("btnSanBlast.Image")));
+            this.btnSanBlast.Location = new System.Drawing.Point(218, 347);
             this.btnSanBlast.Name = "btnSanBlast";
-            this.btnSanBlast.Size = new System.Drawing.Size(100, 28);
+            this.btnSanBlast.Size = new System.Drawing.Size(65, 30);
             this.btnSanBlast.TabIndex = 180;
-            this.btnSanBlast.Text = "SandBlasting";
+            this.toolTip1.SetToolTip(this.btnSanBlast, "SandBlasti");
             this.btnSanBlast.UseVisualStyleBackColor = false;
             this.btnSanBlast.Click += new System.EventHandler(this.btnSanBlast_Click);
             // 
@@ -800,11 +805,12 @@
             this.btnPrefabricado.BackColor = System.Drawing.Color.Transparent;
             this.btnPrefabricado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrefabricado.ForeColor = System.Drawing.Color.Black;
-            this.btnPrefabricado.Location = new System.Drawing.Point(345, 348);
+            this.btnPrefabricado.Image = ((System.Drawing.Image)(resources.GetObject("btnPrefabricado.Image")));
+            this.btnPrefabricado.Location = new System.Drawing.Point(302, 347);
             this.btnPrefabricado.Name = "btnPrefabricado";
-            this.btnPrefabricado.Size = new System.Drawing.Size(95, 28);
+            this.btnPrefabricado.Size = new System.Drawing.Size(65, 30);
             this.btnPrefabricado.TabIndex = 182;
-            this.btnPrefabricado.Text = "In Sistema";
+            this.toolTip1.SetToolTip(this.btnPrefabricado, "In Sistema\r\n");
             this.btnPrefabricado.UseVisualStyleBackColor = false;
             this.btnPrefabricado.Click += new System.EventHandler(this.btnPrefabricado_Click);
             // 
@@ -820,13 +826,14 @@
             this.linkLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.linkLabel1.ImageKey = "(ninguno)";
             this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(976, 354);
+            this.linkLabel1.Location = new System.Drawing.Point(957, 212);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(97, 19);
             this.linkLabel1.TabIndex = 183;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Fabricacion";
             this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.linkLabel1.Visible = false;
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Black;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
@@ -844,12 +851,28 @@
             this.label4.Text = "Nueva Proforma\r\n";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.Tag = "";
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(915, 393);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(65, 30);
+            this.button1.TabIndex = 185;
+            this.toolTip1.SetToolTip(this.button1, "Fabricación");
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1036, 682);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnPrefabricado);
@@ -907,7 +930,7 @@
             this.MinimumSize = new System.Drawing.Size(1044, 662);
             this.Name = "frmQuote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
+            this.Text = "+";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmQuote_FormClosing);
             this.Load += new System.EventHandler(this.frmQuote_Load);
@@ -977,5 +1000,7 @@
         private System.Windows.Forms.Button btnPrefabricado;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button button1;
     }
 }

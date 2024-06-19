@@ -78,7 +78,7 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMinSize = new System.Drawing.Size(1, 1);
-            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnAF048);
             this.panel1.Controls.Add(this.btnAF044);
             this.panel1.Controls.Add(this.btnAF043);
@@ -347,7 +347,7 @@
             // 
             // lbl1
             // 
-            this.lbl1.BackColor = System.Drawing.Color.Black;
+            this.lbl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lbl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl1.ForeColor = System.Drawing.Color.White;

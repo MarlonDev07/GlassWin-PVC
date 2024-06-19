@@ -20,6 +20,7 @@ namespace Precentacion.User.Quote.Accesorios
         {
             InitializeComponent();
             CargarEmpleadosCmb();
+            AccesoriosUI.loadMaterial(this);
         }
         #endregion
 
@@ -178,8 +179,17 @@ namespace Precentacion.User.Quote.Accesorios
             txtTotalViaticos.Text = Total.ToString("c");
         }
 
+
         #endregion
 
-       
+        private void lblTotalT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTotalViaticos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
