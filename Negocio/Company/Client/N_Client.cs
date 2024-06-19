@@ -46,11 +46,11 @@ namespace Negocio.Client
             }
         }
 
-        public bool Create(string Name, string Phone, string Address, string Correo)
+        public bool Create(string Name, string Phone, string Address, string Correo, string Limite)
         {
             try
             {
-                return ADClient.Create(Name, Phone,Address, Correo);
+                return ADClient.Create(Name, Phone,Address, Correo, Limite);
             }
             catch (Exception )
             {
@@ -58,11 +58,11 @@ namespace Negocio.Client
             }
         }
 
-        public bool update(int ID, string Name, string Phone, string Address, string Correo)
+        public bool update(int ID, string Name, string Phone, string Address, string Correo, string Limite)
         {
             try
             {
-                return ADClient.Update(ID, Name, Phone,Address,Correo);
+                return ADClient.Update(ID, Name, Phone,Address,Correo, Limite);
             }
             catch (Exception )
             {

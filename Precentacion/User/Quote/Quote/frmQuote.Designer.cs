@@ -106,7 +106,6 @@
             this.txtConditional5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConditional5.Location = new System.Drawing.Point(39, 231);
             this.txtConditional5.Name = "txtConditional5";
-            this.txtConditional5.ReadOnly = true;
             this.txtConditional5.Size = new System.Drawing.Size(880, 18);
             this.txtConditional5.TabIndex = 11;
             // 
@@ -118,7 +117,6 @@
             this.txtConditional4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConditional4.Location = new System.Drawing.Point(39, 212);
             this.txtConditional4.Name = "txtConditional4";
-            this.txtConditional4.ReadOnly = true;
             this.txtConditional4.Size = new System.Drawing.Size(880, 18);
             this.txtConditional4.TabIndex = 10;
             // 
@@ -130,7 +128,6 @@
             this.txtConditional3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConditional3.Location = new System.Drawing.Point(39, 192);
             this.txtConditional3.Name = "txtConditional3";
-            this.txtConditional3.ReadOnly = true;
             this.txtConditional3.Size = new System.Drawing.Size(880, 18);
             this.txtConditional3.TabIndex = 9;
             // 
@@ -142,7 +139,6 @@
             this.txtConditional2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConditional2.Location = new System.Drawing.Point(39, 173);
             this.txtConditional2.Name = "txtConditional2";
-            this.txtConditional2.ReadOnly = true;
             this.txtConditional2.Size = new System.Drawing.Size(880, 18);
             this.txtConditional2.TabIndex = 8;
             // 
@@ -154,7 +150,6 @@
             this.txtConditional1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConditional1.Location = new System.Drawing.Point(39, 153);
             this.txtConditional1.Name = "txtConditional1";
-            this.txtConditional1.ReadOnly = true;
             this.txtConditional1.Size = new System.Drawing.Size(880, 18);
             this.txtConditional1.TabIndex = 7;
             // 
@@ -684,7 +679,6 @@
             this.txtConditional6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConditional6.Location = new System.Drawing.Point(39, 250);
             this.txtConditional6.Name = "txtConditional6";
-            this.txtConditional6.ReadOnly = true;
             this.txtConditional6.Size = new System.Drawing.Size(880, 18);
             this.txtConditional6.TabIndex = 12;
             // 
@@ -696,7 +690,6 @@
             this.txtConditional7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConditional7.Location = new System.Drawing.Point(39, 268);
             this.txtConditional7.Name = "txtConditional7";
-            this.txtConditional7.ReadOnly = true;
             this.txtConditional7.Size = new System.Drawing.Size(880, 18);
             this.txtConditional7.TabIndex = 13;
             // 
@@ -708,7 +701,6 @@
             this.txtConditional10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConditional10.Location = new System.Drawing.Point(39, 327);
             this.txtConditional10.Name = "txtConditional10";
-            this.txtConditional10.ReadOnly = true;
             this.txtConditional10.Size = new System.Drawing.Size(880, 18);
             this.txtConditional10.TabIndex = 176;
             // 
@@ -720,7 +712,6 @@
             this.txtConditional9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConditional9.Location = new System.Drawing.Point(39, 307);
             this.txtConditional9.Name = "txtConditional9";
-            this.txtConditional9.ReadOnly = true;
             this.txtConditional9.Size = new System.Drawing.Size(880, 18);
             this.txtConditional9.TabIndex = 175;
             // 
@@ -732,7 +723,6 @@
             this.txtConditional8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConditional8.Location = new System.Drawing.Point(39, 289);
             this.txtConditional8.Name = "txtConditional8";
-            this.txtConditional8.ReadOnly = true;
             this.txtConditional8.Size = new System.Drawing.Size(880, 18);
             this.txtConditional8.TabIndex = 174;
             // 

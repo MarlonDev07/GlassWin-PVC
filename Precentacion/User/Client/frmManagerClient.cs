@@ -119,6 +119,9 @@ namespace Precentacion.User.Client
                 //Obtener el correo del cliente seleccionado
                 txtEmailEdit.Text = dgvClient.CurrentRow.Cells[5].Value.ToString();
 
+                //Obtener el limite de credito del cliente seleccionado
+                txtLimiteEdit.Text = dgvClient.CurrentRow.Cells[8].Value.ToString();
+
                 //Cambiar al tab de editar
                 tabControl.SelectedIndex = 2;
             }
@@ -170,7 +173,7 @@ namespace Precentacion.User.Client
         private bool ValidateNewClient()
         {
             //Validar que los campos no esten vacios
-            if (txtName.Text != "" && txtPhone.Text != "" && txtAddress.Text != "" )
+            if (txtName.Text != "" && txtPhone.Text != "" && txtAddress.Text != "" || txtLimiteCredito.Text != "")
             {
                 return true;
             }
@@ -186,8 +189,9 @@ namespace Precentacion.User.Client
             string Phone = txtPhone.Text;
             string Address = txtAddress.Text;
             string Email = txtEmail.Text;
+            string Limite = txtLimiteCredito.Text;
 
-            return NClient.Create(Name, Phone, Address, Email);
+            return NClient.Create(Name, Phone, Address, Email, Limite);
         }
         private void CleanNewClient()
         {
@@ -195,6 +199,7 @@ namespace Precentacion.User.Client
             txtPhone.Text = "";
             txtAddress.Text = "";
             txtEmail.Text = "";
+            txtLimiteCredito.Text = "";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -252,8 +257,9 @@ namespace Precentacion.User.Client
             string Phone = txtPhoneEdit.Text;
             string Address = txtAddressEdit.Text;
             string Email = txtEmailEdit.Text;
+            string Limite = txtLimiteEdit.Text;
 
-            return NClient.update(ID, Name, Phone, Address, Email);
+            return NClient.update(ID, Name, Phone, Address, Email, Limite);
         }
         private void CleanEditClient()
         {
@@ -262,6 +268,7 @@ namespace Precentacion.User.Client
             txtPhoneEdit.Text = "";
             txtAddressEdit.Text = "";
             txtEmailEdit.Text = "";
+            txtLimiteEdit.Text = "";
         }
 
         private void btnCancelarEdit_Click(object sender, EventArgs e)
@@ -295,13 +302,11 @@ namespace Precentacion.User.Client
                 this.Close();
             }
         }
-
         private void lblAgenda_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //Ir a una URL
             System.Diagnostics.Process.Start("https://calendar.google.com/calendar/u/0/r");
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             dgvClient.CurrentCell = null;
@@ -326,7 +331,6 @@ namespace Precentacion.User.Client
                 //MessageBox.Show("Error al eliminar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void eliminarClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvClient.SelectedRows.Count > 0)
@@ -349,18 +353,15 @@ namespace Precentacion.User.Client
                 MessageBox.Show("Debe seleccionar un cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void dgvClient_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             cotizarToolStripMenuItem_Click(sender, e);
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             CleanEditClient();
             tabControl.SelectedIndex = 0;
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             //Validar que los campos no esten vacios
@@ -385,7 +386,6 @@ namespace Precentacion.User.Client
                 }
             }
         }
-
         private void verEstadisticasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Obtener el ID del cliente seleccionado
@@ -425,7 +425,6 @@ namespace Precentacion.User.Client
 
 
         }
-
         private void CalcularTotal()
         {
             double total = 0;

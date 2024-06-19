@@ -38,6 +38,7 @@ namespace Precentacion.User.Quote.Quote
         public bool EventClose = true;
         private decimal Descuento;
         private decimal ManoObra;
+        private decimal LimiteCredito;
         #endregion
 
         #region Constructor
@@ -337,7 +338,6 @@ namespace Precentacion.User.Quote.Quote
         #endregion
 
         #region Bottoms
-
         public void btnBuscar_Click(object sender, EventArgs e)
         {
 
@@ -357,6 +357,7 @@ namespace Precentacion.User.Quote.Quote
                             txtTelefono.Text = item.Phone;
                             txtAdreesClient.Text = item.Address;
                             txtEmail.Text = item.Correo;
+                            LimiteCredito = Convert.ToDecimal(item.Limite);
                         }
                     }
                 }
@@ -378,7 +379,6 @@ namespace Precentacion.User.Quote.Quote
             }
 
         }
-
         private void btnSistemas_Click(object sender, EventArgs e)
         {
             ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
@@ -733,9 +733,8 @@ namespace Precentacion.User.Quote.Quote
                     //Sumar el total de la columna Price
                     total += Convert.ToDecimal(row.Cells["Price"].Value);
                 }
-                SubTotal = total;
-
-                Total = total;
+                
+                
                 if (UserCache.Name == "VitroTaller")
                 {
                     txtSubtotal.Text = "Precio Restringido";
@@ -761,9 +760,30 @@ namespace Precentacion.User.Quote.Quote
                     //Sumar el total de la columna Price
                     total += Convert.ToDecimal(row.Cells["Price"].Value);
                 }
-                SubTotal = total;
-
-                Total = total;
+                if (LimiteCredito != 0)
+                {
+                    if (total > LimiteCredito)
+                    {
+                        //Preguntar Si desea Agregar los Precios
+                        DialogResult result = MessageBox.Show("El Total de la Cotizacion supera el Limite de Credito del Cliente, ¿Desea Continuar?", "Limite de Credito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.No)
+                        {
+                            txtSubtotal.Text = "";
+                            txtTotal.Text = "";
+                            return;
+                        }
+                        else
+                        {
+                            SubTotal = total;
+                            Total = total;
+                        }
+                    }
+                }
+                else
+                {
+                    SubTotal = total;
+                    Total = total;
+                }
                 if (UserCache.Name == "VitroTaller")
                 {
                     txtSubtotal.Text = "Precio Restringido";

@@ -77,7 +77,8 @@ namespace AccesoDatos.Client
                                     Name = reader.GetString(1),
                                     Phone = reader.GetString(2),
                                     Address = reader.GetString(4),
-                                    Correo = reader.GetString(5)
+                                    Correo = reader.GetString(5),
+                                    Limite = reader.GetString(8),
                                 };
                                 List.Add(client);
                             }
@@ -92,7 +93,7 @@ namespace AccesoDatos.Client
             }
         }
 
-        public bool Create (string Name, string Phone, string Address, string Email)
+        public bool Create (string Name, string Phone, string Address, string Email, string Limite)
         {
             try
             {
@@ -105,6 +106,7 @@ namespace AccesoDatos.Client
                 cmd.Parameters.AddWithValue("@Phone", Phone);
                 cmd.Parameters.AddWithValue("@Address", Address);
                 cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@Limite", Limite);
                 cmd.ExecuteNonQuery();
                 Cnn.CloseConnection();
                 return true;
@@ -115,7 +117,7 @@ namespace AccesoDatos.Client
             }
         }
 
-        public bool Update(int ID,  string Name, string Phone, string Address, string Email)
+        public bool Update(int ID, string Name, string Phone, string Address, string Email, string Limite)
         {
             try
             {
@@ -129,6 +131,7 @@ namespace AccesoDatos.Client
                 cmd.Parameters.AddWithValue("@Phone", Phone);
                 cmd.Parameters.AddWithValue("@Address", Address);
                 cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@Limite", Limite);
                 cmd.ExecuteNonQuery();
                 Cnn.CloseConnection();
                 return true;

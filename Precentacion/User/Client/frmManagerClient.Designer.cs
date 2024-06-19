@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagerClient));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagerClient));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabLista = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -78,6 +78,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.txtLimiteCredito = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtLimiteEdit = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).BeginInit();
@@ -142,24 +146,24 @@
             this.dgvClient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClient.ContextMenuStrip = this.contextMenuStrip;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvClient.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClient.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvClient.EnableHeadersVisualStyles = false;
             this.dgvClient.Location = new System.Drawing.Point(3, 45);
             this.dgvClient.Name = "dgvClient";
@@ -228,6 +232,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelDataNew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelDataNew.Controls.Add(this.txtLimiteCredito);
+            this.PanelDataNew.Controls.Add(this.label7);
             this.PanelDataNew.Controls.Add(this.lblAgenda);
             this.PanelDataNew.Controls.Add(this.button1);
             this.PanelDataNew.Controls.Add(this.txtName);
@@ -283,7 +289,7 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmail.Location = new System.Drawing.Point(418, 123);
+            this.txtEmail.Location = new System.Drawing.Point(418, 124);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(357, 28);
@@ -295,7 +301,7 @@
             this.txtAddress.Location = new System.Drawing.Point(32, 123);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(357, 87);
+            this.txtAddress.Size = new System.Drawing.Size(357, 98);
             this.txtAddress.TabIndex = 5;
             // 
             // txtPhone
@@ -326,9 +332,9 @@
             // 
             this.lblEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEmail.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(363, 86);
+            this.lblEmail.Location = new System.Drawing.Point(418, 86);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(170, 34);
+            this.lblEmail.Size = new System.Drawing.Size(83, 34);
             this.lblEmail.TabIndex = 6;
             this.lblEmail.Text = "Correo";
             this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -348,9 +354,9 @@
             // 
             this.lblPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPhone.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(413, 12);
+            this.lblPhone.Location = new System.Drawing.Point(418, 12);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(88, 31);
+            this.lblPhone.Size = new System.Drawing.Size(83, 31);
             this.lblPhone.TabIndex = 2;
             this.lblPhone.Text = "Telefono";
             this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -396,6 +402,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtLimiteEdit);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.button2);
@@ -473,7 +481,7 @@
             this.txtAddressEdit.Location = new System.Drawing.Point(32, 123);
             this.txtAddressEdit.Multiline = true;
             this.txtAddressEdit.Name = "txtAddressEdit";
-            this.txtAddressEdit.Size = new System.Drawing.Size(357, 87);
+            this.txtAddressEdit.Size = new System.Drawing.Size(357, 158);
             this.txtAddressEdit.TabIndex = 5;
             // 
             // txtPhoneEdit
@@ -504,9 +512,9 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(363, 86);
+            this.label1.Location = new System.Drawing.Point(415, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 34);
+            this.label1.Size = new System.Drawing.Size(81, 34);
             this.label1.TabIndex = 6;
             this.label1.Text = "Correo";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -526,9 +534,9 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(413, 153);
+            this.label3.Location = new System.Drawing.Point(413, 154);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 31);
+            this.label3.Size = new System.Drawing.Size(91, 31);
             this.label3.TabIndex = 2;
             this.label3.Text = "Teléfono";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -595,23 +603,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFacturas.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFacturas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFacturas.EnableHeadersVisualStyles = false;
             this.dgvFacturas.Location = new System.Drawing.Point(3, 0);
             this.dgvFacturas.Name = "dgvFacturas";
@@ -634,6 +642,46 @@
             this.imageList.Images.SetKeyName(6, "Agregar.png");
             this.imageList.Images.SetKeyName(7, "Prueba_Editar.png");
             this.imageList.Images.SetKeyName(8, "graph");
+            // 
+            // txtLimiteCredito
+            // 
+            this.txtLimiteCredito.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtLimiteCredito.Location = new System.Drawing.Point(418, 193);
+            this.txtLimiteCredito.Multiline = true;
+            this.txtLimiteCredito.Name = "txtLimiteCredito";
+            this.txtLimiteCredito.Size = new System.Drawing.Size(357, 28);
+            this.txtLimiteCredito.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(418, 155);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(146, 34);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Limite Credito";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtLimiteEdit
+            // 
+            this.txtLimiteEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtLimiteEdit.Location = new System.Drawing.Point(418, 253);
+            this.txtLimiteEdit.Multiline = true;
+            this.txtLimiteEdit.Name = "txtLimiteEdit";
+            this.txtLimiteEdit.Size = new System.Drawing.Size(357, 28);
+            this.txtLimiteEdit.TabIndex = 14;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(413, 216);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(141, 34);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Limite Credito";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmManagerClient
             // 
@@ -712,5 +760,9 @@
         private System.Windows.Forms.ToolStripMenuItem verEstadisticasToolStripMenuItem;
         private System.Windows.Forms.TextBox txtTotalFacturado;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtLimiteCredito;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtLimiteEdit;
+        private System.Windows.Forms.Label label8;
     }
 }
