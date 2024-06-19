@@ -8,12 +8,13 @@ namespace Dominio
 {
     public class clsClient
     {
+        public object Limite;
+
         public int IdClient { get; set; }
         public Int64 IdCompany { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
         public string Correo { get; set; }
-        public string Limite { get; set; }
     }
 }

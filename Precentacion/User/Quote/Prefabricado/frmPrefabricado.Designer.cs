@@ -189,7 +189,7 @@
             this.Controls.Add(this.btnCargarImagen);
             this.Name = "frmPrefabricado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Prefabricados";
+            this.Text = "CMB Artículos";
             ((System.ComponentModel.ISupportInitialize)(this.pbPrefabricado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrefabricado)).EndInit();
             this.ResumeLayout(false);

@@ -43,9 +43,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cbColorLamina = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbLaminaPlastica = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAnchoPanel = new System.Windows.Forms.TextBox();
+            this.cbLaminaPlastica = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnCargar = new System.Windows.Forms.Button();
             this.lblColor = new System.Windows.Forms.Label();
@@ -279,21 +279,6 @@
             this.label2.Text = "Lamina Plastica";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cbLaminaPlastica
-            // 
-            this.cbLaminaPlastica.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.cbLaminaPlastica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLaminaPlastica.FormattingEnabled = true;
-            this.cbLaminaPlastica.Items.AddRange(new object[] {
-            "Cañaberal",
-            "Florentino",
-            "Delfin"});
-            this.cbLaminaPlastica.Location = new System.Drawing.Point(629, 50);
-            this.cbLaminaPlastica.Name = "cbLaminaPlastica";
-            this.cbLaminaPlastica.Size = new System.Drawing.Size(90, 21);
-            this.cbLaminaPlastica.TabIndex = 44;
-            this.cbLaminaPlastica.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboBox_KeyPress);
-            // 
             // label1
             // 
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -316,6 +301,21 @@
             this.txtAnchoPanel.TabIndex = 43;
             this.txtAnchoPanel.TextChanged += new System.EventHandler(this.PuntoDecimal_TextChanged);
             this.txtAnchoPanel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox_KeyPress);
+            // 
+            // cbLaminaPlastica
+            // 
+            this.cbLaminaPlastica.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.cbLaminaPlastica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLaminaPlastica.FormattingEnabled = true;
+            this.cbLaminaPlastica.Items.AddRange(new object[] {
+            "Cañaberal",
+            "Florentino",
+            "Delfin"});
+            this.cbLaminaPlastica.Location = new System.Drawing.Point(629, 50);
+            this.cbLaminaPlastica.Name = "cbLaminaPlastica";
+            this.cbLaminaPlastica.Size = new System.Drawing.Size(90, 21);
+            this.cbLaminaPlastica.TabIndex = 44;
+            this.cbLaminaPlastica.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboBox_KeyPress);
             // 
             // label9
             // 
@@ -464,7 +464,7 @@
             this.panelDesglose.Controls.Add(this.btnOcultar);
             this.panelDesglose.Controls.Add(this.dgvAluminio);
             this.panelDesglose.Controls.Add(this.label5);
-            this.panelDesglose.Location = new System.Drawing.Point(191, 450);
+            this.panelDesglose.Location = new System.Drawing.Point(0, 67);
             this.panelDesglose.Name = "panelDesglose";
             this.panelDesglose.Size = new System.Drawing.Size(1043, 710);
             this.panelDesglose.TabIndex = 65;

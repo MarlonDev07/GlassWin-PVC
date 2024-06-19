@@ -167,10 +167,10 @@
             this.btnBackSistema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBackSistema.FlatAppearance.BorderSize = 0;
             this.btnBackSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackSistema.Location = new System.Drawing.Point(1125, 367);
+            this.btnBackSistema.Location = new System.Drawing.Point(1141, 367);
             this.btnBackSistema.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBackSistema.Name = "btnBackSistema";
-            this.btnBackSistema.Size = new System.Drawing.Size(84, 60);
+            this.btnBackSistema.Size = new System.Drawing.Size(68, 60);
             this.btnBackSistema.TabIndex = 43;
             this.btnBackSistema.UseVisualStyleBackColor = false;
             this.btnBackSistema.Click += new System.EventHandler(this.btnBackSistema_Click);

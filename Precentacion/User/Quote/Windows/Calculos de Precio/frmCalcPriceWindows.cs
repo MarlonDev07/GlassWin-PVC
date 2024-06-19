@@ -2395,5 +2395,10 @@ namespace Precentacion.User.Quote.Windows
                 txtPecioFijo.Enabled = false;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PanelDetalle.Visible = false;
+        }
     }      
 }
