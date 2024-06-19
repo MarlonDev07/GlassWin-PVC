@@ -823,6 +823,12 @@ namespace Precentacion.User.Quote.Quote
             return true;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Abre el HiperVinculo
+            System.Diagnostics.Process.Start("C:\\GlassWin\\Debug\\Medidas de Fabricacion");
+        }
+
         private void SendQuoteforWhathsaap()
         {
             //Preguntar si desea enviar la cotizacion por whatsapp
