@@ -58,23 +58,23 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.pbVentana = new System.Windows.Forms.PictureBox();
-            this.Aluminiodt = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.Vidriodt = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dgvAccesorios = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
             this.panelDetalle = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgvAccesorios = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.Vidriodt = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.Aluminiodt = new System.Windows.Forms.DataGridView();
             this.PanelMedidas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Aluminiodt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Vidriodt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).BeginInit();
             this.panelDetalle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Vidriodt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Aluminiodt)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelMedidas
@@ -417,10 +417,6 @@
             this.cbSupplier.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.cbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSupplier.FormattingEnabled = true;
-            this.cbSupplier.Items.AddRange(new object[] {
-            "Extralum",
-            "Macopa",
-            "Default"});
             this.cbSupplier.Location = new System.Drawing.Point(19, 66);
             this.cbSupplier.Name = "cbSupplier";
             this.cbSupplier.Size = new System.Drawing.Size(121, 21);
@@ -490,15 +486,88 @@
             this.pbVentana.TabIndex = 64;
             this.pbVentana.TabStop = false;
             // 
-            // Aluminiodt
+            // panelDetalle
             // 
-            this.Aluminiodt.BackgroundColor = System.Drawing.Color.White;
-            this.Aluminiodt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Aluminiodt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Aluminiodt.Location = new System.Drawing.Point(259, 39);
-            this.Aluminiodt.Name = "Aluminiodt";
-            this.Aluminiodt.Size = new System.Drawing.Size(675, 117);
-            this.Aluminiodt.TabIndex = 0;
+            this.panelDetalle.BackColor = System.Drawing.Color.White;
+            this.panelDetalle.Controls.Add(this.label4);
+            this.panelDetalle.Controls.Add(this.dgvAccesorios);
+            this.panelDetalle.Controls.Add(this.label7);
+            this.panelDetalle.Controls.Add(this.label8);
+            this.panelDetalle.Controls.Add(this.label10);
+            this.panelDetalle.Controls.Add(this.Vidriodt);
+            this.panelDetalle.Controls.Add(this.button2);
+            this.panelDetalle.Controls.Add(this.Aluminiodt);
+            this.panelDetalle.Location = new System.Drawing.Point(0, 31);
+            this.panelDetalle.Name = "panelDetalle";
+            this.panelDetalle.Size = new System.Drawing.Size(1159, 653);
+            this.panelDetalle.TabIndex = 73;
+            this.panelDetalle.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(171, 238);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 20);
+            this.label4.TabIndex = 78;
+            this.label4.Text = "Accesorios";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvAccesorios
+            // 
+            this.dgvAccesorios.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAccesorios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAccesorios.Location = new System.Drawing.Point(259, 185);
+            this.dgvAccesorios.Name = "dgvAccesorios";
+            this.dgvAccesorios.Size = new System.Drawing.Size(675, 117);
+            this.dgvAccesorios.TabIndex = 77;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(185, 368);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 20);
+            this.label7.TabIndex = 76;
+            this.label7.Text = "Vidrio";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(185, 83);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 20);
+            this.label8.TabIndex = 75;
+            this.label8.Text = "Aluminio";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label10.Font = new System.Drawing.Font("Impact", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(0, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(1159, 25);
+            this.label10.TabIndex = 74;
+            this.label10.Text = "Detalle";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Vidriodt
+            // 
+            this.Vidriodt.BackgroundColor = System.Drawing.Color.White;
+            this.Vidriodt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Vidriodt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Vidriodt.Location = new System.Drawing.Point(259, 331);
+            this.Vidriodt.Name = "Vidriodt";
+            this.Vidriodt.Size = new System.Drawing.Size(675, 89);
+            this.Vidriodt.TabIndex = 73;
             // 
             // button2
             // 
@@ -514,90 +583,16 @@
             this.button2.TabIndex = 72;
             this.button2.Text = "Salir";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.btnAbrirDesglose_Click);
             // 
-            // Vidriodt
+            // Aluminiodt
             // 
-            this.Vidriodt.BackgroundColor = System.Drawing.Color.White;
-            this.Vidriodt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Vidriodt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Vidriodt.Location = new System.Drawing.Point(259, 331);
-            this.Vidriodt.Name = "Vidriodt";
-            this.Vidriodt.Size = new System.Drawing.Size(675, 89);
-            this.Vidriodt.TabIndex = 73;
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label10.Font = new System.Drawing.Font("Impact", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(0, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(1159, 25);
-            this.label10.TabIndex = 74;
-            this.label10.Text = "Detalle";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(185, 83);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 20);
-            this.label8.TabIndex = 75;
-            this.label8.Text = "Aluminio";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(185, 368);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 20);
-            this.label7.TabIndex = 76;
-            this.label7.Text = "Vidrio";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dgvAccesorios
-            // 
-            this.dgvAccesorios.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAccesorios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAccesorios.Location = new System.Drawing.Point(259, 185);
-            this.dgvAccesorios.Name = "dgvAccesorios";
-            this.dgvAccesorios.Size = new System.Drawing.Size(675, 117);
-            this.dgvAccesorios.TabIndex = 77;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(171, 238);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 20);
-            this.label4.TabIndex = 78;
-            this.label4.Text = "Accesorios";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelDetalle
-            // 
-            this.panelDetalle.BackColor = System.Drawing.Color.White;
-            this.panelDetalle.Controls.Add(this.label4);
-            this.panelDetalle.Controls.Add(this.dgvAccesorios);
-            this.panelDetalle.Controls.Add(this.label7);
-            this.panelDetalle.Controls.Add(this.label8);
-            this.panelDetalle.Controls.Add(this.label10);
-            this.panelDetalle.Controls.Add(this.Vidriodt);
-            this.panelDetalle.Controls.Add(this.button2);
-            this.panelDetalle.Controls.Add(this.Aluminiodt);
-            this.panelDetalle.Location = new System.Drawing.Point(0, 64);
-            this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1159, 653);
-            this.panelDetalle.TabIndex = 72;
-            this.panelDetalle.Visible = false;
+            this.Aluminiodt.BackgroundColor = System.Drawing.Color.White;
+            this.Aluminiodt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Aluminiodt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Aluminiodt.Location = new System.Drawing.Point(259, 39);
+            this.Aluminiodt.Name = "Aluminiodt";
+            this.Aluminiodt.Size = new System.Drawing.Size(675, 117);
+            this.Aluminiodt.TabIndex = 0;
             // 
             // frmCalcPriceVentanasFijas
             // 
@@ -623,10 +618,10 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Aluminiodt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Vidriodt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
             this.panelDetalle.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Vidriodt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Aluminiodt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -663,14 +658,14 @@
         private System.Windows.Forms.Label lblAluminio;
         private System.Windows.Forms.PictureBox pbVentana;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.DataGridView Aluminiodt;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView Vidriodt;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dgvAccesorios;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelDetalle;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvAccesorios;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView Vidriodt;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView Aluminiodt;
     }
 }

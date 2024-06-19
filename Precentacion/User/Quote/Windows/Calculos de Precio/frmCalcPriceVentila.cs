@@ -12,6 +12,7 @@ using Negocio.LoadProduct;
 using Precentacion.User.Quote.Quote;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using Negocio.Proveedor;
 
 namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 {
@@ -82,6 +83,12 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         }
         #endregion
 
+        private void CargarProveedor() 
+        {
+            LN_Proveedor ln_Proveedor = new LN_Proveedor();
+            cbSupplier.DataSource = ln_Proveedor.CargarProveedor();
+            cbSupplier.DisplayMember = "Nombre";
+        }
         private void btnCargar_Click(object sender, EventArgs e)
         {
             N_LoadProduct n_LoadProduct = new N_LoadProduct();

@@ -163,9 +163,6 @@
             this.cbSupplier.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.cbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSupplier.FormattingEnabled = true;
-            this.cbSupplier.Items.AddRange(new object[] {
-            "Extralum",
-            "Macopa"});
             this.cbSupplier.Location = new System.Drawing.Point(30, 49);
             this.cbSupplier.Name = "cbSupplier";
             this.cbSupplier.Size = new System.Drawing.Size(167, 21);

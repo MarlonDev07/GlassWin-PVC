@@ -1,4 +1,5 @@
 ﻿using Dominio.SettingPrice;
+using Negocio.Proveedor;
 using Negocio.SettingPrice;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace Precentacion.Admin.SettingsPrice
         public frmUpdateSettingPrice()
         {
             InitializeComponent();
+            CargarProveedor();
         }
         #endregion 
 
@@ -201,6 +203,12 @@ namespace Precentacion.Admin.SettingsPrice
         }
         #endregion
 
+        private void CargarProveedor() 
+        {
+            LN_Proveedor proveedor = new LN_Proveedor();
+            cbSupplier.DataSource = proveedor.CargarProveedor();
+            cbSupplier.DisplayMember = "Nombre";
+        }
         
     }
 }

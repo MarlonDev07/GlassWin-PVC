@@ -10,6 +10,7 @@ using Precentacion.User.Quote.Quote;
 using System.Linq;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using Negocio.Proveedor;
 
 namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 {
@@ -417,6 +418,12 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         private void frmCalcPuertaBaño_Load(object sender, EventArgs e)
         {
 
+        }
+        private void CargarProveedor() 
+        {
+            LN_Proveedor ln_Proveedor = new LN_Proveedor();
+            cbSupplier.DataSource = ln_Proveedor.CargarProveedor();
+            cbSupplier.DisplayMember = "Nombre";
         }
     }
 }

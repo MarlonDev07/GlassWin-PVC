@@ -1,5 +1,6 @@
 ﻿using Dominio.Model.ClassWindows;
 using Negocio.LoadProduct;
+using Negocio.Proveedor;
 using Precentacion.User.Quote.Quote;
 using System;
 using System.Data;
@@ -95,7 +96,6 @@ namespace Precentacion.User.Quote.Windows
                 lblDescripcion.Text += " Con Cedazo";
             }
             cbImpacto.Checked = true;
-            cbSupplier.SelectedIndex = 0;
             loadPicture();
             loadGlass();
             loadPanelLock();
@@ -103,6 +103,7 @@ namespace Precentacion.User.Quote.Windows
             MostrarOpcionesCedazo();
             ConfigPantalla();
             ConfPictureBox();
+            CargarProveedor();
 
 
         }
@@ -2379,7 +2380,12 @@ namespace Precentacion.User.Quote.Windows
         {
 
         }
-
+        private void CargarProveedor() 
+        {
+            LN_Proveedor proveedor = new LN_Proveedor();
+            cbSupplier.DataSource = proveedor.CargarProveedor();
+            cbSupplier.DisplayMember = "Nombre";
+        }
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbSupplier.Text == "Default") 
