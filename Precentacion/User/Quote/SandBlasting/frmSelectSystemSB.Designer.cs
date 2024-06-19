@@ -41,11 +41,12 @@
             this.btnArenadoLiso.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnArenadoLiso.BackColor = System.Drawing.Color.Black;
+            this.btnArenadoLiso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnArenadoLiso.ForeColor = System.Drawing.Color.White;
-            this.btnArenadoLiso.Location = new System.Drawing.Point(355, 205);
+            this.btnArenadoLiso.Location = new System.Drawing.Point(532, 315);
+            this.btnArenadoLiso.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnArenadoLiso.Name = "btnArenadoLiso";
-            this.btnArenadoLiso.Size = new System.Drawing.Size(145, 137);
+            this.btnArenadoLiso.Size = new System.Drawing.Size(218, 211);
             this.btnArenadoLiso.TabIndex = 13;
             this.btnArenadoLiso.Text = "Arenado Liso";
             this.btnArenadoLiso.UseVisualStyleBackColor = false;
@@ -56,11 +57,12 @@
             this.btnArenadoCoDiseño.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnArenadoCoDiseño.BackColor = System.Drawing.Color.Black;
+            this.btnArenadoCoDiseño.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnArenadoCoDiseño.ForeColor = System.Drawing.Color.White;
-            this.btnArenadoCoDiseño.Location = new System.Drawing.Point(645, 205);
+            this.btnArenadoCoDiseño.Location = new System.Drawing.Point(968, 315);
+            this.btnArenadoCoDiseño.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnArenadoCoDiseño.Name = "btnArenadoCoDiseño";
-            this.btnArenadoCoDiseño.Size = new System.Drawing.Size(145, 137);
+            this.btnArenadoCoDiseño.Size = new System.Drawing.Size(218, 211);
             this.btnArenadoCoDiseño.TabIndex = 12;
             this.btnArenadoCoDiseño.Text = "Arenado Con Diseño";
             this.btnArenadoCoDiseño.UseVisualStyleBackColor = false;
@@ -71,11 +73,12 @@
             this.btnArenado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnArenado.BackColor = System.Drawing.Color.Black;
+            this.btnArenado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnArenado.ForeColor = System.Drawing.Color.White;
-            this.btnArenado.Location = new System.Drawing.Point(82, 205);
+            this.btnArenado.Location = new System.Drawing.Point(123, 315);
+            this.btnArenado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnArenado.Name = "btnArenado";
-            this.btnArenado.Size = new System.Drawing.Size(145, 137);
+            this.btnArenado.Size = new System.Drawing.Size(218, 211);
             this.btnArenado.TabIndex = 20;
             this.btnArenado.Text = "Arenado";
             this.btnArenado.UseVisualStyleBackColor = false;
@@ -83,13 +86,14 @@
             // 
             // lblVitro
             // 
-            this.lblVitro.BackColor = System.Drawing.Color.Black;
+            this.lblVitro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblVitro.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblVitro.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVitro.ForeColor = System.Drawing.Color.White;
             this.lblVitro.Location = new System.Drawing.Point(0, 0);
+            this.lblVitro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVitro.Name = "lblVitro";
-            this.lblVitro.Size = new System.Drawing.Size(875, 80);
+            this.lblVitro.Size = new System.Drawing.Size(1312, 123);
             this.lblVitro.TabIndex = 26;
             this.lblVitro.Text = "VitroStudio";
             this.lblVitro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -100,25 +104,27 @@
             this.btnBackSistema.BackColor = System.Drawing.Color.DarkCyan;
             this.btnBackSistema.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBackSistema.BackgroundImage")));
             this.btnBackSistema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBackSistema.Location = new System.Drawing.Point(741, 458);
+            this.btnBackSistema.Location = new System.Drawing.Point(1112, 705);
+            this.btnBackSistema.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBackSistema.Name = "btnBackSistema";
-            this.btnBackSistema.Size = new System.Drawing.Size(119, 54);
+            this.btnBackSistema.Size = new System.Drawing.Size(178, 83);
             this.btnBackSistema.TabIndex = 30;
             this.btnBackSistema.UseVisualStyleBackColor = false;
             this.btnBackSistema.Click += new System.EventHandler(this.btnBackSistema_Click);
             // 
             // frmSelectSystemSB
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(875, 518);
+            this.ClientSize = new System.Drawing.Size(1312, 797);
             this.Controls.Add(this.btnBackSistema);
             this.Controls.Add(this.lblVitro);
             this.Controls.Add(this.btnArenado);
             this.Controls.Add(this.btnArenadoLiso);
             this.Controls.Add(this.btnArenadoCoDiseño);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmSelectSystemSB";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSelectSystemSB";
