@@ -328,5 +328,17 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         {
             panelDetalle.Visible = false;
         }
+
+        private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSupplier.SelectedIndex == 2)
+            {
+                txtTotal.Enabled = true;
+            }
+            else
+            {
+                txtTotal.Enabled = false;
+            }
+        }
     }
 }

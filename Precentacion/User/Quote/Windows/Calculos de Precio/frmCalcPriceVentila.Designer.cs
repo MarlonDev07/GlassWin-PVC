@@ -355,11 +355,13 @@
             this.cbSupplier.FormattingEnabled = true;
             this.cbSupplier.Items.AddRange(new object[] {
             "Extralum",
-            "Macopa"});
+            "Macopa",
+            "Default"});
             this.cbSupplier.Location = new System.Drawing.Point(140, 58);
             this.cbSupplier.Name = "cbSupplier";
             this.cbSupplier.Size = new System.Drawing.Size(147, 21);
             this.cbSupplier.TabIndex = 26;
+            this.cbSupplier.SelectedIndexChanged += new System.EventHandler(this.cbSupplier_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -440,7 +442,7 @@
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(526, 519);
+            this.btnSalir.Location = new System.Drawing.Point(527, 519);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(129, 45);
             this.btnSalir.TabIndex = 72;
@@ -464,7 +466,7 @@
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(1140, 25);
+            this.label10.Size = new System.Drawing.Size(1142, 25);
             this.label10.TabIndex = 74;
             this.label10.Text = "Detalle";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -521,9 +523,9 @@
             this.panelDetalle.Controls.Add(this.Vidriodt);
             this.panelDetalle.Controls.Add(this.btnSalir);
             this.panelDetalle.Controls.Add(this.Aluminiodt);
-            this.panelDetalle.Location = new System.Drawing.Point(-1, 63);
+            this.panelDetalle.Location = new System.Drawing.Point(-1, 67);
             this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1140, 707);
+            this.panelDetalle.Size = new System.Drawing.Size(1142, 707);
             this.panelDetalle.TabIndex = 77;
             this.panelDetalle.Visible = false;
             // 
