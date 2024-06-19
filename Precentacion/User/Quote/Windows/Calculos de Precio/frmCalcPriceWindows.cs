@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using Application = System.Windows.Forms.Application;
 
@@ -88,7 +89,7 @@ namespace Precentacion.User.Quote.Windows
         private void Initialize()
         {
             cbColor.SelectedIndex = 0;
-            
+
             lblDescripcion.Text = "Sistema " + ClsWindows.System + " Con Diseño " + ClsWindows.Desing;
             if (ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "6030 3 Vias")
             {
@@ -99,7 +100,7 @@ namespace Precentacion.User.Quote.Windows
             loadPicture();
             loadGlass();
             loadPanelLock();
-            loadPanelHaladera();       
+            loadPanelHaladera();
             MostrarOpcionesCedazo();
             ConfigPantalla();
             ConfPictureBox();
@@ -124,7 +125,7 @@ namespace Precentacion.User.Quote.Windows
             try
             {
                 string path = System.Windows.Forms.Application.StartupPath + "\\Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + ".jpeg";
-                if (ClsWindows.System == "Puerta Liviana") 
+                if (ClsWindows.System == "Puerta Liviana")
                 {
                     path = System.Windows.Forms.Application.StartupPath + "\\Images\\Windows\\Puerta Liviana" + ClsWindows.Desing + cbColor.Text + ".jpeg";
                 }
@@ -145,8 +146,8 @@ namespace Precentacion.User.Quote.Windows
                 MessageBox.Show("Error al cargar la imagen");
             }
         }
-        private void loadGlass() 
-        { 
+        private void loadGlass()
+        {
             DataTable dtVidrio = new DataTable();
             dtVidrio = loadProduct.loadOnlyGlass();
             cbVidrio.DataSource = dtVidrio;
@@ -161,15 +162,15 @@ namespace Precentacion.User.Quote.Windows
             cbGlass.ValueMember = "Description";
             cbGlass.DataSource = dtGlass;
         }
-        private void loadPanelLock() 
+        private void loadPanelLock()
         {
-            if (ClsWindows.System == "8025 2 Vias" || ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 2 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta"|| ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
+            if (ClsWindows.System == "8025 2 Vias" || ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 2 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta" || ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
             {
                 panelCerradura.Visible = true;
                 cbCilindro.Visible = false;
 
                 if (ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta")
-                {   
+                {
                     cbCilindro.Visible = true;
                     cbPico.Text = "kid EU Multi con llave";
                 }
@@ -180,10 +181,10 @@ namespace Precentacion.User.Quote.Windows
                 }
 
             }
-        }    
-        private void ConfPictureBox() 
+        }
+        private void ConfPictureBox()
         {
-            if (ClsWindows.System != "Puerta Lujo" && ClsWindows.System != "8025 2 Vias" && ClsWindows.System != "8025 3 Vias" && ClsWindows.System != "8040 2 Vias" && ClsWindows.System != "8040 3 Vias" && ClsWindows.System != "Europa 2 Vias Puerta" && ClsWindows.System != "Europa 3 Vias Puerta" && ClsWindows.System != "Europa 2 Vias" && ClsWindows.System != "Europa 3 Vias") 
+            if (ClsWindows.System != "Puerta Lujo" && ClsWindows.System != "8025 2 Vias" && ClsWindows.System != "8025 3 Vias" && ClsWindows.System != "8040 2 Vias" && ClsWindows.System != "8040 3 Vias" && ClsWindows.System != "Europa 2 Vias Puerta" && ClsWindows.System != "Europa 3 Vias Puerta" && ClsWindows.System != "Europa 2 Vias" && ClsWindows.System != "Europa 3 Vias")
             {
                 //Mover la Imagen Hacia Arriba
                 Point pt = pbVentana.Location;
@@ -194,7 +195,7 @@ namespace Precentacion.User.Quote.Windows
             }
             else
             {
-                if(ClsWindows.System != "Puerta Lujo") 
+                if (ClsWindows.System != "Puerta Lujo")
                 {
                     //Mover la Imagen Hacia Arriba
                     Point pt = pbVentana.Location;
@@ -209,7 +210,7 @@ namespace Precentacion.User.Quote.Windows
                     PanelHaladera.Location = pt;
                 }
             }
-            if(ClsWindows.System == "Ventila" && ClsWindows.Desing != "1 Hoja Horizontal"&& ClsWindows.Desing != "2 Hoja Horizontal") 
+            if (ClsWindows.System == "Ventila" && ClsWindows.Desing != "1 Hoja Horizontal" && ClsWindows.Desing != "2 Hoja Horizontal")
             {
                 pbVentana.Width = 400;
                 pbVentana.Height = 100;
@@ -233,7 +234,7 @@ namespace Precentacion.User.Quote.Windows
 
             }
         }
-        private void MostrarOpcionesCedazo() 
+        private void MostrarOpcionesCedazo()
         {
             if (ClsWindows.System.Contains("3 Vias"))
             {
@@ -248,7 +249,7 @@ namespace Precentacion.User.Quote.Windows
                 ckExterno.Visible = false;
             }
         }
-        private void ConfigPantalla() 
+        private void ConfigPantalla()
         {
             if (ClsWindows.System == "Cedazo 1/2")
             {
@@ -273,7 +274,7 @@ namespace Precentacion.User.Quote.Windows
                 PanelVidrioFijo.Visible = false;
             }
         }
-       
+
         #endregion
 
         #region Buttons
@@ -347,7 +348,7 @@ namespace Precentacion.User.Quote.Windows
             Calculator = true;
             if (ValidarCampos())
             {
-               
+
                 DataTable dtAluminio = new DataTable();
                 dtAluminio = loadProduct.loadAluminio(cbColor.Text, ClsWindows.System, cbSupplier.Text);
                 dgAluminio.AutoGenerateColumns = true;
@@ -388,32 +389,32 @@ namespace Precentacion.User.Quote.Windows
                     dgAccesorios.DataSource = dtAccesorios;
 
 
-                    
+
                 }
-              
+
 
                 else
                 {
-                 
+
                     string descripcion = ClsWindows.System + ClsWindows.Desing + cbColor.Text;
                     if (ClsWindows.System == "CedazoAkari")
                     {
                         descripcion = ClsWindows.Desing + cbColor.Text;
                     }
-                    if (ClsWindows.System == "Cedazo 1/2") 
+                    if (ClsWindows.System == "Cedazo 1/2")
                     {
-                        descripcion = "Cedazo1/2"+ClsWindows.Desing + cbColor.Text;
+                        descripcion = "Cedazo1/2" + ClsWindows.Desing + cbColor.Text;
                     }
-                    SubTotal = loadProduct.CalcTotalPrice(dtAluminio, dtAccesorios, dtVidrio,dtLock,descripcion,cbSupplier.Text);
-                   
+                    SubTotal = loadProduct.CalcTotalPrice(dtAluminio, dtAccesorios, dtVidrio, dtLock, descripcion, cbSupplier.Text);
+
                     txtTotal.Text = SubTotal.ToString("C");
                     if (ClsWindows.System == "Puerta Lujo")
                     {
                         QuitarArticulos();
                     }
-                    
+
                 }
-            
+
             }
         }
 
@@ -459,8 +460,8 @@ namespace Precentacion.User.Quote.Windows
         #endregion
 
         #region Insert Windows
-        private string CreateDescription() 
-        { 
+        private string CreateDescription()
+        {
             //crear descripcion de la ventana que incluya el sistema, diseño, color, vidrio separado por saltos de linea
             string description = "";
             description += "Sistema: " + ClsWindows.System + "\n";
@@ -472,7 +473,7 @@ namespace Precentacion.User.Quote.Windows
             }
             if (ckInterno.Checked)
             {
-               description += "Cedazo Interno" + "\n";
+                description += "Cedazo Interno" + "\n";
             }
             if (ckExterno.Checked)
             {
@@ -487,8 +488,8 @@ namespace Precentacion.User.Quote.Windows
             else
             {
                 description += "Cerradura: " + ClsWindows.Lock + "\n";
-            }        
-            description += "Ancho: " +ClsWindows.Weight + "\n";
+            }
+            description += "Ancho: " + ClsWindows.Weight + "\n";
             description += "Alto: " + ClsWindows.heigt + "\n";
             if (txtAddWeigth.Text != "" && txtAddHeight.Text != "")
             {
@@ -504,17 +505,17 @@ namespace Precentacion.User.Quote.Windows
             description += "Cantidad: " + NumCantidad.Value + "\n";
             return description;
         }
-        private string CreateURL() 
+        private string CreateURL()
         {
             //Obtener la ruta relativa de la Imagen de la ventana
             string url = "";
             if (cbUbicacion.Text != "")
-            {             
-                url = "Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + "fijo" + cbUbicacion.Text + ".jpeg";              
+            {
+                url = "Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + "fijo" + cbUbicacion.Text + ".jpeg";
             }
             else
             {
-                url = "Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + ".jpeg";        
+                url = "Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + ".jpeg";
             }
             return url;
 
@@ -522,7 +523,7 @@ namespace Precentacion.User.Quote.Windows
 
 
         }
-        private void SelectLock() 
+        private void SelectLock()
         {
             if (panelCerradura.Visible == true)
             {
@@ -539,7 +540,7 @@ namespace Precentacion.User.Quote.Windows
                     ClsWindows.Lock = cbImpacto.Text;
                 }
             }
-            else {ClsWindows.Lock = "Cerradura Impacto";}
+            else { ClsWindows.Lock = "Cerradura Impacto"; }
 
         }
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -605,9 +606,9 @@ namespace Precentacion.User.Quote.Windows
             catch (Exception ex)
             {
 
-               MessageBox.Show("Error Inesperado "+ ex);
+                MessageBox.Show("Error Inesperado " + ex);
             }
-           
+
         }
         #endregion
 
@@ -625,7 +626,7 @@ namespace Precentacion.User.Quote.Windows
                     //Detectar si el usuario ingreso un punto en vez de una coma
                     DetectarPunto();
                     ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
-                   button2_Click(sender, e);
+                    button2_Click(sender, e);
 
 
                 }
@@ -642,23 +643,23 @@ namespace Precentacion.User.Quote.Windows
             {
 
             }
-           
+
 
         }
         private void txtCantidad_ValueChanged(object sender, EventArgs e)
-        { 
-                try
-                {
-                    
-                    SubTotal = (totalPrice);
-                    txtTotal.Text = SubTotal.ToString("C");             
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("error: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        {
+            try
+            {
 
-                }
-                
+                SubTotal = (totalPrice);
+                txtTotal.Text = SubTotal.ToString("C");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
         private void cbPico_CheckedChanged(object sender, EventArgs e)
         {
@@ -701,7 +702,7 @@ namespace Precentacion.User.Quote.Windows
                 cbSPuesta.Checked = false;
             }
         }
-       
+
         #endregion
 
         #region Support Functions
@@ -727,7 +728,7 @@ namespace Precentacion.User.Quote.Windows
                 MessageBox.Show("Debe seleccionar un vidrio");
                 return false;
             }
-            if (Calculator == true) 
+            if (Calculator == true)
             {
                 Calculator = false;
                 return true;
@@ -740,10 +741,10 @@ namespace Precentacion.User.Quote.Windows
                     return false;
                 }
             }
-            
+
             return true;
-        }   
-        private void CleanController() 
+        }
+        private void CleanController()
         {
             txtAlto.Text = "";
             txtAncho.Text = "";
@@ -792,7 +793,7 @@ namespace Precentacion.User.Quote.Windows
             //Verificar Cuando se presiona la tecla Enter
             if (e.KeyChar == (char)13)
             {
-                txtAlto.Focus();                     
+                txtAlto.Focus();
             }
         }
         private void txtAlto_KeyPress(object sender, KeyPressEventArgs e)
@@ -846,15 +847,15 @@ namespace Precentacion.User.Quote.Windows
         {
             if (cbGlass.SelectedIndex == 0 && ClsWindows.System != "5020")
             {
-              DialogResult  res = MessageBox.Show("El Aluminio seleccionado no es compatible con el sistema seleccionado, ¿Desea continuar?", "Aluminio no compatible", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult res = MessageBox.Show("El Aluminio seleccionado no es compatible con el sistema seleccionado, ¿Desea continuar?", "Aluminio no compatible", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (res == DialogResult.No)
                 {
                     cbGlass.SelectedIndex = 0;
                 }
             }
         }
-        private bool ValidateField() 
-        { 
+        private bool ValidateField()
+        {
             //Validar que los campos del Panel panelAddglass esten llenos
             if (txtAddWeigth.Text == "")
             {
@@ -892,7 +893,7 @@ namespace Precentacion.User.Quote.Windows
         }
         private void cbGlass_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
 
         }
         #endregion
@@ -933,13 +934,13 @@ namespace Precentacion.User.Quote.Windows
                 {
                     MessageBox.Show("Error al cargar el vidrio " + ex.Message);
                 }
-                
+
             }
             return res;
 
         }
-        private bool LoadAddAluminio() 
-        { 
+        private bool LoadAddAluminio()
+        {
             bool Res = false;
             //Validar Campos
             if (ValidateField())
@@ -950,20 +951,20 @@ namespace Precentacion.User.Quote.Windows
                 //Obtener Datos del Vidrio
                 decimal Weigth = Convert.ToDecimal(txtAddWeigth.Text);
                 decimal Height = Convert.ToDecimal(txtAddHeight.Text);
-                string  Color = cbColor.Text;
-                string  Supplier = cbSupplier.Text;
+                string Color = cbColor.Text;
+                string Supplier = cbSupplier.Text;
 
                 //Cargar el DataTable con los precios del vidrio
-                dtAluminio = loadProduct.LoadAluminioFijo(Color,"Vidrio Fijo",Supplier,Weigth,Height,cbAluminio.Text,Convert.ToInt16(txtDiviciones.Value));
+                dtAluminio = loadProduct.LoadAluminioFijo(Color, "Vidrio Fijo", Supplier, Weigth, Height, cbAluminio.Text, Convert.ToInt16(txtDiviciones.Value));
 
                 //Validar si el DataTable está vacío
                 if (dtAluminio.Rows.Count != 0)
                 {
                     // Verificar si el DataGridView ya tiene datos
-                    
-                        dgAluminioAdd.AutoGenerateColumns = true;
-                        dgAluminioAdd.DataSource = dtAluminio;
-                        Res = true;
+
+                    dgAluminioAdd.AutoGenerateColumns = true;
+                    dgAluminioAdd.DataSource = dtAluminio;
+                    Res = true;
                 }
                 else
                 {
@@ -974,7 +975,7 @@ namespace Precentacion.User.Quote.Windows
             }
             return Res;
         }
-        private void CalcPrice() 
+        private void CalcPrice()
         {
             priceNewGlass = 0;
             totalPrice = totalPrice - priceNewGlass;
@@ -996,7 +997,7 @@ namespace Precentacion.User.Quote.Windows
         {
             if (LoadAddGlass() && LoadAddAluminio())
             {
-                CalcPrice();               
+                CalcPrice();
             }
         }
         #endregion
@@ -1007,7 +1008,7 @@ namespace Precentacion.User.Quote.Windows
         {
             try
             {
-                string path = System.Windows.Forms.Application.StartupPath + "\\Images\\Windows\\" + ClsWindows.Desing + cbColor.Text +txtDiviciones.Value.ToString()+ "fijo"+cbUbicacion.Text+".jpeg";
+                string path = System.Windows.Forms.Application.StartupPath + "\\Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + txtDiviciones.Value.ToString() + "fijo" + cbUbicacion.Text + ".jpeg";
                 if (System.IO.File.Exists(path))
                 {
                     pbVentana.Image = System.Drawing.Image.FromFile(path);
@@ -1023,11 +1024,11 @@ namespace Precentacion.User.Quote.Windows
             catch (Exception)
             {
                 MessageBox.Show("Error al cargar la imagen");
-            }           
+            }
         }
         private void txtTotal_TextChanged(object sender, EventArgs e)
         {
-            if (cbSupplier.Text == "Default") 
+            if (cbSupplier.Text == "Default")
             {
                 try
                 {
@@ -1063,9 +1064,9 @@ namespace Precentacion.User.Quote.Windows
 
                 }
             }
-           
+
         }
-       
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             if (PanelState == "Open")
@@ -1074,7 +1075,7 @@ namespace Precentacion.User.Quote.Windows
                 PanelVidrioFijo.Height -= 8;
                 if (PanelVidrioFijo.Height <= 0)
                 {
-                    
+
                     timer.Stop();
                     PanelVidrioFijo.Visible = false;
                     PanelState = "Close";
@@ -1088,12 +1089,12 @@ namespace Precentacion.User.Quote.Windows
                 if (PanelVidrioFijo.Height >= 355)
                 {
                     //Cambiar la Imagen del btnOpen mediante una Uri
-                    
+
 
 
                     timer.Stop();
                     PanelState = "Open";
-                   
+
                 }
             }
         }
@@ -1105,28 +1106,28 @@ namespace Precentacion.User.Quote.Windows
             ControlFocus = "TextAncho";
             txtAncho.BackColor = Color.Black;
             txtAncho.ForeColor = Color.White;
-           
+
         }
         private void txtAncho_Leave(object sender, EventArgs e)
         {
-            
+
             txtAncho.BackColor = Color.White;
             txtAncho.ForeColor = Color.Black;
-          
+
         }
         private void txtAlto_Enter(object sender, EventArgs e)
         {
             ControlFocus = "TextAlto";
             txtAlto.BackColor = Color.Black;
             txtAlto.ForeColor = Color.White;
-           
+
         }
         private void txtAlto_Leave(object sender, EventArgs e)
         {
-           
+
             txtAlto.BackColor = Color.White;
             txtAlto.ForeColor = Color.Black;
-           
+
         }
         private void cbColor_Enter(object sender, EventArgs e)
         {
@@ -1134,7 +1135,7 @@ namespace Precentacion.User.Quote.Windows
             cbColor.ForeColor = Color.White;
             //Cambiar el Tamaño de Letra del cbVidrio
             cbColor.Font = new Font("Microsoft Sans Serif", 11);
-            
+
         }
         private void cbColor_Leave(object sender, EventArgs e)
         {
@@ -1241,23 +1242,23 @@ namespace Precentacion.User.Quote.Windows
             {
                 if (txtDescuento.Text != "")
                 {
-                    decimal Descuento = Convert.ToDecimal(txtDescuento.Text)/100;
+                    decimal Descuento = Convert.ToDecimal(txtDescuento.Text) / 100;
                     PrecioDescuento = SubTotal - (SubTotal * Descuento);
-                    SubTotal =  PrecioDescuento;
+                    SubTotal = PrecioDescuento;
                     txtTotal.Text = PrecioDescuento.ToString("C");
-                   
+
                 }
                 else
                 {
                     txtTotal.Text = SubTotal.ToString("C");
                     PrecioDescuento = 0;
                 }
-       
+
 
             }
             catch (Exception)
             {
-                MessageBox.Show("Datos Ingresados Erroneos","Datos Invalidos",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Datos Ingresados Erroneos", "Datos Invalidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1285,7 +1286,7 @@ namespace Precentacion.User.Quote.Windows
             }
         }
 
-        private void QuitarArticulos() 
+        private void QuitarArticulos()
         {
             try
             {
@@ -1299,7 +1300,7 @@ namespace Precentacion.User.Quote.Windows
                         {
                             if (row.Cells["Description"].Value.ToString() == "Haladera Concha PL D41")
                             {
-                                
+
                                 //Quitar el Precio del Total
                                 SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
                                 txtTotal.Text = SubTotal.ToString("C");
@@ -1311,7 +1312,7 @@ namespace Precentacion.User.Quote.Windows
                     }
                 }
 
-                if(cbkBaraaEmpuje.Checked == false) 
+                if (cbkBaraaEmpuje.Checked == false)
                 {
                     //Quitar del dgvAccesorios el Articulo 'Barra Empuje'
                     foreach (DataGridViewRow row in dgAluminio.Rows)
@@ -1374,7 +1375,7 @@ namespace Precentacion.User.Quote.Windows
             catch (Exception)
             {
             }
-           
+
         }
 
         private void Advertencias()
@@ -2268,7 +2269,7 @@ namespace Precentacion.User.Quote.Windows
                     TempTotal = (totalPrice) * Convert.ToDecimal(NumCantidad.Value);
                     txtTotalPrice.Text = TempTotal.ToString("C");
                 }
-               
+
             }
             catch (Exception)
             { }
@@ -2380,7 +2381,7 @@ namespace Precentacion.User.Quote.Windows
         {
 
         }
-        private void CargarProveedor() 
+        private void CargarProveedor()
         {
             LN_Proveedor proveedor = new LN_Proveedor();
             cbSupplier.DataSource = proveedor.CargarProveedor();
@@ -2388,7 +2389,7 @@ namespace Precentacion.User.Quote.Windows
         }
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbSupplier.Text == "Default") 
+            if (cbSupplier.Text == "Default")
             {
                 txtTotal.Enabled = true;
                 txtTotal.Text = "0";
@@ -2411,5 +2412,24 @@ namespace Precentacion.User.Quote.Windows
         {
             PanelDetalle.Visible = false;
         }
-    }      
+        public string Design2 { get; set; }
+        public string System2 { get; set; }
+        private void frmCalcPriceWindows_Load(object sender, EventArgs e)
+        {
+            if (Design2 == "1 Hoja Horizontal" || Design2 == "2 Hoja Horizontal" || Design2 == "3 Hoja Horizontal" || Design2 == "4 Hoja Horizontal" || Design2 == "5 Hoja Horizontal" || Design2 == "6 Hoja Horizontal" || Design2 == "2 Hoja Vertical" || Design2 == "1 Hoja 1 Fijo Vertical" || Design2 == "3 Hoja Vertical")
+            {
+                label10.Visible = false;
+                PanelVidrioFijo.Visible = false;
+            }
+            else if (System2 == "Ventila Euro")
+            {
+                if (Design2 == "1 Hoja Horizontal" || Design2 == "2 Hoja Horizontal" || Design2 == "3 Hoja Horizontal" || Design2 == "4 Hoja Horizontal" || Design2 == "5 Hoja Horizontal" || Design2 == "6 Hoja Horizontal")
+                {
+                    label10.Visible = false;
+                    PanelVidrioFijo.Visible = false;
+
+                }
+            }
+        }
+    } 
 }

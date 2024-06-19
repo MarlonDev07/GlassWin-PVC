@@ -18,16 +18,25 @@ namespace Precentacion.User.Quote.Windows
 
         private void btn1HojaHorizontal_Click(object sender, EventArgs e)
         {
-            ClsWindows.Desing = "1 Hoja Horizontal";
+            /*ClsWindows.Desing = "1 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
             frm.Show();
-            this.Close();
+            this.Close();*/
+
+            ClsWindows.Desing = "1 Hoja Horizontal";
+                frmCalcPriceWindows frm = new frmCalcPriceWindows();
+                frm.Design2 = ClsWindows.Desing;
+                frm.Show();
+                this.Close();
+            
+
         }
 
         private void btn2HojaHorizontal_Click(object sender, EventArgs e)
         {
             ClsWindows.Desing = "2 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -36,6 +45,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.Desing = "3 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -44,6 +54,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.Desing = "4 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -52,6 +63,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.Desing = "6 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -60,6 +72,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.Desing = "5 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -77,6 +90,8 @@ namespace Precentacion.User.Quote.Windows
             ClsWindows.System = "Ventila Euro";
             ClsWindows.Desing = "1 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.System2 = ClsWindows.System;
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -86,6 +101,8 @@ namespace Precentacion.User.Quote.Windows
             ClsWindows.System = "Ventila Euro";
             ClsWindows.Desing = "2 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.System2 = ClsWindows.System;
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -95,6 +112,8 @@ namespace Precentacion.User.Quote.Windows
             ClsWindows.System = "Ventila Euro";
             ClsWindows.Desing = "3 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.System2 = ClsWindows.System;
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -104,6 +123,8 @@ namespace Precentacion.User.Quote.Windows
             ClsWindows.System = "Ventila Euro";
             ClsWindows.Desing = "4 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.System2 = ClsWindows.System;
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -113,6 +134,8 @@ namespace Precentacion.User.Quote.Windows
             ClsWindows.System = "Ventila Euro";
             ClsWindows.Desing = "5 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.System2 = ClsWindows.System;
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -122,6 +145,8 @@ namespace Precentacion.User.Quote.Windows
             ClsWindows.System = "Ventila Euro";
             ClsWindows.Desing = "6 Hoja Horizontal";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.System2 = ClsWindows.System;
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -135,6 +160,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.Desing = "2 Hoja Vertical";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -143,6 +169,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.Desing = "1 Hoja 1 Fijo Vertical";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -151,6 +178,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.Desing = "3 Hoja Vertical";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
