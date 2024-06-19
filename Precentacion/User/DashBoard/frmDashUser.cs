@@ -16,12 +16,15 @@ namespace Precentacion.User.DashBoard
 {
     public partial class frmDashUser : Form
     {
+        #region Variables
         private int borderRadius = 20;
         private int borderSize = 2;
         private Color borderColor = Color.FromArgb(224, 224, 224);
         SoundPlayClass soundPlayClass = new SoundPlayClass();
         private static frmDashUser _instance;
+        #endregion
 
+        #region Constructor Singleton
         public static frmDashUser Instance
         {
             get
@@ -33,6 +36,9 @@ namespace Precentacion.User.DashBoard
                 return _instance;
             }
         }
+        #endregion
+
+        #region Constructor
         public frmDashUser()
         {
             InitializeComponent();
@@ -40,6 +46,8 @@ namespace Precentacion.User.DashBoard
             Roles();
             ShowForm(this);
         }
+        #endregion
+
         #region Restrinciones de Roll
         private void Roles()
         {
@@ -77,8 +85,6 @@ namespace Precentacion.User.DashBoard
         }
         #endregion
 
-
-
         #region Functions
         private void LoadNameUser()
         {
@@ -100,14 +106,12 @@ namespace Precentacion.User.DashBoard
             frmQuote.Show();
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void ManagerQuotes_Click(object sender, EventArgs e)
         {
             frmManagerQuotes frmManagerQuotes = new frmManagerQuotes();
             frmManagerQuotes.Show();
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void btnCxC_Click(object sender, EventArgs e)
         {
             frmManagerCxC frmCxC = new frmManagerCxC();
@@ -120,35 +124,11 @@ namespace Precentacion.User.DashBoard
             frmViewEmployer.Show();
             this.WindowState = FormWindowState.Minimized;
         }
-        private void btnPlanilla_Click(object sender, EventArgs e)
-        {
-            Int64 IdCompany = CompanyCache.IdCompany;
-            Clipboard.SetText(IdCompany.ToString());
-            //Abrir Otra Aplicacion
-            System.Diagnostics.Process.Start("C:\\Users\\-Marlon\\Desktop\\GlassWin Proyect\\Contabilidad VitroStudio\\Presentacion\\bin\\Debug\\Presentacion.exe");
-            this.WindowState = FormWindowState.Minimized;
-
-        }
         private void btnCalendar_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://calendar.google.com/calendar/u/0/r/tasks");
 
         }
-
-
-
-
-
-        #endregion
-
-
-
-        private void btnLibroBancos_Click(object sender, EventArgs e)
-        {
-            btnPlanilla_Click(sender, e);
-            this.WindowState = FormWindowState.Minimized;
-        }
-
         private void btnAdmProyecto_Click(object sender, EventArgs e)
         {
             frmAdmProyecto frmAdmProyecto = new frmAdmProyecto();
@@ -156,36 +136,18 @@ namespace Precentacion.User.DashBoard
             this.WindowState = FormWindowState.Minimized;
 
         }
-
-        //Crear funcion MouseHover 
-        private void Buttons_MouseHover(object sender, EventArgs e)
-        {
-
-            //cuando se seleccione cambiar el color del a trasparencia
-            ((Button)sender).FlatStyle = FlatStyle.Popup;
-            ((Button)sender).FlatAppearance.MouseDownBackColor = Color.Transparent;
-            ((Button)sender).FlatAppearance.MouseOverBackColor = Color.Transparent;
-        }
-
-        //Crear funcion MouseLeave
-        private void Buttons_MouseLeave(object sender, EventArgs e)
-        {
-        }
-
         private void btnRegProveedor_Click(object sender, EventArgs e)
         {
             frmRegistroProveedor frmRegistroProveedor = new frmRegistroProveedor();
             frmRegistroProveedor.Show();
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void btnFactura_Click(object sender, EventArgs e)
         {
             frmAgregarFacturaProveedor frmAgregarFacturaProveedor = new frmAgregarFacturaProveedor();
             frmAgregarFacturaProveedor.Show();
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void btnOrdenProd_Click(object sender, EventArgs e)
         {
 
@@ -205,20 +167,29 @@ namespace Precentacion.User.DashBoard
             frmOrdenProduccion.Show();
             this.WindowState = FormWindowState.Minimized;
         }
-
-       
-
-        private void btnCliente_MouseEnter(object sender, EventArgs e)
+        private void btnCerrar_Click(object sender, EventArgs e)
         {
-
-            btnCliente.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Cliente Gift.gif");
+            DialogResult result = MessageBox.Show("¿Está seguro que desea cerrar la aplicación?", "Cerrar aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
-
-        private void btnCliente_MouseLeave(object sender, EventArgs e)
+        private void btnMinimizar_Click(object sender, EventArgs e)
         {
-            btnCliente.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Cliente Statico.png");
+            this.WindowState = FormWindowState.Minimized;
         }
+        private void pictureBox4_Click_1(object sender, EventArgs e)
+        {
+            frmAdminDashboard frmDashUser = new frmAdminDashboard();
+            frmDashUser.Owner = this;
+            frmDashUser.Show();
+            this.WindowState = FormWindowState.Minimized;
 
+        }
+        #endregion
+
+        #region Cnetrar Formularios
         //Crear funcion qQue muestre el Formulario en la Parte Superior de la Pantalla y en el centro
         private void ShowForm(Form frm)
         {
@@ -237,111 +208,96 @@ namespace Precentacion.User.DashBoard
             // Mostrar el formulario
             frm.Show();
         }
+        #endregion
 
+        #region Animacion de Botones
+        private void btnCliente_MouseEnter(object sender, EventArgs e)
+        {
+
+            btnCliente.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Cliente Gift.gif");
+        }
+        private void btnCliente_MouseLeave(object sender, EventArgs e)
+        {
+            btnCliente.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Cliente Statico.png");
+        }
         private void btnOrden_MouseEnter(object sender, EventArgs e)
         {
             btnOrden.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Orden Gift.gif");
         }
-
         private void btnOrden_MouseLeave(object sender, EventArgs e)
         {
             btnOrden.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Orden Statica.png");
         }
-
         private void btnFactura_MouseHover(object sender, EventArgs e)
         {
             btnFactura.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Factura Gift.gif");
         }
-
         private void btnFactura_MouseLeave(object sender, EventArgs e)
         {
             btnFactura.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Factura Statico.png");
         }
-
         private void btnCerrar_MouseEnter(object sender, EventArgs e)
         {
             btnCerrar.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Cerrar Gift.gif");
         }
-
         private void btnCerrar_MouseLeave(object sender, EventArgs e)
         {
             btnCerrar.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Cerrar Statico.png");
         }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("¿Está seguro que desea cerrar la aplicación?", "Cerrar aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-
         private void btnCxC_MouseEnter(object sender, EventArgs e)
         {
             btnCxC.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\CxC Gift.gif");
         }
-
         private void btnCxC_MouseLeave(object sender, EventArgs e)
         {
             btnCxC.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\CxC Static.png");
         }
-
         private void btnEmpleado_MouseHover(object sender, EventArgs e)
         {
             btnEmpleado.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Empleado Gift.gif");
         }
-
         private void btnEmpleado_MouseLeave(object sender, EventArgs e)
         {
             btnEmpleado.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Empleado Statico.png");
         }
-
         private void btnProyecto_MouseEnter(object sender, EventArgs e)
         {
             btnProyecto.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Proyecto Gift.gif");
         }
-
         private void btnProyecto_MouseLeave(object sender, EventArgs e)
         {
             btnProyecto.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Proyecto Statico.png");
         }
-
         private void btnCalendario_MouseEnter(object sender, EventArgs e)
         {
             btnCalendario.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Calendario Gift.gif");
         }
-
         private void btnCalendario_MouseLeave(object sender, EventArgs e)
         {
             btnCalendario.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\Calendario Statico.png");
         }
-
         private void btnFactProveedor_MouseEnter(object sender, EventArgs e)
         {
             btnFactProveedor.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\FactProveedor Gift.gif");
         }
-
         private void btnFactProveedor_MouseLeave(object sender, EventArgs e)
         {
             btnFactProveedor.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\FactProveedor Statico.png");
         }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void btnMinimizar_MouseEnter(object sender, EventArgs e)
         {
-            frmOrdenProduccion frmOrdenProduccion = new frmOrdenProduccion();
-            frmOrdenProduccion.Owner = this;
-            frmOrdenProduccion.Show();
-            this.WindowState = FormWindowState.Minimized;
-
+            btnMinimizar.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize Gift.gif");
         }
+        private void btnMinimizar_MouseLeave(object sender, EventArgs e)
+        {
+            btnMinimizar.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize Static.png");
+        }
+        #endregion
 
-
-
+        #region Mover Formulario
         // Variables para almacenar la posición del mouse
         private bool isDragging = false;
         private Point startPoint = new Point(0, 0);
-
         private void BarraSuperior_MouseDown(object sender, MouseEventArgs e)
         {
             // Cuando el botón izquierdo del mouse es presionado
@@ -351,7 +307,6 @@ namespace Precentacion.User.DashBoard
                 startPoint = new Point(e.X, e.Y);
             }
         }
-
         private void BarraSuperior_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDragging)
@@ -360,7 +315,6 @@ namespace Precentacion.User.DashBoard
                 Location = new Point(p.X - startPoint.X, p.Y - startPoint.Y);
             }
         }
-
         private void BarraSuperior_MouseUp(object sender, MouseEventArgs e)
         {
             // Cuando el botón del mouse es soltado
@@ -369,52 +323,6 @@ namespace Precentacion.User.DashBoard
                 isDragging = false;
             }
         }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            frmAdminDashboard frmAdminDashboard = new frmAdminDashboard();
-            frmAdminDashboard.Owner = this;
-            frmAdminDashboard.Show();
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            //this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void pictureBox4_MouseEnter(object sender, EventArgs e)
-        {
-            //pictureBox4.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize.gif");
-        }
-
-        private void pictureBox4_MouseLeave(object sender, EventArgs e)
-        {
-            //pictureBox4.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize.png");
-        }
-
-        private void btnMinimizar_MouseEnter(object sender, EventArgs e)
-        {
-            btnMinimizar.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize Gift.gif");
-        }
-
-        private void btnMinimizar_MouseLeave(object sender, EventArgs e)
-        {
-            btnMinimizar.Image = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\minimize Static.png");
-        }
-
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void pictureBox4_Click_1(object sender, EventArgs e)
-        {
-            frmAdminDashboard frmDashUser = new frmAdminDashboard();
-            frmDashUser.Owner = this;
-            frmDashUser.Show();
-            this.WindowState = FormWindowState.Minimized;
-
-        }
+        #endregion
     }
 }

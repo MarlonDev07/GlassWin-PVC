@@ -32,9 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashUser));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnProduccion = new System.Windows.Forms.PictureBox();
             this.btnFactProveedor = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnProveedor = new System.Windows.Forms.PictureBox();
             this.btnCalendario = new System.Windows.Forms.PictureBox();
             this.btnProyecto = new System.Windows.Forms.PictureBox();
             this.btnEmpleado = new System.Windows.Forms.PictureBox();
@@ -48,9 +48,9 @@
             this.btnCliente = new System.Windows.Forms.PictureBox();
             this.pbAdmin = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProduccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactProveedor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProveedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCalendario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProyecto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEmpleado)).BeginInit();
@@ -74,16 +74,17 @@
             this.pictureBox3.TabIndex = 47;
             this.pictureBox3.TabStop = false;
             // 
-            // pictureBox2
+            // btnProduccion
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(882, 31);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(67, 63);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 46;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.btnOrdenProd_Click);
+            this.btnProduccion.Image = ((System.Drawing.Image)(resources.GetObject("btnProduccion.Image")));
+            this.btnProduccion.Location = new System.Drawing.Point(882, 31);
+            this.btnProduccion.Name = "btnProduccion";
+            this.btnProduccion.Size = new System.Drawing.Size(67, 63);
+            this.btnProduccion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnProduccion.TabIndex = 46;
+            this.btnProduccion.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnProduccion, "Produccion");
+            this.btnProduccion.Click += new System.EventHandler(this.btnOrdenProd_Click);
             // 
             // btnFactProveedor
             // 
@@ -94,20 +95,22 @@
             this.btnFactProveedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnFactProveedor.TabIndex = 45;
             this.btnFactProveedor.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnFactProveedor, "Facturas de Proveedores");
             this.btnFactProveedor.Click += new System.EventHandler(this.btnFactura_Click);
             this.btnFactProveedor.MouseEnter += new System.EventHandler(this.btnFactProveedor_MouseEnter);
             this.btnFactProveedor.MouseLeave += new System.EventHandler(this.btnFactProveedor_MouseLeave);
             // 
-            // pictureBox1
+            // btnProveedor
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(686, 31);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 63);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 44;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.btnRegProveedor_Click);
+            this.btnProveedor.Image = ((System.Drawing.Image)(resources.GetObject("btnProveedor.Image")));
+            this.btnProveedor.Location = new System.Drawing.Point(686, 31);
+            this.btnProveedor.Name = "btnProveedor";
+            this.btnProveedor.Size = new System.Drawing.Size(67, 63);
+            this.btnProveedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnProveedor.TabIndex = 44;
+            this.btnProveedor.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnProveedor, "RTegistro de Proveedores");
+            this.btnProveedor.Click += new System.EventHandler(this.btnRegProveedor_Click);
             // 
             // btnCalendario
             // 
@@ -118,6 +121,7 @@
             this.btnCalendario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnCalendario.TabIndex = 43;
             this.btnCalendario.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnCalendario, "Calendario Google");
             this.btnCalendario.Click += new System.EventHandler(this.btnCalendar_Click);
             this.btnCalendario.MouseEnter += new System.EventHandler(this.btnCalendario_MouseEnter);
             this.btnCalendario.MouseLeave += new System.EventHandler(this.btnCalendario_MouseLeave);
@@ -131,6 +135,7 @@
             this.btnProyecto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnProyecto.TabIndex = 42;
             this.btnProyecto.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnProyecto, "Administracion de Proyectos");
             this.btnProyecto.Click += new System.EventHandler(this.btnAdmProyecto_Click);
             this.btnProyecto.MouseEnter += new System.EventHandler(this.btnProyecto_MouseEnter);
             this.btnProyecto.MouseLeave += new System.EventHandler(this.btnProyecto_MouseLeave);
@@ -144,6 +149,7 @@
             this.btnEmpleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnEmpleado.TabIndex = 41;
             this.btnEmpleado.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnEmpleado, "Control de Empleados");
             this.btnEmpleado.Click += new System.EventHandler(this.btnEmployer_Click);
             this.btnEmpleado.MouseEnter += new System.EventHandler(this.btnEmpleado_MouseHover);
             this.btnEmpleado.MouseLeave += new System.EventHandler(this.btnEmpleado_MouseLeave);
@@ -157,6 +163,7 @@
             this.btnCxC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnCxC.TabIndex = 40;
             this.btnCxC.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnCxC, "Cuentas por Cobrar");
             this.btnCxC.Click += new System.EventHandler(this.btnCxC_Click);
             this.btnCxC.MouseEnter += new System.EventHandler(this.btnCxC_MouseEnter);
             this.btnCxC.MouseLeave += new System.EventHandler(this.btnCxC_MouseLeave);
@@ -223,6 +230,7 @@
             this.btnFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnFactura.TabIndex = 38;
             this.btnFactura.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnFactura, "GEstion de Proformas y Facturas");
             this.btnFactura.Click += new System.EventHandler(this.ManagerQuotes_Click);
             this.btnFactura.MouseEnter += new System.EventHandler(this.btnFactura_MouseHover);
             this.btnFactura.MouseLeave += new System.EventHandler(this.btnFactura_MouseLeave);
@@ -236,6 +244,7 @@
             this.btnOrden.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnOrden.TabIndex = 37;
             this.btnOrden.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnOrden, "Nueva Proforma");
             this.btnOrden.Click += new System.EventHandler(this.btnNewQuote_Click);
             this.btnOrden.MouseEnter += new System.EventHandler(this.btnOrden_MouseEnter);
             this.btnOrden.MouseLeave += new System.EventHandler(this.btnOrden_MouseLeave);
@@ -249,6 +258,7 @@
             this.btnCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnCliente.TabIndex = 36;
             this.btnCliente.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnCliente, "Clientes");
             this.btnCliente.Click += new System.EventHandler(this.btnClient_Click);
             this.btnCliente.MouseEnter += new System.EventHandler(this.btnCliente_MouseEnter);
             this.btnCliente.MouseLeave += new System.EventHandler(this.btnCliente_MouseLeave);
@@ -262,6 +272,7 @@
             this.pbAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAdmin.TabIndex = 48;
             this.pbAdmin.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbAdmin, "Administracion de Precios");
             this.pbAdmin.Visible = false;
             this.pbAdmin.Click += new System.EventHandler(this.pictureBox4_Click_1);
             // 
@@ -274,9 +285,9 @@
             this.ClientSize = new System.Drawing.Size(1043, 97);
             this.Controls.Add(this.pbAdmin);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnProduccion);
             this.Controls.Add(this.btnFactProveedor);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnProveedor);
             this.Controls.Add(this.btnCalendario);
             this.Controls.Add(this.btnProyecto);
             this.Controls.Add(this.btnEmpleado);
@@ -291,9 +302,9 @@
             this.Name = "frmDashUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProduccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactProveedor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProveedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCalendario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProyecto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEmpleado)).EndInit();
@@ -313,9 +324,9 @@
         #endregion
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox btnProduccion;
         private System.Windows.Forms.PictureBox btnFactProveedor;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnProveedor;
         private System.Windows.Forms.PictureBox btnCalendario;
         private System.Windows.Forms.PictureBox btnProyecto;
         private System.Windows.Forms.PictureBox btnEmpleado;

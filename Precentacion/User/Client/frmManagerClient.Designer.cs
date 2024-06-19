@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagerClient));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabLista = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -41,6 +43,7 @@
             this.cotizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verEstadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabNew = new System.Windows.Forms.TabPage();
             this.PanelDataNew = new System.Windows.Forms.Panel();
             this.lblAgenda = new System.Windows.Forms.LinkLabel();
@@ -70,6 +73,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblTitleEdit = new System.Windows.Forms.Label();
+            this.tabPageEstadistica = new System.Windows.Forms.TabPage();
+            this.txtTotalFacturado = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.tabControl.SuspendLayout();
             this.tabLista.SuspendLayout();
@@ -79,6 +86,8 @@
             this.PanelDataNew.SuspendLayout();
             this.tabEdit.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPageEstadistica.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -86,6 +95,7 @@
             this.tabControl.Controls.Add(this.tabLista);
             this.tabControl.Controls.Add(this.tabNew);
             this.tabControl.Controls.Add(this.tabEdit);
+            this.tabControl.Controls.Add(this.tabPageEstadistica);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.ImageList = this.imageList;
             this.tabControl.Location = new System.Drawing.Point(3, 64);
@@ -103,7 +113,7 @@
             this.tabLista.ImageIndex = 2;
             this.tabLista.Location = new System.Drawing.Point(4, 32);
             this.tabLista.Name = "tabLista";
-            this.tabLista.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabLista.Padding = new System.Windows.Forms.Padding(3);
             this.tabLista.Size = new System.Drawing.Size(811, 459);
             this.tabLista.TabIndex = 0;
             this.tabLista.Text = "Lista";
@@ -156,7 +166,7 @@
             this.dgvClient.ReadOnly = true;
             this.dgvClient.RowHeadersWidth = 62;
             this.dgvClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClient.Size = new System.Drawing.Size(806, 411);
+            this.dgvClient.Size = new System.Drawing.Size(806, 364);
             this.dgvClient.TabIndex = 0;
             this.dgvClient.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClient_CellDoubleClick);
             // 
@@ -166,9 +176,10 @@
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cotizarToolStripMenuItem,
             this.editarClienteToolStripMenuItem,
-            this.eliminarClienteToolStripMenuItem});
+            this.eliminarClienteToolStripMenuItem,
+            this.verEstadisticasToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(158, 70);
+            this.contextMenuStrip.Size = new System.Drawing.Size(158, 92);
             // 
             // cotizarToolStripMenuItem
             // 
@@ -191,6 +202,13 @@
             this.eliminarClienteToolStripMenuItem.Text = "Eliminar Cliente";
             this.eliminarClienteToolStripMenuItem.Click += new System.EventHandler(this.eliminarClienteToolStripMenuItem_Click);
             // 
+            // verEstadisticasToolStripMenuItem
+            // 
+            this.verEstadisticasToolStripMenuItem.Name = "verEstadisticasToolStripMenuItem";
+            this.verEstadisticasToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.verEstadisticasToolStripMenuItem.Text = "Ver Estadisticas";
+            this.verEstadisticasToolStripMenuItem.Click += new System.EventHandler(this.verEstadisticasToolStripMenuItem_Click);
+            // 
             // tabNew
             // 
             this.tabNew.Controls.Add(this.PanelDataNew);
@@ -198,7 +216,7 @@
             this.tabNew.ImageIndex = 6;
             this.tabNew.Location = new System.Drawing.Point(4, 32);
             this.tabNew.Name = "tabNew";
-            this.tabNew.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabNew.Padding = new System.Windows.Forms.Padding(3);
             this.tabNew.Size = new System.Drawing.Size(811, 459);
             this.tabNew.TabIndex = 1;
             this.tabNew.Text = "Nuevo";
@@ -501,7 +519,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 31);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Direccion";
+            this.label2.Text = "Dirección";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
@@ -512,7 +530,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 31);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Telefono";
+            this.label3.Text = "Teléfono";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -538,6 +556,71 @@
             this.lblTitleEdit.Text = "Editar Cliente";
             this.lblTitleEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tabPageEstadistica
+            // 
+            this.tabPageEstadistica.Controls.Add(this.txtTotalFacturado);
+            this.tabPageEstadistica.Controls.Add(this.label6);
+            this.tabPageEstadistica.Controls.Add(this.dgvFacturas);
+            this.tabPageEstadistica.ImageIndex = 8;
+            this.tabPageEstadistica.Location = new System.Drawing.Point(4, 32);
+            this.tabPageEstadistica.Name = "tabPageEstadistica";
+            this.tabPageEstadistica.Size = new System.Drawing.Size(811, 459);
+            this.tabPageEstadistica.TabIndex = 3;
+            this.tabPageEstadistica.Text = "Estadistica";
+            this.tabPageEstadistica.UseVisualStyleBackColor = true;
+            // 
+            // txtTotalFacturado
+            // 
+            this.txtTotalFacturado.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtTotalFacturado.Location = new System.Drawing.Point(297, 417);
+            this.txtTotalFacturado.Multiline = true;
+            this.txtTotalFacturado.Name = "txtTotalFacturado";
+            this.txtTotalFacturado.Size = new System.Drawing.Size(220, 28);
+            this.txtTotalFacturado.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label6.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(332, 386);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(156, 28);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Total Facturado";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvFacturas
+            // 
+            this.dgvFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFacturas.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvFacturas.EnableHeadersVisualStyles = false;
+            this.dgvFacturas.Location = new System.Drawing.Point(3, 0);
+            this.dgvFacturas.Name = "dgvFacturas";
+            this.dgvFacturas.ReadOnly = true;
+            this.dgvFacturas.RowHeadersWidth = 62;
+            this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFacturas.Size = new System.Drawing.Size(806, 383);
+            this.dgvFacturas.TabIndex = 1;
+            // 
             // imageList
             // 
             this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
@@ -550,6 +633,7 @@
             this.imageList.Images.SetKeyName(5, "Más o agregar.png");
             this.imageList.Images.SetKeyName(6, "Agregar.png");
             this.imageList.Images.SetKeyName(7, "Prueba_Editar.png");
+            this.imageList.Images.SetKeyName(8, "graph");
             // 
             // frmManagerClient
             // 
@@ -575,6 +659,9 @@
             this.tabEdit.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabPageEstadistica.ResumeLayout(false);
+            this.tabPageEstadistica.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -620,5 +707,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPageEstadistica;
+        private System.Windows.Forms.DataGridView dgvFacturas;
+        private System.Windows.Forms.ToolStripMenuItem verEstadisticasToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtTotalFacturado;
+        private System.Windows.Forms.Label label6;
     }
 }

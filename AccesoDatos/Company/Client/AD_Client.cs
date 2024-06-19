@@ -158,6 +158,28 @@ namespace AccesoDatos.Client
             }
         }
 
+        public DataTable CargarProformasCliente(int IdCliente) 
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlDataReader Read;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = Cnn.OpenConecction();
+                cmd.CommandText = "SELECT B.*, Q.* FROM Bill B INNER JOIN Quote Q ON B.IdQuote = Q.IdQuote WHERE B.IdClient = @ID;";
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@ID", IdCliente);
+                Read = cmd.ExecuteReader();
+                dataTable.Load(Read);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception )
+            {
+                return null;
+            }
+        }
+
 
     }
 }
