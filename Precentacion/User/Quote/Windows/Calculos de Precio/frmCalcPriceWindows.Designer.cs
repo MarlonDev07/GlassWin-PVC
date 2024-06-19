@@ -1105,7 +1105,7 @@
             this.lblVidrioMetricas.Size = new System.Drawing.Size(68, 26);
             this.lblVidrioMetricas.TabIndex = 116;
             this.lblVidrioMetricas.Text = "VIDRIO";
-            this.dgvCerradura.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            // 
             // dgVidrio
             // 
             this.dgVidrio.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1322,7 +1322,7 @@
             this.dgvCerradura.TabIndex = 127;
             // 
             // dgVidrioAdd
-            this.lblVidrioMetricas.Text = "VIDRIO";
+            // 
             this.dgVidrioAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgVidrioAdd.BackgroundColor = System.Drawing.Color.White;
             this.dgVidrioAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1364,9 +1364,9 @@
             this.dgVidrioAdd.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgVidrioAdd.Size = new System.Drawing.Size(399, 68);
             this.dgVidrioAdd.TabIndex = 129;
-            this.lblAluminio.Size = new System.Drawing.Size(90, 26);
+            // 
             // dgAluminioAdd
-            this.lblAluminio.Text = "ALUMINIO";
+            // 
             this.dgAluminioAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgAluminioAdd.BackgroundColor = System.Drawing.Color.White;
             this.dgAluminioAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1408,9 +1408,9 @@
             this.dgAluminioAdd.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgAluminioAdd.Size = new System.Drawing.Size(399, 202);
             this.dgAluminioAdd.TabIndex = 130;
-            this.lblArticulo.TabIndex = 111;
+            // 
             // PanelDetalle
-            this.lblArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             this.PanelDetalle.BackColor = System.Drawing.Color.LightGray;
             this.PanelDetalle.Controls.Add(this.dgAluminioAdd);
             this.PanelDetalle.Controls.Add(this.dgVidrioAdd);
@@ -1430,12 +1430,6 @@
             this.PanelDetalle.Size = new System.Drawing.Size(1175, 851);
             this.PanelDetalle.TabIndex = 63;
             this.PanelDetalle.Visible = false;
-            this.lblDetalleCotizacion.TabIndex = 24;
-            this.lblDetalleCotizacion.Text = "Detalle de Cotizacion";
-            this.lblDetalleCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblDetalleCotizacion.TabIndex = 24;
-            this.lblDetalleCotizacion.Text = "Detalle de Cotizacion";
-            this.lblDetalleCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmCalcPriceWindows
             // 
