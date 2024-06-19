@@ -244,7 +244,7 @@
             this.lblVentilaE.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblVentilaE.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVentilaE.ForeColor = System.Drawing.Color.Black;
-            this.lblVentilaE.Location = new System.Drawing.Point(22, 972);
+            this.lblVentilaE.Location = new System.Drawing.Point(22, 651);
             this.lblVentilaE.Name = "lblVentilaE";
             this.lblVentilaE.Size = new System.Drawing.Size(802, 49);
             this.lblVentilaE.TabIndex = 46;
@@ -257,7 +257,7 @@
             this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Location = new System.Drawing.Point(22, 1024);
+            this.panel5.Location = new System.Drawing.Point(22, 703);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(803, 268);
             this.panel5.TabIndex = 45;
@@ -449,7 +449,7 @@
             this.panel9.Location = new System.Drawing.Point(4, 87);
             this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(861, 386);
+            this.panel9.Size = new System.Drawing.Size(849, 386);
             this.panel9.TabIndex = 47;
             // 
             // button2
@@ -467,7 +467,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(892, 602);
+            this.ClientSize = new System.Drawing.Size(867, 579);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
