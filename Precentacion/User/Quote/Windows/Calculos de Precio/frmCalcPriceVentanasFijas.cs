@@ -634,7 +634,7 @@ namespace Precentacion.User.Quote.Windows
         {
             try
             {
-                if(TempPrecio == 0) 
+                if(TempPrecio != 0) 
                 {
                     if (txtTotal.Text != "")
                     {

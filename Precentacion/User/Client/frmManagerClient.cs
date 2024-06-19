@@ -385,5 +385,55 @@ namespace Precentacion.User.Client
                 }
             }
         }
+
+        private void verEstadisticasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Obtener el ID del cliente seleccionado
+            int ID = Convert.ToInt32(dgvClient.CurrentRow.Cells[0].Value.ToString());
+
+            //Llamar a la Funcion CargarProformasCliente en la capa de Negocio
+            DataTable dt = NClient.CargarProformasCliente(ID);
+            dgvFacturas.DataSource = dt;
+
+            //Configurar el DGV
+            //Ocultar columnas
+            dgvFacturas.Columns[0].Visible = false;
+            dgvFacturas.Columns[1].Visible = false;
+            dgvFacturas.Columns[2].Visible = false;
+            dgvFacturas.Columns[5].Visible = false;
+            dgvFacturas.Columns[6].Visible = false;
+            dgvFacturas.Columns[9].Visible = false;
+            dgvFacturas.Columns[15].Visible = false;
+
+            //Modificar titulo de las columnas
+            dgvFacturas.Columns[3].HeaderText = "Fecha";
+            dgvFacturas.Columns[4].HeaderText = "Fecha Exp";
+            dgvFacturas.Columns[7].HeaderText = "Proyecto";
+            dgvFacturas.Columns[8].HeaderText = "Direccion";
+            dgvFacturas.Columns[10].HeaderText = "Descuento";
+            dgvFacturas.Columns[11].HeaderText = "Mano Obra";
+            dgvFacturas.Columns[12].HeaderText = "Iva";
+            dgvFacturas.Columns[13].HeaderText = "SubTotal";
+            dgvFacturas.Columns[14].HeaderText = "Total";
+
+            //CALCULAR EL TOTAL FACTURADO
+            CalcularTotal();
+
+            //Mostrar el tab de estadisticas
+            tabControl.SelectedIndex = 3;
+
+
+
+        }
+
+        private void CalcularTotal()
+        {
+            double total = 0;
+            foreach (DataGridViewRow r in dgvFacturas.Rows)
+            {
+                total += Convert.ToDouble(r.Cells[14].Value);
+            }
+            txtTotalFacturado.Text = total.ToString("C");
+        }
     }
 }

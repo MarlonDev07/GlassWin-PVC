@@ -81,5 +81,17 @@ namespace Negocio.Client
                 return false;
             }
         }
+
+        public DataTable CargarProformasCliente(int IdCliente) 
+        {
+            try
+            {
+                return ADClient.CargarProformasCliente(IdCliente);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }
