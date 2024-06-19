@@ -347,5 +347,15 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 txtTotal.Enabled = false;
             }
         }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
+            panelDetalle.Visible = false;
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

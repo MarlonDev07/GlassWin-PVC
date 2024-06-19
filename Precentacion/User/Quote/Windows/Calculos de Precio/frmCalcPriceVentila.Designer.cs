@@ -435,26 +435,18 @@
             this.panelDetalle.Controls.Add(this.Vidriodt);
             this.panelDetalle.Controls.Add(this.btnSalir);
             this.panelDetalle.Controls.Add(this.Aluminiodt);
-            this.panelDetalle.Location = new System.Drawing.Point(-1, 35);
+            this.panelDetalle.Location = new System.Drawing.Point(-1, 63);
             this.panelDetalle.Name = "panelDetalle";
             this.panelDetalle.Size = new System.Drawing.Size(1140, 707);
-            this.panelDetalle.TabIndex = 78;
+            this.panelDetalle.TabIndex = 77;
             this.panelDetalle.Visible = false;
             // 
             // label4
             // 
-            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSalir.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(526, 519);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(129, 45);
-            this.btnSalir.TabIndex = 72;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = false;
+            this.label4.Location = new System.Drawing.Point(158, 243);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 23);
+            this.label4.TabIndex = 0;
             // 
             // dgvAccesorios
             // 
@@ -467,16 +459,11 @@
             // 
             // label7
             // 
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label10.Font = new System.Drawing.Font("Impact", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(0, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(1140, 25);
-            this.label10.TabIndex = 74;
-            this.label10.Text = "Detalle";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label7.Location = new System.Drawing.Point(158, 374);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 23);
+            this.label7.TabIndex = 78;
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -525,22 +512,14 @@
             this.btnSalir.TabIndex = 72;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
             // Aluminiodt
             // 
-            this.panelDetalle.Controls.Add(this.label4);
-            this.panelDetalle.Controls.Add(this.dgvAccesorios);
-            this.panelDetalle.Controls.Add(this.label7);
-            this.panelDetalle.Controls.Add(this.label8);
-            this.panelDetalle.Controls.Add(this.label10);
-            this.panelDetalle.Controls.Add(this.Vidriodt);
-            this.panelDetalle.Controls.Add(this.btnSalir);
-            this.panelDetalle.Controls.Add(this.Aluminiodt);
-            this.panelDetalle.Location = new System.Drawing.Point(-1, 63);
-            this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1140, 707);
-            this.panelDetalle.TabIndex = 77;
-            this.panelDetalle.Visible = false;
+            this.Aluminiodt.Location = new System.Drawing.Point(264, 32);
+            this.Aluminiodt.Name = "Aluminiodt";
+            this.Aluminiodt.Size = new System.Drawing.Size(675, 150);
+            this.Aluminiodt.TabIndex = 79;
             // 
             // frmCalcPriceVentila
             // 
