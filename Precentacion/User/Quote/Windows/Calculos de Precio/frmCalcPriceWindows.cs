@@ -2417,6 +2417,8 @@ namespace Precentacion.User.Quote.Windows
         {
             PanelDetalle.Visible = false;
         }
+        //Para oculatar la seccion de "Fijos"
+        #region Ocultar Seccion de fijos y eliminar la etiqueta de vidrios en cedazo 1/2
         public string Design2 { get; set; }
         public string System2 { get; set; }
         private void frmCalcPriceWindows_Load(object sender, EventArgs e)
@@ -2435,6 +2437,15 @@ namespace Precentacion.User.Quote.Windows
 
                 }
             }
+            if (System2 == "Cedazo 1/2")
+            {
+                if (Design2 == "Cedazo 12")
+                {
+                    label19.Visible = false;
+
+                }
+            }
         }
-    } 
+        #endregion
+    }
 }

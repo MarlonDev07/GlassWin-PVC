@@ -207,6 +207,8 @@ namespace Precentacion.User.Quote.Windows
             ClsWindows.System = "Cedazo 1/2";
             ClsWindows.Desing = "Cedazo 12";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing = "Cedazo 12";
+            frm.System2 = ClsWindows.System = "Cedazo 1/2";
             frm.Show();
             this.Close();
         }

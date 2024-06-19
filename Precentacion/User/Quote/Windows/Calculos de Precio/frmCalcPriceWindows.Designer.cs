@@ -30,30 +30,30 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalcPriceWindows));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTituloCotizacion = new System.Windows.Forms.Label();
             this.pbVentana = new System.Windows.Forms.PictureBox();
             this.txtUbicacion = new System.Windows.Forms.TextBox();
@@ -124,21 +124,21 @@
             this.btnBackSistmas = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.PanelDetalle = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dgAluminioAdd = new System.Windows.Forms.DataGridView();
-            this.dgVidrioAdd = new System.Windows.Forms.DataGridView();
-            this.dgvCerradura = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dgAluminio = new System.Windows.Forms.DataGridView();
-            this.dgAccesorios = new System.Windows.Forms.DataGridView();
-            this.btnHidePanelDG = new System.Windows.Forms.Button();
-            this.lblAccesorios = new System.Windows.Forms.Label();
-            this.dgVidrio = new System.Windows.Forms.DataGridView();
-            this.lblVidrioMetricas = new System.Windows.Forms.Label();
-            this.lblAluminio = new System.Windows.Forms.Label();
-            this.lblArticulo = new System.Windows.Forms.Label();
             this.lblDetalleCotizacion = new System.Windows.Forms.Label();
+            this.lblArticulo = new System.Windows.Forms.Label();
+            this.lblAluminio = new System.Windows.Forms.Label();
+            this.lblVidrioMetricas = new System.Windows.Forms.Label();
+            this.dgVidrio = new System.Windows.Forms.DataGridView();
+            this.lblAccesorios = new System.Windows.Forms.Label();
+            this.btnHidePanelDG = new System.Windows.Forms.Button();
+            this.dgAccesorios = new System.Windows.Forms.DataGridView();
+            this.dgAluminio = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgvCerradura = new System.Windows.Forms.DataGridView();
+            this.dgVidrioAdd = new System.Windows.Forms.DataGridView();
+            this.dgAluminioAdd = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.PanelDetalle = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).BeginInit();
             this.panelCerradura.SuspendLayout();
             this.contextMenuStripOpciones.SuspendLayout();
@@ -150,13 +150,13 @@
             this.PanelHaladera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).BeginInit();
             this.panel1.SuspendLayout();
-            this.PanelDetalle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgVidrioAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCerradura)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCerradura)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVidrioAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).BeginInit();
+            this.PanelDetalle.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTituloCotizacion
@@ -1035,7 +1035,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(130, 29);
             this.label1.TabIndex = 63;
-            this.label1.Text = "Ubicacion:";
+            this.label1.Text = "Ubicacón:";
             // 
             // panel1
             // 
@@ -1055,185 +1055,171 @@
             this.panel1.Size = new System.Drawing.Size(1173, 851);
             this.panel1.TabIndex = 64;
             // 
-            // PanelDetalle
+            // lblDetalleCotizacion
             // 
-            this.PanelDetalle.BackColor = System.Drawing.Color.LightGray;
-            this.PanelDetalle.Controls.Add(this.button2);
-            this.PanelDetalle.Controls.Add(this.dgAluminioAdd);
-            this.PanelDetalle.Controls.Add(this.dgVidrioAdd);
-            this.PanelDetalle.Controls.Add(this.dgvCerradura);
-            this.PanelDetalle.Controls.Add(this.label4);
-            this.PanelDetalle.Controls.Add(this.dgAluminio);
-            this.PanelDetalle.Controls.Add(this.dgAccesorios);
-            this.PanelDetalle.Controls.Add(this.btnHidePanelDG);
-            this.PanelDetalle.Controls.Add(this.lblAccesorios);
-            this.PanelDetalle.Controls.Add(this.dgVidrio);
-            this.PanelDetalle.Controls.Add(this.lblVidrioMetricas);
-            this.PanelDetalle.Controls.Add(this.lblAluminio);
-            this.PanelDetalle.Controls.Add(this.lblArticulo);
-            this.PanelDetalle.Controls.Add(this.lblDetalleCotizacion);
-            this.PanelDetalle.Location = new System.Drawing.Point(-1, 0);
-            this.PanelDetalle.Name = "PanelDetalle";
-            this.PanelDetalle.Size = new System.Drawing.Size(1175, 851);
-            this.PanelDetalle.TabIndex = 63;
-            this.PanelDetalle.Visible = false;
+            this.lblDetalleCotizacion.BackColor = System.Drawing.Color.Black;
+            this.lblDetalleCotizacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDetalleCotizacion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDetalleCotizacion.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetalleCotizacion.ForeColor = System.Drawing.Color.White;
+            this.lblDetalleCotizacion.Location = new System.Drawing.Point(0, 0);
+            this.lblDetalleCotizacion.Name = "lblDetalleCotizacion";
+            this.lblDetalleCotizacion.Size = new System.Drawing.Size(1175, 32);
+            this.lblDetalleCotizacion.TabIndex = 24;
+            this.lblDetalleCotizacion.Text = "Detalle de Cotizacion";
+            this.lblDetalleCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // lblArticulo
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button2.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(525, 734);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 37);
-            this.button2.TabIndex = 131;
-            this.button2.Text = "Cerrar";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.lblArticulo.BackColor = System.Drawing.Color.Black;
+            this.lblArticulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblArticulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblArticulo.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArticulo.ForeColor = System.Drawing.Color.White;
+            this.lblArticulo.Location = new System.Drawing.Point(0, 32);
+            this.lblArticulo.Name = "lblArticulo";
+            this.lblArticulo.Size = new System.Drawing.Size(1175, 29);
+            this.lblArticulo.TabIndex = 111;
+            this.lblArticulo.Text = "Descripcion de Articulos ";
+            this.lblArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dgAluminioAdd
+            // lblAluminio
             // 
-            this.dgAluminioAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgAluminioAdd.BackgroundColor = System.Drawing.Color.White;
-            this.dgAluminioAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgAluminioAdd.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgAluminioAdd.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgAluminioAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgAluminioAdd.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgAluminioAdd.EnableHeadersVisualStyles = false;
-            this.dgAluminioAdd.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgAluminioAdd.Location = new System.Drawing.Point(586, 176);
-            this.dgAluminioAdd.Name = "dgAluminioAdd";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgAluminioAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgAluminioAdd.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dgAluminioAdd.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgAluminioAdd.Size = new System.Drawing.Size(399, 202);
-            this.dgAluminioAdd.TabIndex = 130;
+            this.lblAluminio.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblAluminio.AutoSize = true;
+            this.lblAluminio.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAluminio.ForeColor = System.Drawing.Color.Black;
+            this.lblAluminio.Location = new System.Drawing.Point(4, 176);
+            this.lblAluminio.Name = "lblAluminio";
+            this.lblAluminio.Size = new System.Drawing.Size(90, 26);
+            this.lblAluminio.TabIndex = 115;
+            this.lblAluminio.Text = "ALUMINIO";
             // 
-            // dgVidrioAdd
+            // lblVidrioMetricas
             // 
-            this.dgVidrioAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgVidrioAdd.BackgroundColor = System.Drawing.Color.White;
-            this.dgVidrioAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgVidrioAdd.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgVidrioAdd.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgVidrioAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgVidrioAdd.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgVidrioAdd.EnableHeadersVisualStyles = false;
-            this.dgVidrioAdd.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgVidrioAdd.Location = new System.Drawing.Point(586, 497);
-            this.dgVidrioAdd.Name = "dgVidrioAdd";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgVidrioAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgVidrioAdd.RowHeadersWidth = 62;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dgVidrioAdd.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgVidrioAdd.Size = new System.Drawing.Size(399, 68);
-            this.dgVidrioAdd.TabIndex = 129;
+            this.lblVidrioMetricas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblVidrioMetricas.AutoSize = true;
+            this.lblVidrioMetricas.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVidrioMetricas.ForeColor = System.Drawing.Color.Black;
+            this.lblVidrioMetricas.Location = new System.Drawing.Point(767, 383);
+            this.lblVidrioMetricas.Name = "lblVidrioMetricas";
+            this.lblVidrioMetricas.Size = new System.Drawing.Size(68, 26);
+            this.lblVidrioMetricas.TabIndex = 116;
+            this.lblVidrioMetricas.Text = "VIDRIO";
             // 
-            // dgvCerradura
+            // dgVidrio
             // 
-            this.dgvCerradura.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgvCerradura.BackgroundColor = System.Drawing.Color.White;
-            this.dgvCerradura.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvCerradura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCerradura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvCerradura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCerradura.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvCerradura.EnableHeadersVisualStyles = false;
-            this.dgvCerradura.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvCerradura.Location = new System.Drawing.Point(586, 597);
-            this.dgvCerradura.Name = "dgvCerradura";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCerradura.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvCerradura.RowHeadersWidth = 62;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvCerradura.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvCerradura.Size = new System.Drawing.Size(399, 73);
-            this.dgvCerradura.TabIndex = 127;
+            this.dgVidrio.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgVidrio.BackgroundColor = System.Drawing.Color.White;
+            this.dgVidrio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgVidrio.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgVidrio.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dgVidrio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgVidrio.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dgVidrio.EnableHeadersVisualStyles = false;
+            this.dgVidrio.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgVidrio.Location = new System.Drawing.Point(586, 412);
+            this.dgVidrio.Name = "dgVidrio";
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgVidrio.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            this.dgVidrio.RowHeadersWidth = 62;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
+            this.dgVidrio.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgVidrio.Size = new System.Drawing.Size(399, 79);
+            this.dgVidrio.TabIndex = 118;
             // 
-            // label4
+            // lblAccesorios
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(741, 568);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 26);
-            this.label4.TabIndex = 126;
-            this.label4.Text = "Cerradura";
+            this.lblAccesorios.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblAccesorios.AutoSize = true;
+            this.lblAccesorios.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccesorios.ForeColor = System.Drawing.Color.Black;
+            this.lblAccesorios.Location = new System.Drawing.Point(0, 412);
+            this.lblAccesorios.Name = "lblAccesorios";
+            this.lblAccesorios.Size = new System.Drawing.Size(104, 23);
+            this.lblAccesorios.TabIndex = 121;
+            this.lblAccesorios.Text = "ACCESORIOS";
+            // 
+            // btnHidePanelDG
+            // 
+            this.btnHidePanelDG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHidePanelDG.BackColor = System.Drawing.Color.Transparent;
+            this.btnHidePanelDG.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHidePanelDG.BackgroundImage")));
+            this.btnHidePanelDG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHidePanelDG.FlatAppearance.BorderSize = 0;
+            this.btnHidePanelDG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHidePanelDG.Location = new System.Drawing.Point(1328, 1019);
+            this.btnHidePanelDG.Name = "btnHidePanelDG";
+            this.btnHidePanelDG.Size = new System.Drawing.Size(99, 58);
+            this.btnHidePanelDG.TabIndex = 123;
+            this.btnHidePanelDG.UseVisualStyleBackColor = false;
+            // 
+            // dgAccesorios
+            // 
+            this.dgAccesorios.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgAccesorios.BackgroundColor = System.Drawing.Color.White;
+            this.dgAccesorios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgAccesorios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgAccesorios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.dgAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgAccesorios.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dgAccesorios.EnableHeadersVisualStyles = false;
+            this.dgAccesorios.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgAccesorios.Location = new System.Drawing.Point(134, 412);
+            this.dgAccesorios.Name = "dgAccesorios";
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgAccesorios.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.dgAccesorios.RowHeadersWidth = 62;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
+            this.dgAccesorios.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            this.dgAccesorios.Size = new System.Drawing.Size(434, 258);
+            this.dgAccesorios.TabIndex = 124;
             // 
             // dgAluminio
             // 
@@ -1280,171 +1266,185 @@
             this.dgAluminio.Size = new System.Drawing.Size(434, 202);
             this.dgAluminio.TabIndex = 125;
             // 
-            // dgAccesorios
+            // label4
             // 
-            this.dgAccesorios.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgAccesorios.BackgroundColor = System.Drawing.Color.White;
-            this.dgAccesorios.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgAccesorios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgAccesorios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.dgAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgAccesorios.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dgAccesorios.EnableHeadersVisualStyles = false;
-            this.dgAccesorios.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgAccesorios.Location = new System.Drawing.Point(134, 412);
-            this.dgAccesorios.Name = "dgAccesorios";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgAccesorios.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            this.dgAccesorios.RowHeadersWidth = 62;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            this.dgAccesorios.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.dgAccesorios.Size = new System.Drawing.Size(434, 258);
-            this.dgAccesorios.TabIndex = 124;
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(741, 568);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 26);
+            this.label4.TabIndex = 126;
+            this.label4.Text = "Cerradura";
             // 
-            // btnHidePanelDG
+            // dgvCerradura
             // 
-            this.btnHidePanelDG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHidePanelDG.BackColor = System.Drawing.Color.Transparent;
-            this.btnHidePanelDG.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHidePanelDG.BackgroundImage")));
-            this.btnHidePanelDG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnHidePanelDG.FlatAppearance.BorderSize = 0;
-            this.btnHidePanelDG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHidePanelDG.Location = new System.Drawing.Point(1328, 1019);
-            this.btnHidePanelDG.Name = "btnHidePanelDG";
-            this.btnHidePanelDG.Size = new System.Drawing.Size(99, 58);
-            this.btnHidePanelDG.TabIndex = 123;
-            this.btnHidePanelDG.UseVisualStyleBackColor = false;
+            this.dgvCerradura.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgvCerradura.BackgroundColor = System.Drawing.Color.White;
+            this.dgvCerradura.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCerradura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCerradura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvCerradura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCerradura.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvCerradura.EnableHeadersVisualStyles = false;
+            this.dgvCerradura.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgvCerradura.Location = new System.Drawing.Point(586, 597);
+            this.dgvCerradura.Name = "dgvCerradura";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCerradura.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvCerradura.RowHeadersWidth = 62;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvCerradura.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvCerradura.Size = new System.Drawing.Size(399, 73);
+            this.dgvCerradura.TabIndex = 127;
             // 
-            // lblAccesorios
+            // dgVidrioAdd
             // 
-            this.lblAccesorios.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblAccesorios.AutoSize = true;
-            this.lblAccesorios.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAccesorios.ForeColor = System.Drawing.Color.Black;
-            this.lblAccesorios.Location = new System.Drawing.Point(0, 412);
-            this.lblAccesorios.Name = "lblAccesorios";
-            this.lblAccesorios.Size = new System.Drawing.Size(104, 23);
-            this.lblAccesorios.TabIndex = 121;
-            this.lblAccesorios.Text = "ACCESORIOS";
+            this.dgVidrioAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgVidrioAdd.BackgroundColor = System.Drawing.Color.White;
+            this.dgVidrioAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgVidrioAdd.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgVidrioAdd.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgVidrioAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgVidrioAdd.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgVidrioAdd.EnableHeadersVisualStyles = false;
+            this.dgVidrioAdd.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgVidrioAdd.Location = new System.Drawing.Point(586, 497);
+            this.dgVidrioAdd.Name = "dgVidrioAdd";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgVidrioAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgVidrioAdd.RowHeadersWidth = 62;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.dgVidrioAdd.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgVidrioAdd.Size = new System.Drawing.Size(399, 68);
+            this.dgVidrioAdd.TabIndex = 129;
             // 
-            // dgVidrio
+            // dgAluminioAdd
             // 
-            this.dgVidrio.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgVidrio.BackgroundColor = System.Drawing.Color.White;
-            this.dgVidrio.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgVidrio.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgVidrio.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
-            this.dgVidrio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgVidrio.DefaultCellStyle = dataGridViewCellStyle22;
-            this.dgVidrio.EnableHeadersVisualStyles = false;
-            this.dgVidrio.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgVidrio.Location = new System.Drawing.Point(586, 412);
-            this.dgVidrio.Name = "dgVidrio";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgVidrio.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
-            this.dgVidrio.RowHeadersWidth = 62;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
-            this.dgVidrio.RowsDefaultCellStyle = dataGridViewCellStyle24;
-            this.dgVidrio.Size = new System.Drawing.Size(399, 79);
-            this.dgVidrio.TabIndex = 118;
+            this.dgAluminioAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgAluminioAdd.BackgroundColor = System.Drawing.Color.White;
+            this.dgAluminioAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgAluminioAdd.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgAluminioAdd.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgAluminioAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgAluminioAdd.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgAluminioAdd.EnableHeadersVisualStyles = false;
+            this.dgAluminioAdd.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgAluminioAdd.Location = new System.Drawing.Point(586, 176);
+            this.dgAluminioAdd.Name = "dgAluminioAdd";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgAluminioAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgAluminioAdd.RowHeadersWidth = 62;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dgAluminioAdd.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgAluminioAdd.Size = new System.Drawing.Size(399, 202);
+            this.dgAluminioAdd.TabIndex = 130;
             // 
-            // lblVidrioMetricas
+            // button2
             // 
-            this.lblVidrioMetricas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblVidrioMetricas.AutoSize = true;
-            this.lblVidrioMetricas.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVidrioMetricas.ForeColor = System.Drawing.Color.Black;
-            this.lblVidrioMetricas.Location = new System.Drawing.Point(767, 383);
-            this.lblVidrioMetricas.Name = "lblVidrioMetricas";
-            this.lblVidrioMetricas.Size = new System.Drawing.Size(68, 26);
-            this.lblVidrioMetricas.TabIndex = 116;
-            this.lblVidrioMetricas.Text = "VIDRIO";
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button2.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(525, 734);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 37);
+            this.button2.TabIndex = 131;
+            this.button2.Text = "Cerrar";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // lblAluminio
+            // PanelDetalle
             // 
-            this.lblAluminio.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblAluminio.AutoSize = true;
-            this.lblAluminio.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAluminio.ForeColor = System.Drawing.Color.Black;
-            this.lblAluminio.Location = new System.Drawing.Point(4, 176);
-            this.lblAluminio.Name = "lblAluminio";
-            this.lblAluminio.Size = new System.Drawing.Size(90, 26);
-            this.lblAluminio.TabIndex = 115;
-            this.lblAluminio.Text = "ALUMINIO";
-            // 
-            // lblArticulo
-            // 
-            this.lblArticulo.BackColor = System.Drawing.Color.Black;
-            this.lblArticulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblArticulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblArticulo.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArticulo.ForeColor = System.Drawing.Color.White;
-            this.lblArticulo.Location = new System.Drawing.Point(0, 32);
-            this.lblArticulo.Name = "lblArticulo";
-            this.lblArticulo.Size = new System.Drawing.Size(1175, 29);
-            this.lblArticulo.TabIndex = 111;
-            this.lblArticulo.Text = "Descripcion de Articulos ";
-            this.lblArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDetalleCotizacion
-            // 
-            this.lblDetalleCotizacion.BackColor = System.Drawing.Color.Black;
-            this.lblDetalleCotizacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDetalleCotizacion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDetalleCotizacion.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetalleCotizacion.ForeColor = System.Drawing.Color.White;
-            this.lblDetalleCotizacion.Location = new System.Drawing.Point(0, 0);
-            this.lblDetalleCotizacion.Name = "lblDetalleCotizacion";
-            this.lblDetalleCotizacion.Size = new System.Drawing.Size(1175, 32);
-            this.lblDetalleCotizacion.TabIndex = 24;
-            this.lblDetalleCotizacion.Text = "Detalle de Cotizacion";
-            this.lblDetalleCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PanelDetalle.BackColor = System.Drawing.Color.LightGray;
+            this.PanelDetalle.Controls.Add(this.button2);
+            this.PanelDetalle.Controls.Add(this.dgAluminioAdd);
+            this.PanelDetalle.Controls.Add(this.dgVidrioAdd);
+            this.PanelDetalle.Controls.Add(this.dgvCerradura);
+            this.PanelDetalle.Controls.Add(this.label4);
+            this.PanelDetalle.Controls.Add(this.dgAluminio);
+            this.PanelDetalle.Controls.Add(this.dgAccesorios);
+            this.PanelDetalle.Controls.Add(this.btnHidePanelDG);
+            this.PanelDetalle.Controls.Add(this.lblAccesorios);
+            this.PanelDetalle.Controls.Add(this.dgVidrio);
+            this.PanelDetalle.Controls.Add(this.lblVidrioMetricas);
+            this.PanelDetalle.Controls.Add(this.lblAluminio);
+            this.PanelDetalle.Controls.Add(this.lblArticulo);
+            this.PanelDetalle.Controls.Add(this.lblDetalleCotizacion);
+            this.PanelDetalle.Location = new System.Drawing.Point(-1, 0);
+            this.PanelDetalle.Name = "PanelDetalle";
+            this.PanelDetalle.Size = new System.Drawing.Size(1175, 851);
+            this.PanelDetalle.TabIndex = 63;
+            this.PanelDetalle.Visible = false;
             // 
             // frmCalcPriceWindows
             // 
@@ -1481,14 +1481,14 @@
             this.PanelHaladera.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCerradura)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVidrioAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).EndInit();
             this.PanelDetalle.ResumeLayout(false);
             this.PanelDetalle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgVidrioAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCerradura)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1566,7 +1566,9 @@
         private System.Windows.Forms.ToolStripMenuItem enviarProformaToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel PanelDetalle;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dgAluminioAdd;
         private System.Windows.Forms.DataGridView dgVidrioAdd;
         private System.Windows.Forms.DataGridView dgvCerradura;
@@ -1580,7 +1582,5 @@
         private System.Windows.Forms.Label lblAluminio;
         private System.Windows.Forms.Label lblArticulo;
         private System.Windows.Forms.Label lblDetalleCotizacion;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }
