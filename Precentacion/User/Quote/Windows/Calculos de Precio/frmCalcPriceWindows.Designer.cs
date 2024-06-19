@@ -1105,6 +1105,51 @@
             this.lblVidrioMetricas.Size = new System.Drawing.Size(68, 26);
             this.lblVidrioMetricas.TabIndex = 116;
             this.lblVidrioMetricas.Text = "VIDRIO";
+            this.dgvCerradura.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            // dgVidrio
+            // 
+            this.dgVidrio.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgVidrio.BackgroundColor = System.Drawing.Color.White;
+            this.dgVidrio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgVidrio.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgVidrio.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dgVidrio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgVidrio.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dgVidrio.EnableHeadersVisualStyles = false;
+            this.dgVidrio.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgVidrio.Location = new System.Drawing.Point(586, 412);
+            this.dgVidrio.Name = "dgVidrio";
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgVidrio.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            this.dgVidrio.RowHeadersWidth = 62;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
+            this.dgVidrio.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgVidrio.Size = new System.Drawing.Size(399, 79);
+            this.dgVidrio.TabIndex = 118;
+            // 
             // 
             // dgVidrio
             // 
@@ -1322,7 +1367,7 @@
             this.dgvCerradura.TabIndex = 127;
             // 
             // dgVidrioAdd
-            // 
+            this.lblVidrioMetricas.Text = "VIDRIO";
             this.dgVidrioAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgVidrioAdd.BackgroundColor = System.Drawing.Color.White;
             this.dgVidrioAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1364,9 +1409,9 @@
             this.dgVidrioAdd.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgVidrioAdd.Size = new System.Drawing.Size(399, 68);
             this.dgVidrioAdd.TabIndex = 129;
-            // 
+            this.lblAluminio.Size = new System.Drawing.Size(90, 26);
             // dgAluminioAdd
-            // 
+            this.lblAluminio.Text = "ALUMINIO";
             this.dgAluminioAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgAluminioAdd.BackgroundColor = System.Drawing.Color.White;
             this.dgAluminioAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1408,9 +1453,9 @@
             this.dgAluminioAdd.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgAluminioAdd.Size = new System.Drawing.Size(399, 202);
             this.dgAluminioAdd.TabIndex = 130;
-            // 
+            this.lblArticulo.TabIndex = 111;
             // PanelDetalle
-            // 
+            this.lblArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.PanelDetalle.BackColor = System.Drawing.Color.LightGray;
             this.PanelDetalle.Controls.Add(this.dgAluminioAdd);
             this.PanelDetalle.Controls.Add(this.dgVidrioAdd);
@@ -1430,6 +1475,12 @@
             this.PanelDetalle.Size = new System.Drawing.Size(1175, 851);
             this.PanelDetalle.TabIndex = 63;
             this.PanelDetalle.Visible = false;
+            this.lblDetalleCotizacion.TabIndex = 24;
+            this.lblDetalleCotizacion.Text = "Detalle de Cotizacion";
+            this.lblDetalleCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDetalleCotizacion.TabIndex = 24;
+            this.lblDetalleCotizacion.Text = "Detalle de Cotizacion";
+            this.lblDetalleCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmCalcPriceWindows
             // 
