@@ -35,7 +35,11 @@ namespace Precentacion.User.Quote.Windows
 
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
-        private const decimal CentimetrosAPixeles = 100.0m;
+        private const decimal CentimetrosAPixeles = 1500.0m;
+
+        // Tamaño máximo permitido para el PictureBox
+        private const int MaxWidth = 450;
+        private const int MaxHeight = 350;
         #endregion
 
         #region Constructor
@@ -415,15 +419,13 @@ namespace Precentacion.User.Quote.Windows
         #region Función para redimensionar la imagen
         private Bitmap ResizeImage(Image image, int width, int height)
         {
-            // Rectángulo de destino para la imagen redimensionada
-            var destRect = new Rectangle(0, 0, width, height);
-            // Crear un nuevo objeto Bitmap para la imagen redimensionada
+            // Crear un nuevo Bitmap con el tamaño deseado
             var destImage = new Bitmap(width, height);
 
             // Establecer la resolución del nuevo Bitmap igual a la resolución de la imagen original
             destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
-            // Crear un objeto Graphics para la imagen redimensionada
+            // Usar Graphics para dibujar la imagen redimensionada
             using (var graphics = Graphics.FromImage(destImage))
             {
                 // Configurar la calidad de composición, interpolación, suavizado y compensación de píxeles para el objeto Graphics
@@ -437,8 +439,9 @@ namespace Precentacion.User.Quote.Windows
                 using (var wrapMode = new ImageAttributes())
                 {
                     wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+
                     // Dibujar la imagen original redimensionada en el rectángulo de destino utilizando el objeto Graphics
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                    graphics.DrawImage(image, new Rectangle(0, 0, width, height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
             }
 
@@ -2276,21 +2279,29 @@ namespace Precentacion.User.Quote.Windows
             {
                 try
                 {
+                    // Obtener las dimensiones ingresadas por el usuario
+                    string anchoTexto = txtAncho.Text;
+                    string altoTexto = txtAlto.Text;
 
                     // Convertir las dimensiones ingresadas por el usuario a píxeles
-                    decimal anchoEnMetros = decimal.Parse(txtAncho.Text);
-                    decimal alturaEnMetros = decimal.Parse(txtAlto.Text);
+                    decimal anchoEnPixeles = ConvertirDimensionAPixeles(anchoTexto);
+                    decimal alturaEnPixeles = ConvertirDimensionAPixeles(altoTexto);
 
-                    int newWidth = (int)(anchoEnMetros * MetrosAPixeles);
-                    int newHeight = (int)(alturaEnMetros * MetrosAPixeles);
-                    //Redirecciona a la funcion
+                    int newWidth = (int)anchoEnPixeles;
+                    int newHeight = (int)alturaEnPixeles;
+
+                    // Redimensionar la imagen
                     var resizedImage = ResizeImage(pbVentana.Image, newWidth, newHeight);
-                    //La imagen que devuelve la funcion va a ser la nueva imagen del pictureBox
+
+                    // Asignar la imagen redimensionada al PictureBox
                     pbVentana.Image = resizedImage;
+
+                    // Ajustar el tamaño del PictureBox para que coincida con la nueva imagen
+                    AjustarTamañoPictureBox(pbVentana, newWidth, newHeight);
                 }
                 catch (FormatException)
                 {
-                  
+                    MessageBox.Show("Las dimensiones ingresadas no son válidas.");
                 }
             }
             else
@@ -2299,6 +2310,51 @@ namespace Precentacion.User.Quote.Windows
             }
         }
 
+        private decimal ConvertirDimensionAPixeles(string dimensionTexto)
+        {
+            // Validar que la cadena no esté vacía y que sea un número válido
+            if (!string.IsNullOrEmpty(dimensionTexto) && decimal.TryParse(dimensionTexto, out decimal dimension))
+            {
+                // Usar CentimetrosAPixeles si la dimensión empieza con 0, sino usar MetrosAPixeles
+                if (dimensionTexto.StartsWith("0"))
+                {
+                    return dimension * CentimetrosAPixeles;
+                }
+                else
+                {
+                    return dimension * MetrosAPixeles;
+                }
+            }
+            else
+            {
+                throw new FormatException("La dimensión no es válida.");
+            }
+        }
+
+
+        private void AjustarTamañoPictureBox(PictureBox pb, int newWidth, int newHeight)
+        {
+            // Obtener el tamaño del contenedor padre
+            var parentSize = pb.Parent.ClientSize;
+
+            // Mantener la imagen dentro de los límites del contenedor padre
+            if (newWidth > MaxWidth)
+            {
+                newWidth = MaxWidth;
+            }
+            if (newHeight > MaxHeight)
+            {
+                newHeight = MaxHeight;
+            }
+
+            // Ajustar el tamaño del PictureBox
+            pb.Width = newWidth;
+            pb.Height = newHeight;
+
+            // Centrar el PictureBox en su contenedor padre
+            pb.Left = (parentSize.Width - pb.Width) / 2;
+            pb.Top = (parentSize.Height - pb.Height) / 2;
+        }
         private void añadirVidrioFijoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnAdd_Click(sender, e);
