@@ -43,7 +43,7 @@ namespace Precentacion.User.Quote.Windows
             }
             cbColor.SelectedIndex = 0;
             cbAluminio.SelectedIndex = 0;
-            cbSupplier.SelectedIndex = 0;
+            //cbSupplier.SelectedIndex = 1;
             CargarImagen();
             CargarDescripcion();
             CargarVidrio();
@@ -627,7 +627,7 @@ namespace Precentacion.User.Quote.Windows
         }
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbSupplier.SelectedIndex == 2) 
+            if(cbSupplier.SelectedIndex == 3) 
             {
                 txtTotal.Enabled = true;
             }
