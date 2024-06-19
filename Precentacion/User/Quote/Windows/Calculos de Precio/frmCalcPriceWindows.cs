@@ -303,6 +303,11 @@ namespace Precentacion.User.Quote.Windows
                     frmpu.Show();
                     this.Close();
                     break;
+                case "Ventila Euro":
+                    frmSelectDesingVentila frm2 = new frmSelectDesingVentila();
+                    frm2.Show();
+                    this.Close();
+                    break;
                 default:
                     frmSelectDesing frmde = new frmSelectDesing();
                     frmde.Show();
