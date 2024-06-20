@@ -65,6 +65,8 @@
             this.dgvAccesorios = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.panelDetalle = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtUbicacion = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbVentila)).BeginInit();
             this.PanelMedidas.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -440,7 +442,7 @@
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(526, 519);
+            this.btnSalir.Location = new System.Drawing.Point(527, 519);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(129, 45);
             this.btnSalir.TabIndex = 72;
@@ -465,7 +467,7 @@
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(1140, 25);
+            this.label10.Size = new System.Drawing.Size(1143, 25);
             this.label10.TabIndex = 74;
             this.label10.Text = "Detalle";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -517,15 +519,38 @@
             this.panelDetalle.Controls.Add(this.Aluminiodt);
             this.panelDetalle.Location = new System.Drawing.Point(-1, 63);
             this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1140, 707);
+            this.panelDetalle.Size = new System.Drawing.Size(1143, 707);
             this.panelDetalle.TabIndex = 77;
             this.panelDetalle.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label2.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(728, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 23);
+            this.label2.TabIndex = 78;
+            this.label2.Text = "Ubicación";
+            // 
+            // txtUbicacion
+            // 
+            this.txtUbicacion.BackColor = System.Drawing.Color.White;
+            this.txtUbicacion.Location = new System.Drawing.Point(848, 32);
+            this.txtUbicacion.Multiline = true;
+            this.txtUbicacion.Name = "txtUbicacion";
+            this.txtUbicacion.Size = new System.Drawing.Size(162, 25);
+            this.txtUbicacion.TabIndex = 79;
             // 
             // frmCalcPriceVentila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 776);
+            this.Controls.Add(this.txtUbicacion);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panelDetalle);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.PanelMedidas);
@@ -545,6 +570,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
             this.panelDetalle.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -586,5 +612,7 @@
         private System.Windows.Forms.DataGridView dgvAccesorios;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelDetalle;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtUbicacion;
     }
 }

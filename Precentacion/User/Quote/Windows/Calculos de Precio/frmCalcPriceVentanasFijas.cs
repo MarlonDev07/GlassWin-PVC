@@ -43,7 +43,7 @@ namespace Precentacion.User.Quote.Windows
             }
             cbColor.SelectedIndex = 0;
             cbAluminio.SelectedIndex = 0;
-            //cbSupplier.SelectedIndex = 1;
+            //cbSupplier.SelectedIndex = 0;
             CargarImagen();
             CargarDescripcion();
             CargarVidrio();

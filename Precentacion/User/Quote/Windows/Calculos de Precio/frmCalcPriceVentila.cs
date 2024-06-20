@@ -292,6 +292,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             description += "Ancho: " + ClsWindows.Weight + "\n";
             description += "Alto: " + ClsWindows.heigt + "\n";
             description += "Cantidad: " + txtCantidad.Value + "\n";
+            description += "Ubicación: " + txtUbicacion.Text + "\n";
             precioTotal = TempPrecio;
             if(n_LoadProduct.insertWindows(description,RutaImagen, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", precioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing)) 
             {
@@ -300,6 +301,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
                 if (frm != null)
                 {
+                    ((frmQuote)frm).loadWindows();
                     ((frmQuote)frm).loadWindows();
                 }
             }
