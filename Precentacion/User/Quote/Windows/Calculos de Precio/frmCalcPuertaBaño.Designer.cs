@@ -64,6 +64,8 @@
             this.btnOcultar = new System.Windows.Forms.Button();
             this.dgvAluminio = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtUbicacion = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             this.PanelMedidas.SuspendLayout();
@@ -137,11 +139,10 @@
             // txtTotalPrice
             // 
             this.txtTotalPrice.BackColor = System.Drawing.Color.White;
-            this.txtTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalPrice.Location = new System.Drawing.Point(403, 49);
             this.txtTotalPrice.Multiline = true;
             this.txtTotalPrice.Name = "txtTotalPrice";
-            this.txtTotalPrice.ReadOnly = true;
             this.txtTotalPrice.Size = new System.Drawing.Size(167, 20);
             this.txtTotalPrice.TabIndex = 31;
             // 
@@ -167,6 +168,7 @@
             this.cbSupplier.Name = "cbSupplier";
             this.cbSupplier.Size = new System.Drawing.Size(167, 21);
             this.cbSupplier.TabIndex = 26;
+            this.cbSupplier.SelectedIndexChanged += new System.EventHandler(this.cbSupplier_SelectedIndexChanged);
             this.cbSupplier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboBox_KeyPress);
             // 
             // label3
@@ -463,7 +465,7 @@
             this.panelDesglose.Controls.Add(this.label5);
             this.panelDesglose.Location = new System.Drawing.Point(0, 67);
             this.panelDesglose.Name = "panelDesglose";
-            this.panelDesglose.Size = new System.Drawing.Size(1043, 710);
+            this.panelDesglose.Size = new System.Drawing.Size(1043, 718);
             this.panelDesglose.TabIndex = 65;
             this.panelDesglose.Visible = false;
             // 
@@ -522,12 +524,33 @@
             this.label5.Text = "Desglose";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(694, 30);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 23);
+            this.label6.TabIndex = 66;
+            this.label6.Text = "Ubicación";
+            // 
+            // txtUbicacion
+            // 
+            this.txtUbicacion.Location = new System.Drawing.Point(814, 30);
+            this.txtUbicacion.Multiline = true;
+            this.txtUbicacion.Name = "txtUbicacion";
+            this.txtUbicacion.Size = new System.Drawing.Size(137, 23);
+            this.txtUbicacion.TabIndex = 67;
+            // 
             // frmCalcPuertaBaño
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1042, 783);
+            this.Controls.Add(this.txtUbicacion);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.panelDesglose);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.PanelMedidas);
@@ -549,6 +572,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvVidrio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluminio)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -589,5 +613,7 @@
         private System.Windows.Forms.Button btnGuardar;
         public System.Windows.Forms.NumericUpDown txtCantidad;
         private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtUbicacion;
     }
 }

@@ -497,7 +497,7 @@
             this.panelDetalle.Controls.Add(this.Vidriodt);
             this.panelDetalle.Controls.Add(this.button2);
             this.panelDetalle.Controls.Add(this.Aluminiodt);
-            this.panelDetalle.Location = new System.Drawing.Point(0, 31);
+            this.panelDetalle.Location = new System.Drawing.Point(193, 64);
             this.panelDetalle.Name = "panelDetalle";
             this.panelDetalle.Size = new System.Drawing.Size(1159, 653);
             this.panelDetalle.TabIndex = 73;
