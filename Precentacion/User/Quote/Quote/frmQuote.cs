@@ -710,6 +710,7 @@ namespace Precentacion.User.Quote.Quote
         private void btnViaticos_Click(object sender, EventArgs e)
         {
             frmTablaViaticos frm = new frmTablaViaticos();
+            frm.SubTotal = SubTotal;
             frm.Show();
 
         }

@@ -75,6 +75,11 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.lblTotal4 = new System.Windows.Forms.Label();
             this.txtHoras = new System.Windows.Forms.TextBox();
+            this.txtUtilidad = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPorcentaje = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericVeiculos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericEmpleados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericDias)).BeginInit();
@@ -344,10 +349,10 @@
             // 
             // txtTotalViaticos
             // 
-            this.txtTotalViaticos.Location = new System.Drawing.Point(343, 551);
+            this.txtTotalViaticos.Location = new System.Drawing.Point(2, 539);
             this.txtTotalViaticos.Name = "txtTotalViaticos";
             this.txtTotalViaticos.ReadOnly = true;
-            this.txtTotalViaticos.Size = new System.Drawing.Size(127, 20);
+            this.txtTotalViaticos.Size = new System.Drawing.Size(167, 20);
             this.txtTotalViaticos.TabIndex = 25;
             this.txtTotalViaticos.TextChanged += new System.EventHandler(this.txtTotalViaticos_TextChanged);
             // 
@@ -355,12 +360,11 @@
             // 
             this.lblTotalT.AutoSize = true;
             this.lblTotalT.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalT.Location = new System.Drawing.Point(377, 521);
+            this.lblTotalT.Location = new System.Drawing.Point(-3, 505);
             this.lblTotalT.Name = "lblTotalT";
-            this.lblTotalT.Size = new System.Drawing.Size(70, 34);
+            this.lblTotalT.Size = new System.Drawing.Size(183, 34);
             this.lblTotalT.TabIndex = 24;
-            this.lblTotalT.Text = "Total";
-            this.lblTotalT.Click += new System.EventHandler(this.lblTotalT_Click);
+            this.lblTotalT.Text = "Costo Proyecto";
             // 
             // lblHospedaje
             // 
@@ -576,11 +580,62 @@
             this.txtHoras.TabIndex = 47;
             this.txtHoras.TextChanged += new System.EventHandler(this.txtSalarios_TextChanged);
             // 
+            // txtUtilidad
+            // 
+            this.txtUtilidad.Location = new System.Drawing.Point(324, 539);
+            this.txtUtilidad.Name = "txtUtilidad";
+            this.txtUtilidad.ReadOnly = true;
+            this.txtUtilidad.Size = new System.Drawing.Size(167, 20);
+            this.txtUtilidad.TabIndex = 49;
+            this.txtUtilidad.TextChanged += new System.EventHandler(this.txtTotalViaticos_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(360, 505);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 34);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "Utilidad";
+            // 
+            // txtPorcentaje
+            // 
+            this.txtPorcentaje.Location = new System.Drawing.Point(629, 540);
+            this.txtPorcentaje.Name = "txtPorcentaje";
+            this.txtPorcentaje.ReadOnly = true;
+            this.txtPorcentaje.Size = new System.Drawing.Size(167, 20);
+            this.txtPorcentaje.TabIndex = 51;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(644, 504);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(137, 34);
+            this.label2.TabIndex = 50;
+            this.label2.Text = "Porcentaje";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(630, 561);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(164, 28);
+            this.button1.TabIndex = 52;
+            this.button1.Text = "Enviar Porcentaje Proforma";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmTablaViaticos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 590);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtPorcentaje);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtUtilidad);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtHoras);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.lblTotal4);
@@ -670,7 +725,6 @@
         private System.Windows.Forms.TextBox txtTotalComida;
         private System.Windows.Forms.Label lblTotal2;
         private System.Windows.Forms.Label lblTotalViaticos;
-        private System.Windows.Forms.TextBox txtTotalViaticos;
         private System.Windows.Forms.Label lblTotalT;
         private System.Windows.Forms.Label lblHospedaje;
         private System.Windows.Forms.TextBox txtPrecioHabitacion;
@@ -692,5 +746,11 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lblTotal4;
         private System.Windows.Forms.TextBox txtHoras;
+        private System.Windows.Forms.TextBox txtUtilidad;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPorcentaje;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.TextBox txtTotalViaticos;
     }
 }

@@ -12,7 +12,8 @@ namespace Precentacion.User.Quote.Accesorios
         private decimal TotalComida = 0;
         private decimal TotalHospedaje = 0;
         private decimal TotalSalarios = 0;
-        
+        public decimal SubTotal;
+        bool Sumado = false;
         #endregion
 
         #region Constructor
@@ -175,21 +176,44 @@ namespace Precentacion.User.Quote.Accesorios
         #region CalcularTotal
         private void CalcularTotal_TextChange(object sender, EventArgs e)
         {
-            decimal Total = TotalGasolina + TotalComida + TotalHospedaje + TotalSalarios;
-            txtTotalViaticos.Text = Total.ToString("c");
+            
+            decimal Total = TotalGasolina + TotalComida + TotalHospedaje + TotalSalarios+SubTotal;
+            txtTotalViaticos.Text = Total.ToString();
         }
 
 
         #endregion
 
-        private void lblTotalT_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtTotalViaticos_TextChanged(object sender, EventArgs e)
         {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtTotalViaticos.Text, "[^0-9.,]"))
+            {
+                MessageBox.Show("Por favor ingrese solo numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTotalViaticos.Text = txtTotalViaticos.Text.Remove(txtTotalViaticos.Text.Length - 1);
+                txtTotalViaticos.Select(txtTotalViaticos.Text.Length, 0);
 
+            }
+            else
+            {
+                if (txtTotalViaticos.Text != "")
+                {
+                    if (txtUtilidad.Text != "")
+                    {
+                        decimal Total = Convert.ToDecimal(txtTotalViaticos.Text);
+                        decimal Utilidad = Convert.ToDecimal(txtUtilidad.Text);
+                        decimal Porcentaje = (Utilidad / Total) * 100;
+                        txtPorcentaje.Text = Porcentaje.ToString("0.00");
+                    }
+                    else
+                    {
+                        txtPorcentaje.Text = "0";
+                    }
+                }
+                else
+                {
+                    txtPorcentaje.Text = "0";
+                }
+            }
         }
     }
 }
