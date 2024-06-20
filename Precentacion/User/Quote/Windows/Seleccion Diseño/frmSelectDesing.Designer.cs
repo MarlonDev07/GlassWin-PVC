@@ -64,7 +64,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(835, 410);
+            this.groupBox1.Size = new System.Drawing.Size(835, 364);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             // 
@@ -73,7 +73,7 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.PanelSeleccionDiseño);
-            this.panel1.Location = new System.Drawing.Point(30, 55);
+            this.panel1.Location = new System.Drawing.Point(30, 32);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(775, 231);
             this.panel1.TabIndex = 42;
@@ -210,7 +210,7 @@
             this.btnBackSistema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBackSistema.FlatAppearance.BorderSize = 0;
             this.btnBackSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackSistema.Location = new System.Drawing.Point(740, 310);
+            this.btnBackSistema.Location = new System.Drawing.Point(740, 264);
             this.btnBackSistema.Name = "btnBackSistema";
             this.btnBackSistema.Size = new System.Drawing.Size(65, 60);
             this.btnBackSistema.TabIndex = 41;
@@ -223,7 +223,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(849, 578);
+            this.ClientSize = new System.Drawing.Size(841, 501);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

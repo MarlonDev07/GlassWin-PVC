@@ -150,6 +150,8 @@
             this.Name = "frmSelecDesingPuertLujo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccionar Diseño Puerta Lujo";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmSelecDesingPuertLujo_FormClosed);
+            this.Load += new System.EventHandler(this.frmSelecDesingPuertLujo_Load);
             this.panelContenedor.ResumeLayout(false);
             this.pSeleccionarPL.ResumeLayout(false);
             this.ResumeLayout(false);

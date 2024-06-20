@@ -553,7 +553,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.LightGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(923, 564);
+            this.ClientSize = new System.Drawing.Size(923, 547);
             this.Controls.Add(this.panel6);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

@@ -194,6 +194,8 @@ namespace Precentacion.User.Quote.Windows
 
         private void button2_Click(object sender, EventArgs e)
         {
+            frmSelectSystem frm = new frmSelectSystem();
+            frm.Show();
             this.Close();
         }
     }

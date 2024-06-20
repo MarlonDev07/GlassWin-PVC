@@ -26,6 +26,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         {
             InitializeComponent();
             Fn_Inicializacion();
+            CargarProveedor();
         }
 
         #region Fn_Iniciales
@@ -75,7 +76,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             cbColor.SelectedIndex = 0;
             cbLaminaPlastica.SelectedIndex = 0;
             cbColorLamina.SelectedIndex = 0;
-            cbSupplier.SelectedIndex = 0;
+            //cbSupplier.SelectedIndex = 0;
         }
         #endregion
 
@@ -390,6 +391,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             Description += "Lamina Plastica: " + cbLaminaPlastica.Text + "\n";
             Description += "Color Lamina: " + cbColorLamina.Text + "\n";
             Description += "Color Aluminio: " + cbColor.Text + "\n";
+            Description += "Ubicación: " + txtUbicacion.Text + "\n";
 
             clsPuertaBaño.Price = TempPrice;
             if (n_LoadProduct.insertWindows(Description,Url,clsPuertaBaño.WeightTotal,clsPuertaBaño.heigt,cbVidrio.Text,cbColor.Text,"",clsPuertaBaño.Price,ClsWindows.IDQuote,clsPuertaBaño.System,clsPuertaBaño.Desing))
@@ -424,6 +426,18 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             LN_Proveedor ln_Proveedor = new LN_Proveedor();
             cbSupplier.DataSource = ln_Proveedor.CargarProveedor();
             cbSupplier.DisplayMember = "Nombre";
+        }
+
+        private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSupplier.Text == "Default")
+            {
+                txtTotalPrice.Enabled = true;
+            }
+            else
+            {
+                txtTotalPrice.Enabled = false;
+            }
         }
     }
 }
