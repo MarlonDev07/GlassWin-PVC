@@ -9,12 +9,14 @@ namespace Precentacion.User.Quote.Windows
     public partial class frmSelecDesingPuertLujo : MaterialForm
     {
         private bool _isOpeningAnotherForm = false;
+        public string system2 { get; set; } 
 
         public frmSelecDesingPuertLujo()
         {
             InitializeComponent();
             BloquearBotones();
             SeleccionDesign.loadMaterial(this);
+            
         }
 
         private void BloquearBotones()
@@ -58,6 +60,8 @@ namespace Precentacion.User.Quote.Windows
         private void btnBackSistema_Click(object sender, EventArgs e)
         {
             _isOpeningAnotherForm = true;
+            frmSelectSystem frm = new frmSelectSystem();
+            frm.Show();
             this.Close();
         }
 
@@ -77,6 +81,18 @@ namespace Precentacion.User.Quote.Windows
                 frmSelectSystem frm = new frmSelectSystem();
                 frm.Show();
             }
+        }
+
+        private void frmSelecDesingPuertLujo_Load(object sender, EventArgs e)
+        {
+            // Verificar el valor de la variable y cambiar el título del formulario.
+            if (system2 == "Puerta Liviana")
+            {
+                this.Text = "Seleccionar diseño puerta liviana";
+            } else if (system2 == "PuertaEuAbatible") {
+                this.Text = "Seleccionar diseño Puerta Europa Abatible";
+            }
+            
         }
     }
 }

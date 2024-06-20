@@ -164,6 +164,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.System = "PuertaEuAbatible";
             frmSelecDesingPuertLujo frm = new frmSelecDesingPuertLujo();
+            frm.system2 = ClsWindows.System;
             frm.Show();
             this.Close();
 
@@ -180,6 +181,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.System = "Puerta Liviana";
             frmSelecDesingPuertLujo frm = new frmSelecDesingPuertLujo();
+            frm.system2 = ClsWindows.System;
             frm.Show();
             this.Close();
         }
