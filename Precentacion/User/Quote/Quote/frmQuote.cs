@@ -497,7 +497,7 @@ namespace Precentacion.User.Quote.Quote
             }
         }
 
-        private void btnApply_Click(object sender, EventArgs e)
+        public void btnApply_Click(object sender, EventArgs e)
         {
 
             //Validar si txtManoObrea y txtDescuento son numeros
@@ -710,7 +710,7 @@ namespace Precentacion.User.Quote.Quote
         private void btnViaticos_Click(object sender, EventArgs e)
         {
             frmTablaViaticos frm = new frmTablaViaticos();
-            frm.SubTotal = SubTotal;
+            frm.CargarSubTotal(SubTotal);
             frm.Show();
 
         }

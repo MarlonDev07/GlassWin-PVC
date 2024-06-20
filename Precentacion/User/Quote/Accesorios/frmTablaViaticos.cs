@@ -1,6 +1,8 @@
 ﻿using Negocio.Company.Employer;
+using Precentacion.User.Quote.Quote;
 using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Precentacion.User.Quote.Accesorios
@@ -12,7 +14,7 @@ namespace Precentacion.User.Quote.Accesorios
         private decimal TotalComida = 0;
         private decimal TotalHospedaje = 0;
         private decimal TotalSalarios = 0;
-        public decimal SubTotal;
+        decimal SubTotal;
         bool Sumado = false;
         #endregion
 
@@ -177,11 +179,9 @@ namespace Precentacion.User.Quote.Accesorios
         private void CalcularTotal_TextChange(object sender, EventArgs e)
         {
             
-            decimal Total = TotalGasolina + TotalComida + TotalHospedaje + TotalSalarios+SubTotal;
+            decimal Total = TotalGasolina + TotalComida + TotalHospedaje + TotalSalarios;
             txtTotalViaticos.Text = Total.ToString();
         }
-
-
         #endregion
 
         private void txtTotalViaticos_TextChanged(object sender, EventArgs e)
@@ -192,16 +192,31 @@ namespace Precentacion.User.Quote.Accesorios
                 txtTotalViaticos.Text = txtTotalViaticos.Text.Remove(txtTotalViaticos.Text.Length - 1);
                 txtTotalViaticos.Select(txtTotalViaticos.Text.Length, 0);
 
+                
+               
+
             }
             else
             {
+                if (txtTotalViaticos.Text.Contains("."))
+                {
+                    //Reemplazar el punto por una coma
+                    txtTotalViaticos.Text = txtTotalViaticos.Text.Replace(".", ",");
+                }
+                if (txtUtilidad.Text.Contains("."))
+                {
+                    //Reemplazar el punto por una coma
+                    txtUtilidad.Text = txtUtilidad.Text.Replace(".", ",");
+                }
+
                 if (txtTotalViaticos.Text != "")
                 {
                     if (txtUtilidad.Text != "")
                     {
-                        decimal Total = Convert.ToDecimal(txtTotalViaticos.Text);
+                        decimal TotalViaticos = Convert.ToDecimal(txtTotalViaticos.Text);
+                        decimal CostoTotal = TotalViaticos + SubTotal;
                         decimal Utilidad = Convert.ToDecimal(txtUtilidad.Text);
-                        decimal Porcentaje = (Utilidad / Total) * 100;
+                        decimal Porcentaje = (Utilidad / CostoTotal) * 100;
                         txtPorcentaje.Text = Porcentaje.ToString("0.00");
                     }
                     else
@@ -213,6 +228,22 @@ namespace Precentacion.User.Quote.Accesorios
                 {
                     txtPorcentaje.Text = "0";
                 }
+            }
+        }
+        public void CargarSubTotal(decimal SubProforma) 
+        {
+            SubTotal = SubProforma;
+            txtSubTotalProforma.Text = SubTotal.ToString();
+        }
+
+        private void btnEnviar_Click(object sender, EventArgs e)
+        {
+            //Enviar los datos a la Proforma
+            Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
+            if (frm != null)
+            {
+                ((frmQuote)frm).txtManoObra.Text = txtPorcentaje.Text;
+                ((frmQuote)frm).btnApply_Click(sender, e);
             }
         }
     }

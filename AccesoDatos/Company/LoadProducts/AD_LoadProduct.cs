@@ -89,10 +89,10 @@ namespace AccesoDatos.Company.LoadProducts
 				string sql = "";
                 if (UserCache.Name != "InnovaGlass") 
 				{
-                    sql = "select P.Description,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
+                    sql = "select P.Description,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE  P.Description = '" + Description + "'";
                 }else
 				{
-                    sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
+                    sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE P.Description = '" + Description + "'";
                 }
                 SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
                 da.Fill(dataTable);

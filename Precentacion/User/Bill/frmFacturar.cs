@@ -338,26 +338,33 @@ namespace Precentacion.User.Bill
         }
         private void ConfigDataGridDesglose()
         {
-            //Ocultar las columnas que no se necesitan
-            dgvDesglose.Columns[1].Visible = false;
-            dgvDesglose.Columns[3].Visible = false;
-            //Agregar una Columna para el Tamaño
-            DataGridViewTextBoxColumn Columna = new DataGridViewTextBoxColumn();
-            Columna.HeaderText = "Tamaño";
-            Columna.Name = "Tamaño";
-            dgvDesglose.Columns.Add(Columna);
+            try
+            {
+                //Ocultar las columnas que no se necesitan
+                dgvDesglose.Columns[1].Visible = false;
+                dgvDesglose.Columns[3].Visible = false;
+                //Agregar una Columna para el Tamaño
+                DataGridViewTextBoxColumn Columna = new DataGridViewTextBoxColumn();
+                Columna.HeaderText = "Tamaño";
+                Columna.Name = "Tamaño";
+                dgvDesglose.Columns.Add(Columna);
 
-            //Agregar una Columna para el Cantidad Piezas 
-            DataGridViewTextBoxColumn Columna2 = new DataGridViewTextBoxColumn();
-            Columna2.HeaderText = "Cantidad Piezas";
-            Columna2.Name = "Cantidad Piezas";
-            Columna2.ReadOnly = true;
-            dgvDesglose.Columns.Add(Columna2);
+                //Agregar una Columna para el Cantidad Piezas 
+                DataGridViewTextBoxColumn Columna2 = new DataGridViewTextBoxColumn();
+                Columna2.HeaderText = "Cantidad Piezas";
+                Columna2.Name = "Cantidad Piezas";
+                Columna2.ReadOnly = true;
+                dgvDesglose.Columns.Add(Columna2);
 
-            //Eliminar la ultima fila la Que esta en Blanco
-            dgvDesglose.AllowUserToAddRows = false;
+                //Eliminar la ultima fila la Que esta en Blanco
+                dgvDesglose.AllowUserToAddRows = false;
 
 
+            }
+            catch (Exception)
+            {
+            }
+            
 
 
         }      

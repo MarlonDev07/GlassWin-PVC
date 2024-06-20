@@ -6834,7 +6834,7 @@ namespace Negocio.LoadProduct
                         break;
 
                     case "Cilindro Tipo RIM RC051 PL":
-                        Metraje = 0;
+                        Metraje = 1;
                         break;
 
                     case "Barra Roscada":

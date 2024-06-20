@@ -192,6 +192,7 @@ namespace Precentacion.User.Quote.SandBlasting
                 descripcion += "Alto: " + txtAlto.Text + Environment.NewLine;
                 descripcion += "Ancho: " + txtAncho.Text + Environment.NewLine;
                 descripcion += "Sello: " + (ckSello.Checked ? "Si" : "No") + Environment.NewLine;
+                descripcion += "Cantidad: 1" + Environment.NewLine;
              
                 //Llamar al Metodo de Guardar
                 N_LoadProduct objNegocio = new N_LoadProduct();

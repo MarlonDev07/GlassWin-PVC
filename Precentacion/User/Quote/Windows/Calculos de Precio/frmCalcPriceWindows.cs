@@ -2,6 +2,7 @@
 using Negocio.LoadProduct;
 using Negocio.Proveedor;
 using Precentacion.User.Quote.Quote;
+using Precentacion.User.Quote.Windows.Seleccion_Diseño;
 using System;
 using System.Data;
 using System.Drawing;
@@ -309,11 +310,25 @@ namespace Precentacion.User.Quote.Windows
                     this.Close();
                     break;
                 default:
+                    switch (ClsWindows.Desing)
+                    {
+                        case "CedazoAkariFijoMovil":
+                            frmSelecDesingCedazo frmCedazo = new frmSelecDesingCedazo();
+                            frmCedazo.Show();
+                            this.Close();
+                            return;
+                        case "CedazoAkariFijoMovilMovilFijo":
+                            frmSelecDesingCedazo frmCedazo2 = new frmSelecDesingCedazo();
+                            frmCedazo2.Show();
+                            this.Close();
+                            return;
+                    }
                     frmSelectDesing frmde = new frmSelectDesing();
                     frmde.Show();
                     this.Close();
                     break;
             }
+
         }
         private void btnDesglose_Click(object sender, EventArgs e)
         {
@@ -1376,6 +1391,46 @@ namespace Precentacion.User.Quote.Windows
                         }
                     }
                 }
+
+                if (cbkCilindronPestillo.Checked == false)
+                {
+                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
+                    foreach (DataGridViewRow row in dgAccesorios.Rows)
+                    {
+                        //Validar si la Fila Esta Vacía
+                        if (row.Cells["Description"].Value != null)
+                        {
+                            if (row.Cells["Description"].Value.ToString() == "Cilindro Tipo RIM RC051 PL")
+                            {
+                                //Quitar el Precio del Total
+                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
+                                txtTotal.Text = SubTotal.ToString("C");
+                                //Quitar la Fila del DataGridView
+                                dgAccesorios.Rows.Remove(row);
+                            }
+                        }
+                    }
+                }
+
+                if (cbkContramarco.Checked == false)
+                {
+                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
+                    foreach (DataGridViewRow row in dgAluminio.Rows)
+                    {
+                        //Validar si la Fila Esta Vacía
+                        if (row.Cells["Description"].Value != null)
+                        {
+                            if (row.Cells["Description"].Value.ToString() == "Tubo 1 Aleta 13/4x4 PL")
+                            {
+                                //Quitar el Precio del Total
+                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
+                                txtTotal.Text = SubTotal.ToString("C");
+                                //Quitar la Fila del DataGridView
+                                dgAluminio.Rows.Remove(row);
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception)
             {
@@ -2308,7 +2363,6 @@ namespace Precentacion.User.Quote.Windows
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Las dimensiones ingresadas no son válidas.");
                 }
             }
             else
