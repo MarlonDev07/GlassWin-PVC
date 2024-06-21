@@ -2279,28 +2279,28 @@ namespace Precentacion.User.Quote.Windows
                             switch (ClsWindows.Desing)
                             {
                                 //1.20 por Hoja PL
-                                case "1 Hoja PL":
+                                case "1 Hoja EA":
                                     if (ClsWindows.Weight >= 1.20m)
                                     {
                                         MessageBox.Show("El ancho maximo para este sistema es de 1.20 Metros");
                                         AceptarAncho = true;
                                     }
                                     break;
-                                case "2 Hoja PL":
+                                case "2 Hoja EA":
                                     if (ClsWindows.Weight >= 2.40m)
                                     {
                                         MessageBox.Show("El ancho maximo para este sistema es de 2.40 Metros");
                                         AceptarAncho = true;
                                     }
                                     break;
-                                case "1 Hoja Con Divicion PL":
+                                case "1 Hoja DEA":
                                     if (ClsWindows.Weight >= 1.20m)
                                     {
                                         MessageBox.Show("El ancho maximo para este sistema es de 1.20 Metros");
                                         AceptarAncho = true;
                                     }
                                     break;
-                                case "2 Hoja Con Divicion PL":
+                                case "2 Hoja DEA":
                                     if (ClsWindows.Weight >= 2.40m)
                                     {
                                         MessageBox.Show("El ancho maximo para este sistema es de 2.40 Metros");
