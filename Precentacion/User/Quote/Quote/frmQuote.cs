@@ -87,6 +87,10 @@ namespace Precentacion.User.Quote.Quote
             btnClose.Location = new Point(this.Width - 30, 0);
             btnClose.Click += BtnClose_Click;
             this.Controls.Add(btnClose);
+
+            cbIva.SelectedIndex = 6;
+            // Ejecutar el cálculo de IVA y precios automáticamente al cargar el formulario
+            cbIva_SelectedIndexChanged(this, EventArgs.Empty);
         }
 
         private void BtnMinimize_Click(object sender, EventArgs e)
@@ -159,7 +163,7 @@ namespace Precentacion.User.Quote.Quote
         #region LoadFunctions
         private void loadFunction()
         {
-            cbIva.SelectedIndex = 0;
+            cbIva.SelectedIndex = 6;
             txtManoObra.Text = "0";
             txtDescuento.Text = "0";
             if (txtidQuote.Text == "")
@@ -186,6 +190,7 @@ namespace Precentacion.User.Quote.Quote
         }
         public void loadWindows()
         {
+            //cbIva.SelectedIndex = 6;
             DataTable dt = new DataTable();
             dt = NQuote.LoadWindows(Convert.ToInt32(txtidQuote.Text));
             dgCotizaciones.DataSource = dt;
@@ -662,7 +667,7 @@ namespace Precentacion.User.Quote.Quote
 
         private void cbIva_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Obtener el Numero Antes del % en El comboBox
+            // Obtener el Numero Antes del % en El comboBox
             string Iva = cbIva.SelectedItem.ToString();
             string IvaNumber = Iva.Substring(0, Iva.Length - 1);
             if (IvaNumber != "")
@@ -725,17 +730,16 @@ namespace Precentacion.User.Quote.Quote
             {
                 foreach (DataGridViewRow row in dgCotizaciones.Rows)
                 {
-                    //Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
+                    // Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
                     decimal priceWithLabour = price + (price + ManoObra);
                     decimal priceWithDiscount = priceWithLabour - (price * Descuento);
                     decimal TotalPriceWindows = ((priceWithLabour + priceWithDiscount));
                     row.Cells["Price"].Value = TotalPriceWindows;
-                    //Sumar el total de la columna Price
+                    // Sumar el total de la columna Price
                     total += Convert.ToDecimal(row.Cells["Price"].Value);
                 }
-                
-                
+
                 if (UserCache.Name == "VitroTaller")
                 {
                     txtSubtotal.Text = "Precio Restringido";
@@ -743,7 +747,6 @@ namespace Precentacion.User.Quote.Quote
                 }
                 else
                 {
-
                     txtSubtotal.Text = total.ToString("c");
                     txtTotal.Text = Total.ToString("c");
                 }
@@ -753,19 +756,19 @@ namespace Precentacion.User.Quote.Quote
             {
                 foreach (DataGridViewRow row in dgCotizaciones.Rows)
                 {
-                    //Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
+                    // Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
                     decimal priceWithLabour = price + (price * Labour);
                     decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
                     row.Cells["Price"].Value = priceWithDiscount;
-                    //Sumar el total de la columna Price
+                    // Sumar el total de la columna Price
                     total += Convert.ToDecimal(row.Cells["Price"].Value);
                 }
                 if (LimiteCredito != 0)
                 {
                     if (total > LimiteCredito)
                     {
-                        //Preguntar Si desea Agregar los Precios
+                        // Preguntar Si desea Agregar los Precios
                         DialogResult result = MessageBox.Show("El Total de la Cotizacion supera el Limite de Credito del Cliente, ¿Desea Continuar?", "Limite de Credito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.No)
                         {
@@ -792,11 +795,13 @@ namespace Precentacion.User.Quote.Quote
                 }
                 else
                 {
-
                     txtSubtotal.Text = total.ToString("c");
                     txtTotal.Text = Total.ToString("c");
                 }
             }
+
+            // Asegurarse de que el IVA se calcule automáticamente con el subtotal actualizado
+            cbIva_SelectedIndexChanged(this, EventArgs.Empty);
         }
 
         private bool ValidateFields()
@@ -875,7 +880,7 @@ namespace Precentacion.User.Quote.Quote
             txtDescuento.Text = "0";
             txtAddress.Text = "";
             txtSubtotal.Text = "";
-            txtIVA.Text = "";
+            //txtIVA.Text = "";
             txtTotal.Text = "";
             loadIDQuote();
             
