@@ -200,6 +200,7 @@ namespace Precentacion.User.Quote.Quote
                 dgvQuotes.DataSource = NQuote.LoadQuotesFacturas();
                 CargarTotales();
                 btnVerEstadosProforma.Text = "Ver Proformas Pendientes";
+                this.Text = "Facturas";
             }
             else
             {
@@ -207,6 +208,7 @@ namespace Precentacion.User.Quote.Quote
                 dgvQuotes.DataSource = NQuote.LoadQuotes();
                 CargarTotales();
                 btnVerEstadosProforma.Text = "Ver Facturas";
+                this.Text = "Proformas"; 
             }
         }
 
