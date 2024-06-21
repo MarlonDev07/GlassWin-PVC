@@ -15,6 +15,7 @@ namespace Precentacion.User.Quote.Windows
 {
     public partial class frmSelectDesing : MaterialForm
     {
+        public string system2 { get; set; }
         public frmSelectDesing()
         {
             InitializeComponent();
@@ -165,6 +166,14 @@ namespace Precentacion.User.Quote.Windows
             frmSelectSystem frmSelectSystem = new frmSelectSystem();
             frmSelectSystem.Show();
             this.Close();
+        }
+
+        private void frmSelectDesing_Load(object sender, EventArgs e)
+        {
+            if (system2 == "5020" || system2 == "5020 3 Vias" || system2 == "8025 2 Vias" || system2 == "6030 2 Vias" || system2 == "Europa 2 Vias") {
+                FijoMovilMovilMovilMovilFijo.Visible = false;
+                FijoMovilMovil.Visible = false;
+            }
         }
     }
 }

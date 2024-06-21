@@ -36,6 +36,10 @@
             this.btn2Hoja = new System.Windows.Forms.Button();
             this.btn1Hoja = new System.Windows.Forms.Button();
             this.btnBackSistema = new System.Windows.Forms.Button();
+            this.btnHojaEA = new System.Windows.Forms.Button();
+            this.btnHoja2EA = new System.Windows.Forms.Button();
+            this.btnHoja1DEA = new System.Windows.Forms.Button();
+            this.btnHoja2DEA = new System.Windows.Forms.Button();
             this.panelContenedor.SuspendLayout();
             this.pSeleccionarPL.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +58,10 @@
             // 
             this.pSeleccionarPL.BackColor = System.Drawing.Color.Black;
             this.pSeleccionarPL.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pSeleccionarPL.Controls.Add(this.btnHoja2DEA);
+            this.pSeleccionarPL.Controls.Add(this.btnHoja1DEA);
+            this.pSeleccionarPL.Controls.Add(this.btnHoja2EA);
+            this.pSeleccionarPL.Controls.Add(this.btnHojaEA);
             this.pSeleccionarPL.Controls.Add(this.btnHojaDivicion);
             this.pSeleccionarPL.Controls.Add(this.btn1HojaDivicion);
             this.pSeleccionarPL.Controls.Add(this.btn2Hoja);
@@ -61,7 +69,7 @@
             this.pSeleccionarPL.Location = new System.Drawing.Point(2, 5);
             this.pSeleccionarPL.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pSeleccionarPL.Name = "pSeleccionarPL";
-            this.pSeleccionarPL.Size = new System.Drawing.Size(1180, 233);
+            this.pSeleccionarPL.Size = new System.Drawing.Size(1151, 233);
             this.pSeleccionarPL.TabIndex = 0;
             // 
             // btnHojaDivicion
@@ -139,6 +147,70 @@
             this.btnBackSistema.UseVisualStyleBackColor = false;
             this.btnBackSistema.Click += new System.EventHandler(this.btnBackSistema_Click);
             // 
+            // btnHojaEA
+            // 
+            this.btnHojaEA.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnHojaEA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnHojaEA.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHojaEA.BackgroundImage")));
+            this.btnHojaEA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHojaEA.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHojaEA.Location = new System.Drawing.Point(40, 14);
+            this.btnHojaEA.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnHojaEA.Name = "btnHojaEA";
+            this.btnHojaEA.Size = new System.Drawing.Size(168, 201);
+            this.btnHojaEA.TabIndex = 39;
+            this.btnHojaEA.UseVisualStyleBackColor = false;
+            this.btnHojaEA.Visible = false;
+            this.btnHojaEA.Click += new System.EventHandler(this.btnHojaEA_Click);
+            // 
+            // btnHoja2EA
+            // 
+            this.btnHoja2EA.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnHoja2EA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnHoja2EA.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHoja2EA.BackgroundImage")));
+            this.btnHoja2EA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHoja2EA.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHoja2EA.Location = new System.Drawing.Point(304, 14);
+            this.btnHoja2EA.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnHoja2EA.Name = "btnHoja2EA";
+            this.btnHoja2EA.Size = new System.Drawing.Size(168, 201);
+            this.btnHoja2EA.TabIndex = 40;
+            this.btnHoja2EA.UseVisualStyleBackColor = false;
+            this.btnHoja2EA.Visible = false;
+            this.btnHoja2EA.Click += new System.EventHandler(this.btnHoja2EA_Click);
+            // 
+            // btnHoja1DEA
+            // 
+            this.btnHoja1DEA.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnHoja1DEA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnHoja1DEA.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHoja1DEA.BackgroundImage")));
+            this.btnHoja1DEA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHoja1DEA.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHoja1DEA.Location = new System.Drawing.Point(562, 14);
+            this.btnHoja1DEA.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnHoja1DEA.Name = "btnHoja1DEA";
+            this.btnHoja1DEA.Size = new System.Drawing.Size(102, 201);
+            this.btnHoja1DEA.TabIndex = 41;
+            this.btnHoja1DEA.UseVisualStyleBackColor = false;
+            this.btnHoja1DEA.Visible = false;
+            this.btnHoja1DEA.Click += new System.EventHandler(this.btnHoja1DEA_Click);
+            // 
+            // btnHoja2DEA
+            // 
+            this.btnHoja2DEA.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnHoja2DEA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnHoja2DEA.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHoja2DEA.BackgroundImage")));
+            this.btnHoja2DEA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHoja2DEA.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHoja2DEA.Location = new System.Drawing.Point(773, 14);
+            this.btnHoja2DEA.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnHoja2DEA.Name = "btnHoja2DEA";
+            this.btnHoja2DEA.Size = new System.Drawing.Size(168, 201);
+            this.btnHoja2DEA.TabIndex = 42;
+            this.btnHoja2DEA.UseVisualStyleBackColor = false;
+            this.btnHoja2DEA.Visible = false;
+            this.btnHoja2DEA.Click += new System.EventHandler(this.btnHoja2DEA_Click);
+            // 
             // frmSelecDesingPuertLujo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,5 +239,9 @@
         private System.Windows.Forms.Button btn2Hoja;
         private System.Windows.Forms.Button btn1Hoja;
         private System.Windows.Forms.Button btnBackSistema;
+        private System.Windows.Forms.Button btnHojaEA;
+        private System.Windows.Forms.Button btnHoja2EA;
+        private System.Windows.Forms.Button btnHoja1DEA;
+        private System.Windows.Forms.Button btnHoja2DEA;
     }
 }
