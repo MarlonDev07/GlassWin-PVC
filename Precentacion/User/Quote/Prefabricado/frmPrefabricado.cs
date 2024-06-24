@@ -88,11 +88,6 @@ namespace Precentacion.User.Quote.Prefabricado
         }
         #endregion
 
-      
-       
-
-
-
         private void btnCargar_Click(object sender, EventArgs e)
         {
             //Abrir la Lista de Artiulos
@@ -293,6 +288,11 @@ namespace Precentacion.User.Quote.Prefabricado
             {
                 dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
             }
+        }
+        public void ConfigEditar() 
+        { 
+            btnGuardar.Text = "Editar Combo";
+            Editar = true;
         }
     }
 }
