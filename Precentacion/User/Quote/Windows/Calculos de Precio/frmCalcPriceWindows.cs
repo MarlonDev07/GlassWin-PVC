@@ -281,7 +281,6 @@ namespace Precentacion.User.Quote.Windows
         #region Buttons
         private void btnBackSistema_Click(object sender, EventArgs e)
         {
-
             switch (ClsWindows.System)
             {
                 case "Ventila":
@@ -2470,6 +2469,7 @@ namespace Precentacion.User.Quote.Windows
         private void button2_Click_1(object sender, EventArgs e)
         {
             PanelDetalle.Visible = false;
+            PanelMedidas.Visible = true;
         }
         //Para oculatar la seccion de "Fijos"
         #region Ocultar Seccion de fijos y eliminar la etiqueta de vidrios en cedazo 1/2
