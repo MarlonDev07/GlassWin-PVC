@@ -57,6 +57,7 @@
     <Compile Include="ClassFunction\InputBox\clsInputBox.cs" />
     <Compile Include="Model\ActiveUser\ActiveUser.cs" />
     <Compile Include="Model\ActiveUser\CompanyCache.cs" />
+    <Compile Include="Model\ClasscmbArticulo\Cls_CmbArticulo.cs" />
     <Compile Include="Model\ClassProducts\PiceProduct\PriceProductClass.cs" />
     <Compile Include="Model\ClassProducts\Product\ProductClass.cs" />
     <Compile Include="ClassFunction\ClassSoundPlay\SoundPlayClass.cs" />

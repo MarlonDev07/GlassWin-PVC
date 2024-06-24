@@ -319,6 +319,12 @@
     <Compile Include="User\Quote\Accesorios\frmTablaViaticos.Designer.cs">
       <DependentUpon>frmTablaViaticos.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\Quote\Prefabricado\frmListArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Prefabricado\frmListArticulos.Designer.cs">
+      <DependentUpon>frmListArticulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\Quote\Prefabricado\frmPrefabricado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -525,6 +531,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\Quote\Accesorios\frmTablaViaticos.resx">
       <DependentUpon>frmTablaViaticos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Prefabricado\frmListArticulos.resx">
+      <DependentUpon>frmListArticulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Quote\Prefabricado\frmPrefabricado.resx">
       <DependentUpon>frmPrefabricado.cs</DependentUpon>

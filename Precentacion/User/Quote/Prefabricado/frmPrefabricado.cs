@@ -1,4 +1,6 @@
-﻿using Dominio.Model.ClassWindows;
+﻿using Dominio.Model.ClasscmbArticulo;
+using Dominio.Model.ClassWindows;
+using iTextSharp.text.pdf;
 using Negocio;
 using Negocio.Accesorios;
 using Negocio.LoadProduct;
@@ -24,8 +26,6 @@ namespace Precentacion.User.Quote.Prefabricado
         public frmPrefabricado()
         {
             InitializeComponent();
-            txtAlto.Text = "0";
-            txtAncho.Text = "0";
             ConfigDataGrid();
             
         }
@@ -37,33 +37,42 @@ namespace Precentacion.User.Quote.Prefabricado
                 //Ajustar el ancho de las columnas al ancho del datagrid
                 dgvPrefabricado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvPrefabricado.AutoGenerateColumns = false;
-                dgvPrefabricado.ColumnCount = 6;
+                dgvPrefabricado.ColumnCount = 8;
                 dgvPrefabricado.Columns[0].HeaderText = "ID";
                 dgvPrefabricado.Columns[0].DataPropertyName = "IdPrefabricado";
 
                 dgvPrefabricado.Columns[1].HeaderText = "Nombre";
                 dgvPrefabricado.Columns[1].DataPropertyName = "Nombre";
 
-                dgvPrefabricado.Columns[2].HeaderText = "Cantidad";
-                dgvPrefabricado.Columns[2].DataPropertyName = "Cantidad";
+                dgvPrefabricado.Columns[2].HeaderText = "Ancho";
+                dgvPrefabricado.Columns[2].DataPropertyName = "Ancho";
 
-                dgvPrefabricado.Columns[3].HeaderText = "Metraje";
-                dgvPrefabricado.Columns[3].DataPropertyName = "Metraje";
+                dgvPrefabricado.Columns[3].HeaderText = "Alto";
+                dgvPrefabricado.Columns[3].DataPropertyName = "Alto";
 
-                dgvPrefabricado.Columns[4].HeaderText = "Precio";
-                dgvPrefabricado.Columns[4].DataPropertyName = "Precio";
+                dgvPrefabricado.Columns[4].HeaderText = "Cantidad";
+                dgvPrefabricado.Columns[4].DataPropertyName = "Cantidad";
 
-                dgvPrefabricado.Columns[5].HeaderText = "PrecioTotal";
-                dgvPrefabricado.Columns[5].DataPropertyName = "PrecioTotal";
+                dgvPrefabricado.Columns[5].HeaderText = "Metraje";
+                dgvPrefabricado.Columns[5].DataPropertyName = "Metraje";
+
+                dgvPrefabricado.Columns[6].HeaderText = "Precio";
+                dgvPrefabricado.Columns[6].DataPropertyName = "Precio";
+
+                dgvPrefabricado.Columns[7].HeaderText = "PrecioTotal";
+                dgvPrefabricado.Columns[7].DataPropertyName = "PrecioTotal";
 
                 //Agregar Una Linea en Blanco
                 dgvPrefabricado.Rows.Add();
                 dgvPrefabricado.Rows[0].Cells[0].Value = "";
                 dgvPrefabricado.Rows[0].Cells[1].Value = "";
                 dgvPrefabricado.Rows[0].Cells[2].Value = "0";
-                dgvPrefabricado.Rows[0].Cells[3].Value = "";
+                dgvPrefabricado.Rows[0].Cells[3].Value = "0";
                 dgvPrefabricado.Rows[0].Cells[4].Value = "0";
-                dgvPrefabricado.Rows[0].Cells[5].Value = "";
+                dgvPrefabricado.Rows[0].Cells[5].Value = "0";
+                dgvPrefabricado.Rows[0].Cells[6].Value = "0";
+                dgvPrefabricado.Rows[0].Cells[7].Value = "0";
+
                 //Ocultar la Columna de ID
 
                 Inicializado = true;
@@ -78,267 +87,190 @@ namespace Precentacion.User.Quote.Prefabricado
         }
         #endregion
 
-        private void btnCargarImagen_Click(object sender, EventArgs e)
-        {
-            //Cargar la Imagen del Producto
-            try
-            {
-                OpenFileDialog BuscarImagen = new OpenFileDialog();
-                BuscarImagen.Filter = "Archivos de Imagen|*.jpg;*.jpeg;*.png";
-                BuscarImagen.FileName = "";
-                BuscarImagen.Title = "Seleccione la Imagen del Producto";
-                if (BuscarImagen.ShowDialog() == DialogResult.OK)
-                {
-                    UrlImagen = BuscarImagen.FileName;
-                    pbPrefabricado.Image = Image.FromFile(UrlImagen);
-                    //Ajustar la Imagen al PictureBox
-                    pbPrefabricado.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
-            catch (Exception EX)
-            {
-                MessageBox.Show(EX.Message);
-            }
-        }
+       
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
             //Abrir la Lista de Artiulos
-            frmListaAcesorios frm = new frmListaAcesorios();
+            frmListArticulos frm = new frmListArticulos();
             frm.Show();
         }
 
 
         private void dgvPrefabricado_KeyDown(object sender, KeyEventArgs e)
         {
-            //Validar que se Precione la tecla Enter en la Columna de ID
-            if (e.KeyValue == (char)Keys.Enter)
+            //Validar que se Preciona la Tecla F2
+            if (e.KeyValue == (char)Keys.F2)
             {
-               
-            }
+                //Abrir la Lista de Artiulos
+                frmListArticulos frm = new frmListArticulos();
+                frm.Show();
+            }           
         }
 
         private void dgvPrefabricado_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //Validar que el DataGridView este Inicializado
-            if (Inicializado)
-            {
-                //Validar que los TextBox de Alto y Ancho tengan un valor
-                if (txtAncho.Text != "")
-                {
-                    if (txtAlto.Text != "")
-                    {
-                        try
-                        {
-                            if (dgvPrefabricado.CurrentRow.Cells[0].Value != null)
-                            {
-                                //Celda de la Columna Id del DataGridView Cambio
-                                N_Accesorios n_Accesorios = new N_Accesorios();
-                                List<object> Articulo = n_Accesorios.Articulo(Convert.ToInt32(dgvPrefabricado.CurrentRow.Cells[0].Value));
-                                if (Articulo.Count > 0)
-                                {
-                                    dgvPrefabricado.CurrentRow.Cells[1].Value = Articulo[0];
-                                    dgvPrefabricado.CurrentRow.Cells[4].Value = Articulo[1];
-                                    //Sacar el Metraje
-                                    dgvPrefabricado.CurrentRow.Cells[3].Value = Convert.ToDecimal(txtAlto.Text) * Convert.ToDecimal(txtAncho.Text);
-                                    //Sacar el Precio Total
-                                    dgvPrefabricado.CurrentRow.Cells[5].Value = (Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[3].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[4].Value)) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[2].Value);
-                                    
-                                    CalcularGranTotal();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No se encontro el Articulo, Verifique el Codigo");
-                                }
-                            }                     
-                        }
-                        catch (Exception ex)
-                        {
-                           
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Debe Ingresar el Alto Primero");
-                        txtAlto.Focus();
-                        //Limpiar el DataGridView
-                        dgvPrefabricado.Rows.Clear();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Debe Ingresar el Ancho Primero");
-                    txtAncho.Focus();
-                    //Limpiar el DataGridView
-                    dgvPrefabricado.Rows.Clear();
-                }
-            }
-            
-        }
-
-        private void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            //Actualizar el Metraje y el Precio Total
             try
             {
-                if (txtAlto.Text != "")
+                if (Inicializado)
                 {
-                    if (txtAncho.Text != "")
+                    //Calcular el Metraje
+                    decimal Metraje = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[2].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[3].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[4].Value);
+                    dgvPrefabricado.CurrentRow.Cells[5].Value = Metraje;
+
+                    //Calcular el Precio Total
+                    decimal Precio = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[6].Value);
+                    decimal PrecioTotal = Metraje * Precio;
+                    dgvPrefabricado.CurrentRow.Cells[7].Value = PrecioTotal;
+
+
+                    //Calcular el Gran Total
+                    GranTotal = 0;
+                    foreach (DataGridViewRow row in dgvPrefabricado.Rows)
                     {
-                        PuntoDecimal();
-                        for (int i = 0; i < dgvPrefabricado.Rows.Count; i++)
+                        if (row.Cells[7].Value != null)
                         {
-                            dgvPrefabricado.Rows[i].Cells[3].Value = Convert.ToDecimal(txtAlto.Text) * Convert.ToDecimal(txtAncho.Text);
-                            dgvPrefabricado.Rows[i].Cells[5].Value = (Convert.ToDecimal(dgvPrefabricado.Rows[i].Cells[3].Value) * Convert.ToDecimal(dgvPrefabricado.Rows[i].Cells[4].Value)) * Convert.ToDecimal(dgvPrefabricado.Rows[i].Cells[2].Value);
+                            GranTotal += Convert.ToDecimal(row.Cells[7].Value);
                         }
-                        CalcularGranTotal();
                     }
                 }
+                
             }
-            catch (Exception ex)
+            catch (Exception EX)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al Cargar el Articulo: " + EX);
             }
         }
 
-        private void CalcularGranTotal()
+        private void frmPrefabricado_KeyDown(object sender, KeyEventArgs e)
         {
-            //Calcular el Gran Total
-            try
-            {
-                GranTotal = 0;
-                for (int i = 0; i < dgvPrefabricado.Rows.Count; i++)
-                {
-                    GranTotal += Convert.ToDecimal(dgvPrefabricado.Rows[i].Cells[5].Value);
-                }
-                txtTotal.Text = GranTotal.ToString("c");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+           
+
+
+           
+        }
+
+        public void AgregarFila() 
+        {
+            //Agregar una fila nueva
+            dgvPrefabricado.Rows.Add();
+
+            // Obtener el índice de la última fila agregada
+            int indiceUltimaFila = dgvPrefabricado.Rows.Count - 2;
+
+            //Seleccionar la última fila agregada
+            dgvPrefabricado.CurrentCell = dgvPrefabricado.Rows[indiceUltimaFila].Cells[0];
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Eliminar la Fila Seleccionada
+            dgvPrefabricado.Rows.Remove(dgvPrefabricado.CurrentRow);
+
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (ValidacionCampos())
+            //Recorrer el DataGrid y Guardar los Datos
+            try
             {
                 N_LoadProduct n_LoadProduct = new N_LoadProduct();
-                //Crear una Descripcion del Producto con saltos de linea
-                string Descripcion = "";
-                Descripcion += "Prefabricado: " + txtNombre.Text + "\n";
-                Descripcion += "Alto: " + txtAlto.Text + "\n";
-                Descripcion += "Ancho: " + txtAncho.Text + "\n";
-                Descripcion += "Total: " + txtTotal.Text + "\n";
-
-                //Convertir Ancho y alto a Decimal
-                decimal Ancho = Convert.ToDecimal(txtAncho.Text);
-                decimal Alto = Convert.ToDecimal(txtAlto.Text);
-
-                if (n_LoadProduct.insertWindows(Descripcion, UrlImagen, Ancho, Alto, "", "", "", GranTotal, ClsWindows.IDQuote, "Prefabricado", "Personalizado"))
+                foreach (DataGridViewRow row in dgvPrefabricado.Rows)
                 {
-                    MessageBox.Show("Producto Guardado Correctamente");
-                    Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
-                    if (frm != null)
+                    if (row.Cells[0].Value != null)
                     {
-                        ((frmQuote)frm).loadWindows();
+                        if (row.Cells[0].Value.ToString() != "")
+                        {
+                            //Crear Descripcion Con Salto de Linea
+                            string description = "";
+                            description += "ID: " + row.Cells[0].Value.ToString() + "\n";
+                            description += "Nombre: " + row.Cells[1].Value.ToString() + "\n";
+                            description += "Ancho: " + row.Cells[2].Value.ToString() + "\n";
+                            description += "Alto: " + row.Cells[3].Value.ToString() + "\n";
+                            description += "Cantidad: " + row.Cells[4].Value.ToString() + "\n";
+                            description += "cmbArticulo";
+
+                            n_LoadProduct.insertWindows(description, "", Convert.ToDecimal(row.Cells[2].Value), Convert.ToDecimal(row.Cells[3].Value), "", "", "", Convert.ToDecimal(row.Cells[7].Value), ClsWindows.IDQuote, "cmbArticulos", "");
+                        }
                     }
-                    this.Close();
                 }
-                else
+                Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
+                if (frm != null)
                 {
-                    MessageBox.Show("Error al Guardar el Producto");
+                    ((frmQuote)frm).loadWindows();
                 }
+                MessageBox.Show("Datos Guardados Correctamente");
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al Guardar los Datos: " + EX);
             }
         }
-
-        private void txtAncho_KeyPress(object sender, KeyPressEventArgs e)
+        public void ListarArticulos(List<Cls_CmbArticulo> List)
         {
-           //Validar que se precione Enter 
-           if (e.KeyChar == (char)Keys.Enter)
+            //Agregar una Columna nueva al dgvPrefabricado con el IdVentana
+            dgvPrefabricado.Columns.Add("IdVentana", "IdVentana");
+            //Recorrer la Lista de Articulos
+            foreach (Cls_CmbArticulo item in List)
             {
-                //Validar que el TextBox de Ancho tenga un valor
-                if (txtAncho.Text != "")
-                {
-                    //Poner el Foco en el TextBox de Alto
-                    txtAlto.Focus();
-                }
-                else
-                {
-                    MessageBox.Show("Debe Ingresar el Ancho Primero");
-                    txtAncho.Focus();
-                }
+                //Agregar una fila nueva
+                dgvPrefabricado.Rows.Add();
+
+                // Obtener el índice de la última fila agregada
+                int indiceUltimaFila = dgvPrefabricado.Rows.Count - 2;
+
+                //Seleccionar la última fila agregada
+                dgvPrefabricado.CurrentCell = dgvPrefabricado.Rows[indiceUltimaFila].Cells[0];
+
+                //Obtener los Datos de la Descripcion
+                string[] Datos = ObtenerDatosDescripcion(item.Descripcion);
+
+                //Asignar los Datos a la Fila
+                dgvPrefabricado.CurrentRow.Cells[0].Value = Datos[0];
+                dgvPrefabricado.CurrentRow.Cells[1].Value = Datos[1];
+                dgvPrefabricado.CurrentRow.Cells[2].Value = Datos[2];
+                dgvPrefabricado.CurrentRow.Cells[3].Value = Datos[3];
+                dgvPrefabricado.CurrentRow.Cells[4].Value = Datos[4];
+                dgvPrefabricado.CurrentRow.Cells[6].Value = item.Precio;
+                dgvPrefabricado.CurrentRow.Cells[7].Value = item.Precio;
+                dgvPrefabricado.CurrentRow.Cells[8].Value = item.IdVentana;
             }
+            //Borrar el Index 0
+            dgvPrefabricado.Rows.RemoveAt(0);
         }
 
-        private void txtAlto_KeyPress(object sender, KeyPressEventArgs e)
+        public string[] ObtenerDatosDescripcion(string Descripcion)
         {
-            //Validar que se precione Enter 
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                //Validar que el TextBox de Alto tenga un valor
-                if (txtAlto.Text != "")
-                {
-                    //Poner el Foco en el DataGridView
-                    dgvPrefabricado.Focus();
-                }
-                else
-                {
-                    MessageBox.Show("Debe Ingresar el Alto Primero");
-                    txtAlto.Focus();
-                }
-            }
-        }
+            string[] Datos = new string[5]; // Crear un array de 5 elementos para ID, Nombre, Ancho, Alto y Cantidad
 
-        //VALIDAR QUE TODOS LOS CAMPOS ESTEN LLENOS
-        private bool ValidacionCampos() 
-        {
-            if (txtNombre.Text == "")
-            {
-                MessageBox.Show("Debe Ingresar el Nombre del Producto");
-                txtNombre.Focus();
-                return false;
-            }
-            if (txtAncho.Text == "")
-            {
-                MessageBox.Show("Debe Ingresar el Ancho del Producto");
-                txtAncho.Focus();
-                return false;
-            }
-            if (txtAlto.Text == "")
-            {
-                MessageBox.Show("Debe Ingresar el Alto del Producto");
-                txtAlto.Focus();
-                return false;
-            }
-            if (dgvPrefabricado.Rows.Count == 0)
-            {
-                MessageBox.Show("Debe Ingresar al menos un Accesorio");
-                return false;
-            }
-            if (UrlImagen == "")
-            {
-                MessageBox.Show("Debe Ingresar la Imagen del Producto");
-                return false;
-            }
-            return true;
-        }
+            string pattern = @"ID:\s*(\d+)";
+            System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern);
+            int Id = Convert.ToInt32(match.Groups[1].Value);
 
-        //Cambiar . por , en los TextBox de Ancho y Alto
-        private void PuntoDecimal()
-        {
-            if (txtAncho.Text != "")
-            {
-                txtAncho.Text = txtAncho.Text.Replace(".", ",");
-                //POSICIONAR EL CURSOR AL FINAL DEL TEXTO
-                txtAncho.SelectionStart = txtAncho.Text.Length;
-            }
-            if (txtAlto.Text != "")
-            {
-                txtAlto.Text = txtAlto.Text.Replace(".", ",");
-                //POSICIONAR EL CURSOR AL FINAL DEL TEXTO
-                txtAlto.SelectionStart = txtAlto.Text.Length;
-            }
+            string pattern1 = @"\nNombre:\s*(.*)";
+            System.Text.RegularExpressions.Match match1 = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern1);
+            string Nombre = match1.Groups[1].Value;
+
+            string pattern2 = @"\nAncho:\s*(\d+)";
+            System.Text.RegularExpressions.Match match2 = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern2);
+            int Ancho = Convert.ToInt32(match2.Groups[1].Value);
+
+            string pattern3 = @"\nAlto:\s*(\d+)";
+            System.Text.RegularExpressions.Match match3 = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern3);
+            int Alto = Convert.ToInt32(match3.Groups[1].Value);
+
+            string pattern4 = @"\nCantidad:\s*(\d+)";
+            System.Text.RegularExpressions.Match match4 = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern4);
+            int Cantidad = Convert.ToInt32(match4.Groups[1].Value);
+
+            Datos[0] = Id.ToString();
+            Datos[1] = Nombre;
+            Datos[2] = Ancho.ToString();
+            Datos[3] = Alto.ToString();
+            Datos[4] = Cantidad.ToString();
+
+            return Datos;
         }
     }
 }

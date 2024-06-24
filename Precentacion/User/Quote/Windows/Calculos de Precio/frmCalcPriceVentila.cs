@@ -302,7 +302,6 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 if (frm != null)
                 {
                     ((frmQuote)frm).loadWindows();
-                    ((frmQuote)frm).loadWindows();
                 }
             }
         }

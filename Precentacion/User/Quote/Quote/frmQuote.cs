@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using Dominio.ClassUser;
+using Dominio.Model.ClasscmbArticulo;
 using Dominio.Model.ClassWindows;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -463,15 +464,52 @@ namespace Precentacion.User.Quote.Quote
             }
             else
             {
-                //Obtener el id de la ventana seleccionada
-                int idWindows = Convert.ToInt32(dgCotizaciones.CurrentRow.Cells["IdWindows"].Value);
-                //Eliminar la ventana
-                bool res = NQuote.DeleteWindows(idWindows);
-                if (res)
+                if (Description.Contains("cmbArticulo")) 
                 {
-                    loadWindows();
+                    //Recorrer el DataGrid y Guardar los Datos de las Ventanas que en la Descricion Contengan cmbArticulo
+                    try
+                    {
+                        ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
+                        List<Cls_CmbArticulo> list = new List<Cls_CmbArticulo>();
+                        Cls_CmbArticulo cls_CmbArticulo = new Cls_CmbArticulo();
+                        frmPrefabricado frm = new frmPrefabricado();
+                        foreach (DataGridViewRow row in dgCotizaciones.Rows)
+                        {
+                            if (row.Cells[0].Value != null)
+                            {
+                                if (row.Cells[0].Value.ToString() != "")
+                                {
+                                    if (row.Cells[2].Value.ToString().Contains("cmbArticulo"))
+                                    {
+                                       //Guardar en una Lista los Datos
+                                       
+                                        cls_CmbArticulo.IdVentana = Convert.ToInt32(row.Cells[0].Value);
+                                        cls_CmbArticulo.Descripcion = row.Cells[2].Value.ToString();
+                                        cls_CmbArticulo.Precio = row.Cells[3].Value.ToString();
+                                        list.Add(cls_CmbArticulo);                                        
+                                    }
+                                }
+                            }
+                        }
+                        frm.ListarArticulos(list);
+                        frm.Show();
+                    }
+                    catch (Exception EX)
+                    {
+                    }
                 }
-                agregarAccesorioToolStripMenuItem_Click(sender, e);
+                else
+                {
+                    //Obtener el id de la ventana seleccionada
+                    int idWindows = Convert.ToInt32(dgCotizaciones.CurrentRow.Cells["IdWindows"].Value);
+                    //Eliminar la ventana
+                    bool res = NQuote.DeleteWindows(idWindows);
+                    if (res)
+                    {
+                        loadWindows();
+                    }
+                    agregarAccesorioToolStripMenuItem_Click(sender, e);
+                }
             }
         }
 

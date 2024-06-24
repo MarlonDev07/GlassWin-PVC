@@ -53,7 +53,7 @@ namespace Precentacion.User.Bill
         public void InitializeComponents_Click(object sender, EventArgs e)
         {
             txtDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            cbProveedorDesglose.SelectedIndex = 0;
+            
             loadWindows();
             LoadEmployer();
             dgvWindowsLoad();

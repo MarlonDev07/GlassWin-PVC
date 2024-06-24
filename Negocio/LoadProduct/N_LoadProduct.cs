@@ -429,6 +429,19 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+        public DataTable ListaArticulosxColor() 
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = loadProduct.ListaArticulosxColor();
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region Seleccion del Calculo

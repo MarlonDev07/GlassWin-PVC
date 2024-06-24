@@ -152,6 +152,33 @@ namespace AccesoDatos.Company.LoadProducts
 
         }
 
+		public DataTable ListaArticulosxColor() 
+		{
+            try
+            {
+                DataTable dataTable = new DataTable();
+                ClsConnection con = new ClsConnection();
+
+                string sql = "";
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "Select PP.IdPrice, P.Description, PP.Color, PP.SalePrice from Product P inner join Price PP on P.idProduct = PP.idProduct";
+                }
+                else
+                {
+                    sql = "Select PP.IdPrice, P.Description, PP.Color, PP.Cost from Product P inner join Price PP on P.idProduct = PP.idProduct";
+                }
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.Fill(dataTable);
+                con.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
         #region InserWindows
 		public bool insertWindows(string Description,string URL,decimal Width,decimal Height,string Glass,string Color,string TypeLock,decimal Price,int IdQuote, string System, string Desing) 
 		{
