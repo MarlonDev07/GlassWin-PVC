@@ -88,6 +88,7 @@ namespace Precentacion.User.Quote.Prefabricado
         }
         #endregion
 
+      
        
 
 
@@ -148,7 +149,6 @@ namespace Precentacion.User.Quote.Prefabricado
 
            
         }
-
         public void AgregarFila() 
         {
             //Agregar una fila nueva
@@ -283,6 +283,16 @@ namespace Precentacion.User.Quote.Prefabricado
             Datos[4] = Cantidad.ToString();
 
             return Datos;
+        }
+        public void BuscarProducto(int Id) 
+        {
+            DataTable dataTable = new DataTable();
+            N_LoadProduct n_LoadProduct = new N_LoadProduct();
+            dataTable = n_LoadProduct.ListaArticulosxID(Id);
+            if (dataTable.Rows.Count > 0)
+            {
+                dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+            }
         }
     }
 }
