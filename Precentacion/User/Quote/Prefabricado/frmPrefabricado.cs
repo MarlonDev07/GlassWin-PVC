@@ -23,6 +23,7 @@ namespace Precentacion.User.Quote.Prefabricado
         private string UrlImagen = "";
         private bool Inicializado = false;
         private decimal GranTotal = 0;
+        private bool Editar = false;
         public frmPrefabricado()
         {
             InitializeComponent();
@@ -87,16 +88,12 @@ namespace Precentacion.User.Quote.Prefabricado
         }
         #endregion
 
-       
-
         private void btnCargar_Click(object sender, EventArgs e)
         {
             //Abrir la Lista de Artiulos
             frmListArticulos frm = new frmListArticulos();
             frm.Show();
         }
-
-
         private void dgvPrefabricado_KeyDown(object sender, KeyEventArgs e)
         {
             //Validar que se Preciona la Tecla F2
@@ -107,7 +104,6 @@ namespace Precentacion.User.Quote.Prefabricado
                 frm.Show();
             }           
         }
-
         private void dgvPrefabricado_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -141,7 +137,6 @@ namespace Precentacion.User.Quote.Prefabricado
                 MessageBox.Show("Error al Cargar el Articulo: " + EX);
             }
         }
-
         private void frmPrefabricado_KeyDown(object sender, KeyEventArgs e)
         {
            
@@ -149,7 +144,11 @@ namespace Precentacion.User.Quote.Prefabricado
 
            
         }
-
+        public void ConfigEditar() 
+        {
+            btnGuardar.Text = "Editar Combo";
+            Editar = true;
+        }
         public void AgregarFila() 
         {
             //Agregar una fila nueva
@@ -161,7 +160,6 @@ namespace Precentacion.User.Quote.Prefabricado
             //Seleccionar la última fila agregada
             dgvPrefabricado.CurrentCell = dgvPrefabricado.Rows[indiceUltimaFila].Cells[0];
         }
-
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Eliminar la Fila Seleccionada
@@ -169,38 +167,53 @@ namespace Precentacion.User.Quote.Prefabricado
 
 
         }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             //Recorrer el DataGrid y Guardar los Datos
             try
             {
-                N_LoadProduct n_LoadProduct = new N_LoadProduct();
-                foreach (DataGridViewRow row in dgvPrefabricado.Rows)
-                {
-                    if (row.Cells[0].Value != null)
+                N_LoadProduct n_LoadProduct = new N_LoadProduct();            
+                    foreach (DataGridViewRow row in dgvPrefabricado.Rows)
                     {
-                        if (row.Cells[0].Value.ToString() != "")
+                        if (row.Cells[0].Value != null)
                         {
-                            //Crear Descripcion Con Salto de Linea
-                            string description = "";
-                            description += "ID: " + row.Cells[0].Value.ToString() + "\n";
-                            description += "Nombre: " + row.Cells[1].Value.ToString() + "\n";
-                            description += "Ancho: " + row.Cells[2].Value.ToString() + "\n";
-                            description += "Alto: " + row.Cells[3].Value.ToString() + "\n";
-                            description += "Cantidad: " + row.Cells[4].Value.ToString() + "\n";
-                            description += "cmbArticulo";
+                            if (row.Cells[0].Value.ToString() != "")
+                            {
+                                //Crear Descripcion Con Salto de Linea
+                                string description = "";
+                                description += "ID: " + row.Cells[0].Value.ToString() + "\n";
+                                description += "Nombre: " + row.Cells[1].Value.ToString() + "\n";
+                                description += "Ancho: " + row.Cells[2].Value.ToString() + "\n";
+                                description += "Alto: " + row.Cells[3].Value.ToString() + "\n";
+                                description += "Cantidad: " + row.Cells[4].Value.ToString() + "\n";
+                                description += "cmbArticulo";
+ 
 
-                            n_LoadProduct.insertWindows(description, "", Convert.ToDecimal(row.Cells[2].Value), Convert.ToDecimal(row.Cells[3].Value), "", "", "", Convert.ToDecimal(row.Cells[7].Value), ClsWindows.IDQuote, "cmbArticulos", "");
+                            if (Editar)
+                            {
+                                n_LoadProduct.EditWindows(row.Cells[8].Value.ToString(), description, "", Convert.ToDecimal(row.Cells[2].Value), Convert.ToDecimal(row.Cells[3].Value), "", "", "", Convert.ToDecimal(row.Cells[7].Value), ClsWindows.IDQuote, "cmbArticulos", "");
+                            }
+                            else
+                            {
+                                n_LoadProduct.insertWindows(description, "", Convert.ToDecimal(row.Cells[2].Value), Convert.ToDecimal(row.Cells[3].Value), "", "", "", Convert.ToDecimal(row.Cells[7].Value), ClsWindows.IDQuote, "cmbArticulos", "");
+                            }
+
+                            }
                         }
                     }
-                }
-                Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
-                if (frm != null)
+                    Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
+                    if (frm != null)
+                    {
+                        ((frmQuote)frm).loadWindows();
+                    }
+                if (Editar)
                 {
-                    ((frmQuote)frm).loadWindows();
+                    MessageBox.Show("Combo Editado Correctamente");
                 }
-                MessageBox.Show("Datos Guardados Correctamente");
+                else
+                {
+                    MessageBox.Show("Combo Guardado Correctamente");
+                }
             }
             catch (Exception EX)
             {
@@ -239,7 +252,6 @@ namespace Precentacion.User.Quote.Prefabricado
             //Borrar el Index 0
             dgvPrefabricado.Rows.RemoveAt(0);
         }
-
         public string[] ObtenerDatosDescripcion(string Descripcion)
         {
             string[] Datos = new string[5]; // Crear un array de 5 elementos para ID, Nombre, Ancho, Alto y Cantidad
@@ -271,6 +283,14 @@ namespace Precentacion.User.Quote.Prefabricado
             Datos[4] = Cantidad.ToString();
 
             return Datos;
+        }
+        private void LimpiarCambios() 
+        {
+            //Limpiar el DataGrid
+            dgvPrefabricado.Rows.Clear();
+            ConfigDataGrid();
+            //Limpiar el Gran Total
+            GranTotal = 0;
         }
     }
 }

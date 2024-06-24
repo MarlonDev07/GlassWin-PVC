@@ -476,7 +476,7 @@ namespace Precentacion.User.Quote.Quote
                     {
                         ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
                         List<Cls_CmbArticulo> list = new List<Cls_CmbArticulo>();
-                        Cls_CmbArticulo cls_CmbArticulo = new Cls_CmbArticulo();
+                        
                         frmPrefabricado frm = new frmPrefabricado();
                         foreach (DataGridViewRow row in dgCotizaciones.Rows)
                         {
@@ -486,8 +486,8 @@ namespace Precentacion.User.Quote.Quote
                                 {
                                     if (row.Cells[2].Value.ToString().Contains("cmbArticulo"))
                                     {
-                                       //Guardar en una Lista los Datos
-                                       
+                                        //Guardar en una Lista los Datos
+                                        Cls_CmbArticulo cls_CmbArticulo = new Cls_CmbArticulo();
                                         cls_CmbArticulo.IdVentana = Convert.ToInt32(row.Cells[0].Value);
                                         cls_CmbArticulo.Descripcion = row.Cells[2].Value.ToString();
                                         cls_CmbArticulo.Precio = row.Cells[3].Value.ToString();
@@ -497,6 +497,7 @@ namespace Precentacion.User.Quote.Quote
                             }
                         }
                         frm.ListarArticulos(list);
+                        frm.ConfigEditar();
                         frm.Show();
                     }
                     catch (Exception EX)
