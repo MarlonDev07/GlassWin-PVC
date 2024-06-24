@@ -88,6 +88,10 @@ namespace Precentacion.User.Quote.Prefabricado
         }
         #endregion
 
+       
+
+
+
         private void btnCargar_Click(object sender, EventArgs e)
         {
             //Abrir la Lista de Artiulos
@@ -144,11 +148,7 @@ namespace Precentacion.User.Quote.Prefabricado
 
            
         }
-        public void ConfigEditar() 
-        {
-            btnGuardar.Text = "Editar Combo";
-            Editar = true;
-        }
+
         public void AgregarFila() 
         {
             //Agregar una fila nueva
@@ -245,7 +245,7 @@ namespace Precentacion.User.Quote.Prefabricado
                 dgvPrefabricado.CurrentRow.Cells[2].Value = Datos[2];
                 dgvPrefabricado.CurrentRow.Cells[3].Value = Datos[3];
                 dgvPrefabricado.CurrentRow.Cells[4].Value = Datos[4];
-                dgvPrefabricado.CurrentRow.Cells[6].Value = item.Precio;
+                BuscarProducto(Convert.ToInt32(Datos[0]));
                 dgvPrefabricado.CurrentRow.Cells[7].Value = item.Precio;
                 dgvPrefabricado.CurrentRow.Cells[8].Value = item.IdVentana;
             }
@@ -283,14 +283,6 @@ namespace Precentacion.User.Quote.Prefabricado
             Datos[4] = Cantidad.ToString();
 
             return Datos;
-        }
-        private void LimpiarCambios() 
-        {
-            //Limpiar el DataGrid
-            dgvPrefabricado.Rows.Clear();
-            ConfigDataGrid();
-            //Limpiar el Gran Total
-            GranTotal = 0;
         }
     }
 }

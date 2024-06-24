@@ -152,6 +152,35 @@ namespace AccesoDatos.Company.LoadProducts
 
         }
 
+        public DataTable CargarProductoxID(int Id) 
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                ClsConnection con = new ClsConnection();
+
+                string sql = "";
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "Select PP.IdPrice, P.Description, PP.Color, PP.SalePrice from Product P inner join Price PP on P.idProduct = PP.idProduct where PP.IdPrice = @id";
+                }
+                else
+                {
+                    sql = "Select PP.IdPrice, P.Description, PP.Color, PP.Cost from Product P inner join Price PP on P.idProduct = PP.idProduct where PP.IdPrice = 2180";
+                }
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.SelectCommand.Parameters.AddWithValue("@id", Id);
+                da.Fill(dataTable);
+                con.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+
 		public DataTable ListaArticulosxColor() 
 		{
             try

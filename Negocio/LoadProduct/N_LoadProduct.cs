@@ -442,6 +442,20 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
+        public DataTable ListaArticulosxID(int Id)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = loadProduct.CargarProductoxID(Id);
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region Seleccion del Calculo
