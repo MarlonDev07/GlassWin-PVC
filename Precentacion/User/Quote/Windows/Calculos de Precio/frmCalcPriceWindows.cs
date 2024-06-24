@@ -281,51 +281,57 @@ namespace Precentacion.User.Quote.Windows
         #region Buttons
         private void btnBackSistema_Click(object sender, EventArgs e)
         {
-            switch (ClsWindows.System)
+            if (PanelDetalle.Visible == true)
             {
-                case "Ventila":
-                    frmSelectDesingVentila frm = new frmSelectDesingVentila();
-                    frm.Show();
-                    this.Close();
-                    break;
-                case "Puerta Lujo":
-                    frmSelecDesingPuertLujo frmpl = new frmSelecDesingPuertLujo();
-                    frmpl.Show();
-                    this.Close();
-                    break;
-                case "Cedazo 1/2":
-                    frmSelectSystem frmce = new frmSelectSystem();
-                    frmce.Show();
-                    this.Close();
-                    break;
-                case "Puerta Liviana":
-                    frmSelecDesingPuertLujo frmpu = new frmSelecDesingPuertLujo();
-                    frmpu.Show();
-                    this.Close();
-                    break;
-                case "Ventila Euro":
-                    frmSelectDesingVentila frm2 = new frmSelectDesingVentila();
-                    frm2.Show();
-                    this.Close();
-                    break;
-                default:
-                    switch (ClsWindows.Desing)
-                    {
-                        case "CedazoAkariFijoMovil":
-                            frmSelecDesingCedazo frmCedazo = new frmSelecDesingCedazo();
-                            frmCedazo.Show();
-                            this.Close();
-                            return;
-                        case "CedazoAkariFijoMovilMovilFijo":
-                            frmSelecDesingCedazo frmCedazo2 = new frmSelecDesingCedazo();
-                            frmCedazo2.Show();
-                            this.Close();
-                            return;
-                    }
-                    frmSelectDesing frmde = new frmSelectDesing();
-                    frmde.Show();
-                    this.Close();
-                    break;
+                MessageBox.Show("Pulse el botón 'Cerrar' en la parte inferior de este formulario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else {
+                switch (ClsWindows.System)
+                {
+                    case "Ventila":
+                        frmSelectDesingVentila frm = new frmSelectDesingVentila();
+                        frm.Show();
+                        this.Close();
+                        break;
+                    case "Puerta Lujo":
+                        frmSelecDesingPuertLujo frmpl = new frmSelecDesingPuertLujo();
+                        frmpl.Show();
+                        this.Close();
+                        break;
+                    case "Cedazo 1/2":
+                        frmSelectSystem frmce = new frmSelectSystem();
+                        frmce.Show();
+                        this.Close();
+                        break;
+                    case "Puerta Liviana":
+                        frmSelecDesingPuertLujo frmpu = new frmSelecDesingPuertLujo();
+                        frmpu.Show();
+                        this.Close();
+                        break;
+                    case "Ventila Euro":
+                        frmSelectDesingVentila frm2 = new frmSelectDesingVentila();
+                        frm2.Show();
+                        this.Close();
+                        break;
+                    default:
+                        switch (ClsWindows.Desing)
+                        {
+                            case "CedazoAkariFijoMovil":
+                                frmSelecDesingCedazo frmCedazo = new frmSelecDesingCedazo();
+                                frmCedazo.Show();
+                                this.Close();
+                                return;
+                            case "CedazoAkariFijoMovilMovilFijo":
+                                frmSelecDesingCedazo frmCedazo2 = new frmSelecDesingCedazo();
+                                frmCedazo2.Show();
+                                this.Close();
+                                return;
+                        }
+                        frmSelectDesing frmde = new frmSelectDesing();
+                        frmde.Show();
+                        this.Close();
+                        break;
+                }
             }
 
         }
