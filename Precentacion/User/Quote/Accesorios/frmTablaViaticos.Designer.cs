@@ -710,7 +710,6 @@
             this.Name = "frmTablaViaticos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla Viáticos";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.numericVeiculos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericEmpleados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericDias)).EndInit();

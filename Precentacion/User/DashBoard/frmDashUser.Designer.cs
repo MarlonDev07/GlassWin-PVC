@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashUser));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnProduccion = new System.Windows.Forms.PictureBox();
             this.btnFactProveedor = new System.Windows.Forms.PictureBox();
             this.btnProveedor = new System.Windows.Forms.PictureBox();
@@ -39,15 +38,15 @@
             this.btnProyecto = new System.Windows.Forms.PictureBox();
             this.btnEmpleado = new System.Windows.Forms.PictureBox();
             this.btnCxC = new System.Windows.Forms.PictureBox();
-            this.BarraSuperior = new System.Windows.Forms.Panel();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnFactura = new System.Windows.Forms.PictureBox();
             this.btnOrden = new System.Windows.Forms.PictureBox();
             this.btnCliente = new System.Windows.Forms.PictureBox();
             this.pbAdmin = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.BarraSuperior = new System.Windows.Forms.Panel();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnProduccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactProveedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProveedor)).BeginInit();
@@ -55,24 +54,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnProyecto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEmpleado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCxC)).BeginInit();
-            this.BarraSuperior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOrden)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAdmin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.BarraSuperior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(-91, 55);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(67, 63);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 47;
-            this.pictureBox3.TabStop = false;
             // 
             // btnProduccion
             // 
@@ -109,7 +99,7 @@
             this.btnProveedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnProveedor.TabIndex = 44;
             this.btnProveedor.TabStop = false;
-            this.toolTip1.SetToolTip(this.btnProveedor, "RTegistro de Proveedores");
+            this.toolTip1.SetToolTip(this.btnProveedor, "Registro de Proveedores");
             this.btnProveedor.Click += new System.EventHandler(this.btnRegProveedor_Click);
             // 
             // btnCalendario
@@ -135,7 +125,7 @@
             this.btnProyecto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnProyecto.TabIndex = 42;
             this.btnProyecto.TabStop = false;
-            this.toolTip1.SetToolTip(this.btnProyecto, "Administracion de Proyectos");
+            this.toolTip1.SetToolTip(this.btnProyecto, "Administración de Proyectos");
             this.btnProyecto.Click += new System.EventHandler(this.btnAdmProyecto_Click);
             this.btnProyecto.MouseEnter += new System.EventHandler(this.btnProyecto_MouseEnter);
             this.btnProyecto.MouseLeave += new System.EventHandler(this.btnProyecto_MouseLeave);
@@ -167,6 +157,71 @@
             this.btnCxC.Click += new System.EventHandler(this.btnCxC_Click);
             this.btnCxC.MouseEnter += new System.EventHandler(this.btnCxC_MouseEnter);
             this.btnCxC.MouseLeave += new System.EventHandler(this.btnCxC_MouseLeave);
+            // 
+            // btnFactura
+            // 
+            this.btnFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnFactura.Image")));
+            this.btnFactura.Location = new System.Drawing.Point(196, 31);
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Size = new System.Drawing.Size(67, 63);
+            this.btnFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnFactura.TabIndex = 38;
+            this.btnFactura.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnFactura, "Gestión de Proformas y Facturas");
+            this.btnFactura.Click += new System.EventHandler(this.ManagerQuotes_Click);
+            this.btnFactura.MouseEnter += new System.EventHandler(this.btnFactura_MouseHover);
+            this.btnFactura.MouseLeave += new System.EventHandler(this.btnFactura_MouseLeave);
+            // 
+            // btnOrden
+            // 
+            this.btnOrden.Image = ((System.Drawing.Image)(resources.GetObject("btnOrden.Image")));
+            this.btnOrden.Location = new System.Drawing.Point(98, 31);
+            this.btnOrden.Name = "btnOrden";
+            this.btnOrden.Size = new System.Drawing.Size(67, 63);
+            this.btnOrden.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnOrden.TabIndex = 37;
+            this.btnOrden.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnOrden, "Nueva Proforma");
+            this.btnOrden.Click += new System.EventHandler(this.btnNewQuote_Click);
+            this.btnOrden.MouseEnter += new System.EventHandler(this.btnOrden_MouseEnter);
+            this.btnOrden.MouseLeave += new System.EventHandler(this.btnOrden_MouseLeave);
+            // 
+            // btnCliente
+            // 
+            this.btnCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnCliente.Image")));
+            this.btnCliente.Location = new System.Drawing.Point(2, 31);
+            this.btnCliente.Name = "btnCliente";
+            this.btnCliente.Size = new System.Drawing.Size(67, 63);
+            this.btnCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCliente.TabIndex = 36;
+            this.btnCliente.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnCliente, "Clientes");
+            this.btnCliente.Click += new System.EventHandler(this.btnClient_Click);
+            this.btnCliente.MouseEnter += new System.EventHandler(this.btnCliente_MouseEnter);
+            this.btnCliente.MouseLeave += new System.EventHandler(this.btnCliente_MouseLeave);
+            // 
+            // pbAdmin
+            // 
+            this.pbAdmin.Image = ((System.Drawing.Image)(resources.GetObject("pbAdmin.Image")));
+            this.pbAdmin.Location = new System.Drawing.Point(970, 31);
+            this.pbAdmin.Name = "pbAdmin";
+            this.pbAdmin.Size = new System.Drawing.Size(67, 63);
+            this.pbAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAdmin.TabIndex = 48;
+            this.pbAdmin.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbAdmin, "Administracion de Precios");
+            this.pbAdmin.Visible = false;
+            this.pbAdmin.Click += new System.EventHandler(this.pictureBox4_Click_1);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(-91, 55);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(67, 63);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 47;
+            this.pictureBox3.TabStop = false;
             // 
             // BarraSuperior
             // 
@@ -221,61 +276,6 @@
             this.btnCerrar.MouseEnter += new System.EventHandler(this.btnCerrar_MouseEnter);
             this.btnCerrar.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
             // 
-            // btnFactura
-            // 
-            this.btnFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnFactura.Image")));
-            this.btnFactura.Location = new System.Drawing.Point(196, 31);
-            this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(67, 63);
-            this.btnFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnFactura.TabIndex = 38;
-            this.btnFactura.TabStop = false;
-            this.toolTip1.SetToolTip(this.btnFactura, "GEstion de Proformas y Facturas");
-            this.btnFactura.Click += new System.EventHandler(this.ManagerQuotes_Click);
-            this.btnFactura.MouseEnter += new System.EventHandler(this.btnFactura_MouseHover);
-            this.btnFactura.MouseLeave += new System.EventHandler(this.btnFactura_MouseLeave);
-            // 
-            // btnOrden
-            // 
-            this.btnOrden.Image = ((System.Drawing.Image)(resources.GetObject("btnOrden.Image")));
-            this.btnOrden.Location = new System.Drawing.Point(98, 31);
-            this.btnOrden.Name = "btnOrden";
-            this.btnOrden.Size = new System.Drawing.Size(67, 63);
-            this.btnOrden.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnOrden.TabIndex = 37;
-            this.btnOrden.TabStop = false;
-            this.toolTip1.SetToolTip(this.btnOrden, "Nueva Proforma");
-            this.btnOrden.Click += new System.EventHandler(this.btnNewQuote_Click);
-            this.btnOrden.MouseEnter += new System.EventHandler(this.btnOrden_MouseEnter);
-            this.btnOrden.MouseLeave += new System.EventHandler(this.btnOrden_MouseLeave);
-            // 
-            // btnCliente
-            // 
-            this.btnCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnCliente.Image")));
-            this.btnCliente.Location = new System.Drawing.Point(2, 31);
-            this.btnCliente.Name = "btnCliente";
-            this.btnCliente.Size = new System.Drawing.Size(67, 63);
-            this.btnCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnCliente.TabIndex = 36;
-            this.btnCliente.TabStop = false;
-            this.toolTip1.SetToolTip(this.btnCliente, "Clientes");
-            this.btnCliente.Click += new System.EventHandler(this.btnClient_Click);
-            this.btnCliente.MouseEnter += new System.EventHandler(this.btnCliente_MouseEnter);
-            this.btnCliente.MouseLeave += new System.EventHandler(this.btnCliente_MouseLeave);
-            // 
-            // pbAdmin
-            // 
-            this.pbAdmin.Image = ((System.Drawing.Image)(resources.GetObject("pbAdmin.Image")));
-            this.pbAdmin.Location = new System.Drawing.Point(970, 31);
-            this.pbAdmin.Name = "pbAdmin";
-            this.pbAdmin.Size = new System.Drawing.Size(67, 63);
-            this.pbAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAdmin.TabIndex = 48;
-            this.pbAdmin.TabStop = false;
-            this.toolTip1.SetToolTip(this.pbAdmin, "Administracion de Precios");
-            this.pbAdmin.Visible = false;
-            this.pbAdmin.Click += new System.EventHandler(this.pictureBox4_Click_1);
-            // 
             // frmDashUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,7 +301,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDashUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProduccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactProveedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProveedor)).EndInit();
@@ -309,14 +308,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnProyecto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEmpleado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCxC)).EndInit();
-            this.BarraSuperior.ResumeLayout(false);
-            this.BarraSuperior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOrden)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAdmin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.BarraSuperior.ResumeLayout(false);
+            this.BarraSuperior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.ResumeLayout(false);
 
         }

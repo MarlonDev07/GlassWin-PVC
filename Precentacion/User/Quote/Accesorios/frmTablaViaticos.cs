@@ -24,6 +24,8 @@ namespace Precentacion.User.Quote.Accesorios
             InitializeComponent();
             CargarEmpleadosCmb();
             AccesoriosUI.loadMaterial(this);
+            // Configurar el formulario para que se abra en el centro de la pantalla
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         #endregion
 

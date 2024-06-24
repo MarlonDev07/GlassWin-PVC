@@ -3,20 +3,20 @@ using System;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using Precentacion.User.Quote.Windows.Seleccion_Diseño;
+using System.Drawing;
 
 namespace Precentacion.User.Quote.Windows
 {
     public partial class frmSelecDesingPuertLujo : MaterialForm
     {
         private bool _isOpeningAnotherForm = false;
-        public string system2 { get; set; } 
+        public string system2 { get; set; }
 
         public frmSelecDesingPuertLujo()
         {
             InitializeComponent();
             BloquearBotones();
             SeleccionDesign.loadMaterial(this);
-            
         }
 
         private void BloquearBotones()
@@ -89,10 +89,35 @@ namespace Precentacion.User.Quote.Windows
             if (system2 == "Puerta Liviana")
             {
                 this.Text = "Seleccionar diseño puerta liviana";
-            } else if (system2 == "PuertaEuAbatible") {
-                this.Text = "Seleccionar diseño Puerta Europa Abatible";
             }
-            
+            else if (system2 == "PuertaEuAbatible")
+            {
+                this.Text = "Seleccionar diseño Puerta Europa Abatible";
+                btn1Hoja.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\1 Hoja EA.jpeg");
+                btn2Hoja.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\2 Hoja EA.jpeg");
+                btn1HojaDivicion.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\1 Hoja DEA.jpeg");
+                btnHojaDivicion.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\2 Hoja DEA.jpeg");
+            }
+        }
+
+        private void btnHojaEA_Click(object sender, EventArgs e)
+        {
+            //OpenCalcPriceWindows("1 Hoja EA");
+        }
+
+        private void btnHoja2EA_Click(object sender, EventArgs e)
+        {
+            //OpenCalcPriceWindows("2 Hoja EA");
+        }
+
+        private void btnHoja1DEA_Click(object sender, EventArgs e)
+        {
+            //OpenCalcPriceWindows("1 Hoja DEA");
+        }
+
+        private void btnHoja2DEA_Click(object sender, EventArgs e)
+        {
+            //OpenCalcPriceWindows("2 Hoja DEA");
         }
     }
 }

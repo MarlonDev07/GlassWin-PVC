@@ -1042,13 +1042,20 @@ namespace Precentacion.User.Bill
             try
             {
                 List<PriceProductClass> Lista = CargarLista();
+
+                if (Lista == null || Lista.Count == 0)
+                {
+                    //MessageBox.Show("La lista de precios está vacía.");
+                    return;
+                }
+
                 N_Products products = new N_Products();
                 DataTable dt = products.ObtenerTamañoPieza(Lista);
 
                 // Verificar si el DataTable tiene filas
                 if (dt == null || dt.Rows.Count == 0)
                 {
-                    MessageBox.Show("No se encontraron datos para los productos especificados.");
+                    //MessageBox.Show("No se encontraron datos para los productos especificados.");
                     return;
                 }
 

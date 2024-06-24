@@ -1,6 +1,7 @@
 ﻿using Dominio.Model.ClassWindows;
 using Dominio.Model.PuertaBaño;
 using MaterialSkin.Controls;
+using Precentacion.User.Bill;
 using Precentacion.User.Quote.Quote;
 using Precentacion.User.Quote.SandBlasting;
 using Precentacion.User.Quote.Windows.Seleccion_Diseño;
@@ -30,6 +31,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.System = "5020";
             frmSelectDesing frm = new frmSelectDesing();
+            frm.system2 = ClsWindows.System;
             frm.Show();
             this.Close();
         }
@@ -48,6 +50,7 @@ namespace Precentacion.User.Quote.Windows
 
             ClsWindows.System = "8025 2 Vias";
             frmSelectDesing frm = new frmSelectDesing();
+            frm.system2 = ClsWindows.System;
             frm.Show();
             this.Close();
         }
@@ -80,6 +83,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.System = "6030 2 Vias";
             frmSelectDesing frm = new frmSelectDesing();
+            frm.system2 = ClsWindows.System;
             frm.Show();
             this.Close();
         }
@@ -96,6 +100,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.System = "Europa 2 Vias";
             frmSelectDesing frm = new frmSelectDesing();
+            frm.system2 = ClsWindows.System;
             frm.Show();
             this.Close();
         }
@@ -200,6 +205,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.System = "5020 3 Vias";
             frmSelectDesing frm = new frmSelectDesing();
+            frm.system2 = ClsWindows.System;
             frm.Show();
             this.Close();
         }

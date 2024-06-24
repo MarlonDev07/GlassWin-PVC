@@ -61,7 +61,7 @@
             this.pSeleccionarPL.Location = new System.Drawing.Point(2, 5);
             this.pSeleccionarPL.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pSeleccionarPL.Name = "pSeleccionarPL";
-            this.pSeleccionarPL.Size = new System.Drawing.Size(1180, 233);
+            this.pSeleccionarPL.Size = new System.Drawing.Size(1151, 233);
             this.pSeleccionarPL.TabIndex = 0;
             // 
             // btnHojaDivicion
