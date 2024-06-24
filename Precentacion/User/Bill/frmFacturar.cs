@@ -376,9 +376,6 @@ namespace Precentacion.User.Bill
             //Permitir saltos de linea en el dgv
             dgvRectificacion.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
-            //Ajustar el Alto de la celda a su contenido
-            dgvRectificacion.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-
             //Ajustar el Ancho de la celda al ancho del Formulario
             dgvRectificacion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -402,6 +399,9 @@ namespace Precentacion.User.Bill
             dgvRectificacion.Columns[2].DisplayIndex = 1;
             dgvRectificacion.Columns[8].DisplayIndex = 3;
 
+
+            //Alto de la celda
+            dgvRectificacion.RowTemplate.Height = 300;
 
 
 
@@ -1737,7 +1737,7 @@ namespace Precentacion.User.Bill
                 document.Open();
                 #endregion
 
-            #region Encabezado
+                #region Encabezado
                 // Crea una tabla con dos columnas
                 PdfPTable Encabezado = new PdfPTable(2);
                 Encabezado.WidthPercentage = 120;
@@ -1840,7 +1840,7 @@ namespace Precentacion.User.Bill
 
                 #endregion
 
-            #region Tabla de Informacion 
+                #region Tabla de Informacion 
                 // Crear una tabla para los datos del proyecto y la información del cliente
                 PdfPTable datosTable = new PdfPTable(2);
                 datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
@@ -2405,50 +2405,57 @@ namespace Precentacion.User.Bill
         }
         private decimal ObtenerAncho(string Descripcion)
         {
-            string patternAncho = @"\nAncho:\s*([\d,\.]+)";
-            System.Text.RegularExpressions.Match matchAncho = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAncho);
-            string Ancho = matchAncho.Groups[1].Value.Replace(",", ".");
-            decimal AnchoDecimal = 0;
-            if (Ancho != "")
+            if (!Descripcion.Contains("Exclusivo"))
             {
-                if (Ancho.Contains("."))
+                string patternAncho = @"\nAncho:\s*([\d,\.]+)";
+                System.Text.RegularExpressions.Match matchAncho = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAncho);
+                string Ancho = matchAncho.Groups[1].Value.Replace(",", ".");
+                decimal AnchoDecimal = 0;
+                if (Ancho != "")
                 {
-                    AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".", ","));
+                    if (Ancho.Contains("."))
+                    {
+                        AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".", ","));
+                    }
+                    else
+                    {
+                        AnchoDecimal = Convert.ToDecimal(Ancho);
+                    }
                 }
-                else
-                {
-                    AnchoDecimal = Convert.ToDecimal(Ancho);
-                }
+
+                return AnchoDecimal;
             }
             else
             {
-                AnchoDecimal = 1;
+                return 1.5m;
             }
-
-            return AnchoDecimal;
         }
         private decimal ObtenerAlto(string Descripcion)
         {
-            string patternAlto = @"\nAlto:\s*([\d,\.]+)";
-            System.Text.RegularExpressions.Match matchAlto = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAlto);
-            string Alto = matchAlto.Groups[1].Value.Replace(",", ".");
-            decimal AltoDecimal = 0;
-            if (Alto != "")
+            if (!Descripcion.Contains("Exclusivo"))
             {
-                if (Alto.Contains("."))
+                string patternAlto = @"\nAlto:\s*([\d,\.]+)";
+                System.Text.RegularExpressions.Match matchAlto = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAlto);
+                string Alto = matchAlto.Groups[1].Value.Replace(",", ".");
+                decimal AltoDecimal = 0;
+                if (Alto != "")
                 {
-                    AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
+                    if (Alto.Contains("."))
+                    {
+                        AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
+                    }
+                    else
+                    {
+                        AltoDecimal = Convert.ToDecimal(Alto);
+                    }
                 }
-                else
-                {
-                    AltoDecimal = Convert.ToDecimal(Alto);
-                }
+
+                return AltoDecimal;
             }
             else
             {
-                AltoDecimal = 1;
+                return 1.5m;
             }
-            return AltoDecimal;
         }
     }
 }

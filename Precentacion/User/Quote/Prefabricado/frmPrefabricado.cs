@@ -24,6 +24,7 @@ namespace Precentacion.User.Quote.Prefabricado
         private bool Inicializado = false;
         private decimal GranTotal = 0;
         private bool Editar = false;
+        private String IdCombo = "0";
         public frmPrefabricado()
         {
             InitializeComponent();
@@ -102,7 +103,13 @@ namespace Precentacion.User.Quote.Prefabricado
                 //Abrir la Lista de Artiulos
                 frmListArticulos frm = new frmListArticulos();
                 frm.Show();
-            }           
+            }
+            //Validar que se Preciona la Tecla Enter
+            if (e.KeyValue == (char)Keys.Enter)
+            {
+                //Cargar los Datos del Producto
+                BuscarProducto(Convert.ToInt32(dgvPrefabricado.CurrentRow.Cells[0].Value),0);
+            }
         }
         private void dgvPrefabricado_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -110,6 +117,11 @@ namespace Precentacion.User.Quote.Prefabricado
             {
                 if (Inicializado)
                 {
+                    if (dgvPrefabricado.CurrentRow.Cells[0].Value != "" && dgvPrefabricado.CurrentRow.Cells[0].Value.ToString() != IdCombo)
+                    {
+                        IdCombo = dgvPrefabricado.CurrentRow.Cells[0].Value.ToString();
+                        BuscarProducto(Convert.ToInt32(dgvPrefabricado.CurrentRow.Cells[0].Value),0);
+                    }
                     //Calcular el Metraje
                     decimal Metraje = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[2].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[3].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[4].Value);
                     dgvPrefabricado.CurrentRow.Cells[5].Value = Metraje;
@@ -139,10 +151,8 @@ namespace Precentacion.User.Quote.Prefabricado
         }
         private void frmPrefabricado_KeyDown(object sender, KeyEventArgs e)
         {
-           
+            //Validar que se Preciona la Tecla Enter
 
-
-           
         }
         public void AgregarFila() 
         {
@@ -209,6 +219,7 @@ namespace Precentacion.User.Quote.Prefabricado
                 {
                     MessageBox.Show("Combo Guardado Correctamente");
                 }
+                LimpiarCampos();
             }
             catch (Exception EX)
             {
@@ -240,7 +251,7 @@ namespace Precentacion.User.Quote.Prefabricado
                 dgvPrefabricado.CurrentRow.Cells[2].Value = Datos[2];
                 dgvPrefabricado.CurrentRow.Cells[3].Value = Datos[3];
                 dgvPrefabricado.CurrentRow.Cells[4].Value = Datos[4];
-                BuscarProducto(Convert.ToInt32(Datos[0]));
+                BuscarProducto(Convert.ToInt32(Datos[0]),1);
                 dgvPrefabricado.CurrentRow.Cells[7].Value = item.Precio;
                 dgvPrefabricado.CurrentRow.Cells[8].Value = item.IdVentana;
             }
@@ -279,20 +290,46 @@ namespace Precentacion.User.Quote.Prefabricado
 
             return Datos;
         }
-        public void BuscarProducto(int Id) 
+        public void BuscarProducto(int Id, int Seleccion) 
         {
             DataTable dataTable = new DataTable();
             N_LoadProduct n_LoadProduct = new N_LoadProduct();
             dataTable = n_LoadProduct.ListaArticulosxID(Id);
             if (dataTable.Rows.Count > 0)
             {
-                dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                if(Seleccion == 0) 
+                {
+                    dgvPrefabricado.CurrentRow.Cells[0].Value = dataTable.Rows[0]["IdPrice"].ToString();
+                    dgvPrefabricado.CurrentRow.Cells[1].Value = dataTable.Rows[0]["Description"].ToString();
+                    dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+
+                }
+                if (Seleccion == 1)
+                {
+                    dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                }
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("El Articulo no Existe, Desea Abrir la Lista?", "Articulo no Encontrado", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    frmListArticulos frm = new frmListArticulos();
+                    frm.Show();
+                }
             }
         }
         public void ConfigEditar() 
         { 
             btnGuardar.Text = "Editar Combo";
             Editar = true;
+        }
+        public void LimpiarCampos()
+        {
+            dgvPrefabricado.Rows.Clear();
+            ConfigDataGrid();
+            Editar = false;
+            btnGuardar.Text = "Guardar Combo";
         }
     }
 }

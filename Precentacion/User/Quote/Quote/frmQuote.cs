@@ -926,51 +926,57 @@ namespace Precentacion.User.Quote.Quote
         }
         private decimal ObtenerAncho(string Descripcion)
         {
-            string patternAncho = @"\nAncho:\s*([\d,\.]+)";
-            System.Text.RegularExpressions.Match matchAncho = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAncho);
-            string Ancho = matchAncho.Groups[1].Value.Replace(",", ".");
-            decimal AnchoDecimal = 0;
-            if(Ancho != "") 
+            if (!Descripcion.Contains("Exclusivo"))
             {
-                if (Ancho.Contains("."))
+                string patternAncho = @"\nAncho:\s*([\d,\.]+)";
+                System.Text.RegularExpressions.Match matchAncho = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAncho);
+                string Ancho = matchAncho.Groups[1].Value.Replace(",", ".");
+                decimal AnchoDecimal = 0;
+                if (Ancho != "")
                 {
-                    AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".", ","));
+                    if (Ancho.Contains("."))
+                    {
+                        AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".", ","));
+                    }
+                    else
+                    {
+                        AnchoDecimal = Convert.ToDecimal(Ancho);
+                    }
                 }
-                else
-                {
-                    AnchoDecimal = Convert.ToDecimal(Ancho);
-                }
+
+                return AnchoDecimal;
             }
             else
             {
-                AnchoDecimal = 1.5m;
+                return 1.5m;
             }
-
-            return AnchoDecimal;
         }
         private decimal ObtenerAlto(string Descripcion)
         {
-            string patternAlto = @"\nAlto:\s*([\d,\.]+)";
-            System.Text.RegularExpressions.Match matchAlto = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAlto);
-            string Alto = matchAlto.Groups[1].Value.Replace(",", ".");
-            decimal AltoDecimal = 0;
-            if (Alto != "")
+            if (!Descripcion.Contains("Exclusivo"))
             {
-                if (Alto.Contains("."))
+                string patternAlto = @"\nAlto:\s*([\d,\.]+)";
+                System.Text.RegularExpressions.Match matchAlto = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAlto);
+                string Alto = matchAlto.Groups[1].Value.Replace(",", ".");
+                decimal AltoDecimal = 0;
+                if (Alto != "")
                 {
-                    AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
+                    if (Alto.Contains("."))
+                    {
+                        AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
+                    }
+                    else
+                    {
+                        AltoDecimal = Convert.ToDecimal(Alto);
+                    }
                 }
-                else
-                {
-                    AltoDecimal = Convert.ToDecimal(Alto);
-                }
+
+                return AltoDecimal;
             }
             else
             {
-                AltoDecimal = 1.5m;
+                return 1.5m;
             }
-            return AltoDecimal;
-
         }
         #endregion
 

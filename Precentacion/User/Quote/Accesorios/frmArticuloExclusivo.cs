@@ -48,7 +48,11 @@ namespace Precentacion.User.Quote.Accesorios
             {
                 if (ValidarCampos() == true)
                 {
-                    if (SaveWindows.insertWindows(txtDescripcion.Text, rutaImagen, 0, 0, "", "", "", Convert.ToDecimal(txtPrecio.Text), ClsWindows.IDQuote, "", ""))
+                    string Descripcion = txtDescripcion.Text;
+                    Descripcion += Environment.NewLine;
+                    Descripcion += "Exclusivo";
+
+                    if (SaveWindows.insertWindows(Descripcion, rutaImagen, 0, 0, "", "", "", Convert.ToDecimal(txtPrecio.Text), ClsWindows.IDQuote, "", ""))
                     {
                         Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
                         if (frm != null)
@@ -71,7 +75,6 @@ namespace Precentacion.User.Quote.Accesorios
             {
                //Abrir un dialogo para seleccionar la imagen
                 OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "Archivos de imagen|*.jpg;*.png";
                 dialog.Title = "Seleccione una imagen";
                 dialog.Multiselect = false;
 
