@@ -139,6 +139,7 @@ namespace Precentacion.User.Quote.Prefabricado
             {
                 MessageBox.Show("La ventana frmPrefabricado no está abierta.");
             }
+            this.Close();
         }
     }
 }

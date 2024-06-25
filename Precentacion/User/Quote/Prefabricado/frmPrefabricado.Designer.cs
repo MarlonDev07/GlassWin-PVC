@@ -99,6 +99,7 @@
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.dgvPrefabricado);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "frmPrefabricado";
             this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
