@@ -126,7 +126,13 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 {
                     //Detectar si el usuario ingreso un punto en vez de una coma
                     DetectarPunto();
-                    ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
+                    if (design2 == "MovilMovil")
+                    {
+                        ClsWindows.Weight = Convert.ToDecimal(txtAnchoPanel.Text);
+                    }
+                    else {
+                        ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
+                    }
                     redimension_Click(sender, e);
                 }
                 //Advertencias();
@@ -144,7 +150,11 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             {
                 try
                 {
-                    if (decimal.TryParse(txtAncho.Text, out decimal anchoEnMetros) &&
+
+                    // Utiliza el TextBox correcto según el valor de `design2`
+                    TextBox anchoTextBox = (design2 == "MovilMovil") ? txtAnchoPanel : txtAncho;
+
+                    if (decimal.TryParse(anchoTextBox.Text, out decimal anchoEnMetros) &&
                         decimal.TryParse(txtAlto.Text, out decimal alturaEnMetros))
                     {
                         int newWidth = (int)(anchoEnMetros * MetrosAPixeles);
@@ -159,24 +169,22 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                         }
                         else
                         {
-                            //MessageBox.Show("Las dimensiones deben ser mayores que cero.");
+                            MessageBox.Show("Las dimensiones deben ser mayores que cero.");
                         }
                     }
-                    else
-                    {
-                        //MessageBox.Show("Por favor, ingresa valores numéricos válidos para el ancho y la altura.");
-                    }
+                   
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show($"Ocurrió un error al redimensionar la imagen: {ex.Message}");
+                    MessageBox.Show($"Ocurrió un error al redimensionar la imagen: {ex.Message}");
                 }
             }
             else
             {
-                //MessageBox.Show("No hay ninguna imagen cargada en el PictureBox.");
+                MessageBox.Show("No hay ninguna imagen cargada en el PictureBox.");
             }
         }
+
         #endregion
         private void DetectarPunto()
         {
@@ -191,6 +199,12 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 txtAlto.Text = txtAlto.Text.Replace(".", ",");
                 //Posicionar el cursor al final del texto
                 txtAlto.SelectionStart = txtAlto.Text.Length;
+            }
+            if (txtAnchoPanel.Text.Contains("."))
+            {
+                txtAnchoPanel.Text = txtAnchoPanel.Text.Replace(".", ",");
+                //Posicionar el cursor al final del texto
+                txtAnchoPanel.SelectionStart = txtAnchoPanel.Text.Length;
             }
 
         }
