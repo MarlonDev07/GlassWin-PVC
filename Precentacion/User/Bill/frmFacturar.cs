@@ -428,55 +428,75 @@ namespace Precentacion.User.Bill
                     string rutaRelativa = cellValue.ToString();
 
                     // Imprimir ruta relativa para depuración
-                    Debug.WriteLine($"Ruta relativa: {rutaRelativa}");
+                    Console.WriteLine($"Ruta relativa: {rutaRelativa}");
 
                     // Imprimir todas las celdas de la fila para depuración
                     for (int i = 0; i < dgvGlass.Rows[e.RowIndex].Cells.Count; i++)
                     {
                         var cellVal = dgvGlass.Rows[e.RowIndex].Cells[i].Value;
-                        Debug.WriteLine($"Celda {i}: {cellVal?.ToString() ?? "null"}");
+                        Console.WriteLine($"Celda {i}: {cellVal?.ToString() ?? "null"}");
                     }
 
-                    if (!string.IsNullOrEmpty(rutaRelativa))
+                    string directorioDeTrabajo = Directory.GetCurrentDirectory();
+
+                    // Imprimir el directorio de trabajo actual para depuración
+                    Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
+
+                    string rutaAbsoluta;
+
+                    if (Path.IsPathRooted(rutaRelativa))
                     {
-                        // Imprimir el directorio de trabajo actual para depuración
-                        Debug.WriteLine($"Directorio de trabajo: {Directory.GetCurrentDirectory()}");
-
-                        string rutaAbsoluta = Path.GetFullPath(rutaRelativa);
-
-                        // Imprimir ruta absoluta para depuración
-                        Debug.WriteLine($"Ruta absoluta: {rutaAbsoluta}");
-
-                        if (File.Exists(rutaAbsoluta))
+                        // Si la ruta ya es absoluta, asegúrate de que sea correcta
+                        if (File.Exists(rutaRelativa))
                         {
-                            e.PaintBackground(e.CellBounds, true);
-
-                            using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
-                            {
-                                // Obtener dimensiones del usuario y convertirlas a píxeles
-                                decimal anchoEnMetros = ObtenerAncho(dgvGlass.Rows[e.RowIndex].Cells[1].Value.ToString());
-                                decimal alturaEnMetros = ObtenerAlto(dgvGlass.Rows[e.RowIndex].Cells[1].Value.ToString());
-                                int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
-                                int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
-
-                                // Mostrar dimensiones calculadas para depuración
-                                Debug.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
-
-                                // Ajustar el tamaño de la imagen a las dimensiones especificadas por el usuario
-                                int anchoImagen = anchoVentana;
-                                int altoImagen = altoVentana;
-
-                                // Mostrar dimensiones de la imagen ajustada para depuración
-                                Debug.WriteLine($"Ancho imagen ajustada: {anchoImagen}, Alto imagen ajustada: {altoImagen}");
-
-                                int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
-                                int y = e.CellBounds.Top + (e.CellBounds.Height - altoImagen) / 2;
-
-                                e.Graphics.DrawImage(img, new System.Drawing.Rectangle(x, y, anchoImagen, altoImagen));
-                            }
-
-                            e.Handled = true;
+                            rutaAbsoluta = rutaRelativa;
                         }
+                        else
+                        {
+                            // La ruta es absoluta pero incorrecta, intenta corregirla
+                            string fileName = Path.GetFileName(rutaRelativa);
+                            rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
+                        }
+                    }
+                    else
+                    {
+                        // Si la ruta es relativa, conviértela a absoluta
+                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaRelativa);
+                        rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
+                    }
+
+                    // Imprimir ruta absoluta para depuración
+                    Console.WriteLine($"Ruta absoluta: {rutaAbsoluta}");
+
+                    if (File.Exists(rutaAbsoluta))
+                    {
+                        e.PaintBackground(e.CellBounds, true);
+
+                        using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
+                        {
+                            // Obtener dimensiones del usuario y convertirlas a píxeles
+                            decimal anchoEnMetros = ObtenerAncho(dgvGlass.Rows[e.RowIndex].Cells[1].Value.ToString());
+                            decimal alturaEnMetros = ObtenerAlto(dgvGlass.Rows[e.RowIndex].Cells[1].Value.ToString());
+                            int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
+                            int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
+
+                            // Mostrar dimensiones calculadas para depuración
+                            Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
+
+                            // Ajustar el tamaño de la imagen a las dimensiones especificadas por el usuario
+                            int anchoImagen = anchoVentana;
+                            int altoImagen = altoVentana;
+
+                            // Mostrar dimensiones de la imagen ajustada para depuración
+                            Console.WriteLine($"Ancho imagen ajustada: {anchoImagen}, Alto imagen ajustada: {altoImagen}");
+
+                            int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
+                            int y = e.CellBounds.Top + (e.CellBounds.Height - altoImagen) / 2;
+
+                            e.Graphics.DrawImage(img, new System.Drawing.Rectangle(x, y, anchoImagen, altoImagen));
+                        }
+
+                        e.Handled = true;
                     }
                 }
             }

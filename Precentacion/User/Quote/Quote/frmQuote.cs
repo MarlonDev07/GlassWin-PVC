@@ -577,59 +577,98 @@ namespace Precentacion.User.Quote.Quote
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 1)
             {
-                if (dgCotizaciones.Rows[e.RowIndex].Cells[1].Value != null && !string.IsNullOrEmpty(dgCotizaciones.Rows[e.RowIndex].Cells[1].Value.ToString()))
+                var cellValue = dgCotizaciones.Rows[e.RowIndex].Cells[1].Value;
+
+                if (cellValue != null && !string.IsNullOrEmpty(cellValue.ToString()))
                 {
-                    string rutaRelativa = dgCotizaciones.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    string rutaRelativa = cellValue.ToString();
 
-                    if (!string.IsNullOrEmpty(rutaRelativa))
+                    // Imprimir ruta relativa para depuración
+                    Console.WriteLine($"Ruta relativa: {rutaRelativa}");
+
+                    // Imprimir todas las celdas de la fila para depuración
+                    for (int i = 0; i < dgCotizaciones.Rows[e.RowIndex].Cells.Count; i++)
                     {
-                        bool esExclusivo = rutaRelativa.StartsWith("EXCLUSIVO:");
-                        if (esExclusivo)
+                        var cellVal = dgCotizaciones.Rows[e.RowIndex].Cells[i].Value;
+                        Console.WriteLine($"Celda {i}: {cellVal?.ToString() ?? "null"}");
+                    }
+
+                    string directorioDeTrabajo = Directory.GetCurrentDirectory();
+
+                    // Imprimir el directorio de trabajo actual para depuración
+                    Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
+
+                    string rutaAbsoluta;
+
+                    // Verificar si la ruta es exclusiva y ajustarla
+                    bool esExclusivo = rutaRelativa.StartsWith("EXCLUSIVO:");
+                    if (esExclusivo)
+                    {
+                        rutaRelativa = rutaRelativa.Replace("EXCLUSIVO:", "");
+                    }
+
+                    if (Path.IsPathRooted(rutaRelativa))
+                    {
+                        // Si la ruta ya es absoluta, asegúrate de que sea correcta
+                        if (File.Exists(rutaRelativa))
                         {
-                            rutaRelativa = rutaRelativa.Replace("EXCLUSIVO:", "");
+                            rutaAbsoluta = rutaRelativa;
                         }
-
-                        string rutaAbsoluta = Path.GetFullPath(rutaRelativa);
-
-                        if (File.Exists(rutaAbsoluta))
+                        else
                         {
-                            e.PaintBackground(e.CellBounds, true);
+                            // La ruta es absoluta pero incorrecta, intenta corregirla
+                            string fileName = Path.GetFileName(rutaRelativa);
+                            rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
+                        }
+                    }
+                    else
+                    {
+                        // Si la ruta es relativa, conviértela a absoluta
+                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaRelativa);
+                        rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
+                    }
 
-                            using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
+                    // Imprimir ruta absoluta para depuración
+                    Console.WriteLine($"Ruta absoluta: {rutaAbsoluta}");
+
+                    if (File.Exists(rutaAbsoluta))
+                    {
+                        e.PaintBackground(e.CellBounds, true);
+
+                        using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
+                        {
+                            int anchoImagen = img.Width;
+                            int altoImagen = img.Height;
+
+                            if (!esExclusivo)
                             {
-                                int anchoImagen = img.Width;
-                                int altoImagen = img.Height;
+                                // Obtener dimensiones del usuario y convertirlas a píxeles
+                                decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
+                                decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
+                                int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
+                                int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
 
-                                if (!esExclusivo)
-                                {
-                                    // Obtener dimensiones del usuario y convertirlas a píxeles
-                                    decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
-                                    decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
-                                    int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
-                                    int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
-
-                                    anchoImagen = anchoVentana;
-                                    altoImagen = altoVentana;
-                                }
-                                else
-                                {
-                                    // Ajustar el tamaño de la imagen para que se ajuste a la celda sin perder la relación de aspecto
-                                    float ratio = Math.Min((float)e.CellBounds.Width / anchoImagen, (float)e.CellBounds.Height / altoImagen);
-                                    anchoImagen = (int)(anchoImagen * ratio);
-                                    altoImagen = (int)(altoImagen * ratio);
-                                }
-
-                                // Mostrar dimensiones de la imagen ajustada para depuración
-                                Console.WriteLine($"Ancho imagen: {anchoImagen}, Alto imagen: {altoImagen}");
-
-                                int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
-                                int y = e.CellBounds.Top + (e.CellBounds.Height - altoImagen) / 2;
-
-                                e.Graphics.DrawImage(img, new System.Drawing.Rectangle(x, y, anchoImagen, altoImagen));
+                                anchoImagen = anchoVentana;
+                                altoImagen = altoVentana;
+                            }
+                            else
+                            {
+                                // Ajustar el tamaño de la imagen para que se ajuste a la celda sin perder la relación de aspecto
+                                float ratio = Math.Min((float)e.CellBounds.Width / anchoImagen, (float)e.CellBounds.Height / altoImagen);
+                                anchoImagen = (int)(anchoImagen * ratio);
+                                altoImagen = (int)(altoImagen * ratio);
                             }
 
-                            e.Handled = true;
+                            // Mostrar dimensiones de la imagen ajustada para depuración
+                            Console.WriteLine($"Ancho imagen: {anchoImagen}, Alto imagen: {altoImagen}");
+
+                            int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
+                            int y = e.CellBounds.Top + (e.CellBounds.Height - altoImagen) / 2;
+
+                            e.Graphics.DrawImage(img, new System.Drawing.Rectangle(x, y, anchoImagen, altoImagen));
                         }
+
+                        e.Handled = true;
                     }
                 }
             }
