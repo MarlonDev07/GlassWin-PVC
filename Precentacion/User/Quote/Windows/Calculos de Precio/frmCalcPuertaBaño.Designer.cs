@@ -492,10 +492,10 @@
             this.panelDesglose.Controls.Add(this.btnOcultar);
             this.panelDesglose.Controls.Add(this.dgvAluminio);
             this.panelDesglose.Controls.Add(this.label5);
-            this.panelDesglose.Location = new System.Drawing.Point(0, 368);
+            this.panelDesglose.Location = new System.Drawing.Point(0, 103);
             this.panelDesglose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelDesglose.Name = "panelDesglose";
-            this.panelDesglose.Size = new System.Drawing.Size(1564, 796);
+            this.panelDesglose.Size = new System.Drawing.Size(1564, 1061);
             this.panelDesglose.TabIndex = 65;
             this.panelDesglose.Visible = false;
             // 
