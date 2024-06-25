@@ -216,9 +216,9 @@ namespace Precentacion.User.Quote.Accesorios
                     if (txtUtilidad.Text != "")
                     {
                         decimal TotalViaticos = Convert.ToDecimal(txtTotalViaticos.Text);
-                        decimal CostoTotal = TotalViaticos + SubTotal;
                         decimal Utilidad = Convert.ToDecimal(txtUtilidad.Text);
-                        decimal Porcentaje = (Utilidad / CostoTotal) * 100;
+                        decimal CostoTotal = TotalViaticos + Utilidad;
+                        decimal Porcentaje =  ((Utilidad + TotalViaticos) / SubTotal)*100;
                         txtPorcentaje.Text = Porcentaje.ToString("0.00");
                     }
                     else
