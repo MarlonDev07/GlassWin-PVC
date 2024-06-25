@@ -93,10 +93,10 @@ namespace Precentacion.User.Quote.Windows
             else if (system2 == "PuertaEuAbatible")
             {
                 this.Text = "Seleccionar diseño Puerta Europa Abatible";
-                btn1Hoja.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\1 Hoja EA.jpeg");
-                btn2Hoja.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\2 Hoja EA.jpeg");
-                btn1HojaDivicion.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\1 Hoja DEA.jpeg");
-                btnHojaDivicion.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Icons\\2 Hoja DEA.jpeg");
+                btn1Hoja.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Windows\\1 Hoja EA.jpeg");
+                btn2Hoja.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Windows\\2 Hoja EA.jpeg");
+                btn1HojaDivicion.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Windows\\1 Hoja DEA.jpeg");
+                btnHojaDivicion.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\Windows\\2 Hoja DEA.jpeg");
             }
         }
 
