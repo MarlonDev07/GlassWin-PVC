@@ -131,7 +131,7 @@ namespace Precentacion.User.Quote.Prefabricado
                         if (ValidarCeldas(dgvPrefabricado.CurrentRow.Cells[3].Value.ToString(), dgvPrefabricado.CurrentRow.Cells[2].Value.ToString(), dgvPrefabricado.CurrentRow.Cells[4].Value.ToString()))
                         {
                             //Calcular el Metraje
-                            decimal Metraje = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[2].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[3].Value);
+                            decimal Metraje = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[2].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[3].Value)* Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[4].Value);
                             dgvPrefabricado.CurrentRow.Cells[5].Value = Metraje;
                             //Calcular el Precio Total
                             decimal PrecioTotal = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[6].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[5].Value);
