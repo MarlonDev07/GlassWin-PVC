@@ -74,6 +74,7 @@
             this.dgvArticulos.Size = new System.Drawing.Size(1182, 572);
             this.dgvArticulos.TabIndex = 1;
             this.dgvArticulos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellDoubleClick);
+            this.dgvArticulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvArticulos_KeyDown);
             // 
             // contextMenuStrip
             // 
