@@ -122,7 +122,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
 
                 }
-                if (txtAncho.Text != "")
+                if (txtAncho.Text != "" || txtAnchoPanel.Text != "")
                 {
                     //Detectar si el usuario ingreso un punto en vez de una coma
                     DetectarPunto();
