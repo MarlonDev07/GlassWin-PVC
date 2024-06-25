@@ -17,6 +17,7 @@ using Precentacion.User.Quote.Quote;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -418,16 +419,33 @@ namespace Precentacion.User.Bill
         private int MetrosAPixeles = 50; // Ajusta esto según sea necesario
         private void dgvGlass_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-
             if (e.RowIndex >= 0 && e.ColumnIndex == 2)
             {
-                if (dgvGlass.Rows[e.RowIndex].Cells[2].Value != null && !string.IsNullOrEmpty(dgvGlass.Rows[e.RowIndex].Cells[2].Value.ToString()))
+                var cellValue = dgvGlass.Rows[e.RowIndex].Cells[2].Value;
+
+                if (cellValue != null && !string.IsNullOrEmpty(cellValue.ToString()))
                 {
-                    string rutaRelativa = dgvGlass.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    string rutaRelativa = cellValue.ToString();
+
+                    // Imprimir ruta relativa para depuración
+                    Debug.WriteLine($"Ruta relativa: {rutaRelativa}");
+
+                    // Imprimir todas las celdas de la fila para depuración
+                    for (int i = 0; i < dgvGlass.Rows[e.RowIndex].Cells.Count; i++)
+                    {
+                        var cellVal = dgvGlass.Rows[e.RowIndex].Cells[i].Value;
+                        Debug.WriteLine($"Celda {i}: {cellVal?.ToString() ?? "null"}");
+                    }
 
                     if (!string.IsNullOrEmpty(rutaRelativa))
                     {
+                        // Imprimir el directorio de trabajo actual para depuración
+                        Debug.WriteLine($"Directorio de trabajo: {Directory.GetCurrentDirectory()}");
+
                         string rutaAbsoluta = Path.GetFullPath(rutaRelativa);
+
+                        // Imprimir ruta absoluta para depuración
+                        Debug.WriteLine($"Ruta absoluta: {rutaAbsoluta}");
 
                         if (File.Exists(rutaAbsoluta))
                         {
@@ -442,14 +460,14 @@ namespace Precentacion.User.Bill
                                 int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
 
                                 // Mostrar dimensiones calculadas para depuración
-                                Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
+                                Debug.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
 
                                 // Ajustar el tamaño de la imagen a las dimensiones especificadas por el usuario
                                 int anchoImagen = anchoVentana;
                                 int altoImagen = altoVentana;
 
                                 // Mostrar dimensiones de la imagen ajustada para depuración
-                                Console.WriteLine($"Ancho imagen ajustada: {anchoImagen}, Alto imagen ajustada: {altoImagen}");
+                                Debug.WriteLine($"Ancho imagen ajustada: {anchoImagen}, Alto imagen ajustada: {altoImagen}");
 
                                 int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
                                 int y = e.CellBounds.Top + (e.CellBounds.Height - altoImagen) / 2;
@@ -463,6 +481,8 @@ namespace Precentacion.User.Bill
                 }
             }
         }
+
+
         private void rbSelect_CheckedChanged(object sender, EventArgs e)
         {
             if (rbEfectivo.Checked == true)

@@ -429,6 +429,18 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+        public DataTable BuscarArticulosPorDescripcion(string descripcion)
+        {
+            try
+            {
+                return loadProduct.ListaArticulosxColor2(descripcion);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public DataTable ListaArticulosxColor() 
         {
             try

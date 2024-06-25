@@ -32,10 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblBusquedaNombre = new System.Windows.Forms.Label();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cargarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.lblBusquedaNombre = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -65,53 +65,60 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvArticulos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArticulos.EnableHeadersVisualStyles = false;
-            this.dgvArticulos.Location = new System.Drawing.Point(6, 109);
+            this.dgvArticulos.Location = new System.Drawing.Point(9, 168);
+            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
             this.dgvArticulos.RowHeadersWidth = 62;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(788, 372);
+            this.dgvArticulos.Size = new System.Drawing.Size(1182, 572);
             this.dgvArticulos.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(6, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(173, 20);
-            this.textBox1.TabIndex = 4;
-            // 
-            // lblBusquedaNombre
-            // 
-            this.lblBusquedaNombre.AutoSize = true;
-            this.lblBusquedaNombre.Location = new System.Drawing.Point(3, 67);
-            this.lblBusquedaNombre.Name = "lblBusquedaNombre";
-            this.lblBusquedaNombre.Size = new System.Drawing.Size(113, 13);
-            this.lblBusquedaNombre.TabIndex = 3;
-            this.lblBusquedaNombre.Text = "Busqueda por Nombre";
             // 
             // contextMenuStrip
             // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cargarToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(110, 26);
+            this.contextMenuStrip.Size = new System.Drawing.Size(137, 36);
             // 
             // cargarToolStripMenuItem
             // 
             this.cargarToolStripMenuItem.Name = "cargarToolStripMenuItem";
-            this.cargarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.cargarToolStripMenuItem.Size = new System.Drawing.Size(136, 32);
             this.cargarToolStripMenuItem.Text = "Cargar";
             this.cargarToolStripMenuItem.Click += new System.EventHandler(this.cargarToolStripMenuItem_Click);
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(9, 128);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(258, 26);
+            this.txtBuscar.TabIndex = 4;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // lblBusquedaNombre
+            // 
+            this.lblBusquedaNombre.AutoSize = true;
+            this.lblBusquedaNombre.Location = new System.Drawing.Point(4, 103);
+            this.lblBusquedaNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBusquedaNombre.Name = "lblBusquedaNombre";
+            this.lblBusquedaNombre.Size = new System.Drawing.Size(169, 20);
+            this.lblBusquedaNombre.TabIndex = 3;
+            this.lblBusquedaNombre.Text = "Busqueda por Nombre";
+            // 
             // frmListArticulos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 487);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1200, 749);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBusquedaNombre);
             this.Controls.Add(this.dgvArticulos);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmListArticulos";
+            this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.Text = "Lista Articulos";
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
@@ -123,7 +130,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvArticulos;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lblBusquedaNombre;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem cargarToolStripMenuItem;

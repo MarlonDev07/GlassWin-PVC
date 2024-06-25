@@ -69,6 +69,33 @@ namespace Precentacion.User.Quote.Prefabricado
 
         }
 
-        
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            N_LoadProduct objN = new N_LoadProduct();
+            string descripcion = txtBuscar.Text;
+
+            // Reemplazar punto (.) por coma (,) y manejar el evento
+            if (descripcion.Contains('.'))
+            {
+                descripcion = descripcion.Replace('.', ',');
+                int cursorPosition = txtBuscar.SelectionStart;
+                txtBuscar.Text = descripcion;
+                txtBuscar.SelectionStart = cursorPosition;
+            }
+
+            DataTable dt = objN.BuscarArticulosPorDescripcion(descripcion);
+
+            if (dt != null)
+            {
+                dgvArticulos.DataSource = dt;
+                // Cambiar nombre de las columnas si es necesario
+                dgvArticulos.Columns[3].HeaderText = UserCache.Name != "InnovaGlass" ? "Precio" : "Costo";
+            }
+            else
+            {
+                MessageBox.Show("Error al cargar los artículos.");
+            }
+
+        }
     }
 }

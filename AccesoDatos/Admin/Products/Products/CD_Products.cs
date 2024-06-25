@@ -365,28 +365,15 @@ namespace AccesoDatos.Products
             try
             {
                 DataTable Table = new DataTable();
-
-                if (List == null || List.Count == 0)
-                {
-                    MessageBox.Show("La lista de precios está vacía.");
-                    return null;
-                }
-
                 using (SqlConnection connection = Cnn.OpenConecction())
                 {
-                    if (connection == null || connection.State != ConnectionState.Open)
-                    {
-                        MessageBox.Show("No se pudo abrir la conexión a la base de datos.");
-                        return null;
-                    }
-
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = connection;
                     cmd.CommandType = CommandType.Text;
 
                     // Crear una consulta dinámica para la lista de nombres
                     StringBuilder queryBuilder = new StringBuilder();
-                    queryBuilder.Append("SELECT pr.Description, p.*, pr.Category FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE (");
+                    queryBuilder.Append("SELECT pr.Description ,p.*, pr.Category FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE (");
 
                     for (int i = 0; i < List.Count; i++)
                     {
@@ -405,13 +392,6 @@ namespace AccesoDatos.Products
                     queryBuilder.Append(")");
                     cmd.CommandText = queryBuilder.ToString();
 
-                    // Depuración: Imprimir la consulta y los parámetros
-                    Console.WriteLine(cmd.CommandText);
-                    foreach (SqlParameter param in cmd.Parameters)
-                    {
-                        Console.WriteLine($"{param.ParameterName}: {param.Value}");
-                    }
-
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         Table.Load(reader);
@@ -420,14 +400,10 @@ namespace AccesoDatos.Products
 
                 return Table;
             }
-            catch (SqlException sqlEx)
-            {
-                MessageBox.Show($"Error SQL: {sqlEx.Message}");
-                return null;
-            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                // Manejo del error - puedes registrar el error o realizar alguna acción necesaria
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }

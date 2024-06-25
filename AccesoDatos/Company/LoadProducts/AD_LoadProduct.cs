@@ -181,7 +181,42 @@ namespace AccesoDatos.Company.LoadProducts
             }
         }
 
-		public DataTable ListaArticulosxColor() 
+        public DataTable ListaArticulosxColor2(string descripcion = "")
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                ClsConnection con = new ClsConnection();
+
+                string sql;
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "Select PP.IdPrice, P.Description, PP.Color, PP.SalePrice from Product P inner join Price PP on P.idProduct = PP.idProduct";
+                }
+                else
+                {
+                    sql = "Select PP.IdPrice, P.Description, PP.Color, PP.Cost from Product P inner join Price PP on P.idProduct = PP.idProduct";
+                }
+
+                if (!string.IsNullOrEmpty(descripcion))
+                {
+                    sql += " WHERE P.Description LIKE @Descripcion";
+                }
+
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.SelectCommand.Parameters.AddWithValue("@Descripcion", "%" + descripcion + "%");
+                da.Fill(dataTable);
+                con.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public DataTable ListaArticulosxColor() 
 		{
             try
             {
@@ -209,7 +244,7 @@ namespace AccesoDatos.Company.LoadProducts
             }
         }
         #region InserWindows
-		public bool insertWindows(string Description,string URL,decimal Width,decimal Height,string Glass,string Color,string TypeLock,decimal Price,int IdQuote, string System, string Desing) 
+        public bool insertWindows(string Description,string URL,decimal Width,decimal Height,string Glass,string Color,string TypeLock,decimal Price,int IdQuote, string System, string Desing) 
 		{
 			try
 			{

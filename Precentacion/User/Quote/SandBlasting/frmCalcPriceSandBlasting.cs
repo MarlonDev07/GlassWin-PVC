@@ -225,5 +225,39 @@ namespace Precentacion.User.Quote.SandBlasting
         {
             PanelDesglose.Visible = false;
         }
+
+        private void txtAncho_TextChanged(object sender, EventArgs e)
+        {
+            // Obtener el texto actual
+            string text = txtAncho.Text;
+
+            // Reemplazar punto (.) por coma (,)
+            if (text.Contains('.'))
+            {
+                text = text.Replace('.', ',');
+
+                // Actualizar el texto del TextBox sin mover el cursor al final
+                int cursorPosition = txtAncho.SelectionStart;
+                txtAncho.Text = text;
+                txtAncho.SelectionStart = cursorPosition;
+            }
+        }
+
+        private void txtAlto_TextChanged(object sender, EventArgs e)
+        {
+            // Obtener el texto actual
+            string text = txtAlto.Text;
+
+            // Reemplazar punto (.) por coma (,)
+            if (text.Contains('.'))
+            {
+                text = text.Replace('.', ',');
+
+                // Actualizar el texto del TextBox sin mover el cursor al final
+                int cursorPosition = txtAlto.SelectionStart;
+                txtAlto.Text = text;
+                txtAlto.SelectionStart = cursorPosition;
+            }
+        }
     }
 }
