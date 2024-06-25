@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalcPriceWindows));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -50,12 +49,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalcPriceWindows));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTituloCotizacion = new System.Windows.Forms.Label();
-            this.pbVentana = new System.Windows.Forms.PictureBox();
             this.txtUbicacion = new System.Windows.Forms.TextBox();
             this.panelCerradura = new System.Windows.Forms.Panel();
             this.contextMenuStripOpciones = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -71,8 +70,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.PanelMedidas = new System.Windows.Forms.Panel();
             this.ckExterno = new System.Windows.Forms.CheckBox();
-            this.NumCantidad = new System.Windows.Forms.NumericUpDown();
-            this.label18 = new System.Windows.Forms.Label();
             this.cbCedazo = new System.Windows.Forms.CheckBox();
             this.ckInterno = new System.Windows.Forms.CheckBox();
             this.lblPosicionCedazo = new System.Windows.Forms.Label();
@@ -121,7 +118,6 @@
             this.cbkCilindronPestillo = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
-            this.btnBackSistmas = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.PanelDetalle = new System.Windows.Forms.Panel();
@@ -139,16 +135,15 @@
             this.lblAluminio = new System.Windows.Forms.Label();
             this.lblArticulo = new System.Windows.Forms.Label();
             this.lblDetalleCotizacion = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).BeginInit();
+            this.pbVentana = new System.Windows.Forms.PictureBox();
+            this.btnBackSistmas = new System.Windows.Forms.PictureBox();
             this.panelCerradura.SuspendLayout();
             this.contextMenuStripOpciones.SuspendLayout();
             this.PanelMedidas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumCantidad)).BeginInit();
             this.panel2.SuspendLayout();
             this.PanelVidrioFijo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiviciones)).BeginInit();
             this.PanelHaladera.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).BeginInit();
             this.panel1.SuspendLayout();
             this.PanelDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).BeginInit();
@@ -157,6 +152,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTituloCotizacion
@@ -168,25 +165,13 @@
             this.lblTituloCotizacion.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblTituloCotizacion.Location = new System.Drawing.Point(0, 0);
             this.lblTituloCotizacion.Name = "lblTituloCotizacion";
-            this.lblTituloCotizacion.Size = new System.Drawing.Size(1174, 37);
+            this.lblTituloCotizacion.Size = new System.Drawing.Size(1191, 37);
             this.lblTituloCotizacion.TabIndex = 2;
             this.lblTituloCotizacion.Text = "Cotizacion de Ventana:";
             this.lblTituloCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblTituloCotizacion.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTituloCotizacion_MouseDown);
             this.lblTituloCotizacion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblTituloCotizacion_MouseMove);
             this.lblTituloCotizacion.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblTituloCotizacion_MouseUp);
-            // 
-            // pbVentana
-            // 
-            this.pbVentana.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbVentana.Image = ((System.Drawing.Image)(resources.GetObject("pbVentana.Image")));
-            this.pbVentana.Location = new System.Drawing.Point(404, 344);
-            this.pbVentana.Name = "pbVentana";
-            this.pbVentana.Size = new System.Drawing.Size(463, 341);
-            this.pbVentana.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbVentana.TabIndex = 36;
-            this.pbVentana.TabStop = false;
             // 
             // txtUbicacion
             // 
@@ -196,7 +181,7 @@
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUbicacion.Location = new System.Drawing.Point(786, 9);
             this.txtUbicacion.Name = "txtUbicacion";
-            this.txtUbicacion.Size = new System.Drawing.Size(105, 23);
+            this.txtUbicacion.Size = new System.Drawing.Size(54, 23);
             this.txtUbicacion.TabIndex = 46;
             // 
             // panelCerradura
@@ -348,8 +333,6 @@
             this.PanelMedidas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelMedidas.ContextMenuStrip = this.contextMenuStripOpciones;
             this.PanelMedidas.Controls.Add(this.ckExterno);
-            this.PanelMedidas.Controls.Add(this.NumCantidad);
-            this.PanelMedidas.Controls.Add(this.label18);
             this.PanelMedidas.Controls.Add(this.cbCedazo);
             this.PanelMedidas.Controls.Add(this.ckInterno);
             this.PanelMedidas.Controls.Add(this.lblPosicionCedazo);
@@ -380,37 +363,12 @@
             this.ckExterno.Text = "Externo";
             this.ckExterno.UseVisualStyleBackColor = true;
             // 
-            // NumCantidad
-            // 
-            this.NumCantidad.Location = new System.Drawing.Point(731, 23);
-            this.NumCantidad.Name = "NumCantidad";
-            this.NumCantidad.Size = new System.Drawing.Size(80, 20);
-            this.NumCantidad.TabIndex = 44;
-            this.NumCantidad.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.NumCantidad.ValueChanged += new System.EventHandler(this.NumCantidad_ValueChanged);
-            // 
-            // label18
-            // 
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label18.Font = new System.Drawing.Font("Imprint MT Shadow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(731, 2);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(80, 20);
-            this.label18.TabIndex = 45;
-            this.label18.Text = "Cantidad";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // cbCedazo
             // 
             this.cbCedazo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cbCedazo.Font = new System.Drawing.Font("Imprint MT Shadow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCedazo.ForeColor = System.Drawing.Color.Black;
-            this.cbCedazo.Location = new System.Drawing.Point(369, 3);
+            this.cbCedazo.Location = new System.Drawing.Point(438, -1);
             this.cbCedazo.Name = "cbCedazo";
             this.cbCedazo.Size = new System.Drawing.Size(68, 42);
             this.cbCedazo.TabIndex = 15;
@@ -499,7 +457,7 @@
             this.cbVidrio.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.cbVidrio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVidrio.FormattingEnabled = true;
-            this.cbVidrio.Location = new System.Drawing.Point(507, 27);
+            this.cbVidrio.Location = new System.Drawing.Point(600, 27);
             this.cbVidrio.Name = "cbVidrio";
             this.cbVidrio.Size = new System.Drawing.Size(185, 21);
             this.cbVidrio.TabIndex = 24;
@@ -512,7 +470,7 @@
             this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblColor.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblColor.ForeColor = System.Drawing.Color.Black;
-            this.lblColor.Location = new System.Drawing.Point(220, 3);
+            this.lblColor.Location = new System.Drawing.Point(236, 2);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(112, 20);
             this.lblColor.TabIndex = 12;
@@ -533,7 +491,7 @@
             "Blanco",
             "Madera",
             "Inox"});
-            this.cbColor.Location = new System.Drawing.Point(220, 24);
+            this.cbColor.Location = new System.Drawing.Point(236, 23);
             this.cbColor.Name = "cbColor";
             this.cbColor.Size = new System.Drawing.Size(112, 21);
             this.cbColor.TabIndex = 11;
@@ -547,7 +505,7 @@
             this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label19.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(507, 2);
+            this.label19.Location = new System.Drawing.Point(600, 2);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(185, 20);
             this.label19.TabIndex = 17;
@@ -559,7 +517,7 @@
             this.lblVidrio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblVidrio.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVidrio.ForeColor = System.Drawing.Color.Black;
-            this.lblVidrio.Location = new System.Drawing.Point(507, 1);
+            this.lblVidrio.Location = new System.Drawing.Point(600, 1);
             this.lblVidrio.Name = "lblVidrio";
             this.lblVidrio.Size = new System.Drawing.Size(185, 20);
             this.lblVidrio.TabIndex = 17;
@@ -1007,22 +965,9 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(264, 3);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(288, 34);
+            this.lblDescripcion.Size = new System.Drawing.Size(237, 34);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripcion";
-            // 
-            // btnBackSistmas
-            // 
-            this.btnBackSistmas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBackSistmas.BackColor = System.Drawing.Color.Orange;
-            this.btnBackSistmas.Image = ((System.Drawing.Image)(resources.GetObject("btnBackSistmas.Image")));
-            this.btnBackSistmas.Location = new System.Drawing.Point(914, 2);
-            this.btnBackSistmas.Name = "btnBackSistmas";
-            this.btnBackSistmas.Size = new System.Drawing.Size(33, 31);
-            this.btnBackSistmas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnBackSistmas.TabIndex = 61;
-            this.btnBackSistmas.TabStop = false;
-            this.btnBackSistmas.Click += new System.EventHandler(this.btnBackSistema_Click);
             // 
             // label1
             // 
@@ -1033,7 +978,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(654, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 29);
+            this.label1.Size = new System.Drawing.Size(41, 29);
             this.label1.TabIndex = 63;
             this.label1.Text = "Ubicación:";
             // 
@@ -1075,7 +1020,7 @@
             this.PanelDetalle.Location = new System.Drawing.Point(-1, 0);
             this.PanelDetalle.Name = "PanelDetalle";
             this.PanelDetalle.Size = new System.Drawing.Size(1175, 851);
-            this.PanelDetalle.TabIndex = 63;
+            this.PanelDetalle.TabIndex = 64;
             this.PanelDetalle.Visible = false;
             // 
             // button2
@@ -1089,7 +1034,6 @@
             this.button2.TabIndex = 131;
             this.button2.Text = "Cerrar";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // dgAluminioAdd
             // 
@@ -1446,13 +1390,38 @@
             this.lblDetalleCotizacion.Text = "Detalle de Cotizacion";
             this.lblDetalleCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pbVentana
+            // 
+            this.pbVentana.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbVentana.Image = ((System.Drawing.Image)(resources.GetObject("pbVentana.Image")));
+            this.pbVentana.Location = new System.Drawing.Point(404, 344);
+            this.pbVentana.Name = "pbVentana";
+            this.pbVentana.Size = new System.Drawing.Size(463, 341);
+            this.pbVentana.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbVentana.TabIndex = 36;
+            this.pbVentana.TabStop = false;
+            // 
+            // btnBackSistmas
+            // 
+            this.btnBackSistmas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackSistmas.BackColor = System.Drawing.Color.Orange;
+            this.btnBackSistmas.Image = ((System.Drawing.Image)(resources.GetObject("btnBackSistmas.Image")));
+            this.btnBackSistmas.Location = new System.Drawing.Point(897, 2);
+            this.btnBackSistmas.Name = "btnBackSistmas";
+            this.btnBackSistmas.Size = new System.Drawing.Size(33, 31);
+            this.btnBackSistmas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnBackSistmas.TabIndex = 61;
+            this.btnBackSistmas.TabStop = false;
+            this.btnBackSistmas.Click += new System.EventHandler(this.btnBackSistema_Click);
+            // 
             // frmCalcPriceWindows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1191, 715);
+            this.ClientSize = new System.Drawing.Size(1208, 715);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnBackSistmas);
             this.Controls.Add(this.label1);
@@ -1466,20 +1435,17 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cotizador Ventana";
             this.Load += new System.EventHandler(this.frmCalcPriceWindows_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).EndInit();
             this.panelCerradura.ResumeLayout(false);
             this.panelCerradura.PerformLayout();
             this.contextMenuStripOpciones.ResumeLayout(false);
             this.PanelMedidas.ResumeLayout(false);
             this.PanelMedidas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumCantidad)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.PanelVidrioFijo.ResumeLayout(false);
             this.PanelVidrioFijo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiviciones)).EndInit();
             this.PanelHaladera.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.PanelDetalle.ResumeLayout(false);
             this.PanelDetalle.PerformLayout();
@@ -1489,6 +1455,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1554,8 +1522,6 @@
         private System.Windows.Forms.CheckBox cbkBaraaEmpuje;
         private System.Windows.Forms.CheckBox cbkHaladeraConcha;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.NumericUpDown NumCantidad;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.PictureBox btnBackSistmas;
         private System.Windows.Forms.Label label19;

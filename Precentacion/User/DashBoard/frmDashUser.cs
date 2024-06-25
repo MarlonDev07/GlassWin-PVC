@@ -78,6 +78,13 @@ namespace Precentacion.User.DashBoard
                     //Agrandar el Panel
                     this.Size = new Size(1042, 97);
                     break;
+                case "InnovaGlass":
+                    //Mostrar el Boton btnAdmin
+                    pbAdmin.Visible = true;
+                    //Agrandar el Panel
+                    this.Size = new Size(1042, 97);
+                    break;
+
                 default:
                     this.Size = new Size(953, 97);
                     break;

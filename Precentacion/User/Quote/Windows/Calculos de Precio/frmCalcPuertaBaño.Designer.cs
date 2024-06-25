@@ -58,23 +58,23 @@
             this.txtAlto = new System.Windows.Forms.TextBox();
             this.picPuertaBaño = new System.Windows.Forms.PictureBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panelDesglose = new System.Windows.Forms.Panel();
-            this.dgvAccesorios = new System.Windows.Forms.DataGridView();
-            this.dgvVidrio = new System.Windows.Forms.DataGridView();
-            this.btnOcultar = new System.Windows.Forms.Button();
-            this.dgvAluminio = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUbicacion = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dgvAluminio = new System.Windows.Forms.DataGridView();
+            this.btnOcultar = new System.Windows.Forms.Button();
+            this.dgvVidrio = new System.Windows.Forms.DataGridView();
+            this.dgvAccesorios = new System.Windows.Forms.DataGridView();
+            this.panelDesglose = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             this.PanelMedidas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPuertaBaño)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            this.panelDesglose.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVidrio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluminio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVidrio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).BeginInit();
+            this.panelDesglose.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -456,74 +456,6 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // panelDesglose
-            // 
-            this.panelDesglose.Controls.Add(this.dgvAccesorios);
-            this.panelDesglose.Controls.Add(this.dgvVidrio);
-            this.panelDesglose.Controls.Add(this.btnOcultar);
-            this.panelDesglose.Controls.Add(this.dgvAluminio);
-            this.panelDesglose.Controls.Add(this.label5);
-            this.panelDesglose.Location = new System.Drawing.Point(0, 67);
-            this.panelDesglose.Name = "panelDesglose";
-            this.panelDesglose.Size = new System.Drawing.Size(1043, 718);
-            this.panelDesglose.TabIndex = 65;
-            this.panelDesglose.Visible = false;
-            // 
-            // dgvAccesorios
-            // 
-            this.dgvAccesorios.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAccesorios.Location = new System.Drawing.Point(83, 330);
-            this.dgvAccesorios.Name = "dgvAccesorios";
-            this.dgvAccesorios.Size = new System.Drawing.Size(890, 150);
-            this.dgvAccesorios.TabIndex = 46;
-            // 
-            // dgvVidrio
-            // 
-            this.dgvVidrio.BackgroundColor = System.Drawing.Color.White;
-            this.dgvVidrio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVidrio.Location = new System.Drawing.Point(83, 207);
-            this.dgvVidrio.Name = "dgvVidrio";
-            this.dgvVidrio.Size = new System.Drawing.Size(891, 117);
-            this.dgvVidrio.TabIndex = 45;
-            // 
-            // btnOcultar
-            // 
-            this.btnOcultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnOcultar.FlatAppearance.BorderSize = 0;
-            this.btnOcultar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOcultar.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOcultar.ForeColor = System.Drawing.Color.White;
-            this.btnOcultar.Location = new System.Drawing.Point(465, 486);
-            this.btnOcultar.Name = "btnOcultar";
-            this.btnOcultar.Size = new System.Drawing.Size(151, 30);
-            this.btnOcultar.TabIndex = 44;
-            this.btnOcultar.Text = "Ocultar";
-            this.btnOcultar.UseVisualStyleBackColor = false;
-            this.btnOcultar.Click += new System.EventHandler(this.btnOcultar_Click);
-            // 
-            // dgvAluminio
-            // 
-            this.dgvAluminio.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAluminio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAluminio.Location = new System.Drawing.Point(83, 50);
-            this.dgvAluminio.Name = "dgvAluminio";
-            this.dgvAluminio.Size = new System.Drawing.Size(891, 150);
-            this.dgvAluminio.TabIndex = 43;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Impact", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(1043, 38);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "Desglose";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -542,6 +474,75 @@
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(137, 23);
             this.txtUbicacion.TabIndex = 67;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Font = new System.Drawing.Font("Impact", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(1043, 38);
+            this.label5.TabIndex = 42;
+            this.label5.Text = "Desglose";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvAluminio
+            // 
+            this.dgvAluminio.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAluminio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAluminio.Location = new System.Drawing.Point(83, 50);
+            this.dgvAluminio.Name = "dgvAluminio";
+            this.dgvAluminio.Size = new System.Drawing.Size(891, 150);
+            this.dgvAluminio.TabIndex = 43;
+            // 
+            // btnOcultar
+            // 
+            this.btnOcultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnOcultar.FlatAppearance.BorderSize = 0;
+            this.btnOcultar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOcultar.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOcultar.ForeColor = System.Drawing.Color.White;
+            this.btnOcultar.Location = new System.Drawing.Point(465, 486);
+            this.btnOcultar.Name = "btnOcultar";
+            this.btnOcultar.Size = new System.Drawing.Size(151, 30);
+            this.btnOcultar.TabIndex = 44;
+            this.btnOcultar.Text = "Ocultar";
+            this.btnOcultar.UseVisualStyleBackColor = false;
+            this.btnOcultar.Click += new System.EventHandler(this.btnOcultar_Click);
+            // 
+            // dgvVidrio
+            // 
+            this.dgvVidrio.BackgroundColor = System.Drawing.Color.White;
+            this.dgvVidrio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVidrio.Location = new System.Drawing.Point(83, 207);
+            this.dgvVidrio.Name = "dgvVidrio";
+            this.dgvVidrio.Size = new System.Drawing.Size(891, 117);
+            this.dgvVidrio.TabIndex = 45;
+            // 
+            // dgvAccesorios
+            // 
+            this.dgvAccesorios.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAccesorios.Location = new System.Drawing.Point(83, 330);
+            this.dgvAccesorios.Name = "dgvAccesorios";
+            this.dgvAccesorios.Size = new System.Drawing.Size(890, 150);
+            this.dgvAccesorios.TabIndex = 46;
+            // 
+            // panelDesglose
+            // 
+            this.panelDesglose.Controls.Add(this.dgvAccesorios);
+            this.panelDesglose.Controls.Add(this.dgvVidrio);
+            this.panelDesglose.Controls.Add(this.btnOcultar);
+            this.panelDesglose.Controls.Add(this.dgvAluminio);
+            this.panelDesglose.Controls.Add(this.label5);
+            this.panelDesglose.Location = new System.Drawing.Point(0, 67);
+            this.panelDesglose.Name = "panelDesglose";
+            this.panelDesglose.Size = new System.Drawing.Size(1043, 718);
+            this.panelDesglose.TabIndex = 65;
+            this.panelDesglose.Visible = false;
+            this.panelDesglose.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDesglose_Paint);
             // 
             // frmCalcPuertaBaño
             // 
@@ -567,10 +568,10 @@
             this.PanelMedidas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPuertaBaño)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            this.panelDesglose.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVidrio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluminio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVidrio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
+            this.panelDesglose.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -604,16 +605,16 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ComboBox cbColorLamina;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.Panel panelDesglose;
-        private System.Windows.Forms.DataGridView dgvAluminio;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnOcultar;
-        private System.Windows.Forms.DataGridView dgvVidrio;
-        private System.Windows.Forms.DataGridView dgvAccesorios;
         private System.Windows.Forms.Button btnGuardar;
         public System.Windows.Forms.NumericUpDown txtCantidad;
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtUbicacion;
+        private System.Windows.Forms.Panel panelDesglose;
+        private System.Windows.Forms.DataGridView dgvAccesorios;
+        private System.Windows.Forms.DataGridView dgvVidrio;
+        private System.Windows.Forms.Button btnOcultar;
+        private System.Windows.Forms.DataGridView dgvAluminio;
+        private System.Windows.Forms.Label label5;
     }
 }

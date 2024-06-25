@@ -386,6 +386,12 @@
     <Compile Include="User\Quote\Windows\Calculos de Precio\frmCalcPuertaBaño.Designer.cs">
       <DependentUpon>frmCalcPuertaBaño.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\frmPostGuardado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\frmPostGuardado.Designer.cs">
+      <DependentUpon>frmPostGuardado.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingCedazo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -567,6 +573,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\Quote\Windows\Calculos de Precio\frmCalcPuertaBaño.resx">
       <DependentUpon>frmCalcPuertaBaño.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Calculos de Precio\frmPostGuardado.resx">
+      <DependentUpon>frmPostGuardado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Quote\Windows\Seleccion Diseño\frmSelecDesingCedazo.resx">
       <DependentUpon>frmSelecDesingCedazo.cs</DependentUpon>

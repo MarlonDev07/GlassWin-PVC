@@ -439,5 +439,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 txtTotalPrice.Enabled = false;
             }
         }
+
+        private void panelDesglose_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

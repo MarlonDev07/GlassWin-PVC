@@ -2,6 +2,7 @@
 using Negocio.LoadProduct;
 using Negocio.Proveedor;
 using Precentacion.User.Quote.Quote;
+using Precentacion.User.Quote.Windows.Calculos_de_Precio;
 using Precentacion.User.Quote.Windows.Seleccion_Diseño;
 using System;
 using System.Data;
@@ -19,7 +20,7 @@ namespace Precentacion.User.Quote.Windows
     {
         #region Variables
         N_LoadProduct loadProduct = new N_LoadProduct();
-        decimal totalPrice = 0;
+        public decimal totalPrice = 0;
         decimal priceNewGlass = 0;
         decimal AuxpriceNewGlass = 0;
         decimal PrecioDescuento = 0;
@@ -35,6 +36,8 @@ namespace Precentacion.User.Quote.Windows
         string URL = "";
         bool AceptarAncho = false;
         bool AceptarAlto = false;
+        public int NumCantidad = 1;
+        decimal AjustePrecio = 0;
 
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
@@ -431,7 +434,7 @@ namespace Precentacion.User.Quote.Windows
                         descripcion = "Cedazo1/2" + ClsWindows.Desing + cbColor.Text;
                     }
                     SubTotal = loadProduct.CalcTotalPrice(dtAluminio, dtAccesorios, dtVidrio, dtLock, descripcion, cbSupplier.Text);
-
+                    AjustePrecio = loadProduct.LoadAjustePrecio(cbSupplier.Text,descripcion);
                     txtTotal.Text = SubTotal.ToString("C");
                     if (ClsWindows.System == "Puerta Lujo")
                     {
@@ -527,7 +530,7 @@ namespace Precentacion.User.Quote.Windows
                 description += "Ubicacion: " + txtUbicacion.Text + "\n";
             }
             //Añadir la cantidad 
-            description += "Cantidad: " + NumCantidad.Value + "\n";
+            description += "Cantidad: " + NumCantidad + "\n";
             return description;
         }
         private string CreateURL()
@@ -568,7 +571,7 @@ namespace Precentacion.User.Quote.Windows
             else { ClsWindows.Lock = "Cerradura Impacto"; }
 
         }
-        private void btnInsertar_Click(object sender, EventArgs e)
+        public void btnInsertar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -2324,22 +2327,6 @@ namespace Precentacion.User.Quote.Windows
             #endregion
         }
 
-        private void NumCantidad_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (NumCantidad.Value > 0)
-                {
-                    TempTotal = 0;
-                    TempTotal = (totalPrice) * Convert.ToDecimal(NumCantidad.Value);
-                    txtTotalPrice.Text = TempTotal.ToString("C");
-                }
-
-            }
-            catch (Exception)
-            { }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (pbVentana.Image != null)
@@ -2397,7 +2384,6 @@ namespace Precentacion.User.Quote.Windows
             }
         }
 
-
         private void AjustarTamañoPictureBox(PictureBox pb, int newWidth, int newHeight)
         {
             // Obtener el tamaño del contenedor padre
@@ -2421,6 +2407,7 @@ namespace Precentacion.User.Quote.Windows
             pb.Left = (parentSize.Width - pb.Width) / 2;
             pb.Top = (parentSize.Height - pb.Height) / 2;
         }
+
         private void añadirVidrioFijoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnAdd_Click(sender, e);
@@ -2438,19 +2425,65 @@ namespace Precentacion.User.Quote.Windows
 
         private void enviarProformaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnInsertar_Click(sender, e);
+           frmPostGuardado frm = new frmPostGuardado();
+            DataTable dataTable = new DataTable();
+            dataTable = ObtenerDatosDGV();
+            frm.ObtenerDatos(dataTable,AjustePrecio);
+            frm.Show();
+        }
+
+        private DataTable ObtenerDatosDGV() 
+        {
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Price", typeof(decimal));
+
+            
+            Action<DataGridView> agregarDatosFromDataGridView = (dataGridView) =>
+            {
+                if (dataGridView != null)
+                {
+                    foreach (DataGridViewRow row in dataGridView.Rows)
+                    {
+                        // Asegúrate de que la columna "TotalPrice" exista y contenga un valor válido
+                        if (row.Cells["TotalPrice"].Value != null && row.Cells["TotalPrice"].Value != DBNull.Value)
+                        {
+                            decimal totalPrice;
+                            if (Decimal.TryParse(row.Cells["TotalPrice"].Value.ToString(), out totalPrice))
+                            {
+                                dataTable.Rows.Add(totalPrice); 
+                            }
+                            else
+                            {
+                                
+                            }
+                        }
+                    }
+                }
+            };
+
+           
+            agregarDatosFromDataGridView(dgAluminio);
+            agregarDatosFromDataGridView(dgAccesorios);
+            agregarDatosFromDataGridView(dgVidrio);
+            agregarDatosFromDataGridView(dgAluminioAdd);
+            agregarDatosFromDataGridView(dgVidrioAdd);
+            agregarDatosFromDataGridView(dgvCerradura);
+
+            return dataTable; // Devuelve el DataTable lleno
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
         private void CargarProveedor()
         {
             LN_Proveedor proveedor = new LN_Proveedor();
             cbSupplier.DataSource = proveedor.CargarProveedor();
             cbSupplier.DisplayMember = "Nombre";
         }
+
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbSupplier.Text == "Default")
@@ -2477,6 +2510,7 @@ namespace Precentacion.User.Quote.Windows
             PanelDetalle.Visible = false;
             PanelMedidas.Visible = true;
         }
+
         //Para oculatar la seccion de "Fijos"
         #region Ocultar Seccion de fijos y eliminar la etiqueta de vidrios en cedazo 1/2
         public string Design2 { get; set; }
@@ -2507,5 +2541,7 @@ namespace Precentacion.User.Quote.Windows
             }
         }
         #endregion
+
+       
     }
 }
