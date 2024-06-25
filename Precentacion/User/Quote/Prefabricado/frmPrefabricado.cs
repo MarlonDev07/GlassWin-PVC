@@ -120,29 +120,25 @@ namespace Precentacion.User.Quote.Prefabricado
                     if (dgvPrefabricado.CurrentRow.Cells[0].Value != "" && dgvPrefabricado.CurrentRow.Cells[0].Value.ToString() != IdCombo)
                     {
                         IdCombo = dgvPrefabricado.CurrentRow.Cells[0].Value.ToString();
-                        BuscarProducto(Convert.ToInt32(dgvPrefabricado.CurrentRow.Cells[0].Value),0);
-                    }
-                    //Calcular el Metraje
-                    decimal Metraje = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[2].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[3].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[4].Value);
-                    dgvPrefabricado.CurrentRow.Cells[5].Value = Metraje;
-
-                    //Calcular el Precio Total
-                    decimal Precio = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[6].Value);
-                    decimal PrecioTotal = Metraje * Precio;
-                    dgvPrefabricado.CurrentRow.Cells[7].Value = PrecioTotal;
-
-
-                    //Calcular el Gran Total
-                    GranTotal = 0;
-                    foreach (DataGridViewRow row in dgvPrefabricado.Rows)
-                    {
-                        if (row.Cells[7].Value != null)
+                        if (ValidarCampos(IdCombo))
                         {
-                            GranTotal += Convert.ToDecimal(row.Cells[7].Value);
+                            BuscarProducto(Convert.ToInt32(dgvPrefabricado.CurrentRow.Cells[0].Value), 0);
+                        }                      
+                    }
+                    //Validar las Celdas Alto Ancho y Cantidad
+                    if (dgvPrefabricado.CurrentRow.Cells[2].Value != null && dgvPrefabricado.CurrentRow.Cells[3].Value != null && dgvPrefabricado.CurrentRow.Cells[4].Value != null)
+                    {
+                        if (ValidarCeldas(dgvPrefabricado.CurrentRow.Cells[3].Value.ToString(), dgvPrefabricado.CurrentRow.Cells[2].Value.ToString(), dgvPrefabricado.CurrentRow.Cells[4].Value.ToString()))
+                        {
+                            //Calcular el Metraje
+                            decimal Metraje = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[2].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[3].Value);
+                            dgvPrefabricado.CurrentRow.Cells[5].Value = Metraje;
+                            //Calcular el Precio Total
+                            decimal PrecioTotal = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[6].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[5].Value);
+                            dgvPrefabricado.CurrentRow.Cells[7].Value = PrecioTotal;
                         }
                     }
                 }
-                
             }
             catch (Exception EX)
             {
@@ -153,6 +149,77 @@ namespace Precentacion.User.Quote.Prefabricado
         {
             //Validar que se Preciona la Tecla Enter
 
+        }
+        private bool ValidarCampos(string Campo) 
+        {
+           bool Resultado = false;
+           //Validar que el Campo sean solo Numeros, Comas y Puntos
+           if (System.Text.RegularExpressions.Regex.IsMatch(Campo, @"^[0-9\.,]*$")) 
+           {
+                //Validar si el Campo Contiene Puntos y Remplaarlos por Comas
+                if (Campo.Contains("."))
+                {
+                    Campo = Campo.Replace(".", ",");
+                    dgvPrefabricado.CurrentRow.Cells[0].Value = Campo;
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+           }
+           else
+           {
+                MessageBox.Show("Solo se Permiten Numeros");
+                Resultado = false;
+           }
+
+            return Resultado;
+        }
+        private bool ValidarCeldas(string Alto, string Ancho, string Cantidad) 
+        {
+            //Validar que el Campo sean solo Numeros, Comas y Puntos
+            bool Resultado = false;
+            if (System.Text.RegularExpressions.Regex.IsMatch(Alto, @"^[0-9\.,]*$") && System.Text.RegularExpressions.Regex.IsMatch(Ancho, @"^[0-9\.,]*$") && System.Text.RegularExpressions.Regex.IsMatch(Cantidad, @"^[0-9\.,]*$"))
+            {
+                //Validar si el Campo Contiene Puntos y Remplaarlos por Comas
+                if (Alto.Contains("."))
+                {
+                    Alto = Alto.Replace(".", ",");
+                    dgvPrefabricado.CurrentRow.Cells[3].Value = Alto;
+                    Resultado = true;
+                }
+                else
+                {
+                    Resultado = true;
+                }
+                if (Ancho.Contains("."))
+                {
+                    Ancho = Ancho.Replace(".", ",");
+                    dgvPrefabricado.CurrentRow.Cells[2].Value = Ancho;
+                    Resultado = true;
+                }
+                else
+                {
+                    Resultado = true;
+                }
+                if (Cantidad.Contains("."))
+                {
+                    Cantidad = Cantidad.Replace(".", ",");
+                    dgvPrefabricado.CurrentRow.Cells[4].Value = Cantidad;
+                    Resultado = true;
+                }
+                else
+                {
+                    Resultado = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Solo se Permiten Numeros");
+                Resultado = false;
+            }
+            return Resultado;
         }
         public void AgregarFila() 
         {
