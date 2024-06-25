@@ -2499,11 +2499,17 @@ namespace Precentacion.User.Quote.Windows
             }
             if (System2 == "Cedazo 1/2")
             {
-                if (Design2 == "Cedazo 12")
+                if (Design2 == "Cedazo 12" || Design2 == "Cedazo 1" || Design2 == "Cedazo 2" || Design2 == "CedazoAkariFijoMovil" || Design2 == "CedazoAkariFijoMovilMovilFijo")
                 {
                     label19.Visible = false;
 
                 }
+            }
+            if (Design2 == "CedazoAkariFijoMovil" || Design2 == "CedazoAkariFijoMovilMovilFijo") {
+                label19.Visible = false;
+                label10.Visible = false;
+                PanelVidrioFijo.Visible = false;
+                cbVidrio.Visible = false;
             }
         }
         #endregion
