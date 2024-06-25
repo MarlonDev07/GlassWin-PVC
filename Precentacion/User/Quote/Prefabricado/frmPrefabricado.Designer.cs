@@ -46,7 +46,7 @@
             this.dgvPrefabricado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvPrefabricado.Name = "dgvPrefabricado";
             this.dgvPrefabricado.RowHeadersWidth = 62;
-            this.dgvPrefabricado.Size = new System.Drawing.Size(1584, 462);
+            this.dgvPrefabricado.Size = new System.Drawing.Size(1271, 462);
             this.dgvPrefabricado.TabIndex = 2;
             this.dgvPrefabricado.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrefabricado_CellValueChanged);
             this.dgvPrefabricado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvPrefabricado_KeyDown);
@@ -81,10 +81,10 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(1419, 574);
+            this.btnGuardar.Location = new System.Drawing.Point(1123, 574);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(174, 78);
+            this.btnGuardar.Size = new System.Drawing.Size(157, 78);
             this.btnGuardar.TabIndex = 10;
             this.btnGuardar.Text = "Guardar Combo";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1602, 692);
+            this.ClientSize = new System.Drawing.Size(1320, 692);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.dgvPrefabricado);
