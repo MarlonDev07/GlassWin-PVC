@@ -19,9 +19,20 @@ namespace Precentacion.User.Quote.Prefabricado
         {
             InitializeComponent();
             ListarArticulos();
+
+            // Usar BeginInvoke para asegurar que el Focus se establezca después de que el formulario se haya cargado completamente
+            this.Load += new EventHandler(frmListArticulos_Load);
         }
 
-        public void ListarArticulos() 
+        private void frmListArticulos_Load(object sender, EventArgs e)
+        {
+            this.BeginInvoke((Action)delegate
+            {
+                txtBuscar.Focus();
+            });
+        }
+
+        public void ListarArticulos()
         {
             N_LoadProduct objN = new N_LoadProduct();
             dgvArticulos.DataSource = objN.ListaArticulosxColor();
@@ -54,8 +65,6 @@ namespace Precentacion.User.Quote.Prefabricado
 
                     //Agregar Fila
                     ((frmPrefabricado)frm).AgregarFila();
-             
-
                 }
                 else
                 {
@@ -66,7 +75,6 @@ namespace Precentacion.User.Quote.Prefabricado
             {
                 MessageBox.Show("La ventana frmPrefabricado no está abierta.");
             }
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -95,7 +103,6 @@ namespace Precentacion.User.Quote.Prefabricado
             {
                 MessageBox.Show("Error al cargar los artículos.");
             }
-
         }
 
         private void dgvArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -122,8 +129,6 @@ namespace Precentacion.User.Quote.Prefabricado
 
                     //Agregar Fila
                     ((frmPrefabricado)frm).AgregarFila();
-
-
                 }
                 else
                 {

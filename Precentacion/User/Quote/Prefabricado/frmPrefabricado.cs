@@ -137,7 +137,9 @@ namespace Precentacion.User.Quote.Prefabricado
                             dgvPrefabricado.CurrentRow.Cells[5].Value = Metraje;
                             //Calcular el Precio Total
                             decimal PrecioTotal = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[6].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[5].Value);
+                            PrecioTotal = Math.Round(PrecioTotal, 2); // Redondear a 2 decimales
                             dgvPrefabricado.CurrentRow.Cells[7].Value = PrecioTotal;
+
                         }
                     }
                 }
