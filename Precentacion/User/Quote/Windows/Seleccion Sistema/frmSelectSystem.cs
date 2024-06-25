@@ -67,6 +67,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.System = "8040 2 Vias";
             frmSelectDesing frm = new frmSelectDesing();
+            frm.system2 = ClsWindows.System;
             frm.Show();
             this.Close();
         }
