@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuote));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtConditional5 = new System.Windows.Forms.TextBox();
             this.txtConditional4 = new System.Windows.Forms.TextBox();
             this.txtConditional3 = new System.Windows.Forms.TextBox();
@@ -331,43 +331,43 @@
             this.dgCotizaciones.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgCotizaciones.BackgroundColor = System.Drawing.Color.White;
             this.dgCotizaciones.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCotizaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCotizaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgCotizaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCotizaciones.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCotizaciones.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCotizaciones.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgCotizaciones.EnableHeadersVisualStyles = false;
             this.dgCotizaciones.GridColor = System.Drawing.Color.Silver;
             this.dgCotizaciones.Location = new System.Drawing.Point(58, 589);
             this.dgCotizaciones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgCotizaciones.Name = "dgCotizaciones";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCotizaciones.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCotizaciones.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgCotizaciones.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCotizaciones.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCotizaciones.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgCotizaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgCotizaciones.Size = new System.Drawing.Size(1012, 438);
             this.dgCotizaciones.TabIndex = 0;
@@ -382,26 +382,26 @@
             this.editarToolStripMenuItem,
             this.eliminarToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 133);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 100);
             // 
             // agregarAccesorioToolStripMenuItem
             // 
             this.agregarAccesorioToolStripMenuItem.Name = "agregarAccesorioToolStripMenuItem";
-            this.agregarAccesorioToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.agregarAccesorioToolStripMenuItem.Size = new System.Drawing.Size(214, 32);
             this.agregarAccesorioToolStripMenuItem.Text = "Agregar Artículo";
             this.agregarAccesorioToolStripMenuItem.Click += new System.EventHandler(this.agregarAccesorioToolStripMenuItem_Click);
             // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(214, 32);
             this.editarToolStripMenuItem.Text = "Editar";
             this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(214, 32);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
@@ -783,7 +783,7 @@
             this.btnExclusivo.Name = "btnExclusivo";
             this.btnExclusivo.Size = new System.Drawing.Size(98, 46);
             this.btnExclusivo.TabIndex = 178;
-            this.toolTip1.SetToolTip(this.btnExclusivo, "Insertar");
+            this.toolTip1.SetToolTip(this.btnExclusivo, "Carga de Sistemas Manuales");
             this.btnExclusivo.UseVisualStyleBackColor = false;
             this.btnExclusivo.Click += new System.EventHandler(this.btnExclusivo_Click);
             // 
@@ -799,7 +799,7 @@
             this.btnViaticos.Name = "btnViaticos";
             this.btnViaticos.Size = new System.Drawing.Size(98, 46);
             this.btnViaticos.TabIndex = 179;
-            this.toolTip1.SetToolTip(this.btnViaticos, "Viáticos\r\n");
+            this.toolTip1.SetToolTip(this.btnViaticos, "Cargar Viáticos\r\n");
             this.btnViaticos.UseVisualStyleBackColor = false;
             this.btnViaticos.Click += new System.EventHandler(this.btnViaticos_Click);
             // 
@@ -815,7 +815,7 @@
             this.btnSanBlast.Name = "btnSanBlast";
             this.btnSanBlast.Size = new System.Drawing.Size(98, 46);
             this.btnSanBlast.TabIndex = 180;
-            this.toolTip1.SetToolTip(this.btnSanBlast, "SandBlasti");
+            this.toolTip1.SetToolTip(this.btnSanBlast, "Diseños Arenados");
             this.btnSanBlast.UseVisualStyleBackColor = false;
             this.btnSanBlast.Click += new System.EventHandler(this.btnSanBlast_Click);
             // 
@@ -850,7 +850,7 @@
             this.btnPrefabricado.Name = "btnPrefabricado";
             this.btnPrefabricado.Size = new System.Drawing.Size(98, 46);
             this.btnPrefabricado.TabIndex = 182;
-            this.toolTip1.SetToolTip(this.btnPrefabricado, "CMB Artículos\n");
+            this.toolTip1.SetToolTip(this.btnPrefabricado, "Carga de Artículos Unitarios");
             this.btnPrefabricado.UseVisualStyleBackColor = false;
             this.btnPrefabricado.Click += new System.EventHandler(this.btnPrefabricado_Click);
             // 
@@ -905,7 +905,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 46);
             this.button1.TabIndex = 185;
-            this.toolTip1.SetToolTip(this.button1, "Fabricación");
+            this.toolTip1.SetToolTip(this.button1, "Hojas para Fabricación en Excel");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

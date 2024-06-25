@@ -16,6 +16,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 {
     public partial class frmCalcPuertaBaño : MaterialSkin.Controls.MaterialForm
     {
+        public string design2 { get; set; }
         string Url = "";
         decimal Price = 0;
         decimal TempPrice = 0;
@@ -419,7 +420,11 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
         private void frmCalcPuertaBaño_Load(object sender, EventArgs e)
         {
-
+            if (design2 == "MovilMovil") 
+            {
+                lblAncho.Visible = false;
+                txtAncho.Visible = false;
+            }
         }
         private void CargarProveedor() 
         {

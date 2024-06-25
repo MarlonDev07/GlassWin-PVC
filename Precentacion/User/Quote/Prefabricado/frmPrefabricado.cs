@@ -97,13 +97,15 @@ namespace Precentacion.User.Quote.Prefabricado
         }
         private void dgvPrefabricado_KeyDown(object sender, KeyEventArgs e)
         {
-            //Validar que se Preciona la Tecla F2
+            // Validar que se presiona la tecla F2
             if (e.KeyValue == (char)Keys.F2)
             {
-                //Abrir la Lista de Artiulos
+                // Abrir la Lista de Artículos
                 frmListArticulos frm = new frmListArticulos();
-                frm.Show();
+                frm.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario hijo en el formulario padre
+                frm.Show(this); // Establecer el formulario principal como el propietario
             }
+
             //Validar que se Preciona la Tecla Enter
             if (e.KeyValue == (char)Keys.Enter)
             {
@@ -135,7 +137,9 @@ namespace Precentacion.User.Quote.Prefabricado
                             dgvPrefabricado.CurrentRow.Cells[5].Value = Metraje;
                             //Calcular el Precio Total
                             decimal PrecioTotal = Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[6].Value) * Convert.ToDecimal(dgvPrefabricado.CurrentRow.Cells[5].Value);
+                            PrecioTotal = Math.Round(PrecioTotal, 2); // Redondear a 2 decimales
                             dgvPrefabricado.CurrentRow.Cells[7].Value = PrecioTotal;
+
                         }
                     }
                 }
@@ -397,6 +401,11 @@ namespace Precentacion.User.Quote.Prefabricado
             ConfigDataGrid();
             Editar = false;
             btnGuardar.Text = "Guardar Combo";
+        }
+
+        private void frmPrefabricado_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -67,6 +67,7 @@ namespace Precentacion.User.Quote.Windows
         {
             ClsWindows.System = "8040 2 Vias";
             frmSelectDesing frm = new frmSelectDesing();
+            frm.system2 = ClsWindows.System;
             frm.Show();
             this.Close();
         }
@@ -226,6 +227,8 @@ namespace Precentacion.User.Quote.Windows
             ClsWindows.System = "Cedazo 1/2";
             ClsWindows.Desing = "Cedazo 1";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.System2 = ClsWindows.System;
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -235,6 +238,8 @@ namespace Precentacion.User.Quote.Windows
             ClsWindows.System = "Cedazo 1/2";
             ClsWindows.Desing = "Cedazo 2";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.System2 = ClsWindows.System;
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }

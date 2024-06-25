@@ -24,6 +24,7 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
         {
             ClsWindows.Desing = "CedazoAkariFijoMovil";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }
@@ -32,6 +33,7 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
         {
             ClsWindows.Desing = "CedazoAkariFijoMovilMovilFijo";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
             frm.Show();
             this.Close();
         }

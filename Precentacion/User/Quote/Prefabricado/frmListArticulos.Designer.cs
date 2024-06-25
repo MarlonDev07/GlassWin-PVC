@@ -74,6 +74,7 @@
             this.dgvArticulos.Size = new System.Drawing.Size(1182, 572);
             this.dgvArticulos.TabIndex = 1;
             this.dgvArticulos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellDoubleClick);
+            this.dgvArticulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvArticulos_KeyDown);
             // 
             // contextMenuStrip
             // 
@@ -118,9 +119,11 @@
             this.Controls.Add(this.lblBusquedaNombre);
             this.Controls.Add(this.dgvArticulos);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "frmListArticulos";
             this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.Text = "Lista Articulos";
+            this.Load += new System.EventHandler(this.frmListArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);

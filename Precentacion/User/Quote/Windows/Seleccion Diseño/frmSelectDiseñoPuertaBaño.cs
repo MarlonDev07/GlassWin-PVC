@@ -24,6 +24,7 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
         {
             clsPuertaBaño.Desing = "MovilMovil";
             frmCalcPuertaBaño frm = new frmCalcPuertaBaño();
+            frm.design2 = clsPuertaBaño.Desing;
             frm.Show();
             this.Close();
         }
@@ -32,6 +33,7 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
         {
             clsPuertaBaño.Desing = "FijoMovilMovil";
             frmCalcPuertaBaño frm = new frmCalcPuertaBaño();
+            frm.design2 = clsPuertaBaño.Desing;
             frm.Show();
             this.Close();
         }
