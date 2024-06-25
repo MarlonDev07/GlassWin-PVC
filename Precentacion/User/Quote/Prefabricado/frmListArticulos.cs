@@ -97,5 +97,43 @@ namespace Precentacion.User.Quote.Prefabricado
             }
 
         }
+
+        private void dgvArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string Id = dgvArticulos.CurrentRow.Cells[0].Value.ToString();
+            string Nombre = dgvArticulos.CurrentRow.Cells[1].Value.ToString();
+            string Precio = dgvArticulos.CurrentRow.Cells[3].Value.ToString();
+
+            Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmPrefabricado);
+            if (frm != null)
+            {
+                // Supongamos que quieres asignar los valores a la fila seleccionada actualmente
+                DataGridViewRow filaSeleccionada = ((frmPrefabricado)frm).dgvPrefabricado.CurrentRow;
+
+                if (filaSeleccionada != null)
+                {
+                    // Asignar los valores a las celdas específicas (suponiendo que la columna 0 es para Id, columna 1 para Nombre y columna 3 para Precio)
+                    filaSeleccionada.Cells[0].Value = Id;
+                    filaSeleccionada.Cells[1].Value = Nombre;
+                    filaSeleccionada.Cells[6].Value = Precio;
+                    filaSeleccionada.Cells[2].Value = "1";
+                    filaSeleccionada.Cells[3].Value = "1";
+                    filaSeleccionada.Cells[4].Value = "1";
+
+                    //Agregar Fila
+                    ((frmPrefabricado)frm).AgregarFila();
+
+
+                }
+                else
+                {
+                    MessageBox.Show("No hay una fila seleccionada en dgvPrefabricado.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("La ventana frmPrefabricado no está abierta.");
+            }
+        }
     }
 }
