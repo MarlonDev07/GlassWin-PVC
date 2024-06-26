@@ -222,7 +222,8 @@
             "Cedazo 12",
             "Cedazo 1",
             "Cedazo 2",
-            "Ventila1Fijo"});
+            "Ventila1Fijo",
+            "FijoMovilMovilMovil"});
             this.cbDesing.Location = new System.Drawing.Point(412, 51);
             this.cbDesing.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbDesing.Name = "cbDesing";
