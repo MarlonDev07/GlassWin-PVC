@@ -74,5 +74,19 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                ((frmCalcPriceWindows)frm).btnInsertar_Click(null, null);
             }
         }
+
+        private void txtDescuento_TextChanged(object sender, EventArgs e)
+        {
+            //Validar que se haya ingresado un valor numerico
+            if (decimal.TryParse(txtDescuento.Text, out decimal descuento))
+            {
+                //Obtener el Descuento
+                decimal Descuento = (Convert.ToDecimal(txtDescuento.Text)/100);
+
+                //Calcular el Total
+                Total = SubTotal - (SubTotal * Descuento);
+                txtTotal.Text = Total.ToString("c");
+            }
+        }
     }
 }

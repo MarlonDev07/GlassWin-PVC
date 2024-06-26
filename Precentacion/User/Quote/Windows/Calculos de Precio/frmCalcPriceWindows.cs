@@ -674,21 +674,7 @@ namespace Precentacion.User.Quote.Windows
 
 
         }
-        private void txtCantidad_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-
-                SubTotal = (totalPrice);
-                txtTotal.Text = SubTotal.ToString("C");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("error: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-        }
+        
         private void cbPico_CheckedChanged(object sender, EventArgs e)
         {
             if (cbPico.Checked && ClsWindows.System != "Europa 2 Vias Puerta")
@@ -1062,12 +1048,7 @@ namespace Precentacion.User.Quote.Windows
                 {
                     SubTotal = Convert.ToDecimal(txtTotal.Text);
                     priceNewGlass = Convert.ToDecimal(txtPecioFijo.Text);
-                    totalPrice = SubTotal + priceNewGlass;
-                    if (txtDescuento.Text != "")
-                    {
-                        decimal Descuento = Convert.ToDecimal(txtDescuento.Text) / 100;
-                        totalPrice = totalPrice - (totalPrice * Descuento);
-                    }
+                    totalPrice = SubTotal + priceNewGlass;                  
                     txtTotalPrice.Text = totalPrice.ToString("C");
                 }
                 catch (Exception)
@@ -1080,11 +1061,6 @@ namespace Precentacion.User.Quote.Windows
                 try
                 {
                     totalPrice = SubTotal + priceNewGlass;
-                    if (txtDescuento.Text != "")
-                    {
-                        decimal Descuento = Convert.ToDecimal(txtDescuento.Text) / 100;
-                        totalPrice = totalPrice - (totalPrice * Descuento);
-                    }
                     txtTotalPrice.Text = totalPrice.ToString("C");
                 }
                 catch (Exception)
@@ -1233,61 +1209,6 @@ namespace Precentacion.User.Quote.Windows
         private void txtDiviciones_ValueChanged(object sender, EventArgs e)
         {
             cbUbicacion_SelectedIndexChanged(sender, e);
-        }
-
-        private void ButonNumeric_Click(object sender, EventArgs e)
-        {
-            //Obtener el Valor Tag del Boton
-            int Valor = Convert.ToInt16(((Button)sender).Tag);
-
-            //Cuando se Pulse el Boton agregar el Valor al textbox que esta seleccionado
-            if (ControlFocus == "TextAncho")
-            {
-                txtAncho.Focus();
-                txtAncho.Text += Valor.ToString();
-            }
-            if (ControlFocus == "TextAlto")
-            {
-                txtAlto.Focus();
-                txtAlto.Text += Valor.ToString();
-            }
-
-        }
-
-        private void buttonDeleteEfect_MouseHover(object sender, EventArgs e)
-        {
-            //cuando se seleccione cambiar el color del a trasparencia
-            ((Button)sender).FlatStyle = FlatStyle.Flat;
-            ((Button)sender).FlatAppearance.MouseDownBackColor = Color.Transparent;
-            ((Button)sender).FlatAppearance.MouseOverBackColor = Color.Transparent;
-
-
-        }
-
-        private void txtDescuento_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtDescuento.Text != "")
-                {
-                    decimal Descuento = Convert.ToDecimal(txtDescuento.Text) / 100;
-                    PrecioDescuento = SubTotal - (SubTotal * Descuento);
-                    SubTotal = PrecioDescuento;
-                    txtTotal.Text = PrecioDescuento.ToString("C");
-
-                }
-                else
-                {
-                    txtTotal.Text = SubTotal.ToString("C");
-                    PrecioDescuento = 0;
-                }
-
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Datos Ingresados Erroneos", "Datos Invalidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void cbMultConLLave_CheckedChanged(object sender, EventArgs e)
