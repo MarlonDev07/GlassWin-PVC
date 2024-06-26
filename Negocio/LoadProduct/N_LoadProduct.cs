@@ -807,6 +807,9 @@ namespace Negocio.LoadProduct
                         case "3 Hoja Vertical":
                             metraje = CalcVentila3HojasVertical(Description);
                             break;
+                        case "Ventila1Fijo":
+                            metraje = CalcVentila1Fijo(Description);
+                            break;
                     }
                     break;
                 case "Puerta Lujo":
@@ -6484,10 +6487,40 @@ namespace Negocio.LoadProduct
             return metraje;
         }
 
-                #endregion
+                // FIJO EN MARCO DE VENTILA// 
+        private decimal CalcVentila1Fijo(string Description)
+        {
+            decimal metraje = 0;
+
+            switch (Description)
+            {
+                case "Contramarco VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    break;
+                case "Jamba VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
+                    break;
+                case "Envidriador VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    break;
+
+                //*******************Accesorios********************//
+                
+                case "Angular 2X2X1/4":
+                    metraje = 12;
+                    break;
+                case "Empaque VT":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                    break;
+
+            }
+            return metraje;
+        }
+
+        #endregion
 
         #region Ventila Euro
-            private decimal CalcVentilaEuro1HojaHorizontal(string Descripcion)
+        private decimal CalcVentilaEuro1HojaHorizontal(string Descripcion)
                 {
                 decimal Metraje = 0;
                 decimal W = Convert.ToDecimal(ClsWindows.Weight);

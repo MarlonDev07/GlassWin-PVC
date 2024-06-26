@@ -3,6 +3,7 @@ using MaterialSkin.Controls;
 using Precentacion.User.Quote.Windows.Calculos_de_Precio;
 using Precentacion.User.Quote.Windows.Seleccion_Diseño;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Precentacion.User.Quote.Windows
@@ -185,6 +186,19 @@ namespace Precentacion.User.Quote.Windows
 
         private void frmSelectDesingVentila_Load(object sender, EventArgs e)
         {
+            // Ruta de la imagen
+            string imagePath = Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO VENTILA X.jpeg";
+
+            // Verifica que el archivo de imagen exista
+            if (System.IO.File.Exists(imagePath))
+            {
+                // Carga la imagen y asígnala al botón
+                btnFijoVentila1.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO VENTILA X.jpeg");
+            }
+            else
+            {
+                MessageBox.Show("La imagen no se encuentra en la ruta especificada.");
+            }
         }
 
         private void btnBackSistema_Click(object sender, EventArgs e)
@@ -195,6 +209,14 @@ namespace Precentacion.User.Quote.Windows
         private void button2_Click(object sender, EventArgs e)
         {
             frmSelectSystem frm = new frmSelectSystem();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnFijoVentila1_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "Ventila1Fijo";
+            frmCalcPriceVentila frm = new frmCalcPriceVentila();
             frm.Show();
             this.Close();
         }
