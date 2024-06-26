@@ -151,7 +151,7 @@ namespace Precentacion.Admin.SettingsPrice
         {
             LN_Proveedor proveedor = new LN_Proveedor();
             cbSupplier.DataSource = proveedor.CargarProveedor();
-            cbSupplier.DisplayMember = "Name";
+            cbSupplier.DisplayMember = "Nombre";
         }
         private void txtValue_TextChanged(object sender, EventArgs e)
         {

@@ -631,6 +631,9 @@ namespace Negocio.LoadProduct
                         case "FijoMovilMovil":
                             metraje = Calc8040_3Vias_FijoMovilMovil(Description);
                             break;
+                        case "FijoMovilMovilMovil":
+                            metraje = Calc8040_3Vias_FijoMovilMovilMovil(Description);
+                            break;
                     }
                     break;
                 case "6030 2 Vias":
@@ -806,6 +809,9 @@ namespace Negocio.LoadProduct
                             break;
                         case "3 Hoja Vertical":
                             metraje = CalcVentila3HojasVertical(Description);
+                            break;
+                        case "Ventila1Fijo":
+                            metraje = CalcVentila1Fijo(Description);
                             break;
                     }
                     break;
@@ -3476,10 +3482,79 @@ namespace Negocio.LoadProduct
             }
                 return metraje;
             }
-            #endregion
+
+        private decimal Calc8040_3Vias_FijoMovilMovilMovil(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Contramarco Superior-Lateral Akari 3 Vias":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight)) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    break;
+                case "Contramarco Inferior Akari 3 Vias":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    break;
+                case "Contramarco Superior-Lateral Akari 2 Vias":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight)) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    break;
+                case "Contramarco Inferior Akari 2 Vias":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    break;
+                case "Marco Hoja 8040":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
+                    break;
+                case "Rampa Akari 8040":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    break;
+                case "Adaptador Enganche-Porta Felpa":
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                    break;
+               
+
+                //*******************Accesorios********************//
+                case "Rodin 8040":
+                    metraje = 6;
+                    break;
+                case "Escuadra Union Universal":
+                    metraje = 16;
+                    break;
+                case "Escuadra Contramarco 3 Vias Akari":
+                    metraje = 8;
+                    break;
+                case "Escuadra Contramarco 2 Vias Akari":
+                    metraje = 4;
+                    break;
+                case "Botaguas Akari":
+                    metraje = 4;
+                    break;
+                case "Corta Vientos":
+                    metraje = 12;
+                    break;
+                case "Tapa Rodin":
+                    metraje = 6;
+                    break;
+                case "Jaladera Sencilla":
+                    metraje = 2;
+                    break;
+                case "Tornillo Ensamble":
+                    metraje = 8;
+                    break;
+                case "Empaque Akari":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
+                    break;
+                case "Felpa Akari ":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 20) + (Convert.ToDecimal(ClsWindows.heigt) * 26);
+                    break;
+                
+
+
+            }
+            return metraje;
+        }
+        #endregion
 
         #region 6030 2 Vias
-            private decimal Calc6030_2Vias_FijoMovil(string Description)
+        private decimal Calc6030_2Vias_FijoMovil(string Description)
             {
                 decimal metraje = 0;
                 switch (Description)
@@ -6484,10 +6559,40 @@ namespace Negocio.LoadProduct
             return metraje;
         }
 
-                #endregion
+                // FIJO EN MARCO DE VENTILA// 
+        private decimal CalcVentila1Fijo(string Description)
+        {
+            decimal metraje = 0;
+
+            switch (Description)
+            {
+                case "Contramarco VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    break;
+                case "Jamba VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
+                    break;
+                case "Envidriador VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    break;
+
+                //*******************Accesorios********************//
+                
+                case "Angular 2X2X1/4":
+                    metraje = 12;
+                    break;
+                case "Empaque VT":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                    break;
+
+            }
+            return metraje;
+        }
+
+        #endregion
 
         #region Ventila Euro
-            private decimal CalcVentilaEuro1HojaHorizontal(string Descripcion)
+        private decimal CalcVentilaEuro1HojaHorizontal(string Descripcion)
                 {
                 decimal Metraje = 0;
                 decimal W = Convert.ToDecimal(ClsWindows.Weight);

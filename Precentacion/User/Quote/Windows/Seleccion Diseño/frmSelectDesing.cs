@@ -1,5 +1,6 @@
 ﻿using Dominio.Model.ClassWindows;
 using MaterialSkin.Controls;
+using Precentacion.User.Quote.Windows.Calculos_de_Precio;
 using Precentacion.User.Quote.Windows.Seleccion_Diseño;
 using System;
 using System.Collections.Generic;
@@ -174,6 +175,27 @@ namespace Precentacion.User.Quote.Windows
                 FijoMovilMovilMovilMovilFijo.Visible = false;
                 FijoMovilMovil.Visible = false;
             }
+            // Ruta de la imagen
+            string imagePath = Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO VENTILA X.jpeg";
+
+            // Verifica que el archivo de imagen exista
+            if (System.IO.File.Exists(imagePath))
+            {
+                // Carga la imagen y asígnala al botón
+                btnFijoMMM.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\8040FijoMovilMovilMovil.jpeg");
+            }
+            else
+            {
+                MessageBox.Show("La imagen no se encuentra en la ruta especificada.");
+            }
+        }
+
+        private void btnFijoMMM_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoMovilMovilMovil";
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Show();
+            this.Close();
         }
     }
 }
