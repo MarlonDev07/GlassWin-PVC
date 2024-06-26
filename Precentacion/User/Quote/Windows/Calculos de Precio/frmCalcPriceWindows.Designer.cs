@@ -86,9 +86,7 @@
             this.cbSupplier = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtDescuento = new System.Windows.Forms.TextBox();
             this.txtTotalPrice = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
@@ -120,6 +118,8 @@
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbVentana = new System.Windows.Forms.PictureBox();
+            this.btnBackSistmas = new System.Windows.Forms.PictureBox();
             this.PanelDetalle = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.dgAluminioAdd = new System.Windows.Forms.DataGridView();
@@ -135,8 +135,6 @@
             this.lblAluminio = new System.Windows.Forms.Label();
             this.lblArticulo = new System.Windows.Forms.Label();
             this.lblDetalleCotizacion = new System.Windows.Forms.Label();
-            this.pbVentana = new System.Windows.Forms.PictureBox();
-            this.btnBackSistmas = new System.Windows.Forms.PictureBox();
             this.panelCerradura.SuspendLayout();
             this.contextMenuStripOpciones.SuspendLayout();
             this.PanelMedidas.SuspendLayout();
@@ -145,6 +143,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiviciones)).BeginInit();
             this.PanelHaladera.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).BeginInit();
             this.PanelDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrioAdd)).BeginInit();
@@ -152,8 +152,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTituloCotizacion
@@ -165,7 +163,7 @@
             this.lblTituloCotizacion.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblTituloCotizacion.Location = new System.Drawing.Point(0, 0);
             this.lblTituloCotizacion.Name = "lblTituloCotizacion";
-            this.lblTituloCotizacion.Size = new System.Drawing.Size(1191, 37);
+            this.lblTituloCotizacion.Size = new System.Drawing.Size(1174, 37);
             this.lblTituloCotizacion.TabIndex = 2;
             this.lblTituloCotizacion.Text = "Cotizacion de Ventana:";
             this.lblTituloCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -175,13 +173,12 @@
             // 
             // txtUbicacion
             // 
-            this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUbicacion.BackColor = System.Drawing.Color.Orange;
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(786, 9);
+            this.txtUbicacion.Location = new System.Drawing.Point(939, 8);
             this.txtUbicacion.Name = "txtUbicacion";
-            this.txtUbicacion.Size = new System.Drawing.Size(54, 23);
+            this.txtUbicacion.Size = new System.Drawing.Size(162, 23);
             this.txtUbicacion.TabIndex = 46;
             // 
             // panelCerradura
@@ -567,9 +564,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.txtDescuento);
             this.panel2.Controls.Add(this.txtTotalPrice);
             this.panel2.Controls.Add(this.lblTotal);
             this.panel2.Controls.Add(this.txtTotal);
@@ -581,17 +576,6 @@
             this.panel2.TabIndex = 51;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // label16
-            // 
-            this.label16.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(45, 7);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(118, 20);
-            this.label16.TabIndex = 42;
-            this.label16.Text = "Descuento";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -602,16 +586,6 @@
             this.label14.TabIndex = 30;
             this.label14.Text = "Total";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtDescuento
-            // 
-            this.txtDescuento.BackColor = System.Drawing.Color.White;
-            this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescuento.Location = new System.Drawing.Point(45, 28);
-            this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(121, 23);
-            this.txtDescuento.TabIndex = 43;
-            this.txtDescuento.TextChanged += new System.EventHandler(this.txtTotal_TextChanged);
             // 
             // txtTotalPrice
             // 
@@ -626,7 +600,7 @@
             // 
             this.lblTotal.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.Black;
-            this.lblTotal.Location = new System.Drawing.Point(382, 7);
+            this.lblTotal.Location = new System.Drawing.Point(50, 7);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(147, 18);
             this.lblTotal.TabIndex = 11;
@@ -637,7 +611,7 @@
             // 
             this.txtTotal.BackColor = System.Drawing.Color.White;
             this.txtTotal.Enabled = false;
-            this.txtTotal.Location = new System.Drawing.Point(399, 27);
+            this.txtTotal.Location = new System.Drawing.Point(67, 27);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(121, 20);
             this.txtTotal.TabIndex = 12;
@@ -647,7 +621,7 @@
             // 
             this.label11.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(743, 7);
+            this.label11.Location = new System.Drawing.Point(566, 7);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(121, 18);
             this.label11.TabIndex = 28;
@@ -658,7 +632,7 @@
             // 
             this.txtPecioFijo.BackColor = System.Drawing.Color.White;
             this.txtPecioFijo.Enabled = false;
-            this.txtPecioFijo.Location = new System.Drawing.Point(743, 27);
+            this.txtPecioFijo.Location = new System.Drawing.Point(566, 27);
             this.txtPecioFijo.Name = "txtPecioFijo";
             this.txtPecioFijo.Size = new System.Drawing.Size(121, 20);
             this.txtPecioFijo.TabIndex = 29;
@@ -965,20 +939,19 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(264, 3);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(237, 34);
+            this.lblDescripcion.Size = new System.Drawing.Size(203, 34);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripcion";
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Font = new System.Drawing.Font("Impact", 20.25F);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(654, 3);
+            this.label1.Location = new System.Drawing.Point(801, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 29);
+            this.label1.Size = new System.Drawing.Size(149, 34);
             this.label1.TabIndex = 63;
             this.label1.Text = "Ubicación:";
             // 
@@ -1000,6 +973,31 @@
             this.panel1.Size = new System.Drawing.Size(1173, 851);
             this.panel1.TabIndex = 64;
             // 
+            // pbVentana
+            // 
+            this.pbVentana.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbVentana.Image = ((System.Drawing.Image)(resources.GetObject("pbVentana.Image")));
+            this.pbVentana.Location = new System.Drawing.Point(404, 344);
+            this.pbVentana.Name = "pbVentana";
+            this.pbVentana.Size = new System.Drawing.Size(463, 341);
+            this.pbVentana.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbVentana.TabIndex = 36;
+            this.pbVentana.TabStop = false;
+            // 
+            // btnBackSistmas
+            // 
+            this.btnBackSistmas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackSistmas.BackColor = System.Drawing.Color.Orange;
+            this.btnBackSistmas.Image = ((System.Drawing.Image)(resources.GetObject("btnBackSistmas.Image")));
+            this.btnBackSistmas.Location = new System.Drawing.Point(1107, 0);
+            this.btnBackSistmas.Name = "btnBackSistmas";
+            this.btnBackSistmas.Size = new System.Drawing.Size(33, 31);
+            this.btnBackSistmas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnBackSistmas.TabIndex = 61;
+            this.btnBackSistmas.TabStop = false;
+            this.btnBackSistmas.Click += new System.EventHandler(this.btnBackSistema_Click);
+            // 
             // PanelDetalle
             // 
             this.PanelDetalle.BackColor = System.Drawing.Color.LightGray;
@@ -1020,7 +1018,7 @@
             this.PanelDetalle.Location = new System.Drawing.Point(-1, 0);
             this.PanelDetalle.Name = "PanelDetalle";
             this.PanelDetalle.Size = new System.Drawing.Size(1175, 851);
-            this.PanelDetalle.TabIndex = 64;
+            this.PanelDetalle.TabIndex = 65;
             this.PanelDetalle.Visible = false;
             // 
             // button2
@@ -1390,38 +1388,13 @@
             this.lblDetalleCotizacion.Text = "Detalle de Cotizacion";
             this.lblDetalleCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbVentana
-            // 
-            this.pbVentana.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbVentana.Image = ((System.Drawing.Image)(resources.GetObject("pbVentana.Image")));
-            this.pbVentana.Location = new System.Drawing.Point(404, 344);
-            this.pbVentana.Name = "pbVentana";
-            this.pbVentana.Size = new System.Drawing.Size(463, 341);
-            this.pbVentana.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbVentana.TabIndex = 36;
-            this.pbVentana.TabStop = false;
-            // 
-            // btnBackSistmas
-            // 
-            this.btnBackSistmas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBackSistmas.BackColor = System.Drawing.Color.Orange;
-            this.btnBackSistmas.Image = ((System.Drawing.Image)(resources.GetObject("btnBackSistmas.Image")));
-            this.btnBackSistmas.Location = new System.Drawing.Point(897, 2);
-            this.btnBackSistmas.Name = "btnBackSistmas";
-            this.btnBackSistmas.Size = new System.Drawing.Size(33, 31);
-            this.btnBackSistmas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnBackSistmas.TabIndex = 61;
-            this.btnBackSistmas.TabStop = false;
-            this.btnBackSistmas.Click += new System.EventHandler(this.btnBackSistema_Click);
-            // 
             // frmCalcPriceWindows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1208, 715);
+            this.ClientSize = new System.Drawing.Size(1191, 715);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnBackSistmas);
             this.Controls.Add(this.label1);
@@ -1447,6 +1420,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiviciones)).EndInit();
             this.PanelHaladera.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).EndInit();
             this.PanelDetalle.ResumeLayout(false);
             this.PanelDetalle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).EndInit();
@@ -1455,8 +1430,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1508,8 +1481,6 @@
         private System.Windows.Forms.CheckBox cbCedazo;
         public System.Windows.Forms.NumericUpDown txtDiviciones;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        public System.Windows.Forms.TextBox txtDescuento;
         private System.Windows.Forms.CheckBox ckExterno;
         private System.Windows.Forms.Label lblPosicionCedazo;
         private System.Windows.Forms.CheckBox ckInterno;

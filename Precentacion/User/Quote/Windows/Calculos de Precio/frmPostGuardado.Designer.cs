@@ -39,6 +39,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.numCantidad = new System.Windows.Forms.NumericUpDown();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtDescuento = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,7 +129,7 @@
             this.txtTotal.BackColor = System.Drawing.Color.White;
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(6, 221);
+            this.txtTotal.Location = new System.Drawing.Point(6, 272);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(291, 23);
             this.txtTotal.TabIndex = 47;
@@ -137,7 +139,7 @@
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(6, 198);
+            this.label4.Location = new System.Drawing.Point(6, 249);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(291, 20);
             this.label4.TabIndex = 48;
@@ -169,7 +171,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGuardar.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(82, 263);
+            this.btnGuardar.Location = new System.Drawing.Point(77, 304);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(149, 28);
             this.btnGuardar.TabIndex = 50;
@@ -177,11 +179,36 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // label5
+            // 
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(6, 195);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(127, 20);
+            this.label5.TabIndex = 51;
+            this.label5.Text = "Descuento";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtDescuento
+            // 
+            this.txtDescuento.BackColor = System.Drawing.Color.White;
+            this.txtDescuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescuento.Location = new System.Drawing.Point(6, 215);
+            this.txtDescuento.Name = "txtDescuento";
+            this.txtDescuento.Size = new System.Drawing.Size(127, 23);
+            this.txtDescuento.TabIndex = 52;
+            this.txtDescuento.TextChanged += new System.EventHandler(this.txtDescuento_TextChanged);
+            // 
             // frmPostGuardado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 306);
+            this.ClientSize = new System.Drawing.Size(305, 337);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtDescuento);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.numCantidad);
             this.Controls.Add(this.label4);
@@ -193,7 +220,7 @@
             this.Controls.Add(this.txtUtilidad);
             this.Controls.Add(this.lblAlto);
             this.Controls.Add(this.txtPrecioCosto);
-            this.MaximumSize = new System.Drawing.Size(305, 306);
+            this.MaximumSize = new System.Drawing.Size(305, 406);
             this.MinimumSize = new System.Drawing.Size(305, 306);
             this.Name = "frmPostGuardado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
@@ -217,5 +244,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numCantidad;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox txtDescuento;
     }
 }
