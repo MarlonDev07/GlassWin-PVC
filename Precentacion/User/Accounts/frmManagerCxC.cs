@@ -645,5 +645,24 @@ namespace Precentacion.User.Accounts
 
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dgvClient.CurrentRow != null && dgvClient.CurrentRow.Selected)
+            {
+                // Pasar los Datos del Cliente Seleccionado a los TextBox
+                txtId.Text = dgvClient.CurrentRow.Cells[0].Value.ToString();
+                txtName.Text = dgvClient.CurrentRow.Cells[1].Value.ToString();
+                LoadCxC();
+                ConfigDataGrid();
+                LoadBalance();
+                TabControl.SelectedTab = tabCxC;
+            }
+            else
+            {
+                // Mostrar advertencia
+                MessageBox.Show("Por favor, seleccione un cliente de la lista.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

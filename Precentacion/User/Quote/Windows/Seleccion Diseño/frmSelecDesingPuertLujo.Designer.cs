@@ -89,7 +89,7 @@
             this.btn1HojaDivicion.Location = new System.Drawing.Point(456, 22);
             this.btn1HojaDivicion.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btn1HojaDivicion.Name = "btn1HojaDivicion";
-            this.btn1HojaDivicion.Size = new System.Drawing.Size(252, 309);
+            this.btn1HojaDivicion.Size = new System.Drawing.Size(207, 309);
             this.btn1HojaDivicion.TabIndex = 37;
             this.btn1HojaDivicion.UseVisualStyleBackColor = false;
             this.btn1HojaDivicion.Click += new System.EventHandler(this.btn1HojaDivicion_Click);
@@ -119,7 +119,7 @@
             this.btn1Hoja.Location = new System.Drawing.Point(60, 22);
             this.btn1Hoja.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btn1Hoja.Name = "btn1Hoja";
-            this.btn1Hoja.Size = new System.Drawing.Size(252, 309);
+            this.btn1Hoja.Size = new System.Drawing.Size(214, 309);
             this.btn1Hoja.TabIndex = 35;
             this.btn1Hoja.UseVisualStyleBackColor = false;
             this.btn1Hoja.Click += new System.EventHandler(this.btn1Fijo_Click);
