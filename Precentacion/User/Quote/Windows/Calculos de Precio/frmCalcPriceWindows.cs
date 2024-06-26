@@ -2467,8 +2467,13 @@ namespace Precentacion.User.Quote.Windows
                 cbVidrio.Visible = false;
             }
         }
+
         #endregion
 
-       
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            PanelDetalle.Visible = false;
+            PanelMedidas.Visible = true;
+        }
     }
 }
