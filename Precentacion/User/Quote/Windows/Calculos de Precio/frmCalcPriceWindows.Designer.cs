@@ -118,8 +118,6 @@
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pbVentana = new System.Windows.Forms.PictureBox();
-            this.btnBackSistmas = new System.Windows.Forms.PictureBox();
             this.PanelDetalle = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.dgAluminioAdd = new System.Windows.Forms.DataGridView();
@@ -135,6 +133,8 @@
             this.lblAluminio = new System.Windows.Forms.Label();
             this.lblArticulo = new System.Windows.Forms.Label();
             this.lblDetalleCotizacion = new System.Windows.Forms.Label();
+            this.pbVentana = new System.Windows.Forms.PictureBox();
+            this.btnBackSistmas = new System.Windows.Forms.PictureBox();
             this.panelCerradura.SuspendLayout();
             this.contextMenuStripOpciones.SuspendLayout();
             this.PanelMedidas.SuspendLayout();
@@ -143,8 +143,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiviciones)).BeginInit();
             this.PanelHaladera.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).BeginInit();
             this.PanelDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrioAdd)).BeginInit();
@@ -152,6 +150,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTituloCotizacion
@@ -176,7 +176,7 @@
             this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUbicacion.BackColor = System.Drawing.Color.Orange;
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(939, 8);
+            this.txtUbicacion.Location = new System.Drawing.Point(922, 8);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(162, 23);
             this.txtUbicacion.TabIndex = 46;
@@ -939,7 +939,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(264, 3);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(203, 34);
+            this.lblDescripcion.Size = new System.Drawing.Size(186, 34);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripcion";
             // 
@@ -949,7 +949,7 @@
             this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Font = new System.Drawing.Font("Impact", 20.25F);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(801, 3);
+            this.label1.Location = new System.Drawing.Point(784, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 34);
             this.label1.TabIndex = 63;
@@ -972,31 +972,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1173, 851);
             this.panel1.TabIndex = 64;
-            // 
-            // pbVentana
-            // 
-            this.pbVentana.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbVentana.Image = ((System.Drawing.Image)(resources.GetObject("pbVentana.Image")));
-            this.pbVentana.Location = new System.Drawing.Point(404, 344);
-            this.pbVentana.Name = "pbVentana";
-            this.pbVentana.Size = new System.Drawing.Size(463, 341);
-            this.pbVentana.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbVentana.TabIndex = 36;
-            this.pbVentana.TabStop = false;
-            // 
-            // btnBackSistmas
-            // 
-            this.btnBackSistmas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBackSistmas.BackColor = System.Drawing.Color.Orange;
-            this.btnBackSistmas.Image = ((System.Drawing.Image)(resources.GetObject("btnBackSistmas.Image")));
-            this.btnBackSistmas.Location = new System.Drawing.Point(1107, 0);
-            this.btnBackSistmas.Name = "btnBackSistmas";
-            this.btnBackSistmas.Size = new System.Drawing.Size(33, 31);
-            this.btnBackSistmas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnBackSistmas.TabIndex = 61;
-            this.btnBackSistmas.TabStop = false;
-            this.btnBackSistmas.Click += new System.EventHandler(this.btnBackSistema_Click);
             // 
             // PanelDetalle
             // 
@@ -1032,6 +1007,7 @@
             this.button2.TabIndex = 131;
             this.button2.Text = "Cerrar";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_3);
             // 
             // dgAluminioAdd
             // 
@@ -1388,6 +1364,31 @@
             this.lblDetalleCotizacion.Text = "Detalle de Cotizacion";
             this.lblDetalleCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pbVentana
+            // 
+            this.pbVentana.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbVentana.Image = ((System.Drawing.Image)(resources.GetObject("pbVentana.Image")));
+            this.pbVentana.Location = new System.Drawing.Point(404, 344);
+            this.pbVentana.Name = "pbVentana";
+            this.pbVentana.Size = new System.Drawing.Size(463, 341);
+            this.pbVentana.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbVentana.TabIndex = 36;
+            this.pbVentana.TabStop = false;
+            // 
+            // btnBackSistmas
+            // 
+            this.btnBackSistmas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackSistmas.BackColor = System.Drawing.Color.Orange;
+            this.btnBackSistmas.Image = ((System.Drawing.Image)(resources.GetObject("btnBackSistmas.Image")));
+            this.btnBackSistmas.Location = new System.Drawing.Point(1090, 0);
+            this.btnBackSistmas.Name = "btnBackSistmas";
+            this.btnBackSistmas.Size = new System.Drawing.Size(33, 31);
+            this.btnBackSistmas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnBackSistmas.TabIndex = 61;
+            this.btnBackSistmas.TabStop = false;
+            this.btnBackSistmas.Click += new System.EventHandler(this.btnBackSistema_Click);
+            // 
             // frmCalcPriceWindows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1420,8 +1421,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiviciones)).EndInit();
             this.PanelHaladera.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).EndInit();
             this.PanelDetalle.ResumeLayout(false);
             this.PanelDetalle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).EndInit();
@@ -1430,6 +1429,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBackSistmas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
