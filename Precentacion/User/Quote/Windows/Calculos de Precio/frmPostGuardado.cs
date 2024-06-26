@@ -17,6 +17,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         decimal Ajuste = 0;
         decimal Total = 0;
         decimal SubTotal = 0;
+        decimal SubTotalVidrioFijo = 0;
         public frmPostGuardado()
         {
             InitializeComponent();
