@@ -122,6 +122,12 @@ namespace Precentacion.User.Client
                 //Obtener el limite de credito del cliente seleccionado
                 txtLimiteEdit.Text = dgvClient.CurrentRow.Cells[8].Value.ToString();
 
+                //Obtener la fecha limite del cliente seleccionado
+                dtpFechaVencimiento2.Text = dgvClient.CurrentRow.Cells[9].Value.ToString();
+
+                //Obtener los días del cliente seleccionado
+                txtDias2.Text = dgvClient.CurrentRow.Cells[10].Value.ToString();
+
                 //Cambiar al tab de editar
                 tabControl.SelectedIndex = 2;
             }
@@ -148,32 +154,33 @@ namespace Precentacion.User.Client
         //---------------------------New Client---------------------------------//
         private void btnNewClient_Click(object sender, EventArgs e)
         {
-            //Validar que los campos no esten vacios
+            // Validar que los campos no estén vacíos
             if (ValidateNewClient())
             {
-                //Validar que el cliente no exista
+                // Validar que el cliente no exista
                 if (NewClient())
                 {
-                    //Mostrar mensaje de exito
-                    MessageBox.Show("Cliente creado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Mostrar mensaje de éxito
+                    MessageBox.Show("Cliente creado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    //Limpiar campos
+                    // Limpiar campos
                     CleanNewClient();
 
-                    //Actualizar DGV
+                    // Actualizar DGV
                     dgvClientLoad();
                 }
                 else
                 {
-                    //Mostrar mensaje de error
+                    // Mostrar mensaje de error
                     MessageBox.Show("Error al crear el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
         private bool ValidateNewClient()
         {
-            //Validar que los campos no esten vacios
-            if (txtName.Text != "" && txtPhone.Text != "" && txtAddress.Text != "" || txtLimiteCredito.Text != "")
+            // Validar que los campos no estén vacíos
+            if (txtName.Text != "" && txtPhone.Text != "" && txtAddress.Text != "" && txtLimiteCredito.Text != "")
             {
                 return true;
             }
@@ -183,16 +190,20 @@ namespace Precentacion.User.Client
                 return false;
             }
         }
-        private bool NewClient() 
-        { 
-            string Name = txtName.Text;
-            string Phone = txtPhone.Text;
-            string Address = txtAddress.Text;
-            string Email = txtEmail.Text;
-            string Limite = txtLimiteCredito.Text;
 
-            return NClient.Create(Name, Phone, Address, Email, Limite);
+        private bool NewClient()
+        {
+            string name = txtName.Text;
+            string phone = txtPhone.Text;
+            string address = txtAddress.Text;
+            string email = txtEmail.Text;
+            string limite = txtLimiteCredito.Text;
+            DateTime fechaVencimiento = dtpFechaVencimiento.Value;
+            int dias = string.IsNullOrEmpty(txtDias.Text) ? 0 : Convert.ToInt32(txtDias.Text);
+
+            return NClient.Create(name, phone, address, email, limite, fechaVencimiento, dias);
         }
+
         private void CleanNewClient()
         {
             txtName.Text = "";
@@ -200,6 +211,8 @@ namespace Precentacion.User.Client
             txtAddress.Text = "";
             txtEmail.Text = "";
             txtLimiteCredito.Text = "";
+            dtpFechaVencimiento.Value = DateTime.Now;
+            txtDias.Text = "";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -258,8 +271,10 @@ namespace Precentacion.User.Client
             string Address = txtAddressEdit.Text;
             string Email = txtEmailEdit.Text;
             string Limite = txtLimiteEdit.Text;
+            DateTime FechaVencimiento = dtpFechaVencimiento2.Value;
+            int Dias = string.IsNullOrEmpty(txtDias2.Text) ? 0 : Convert.ToInt32(txtDias2.Text);
 
-            return NClient.update(ID, Name, Phone, Address, Email, Limite);
+            return NClient.update(ID, Name, Phone, Address, Email, Limite, FechaVencimiento, Dias);
         }
         private void CleanEditClient()
         {
@@ -269,6 +284,9 @@ namespace Precentacion.User.Client
             txtAddressEdit.Text = "";
             txtEmailEdit.Text = "";
             txtLimiteEdit.Text = "";
+            txtDias2.Text = "";
+            dtpFechaVencimiento2.Value = DateTime.Now;
+
         }
 
         private void btnCancelarEdit_Click(object sender, EventArgs e)

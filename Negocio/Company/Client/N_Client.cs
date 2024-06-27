@@ -10,18 +10,6 @@ namespace Negocio.Client
     {
         AD_Client ADClient = new AD_Client();
 
-        public DataTable LoadClient()
-        {
-            try
-            {
-                return ADClient.LoadClient();
-            }
-            catch (Exception )
-            {
-                return null;
-            }
-        } 
-
         public List<clsClient> ListClient(string ID)
         {
             try
@@ -45,24 +33,35 @@ namespace Negocio.Client
                 return null;
             }
         }
-
-        public bool Create(string Name, string Phone, string Address, string Correo, string Limite)
+        public bool Create(string name, string phone, string address, string correo, string limite, DateTime fechaVencimiento, int dias)
         {
             try
             {
-                return ADClient.Create(Name, Phone,Address, Correo, Limite);
+                return ADClient.Create(name, phone, address, correo, limite, fechaVencimiento, dias);
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return false;
             }
         }
 
-        public bool update(int ID, string Name, string Phone, string Address, string Correo, string Limite)
+        public DataTable LoadClient()
         {
             try
             {
-                return ADClient.Update(ID, Name, Phone,Address,Correo, Limite);
+                return ADClient.LoadClient();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public bool update(int ID, string Name, string Phone, string Address, string Correo, string Limite, DateTime fechaVencimiento, int dias)
+        {
+            try
+            {
+                return ADClient.Update(ID, Name, Phone,Address,Correo, Limite, fechaVencimiento, dias);
             }
             catch (Exception )
             {

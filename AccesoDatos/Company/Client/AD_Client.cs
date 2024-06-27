@@ -93,7 +93,7 @@ namespace AccesoDatos.Client
             }
         }
 
-        public bool Create (string Name, string Phone, string Address, string Email, string Limite)
+        public bool Create (string Name, string Phone, string Address, string Email, string Limite, DateTime fechaVencimiento, int dias)
         {
             try
             {
@@ -107,6 +107,8 @@ namespace AccesoDatos.Client
                 cmd.Parameters.AddWithValue("@Address", Address);
                 cmd.Parameters.AddWithValue("@Email", Email);
                 cmd.Parameters.AddWithValue("@Limite", Limite);
+                cmd.Parameters.AddWithValue("@FechaVencimiento", fechaVencimiento);
+                cmd.Parameters.AddWithValue("@Dias", dias);
                 cmd.ExecuteNonQuery();
                 Cnn.CloseConnection();
                 return true;
@@ -117,7 +119,7 @@ namespace AccesoDatos.Client
             }
         }
 
-        public bool Update(int ID, string Name, string Phone, string Address, string Email, string Limite)
+        public bool Update(int ID, string Name, string Phone, string Address, string Email, string Limite, DateTime fechaVencimiento, int dias)
         {
             try
             {
@@ -126,12 +128,14 @@ namespace AccesoDatos.Client
                 cmd.CommandText = "SP_EditClient";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idClient", ID);
-                cmd.Parameters.AddWithValue("@idCompany", CompanyCache.IdCompany);
                 cmd.Parameters.AddWithValue("@Name", Name);
                 cmd.Parameters.AddWithValue("@Phone", Phone);
+                cmd.Parameters.AddWithValue("@idCompany", CompanyCache.IdCompany);
                 cmd.Parameters.AddWithValue("@Address", Address);
-                cmd.Parameters.AddWithValue("@Email", Email);
+                 cmd.Parameters.AddWithValue("@Email", Email);
                 cmd.Parameters.AddWithValue("@Limite", Limite);
+                cmd.Parameters.AddWithValue("@FechaVencimiento", fechaVencimiento);
+                cmd.Parameters.AddWithValue("@Dias", dias);
                 cmd.ExecuteNonQuery();
                 Cnn.CloseConnection();
                 return true;
