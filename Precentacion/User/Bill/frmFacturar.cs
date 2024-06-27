@@ -2131,7 +2131,7 @@ namespace Precentacion.User.Bill
                 document.Open();
                 #endregion
 
-                #region Encabezado
+            #region Encabezado
                 // Crea una tabla con dos columnas
                 PdfPTable Encabezado = new PdfPTable(2);
                 Encabezado.WidthPercentage = 100;
@@ -2262,7 +2262,7 @@ namespace Precentacion.User.Bill
 
                 #endregion
 
-                #region Tabla de Informacion 
+            #region Tabla de Informacion 
                 // Crear una tabla para los datos del proyecto y la información del cliente
                 PdfPTable datosTable = new PdfPTable(2);
                 datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
