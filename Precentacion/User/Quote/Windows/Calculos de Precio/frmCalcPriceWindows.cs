@@ -2346,11 +2346,18 @@ namespace Precentacion.User.Quote.Windows
 
         private void enviarProformaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           frmPostGuardado frm = new frmPostGuardado();
-            DataTable dataTable = new DataTable();
-            dataTable = ObtenerDatosDGV();
-            frm.ObtenerDatos(dataTable,AjustePrecio);
-            frm.Show();
+            if (cbSupplier.Text == "Default")
+            {
+                btnInsertar_Click(sender, e);
+            }
+            else
+            {
+                frmPostGuardado frm = new frmPostGuardado();
+                DataTable dataTable = new DataTable();
+                dataTable = ObtenerDatosDGV();
+                frm.ObtenerDatos(dataTable, totalPrice);
+                frm.Show();
+            }
         }
 
         private DataTable ObtenerDatosDGV() 

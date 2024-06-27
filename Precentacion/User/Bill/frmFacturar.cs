@@ -1745,7 +1745,7 @@ namespace Precentacion.User.Bill
                     break;
             }
 
-            #region Crear el documento
+               #region Crear el documento
             try
             {
                 // Obtener el directorio del escritorio y las carpetas necesarias
@@ -1780,7 +1780,7 @@ namespace Precentacion.User.Bill
                 #region Encabezado
                 // Crea una tabla con dos columnas
                 PdfPTable Encabezado = new PdfPTable(2);
-                Encabezado.WidthPercentage = 120;
+                Encabezado.WidthPercentage = 100;
 
 
                 // Agrega la imagen a la primera celda
@@ -1810,26 +1810,19 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
-                if (CompanyCache.IdCompany == 31028013)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\InnovaLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
                 if (CompanyCache.IdCompany == 31025820)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\AluviLogo.png";
                     rutaLogo = ruta + Url;
+
                 }
-                if (CompanyCache.IdCompany == 1230123)
+                if (CompanyCache.IdCompany == 31028013)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\GlassWinLogo.png";
+                    string Url = "\\Images\\Logos\\InnovaLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -1853,9 +1846,22 @@ namespace Precentacion.User.Bill
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\VitroLogo.png";
                     rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 1230123)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\GlassWinLogo.png";
+                    rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 310108681)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
+                    rutaLogo = ruta + Url;
 
                 }
-
                 PdfPCell imageCell = new PdfPCell(iTextSharp.text.Image.GetInstance(rutaLogo));
                 imageCell.Border = PdfPCell.NO_BORDER;
                 imageCell.FixedHeight = 120f; // Ajusta la altura de la imagen
@@ -1866,6 +1872,28 @@ namespace Precentacion.User.Bill
                 iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
                 iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
+                // Agrega los textos a la segunda celda
+                PdfPCell textCell = new PdfPCell();
+                textCell.Border = PdfPCell.NO_BORDER;
+
+                // Alinea el contenido de la celda al centro
+                textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+                // Agrega el párrafo y los chunks al documento
+                Paragraph paragraph = new Paragraph();
+                paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
+                paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, textFont));
+                paragraph.Add(Chunk.NEWLINE);
+                paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                paragraph.Add(Chunk.NEWLINE);
+                paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                paragraph.Add(Chunk.NEWLINE);
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
+
+                textCell.AddElement(paragraph);
+                Encabezado.AddCell(textCell);
+
                 // Establece el ancho de la celda de la tabla (ajusta según tus necesidades)
                 Encabezado.SetWidths(new float[] { 3f, 4f }); // Primer valor es el ancho de la celda de la imagen
 
@@ -1873,7 +1901,7 @@ namespace Precentacion.User.Bill
                 document.Add(Encabezado);
 
                 // Añade la palabra "COTIZACIÓN" debajo de la tabla
-                Paragraph cotizacionParagraph = new Paragraph("Orden de Compra", titleFont);
+                Paragraph cotizacionParagraph = new Paragraph("Hoja Rectificacion", titleFont);
                 cotizacionParagraph.Alignment = Element.ALIGN_CENTER;
                 document.Add(cotizacionParagraph);
                 document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
@@ -2106,7 +2134,7 @@ namespace Precentacion.User.Bill
             #region Encabezado
                 // Crea una tabla con dos columnas
                 PdfPTable Encabezado = new PdfPTable(2);
-                Encabezado.WidthPercentage = 120;
+                Encabezado.WidthPercentage = 100;
 
 
                 // Agrega la imagen a la primera celda
@@ -2128,14 +2156,6 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
-                if (CompanyCache.IdCompany == 31028013)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\InnovaLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
                 if (CompanyCache.IdCompany == 111560456)
                 {
                     //Obtener la Ruta de la Carpeta bin
@@ -2149,6 +2169,14 @@ namespace Precentacion.User.Bill
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\AluviLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31028013)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\InnovaLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2172,15 +2200,6 @@ namespace Precentacion.User.Bill
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\VitroLogo.png";
                     rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 25550555)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VitroLogo.png";
-                    rutaLogo = ruta + Url;
-
                 }
                 if (CompanyCache.IdCompany == 1230123)
                 {
@@ -2188,9 +2207,15 @@ namespace Precentacion.User.Bill
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\GlassWinLogo.png";
                     rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 310108681)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
+                    rutaLogo = ruta + Url;
 
                 }
-
                 PdfPCell imageCell = new PdfPCell(iTextSharp.text.Image.GetInstance(rutaLogo));
                 imageCell.Border = PdfPCell.NO_BORDER;
                 imageCell.FixedHeight = 120f; // Ajusta la altura de la imagen
@@ -2201,6 +2226,28 @@ namespace Precentacion.User.Bill
                 iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
                 iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
+                // Agrega los textos a la segunda celda
+                PdfPCell textCell = new PdfPCell();
+                textCell.Border = PdfPCell.NO_BORDER;
+
+                // Alinea el contenido de la celda al centro
+                textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+                // Agrega el párrafo y los chunks al documento
+                Paragraph paragraph = new Paragraph();
+                paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
+                paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, textFont));
+                paragraph.Add(Chunk.NEWLINE);
+                paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                paragraph.Add(Chunk.NEWLINE);
+                paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                paragraph.Add(Chunk.NEWLINE);
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
+
+                textCell.AddElement(paragraph);
+                Encabezado.AddCell(textCell);
+
                 // Establece el ancho de la celda de la tabla (ajusta según tus necesidades)
                 Encabezado.SetWidths(new float[] { 3f, 4f }); // Primer valor es el ancho de la celda de la imagen
 
@@ -2208,7 +2255,7 @@ namespace Precentacion.User.Bill
                 document.Add(Encabezado);
 
                 // Añade la palabra "COTIZACIÓN" debajo de la tabla
-                Paragraph cotizacionParagraph = new Paragraph("Planos de Taller", titleFont);
+                Paragraph cotizacionParagraph = new Paragraph("Planos Taller", titleFont);
                 cotizacionParagraph.Alignment = Element.ALIGN_CENTER;
                 document.Add(cotizacionParagraph);
                 document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
