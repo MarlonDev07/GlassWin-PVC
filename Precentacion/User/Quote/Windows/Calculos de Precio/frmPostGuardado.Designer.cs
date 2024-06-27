@@ -65,7 +65,6 @@
             this.txtPrecioCosto.Name = "txtPrecioCosto";
             this.txtPrecioCosto.Size = new System.Drawing.Size(127, 23);
             this.txtPrecioCosto.TabIndex = 40;
-            this.txtPrecioCosto.TextChanged += new System.EventHandler(this.CalcularSubtotal_TextChange);
             // 
             // label1
             // 
@@ -88,7 +87,6 @@
             this.txtUtilidad.Name = "txtUtilidad";
             this.txtUtilidad.Size = new System.Drawing.Size(127, 23);
             this.txtUtilidad.TabIndex = 42;
-            this.txtUtilidad.TextChanged += new System.EventHandler(this.CalcularSubtotal_TextChange);
             // 
             // label2
             // 
@@ -201,6 +199,7 @@
             this.txtDescuento.Size = new System.Drawing.Size(127, 23);
             this.txtDescuento.TabIndex = 52;
             this.txtDescuento.TextChanged += new System.EventHandler(this.txtDescuento_TextChanged);
+            this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
             // 
             // frmPostGuardado
             // 

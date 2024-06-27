@@ -14,22 +14,19 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
     public partial class frmPostGuardado : MaterialSkin.Controls.MaterialForm
     {
         int Costo = 0;
-        decimal Ajuste = 0;
         decimal Total = 0;
         decimal SubTotal = 0;
-        decimal SubTotalVidrioFijo = 0;
+        decimal TempTotal = 0;
+        bool Aplicado = false; 
         public frmPostGuardado()
         {
             InitializeComponent();
         }
 
 
-        public void ObtenerDatos(DataTable dt, decimal AjustePrecio) 
+        public void ObtenerDatos(DataTable dt, decimal _Total) 
         {
-            //Setear el Ajuste de Precio
-             Ajuste = AjustePrecio;
-             txtUtilidad.Text = Ajuste.ToString()+"%";
-            //Obtiene los datos de la tabla y los muestra en el formulario
+            //Setear el PrecioCosto
             if (dt != null) 
             {
                 Costo = 0;
@@ -39,34 +36,39 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 }
                 txtPrecioCosto.Text = Costo.ToString("c");
             }
-            numCantidad_ValueChanged(null, null);
-        }
-        private void CalcularSubtotal_TextChange(Object Sender, EventArgs e) 
-        {
-            SubTotal = 0;
-            if (Costo != 0 && Ajuste != 0) 
+
+            //Setear el  SubTotal
+            if (_Total != 0)
             {
-                decimal AjustePrecio = Costo * Ajuste;
-                SubTotal = Costo + AjustePrecio;
+                SubTotal = _Total;
                 txtSubTotal.Text = SubTotal.ToString("c");
             }
+
+            //Setear el Ajuste
+            decimal Ajuste = (SubTotal - Costo)/Costo;
+            Ajuste = Ajuste * 100;
+            //Redondear a 2 Decimales
+            Ajuste = Math.Round(Ajuste, 2);
+            txtUtilidad.Text = Ajuste.ToString()+"%";
+
+            //Calcular el Total
+            Total = SubTotal;
+            txtTotal.Text = Total.ToString("c");
         }
 
         private void numCantidad_ValueChanged(object sender, EventArgs e)
         {
-            Total = 0;
-            //Obtener la Cantidad
-            int Cantidad = Convert.ToInt32(numCantidad.Value);
-
-            //Calcular el Total
-            Total = SubTotal * Cantidad;
-
-            //Mostrar el Total
-            txtTotal.Text = Total.ToString("c");
+            TempTotal = Total * Convert.ToInt32(numCantidad.Value);
+            txtTotal.Text = TempTotal.ToString("c");
+            txtDescuento_TextChanged(null, null);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (TempTotal != 0)
+            {
+                Total = TempTotal;
+            }
             Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmCalcPriceWindows);
             if (frm != null)
             {
@@ -74,20 +76,46 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                ((frmCalcPriceWindows)frm).NumCantidad = Convert.ToInt32(numCantidad.Value);
                ((frmCalcPriceWindows)frm).btnInsertar_Click(null, null);
             }
+            this.Close();
         }
 
         private void txtDescuento_TextChanged(object sender, EventArgs e)
         {
-            //Validar que se haya ingresado un valor numerico
-            if (decimal.TryParse(txtDescuento.Text, out decimal descuento))
+ 
+            if (txtDescuento.Text != "")
             {
-                //Obtener el Descuento
-                decimal Descuento = (Convert.ToDecimal(txtDescuento.Text)/100);
+                //Validar que se haya ingresado un valor numerico
+                if (decimal.TryParse(txtDescuento.Text, out decimal descuento))
+                {
+                    TempTotal = Total * Convert.ToInt32(numCantidad.Value);
 
-                //Calcular el Total
-                Total = SubTotal - (SubTotal * Descuento);
-                txtTotal.Text = Total.ToString("c");
+                    //Obtener el Descuento
+                    decimal Descuento = (Convert.ToDecimal(txtDescuento.Text) / 100);
+
+                    //Calcular el Total
+                    TempTotal = TempTotal - (TempTotal * Descuento);
+                    txtTotal.Text = TempTotal.ToString("c");               
+                }
+                else
+                {
+                    MessageBox.Show("El Descuento debe ser un valor numerico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+               txtDescuento.Text = "0";
+            }
+            
+        }
+
+        private void txtDescuento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                
             }
         }
+
+       
     }
 }
