@@ -1,6 +1,7 @@
 ﻿using Dominio.ClassFunction.InputBox;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using MaterialSkin.Controls;
 using Negocio.Client;
 using Negocio.Company.Account;
 using Negocio.Company.AdmProyecto;
@@ -9,11 +10,7 @@ using Precentacion.User.DashBoard;
 using System;
 using System.Data;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
-using MaterialSkin.Controls;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Data.SqlClient;
 
 namespace Precentacion.User.Accounts
 {
@@ -34,7 +31,7 @@ namespace Precentacion.User.Accounts
             InitializeComponent();
             LoadClient();
             AccountsUI.loadMaterial(this);
-            HideLastTab();
+            //HideLastTab();
             //LoadCxC();
         }
         #endregion
@@ -187,20 +184,21 @@ namespace Precentacion.User.Accounts
                                 decimal NewOutstandingBalance = OutstandingBalance - Amount;
                                 if (NewOutstandingBalance >= 0)
                                 {
-                                    if (N_CxC.UpdateCxC(IdAccount, Convert.ToInt32(dgvCxC.CurrentRow.Cells[1].Value), Convert.ToDecimal(dgvCxC.CurrentRow.Cells[2].Value), NewOutstandingBalance))
-                                    {
-                                       
-                                        MessageBox.Show("Se realizo el deposito correctamente", "Deposito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        GeneratePdfCxC(Result.ToString());
-                                        LoadCxC();
-                                        LoadBalance();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("No se pudo realizar el deposito", "Deposito", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
+                                if (N_CxC.UpdateCxC(IdAccount, Convert.ToInt32(dgvCxC.CurrentRow.Cells[1].Value), Convert.ToDecimal(dgvCxC.CurrentRow.Cells[2].Value), NewOutstandingBalance))
+                                {
+                                    N_CxC.InsertPayment(IdAccount, Convert.ToInt32(dgvCxC.CurrentRow.Cells[1].Value), Amount);
+                                    MessageBox.Show("Se realizo el deposito correctamente", "Deposito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    GeneratePdfCxC(Result.ToString());
+                                    LoadCxC();
+                                    LoadBalance();
                                 }
                                 else
+                                {
+                                    MessageBox.Show("No se pudo realizar el deposito", "Deposito", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+                            }
+                            else
                                 {
                                     MessageBox.Show("El monto a depositar no puede ser mayor al balance pendiente", "Deposito", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
@@ -662,6 +660,93 @@ namespace Precentacion.User.Accounts
             {
                 // Mostrar advertencia
                 MessageBox.Show("Por favor, seleccione un cliente de la lista.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvCxC_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void estadisticasToolStripMenu_Click(object sender, EventArgs e)
+        {
+            // Obtener el Id Cuenta seleccionado en dgvCxC
+            if (dgvCxC.SelectedRows.Count > 0)
+            {
+                int IdAccount = Convert.ToInt32(dgvCxC.SelectedRows[0].Cells[0].Value); // Suponiendo que el Id Cuenta está en la primera columna
+                LoadStatistics(IdAccount); // Cargar estadísticas en dgvEstadistica
+            }
+            else {
+                MessageBox.Show("Por favor, seleccione un cliente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void LoadStatistics(int IdAccount)
+        {
+           
+            DataTable dt = N_CxC.ShowStatistics(IdAccount); // Cargar datos desde la capa de negocios
+
+            dgvEstadistica.DataSource = dt; // Asignar el DataTable como DataSource del DataGridView
+
+            // Configurar las columnas como lo necesitas
+            dgvEstadistica.Columns["PaymentId"].HeaderText = "ID Pago";
+            dgvEstadistica.Columns["IdBill"].HeaderText = "ID Factura";
+            dgvEstadistica.Columns["PaymentAmount"].HeaderText = "Monto de Pago";
+            dgvEstadistica.Columns["PaymentDate"].HeaderText = "Fecha de Pago";
+
+            // Ajustar el tamaño de las columnas automáticamente
+            dgvEstadistica.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Configurar selección de filas completa
+            dgvEstadistica.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Obtener el Id Cuenta seleccionado en dgvCxC
+            if (dgvCxC.SelectedRows.Count > 0)
+            {
+                int IdAccount = Convert.ToInt32(dgvCxC.SelectedRows[0].Cells[0].Value); // Suponiendo que el Id Cuenta está en la primera columna
+                LoadStatistics(IdAccount); // Cargar estadísticas en dgvEstadistica
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un cliente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            TabControl.SelectedTab = tabEstadistica;
+        }
+
+        private void tabEstadistica_Enter(object sender, EventArgs e)
+        {
+            // Verificar si hay un IdAccount seleccionado en dgvCxC
+            if (dgvCxC.SelectedRows.Count == 0 || dgvCxC.SelectedRows[0].Cells[0].Value == null)
+            {
+                MessageBox.Show("Debe seleccionar un cliente antes de abrir esta pestaña.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TabControl.SelectedTab = TabControl.TabPages["tabClient"]; // Cambia a otra pestaña, por ejemplo, "tabPrincipal"
+            }
+            else
+            {
+                int IdAccount = Convert.ToInt32(dgvCxC.SelectedRows[0].Cells[0].Value);
+                LoadStatistics(IdAccount); // Cargar estadísticas en dgvEstadistica
+            }
+        }
+
+        private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Verificar si la pestaña seleccionada es tabEstadistica
+            if (TabControl.SelectedTab == tabEstadistica || TabControl.SelectedTab == tabCxC) 
+            {
+                // Verificar si hay un IdAccount seleccionado en dgvCxC
+                if (dgvCxC.SelectedRows.Count == 0 || dgvCxC.SelectedRows[0].Cells[0].Value == null)
+                {
+                    MessageBox.Show("Debe seleccionar un cliente antes de abrir esta pestaña.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TabControl.SelectedTab = tabClient; // Cambiar a otra pestaña, por ejemplo, "tabPrincipal"
+                }
+                else
+                {
+                    int IdAccount = Convert.ToInt32(dgvCxC.SelectedRows[0].Cells[0].Value);
+                    LoadStatistics(IdAccount); // Cargar estadísticas en dgvEstadistica
+                }
             }
         }
     }

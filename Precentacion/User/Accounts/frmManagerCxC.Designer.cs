@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagerCxC));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagerCxC));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabClient = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtBusquedaNombre2 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtBusquedaNombre = new System.Windows.Forms.TextBox();
@@ -55,6 +56,7 @@
             this.abonarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelDataClient = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.txtCount = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -62,11 +64,14 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.tabEstadistica = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvEstadistica = new System.Windows.Forms.DataGridView();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.TabControl.SuspendLayout();
             this.tabClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).BeginInit();
@@ -80,6 +85,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabEstadistica.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstadistica)).BeginInit();
             this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,15 +96,16 @@
             // 
             this.TabControl.Controls.Add(this.tabClient);
             this.TabControl.Controls.Add(this.tabCxC);
+            this.TabControl.Controls.Add(this.tabEstadistica);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.ImageList = this.imageList;
-            this.TabControl.Location = new System.Drawing.Point(4, 98);
-            this.TabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TabControl.Location = new System.Drawing.Point(3, 64);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1231, 903);
+            this.TabControl.Size = new System.Drawing.Size(820, 587);
             this.TabControl.TabIndex = 0;
             this.TabControl.Tag = "";
+            this.TabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
             // 
             // tabClient
             // 
@@ -106,71 +116,81 @@
             this.tabClient.Controls.Add(this.dgvClient);
             this.tabClient.ImageIndex = 0;
             this.tabClient.Location = new System.Drawing.Point(4, 39);
-            this.tabClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabClient.Name = "tabClient";
-            this.tabClient.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabClient.Size = new System.Drawing.Size(1223, 860);
+            this.tabClient.Padding = new System.Windows.Forms.Padding(3);
+            this.tabClient.Size = new System.Drawing.Size(812, 544);
             this.tabClient.TabIndex = 0;
             this.tabClient.Text = "Clientes";
             this.tabClient.ToolTipText = "Clientes con Cuentas por Cobrar";
             this.tabClient.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(260, 29);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(169, 27);
+            this.button1.TabIndex = 184;
+            this.button1.Text = "Ver Cuentas por Cobrar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // txtBusquedaNombre2
             // 
-            this.txtBusquedaNombre2.Location = new System.Drawing.Point(45, 52);
-            this.txtBusquedaNombre2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBusquedaNombre2.Location = new System.Drawing.Point(30, 34);
             this.txtBusquedaNombre2.Name = "txtBusquedaNombre2";
-            this.txtBusquedaNombre2.Size = new System.Drawing.Size(288, 26);
+            this.txtBusquedaNombre2.Size = new System.Drawing.Size(193, 20);
             this.txtBusquedaNombre2.TabIndex = 183;
             this.txtBusquedaNombre2.TextChanged += new System.EventHandler(this.txtBusquedaNombre2_TextChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(40, 5);
+            this.label11.Location = new System.Drawing.Point(27, 3);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(169, 20);
+            this.label11.Size = new System.Drawing.Size(113, 13);
             this.label11.TabIndex = 182;
             this.label11.Text = "Busqueda por Nombre";
             // 
             // txtBusquedaNombre
             // 
             this.txtBusquedaNombre.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusquedaNombre.Location = new System.Drawing.Point(876, 28);
+            this.txtBusquedaNombre.Location = new System.Drawing.Point(584, 18);
+            this.txtBusquedaNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtBusquedaNombre.Multiline = true;
             this.txtBusquedaNombre.Name = "txtBusquedaNombre";
-            this.txtBusquedaNombre.Size = new System.Drawing.Size(288, 36);
+            this.txtBusquedaNombre.Size = new System.Drawing.Size(193, 25);
             this.txtBusquedaNombre.TabIndex = 181;
             this.txtBusquedaNombre.Visible = false;
             // 
             // dgvClient
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClient.ContextMenuStrip = this.contextMenuStripClient;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvClient.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClient.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClient.EnableHeadersVisualStyles = false;
-            this.dgvClient.Location = new System.Drawing.Point(45, 92);
-            this.dgvClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvClient.Location = new System.Drawing.Point(30, 60);
             this.dgvClient.Name = "dgvClient";
             this.dgvClient.ReadOnly = true;
             this.dgvClient.RowHeadersWidth = 62;
             this.dgvClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClient.Size = new System.Drawing.Size(1150, 692);
+            this.dgvClient.Size = new System.Drawing.Size(767, 450);
             this.dgvClient.TabIndex = 180;
             // 
             // contextMenuStripClient
@@ -179,12 +199,12 @@
             this.contextMenuStripClient.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.verCuentasPorCobrarToolStripMenuItem});
             this.contextMenuStripClient.Name = "contextMenuStrip";
-            this.contextMenuStripClient.Size = new System.Drawing.Size(270, 36);
+            this.contextMenuStripClient.Size = new System.Drawing.Size(197, 26);
             // 
             // verCuentasPorCobrarToolStripMenuItem
             // 
             this.verCuentasPorCobrarToolStripMenuItem.Name = "verCuentasPorCobrarToolStripMenuItem";
-            this.verCuentasPorCobrarToolStripMenuItem.Size = new System.Drawing.Size(269, 32);
+            this.verCuentasPorCobrarToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.verCuentasPorCobrarToolStripMenuItem.Text = "Ver Cuentas por Cobrar";
             this.verCuentasPorCobrarToolStripMenuItem.Click += new System.EventHandler(this.verCuentasPorCobrarToolStripMenuItem_Click);
             // 
@@ -196,10 +216,9 @@
             this.tabCxC.Controls.Add(this.lblTitle);
             this.tabCxC.ImageIndex = 1;
             this.tabCxC.Location = new System.Drawing.Point(4, 39);
-            this.tabCxC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabCxC.Name = "tabCxC";
-            this.tabCxC.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabCxC.Size = new System.Drawing.Size(1223, 860);
+            this.tabCxC.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCxC.Size = new System.Drawing.Size(812, 544);
             this.tabCxC.TabIndex = 1;
             this.tabCxC.Text = "Cuentas x Cobrar ";
             this.tabCxC.ToolTipText = "Cuentas por Cobrar ";
@@ -212,11 +231,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtTotal);
-            this.groupBox1.Location = new System.Drawing.Point(4, 675);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(3, 439);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(1170, 135);
+            this.groupBox1.Size = new System.Drawing.Size(780, 88);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             // 
@@ -227,20 +244,18 @@
             this.btnnewCxC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnnewCxC.FlatAppearance.BorderSize = 2;
             this.btnnewCxC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnnewCxC.Location = new System.Drawing.Point(4, 54);
-            this.btnnewCxC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnnewCxC.Location = new System.Drawing.Point(3, 35);
             this.btnnewCxC.Name = "btnnewCxC";
-            this.btnnewCxC.Size = new System.Drawing.Size(72, 58);
+            this.btnnewCxC.Size = new System.Drawing.Size(48, 38);
             this.btnnewCxC.TabIndex = 18;
             this.btnnewCxC.UseVisualStyleBackColor = true;
             this.btnnewCxC.Click += new System.EventHandler(this.btnnewCxC_Click);
             // 
             // txtPendiente
             // 
-            this.txtPendiente.Location = new System.Drawing.Point(860, 82);
-            this.txtPendiente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPendiente.Location = new System.Drawing.Point(573, 53);
             this.txtPendiente.Name = "txtPendiente";
-            this.txtPendiente.Size = new System.Drawing.Size(228, 26);
+            this.txtPendiente.Size = new System.Drawing.Size(153, 20);
             this.txtPendiente.TabIndex = 8;
             // 
             // label1
@@ -248,10 +263,9 @@
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(698, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(465, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 31);
+            this.label1.Size = new System.Drawing.Size(82, 22);
             this.label1.TabIndex = 5;
             this.label1.Text = "Saldo Total";
             // 
@@ -260,61 +274,58 @@
             this.label2.AutoSize = true;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(916, 25);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(611, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 31);
+            this.label2.Size = new System.Drawing.Size(115, 22);
             this.label2.TabIndex = 7;
             this.label2.Text = "Saldo Pendiente";
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(602, 82);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTotal.Location = new System.Drawing.Point(401, 53);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(217, 26);
+            this.txtTotal.Size = new System.Drawing.Size(146, 20);
             this.txtTotal.TabIndex = 6;
             // 
             // Paneldgv
             // 
             this.Paneldgv.Controls.Add(this.dgvCxC);
-            this.Paneldgv.Location = new System.Drawing.Point(4, 128);
-            this.Paneldgv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Paneldgv.Location = new System.Drawing.Point(3, 83);
             this.Paneldgv.Name = "Paneldgv";
-            this.Paneldgv.Size = new System.Drawing.Size(1170, 538);
+            this.Paneldgv.Size = new System.Drawing.Size(780, 350);
             this.Paneldgv.TabIndex = 4;
             // 
             // dgvCxC
             // 
             this.dgvCxC.AllowDrop = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCxC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCxC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCxC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCxC.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCxC.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCxC.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCxC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCxC.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dgvCxC.EnableHeadersVisualStyles = false;
             this.dgvCxC.Location = new System.Drawing.Point(0, 0);
-            this.dgvCxC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvCxC.Name = "dgvCxC";
             this.dgvCxC.RowHeadersWidth = 62;
             this.dgvCxC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCxC.Size = new System.Drawing.Size(1170, 538);
+            this.dgvCxC.Size = new System.Drawing.Size(780, 350);
             this.dgvCxC.TabIndex = 181;
+            this.dgvCxC.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCxC_CellContentClick);
             this.dgvCxC.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCxC_CellContentDoubleClick);
             this.dgvCxC.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCxC_CellDoubleClick);
             this.dgvCxC.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCxC_CellEndEdit_1);
@@ -326,24 +337,25 @@
             this.abonarToolStripMenuItem,
             this.eliminarCuentaToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 68);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(159, 48);
             // 
             // abonarToolStripMenuItem
             // 
             this.abonarToolStripMenuItem.Name = "abonarToolStripMenuItem";
-            this.abonarToolStripMenuItem.Size = new System.Drawing.Size(206, 32);
+            this.abonarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.abonarToolStripMenuItem.Text = "Abonar";
             this.abonarToolStripMenuItem.Click += new System.EventHandler(this.abonarToolStripMenuItem_Click);
             // 
             // eliminarCuentaToolStripMenuItem
             // 
             this.eliminarCuentaToolStripMenuItem.Name = "eliminarCuentaToolStripMenuItem";
-            this.eliminarCuentaToolStripMenuItem.Size = new System.Drawing.Size(206, 32);
+            this.eliminarCuentaToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.eliminarCuentaToolStripMenuItem.Text = "Eliminar Cuenta";
             this.eliminarCuentaToolStripMenuItem.Click += new System.EventHandler(this.eliminarCuentaToolStripMenuItem_Click);
             // 
             // PanelDataClient
             // 
+            this.PanelDataClient.Controls.Add(this.button2);
             this.PanelDataClient.Controls.Add(this.txtCount);
             this.PanelDataClient.Controls.Add(this.pictureBox3);
             this.PanelDataClient.Controls.Add(this.txtName);
@@ -351,30 +363,37 @@
             this.PanelDataClient.Controls.Add(this.txtId);
             this.PanelDataClient.Controls.Add(this.pictureBox1);
             this.PanelDataClient.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelDataClient.Location = new System.Drawing.Point(4, 39);
-            this.PanelDataClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PanelDataClient.Location = new System.Drawing.Point(3, 26);
             this.PanelDataClient.Name = "PanelDataClient";
-            this.PanelDataClient.Size = new System.Drawing.Size(1215, 88);
+            this.PanelDataClient.Size = new System.Drawing.Size(806, 51);
             this.PanelDataClient.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(554, 10);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(138, 25);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Ver Estadísticas";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtCount
             // 
             this.txtCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCount.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCount.Location = new System.Drawing.Point(1011, 20);
-            this.txtCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCount.Location = new System.Drawing.Point(434, 10);
             this.txtCount.Name = "txtCount";
-            this.txtCount.Size = new System.Drawing.Size(217, 44);
+            this.txtCount.Size = new System.Drawing.Size(93, 32);
             this.txtCount.TabIndex = 6;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(906, 6);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox3.Location = new System.Drawing.Point(364, 1);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(96, 77);
+            this.pictureBox3.Size = new System.Drawing.Size(64, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
@@ -383,20 +402,18 @@
             // 
             this.txtName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtName.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(492, 20);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.Location = new System.Drawing.Point(226, 13);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(330, 44);
+            this.txtName.Size = new System.Drawing.Size(122, 32);
             this.txtName.TabIndex = 4;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(387, 5);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(156, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(96, 77);
+            this.pictureBox2.Size = new System.Drawing.Size(64, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
@@ -404,19 +421,17 @@
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(110, 20);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtId.Location = new System.Drawing.Point(73, 13);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(196, 44);
+            this.txtId.Size = new System.Drawing.Size(77, 32);
             this.txtId.TabIndex = 2;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(4, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(96, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(64, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -426,13 +441,48 @@
             this.lblTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTitle.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(4, 5);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitle.Location = new System.Drawing.Point(3, 3);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(1215, 34);
+            this.lblTitle.Size = new System.Drawing.Size(806, 23);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Cuentas por Cobrar";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tabEstadistica
+            // 
+            this.tabEstadistica.Controls.Add(this.groupBox2);
+            this.tabEstadistica.ImageKey = "credit.png";
+            this.tabEstadistica.Location = new System.Drawing.Point(4, 39);
+            this.tabEstadistica.Name = "tabEstadistica";
+            this.tabEstadistica.Size = new System.Drawing.Size(812, 544);
+            this.tabEstadistica.TabIndex = 2;
+            this.tabEstadistica.Text = "Estadística";
+            this.tabEstadistica.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.panel1);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(806, 529);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvEstadistica);
+            this.panel1.Location = new System.Drawing.Point(6, 13);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(794, 510);
+            this.panel1.TabIndex = 0;
+            // 
+            // dgvEstadistica
+            // 
+            this.dgvEstadistica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEstadistica.Location = new System.Drawing.Point(3, 6);
+            this.dgvEstadistica.Name = "dgvEstadistica";
+            this.dgvEstadistica.Size = new System.Drawing.Size(800, 470);
+            this.dgvEstadistica.TabIndex = 0;
             // 
             // imageList
             // 
@@ -448,12 +498,12 @@
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.contextMenuStrip2.Name = "contextMenuStrip";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(144, 36);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(114, 26);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 32);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
             this.toolStripMenuItem1.Text = "Abonar";
             // 
             // imageList1
@@ -465,27 +515,15 @@
             this.imageList1.Images.SetKeyName(2, "Update.png");
             this.imageList1.Images.SetKeyName(3, "Agregar.png");
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(390, 45);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(254, 41);
-            this.button1.TabIndex = 184;
-            this.button1.Text = "Ver Cuentas por Cobrar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmManagerCxC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1239, 1006);
+            this.ClientSize = new System.Drawing.Size(826, 654);
             this.Controls.Add(this.TabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "frmManagerCxC";
-            this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cuentas por Cobrar";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManagerCxC_FormClosing);
@@ -505,6 +543,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabEstadistica.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstadistica)).EndInit();
             this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -545,5 +587,10 @@
         private System.Windows.Forms.TextBox txtBusquedaNombre2;
         public System.Windows.Forms.DataGridView dgvCxC;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage tabEstadistica;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgvEstadistica;
+        private System.Windows.Forms.Button button2;
     }
 }

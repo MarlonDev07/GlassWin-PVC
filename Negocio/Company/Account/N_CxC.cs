@@ -29,6 +29,19 @@ namespace Negocio.Company.Account
             return _CxC.UpdateCxC(IdAccount, IdBill, InitialAmount, OutstandingBalance);
         }
 
+        public bool InsertPayment(int IdAccount, int IdBill, decimal PaymentAmount)
+        {
+            return _CxC.InsertPayment(IdAccount, IdBill, PaymentAmount);
+        }
+
+        public DataTable ShowStatistics(int IdAccount)
+        {
+            return _CxC.LoadPayments(IdAccount);
+    
+        }
+
+
+
         public DataTable FindCxCforClient(int IdClient)
         {
             return _CxC.FindCxCforClient(IdClient);

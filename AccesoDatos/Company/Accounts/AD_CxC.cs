@@ -75,6 +75,45 @@ namespace AccesoDatos.Company.Bill.Accounts
                 return false;
             }
         }
+
+        public bool InsertPayment(int IdAccount, int IdBill, decimal PaymentAmount)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = Cnn.OpenConecction();
+                cmd.CommandText = "INSERT INTO PaymentsStatistics (IdAccount, IdBill, PaymentAmount, PaymentDate) VALUES (@IdAccount, @IdBill, @PaymentAmount, GETDATE())";
+                cmd.Parameters.AddWithValue("@IdAccount", IdAccount);
+                cmd.Parameters.AddWithValue("@IdBill", IdBill);
+                cmd.Parameters.AddWithValue("@PaymentAmount", PaymentAmount);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                Cnn.CloseConnection();
+
+                return rowsAffected > 0; // Retorna true si se insertó al menos una fila
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public DataTable LoadPayments(int IdAccount)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = Cnn.OpenConecction();
+            cmd.CommandText = "SELECT * FROM [PaymentsStatistics] WHERE IdAccount = @IdAccount";
+            cmd.Parameters.AddWithValue("@IdAccount", IdAccount);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            Cnn.CloseConnection();
+            return dt;
+        }
+
+
+
         public DataTable FindCxCforClient(int IdClient)
         {
             try
