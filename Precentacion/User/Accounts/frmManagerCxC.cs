@@ -9,6 +9,7 @@ using Negocio.Company.Bill;
 using Precentacion.User.DashBoard;
 using System;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -33,6 +34,15 @@ namespace Precentacion.User.Accounts
             AccountsUI.loadMaterial(this);
             //HideLastTab();
             //LoadCxC();
+            // Obtener la altura de la pantalla
+            int screenHeight = Screen.PrimaryScreen.WorkingArea.Height;
+
+            // Establecer la altura del formulario al tamaño de la pantalla
+            this.Height = screenHeight;
+
+            // Asegurarse de que el formulario no se haga más ancho
+            this.MaximumSize = new Size(this.Width, screenHeight);
+            this.MinimumSize = new Size(this.Width, screenHeight);
         }
         #endregion
         private void HideLastTab()
@@ -472,7 +482,7 @@ namespace Precentacion.User.Accounts
                 {
                     // Agregar una imagen al documento
                     string imagePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Firma\\Firma Reiner.jpeg";
-                    Image img = Image.GetInstance(imagePath);
+                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(imagePath);
                     img.ScaleToFit(200, 200); // Ajustar el tamaño de la imagen
                     img.Alignment = Element.ALIGN_CENTER; // Alinear la imagen al centro
                     document.Add(img); // Agregar la imagen al documento
@@ -673,18 +683,17 @@ namespace Precentacion.User.Accounts
             // Obtener el Id Cuenta seleccionado en dgvCxC
             if (dgvCxC.SelectedRows.Count > 0)
             {
-                int IdAccount = Convert.ToInt32(dgvCxC.SelectedRows[0].Cells[0].Value); // Suponiendo que el Id Cuenta está en la primera columna
-                LoadStatistics(IdAccount); // Cargar estadísticas en dgvEstadistica
+                int IdClient = Convert.ToInt32(txtId.Text); // Suponiendo que el Id Cuenta está en la primera columna
+                LoadStatistics(IdClient); // Cargar estadísticas en dgvEstadistica
             }
             else {
                 MessageBox.Show("Por favor, seleccione un cliente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void LoadStatistics(int IdAccount)
+        private void LoadStatistics(int IdClientt)
         {
-           
-            DataTable dt = N_CxC.ShowStatistics(IdAccount); // Cargar datos desde la capa de negocios
+            DataTable dt = N_CxC.ShowStatistics(IdClientt); // Cargar datos desde la capa de negocios
 
             dgvEstadistica.DataSource = dt; // Asignar el DataTable como DataSource del DataGridView
 
@@ -699,6 +708,24 @@ namespace Precentacion.User.Accounts
 
             // Configurar selección de filas completa
             dgvEstadistica.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Calcular y mostrar el total de los pagos
+            CalculateTotalPayments();
+        }
+
+        private void CalculateTotalPayments()
+        {
+            decimal totalPayments = 0;
+
+            foreach (DataGridViewRow row in dgvEstadistica.Rows)
+            {
+                if (row.Cells["PaymentAmount"].Value != DBNull.Value)
+                {
+                    totalPayments += Convert.ToDecimal(row.Cells["PaymentAmount"].Value);
+                }
+            }
+
+            txtTotalRecibo.Text = totalPayments.ToString("C"); // Formato de moneda
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -706,8 +733,8 @@ namespace Precentacion.User.Accounts
             // Obtener el Id Cuenta seleccionado en dgvCxC
             if (dgvCxC.SelectedRows.Count > 0)
             {
-                int IdAccount = Convert.ToInt32(dgvCxC.SelectedRows[0].Cells[0].Value); // Suponiendo que el Id Cuenta está en la primera columna
-                LoadStatistics(IdAccount); // Cargar estadísticas en dgvEstadistica
+                int IdClient = Convert.ToInt32(txtId.Text);
+                LoadStatistics(IdClient); // Cargar estadísticas en dgvEstadistica
             }
             else
             {
@@ -726,8 +753,8 @@ namespace Precentacion.User.Accounts
             }
             else
             {
-                int IdAccount = Convert.ToInt32(dgvCxC.SelectedRows[0].Cells[0].Value);
-                LoadStatistics(IdAccount); // Cargar estadísticas en dgvEstadistica
+                int IdClient = Convert.ToInt32(txtId.Text);
+                LoadStatistics(IdClient); // Cargar estadísticas en dgvEstadistica
             }
         }
 
@@ -744,8 +771,8 @@ namespace Precentacion.User.Accounts
                 }
                 else
                 {
-                    int IdAccount = Convert.ToInt32(dgvCxC.SelectedRows[0].Cells[0].Value);
-                    LoadStatistics(IdAccount); // Cargar estadísticas en dgvEstadistica
+                    int IdClient = Convert.ToInt32(txtId.Text);
+                    LoadStatistics(IdClient); // Cargar estadísticas en dgvEstadistica
                 }
             }
         }

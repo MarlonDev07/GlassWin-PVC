@@ -99,13 +99,21 @@ namespace AccesoDatos.Company.Bill.Accounts
             }
         }
 
-        public DataTable LoadPayments(int IdAccount)
+        public DataTable LoadPayments(int IdClient)
         {
             DataTable dt = new DataTable();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = Cnn.OpenConecction();
-            cmd.CommandText = "SELECT * FROM [PaymentsStatistics] WHERE IdAccount = @IdAccount";
-            cmd.Parameters.AddWithValue("@IdAccount", IdAccount);
+            cmd.CommandText = @"
+        SELECT ps.PaymentId,
+               ps.IdAccount,
+               ps.IdBill,
+               ps.PaymentAmount,
+               ps.PaymentDate
+        FROM PaymentsStatistics ps
+        INNER JOIN Bill b ON ps.IdBill = b.IdBill
+        WHERE b.IdClient = @IdClient";
+            cmd.Parameters.AddWithValue("@IdClient", IdClient);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             Cnn.CloseConnection();

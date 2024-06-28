@@ -34,9 +34,9 @@ namespace Negocio.Company.Account
             return _CxC.InsertPayment(IdAccount, IdBill, PaymentAmount);
         }
 
-        public DataTable ShowStatistics(int IdAccount)
+        public DataTable ShowStatistics(int IdClient)
         {
-            return _CxC.LoadPayments(IdAccount);
+            return _CxC.LoadPayments(IdClient);
     
         }
 
