@@ -1,4 +1,5 @@
 ﻿using Dominio.Model.ClassWindows;
+using Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceVentanasFijas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

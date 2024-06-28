@@ -235,7 +235,7 @@
             this.tabNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabNew.Name = "tabNew";
             this.tabNew.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabNew.Size = new System.Drawing.Size(1220, 852);
+            this.tabNew.Size = new System.Drawing.Size(1222, 852);
             this.tabNew.TabIndex = 1;
             this.tabNew.Text = "Nuevo";
             this.tabNew.UseVisualStyleBackColor = true;
@@ -296,7 +296,7 @@
             this.label10.Location = new System.Drawing.Point(627, 340);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(225, 52);
+            this.label10.Size = new System.Drawing.Size(83, 52);
             this.label10.TabIndex = 15;
             this.label10.Text = "Días";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -476,7 +476,7 @@
             this.lblTitleNew.Location = new System.Drawing.Point(4, 5);
             this.lblTitleNew.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitleNew.Name = "lblTitleNew";
-            this.lblTitleNew.Size = new System.Drawing.Size(1212, 64);
+            this.lblTitleNew.Size = new System.Drawing.Size(1214, 64);
             this.lblTitleNew.TabIndex = 0;
             this.lblTitleNew.Text = "Nuevo Cliente";
             this.lblTitleNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -489,7 +489,7 @@
             this.tabEdit.Location = new System.Drawing.Point(4, 32);
             this.tabEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabEdit.Name = "tabEdit";
-            this.tabEdit.Size = new System.Drawing.Size(1220, 852);
+            this.tabEdit.Size = new System.Drawing.Size(1222, 852);
             this.tabEdit.TabIndex = 2;
             this.tabEdit.Text = "Editar";
             this.tabEdit.UseVisualStyleBackColor = true;
@@ -740,7 +740,7 @@
             this.lblTitleEdit.Location = new System.Drawing.Point(0, 0);
             this.lblTitleEdit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitleEdit.Name = "lblTitleEdit";
-            this.lblTitleEdit.Size = new System.Drawing.Size(1220, 64);
+            this.lblTitleEdit.Size = new System.Drawing.Size(1222, 64);
             this.lblTitleEdit.TabIndex = 2;
             this.lblTitleEdit.Text = "Editar Cliente";
             this.lblTitleEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -754,7 +754,7 @@
             this.tabPageEstadistica.Location = new System.Drawing.Point(4, 32);
             this.tabPageEstadistica.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPageEstadistica.Name = "tabPageEstadistica";
-            this.tabPageEstadistica.Size = new System.Drawing.Size(1220, 852);
+            this.tabPageEstadistica.Size = new System.Drawing.Size(1222, 852);
             this.tabPageEstadistica.TabIndex = 3;
             this.tabPageEstadistica.Text = "Estadistica";
             this.tabPageEstadistica.UseVisualStyleBackColor = true;

@@ -180,29 +180,42 @@ namespace Precentacion.User.Client
         private bool ValidateNewClient()
         {
             // Validar que los campos no estén vacíos
-            if (txtName.Text != "" && txtPhone.Text != "" && txtAddress.Text != "" && txtLimiteCredito.Text != "")
+            if (txtName.Text != "" && txtPhone.Text != "")
             {
                 return true;
             }
             else
             {
-                MessageBox.Show("Debe llenar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe incluir al menos un nombre y el número de teléfono.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
 
         private bool NewClient()
         {
-            string name = txtName.Text;
-            string phone = txtPhone.Text;
-            string address = txtAddress.Text;
-            string email = txtEmail.Text;
-            string limite = txtLimiteCredito.Text;
-            DateTime fechaVencimiento = dtpFechaVencimiento.Value;
-            int dias = string.IsNullOrEmpty(txtDias.Text) ? 0 : Convert.ToInt32(txtDias.Text);
+            try
+            {
+                // Verificar si los TextBox están vacíos y asignar valores predeterminados
+                string name = string.IsNullOrEmpty(txtName.Text) ? " " : txtName.Text;
+                string phone = string.IsNullOrEmpty(txtPhone.Text) ? " " : txtPhone.Text;
+                string address = string.IsNullOrEmpty(txtAddress.Text) ? " " : txtAddress.Text;
+                string email = string.IsNullOrEmpty(txtEmail.Text) ? " " : txtEmail.Text;
+                string limite = string.IsNullOrEmpty(txtLimiteCredito.Text) ? "0" : txtLimiteCredito.Text;
+                DateTime fechaVencimiento = dtpFechaVencimiento.Value;
+                int dias = string.IsNullOrEmpty(txtDias.Text) ? 0 : Convert.ToInt32(txtDias.Text);
 
-            return NClient.Create(name, phone, address, email, limite, fechaVencimiento, dias);
+                return NClient.Create(name, phone, address, email, limite, fechaVencimiento, dias);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Asegúrese de ingresar al menos el nombre y el teléfono.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            
         }
+
 
         private void CleanNewClient()
         {
