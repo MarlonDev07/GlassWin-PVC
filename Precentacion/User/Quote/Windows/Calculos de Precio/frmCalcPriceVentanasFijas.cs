@@ -166,7 +166,7 @@ namespace Precentacion.User.Quote.Windows
         #region Botones
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            if (ValidarCampos()) 
+            if (ValidarCampos())
             {
                 DataTable dtAluminio = n_LoadProduct.loadAluminioVentanaFija(cbColor.Text, ClsWindows.System, cbSupplier.Text, cbAluminio.Text);
                 DataTable dtVidrio = n_LoadProduct.loadPricesGlass(cbSupplier.Text, cbVidrio.Text);
@@ -179,7 +179,7 @@ namespace Precentacion.User.Quote.Windows
                 Vidriodt.DataSource = dtVidrio;
 
                 CargarPrecio();
-            }         
+            }
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -350,51 +350,45 @@ namespace Precentacion.User.Quote.Windows
         {
             try
             {
-                Decimal PrecioAluminio = 0;
-               //Obtener Precios de los DataGrid
-               for (int i = 0; i < Aluminiodt.Rows.Count; i++)
-               {
-                    //Validar que sea la ultima fila
+                decimal PrecioAluminio = 0;
+                for (int i = 0; i < Aluminiodt.Rows.Count; i++)
+                {
                     if (i != Aluminiodt.Rows.Count - 1)
                     {
-                        PrecioAluminio = PrecioAluminio + Convert.ToDecimal(Aluminiodt.Rows[i].Cells[3].Value.ToString());
-                    }
-               }
-               Decimal PrecioVidrio = 0;
-               for (int i = 0; i < Vidriodt.Rows.Count; i++)
-               {
-                    //Validar que sea la ultima fila
-                    if (i != Vidriodt.Rows.Count - 1)
-                    {
-                        PrecioVidrio = Convert.ToDecimal(Vidriodt.Rows[i].Cells[3].Value.ToString());
-                    }
-               }
-               decimal Accesorios = 0;
-                for(int i = 0; i < dgvAccesorios.Rows.Count; i++)
-                {
-                    //Validar que sea la ultima fila
-                    if (i != dgvAccesorios.Rows.Count - 1)
-                    {
-                        Accesorios = Accesorios + Convert.ToDecimal(dgvAccesorios.Rows[i].Cells[3].Value.ToString());
+                        PrecioAluminio += Convert.ToDecimal(Aluminiodt.Rows[i].Cells[3].Value.ToString());
                     }
                 }
-               decimal Subtotal = PrecioAluminio + PrecioVidrio + Accesorios;
 
-                //Cargar el Ajuste de Precio
-                string Descripcion = ClsWindows.System+ClsWindows.Desing;
-              
-                //Añadir el Tipo de Color
-                Descripcion += cbColor.Text;
+                decimal PrecioVidrio = 0;
+                for (int i = 0; i < Vidriodt.Rows.Count; i++)
+                {
+                    if (i != Vidriodt.Rows.Count - 1)
+                    {
+                        PrecioVidrio += Convert.ToDecimal(Vidriodt.Rows[i].Cells[3].Value.ToString());
+                    }
+                }
 
+                decimal Accesorios = 0;
+                for (int i = 0; i < dgvAccesorios.Rows.Count; i++)
+                {
+                    if (i != dgvAccesorios.Rows.Count - 1)
+                    {
+                        Accesorios += Convert.ToDecimal(dgvAccesorios.Rows[i].Cells[3].Value.ToString());
+                    }
+                }
+
+                decimal Subtotal = PrecioAluminio + PrecioVidrio + Accesorios;
+
+                string Descripcion = ClsWindows.System + ClsWindows.Desing + cbColor.Text;
                 decimal Ajuste = n_LoadProduct.LoadAjustePrecio(cbSupplier.Text, Descripcion);
 
-                //Calcular Precio Total
                 PrecioTotal = Subtotal + (Subtotal * Ajuste);
-                txtTotal.Text = PrecioTotal.ToString("c");
+                TempPrecio = PrecioTotal * Convert.ToDecimal(txtCantidad.Value);
+                txtTotal.Text = TempPrecio.ToString("c");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("No se Encontro el Precio", "Precio no Disponible", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No se encontró el precio: " + ex.Message, "Precio no disponible", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         #endregion
@@ -610,9 +604,9 @@ namespace Precentacion.User.Quote.Windows
 
         private void txtCantidad_ValueChanged(object sender, EventArgs e)
         {
-            TempPrecio = 0;
+            /*TempPrecio = 0;
             TempPrecio = PrecioTotal * Convert.ToDecimal(txtCantidad.Value);
-            txtTotal.Text = TempPrecio.ToString();
+            txtTotal.Text = TempPrecio.ToString();*/
         }
 
         private void lblDescripcion_Click(object sender, EventArgs e)
@@ -637,46 +631,60 @@ namespace Precentacion.User.Quote.Windows
             }
         }
 
+        private bool isUpdatingText = false;
+
         private void txtTotal_TextChanged(object sender, EventArgs e)
         {
+            if (isUpdatingText) return;
+
             try
             {
-                if(TempPrecio != 0) 
+                isUpdatingText = true;
+
+                if (TempPrecio != 0)
                 {
-                    if (txtTotal.Text != "")
+                    if (!string.IsNullOrWhiteSpace(txtTotal.Text))
                     {
-                        //Validar que solo se ingresen numeros, Puntos y Comas
-                        if (System.Text.RegularExpressions.Regex.IsMatch(txtTotal.Text, "[^0-9^.^,]"))
+                        // Permitir números, puntos, comas, espacios y el símbolo de colón "₡"
+                        if (System.Text.RegularExpressions.Regex.IsMatch(txtTotal.Text, @"[^0-9^.^,₡\s]"))
                         {
-                            MessageBox.Show("Por Favor Solo Ingrese Numeros", "Solo Numeros", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtTotal.Text = txtTotal.Text.Remove(txtTotal.Text.Length - 1);
+                            MessageBox.Show("Por favor, solo ingrese números", "Solo números", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtTotal.Text = txtTotal.Text.Substring(0, txtTotal.Text.Length - 1);
                             txtTotal.SelectionStart = txtTotal.Text.Length;
                         }
                         else
                         {
-                            //Verificar si hay un punto y cambiarlo por una coma
-                            if (txtTotal.Text.Contains("."))
+                            // Remover el símbolo de colón para la conversión a decimal
+                            string cleanText = txtTotal.Text.Replace("₡", "").Trim();
+                            if (cleanText.Contains("."))
                             {
-                                txtTotal.Text = txtTotal.Text.Replace(".", ",");
+                                cleanText = cleanText.Replace(".", ",");
+                                txtTotal.Text = "₡ " + cleanText;
                                 txtTotal.SelectionStart = txtTotal.Text.Length;
-                                PrecioTotal = Convert.ToDecimal(txtTotal.Text);
+                                PrecioTotal = Convert.ToDecimal(cleanText);
                             }
                             else
                             {
-                                PrecioTotal = Convert.ToDecimal(txtTotal.Text);
+                                PrecioTotal = Convert.ToDecimal(cleanText);
+                                txtTotal.Text = "₡ " + PrecioTotal.ToString("N2");
                             }
                         }
                     }
                     else
                     {
-                        txtTotal.Text = TempPrecio.ToString();
+                        txtTotal.Text = "₡ " + TempPrecio.ToString("N2");
                     }
                 }
             }
-            catch (Exception EX)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al Ingresar el Precio: "+EX.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error al ingresar el precio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                isUpdatingText = false;
             }
         }
+
     }
 }

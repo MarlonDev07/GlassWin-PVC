@@ -497,9 +497,9 @@
             this.panelDetalle.Controls.Add(this.Vidriodt);
             this.panelDetalle.Controls.Add(this.button2);
             this.panelDetalle.Controls.Add(this.Aluminiodt);
-            this.panelDetalle.Location = new System.Drawing.Point(193, 64);
+            this.panelDetalle.Location = new System.Drawing.Point(-3, 64);
             this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1159, 653);
+            this.panelDetalle.Size = new System.Drawing.Size(1162, 653);
             this.panelDetalle.TabIndex = 73;
             this.panelDetalle.Visible = false;
             // 
@@ -554,7 +554,7 @@
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(1159, 25);
+            this.label10.Size = new System.Drawing.Size(1162, 25);
             this.label10.TabIndex = 74;
             this.label10.Text = "Detalle";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -577,7 +577,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(516, 516);
+            this.button2.Location = new System.Drawing.Point(518, 516);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(129, 45);
             this.button2.TabIndex = 72;
