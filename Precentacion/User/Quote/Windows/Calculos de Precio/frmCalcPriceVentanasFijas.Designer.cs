@@ -612,6 +612,8 @@
             this.Name = "frmCalcPriceVentanasFijas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cotizador de Ventanas Fijas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCalcPriceVentanasFijas_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCalcPriceVentanasFijas_FormClosed);
             this.PanelMedidas.ResumeLayout(false);
             this.PanelMedidas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();

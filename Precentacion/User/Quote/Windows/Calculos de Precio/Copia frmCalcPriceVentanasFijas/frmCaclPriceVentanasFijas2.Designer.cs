@@ -580,6 +580,7 @@
             this.Name = "frmCaclPriceVentanasFijas2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cotizador de Ventanas Fijas - COPIA";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCaclPriceVentanasFijas2_FormClosing);
             this.Load += new System.EventHandler(this.frmCaclPriceVentanasFijas2_Load);
             this.PanelMedidas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();

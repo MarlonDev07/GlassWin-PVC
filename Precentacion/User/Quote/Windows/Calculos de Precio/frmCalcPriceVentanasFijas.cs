@@ -2,6 +2,7 @@
 using Negocio.LoadProduct;
 using Negocio.Proveedor;
 using Precentacion.User.Quote.Quote;
+using Precentacion.User.Quote.Windows.Seleccion_Diseño;
 using System;
 using System.Data;
 using System.Drawing;
@@ -683,6 +684,35 @@ namespace Precentacion.User.Quote.Windows
             finally
             {
                 isUpdatingText = false;
+            }
+        }
+
+        private void frmCalcPriceVentanasFijas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
+
+        private void frmCalcPriceVentanasFijas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (panelDetalle.Visible == true)
+            {
+                MessageBox.Show("Pulse el botón 'Salir' en la parte inferior de este formulario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Cancel = true; // Cancel the closing event
+            }
+            else
+            {
+                switch (ClsWindows.Desing)
+                {
+                    case "1Fijo":
+                    case "2Fijo":
+                    case "3Fijo":
+                    case "4Fijo":
+                    case "5Fijo":
+                    case "6Fijo":
+                        frmSelecDesingVentanaFija frm = new frmSelecDesingVentanaFija();
+                        frm.Show();
+                        break;
+                }
             }
         }
 
