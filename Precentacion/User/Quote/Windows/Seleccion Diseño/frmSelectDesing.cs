@@ -197,5 +197,10 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();
         }
+
+        private void frmSelectDesing_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+           
+        }
     }
 }

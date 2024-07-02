@@ -44,10 +44,10 @@
             // 
             this.panelContenedor.AutoScroll = true;
             this.panelContenedor.Controls.Add(this.pSeleccionarPL);
-            this.panelContenedor.Location = new System.Drawing.Point(8, 126);
-            this.panelContenedor.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.panelContenedor.Location = new System.Drawing.Point(5, 82);
+            this.panelContenedor.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1185, 395);
+            this.panelContenedor.Size = new System.Drawing.Size(790, 257);
             this.panelContenedor.TabIndex = 1;
             // 
             // pSeleccionarPL
@@ -58,10 +58,10 @@
             this.pSeleccionarPL.Controls.Add(this.btn1HojaDivicion);
             this.pSeleccionarPL.Controls.Add(this.btn2Hoja);
             this.pSeleccionarPL.Controls.Add(this.btn1Hoja);
-            this.pSeleccionarPL.Location = new System.Drawing.Point(3, 8);
-            this.pSeleccionarPL.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pSeleccionarPL.Location = new System.Drawing.Point(2, 5);
+            this.pSeleccionarPL.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pSeleccionarPL.Name = "pSeleccionarPL";
-            this.pSeleccionarPL.Size = new System.Drawing.Size(1724, 356);
+            this.pSeleccionarPL.Size = new System.Drawing.Size(1151, 233);
             this.pSeleccionarPL.TabIndex = 0;
             // 
             // btnHojaDivicion
@@ -71,10 +71,10 @@
             this.btnHojaDivicion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHojaDivicion.BackgroundImage")));
             this.btnHojaDivicion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHojaDivicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHojaDivicion.Location = new System.Drawing.Point(1236, 22);
-            this.btnHojaDivicion.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnHojaDivicion.Location = new System.Drawing.Point(824, 14);
+            this.btnHojaDivicion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnHojaDivicion.Name = "btnHojaDivicion";
-            this.btnHojaDivicion.Size = new System.Drawing.Size(252, 309);
+            this.btnHojaDivicion.Size = new System.Drawing.Size(168, 201);
             this.btnHojaDivicion.TabIndex = 38;
             this.btnHojaDivicion.UseVisualStyleBackColor = false;
             this.btnHojaDivicion.Click += new System.EventHandler(this.btnHojaDivicion_Click);
@@ -86,10 +86,10 @@
             this.btn1HojaDivicion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn1HojaDivicion.BackgroundImage")));
             this.btn1HojaDivicion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn1HojaDivicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1HojaDivicion.Location = new System.Drawing.Point(456, 22);
-            this.btn1HojaDivicion.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btn1HojaDivicion.Location = new System.Drawing.Point(304, 14);
+            this.btn1HojaDivicion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn1HojaDivicion.Name = "btn1HojaDivicion";
-            this.btn1HojaDivicion.Size = new System.Drawing.Size(207, 309);
+            this.btn1HojaDivicion.Size = new System.Drawing.Size(138, 201);
             this.btn1HojaDivicion.TabIndex = 37;
             this.btn1HojaDivicion.UseVisualStyleBackColor = false;
             this.btn1HojaDivicion.Click += new System.EventHandler(this.btn1HojaDivicion_Click);
@@ -101,10 +101,10 @@
             this.btn2Hoja.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn2Hoja.BackgroundImage")));
             this.btn2Hoja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn2Hoja.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn2Hoja.Location = new System.Drawing.Point(843, 22);
-            this.btn2Hoja.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btn2Hoja.Location = new System.Drawing.Point(562, 14);
+            this.btn2Hoja.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn2Hoja.Name = "btn2Hoja";
-            this.btn2Hoja.Size = new System.Drawing.Size(252, 309);
+            this.btn2Hoja.Size = new System.Drawing.Size(168, 201);
             this.btn2Hoja.TabIndex = 36;
             this.btn2Hoja.UseVisualStyleBackColor = false;
             this.btn2Hoja.Click += new System.EventHandler(this.btn2Hoja_Click);
@@ -116,10 +116,10 @@
             this.btn1Hoja.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn1Hoja.BackgroundImage")));
             this.btn1Hoja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn1Hoja.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1Hoja.Location = new System.Drawing.Point(60, 22);
-            this.btn1Hoja.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btn1Hoja.Location = new System.Drawing.Point(40, 14);
+            this.btn1Hoja.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn1Hoja.Name = "btn1Hoja";
-            this.btn1Hoja.Size = new System.Drawing.Size(214, 309);
+            this.btn1Hoja.Size = new System.Drawing.Size(143, 201);
             this.btn1Hoja.TabIndex = 35;
             this.btn1Hoja.UseVisualStyleBackColor = false;
             this.btn1Hoja.Click += new System.EventHandler(this.btn1Fijo_Click);
@@ -132,27 +132,25 @@
             this.btnBackSistema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBackSistema.FlatAppearance.BorderSize = 0;
             this.btnBackSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackSistema.Location = new System.Drawing.Point(1110, 518);
-            this.btnBackSistema.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBackSistema.Location = new System.Drawing.Point(740, 337);
             this.btnBackSistema.Name = "btnBackSistema";
-            this.btnBackSistema.Size = new System.Drawing.Size(82, 78);
+            this.btnBackSistema.Size = new System.Drawing.Size(55, 51);
             this.btnBackSistema.TabIndex = 43;
             this.btnBackSistema.UseVisualStyleBackColor = false;
             this.btnBackSistema.Click += new System.EventHandler(this.btnBackSistema_Click);
             // 
             // frmSelecDesingPuertLujo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 622);
+            this.ClientSize = new System.Drawing.Size(800, 404);
             this.Controls.Add(this.btnBackSistema);
             this.Controls.Add(this.panelContenedor);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "frmSelecDesingPuertLujo";
-            this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccionar Diseño Puerta Lujo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSelecDesingPuertLujo_FormClosing_1);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmSelecDesingPuertLujo_FormClosed);
             this.Load += new System.EventHandler(this.frmSelecDesingPuertLujo_Load);
             this.panelContenedor.ResumeLayout(false);

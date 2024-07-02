@@ -220,5 +220,10 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();
         }
+
+        private void frmSelectDesingVentila_FormClosing(object sender, FormClosingEventArgs e)
+        {
+          
+        }
     }
 }

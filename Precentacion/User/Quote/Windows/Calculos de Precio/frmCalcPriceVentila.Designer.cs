@@ -559,6 +559,7 @@
             this.MaximizeBox = false;
             this.Name = "frmCalcPriceVentila";
             this.Text = "Cotizador Ventila con Fijos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCalcPriceVentila_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbVentila)).EndInit();
             this.PanelMedidas.ResumeLayout(false);
             this.PanelMedidas.PerformLayout();

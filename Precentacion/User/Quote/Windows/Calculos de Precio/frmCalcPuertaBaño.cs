@@ -11,6 +11,7 @@ using System.Linq;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using Negocio.Proveedor;
+using Precentacion.User.Quote.Windows.Seleccion_Diseño;
 
 namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 {
@@ -301,12 +302,12 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         #region Metodos
         private bool ValidarCampos() 
         {
-            if (txtAncho.Text == string.Empty)
+            /*if (txtAncho.Text == string.Empty)
             {
                MessageBox.Show("Debe ingresar el ancho de la puerta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtAncho.Focus();
                 return false;
-            }
+            }*/
             if (txtAnchoPanel.Text == string.Empty)
             {
                 MessageBox.Show("Debe ingresar el ancho del panel", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -467,6 +468,28 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         private void btnOcultar_Click_1(object sender, EventArgs e)
         {
             panelDesglose.Visible = false;
+        }
+
+    
+
+        private void frmCalcPuertaBaño_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (panelDesglose.Visible == true)
+            {
+                MessageBox.Show("Pulse el botón 'Salir' en la parte inferior de este formulario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Cancel = true; // Cancel the closing event
+            }
+            else
+            {
+                switch (design2)
+                {
+                    case "MovilMovil":
+                    case "FijoMovilMovil":
+                        frmSelectDiseñoPuertaBaño frm = new frmSelectDiseñoPuertaBaño();
+                        frm.Show();
+                        break;
+                }
+            }
         }
     }
 }

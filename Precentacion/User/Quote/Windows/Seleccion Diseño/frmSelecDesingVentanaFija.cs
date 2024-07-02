@@ -85,10 +85,9 @@ namespace Precentacion.User.Quote.Windows
             this.Close();
         }
 
-        private void frmSelecDesingVentanaFija_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmSelecDesingVentanaFija_FormClosing_1(object sender, FormClosingEventArgs e)
         {
-            frmSelectSystem frm = new frmSelectSystem();
-            frm.Show();
+           //btnBackSistema_Click(sender, e);
         }
     }
 }

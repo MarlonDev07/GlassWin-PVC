@@ -44,5 +44,10 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
             frm.Show();
             this.Close();
         }
+
+        private void frmSelecDesingCedazo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
     }
 }

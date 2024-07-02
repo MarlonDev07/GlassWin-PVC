@@ -128,6 +128,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSelecDesingCedazo";
             this.Text = "Seleccion de Diseño para Cedazo Akari";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSelecDesingCedazo_FormClosing);
             this.panel12.ResumeLayout(false);
             this.PanelSeleccionDiseño.ResumeLayout(false);
             this.ResumeLayout(false);

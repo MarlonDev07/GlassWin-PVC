@@ -358,5 +358,25 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         {
 
         }
+
+        private void frmCalcPriceVentila_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (panelDetalle.Visible == true)
+            {
+                MessageBox.Show("Pulse el botón 'Salir' en la parte inferior de este formulario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Cancel = true; // Cancel the closing event
+            }
+            else
+            {
+                switch (ClsWindows.Desing)
+                {
+                    case "Ventila1Fijo":
+                    case "1 Hoja Horizontal 1Fijo":
+                        frmSelectDesingVentila frm = new frmSelectDesingVentila();
+                        frm.Show();
+                        break;
+                }
+            }
+        }
     }
 }

@@ -119,5 +119,10 @@ namespace Precentacion.User.Quote.Windows
         {
             //OpenCalcPriceWindows("2 Hoja DEA");
         }
+
+        private void frmSelecDesingPuertLujo_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+          
+        }
     }
 }

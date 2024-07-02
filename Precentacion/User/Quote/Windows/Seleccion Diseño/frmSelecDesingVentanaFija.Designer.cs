@@ -192,6 +192,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Seleccion de Diseño";
             this.TransparencyKey = System.Drawing.Color.Black;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSelecDesingVentanaFija_FormClosing_1);
             this.Load += new System.EventHandler(this.frmSelecDesingVentanaFija_Load);
             this.pSelVen.ResumeLayout(false);
             this.panelContenedor.ResumeLayout(false);

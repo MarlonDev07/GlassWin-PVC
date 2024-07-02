@@ -114,6 +114,7 @@
             this.Name = "frmSelectDiseñoPuertaBaño";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccion de Diseño";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSelectDiseñoPuertaBaño_FormClosing);
             this.panel1.ResumeLayout(false);
             this.PanelSeleccionDiseño.ResumeLayout(false);
             this.ResumeLayout(false);

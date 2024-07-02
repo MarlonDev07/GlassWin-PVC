@@ -44,5 +44,10 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
             frm.Show();
             this.Close();
         }
+
+        private void frmSelectDiseñoPuertaBaño_FormClosing(object sender, FormClosingEventArgs e)
+        {
+         
+        }
     }
 }
