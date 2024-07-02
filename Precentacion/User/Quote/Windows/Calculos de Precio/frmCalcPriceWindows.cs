@@ -2488,5 +2488,10 @@ namespace Precentacion.User.Quote.Windows
             PanelDetalle.Visible = false;
             PanelMedidas.Visible = true;
         }
+
+        private void button2_Click_4(object sender, EventArgs e)
+        {
+            PanelDetalle.Visible=false;
+        }
     }
 }

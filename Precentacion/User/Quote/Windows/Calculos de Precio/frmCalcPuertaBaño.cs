@@ -463,5 +463,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         {
 
         }
+
+        private void btnOcultar_Click_1(object sender, EventArgs e)
+        {
+            panelDesglose.Visible = false;
+        }
     }
 }

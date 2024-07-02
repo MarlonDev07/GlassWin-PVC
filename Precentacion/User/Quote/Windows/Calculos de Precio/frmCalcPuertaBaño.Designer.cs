@@ -471,7 +471,7 @@
             // txtUbicacion
             // 
             this.txtUbicacion.Location = new System.Drawing.Point(934, 36);
-            this.txtUbicacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUbicacion.Margin = new System.Windows.Forms.Padding(2);
             this.txtUbicacion.Multiline = true;
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(93, 16);
@@ -484,9 +484,9 @@
             this.panelDesglose.Controls.Add(this.btnOcultar);
             this.panelDesglose.Controls.Add(this.dgvAluminio);
             this.panelDesglose.Controls.Add(this.label5);
-            this.panelDesglose.Location = new System.Drawing.Point(0, 12);
+            this.panelDesglose.Location = new System.Drawing.Point(0, 31);
             this.panelDesglose.Name = "panelDesglose";
-            this.panelDesglose.Size = new System.Drawing.Size(1043, 690);
+            this.panelDesglose.Size = new System.Drawing.Size(1043, 685);
             this.panelDesglose.TabIndex = 68;
             this.panelDesglose.Visible = false;
             // 
@@ -523,6 +523,7 @@
             this.btnOcultar.TabIndex = 44;
             this.btnOcultar.Text = "Ocultar";
             this.btnOcultar.UseVisualStyleBackColor = false;
+            this.btnOcultar.Click += new System.EventHandler(this.btnOcultar_Click_1);
             // 
             // dgvAluminio
             // 

@@ -126,8 +126,9 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
             description += "Color: " + cbColor.Text + "\n";
             description += "Vidrio: " + cbVidrio.Text + "\n";
             description += "Cantidad: " + txtCantidad.Value + "\n";
-            description += "Ancho: " + ClsWindows.Weight + "\n";
             description += "Alto: " + ClsWindows.heigt + "\n";
+            description += "Ancho: " + txtAncho2.Text + "\n";
+            description += "Ancho Total: " + ClsWindows.Weight + "\n";
             description += "Material " + cbAluminio.Text + "\n";
 
             //Añadir la Ubicacion
@@ -533,6 +534,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         {
             txtAlto.Text = "1.00";
             txtAncho.Text = "1.00";
+            txtAncho2.Text = "1.00";
         }
 
         private void txtCantidad_ValueChanged(object sender, EventArgs e)
@@ -631,6 +633,11 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                         break;
                 }
             }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            panelDetalle.Visible = false;
         }
     }
 }

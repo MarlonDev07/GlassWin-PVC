@@ -56,7 +56,7 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.pbVentana = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAncho2 = new System.Windows.Forms.TextBox();
             this.panelDetalle = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvAccesorios = new System.Windows.Forms.DataGridView();
@@ -117,7 +117,7 @@
             // txtUbicacion
             // 
             this.txtUbicacion.Location = new System.Drawing.Point(963, 14);
-            this.txtUbicacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUbicacion.Margin = new System.Windows.Forms.Padding(2);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(121, 20);
             this.txtUbicacion.TabIndex = 3;
@@ -148,7 +148,7 @@
             this.PanelMedidas.Controls.Add(this.lblCantidad);
             this.PanelMedidas.Controls.Add(this.label2);
             this.PanelMedidas.Location = new System.Drawing.Point(-5, 51);
-            this.PanelMedidas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelMedidas.Margin = new System.Windows.Forms.Padding(2);
             this.PanelMedidas.Name = "PanelMedidas";
             this.PanelMedidas.Size = new System.Drawing.Size(1106, 88);
             this.PanelMedidas.TabIndex = 5;
@@ -330,7 +330,7 @@
             this.panel1.Controls.Add(this.txtTotal);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(-1, 512);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1101, 103);
             this.panel1.TabIndex = 67;
@@ -438,15 +438,15 @@
             this.pbVentana.TabIndex = 65;
             this.pbVentana.TabStop = false;
             // 
-            // textBox1
+            // txtAncho2
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(735, 292);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(54, 23);
-            this.textBox1.TabIndex = 87;
+            this.txtAncho2.BackColor = System.Drawing.Color.White;
+            this.txtAncho2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAncho2.ForeColor = System.Drawing.Color.Black;
+            this.txtAncho2.Location = new System.Drawing.Point(735, 292);
+            this.txtAncho2.Name = "txtAncho2";
+            this.txtAncho2.Size = new System.Drawing.Size(54, 23);
+            this.txtAncho2.TabIndex = 87;
             // 
             // panelDetalle
             // 
@@ -547,6 +547,7 @@
             this.button2.TabIndex = 72;
             this.button2.Text = "Salir";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // Aluminiodt
             // 
@@ -566,7 +567,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1094, 618);
             this.Controls.Add(this.panelDetalle);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtAncho2);
             this.Controls.Add(this.pbVentana);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PanelMedidas);
@@ -576,7 +577,8 @@
             this.Controls.Add(this.txtAncho);
             this.Controls.Add(this.lblDetalle);
             this.Controls.Add(this.txtAlto);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "frmCaclPriceVentanasFijas2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cotizador de Ventanas Fijas - COPIA";
@@ -625,7 +627,7 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.PictureBox pbVentana;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox txtAncho2;
         private System.Windows.Forms.Panel panelDetalle;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvAccesorios;
