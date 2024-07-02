@@ -200,7 +200,7 @@ namespace Precentacion.User.Client
                 string phone = string.IsNullOrEmpty(txtPhone.Text) ? " " : txtPhone.Text;
                 string address = string.IsNullOrEmpty(txtAddress.Text) ? " " : txtAddress.Text;
                 string email = string.IsNullOrEmpty(txtEmail.Text) ? " " : txtEmail.Text;
-                string limite = string.IsNullOrEmpty(txtLimiteCredito.Text) ? "0" : txtLimiteCredito.Text;
+                string limite = string.IsNullOrEmpty(txtLimiteCredito.Text.Trim()) ? "0" : txtLimiteCredito.Text.Trim();
                 DateTime fechaVencimiento = dtpFechaVencimiento.Value;
                 int dias = string.IsNullOrEmpty(txtDias.Text) ? 0 : Convert.ToInt32(txtDias.Text);
 
