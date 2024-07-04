@@ -56,7 +56,7 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.pbVentana = new System.Windows.Forms.PictureBox();
-            this.txtAncho2 = new System.Windows.Forms.TextBox();
+            this.txtAlto2 = new System.Windows.Forms.TextBox();
             this.panelDetalle = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvAccesorios = new System.Windows.Forms.DataGridView();
@@ -438,15 +438,15 @@
             this.pbVentana.TabIndex = 65;
             this.pbVentana.TabStop = false;
             // 
-            // txtAncho2
+            // txtAlto2
             // 
-            this.txtAncho2.BackColor = System.Drawing.Color.White;
-            this.txtAncho2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAncho2.ForeColor = System.Drawing.Color.Black;
-            this.txtAncho2.Location = new System.Drawing.Point(735, 292);
-            this.txtAncho2.Name = "txtAncho2";
-            this.txtAncho2.Size = new System.Drawing.Size(54, 23);
-            this.txtAncho2.TabIndex = 87;
+            this.txtAlto2.BackColor = System.Drawing.Color.White;
+            this.txtAlto2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlto2.ForeColor = System.Drawing.Color.Black;
+            this.txtAlto2.Location = new System.Drawing.Point(735, 292);
+            this.txtAlto2.Name = "txtAlto2";
+            this.txtAlto2.Size = new System.Drawing.Size(54, 23);
+            this.txtAlto2.TabIndex = 87;
             // 
             // panelDetalle
             // 
@@ -459,9 +459,9 @@
             this.panelDetalle.Controls.Add(this.Vidriodt);
             this.panelDetalle.Controls.Add(this.button2);
             this.panelDetalle.Controls.Add(this.Aluminiodt);
-            this.panelDetalle.Location = new System.Drawing.Point(-1, 8);
+            this.panelDetalle.Location = new System.Drawing.Point(-1, -2);
             this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1099, 615);
+            this.panelDetalle.Size = new System.Drawing.Size(1099, 617);
             this.panelDetalle.TabIndex = 89;
             this.panelDetalle.Visible = false;
             // 
@@ -541,7 +541,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(510, 497);
+            this.button2.Location = new System.Drawing.Point(510, 498);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(129, 45);
             this.button2.TabIndex = 72;
@@ -567,7 +567,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1094, 618);
             this.Controls.Add(this.panelDetalle);
-            this.Controls.Add(this.txtAncho2);
+            this.Controls.Add(this.txtAlto2);
             this.Controls.Add(this.pbVentana);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PanelMedidas);
@@ -627,7 +627,7 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.PictureBox pbVentana;
-        public System.Windows.Forms.TextBox txtAncho2;
+        public System.Windows.Forms.TextBox txtAlto2;
         private System.Windows.Forms.Panel panelDetalle;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvAccesorios;

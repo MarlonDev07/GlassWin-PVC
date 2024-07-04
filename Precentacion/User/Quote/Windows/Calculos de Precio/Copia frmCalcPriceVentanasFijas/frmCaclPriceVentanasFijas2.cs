@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -127,7 +128,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
             description += "Vidrio: " + cbVidrio.Text + "\n";
             description += "Cantidad: " + txtCantidad.Value + "\n";
             description += "Alto: " + ClsWindows.heigt + "\n";
-            description += "Ancho: " + txtAncho2.Text + "\n";
+            description += "Ancho: " + txtAlto2.Text + "\n";
             description += "Ancho Total: " + ClsWindows.Weight + "\n";
             description += "Material " + cbAluminio.Text + "\n";
 
@@ -216,7 +217,18 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
                 decimal Subtotal = PrecioAluminio + PrecioVidrio + Accesorios;
 
-                string Descripcion = ClsWindows.System + ClsWindows.Desing + cbColor.Text;
+                decimal alto2;
+                if (decimal.TryParse(txtAlto2.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out alto2))
+                {
+                    ClsWindows.heigt2 = alto2;
+                }
+                else
+                {
+                    MessageBox.Show("El valor introducido no tiene un formato numérico válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+                string Descripcion =  ClsWindows.System + ClsWindows.Desing + cbColor.Text;
                 decimal Ajuste = n_LoadProduct.LoadAjustePrecio(cbSupplier.Text, Descripcion);
 
                 PrecioTotal = Subtotal + (Subtotal * Ajuste);
@@ -251,6 +263,8 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                 string path = Application.StartupPath + "\\Images\\Windows\\VidrioFijo" + ClsWindows.Desing.Trim() + cbColor.Text + ".jpeg";
                 pbVentana.Image = Image.FromFile(path);
                 URL = path;
+
+                
 
                 //Ajustar imagen
                 if (pbVentana.Image.Width > pbVentana.Width || pbVentana.Image.Height > pbVentana.Height)
@@ -372,6 +386,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
             {
                 DataTable dtAluminio = n_LoadProduct.loadAluminioVentanaFija(cbColor.Text, ClsWindows.System, cbSupplier.Text, cbAluminio.Text);
                 DataTable dtVidrio = n_LoadProduct.loadPricesGlass(cbSupplier.Text, cbVidrio.Text);
+                Console.WriteLine(ClsWindows.System);
                 if (ClsWindows.System == "EuAbatible" || ClsWindows.System == "PuertaEuAbatible")
                 {
                     DataTable dtAccesorios = n_LoadProduct.loadAccesorios(ClsWindows.System, cbSupplier.Text);
@@ -534,7 +549,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         {
             txtAlto.Text = "1.00";
             txtAncho.Text = "1.00";
-            txtAncho2.Text = "1.00";
+            txtAlto2.Text = "1.00";
         }
 
         private void txtCantidad_ValueChanged(object sender, EventArgs e)

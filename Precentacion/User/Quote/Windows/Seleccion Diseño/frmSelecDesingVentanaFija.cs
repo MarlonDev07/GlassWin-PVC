@@ -22,8 +22,8 @@ namespace Precentacion.User.Quote.Windows
         private void btn1Fijo_Click(object sender, EventArgs e)
         {
             ClsWindows.Desing = "1Fijo";
-            frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
-            //frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
+            //frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
             frm.Show();
             this.Close();
         }
@@ -75,7 +75,19 @@ namespace Precentacion.User.Quote.Windows
 
         private void frmSelecDesingVentanaFija_Load(object sender, EventArgs e)
         {
+            // Ruta de la imagen
+            string imagePath = Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO VENTILA X.jpeg";
 
+            // Verifica que el archivo de imagen exista
+            if (System.IO.File.Exists(imagePath))
+            {
+                // Carga la imagen y asígnala al botón
+                btnFijoGeotrica.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO O GEOTRICA NATURAL.jpeg");
+            }
+            else
+            {
+                MessageBox.Show("La imagen no se encuentra en la ruta especificada.");
+            }
         }
 
         private void btnBackSistema_Click(object sender, EventArgs e)
@@ -88,6 +100,19 @@ namespace Precentacion.User.Quote.Windows
         private void frmSelecDesingVentanaFija_FormClosing_1(object sender, FormClosingEventArgs e)
         {
            //btnBackSistema_Click(sender, e);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFijoGeotrica_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoGeotrica";
+            frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frm.Show();
+            this.Close();
         }
     }
 }

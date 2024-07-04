@@ -20,6 +20,8 @@ namespace Dominio.Model.ClassWindows
 
         public static decimal heigt { get; set;}
 
+        public static decimal heigt2 { get; set; }
+
         public static string Lock { get;set;}
 
         public static int IDQuote { get; set;}
