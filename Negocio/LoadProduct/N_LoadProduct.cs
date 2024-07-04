@@ -7937,8 +7937,27 @@ namespace Negocio.LoadProduct
                     return false;
                 }
             }
-            #endregion
+        #endregion
+
+        #region fijo con ajuste
+
+        // VENTANA FIJA CON AJUSTE EN LAS ALTURA SIN DIVCION CANAL X12 // 
+
+        private decimal CalclMetrajeFijoAjusteAlto(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Canal x12":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt1) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
+                    break;
+                case "Venilla 1/2":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt1) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
+                    break;
+            }
+            return metraje;
+
+
 
         }
-    }
- 
+}
