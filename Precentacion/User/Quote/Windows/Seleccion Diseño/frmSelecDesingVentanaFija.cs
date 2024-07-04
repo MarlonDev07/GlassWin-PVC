@@ -22,8 +22,8 @@ namespace Precentacion.User.Quote.Windows
         private void btn1Fijo_Click(object sender, EventArgs e)
         {
             ClsWindows.Desing = "1Fijo";
-            //frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
-            frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
+            frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            //frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
             frm.Show();
             this.Close();
         }
