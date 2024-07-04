@@ -299,7 +299,7 @@
             this.txtAlto.BackColor = System.Drawing.Color.White;
             this.txtAlto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAlto.ForeColor = System.Drawing.Color.Black;
-            this.txtAlto.Location = new System.Drawing.Point(313, 292);
+            this.txtAlto.Location = new System.Drawing.Point(735, 292);
             this.txtAlto.Name = "txtAlto";
             this.txtAlto.Size = new System.Drawing.Size(54, 23);
             this.txtAlto.TabIndex = 53;
@@ -443,7 +443,7 @@
             this.txtAlto2.BackColor = System.Drawing.Color.White;
             this.txtAlto2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAlto2.ForeColor = System.Drawing.Color.Black;
-            this.txtAlto2.Location = new System.Drawing.Point(735, 292);
+            this.txtAlto2.Location = new System.Drawing.Point(311, 292);
             this.txtAlto2.Name = "txtAlto2";
             this.txtAlto2.Size = new System.Drawing.Size(54, 23);
             this.txtAlto2.TabIndex = 87;

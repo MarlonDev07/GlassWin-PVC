@@ -95,7 +95,13 @@ namespace Negocio.LoadProduct
                     string Description = item[0].ToString();
                     if (ClsWindows.System == "Vidrio Fijo")
                     {
-                        Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        if (ClsWindows.Desing == "FijoGeotrica") {
+                            Metraje = CalclMetrajeFijoAjusteAlto(Description);
+                        }
+                        else {
+                            Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
+                       
                     }
                     else
                     {
@@ -7948,7 +7954,7 @@ namespace Negocio.LoadProduct
             decimal metraje = 0;
             switch (Description)
             {
-                case "Canal x12":
+                case "Canal X12":
                     metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
                     break;
                 case "Venilla 1/2":

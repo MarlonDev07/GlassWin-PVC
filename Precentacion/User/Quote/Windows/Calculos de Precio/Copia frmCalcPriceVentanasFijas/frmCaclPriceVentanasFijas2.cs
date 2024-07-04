@@ -382,6 +382,16 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
+
+            decimal alto2;
+            if (decimal.TryParse(txtAlto2.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out alto2))
+            {
+                ClsWindows.heigt2 = alto2;
+            }
+            else
+            {
+                MessageBox.Show("El valor introducido no tiene un formato numérico válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             if (ValidarCampos())
             {
                 DataTable dtAluminio = n_LoadProduct.loadAluminioVentanaFija(cbColor.Text, ClsWindows.System, cbSupplier.Text, cbAluminio.Text);
