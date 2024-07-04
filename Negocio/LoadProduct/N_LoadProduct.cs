@@ -2156,7 +2156,7 @@ namespace Negocio.LoadProduct
                     metraje = 4;
                     break;
                 case "Jaladera Doble 8025":
-                    metraje = 1;
+                    metraje = 0;
                     break;
                 case "Empaque U 8025":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
@@ -2214,7 +2214,7 @@ namespace Negocio.LoadProduct
                     metraje = 8;
                     break;
                 case "Jaladera Doble 8025":
-                    metraje = 2;
+                    metraje = 0;
                     break;
                 case "Empaque U 8025":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
@@ -2271,7 +2271,7 @@ namespace Negocio.LoadProduct
                     metraje = 6;
                     break;
                 case "Jaladera Doble 8025":
-                    metraje = 1;
+                    metraje = 0;
                     break;
                 case "Tornillo Ensamble":
                     metraje = 12;
@@ -2328,7 +2328,7 @@ namespace Negocio.LoadProduct
                     metraje = 6;
                     break;
                 case "Jaladera Doble 8025":
-                    metraje = 2;
+                    metraje = 0;
                     break;
                 case "Tornillo Ensamble":
                     metraje = 12;
@@ -2387,7 +2387,7 @@ namespace Negocio.LoadProduct
                     metraje = 8;
                     break;
                 case "Jaladera Doble 8025":
-                    metraje = 2;
+                    metraje = 1;
                     break;
                 case "Tornillo Ensamble":
                     metraje = 16;

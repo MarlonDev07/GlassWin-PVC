@@ -176,7 +176,7 @@
             this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUbicacion.BackColor = System.Drawing.Color.Orange;
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(923, 8);
+            this.txtUbicacion.Location = new System.Drawing.Point(906, 8);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(162, 23);
             this.txtUbicacion.TabIndex = 46;
@@ -939,7 +939,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(264, 3);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(169, 34);
+            this.lblDescripcion.Size = new System.Drawing.Size(152, 34);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripcion";
             // 
@@ -949,7 +949,7 @@
             this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Font = new System.Drawing.Font("Impact", 20.25F);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(767, 3);
+            this.label1.Location = new System.Drawing.Point(750, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 34);
             this.label1.TabIndex = 63;
@@ -1376,7 +1376,7 @@
             // 
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(1114, 5);
+            this.btnCerrar.Location = new System.Drawing.Point(1097, 5);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(36, 29);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
