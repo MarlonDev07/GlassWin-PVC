@@ -35,6 +35,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.agregarAProformaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -63,43 +64,59 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAccesorios.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAccesorios.EnableHeadersVisualStyles = false;
-            this.dgvAccesorios.Location = new System.Drawing.Point(1, 132);
+            this.dgvAccesorios.Location = new System.Drawing.Point(2, 203);
+            this.dgvAccesorios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvAccesorios.Name = "dgvAccesorios";
             this.dgvAccesorios.ReadOnly = true;
+            this.dgvAccesorios.RowHeadersWidth = 62;
             this.dgvAccesorios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAccesorios.Size = new System.Drawing.Size(953, 439);
+            this.dgvAccesorios.Size = new System.Drawing.Size(1430, 675);
             this.dgvAccesorios.TabIndex = 181;
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarAProformaToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(179, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(243, 36);
             // 
             // agregarAProformaToolStripMenuItem
             // 
             this.agregarAProformaToolStripMenuItem.Name = "agregarAProformaToolStripMenuItem";
-            this.agregarAProformaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.agregarAProformaToolStripMenuItem.Size = new System.Drawing.Size(242, 32);
             this.agregarAProformaToolStripMenuItem.Text = "Agregar a Proforma";
             this.agregarAProformaToolStripMenuItem.Click += new System.EventHandler(this.agregarAProformaToolStripMenuItem_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 106);
+            this.textBox1.Location = new System.Drawing.Point(9, 163);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 20);
+            this.textBox1.Size = new System.Drawing.Size(248, 26);
             this.textBox1.TabIndex = 183;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 138);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 20);
+            this.label1.TabIndex = 184;
+            this.label1.Text = "Buscar";
+            // 
             // frmListaAcesorios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(954, 572);
+            this.ClientSize = new System.Drawing.Size(1431, 880);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dgvAccesorios);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmListaAcesorios";
+            this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.Text = "Lista Accesorios";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -114,5 +131,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem agregarAProformaToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
