@@ -2455,7 +2455,7 @@ namespace Negocio.LoadProduct
                     metraje = 6;
                     break;
                 case "Jaladera Doble 8025":
-                    metraje = 0;
+                    metraje = 1;
                     break;
                 case "Empaque U 8025":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
@@ -2470,7 +2470,7 @@ namespace Negocio.LoadProduct
                     metraje = Convert.ToDecimal(4);
                     break;
                 case "Fibra Cedazo 180":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    metraje = Convert.ToDecimal(ClsWindows.heigt);
                     break;
 
             }
@@ -2520,7 +2520,7 @@ namespace Negocio.LoadProduct
                     metraje = 6;
                     break;
                 case "Jaladera Doble 8025":
-                    metraje = 3;
+                    metraje = 1;
                     break;
                 case "Felpa Delgada 8025":
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 2) * 6) + (Convert.ToDecimal(ClsWindows.heigt) * 11);
@@ -2529,7 +2529,7 @@ namespace Negocio.LoadProduct
                     metraje = Convert.ToDecimal(4);
                     break;
                 case "Fibra Cedazo 180":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    metraje = Convert.ToDecimal(ClsWindows.heigt);
                     break;
                 case "Empaque Cedazo 1/2":
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 2) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
@@ -2584,7 +2584,7 @@ namespace Negocio.LoadProduct
                     metraje = 8;
                     break;
                 case "Jaladera Doble 8025":
-                    metraje = 2;
+                    metraje = 1;
                     break;
                 case "Felpa Delgada 8025":
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 3) * 8) + (Convert.ToDecimal(ClsWindows.heigt) * 11);
@@ -2596,7 +2596,7 @@ namespace Negocio.LoadProduct
                     metraje = Convert.ToDecimal(4);
                     break;
                 case "Fibra Cedazo 180":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    metraje = Convert.ToDecimal(ClsWindows.heigt);
                     break;
                 case "Empaque U 8025":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
@@ -2649,7 +2649,7 @@ namespace Negocio.LoadProduct
                     metraje = 10;
                     break;
                 case "Jaladera Doble 8025":
-                    metraje = 4;
+                    metraje = 2;
                     break;
                 case "Felpa Delgada 8025":
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 4) * 12) + (Convert.ToDecimal(ClsWindows.heigt) * 14);
@@ -2661,7 +2661,7 @@ namespace Negocio.LoadProduct
                     metraje = Convert.ToDecimal(8);
                     break;
                 case "Fibra Cedazo 180":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 2;
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt) / 4) * 2;
                     break;
                 case "Empaque U 8025":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
@@ -2717,7 +2717,7 @@ namespace Negocio.LoadProduct
                     metraje = 12;
                     break;
                 case "Jaladera Doble 8025":
-                    metraje = 4;
+                    metraje = 3;
                     break;
                 case "Felpa Delgada 8025":
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 4) * 12) + (Convert.ToDecimal(ClsWindows.heigt) * 14);
@@ -2729,7 +2729,7 @@ namespace Negocio.LoadProduct
                     metraje = Convert.ToDecimal(8);
                     break;
                 case "Fibra Cedazo 180":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 2;
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt) / 4) * 2;
                     break;
                 case "Empaque U 8025":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
@@ -7946,6 +7946,8 @@ namespace Negocio.LoadProduct
         #endregion
 
         #region fijo con ajuste
+
+        // VENTANAS MATERIAL X12 //
 
         // VENTANA FIJA CON AJUSTE EN LAS ALTURA SIN DIVCION CANAL X12 // 
 
