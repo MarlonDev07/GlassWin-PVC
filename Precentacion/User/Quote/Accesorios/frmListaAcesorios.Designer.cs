@@ -70,7 +70,7 @@
             this.dgvAccesorios.ReadOnly = true;
             this.dgvAccesorios.RowHeadersWidth = 62;
             this.dgvAccesorios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAccesorios.Size = new System.Drawing.Size(1430, 675);
+            this.dgvAccesorios.Size = new System.Drawing.Size(1411, 591);
             this.dgvAccesorios.TabIndex = 181;
             // 
             // contextMenuStrip1
@@ -110,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1431, 880);
+            this.ClientSize = new System.Drawing.Size(1431, 869);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dgvAccesorios);
