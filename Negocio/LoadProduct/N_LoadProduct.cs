@@ -95,13 +95,17 @@ namespace Negocio.LoadProduct
                     string Description = item[0].ToString();
                     if (ClsWindows.System == "Vidrio Fijo")
                     {
-                        if (ClsWindows.Desing == "FijoGeotrica") {
+                        if (ClsWindows.Desing == "FijoGeotrica")
+                        {
                             Metraje = CalclMetrajeFijoAjusteAlto(Description);
+                        } else if (ClsWindows.Desing == "FijoGeotricaDivision") {
+                            Metraje = CalclMetrajeFijoAjusteAlto1Divicion(Description);
                         }
-                        else {
+                        else
+                        {
                             Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
                         }
-                       
+
                     }
                     else
                     {
@@ -7977,7 +7981,7 @@ namespace Negocio.LoadProduct
                 case "Venilla 1/2":
                     metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
                     break;
-                case "Tubo 2Aleta 1x2":
+                case "Tubo 2 Aleta 1X2":
                     metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
                     break;
             }
@@ -7986,4 +7990,5 @@ namespace Negocio.LoadProduct
 
 
         }
+    }
 }
