@@ -41,10 +41,23 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnFijoGeotrica = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnFijoGeotricaDivision = new System.Windows.Forms.Button();
             this.pSelVen.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // pSelVen
@@ -60,7 +73,7 @@
             this.pSelVen.Location = new System.Drawing.Point(2, 3);
             this.pSelVen.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pSelVen.Name = "pSelVen";
-            this.pSelVen.Size = new System.Drawing.Size(2405, 219);
+            this.pSelVen.Size = new System.Drawing.Size(2388, 207);
             this.pSelVen.TabIndex = 0;
             this.pSelVen.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -71,7 +84,7 @@
             this.btn5Fijo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn5Fijo.BackgroundImage")));
             this.btn5Fijo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn5Fijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn5Fijo.Location = new System.Drawing.Point(1265, 36);
+            this.btn5Fijo.Location = new System.Drawing.Point(1257, 30);
             this.btn5Fijo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn5Fijo.Name = "btn5Fijo";
             this.btn5Fijo.Size = new System.Drawing.Size(500, 130);
@@ -86,7 +99,7 @@
             this.btn6Fijo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn6Fijo.BackgroundImage")));
             this.btn6Fijo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn6Fijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn6Fijo.Location = new System.Drawing.Point(1791, 37);
+            this.btn6Fijo.Location = new System.Drawing.Point(1783, 31);
             this.btn6Fijo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn6Fijo.Name = "btn6Fijo";
             this.btn6Fijo.Size = new System.Drawing.Size(600, 130);
@@ -101,7 +114,7 @@
             this.btn4Fijo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn4Fijo.BackgroundImage")));
             this.btn4Fijo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn4Fijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn4Fijo.Location = new System.Drawing.Point(824, 37);
+            this.btn4Fijo.Location = new System.Drawing.Point(816, 31);
             this.btn4Fijo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn4Fijo.Name = "btn4Fijo";
             this.btn4Fijo.Size = new System.Drawing.Size(400, 130);
@@ -116,7 +129,7 @@
             this.btn3Fijo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn3Fijo.BackgroundImage")));
             this.btn3Fijo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn3Fijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn3Fijo.Location = new System.Drawing.Point(496, 37);
+            this.btn3Fijo.Location = new System.Drawing.Point(488, 31);
             this.btn3Fijo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn3Fijo.Name = "btn3Fijo";
             this.btn3Fijo.Size = new System.Drawing.Size(300, 130);
@@ -131,7 +144,7 @@
             this.btn2Fijo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn2Fijo.BackgroundImage")));
             this.btn2Fijo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn2Fijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn2Fijo.Location = new System.Drawing.Point(269, 36);
+            this.btn2Fijo.Location = new System.Drawing.Point(261, 30);
             this.btn2Fijo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn2Fijo.Name = "btn2Fijo";
             this.btn2Fijo.Size = new System.Drawing.Size(200, 130);
@@ -146,7 +159,7 @@
             this.btn1Hoja.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn1Hoja.BackgroundImage")));
             this.btn1Hoja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn1Hoja.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1Hoja.Location = new System.Drawing.Point(115, 36);
+            this.btn1Hoja.Location = new System.Drawing.Point(107, 30);
             this.btn1Hoja.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn1Hoja.Name = "btn1Hoja";
             this.btn1Hoja.Size = new System.Drawing.Size(130, 130);
@@ -158,10 +171,10 @@
             // 
             this.panelContenedor.AutoScroll = true;
             this.panelContenedor.Controls.Add(this.pSelVen);
-            this.panelContenedor.Location = new System.Drawing.Point(5, 77);
+            this.panelContenedor.Location = new System.Drawing.Point(4, 41);
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1206, 242);
+            this.panelContenedor.Size = new System.Drawing.Size(1166, 251);
             this.panelContenedor.TabIndex = 0;
             // 
             // btnBackSistema
@@ -172,7 +185,7 @@
             this.btnBackSistema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBackSistema.FlatAppearance.BorderSize = 0;
             this.btnBackSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackSistema.Location = new System.Drawing.Point(1141, 580);
+            this.btnBackSistema.Location = new System.Drawing.Point(1141, 748);
             this.btnBackSistema.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBackSistema.Name = "btnBackSistema";
             this.btnBackSistema.Size = new System.Drawing.Size(68, 60);
@@ -184,21 +197,22 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(7, 325);
+            this.panel1.Location = new System.Drawing.Point(2, 351);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1206, 242);
+            this.panel1.Size = new System.Drawing.Size(1168, 231);
             this.panel1.TabIndex = 44;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btnFijoGeotricaDivision);
             this.panel2.Controls.Add(this.btnFijoGeotrica);
-            this.panel2.Location = new System.Drawing.Point(2, 3);
+            this.panel2.Location = new System.Drawing.Point(2, 10);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1204, 220);
+            this.panel2.Size = new System.Drawing.Size(1149, 193);
             this.panel2.TabIndex = 0;
             // 
             // btnFijoGeotrica
@@ -208,7 +222,7 @@
             this.btnFijoGeotrica.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoGeotrica.BackgroundImage")));
             this.btnFijoGeotrica.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoGeotrica.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoGeotrica.Location = new System.Drawing.Point(113, 49);
+            this.btnFijoGeotrica.Location = new System.Drawing.Point(109, 35);
             this.btnFijoGeotrica.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFijoGeotrica.Name = "btnFijoGeotrica";
             this.btnFijoGeotrica.Size = new System.Drawing.Size(130, 130);
@@ -216,14 +230,111 @@
             this.btnFijoGeotrica.UseVisualStyleBackColor = false;
             this.btnFijoGeotrica.Click += new System.EventHandler(this.btnFijoGeotrica_Click);
             // 
+            // panel3
+            // 
+            this.panel3.AutoScroll = true;
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.panel6);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Controls.Add(this.panelContenedor);
+            this.panel3.Location = new System.Drawing.Point(5, 75);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1208, 648);
+            this.panel3.TabIndex = 45;
+            // 
+            // panel4
+            // 
+            this.panel4.AutoScroll = true;
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Location = new System.Drawing.Point(1, 639);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1168, 231);
+            this.panel4.TabIndex = 45;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.button1);
+            this.panel5.Location = new System.Drawing.Point(2, 10);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1150, 193);
+            this.panel5.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(86, 35);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 130);
+            this.button1.TabIndex = 35;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // panel6
+            // 
+            this.panel6.AutoScroll = true;
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Location = new System.Drawing.Point(7, 921);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1168, 231);
+            this.panel6.TabIndex = 46;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.White;
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.button2);
+            this.panel7.Location = new System.Drawing.Point(2, 10);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1144, 193);
+            this.panel7.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(83, 35);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(130, 130);
+            this.button2.TabIndex = 35;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btnFijoGeotricaDivision
+            // 
+            this.btnFijoGeotricaDivision.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnFijoGeotricaDivision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnFijoGeotricaDivision.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoGeotricaDivision.BackgroundImage")));
+            this.btnFijoGeotricaDivision.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFijoGeotricaDivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFijoGeotricaDivision.Location = new System.Drawing.Point(263, 35);
+            this.btnFijoGeotricaDivision.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnFijoGeotricaDivision.Name = "btnFijoGeotricaDivision";
+            this.btnFijoGeotricaDivision.Size = new System.Drawing.Size(130, 130);
+            this.btnFijoGeotricaDivision.TabIndex = 36;
+            this.btnFijoGeotricaDivision.UseVisualStyleBackColor = false;
+            this.btnFijoGeotricaDivision.Click += new System.EventHandler(this.btnFijoGeotricaDivision_Click);
+            // 
             // frmSelecDesingVentanaFija
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1215, 648);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1215, 816);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnBackSistema);
-            this.Controls.Add(this.panelContenedor);
             this.Font = new System.Drawing.Font("Impact", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_48;
@@ -240,6 +351,11 @@
             this.panelContenedor.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -257,5 +373,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnFijoGeotrica;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnFijoGeotricaDivision;
     }
 }
