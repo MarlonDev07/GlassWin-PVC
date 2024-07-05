@@ -871,10 +871,10 @@ namespace Negocio.LoadProduct
                             metraje = CalcPuertaEuAbatible2Hojas(Description);
                             break;
                         case "1 Hoja Con Divicion PL":
-                            metraje = CalcPuertaEuAbatible2HojasConDivicion(Description);
+                            metraje = CalcPuertaEuAbatible1HojasConDivicion(Description);
                             break;
                         case "2 Hoja Con Divicion PL":
-                            metraje = CalcPuertaEuAbatible1HojasConDivicion(Description);
+                            metraje = CalcPuertaEuAbatible2HojasConDivicion(Description);
                             break;
                     }
                     break;
@@ -957,7 +957,7 @@ namespace Negocio.LoadProduct
                     metraje = 1;
                     break;
                 case "FijoMovilMovilFijo":
-                    metraje = 2;
+                    metraje = 1;
                     break;
             }
 

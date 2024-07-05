@@ -316,6 +316,13 @@ namespace Precentacion.User.Quote.Windows
                         frm2.Show();
                         this.Close();
                         break;
+                    case "PuertaEuAbatible":
+                        ClsWindows.System = "PuertaEuAbatible";
+                        frmSelecDesingPuertLujo frm3 = new frmSelecDesingPuertLujo();
+                        frm3.system2 = ClsWindows.System;
+                        frm3.Show();
+                        this.Close();
+                        break;
                     default:
                         switch (ClsWindows.Desing)
                         {
