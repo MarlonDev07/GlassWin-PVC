@@ -583,10 +583,8 @@ namespace Precentacion.User.Quote.Quote
                 {
                     string rutaRelativa = cellValue.ToString();
 
-                    // Imprimir ruta relativa para depuración
                     Console.WriteLine($"Ruta relativa: {rutaRelativa}");
 
-                    // Imprimir todas las celdas de la fila para depuración
                     for (int i = 0; i < dgCotizaciones.Rows[e.RowIndex].Cells.Count; i++)
                     {
                         var cellVal = dgCotizaciones.Rows[e.RowIndex].Cells[i].Value;
@@ -594,13 +592,10 @@ namespace Precentacion.User.Quote.Quote
                     }
 
                     string directorioDeTrabajo = Directory.GetCurrentDirectory();
-
-                    // Imprimir el directorio de trabajo actual para depuración
                     Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
 
                     string rutaAbsoluta;
 
-                    // Verificar si la ruta es exclusiva y ajustarla
                     bool esExclusivo = rutaRelativa.StartsWith("EXCLUSIVO:");
                     if (esExclusivo)
                     {
@@ -609,26 +604,22 @@ namespace Precentacion.User.Quote.Quote
 
                     if (Path.IsPathRooted(rutaRelativa))
                     {
-                        // Si la ruta ya es absoluta, asegúrate de que sea correcta
                         if (File.Exists(rutaRelativa))
                         {
                             rutaAbsoluta = rutaRelativa;
                         }
                         else
                         {
-                            // La ruta es absoluta pero incorrecta, intenta corregirla
                             string fileName = Path.GetFileName(rutaRelativa);
                             rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
                         }
                     }
                     else
                     {
-                        // Si la ruta es relativa, conviértela a absoluta
                         rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaRelativa);
                         rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
                     }
 
-                    // Imprimir ruta absoluta para depuración
                     Console.WriteLine($"Ruta absoluta: {rutaAbsoluta}");
 
                     if (File.Exists(rutaAbsoluta))
@@ -642,7 +633,6 @@ namespace Precentacion.User.Quote.Quote
 
                             if (!esExclusivo)
                             {
-                                // Obtener dimensiones del usuario y convertirlas a píxeles
                                 decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
                                 decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
                                 int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
@@ -653,13 +643,15 @@ namespace Precentacion.User.Quote.Quote
                             }
                             else
                             {
-                                // Ajustar el tamaño de la imagen para que se ajuste a la celda sin perder la relación de aspecto
                                 float ratio = Math.Min((float)e.CellBounds.Width / anchoImagen, (float)e.CellBounds.Height / altoImagen);
                                 anchoImagen = (int)(anchoImagen * ratio);
                                 altoImagen = (int)(altoImagen * ratio);
                             }
 
-                            // Mostrar dimensiones de la imagen ajustada para depuración
+                            // Asegúrate de que anchoImagen y altoImagen no sean 0
+                            if (anchoImagen == 0) anchoImagen = 200;//e.CellBounds.Width;
+                            if (altoImagen == 0) altoImagen = 200;//e.CellBounds.Height;
+
                             Console.WriteLine($"Ancho imagen: {anchoImagen}, Alto imagen: {altoImagen}");
 
                             int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
@@ -673,6 +665,7 @@ namespace Precentacion.User.Quote.Quote
                 }
             }
         }
+
 
 
 

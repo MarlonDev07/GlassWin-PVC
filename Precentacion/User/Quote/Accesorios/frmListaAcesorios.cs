@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,95 +36,75 @@ namespace Precentacion.User.Quote.Accesorios
         {
             string name = dgvAccesorios.CurrentRow.Cells[1].Value.ToString();
             string Categoria = dgvAccesorios.CurrentRow.Cells[3].Value.ToString();
+
+            // Crear la URL de la Imagen
+            string url = CreateURL();
+            Console.WriteLine($"URL creada: {url}");
+
             if (Categoria == "Vidrio" || Categoria == "Arenado")
             {
-                //Preguntar Cuantos Vidrios se van a agregar
                 frmMedidasVidrio frm = new frmMedidasVidrio();
                 ((frmMedidasVidrio)frm).Precio = Convert.ToDecimal(dgvAccesorios.CurrentRow.Cells[12].Value.ToString());
                 frm.ShowDialog();
 
-                //Crear la Descripcion del Articulo
-                string description = CreateDescription(CantidadVidrios,"Vidrio");
-                //Crear la URL de la Imagen
-                string url = CreateURL();
-                //Obtener Color del DataGrid
+                string description = CreateDescription(CantidadVidrios, "Vidrio");
                 string Color = dgvAccesorios.CurrentRow.Cells[7].Value.ToString();
-        
-                //Agregar el Articulo a la Proforma
-                if (load.insertWindows(description, url, 0, 0, "", Color, "", PrecioVidrio, ClsWindows.IDQuote, "", "")) ;
+
+                if (load.insertWindows(description, url, 0, 0, "", Color, "", PrecioVidrio, ClsWindows.IDQuote, "", ""))
                 {
                     Form frmQ = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
                     if (frmQ != null)
                     {
                         ((frmQuote)frmQ).loadWindows();
                     }
-                    MessageBox.Show("Articulo Agregado");
+                    MessageBox.Show("Artículo Agregado");
                 }
-
             }
-            else 
+            else
             {
-
-                //Preguntar Cuantos Accesorios se van a agregar
-                Decimal Precio = 0;
+                string Cantidad = InputBox.Show("Digite la Cantidad de Artículos que desea Agregar", "Cantidad");
                 string Metraje = "0";
-                string Cantidad = InputBox.Show("Digite la Cantidad de Articulos que desea Agregar", "Cantidad");
                 if (dgvAccesorios.CurrentRow.Cells[3].Value.ToString() == "Aluminio")
                 {
-                    //Preguntar Cuantos Metros se van a agregar
-                     Metraje = InputBox.Show("Digite la Medida de Articulos que desea Agregar", "Metraje");
+                    Metraje = InputBox.Show("Digite la Medida de Artículos que desea Agregar", "Metraje");
                 }
-                
-               
-                //Verificar si el Usuario Ingreso un Valor y ademas que sea un Numero
+
                 if (Cantidad != "" && int.TryParse(Cantidad, out int result))
                 {
-                    //Verificar si el Usuario Ingreso un Valor Mayor a 0
                     if (int.Parse(Cantidad) > 0)
                     {
-                        //Crear la Descripcion del Articulo
-                        string description = CreateDescription(Int16.Parse(Cantidad),"");
-                        //Crear la URL de la Imagen
-                        string url = CreateURL();
-                        //Obtener Color del DataGrid
+                        string description = CreateDescription(Int16.Parse(Cantidad), "");
                         string Color = dgvAccesorios.CurrentRow.Cells[7].Value.ToString();
                         try
                         {
-                            //Obtener el Precio Total
-                             Precio = CalculoPrecio(int.Parse(Cantidad), decimal.Parse(Metraje));
+                            decimal Precio = CalculoPrecio(int.Parse(Cantidad), decimal.Parse(Metraje));
+                            if (load.insertWindows(description, url, 0, 0, "", Color, "", Precio, ClsWindows.IDQuote, "", ""))
+                            {
+                                Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
+                                if (frm != null)
+                                {
+                                    ((frmQuote)frm).loadWindows();
+                                }
+                                MessageBox.Show("Artículo Agregado");
+                            }
                         }
                         catch (Exception)
                         {
-
-                            MessageBox.Show("El Valor Ingresado no es Valido Porfavor igresar solo numeros y Comas No Puntos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //Para la Ejecucion del Metodo
-                            return;
-                        }
-                        
-                        //Agregar el Articulo a la Proforma
-
-                        if (load.insertWindows(description, url, 0, 0, "", Color, "", Precio, ClsWindows.IDQuote, "", "")) ;
-                        {
-                            Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
-                            if (frm != null)
-                            {
-                                ((frmQuote)frm).loadWindows();
-                            }
-                            MessageBox.Show("Articulo Agregado");
+                            MessageBox.Show("El Valor Ingresado no es Válido. Por favor, ingresar solo números y comas, no puntos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("El Valor Ingresado no es Valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("El Valor Ingresado no es Válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Solo se aceptan Numero, Verifique e Intente de Nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Solo se aceptan Números. Verifique e Intente de Nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-           
         }
+
 
         private string CreateDescription(Int16 Cantidad,string opc)
         {
@@ -157,11 +138,22 @@ namespace Precentacion.User.Quote.Accesorios
         }
         private string CreateURL()
         {
-            //Obtener la ruta relativa de la Imagen de la ventana
-            string url = "";
-            url = "Images\\Accesorios\\" +dgvAccesorios.CurrentRow.Cells[1].Value.ToString().Trim()+ ".jpeg";
-            return url;
+            // Obtener la ruta relativa de la imagen de la ventana
+            string rutaRelativa = "Images\\Accesorios\\" + dgvAccesorios.CurrentRow.Cells[1].Value.ToString().Trim() + ".jpeg";
+
+            // Obtener el directorio de trabajo actual
+            string directorioDeTrabajo = Directory.GetCurrentDirectory();
+
+            // Convertir la ruta relativa a una ruta absoluta
+            string rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaRelativa);
+            rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
+
+            // Imprimir la ruta absoluta para depuración
+            Console.WriteLine($"Ruta absoluta: {rutaAbsoluta}");
+
+            return rutaAbsoluta;
         }
+
         private Decimal CalculoPrecio(int Cantidad, decimal Metraje) 
         {
             //Obtener Precio
