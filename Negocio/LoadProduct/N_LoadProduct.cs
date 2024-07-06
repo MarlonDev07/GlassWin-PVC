@@ -109,6 +109,14 @@ namespace Negocio.LoadProduct
                         }
                         else if (ClsWindows.Desing == "FijoGeotricaInvertido")
                         {
+                            Metraje = CalclMetrajeFijoAjusteAltoinvertido(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoGeotricaInvertidoDivision")
+                        {
+                            Metraje = CalclMetrajeFijoAjusteAlto1DivicionInvertido(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoGeotricaInvertido2Division")
+                        {
                             Metraje = CalclMetrajeFijoAjusteAlto2DivicionInvertido(Description);
                         }
                         else
@@ -8074,6 +8082,8 @@ namespace Negocio.LoadProduct
             }
             return metraje;
         }
+        #endregion
+        #region Europa Carbone
         #endregion
     }
 }
