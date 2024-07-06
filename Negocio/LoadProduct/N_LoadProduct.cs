@@ -7979,14 +7979,37 @@ namespace Negocio.LoadProduct
                     metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
                     break;
                 case "Venilla 1/2":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 4;
                     break;
                 case "Tubo 2 Aleta 1X2":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 1;
                     break;
             }
             return metraje;
-            #endregion
+
+        }
+        private decimal CalclMetrajeFijoAjusteAlto2Divicion(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Canal X12":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
+                    break;
+                case "Venilla 1/2":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 6;
+                    break;
+                case "Tubo 2 Aleta 1X2":
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    break;
+            }
+            return metraje;
+
+
+
+
+
+#endregion
 
 
         }
