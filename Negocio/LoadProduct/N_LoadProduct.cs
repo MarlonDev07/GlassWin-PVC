@@ -8082,10 +8082,67 @@ namespace Negocio.LoadProduct
             }
             return metraje;
         }
-        #endregion
-        #region Europa Carbone
-        #endregion
+        // VENTANA FIJA ESCALENO CANAL X12 //
+        private decimal CalclMetrajeFijoEscaleno(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Canal X12":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1;
+                    break;
+                case "Venilla 1/2":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1;
+                    break;
+                
+            }
+            return metraje;
+        }
+        // VENTANA FIJA ESCALENO CON 1 DIVICION CANAL X12 //
+
+        private decimal CalclMetrajeFijoEscaleno1Divicion(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Canal X12":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1;
+                    break;
+                case "Venilla 1/2":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 4;
+                    break;
+                case "Tubo 2 Aleta 1X2":
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 1;
+                    break;
+            }
+            return metraje;
+        }
+
+        // VENTANA FIJA ESCALENO CON 2 DIVICION CANAL X12 //
+
+        private decimal CalclMetrajeFijoEscaleno2Divicion(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Canal X12":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1;
+                    break;
+                case "Venilla 1/2":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 6;
+                    break;
+                case "Tubo 2 Aleta 1X2":
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    break;
+            }
+            return metraje;
+
+
+            #endregion
+            #region Europa Carbone
+
+            #endregion
+        }
     }
-}
 
           
