@@ -100,6 +100,8 @@ namespace Negocio.LoadProduct
                             Metraje = CalclMetrajeFijoAjusteAlto(Description);
                         } else if (ClsWindows.Desing == "FijoGeotricaDivision") {
                             Metraje = CalclMetrajeFijoAjusteAlto1Divicion(Description);
+                        } else if (ClsWindows.Desing == "FijoGeotrica2Division") {
+                            Metraje = CalclMetrajeFijoAjusteAlto2Divicion(Description);
                         }
                         else
                         {
@@ -8009,9 +8011,10 @@ namespace Negocio.LoadProduct
 
 
 
-#endregion
+
 
 
         }
+        #endregion
     }
 }
