@@ -270,18 +270,19 @@
             // 
             this.panel6.AutoScroll = true;
             this.panel6.Controls.Add(this.panel7);
-            this.panel6.Location = new System.Drawing.Point(7, 921);
+            this.panel6.Location = new System.Drawing.Point(7, 641);
             this.panel6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1168, 231);
             this.panel6.TabIndex = 46;
+            this.panel6.Visible = false;
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel7.Controls.Add(this.button2);
-            this.panel7.Location = new System.Drawing.Point(2, 10);
+            this.panel7.Location = new System.Drawing.Point(2, 7);
             this.panel7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1144, 193);
@@ -310,6 +311,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1168, 231);
             this.panel4.TabIndex = 45;
+            this.panel4.Visible = false;
             // 
             // panel5
             // 
