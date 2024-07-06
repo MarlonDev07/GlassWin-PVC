@@ -160,37 +160,52 @@ namespace Precentacion.User.Quote.Accesorios
                 if (control is Label label2 && label2.Name == "lblGasolina")
                 {
                     label2.Font = new Font("Arial", 14, FontStyle.Bold);
-                    label2.ForeColor = Color.White;
-                    label2.BackColor = Color.Orange;
+                    label2.ForeColor = Color.Orange;
+                    label2.BackColor = Color.White;
                 }//
                 if (control is Label label3 && label3.Name == "lblComida")
                 {
                     label3.Font = new Font("Arial", 14, FontStyle.Bold);
-                    label3.ForeColor = Color.White;
-                    label3.BackColor = Color.Orange;
+                    label3.ForeColor = Color.Orange;
+                    label3.BackColor = Color.White;
                 }//
                 if (control is Label label4 && label4.Name == "lblHospedaje")
                 {
                     label4.Font = new Font("Arial", 14, FontStyle.Bold);
-                    label4.ForeColor = Color.White;
-                    label4.BackColor = Color.Orange;
+                    label4.ForeColor = Color.Orange;
+                    label4.BackColor = Color.White;
                 }//
                 if (control is Label label5 && label5.Name == "lblSalarios")
                 {
                     label5.Font = new Font("Arial", 14, FontStyle.Bold);
-                    label5.ForeColor = Color.White;
-                    label5.BackColor = Color.Orange;
+                    label5.ForeColor = Color.Orange;
+                    label5.BackColor = Color.White;
                 }//
                 if (control is Label label6 && label6.Name == "lblTotalViaticos")
                 {
                     label6.Font = new Font("Arial", 14, FontStyle.Bold);
-                    label6.ForeColor = Color.White;
-                    label6.BackColor = Color.Orange;
+                    label6.ForeColor = Color.Orange;
+                    label6.BackColor = Color.White;
                 }//
                 if (control is Label label7 && label7.Name == "lblTotalT")
                 {
                     label7.Font = new Font("Arial", 14, FontStyle.Bold);
                     label7.ForeColor = Color.Orange;
+                }//
+                if (control is Label label8 && label8.Name == "label3")
+                {
+                    label8.Font = new Font("Arial", 14, FontStyle.Bold);
+                    label8.ForeColor = Color.Orange;
+                }//
+                if (control is Label label9 && label9.Name == "label1")
+                {
+                    label9.Font = new Font("Arial", 14, FontStyle.Bold);
+                    label9.ForeColor = Color.Orange;
+                }//
+                if (control is Label label10 && label10.Name == "label2")
+                {
+                    label10.Font = new Font("Arial", 14, FontStyle.Bold);
+                    label10.ForeColor = Color.Orange;
                 }
 
                 // Llama recursivamente si el control tiene controles hijos
