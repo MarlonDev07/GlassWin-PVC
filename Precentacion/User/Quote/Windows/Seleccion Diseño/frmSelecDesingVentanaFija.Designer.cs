@@ -40,24 +40,25 @@
             this.btnBackSistema = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnFijoGeotricaDivision = new System.Windows.Forms.Button();
             this.btnFijoGeotrica = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.btnFijoGeotricaDivision = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnFijoGDivision = new System.Windows.Forms.Button();
             this.pSelVen.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // pSelVen
@@ -207,6 +208,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btnFijoGDivision);
             this.panel2.Controls.Add(this.btnFijoGeotricaDivision);
             this.panel2.Controls.Add(this.btnFijoGeotrica);
             this.panel2.Location = new System.Drawing.Point(2, 10);
@@ -214,6 +216,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1149, 193);
             this.panel2.TabIndex = 0;
+            // 
+            // btnFijoGeotricaDivision
+            // 
+            this.btnFijoGeotricaDivision.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnFijoGeotricaDivision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnFijoGeotricaDivision.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoGeotricaDivision.BackgroundImage")));
+            this.btnFijoGeotricaDivision.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFijoGeotricaDivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFijoGeotricaDivision.Location = new System.Drawing.Point(263, 35);
+            this.btnFijoGeotricaDivision.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnFijoGeotricaDivision.Name = "btnFijoGeotricaDivision";
+            this.btnFijoGeotricaDivision.Size = new System.Drawing.Size(130, 130);
+            this.btnFijoGeotricaDivision.TabIndex = 36;
+            this.btnFijoGeotricaDivision.UseVisualStyleBackColor = false;
+            this.btnFijoGeotricaDivision.Click += new System.EventHandler(this.btnFijoGeotricaDivision_Click);
             // 
             // btnFijoGeotrica
             // 
@@ -242,41 +259,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1208, 648);
             this.panel3.TabIndex = 45;
-            // 
-            // panel4
-            // 
-            this.panel4.AutoScroll = true;
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Location = new System.Drawing.Point(1, 639);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1168, 231);
-            this.panel4.TabIndex = 45;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.button1);
-            this.panel5.Location = new System.Drawing.Point(2, 10);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1150, 193);
-            this.panel5.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(86, 35);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 130);
-            this.button1.TabIndex = 35;
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // panel6
             // 
@@ -313,24 +295,59 @@
             this.button2.TabIndex = 35;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // btnFijoGeotricaDivision
+            // panel4
             // 
-            this.btnFijoGeotricaDivision.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnFijoGeotricaDivision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnFijoGeotricaDivision.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoGeotricaDivision.BackgroundImage")));
-            this.btnFijoGeotricaDivision.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFijoGeotricaDivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoGeotricaDivision.Location = new System.Drawing.Point(263, 35);
-            this.btnFijoGeotricaDivision.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnFijoGeotricaDivision.Name = "btnFijoGeotricaDivision";
-            this.btnFijoGeotricaDivision.Size = new System.Drawing.Size(130, 130);
-            this.btnFijoGeotricaDivision.TabIndex = 36;
-            this.btnFijoGeotricaDivision.UseVisualStyleBackColor = false;
-            this.btnFijoGeotricaDivision.Click += new System.EventHandler(this.btnFijoGeotricaDivision_Click);
+            this.panel4.AutoScroll = true;
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Location = new System.Drawing.Point(1, 639);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1168, 231);
+            this.panel4.TabIndex = 45;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.button1);
+            this.panel5.Location = new System.Drawing.Point(2, 10);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1150, 193);
+            this.panel5.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(86, 35);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 130);
+            this.button1.TabIndex = 35;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnFijoGDivision
+            // 
+            this.btnFijoGDivision.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnFijoGDivision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnFijoGDivision.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoGDivision.BackgroundImage")));
+            this.btnFijoGDivision.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFijoGDivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFijoGDivision.Location = new System.Drawing.Point(426, 35);
+            this.btnFijoGDivision.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnFijoGDivision.Name = "btnFijoGDivision";
+            this.btnFijoGDivision.Size = new System.Drawing.Size(130, 130);
+            this.btnFijoGDivision.TabIndex = 37;
+            this.btnFijoGDivision.UseVisualStyleBackColor = false;
+            this.btnFijoGDivision.Click += new System.EventHandler(this.btnFijoGDivision_Click);
             // 
             // frmSelecDesingVentanaFija
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 816);
             this.Controls.Add(this.panel3);
@@ -352,10 +369,10 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -381,5 +398,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnFijoGeotricaDivision;
+        private System.Windows.Forms.Button btnFijoGDivision;
     }
 }

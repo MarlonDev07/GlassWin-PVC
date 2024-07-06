@@ -84,6 +84,7 @@ namespace Precentacion.User.Quote.Windows
                 // Carga la imagen y asígnala al botón
                 btnFijoGeotrica.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO O GEOTRICA NATURAL.jpeg");
                 btnFijoGeotricaDivision.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO O GEOTRICA NATURAL CON DIVICION.jpeg");
+                btnFijoGDivision.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO O GEOTRICA NATURAL CON 2 DIVICION.jpeg");
             }
             else
             {
@@ -119,6 +120,14 @@ namespace Precentacion.User.Quote.Windows
         private void btnFijoGeotricaDivision_Click(object sender, EventArgs e)
         {
             ClsWindows.Desing = "FijoGeotricaDivision";
+            frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnFijoGDivision_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoGeotrica2Division";
             frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
             frm.Show();
             this.Close();
