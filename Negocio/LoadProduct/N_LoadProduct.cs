@@ -119,6 +119,18 @@ namespace Negocio.LoadProduct
                         {
                             Metraje = CalclMetrajeFijoAjusteAlto2DivicionInvertido(Description);
                         }
+                        else if (ClsWindows.Desing == "FijoEscaleno")
+                        {
+                            Metraje = CalclMetrajeFijoEscaleno(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoEscalenoDivision")
+                        {
+                            Metraje = CalclMetrajeFijoEscaleno1Divicion(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoEscaleno2Division")
+                        {
+                            Metraje = CalclMetrajeFijoEscaleno2Divicion(Description);
+                        }
                         else
                         {
                             Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
@@ -8094,7 +8106,7 @@ namespace Negocio.LoadProduct
                 case "Venilla 1/2":
                     metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1;
                     break;
-                
+
             }
             return metraje;
         }
@@ -8144,5 +8156,6 @@ namespace Negocio.LoadProduct
             #endregion
         }
     }
+}
 
           

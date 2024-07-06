@@ -54,6 +54,8 @@
             this.btnFijoInvertidoDivision = new System.Windows.Forms.Button();
             this.btnFijoInvertido2Division = new System.Windows.Forms.Button();
             this.btnFijoEscaleno = new System.Windows.Forms.Button();
+            this.btnFijoEscalenoDivision = new System.Windows.Forms.Button();
+            this.btnFijoEscaleno2Division = new System.Windows.Forms.Button();
             this.pSelVen.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -212,6 +214,8 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btnFijoEscaleno2Division);
+            this.panel2.Controls.Add(this.btnFijoEscalenoDivision);
             this.panel2.Controls.Add(this.btnFijoEscaleno);
             this.panel2.Controls.Add(this.btnFijoInvertido2Division);
             this.panel2.Controls.Add(this.btnFijoInvertidoDivision);
@@ -222,7 +226,7 @@
             this.panel2.Location = new System.Drawing.Point(2, 10);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1292, 193);
+            this.panel2.Size = new System.Drawing.Size(1716, 193);
             this.panel2.TabIndex = 0;
             // 
             // btnFijoGeotricaDivision
@@ -232,7 +236,7 @@
             this.btnFijoGeotricaDivision.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoGeotricaDivision.BackgroundImage")));
             this.btnFijoGeotricaDivision.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoGeotricaDivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoGeotricaDivision.Location = new System.Drawing.Point(262, 35);
+            this.btnFijoGeotricaDivision.Location = new System.Drawing.Point(266, 35);
             this.btnFijoGeotricaDivision.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFijoGeotricaDivision.Name = "btnFijoGeotricaDivision";
             this.btnFijoGeotricaDivision.Size = new System.Drawing.Size(130, 130);
@@ -247,7 +251,7 @@
             this.btnFijoGeotrica.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoGeotrica.BackgroundImage")));
             this.btnFijoGeotrica.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoGeotrica.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoGeotrica.Location = new System.Drawing.Point(108, 35);
+            this.btnFijoGeotrica.Location = new System.Drawing.Point(112, 35);
             this.btnFijoGeotrica.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFijoGeotrica.Name = "btnFijoGeotrica";
             this.btnFijoGeotrica.Size = new System.Drawing.Size(130, 130);
@@ -346,7 +350,7 @@
             this.btnFijoGDivision.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoGDivision.BackgroundImage")));
             this.btnFijoGDivision.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoGDivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoGDivision.Location = new System.Drawing.Point(425, 35);
+            this.btnFijoGDivision.Location = new System.Drawing.Point(429, 35);
             this.btnFijoGDivision.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFijoGDivision.Name = "btnFijoGDivision";
             this.btnFijoGDivision.Size = new System.Drawing.Size(130, 130);
@@ -361,7 +365,7 @@
             this.btnFijoInvertido.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoInvertido.BackgroundImage")));
             this.btnFijoInvertido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoInvertido.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoInvertido.Location = new System.Drawing.Point(591, 33);
+            this.btnFijoInvertido.Location = new System.Drawing.Point(595, 33);
             this.btnFijoInvertido.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFijoInvertido.Name = "btnFijoInvertido";
             this.btnFijoInvertido.Size = new System.Drawing.Size(130, 130);
@@ -376,7 +380,7 @@
             this.btnFijoInvertidoDivision.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoInvertidoDivision.BackgroundImage")));
             this.btnFijoInvertidoDivision.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoInvertidoDivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoInvertidoDivision.Location = new System.Drawing.Point(758, 32);
+            this.btnFijoInvertidoDivision.Location = new System.Drawing.Point(762, 32);
             this.btnFijoInvertidoDivision.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFijoInvertidoDivision.Name = "btnFijoInvertidoDivision";
             this.btnFijoInvertidoDivision.Size = new System.Drawing.Size(130, 130);
@@ -391,7 +395,7 @@
             this.btnFijoInvertido2Division.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoInvertido2Division.BackgroundImage")));
             this.btnFijoInvertido2Division.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoInvertido2Division.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoInvertido2Division.Location = new System.Drawing.Point(931, 33);
+            this.btnFijoInvertido2Division.Location = new System.Drawing.Point(935, 33);
             this.btnFijoInvertido2Division.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFijoInvertido2Division.Name = "btnFijoInvertido2Division";
             this.btnFijoInvertido2Division.Size = new System.Drawing.Size(130, 130);
@@ -406,13 +410,43 @@
             this.btnFijoEscaleno.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoEscaleno.BackgroundImage")));
             this.btnFijoEscaleno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFijoEscaleno.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFijoEscaleno.Location = new System.Drawing.Point(1110, 32);
+            this.btnFijoEscaleno.Location = new System.Drawing.Point(1114, 32);
             this.btnFijoEscaleno.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFijoEscaleno.Name = "btnFijoEscaleno";
             this.btnFijoEscaleno.Size = new System.Drawing.Size(130, 130);
             this.btnFijoEscaleno.TabIndex = 41;
             this.btnFijoEscaleno.UseVisualStyleBackColor = false;
             this.btnFijoEscaleno.Click += new System.EventHandler(this.btnFijoEscaleno_Click);
+            // 
+            // btnFijoEscalenoDivision
+            // 
+            this.btnFijoEscalenoDivision.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnFijoEscalenoDivision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnFijoEscalenoDivision.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoEscalenoDivision.BackgroundImage")));
+            this.btnFijoEscalenoDivision.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFijoEscalenoDivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFijoEscalenoDivision.Location = new System.Drawing.Point(1295, 30);
+            this.btnFijoEscalenoDivision.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnFijoEscalenoDivision.Name = "btnFijoEscalenoDivision";
+            this.btnFijoEscalenoDivision.Size = new System.Drawing.Size(130, 130);
+            this.btnFijoEscalenoDivision.TabIndex = 42;
+            this.btnFijoEscalenoDivision.UseVisualStyleBackColor = false;
+            this.btnFijoEscalenoDivision.Click += new System.EventHandler(this.btnFijoEscalenoDivision_Click);
+            // 
+            // btnFijoEscaleno2Division
+            // 
+            this.btnFijoEscaleno2Division.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnFijoEscaleno2Division.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnFijoEscaleno2Division.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoEscaleno2Division.BackgroundImage")));
+            this.btnFijoEscaleno2Division.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFijoEscaleno2Division.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFijoEscaleno2Division.Location = new System.Drawing.Point(1466, 31);
+            this.btnFijoEscaleno2Division.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnFijoEscaleno2Division.Name = "btnFijoEscaleno2Division";
+            this.btnFijoEscaleno2Division.Size = new System.Drawing.Size(130, 130);
+            this.btnFijoEscaleno2Division.TabIndex = 43;
+            this.btnFijoEscaleno2Division.UseVisualStyleBackColor = false;
+            this.btnFijoEscaleno2Division.Click += new System.EventHandler(this.btnFijoEscaleno2Division_Click);
             // 
             // frmSelecDesingVentanaFija
             // 
@@ -472,5 +506,7 @@
         private System.Windows.Forms.Button btnFijoInvertidoDivision;
         private System.Windows.Forms.Button btnFijoInvertido2Division;
         private System.Windows.Forms.Button btnFijoEscaleno;
+        private System.Windows.Forms.Button btnFijoEscalenoDivision;
+        private System.Windows.Forms.Button btnFijoEscaleno2Division;
     }
 }

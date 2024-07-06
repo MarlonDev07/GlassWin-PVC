@@ -89,6 +89,8 @@ namespace Precentacion.User.Quote.Windows
                 btnFijoInvertidoDivision.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO OO INVERTIDO NATURAL.jpeg");
                 btnFijoInvertido2Division.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO OOO INVERTIDO  NATURAL.jpeg");
                 btnFijoEscaleno.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO ESCALENO O NATURAL.jpeg");
+                btnFijoEscalenoDivision.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO OO ESCALENO NATURAL.jpeg");
+                btnFijoEscaleno2Division.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO OOO ESCALENO NATURAL.jpeg");
             }
             else
             {
@@ -164,6 +166,22 @@ namespace Precentacion.User.Quote.Windows
         private void btnFijoEscaleno_Click(object sender, EventArgs e)
         {
             ClsWindows.Desing = "FijoEscaleno";
+            frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnFijoEscalenoDivision_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoEscalenoDivision";
+            frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnFijoEscaleno2Division_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoEscaleno2Division";
             frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
             frm.Show();
             this.Close();
