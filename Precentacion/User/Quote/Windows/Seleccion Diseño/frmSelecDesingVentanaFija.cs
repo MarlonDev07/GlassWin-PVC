@@ -86,6 +86,8 @@ namespace Precentacion.User.Quote.Windows
                 btnFijoGeotricaDivision.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO O GEOTRICA NATURAL CON DIVICION.jpeg");
                 btnFijoGDivision.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO O GEOTRICA NATURAL CON 2 DIVICION.jpeg");
                 btnFijoInvertido.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO INVERTIDO O.jpg");
+                btnFijoInvertidoDivision.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO OO INVERTIDO NATURAL.jpeg");
+                btnFijoInvertido2Division.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\FIJO OOO INVERTIDO  NATURAL.jpeg");
             }
             else
             {
@@ -137,6 +139,22 @@ namespace Precentacion.User.Quote.Windows
         private void btnFijoInvertido_Click(object sender, EventArgs e)
         {
             ClsWindows.Desing = "FijoGeotricaInvertido";
+            frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnFijoInvertidoDivision_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoGeotricaInvertidoDivision";
+            frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnFijoInvertido2Division_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoGeotricaInvertido2Division";
             frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
             frm.Show();
             this.Close();
