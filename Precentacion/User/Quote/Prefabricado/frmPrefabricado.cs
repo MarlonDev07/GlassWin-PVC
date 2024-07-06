@@ -333,34 +333,41 @@ namespace Precentacion.User.Quote.Prefabricado
         {
             string[] Datos = new string[5]; // Crear un array de 5 elementos para ID, Nombre, Ancho, Alto y Cantidad
 
+            // Expresión regular para capturar ID
             string pattern = @"ID:\s*(\d+)";
             System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern);
             int Id = Convert.ToInt32(match.Groups[1].Value);
 
+            // Expresión regular para capturar Nombre
             string pattern1 = @"\nNombre:\s*(.*)";
             System.Text.RegularExpressions.Match match1 = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern1);
             string Nombre = match1.Groups[1].Value;
 
-            string pattern2 = @"\nAncho:\s*(\d+)";
+            // Expresión regular para capturar Ancho, permitiendo valores decimales con comas o puntos
+            string pattern2 = @"\nAncho:\s*([\d.,]+)";
             System.Text.RegularExpressions.Match match2 = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern2);
-            int Ancho = Convert.ToInt32(match2.Groups[1].Value);
+            string Ancho = match2.Groups[1].Value;
 
-            string pattern3 = @"\nAlto:\s*(\d+)";
+            // Expresión regular para capturar Alto, permitiendo valores decimales con comas o puntos
+            string pattern3 = @"\nAlto:\s*([\d.,]+)";
             System.Text.RegularExpressions.Match match3 = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern3);
-            int Alto = Convert.ToInt32(match3.Groups[1].Value);
+            string Alto = match3.Groups[1].Value;
 
+            // Expresión regular para capturar Cantidad
             string pattern4 = @"\nCantidad:\s*(\d+)";
             System.Text.RegularExpressions.Match match4 = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern4);
             int Cantidad = Convert.ToInt32(match4.Groups[1].Value);
 
             Datos[0] = Id.ToString();
             Datos[1] = Nombre;
-            Datos[2] = Ancho.ToString();
-            Datos[3] = Alto.ToString();
+            Datos[2] = Ancho; // Reemplazar comas por puntos si es necesario
+            Datos[3] = Alto;  // Reemplazar comas por puntos si es necesario
             Datos[4] = Cantidad.ToString();
 
             return Datos;
         }
+
+
         public void BuscarProducto(int Id, int Seleccion) 
         {
             DataTable dataTable = new DataTable();
