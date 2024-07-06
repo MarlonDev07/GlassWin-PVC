@@ -50,6 +50,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnFijoGDivision = new System.Windows.Forms.Button();
+            this.btnFijoInvertido = new System.Windows.Forms.Button();
             this.pSelVen.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -208,6 +209,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btnFijoInvertido);
             this.panel2.Controls.Add(this.btnFijoGDivision);
             this.panel2.Controls.Add(this.btnFijoGeotricaDivision);
             this.panel2.Controls.Add(this.btnFijoGeotrica);
@@ -345,6 +347,21 @@
             this.btnFijoGDivision.UseVisualStyleBackColor = false;
             this.btnFijoGDivision.Click += new System.EventHandler(this.btnFijoGDivision_Click);
             // 
+            // btnFijoInvertido
+            // 
+            this.btnFijoInvertido.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnFijoInvertido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnFijoInvertido.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFijoInvertido.BackgroundImage")));
+            this.btnFijoInvertido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFijoInvertido.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFijoInvertido.Location = new System.Drawing.Point(592, 33);
+            this.btnFijoInvertido.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnFijoInvertido.Name = "btnFijoInvertido";
+            this.btnFijoInvertido.Size = new System.Drawing.Size(130, 130);
+            this.btnFijoInvertido.TabIndex = 38;
+            this.btnFijoInvertido.UseVisualStyleBackColor = false;
+            this.btnFijoInvertido.Click += new System.EventHandler(this.btnFijoInvertido_Click);
+            // 
             // frmSelecDesingVentanaFija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 15F);
@@ -399,5 +416,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnFijoGeotricaDivision;
         private System.Windows.Forms.Button btnFijoGDivision;
+        private System.Windows.Forms.Button btnFijoInvertido;
     }
 }

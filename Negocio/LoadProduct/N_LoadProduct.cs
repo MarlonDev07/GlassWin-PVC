@@ -98,10 +98,18 @@ namespace Negocio.LoadProduct
                         if (ClsWindows.Desing == "FijoGeotrica")
                         {
                             Metraje = CalclMetrajeFijoAjusteAlto(Description);
-                        } else if (ClsWindows.Desing == "FijoGeotricaDivision") {
+                        }
+                        else if (ClsWindows.Desing == "FijoGeotricaDivision")
+                        {
                             Metraje = CalclMetrajeFijoAjusteAlto1Divicion(Description);
-                        } else if (ClsWindows.Desing == "FijoGeotrica2Division") {
+                        }
+                        else if (ClsWindows.Desing == "FijoGeotrica2Division")
+                        {
                             Metraje = CalclMetrajeFijoAjusteAlto2Divicion(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoGeotricaInvertido")
+                        {
+                            Metraje = CalclMetrajeFijoAjusteAlto2DivicionInvertido(Description);
                         }
                         else
                         {
@@ -8026,9 +8034,9 @@ namespace Negocio.LoadProduct
                     break;
             }
             return metraje;
-            
+
         }
-            // VENTANA FIJA CON AJUSTE EN LAS ALTURA CON UNA DIVICION INVERTIDO CANAL X12 //
+        // VENTANA FIJA CON AJUSTE EN LAS ALTURA CON UNA DIVICION INVERTIDO CANAL X12 //
 
         private decimal CalclMetrajeFijoAjusteAlto1DivicionInvertido(string Description)
         {
@@ -8048,7 +8056,7 @@ namespace Negocio.LoadProduct
             return metraje;
         }
 
-            // VENTANA FIJA CON AJUSTE EN LAS ALTURA CON DOS DIVICION INVERTIDO CANAL X12 //
+        // VENTANA FIJA CON AJUSTE EN LAS ALTURA CON DOS DIVICION INVERTIDO CANAL X12 //
         private decimal CalclMetrajeFijoAjusteAlto2DivicionInvertido(string Description)
         {
             decimal metraje = 0;
@@ -8065,5 +8073,8 @@ namespace Negocio.LoadProduct
                     break;
             }
             return metraje;
+        }
+    }
+}
 
             #endregion
