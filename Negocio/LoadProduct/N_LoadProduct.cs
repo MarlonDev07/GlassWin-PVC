@@ -7971,6 +7971,8 @@ namespace Negocio.LoadProduct
             }
             return metraje;
 
+            // VENTANA FIJA CON AJUSTE EN LAS ALTURA CON UNA DIVICION CANAL X12 //
+
         }
         private decimal CalclMetrajeFijoAjusteAlto1Divicion(string Description)
         {
@@ -7988,6 +7990,8 @@ namespace Negocio.LoadProduct
                     break;
             }
             return metraje;
+
+            // VENTANA FIJA CON AJUSTE EN LAS ALTURA CON DOS DIVICIONES CANAL X12 //
 
         }
         private decimal CalclMetrajeFijoAjusteAlto2Divicion(string Description)
@@ -8007,14 +8011,59 @@ namespace Negocio.LoadProduct
             }
             return metraje;
 
-
-
-
-
-
-
-
+            // VENTANA FIJA CON AJUSTE EN LAS ALTURA SIN DIVCION INVERTIDO CANAL X12 // 
         }
-        #endregion
-    }
-}
+        private decimal CalclMetrajeFijoAjusteAltoinvertido(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Canal X12":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
+                    break;
+                case "Venilla 1/2":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
+                    break;
+            }
+            return metraje;
+            
+        }
+            // VENTANA FIJA CON AJUSTE EN LAS ALTURA CON UNA DIVICION INVERTIDO CANAL X12 //
+
+        private decimal CalclMetrajeFijoAjusteAlto1DivicionInvertido(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Canal X12":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
+                    break;
+                case "Venilla 1/2":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 4;
+                    break;
+                case "Tubo 2 Aleta 1X2":
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 1;
+                    break;
+            }
+            return metraje;
+        }
+
+            // VENTANA FIJA CON AJUSTE EN LAS ALTURA CON DOS DIVICION INVERTIDO CANAL X12 //
+        private decimal CalclMetrajeFijoAjusteAlto2DivicionInvertido(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Canal X12":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 1 + Convert.ToDecimal(ClsWindows.heigt2) * 1;
+                    break;
+                case "Venilla 1/2":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 6;
+                    break;
+                case "Tubo 2 Aleta 1X2":
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    break;
+            }
+            return metraje;
+
+            #endregion
