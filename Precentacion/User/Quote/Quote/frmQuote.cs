@@ -932,7 +932,7 @@ namespace Precentacion.User.Quote.Quote
             DialogResult result = MessageBox.Show("¿Desea enviar la cotizacion por whatsapp?", "Enviar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                string message = "Hola, le envio la cotizacion n° " + txtidQuote.Text;
+                string message = "Hola, le envío la cotizacion n° " + txtidQuote.Text;
                 string url = "https://api.whatsapp.com/send?phone=506" + txtTelefono.Text + "&text=" + message;
                 System.Diagnostics.Process.Start(url);
             }
