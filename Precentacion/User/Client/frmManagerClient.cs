@@ -332,6 +332,7 @@ namespace Precentacion.User.Client
                 EventFormClose = false;
                 this.Close();
             }
+            this.Close();
         }
         private void lblAgenda_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
