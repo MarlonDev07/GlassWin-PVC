@@ -399,39 +399,47 @@ namespace Precentacion.User.Quote.Quote
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            bool Validate = ValidateFields();
-            if (Validate)
+            try
             {
-                bool res = false;
-
-                if (CompanyCache.IdCompany == 1230123)
+                bool Validate = ValidateFields();
+                if (Validate)
                 {
-                    res = true;
-                    res = Generate();
-                }
-                else
-                {
-                    res = Generate();
-                }
+                    bool res = false;
 
-                if (res)
-                {
+                    if (CompanyCache.IdCompany == 1230123)
+                    {
+                        res = true;
+                        res = Generate();
+                    }
+                    else
+                    {
+                        res = Generate();
+                    }
 
-                    res = NQuote.EditQuote(Convert.ToInt32(txtidQuote.Text), Date, txtProjetName.Text, txtAddress.Text, "", Convert.ToDecimal(txtDescuento.Text), Convert.ToDecimal(txtManoObra.Text), IVA, SubTotal, Total, IdClient);
                     if (res)
                     {
-                        QuoteSave = 1;
-                        MessageBox.Show("Cotizacion Guardada", "Proforma Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        SendQuoteforWhathsaap();
-                        LimpiarCampos();
 
+                        res = NQuote.EditQuote(Convert.ToInt32(txtidQuote.Text), Date, txtProjetName.Text, txtAddress.Text, "", Convert.ToDecimal(txtDescuento.Text), Convert.ToDecimal(txtManoObra.Text), IVA, SubTotal, Total, IdClient);
+                        if (res)
+                        {
+                            QuoteSave = 1;
+                            MessageBox.Show("Cotizacion Guardada", "Proforma Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            SendQuoteforWhathsaap();
+                            LimpiarCampos();
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al Guardar la Cotizacion");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Error al Guardar la Cotizacion");
-                }
             }
+            catch (Exception ex) {
+                MessageBox.Show("Ocurrió un error. Por favor, verifique que haya ingresado bien todos los datos" + ex.Message + "Warning"+ MessageBoxButtons.OK + MessageBoxIcon.Warning );
+            }
+               
+            
         }
 
         private void txtidQuote_TextChanged(object sender, EventArgs e)
