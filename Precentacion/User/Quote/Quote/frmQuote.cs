@@ -387,14 +387,28 @@ namespace Precentacion.User.Quote.Quote
         }
         private void btnSistemas_Click(object sender, EventArgs e)
         {
-            ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
-            frmSelectSystem frm = new frmSelectSystem();
-            frm.Show();
+            
+            try {
+                ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
+                frmSelectSystem frm = new frmSelectSystem();
+                frm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
         }
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
-            loadWindows();
+            try { loadWindows(); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -436,10 +450,11 @@ namespace Precentacion.User.Quote.Quote
                 }
             }
             catch (Exception ex) {
-                MessageBox.Show("Ocurrió un error. Por favor, verifique que haya ingresado bien todos los datos" + ex.Message + "Warning"+ MessageBoxButtons.OK + MessageBoxIcon.Warning );
+                MessageBox.Show("Ocurrió un error. Por favor, verifique que haya ingresado bien todos los datos.\n" + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
-               
-            
+
+
         }
 
         private void txtidQuote_TextChanged(object sender, EventArgs e)
@@ -449,70 +464,98 @@ namespace Precentacion.User.Quote.Quote
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Obtener La Descripccion de la Ventana
-            string Description = dgCotizaciones.CurrentRow.Cells["Description"].Value.ToString();
-            if (Description.Contains("Sistema"))
-            {
-                //Obtener el id de la ventana seleccionada
-                int idWindows = Convert.ToInt32(dgCotizaciones.CurrentRow.Cells["IdWindows"].Value);
-                ClsWindows.IdWindows = idWindows;
-                ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
-
-                //preguntar si desea editar la ventana
-                DialogResult result = MessageBox.Show("¿Desea editar la ventana n° " + dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString() + "?", "Editar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+            try
+            { //Obtener La Descripccion de la Ventana
+                string Description = dgCotizaciones.CurrentRow.Cells["Description"].Value.ToString();
+                if (Description.Contains("Sistema"))
                 {
-                    bool res = NQuote.FindWindows(idWindows);
-                    if (res)
-                    {
-                        frmCalcPriceWindows frm = new frmCalcPriceWindows();
-                        frm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al Editar la Ventana");
-                    }
+                    //Obtener el id de la ventana seleccionada
+                    int idWindows = Convert.ToInt32(dgCotizaciones.CurrentRow.Cells["IdWindows"].Value);
+                    ClsWindows.IdWindows = idWindows;
+                    ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
 
-                }
-            }
-            else
-            {
-                if (Description.Contains("cmbArticulo")) 
-                {
-                    //Recorrer el DataGrid y Guardar los Datos de las Ventanas que en la Descricion Contengan cmbArticulo
-                    try
+                    //preguntar si desea editar la ventana
+                    DialogResult result = MessageBox.Show("¿Desea editar la ventana n° " + dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString() + "?", "Editar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
-                        List<Cls_CmbArticulo> list = new List<Cls_CmbArticulo>();
-                        
-                        frmPrefabricado frm = new frmPrefabricado();
-                        foreach (DataGridViewRow row in dgCotizaciones.Rows)
+                        bool res = NQuote.FindWindows(idWindows);
+                        if (res)
                         {
-                            if (row.Cells[0].Value != null)
-                            {
-                                if (row.Cells[0].Value.ToString() != "")
-                                {
-                                    if (row.Cells[2].Value.ToString().Contains("cmbArticulo"))
-                                    {
-                                        //Guardar en una Lista los Datos
-                                        Cls_CmbArticulo cls_CmbArticulo = new Cls_CmbArticulo();
-                                        cls_CmbArticulo.IdVentana = Convert.ToInt32(row.Cells[0].Value);
-                                        cls_CmbArticulo.Descripcion = row.Cells[2].Value.ToString();
-                                        cls_CmbArticulo.Precio = row.Cells[3].Value.ToString();
-                                        list.Add(cls_CmbArticulo);                                        
-                                    }
-                                }
-                            }
+                            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+                            frm.Show();
                         }
-                        frm.ListarArticulos(list);
-                        frm.ConfigEditar();
-                        frm.Show();
-                    }
-                    catch (Exception EX)
-                    {
+                        else
+                        {
+                            MessageBox.Show("Error al Editar la Ventana");
+                        }
+
                     }
                 }
                 else
+                {
+                    if (Description.Contains("cmbArticulo"))
+                    {
+                        //Recorrer el DataGrid y Guardar los Datos de las Ventanas que en la Descricion Contengan cmbArticulo
+                        try
+                        {
+                            ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
+                            List<Cls_CmbArticulo> list = new List<Cls_CmbArticulo>();
+
+                            frmPrefabricado frm = new frmPrefabricado();
+                            foreach (DataGridViewRow row in dgCotizaciones.Rows)
+                            {
+                                if (row.Cells[0].Value != null)
+                                {
+                                    if (row.Cells[0].Value.ToString() != "")
+                                    {
+                                        if (row.Cells[2].Value.ToString().Contains("cmbArticulo"))
+                                        {
+                                            //Guardar en una Lista los Datos
+                                            Cls_CmbArticulo cls_CmbArticulo = new Cls_CmbArticulo();
+                                            cls_CmbArticulo.IdVentana = Convert.ToInt32(row.Cells[0].Value);
+                                            cls_CmbArticulo.Descripcion = row.Cells[2].Value.ToString();
+                                            cls_CmbArticulo.Precio = row.Cells[3].Value.ToString();
+                                            list.Add(cls_CmbArticulo);
+                                        }
+                                    }
+                                }
+                            }
+                            frm.ListarArticulos(list);
+                            frm.ConfigEditar();
+                            frm.Show();
+                        }
+                        catch (Exception EX)
+                        {
+                        }
+                    }
+                    else
+                    {
+                        //Obtener el id de la ventana seleccionada
+                        int idWindows = Convert.ToInt32(dgCotizaciones.CurrentRow.Cells["IdWindows"].Value);
+                        //Eliminar la ventana
+                        bool res = NQuote.DeleteWindows(idWindows);
+                        if (res)
+                        {
+                            loadWindows();
+                        }
+                        agregarAccesorioToolStripMenuItem_Click(sender, e);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error." + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            { //Preguntar si desea eliminar la ventana
+                DialogResult result = MessageBox.Show("¿Desea eliminar la ventana n° " + dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString() + "?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
                     //Obtener el id de la ventana seleccionada
                     int idWindows = Convert.ToInt32(dgCotizaciones.CurrentRow.Cells["IdWindows"].Value);
@@ -520,60 +563,55 @@ namespace Precentacion.User.Quote.Quote
                     bool res = NQuote.DeleteWindows(idWindows);
                     if (res)
                     {
+                        MessageBox.Show("Ventana Eliminada");
                         loadWindows();
                     }
-                    agregarAccesorioToolStripMenuItem_Click(sender, e);
+                    else
+                    {
+                        MessageBox.Show("Error al Eliminar la Ventana");
+                    }
                 }
             }
-        }
-
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Preguntar si desea eliminar la ventana
-            DialogResult result = MessageBox.Show("¿Desea eliminar la ventana n° " + dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString() + "?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            catch (Exception ex)
             {
-                //Obtener el id de la ventana seleccionada
-                int idWindows = Convert.ToInt32(dgCotizaciones.CurrentRow.Cells["IdWindows"].Value);
-                //Eliminar la ventana
-                bool res = NQuote.DeleteWindows(idWindows);
-                if (res)
-                {
-                    MessageBox.Show("Ventana Eliminada");
-                    loadWindows();
-                }
-                else
-                {
-                    MessageBox.Show("Error al Eliminar la Ventana");
-                }
+                MessageBox.Show("Ocurrió un error." + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
+
         }
 
         public void btnApply_Click(object sender, EventArgs e)
         {
+            try {
+                //Validar si txtManoObrea y txtDescuento son numeros
+                if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
+                {
 
-            //Validar si txtManoObrea y txtDescuento son numeros
-            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
-            {
+                    SubTotal = 0;
+                    IVA = 0;
+                    Discount = 0;
+                    Labour = 0;
+                    Total = 0;
+                    Descuento = 0;
+                    ManoObra = 0;
 
-                SubTotal = 0;
-                IVA = 0;
-                Discount = 0;
-                Labour = 0;
-                Total = 0;
-                Descuento = 0;
-                ManoObra = 0;
-
-                Discount = descuento / 100;
-                Labour = manoObra / 100;
+                    Discount = descuento / 100;
+                    Labour = manoObra / 100;
 
 
-                loadWindows();
+                    loadWindows();
+                }
+                else
+                {
+                    MessageBox.Show("El descuento y la mano de obra deben ser números");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("El descuento y la mano de obra deben ser números");
+                MessageBox.Show("Ocurrió un error. Por favor, verifique que haya ingresado bien todos los datos.\n" + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
+
         }
         #endregion
 
@@ -724,24 +762,49 @@ namespace Precentacion.User.Quote.Quote
 
         private void agregarAccesorioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
-            frmListaAcesorios frm = new frmListaAcesorios();
-            frm.ShowDialog();
+            try
+            {
+                ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
+                frmListaAcesorios frm = new frmListaAcesorios();
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error." + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
         }
 
         private void btnExclusivo_Click(object sender, EventArgs e)
         {
-            ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
-            frmArticuloExclusivo frm = new frmArticuloExclusivo();
-            frm.Show();
+            try {
+                ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
+                frmArticuloExclusivo frm = new frmArticuloExclusivo();
+                frm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
 
         }
 
         private void btnSanBlast_Click(object sender, EventArgs e)
         {
-            ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
-            frmCalcPriceSandBlasting frm = new frmCalcPriceSandBlasting();
-            frm.Show();
+            try {
+                ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
+                frmCalcPriceSandBlasting frm = new frmCalcPriceSandBlasting();
+                frm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
         }
 
         private void cbIva_SelectedIndexChanged(object sender, EventArgs e)
@@ -770,9 +833,17 @@ namespace Precentacion.User.Quote.Quote
 
         private void btnPrefabricado_Click(object sender, EventArgs e)
         {
-            ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
-            frmPrefabricado frm = new frmPrefabricado();
-            frm.Show();
+            try {
+                ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
+                frmPrefabricado frm = new frmPrefabricado();
+                frm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
         }
 
         private void dgCotizaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -793,9 +864,17 @@ namespace Precentacion.User.Quote.Quote
 
         private void btnViaticos_Click(object sender, EventArgs e)
         {
-            frmTablaViaticos frm = new frmTablaViaticos();
-            frm.CargarSubTotal(SubTotal);
-            frm.Show();
+            try {
+                frmTablaViaticos frm = new frmTablaViaticos();
+                frm.CargarSubTotal(SubTotal);
+                frm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
 
         }
 
@@ -930,8 +1009,16 @@ namespace Precentacion.User.Quote.Quote
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Abre el HiperVinculo
-            System.Diagnostics.Process.Start("C:\\GlassWin\\Debug\\Medidas de Fabricacion");
+            try {
+                //Abre el HiperVinculo
+                System.Diagnostics.Process.Start("C:\\GlassWin\\Debug\\Medidas de Fabricacion");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
         }
 
         private void SendQuoteforWhathsaap()
