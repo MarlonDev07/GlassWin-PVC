@@ -29,7 +29,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         public frmCaclPriceVentanasFijas2()
         {
             InitializeComponent();
-            frmCalcPriceVentanasFijas_Load(null, null);
+            frmCalcPriceVentanasFijas2_Load(null, null);
             CargarProveedores();
 
             // Obtener el ancho predeterminado del formulario
@@ -240,7 +240,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                 MessageBox.Show("No se encontró el precio: " + ex.Message, "Precio no disponible", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void frmCalcPriceVentanasFijas_Load(object sender, EventArgs e)
+        private void frmCalcPriceVentanasFijas2_Load(object sender, EventArgs e)
         {
             if (ClsWindows.System != "Vidrio Fijo")
             {

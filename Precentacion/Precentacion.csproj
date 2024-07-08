@@ -368,6 +368,12 @@
     <Compile Include="User\Quote\Windows\Calculos de Precio\Copia frmCalcPriceVentanasFijas\frmCaclPriceVentanasFijas2.Designer.cs">
       <DependentUpon>frmCaclPriceVentanasFijas2.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\Copia frmCalcPriceVentanasFijas\frmCalcPriceVentanasFijas3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Windows\Calculos de Precio\Copia frmCalcPriceVentanasFijas\frmCalcPriceVentanasFijas3.Designer.cs">
+      <DependentUpon>frmCalcPriceVentanasFijas3.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceVentanasFijas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -570,6 +576,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\Quote\Windows\Calculos de Precio\Copia frmCalcPriceVentanasFijas\frmCaclPriceVentanasFijas2.resx">
       <DependentUpon>frmCaclPriceVentanasFijas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Windows\Calculos de Precio\Copia frmCalcPriceVentanasFijas\frmCalcPriceVentanasFijas3.resx">
+      <DependentUpon>frmCalcPriceVentanasFijas3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Quote\Windows\Calculos de Precio\frmCalcPriceVentanasFijas.resx">
       <DependentUpon>frmCalcPriceVentanasFijas.cs</DependentUpon>
