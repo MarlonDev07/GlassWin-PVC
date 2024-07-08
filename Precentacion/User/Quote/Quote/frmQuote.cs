@@ -1055,6 +1055,16 @@ namespace Precentacion.User.Quote.Quote
                 PdfPTable Encabezado = new PdfPTable(2);
                 Encabezado.WidthPercentage = 120;
                 string rutaLogo = "";
+                //Usuario de Nel
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel Fin
                 if (CompanyCache.IdCompany == 31025820)
                 {
                     //Obtener la Ruta de la Carpeta bin
@@ -1309,8 +1319,12 @@ namespace Precentacion.User.Quote.Quote
                                     // Obtener dimensiones en metros y convertirlas a píxeles
                                     decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
                                     decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
+                                  
                                     int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
                                     int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
+
+                                    if (anchoVentana == 0) anchoVentana = 150;//e.CellBounds.Width;
+                                    if (altoVentana == 0) altoVentana = 100;//e.CellBounds.Height;
 
                                     // Mostrar dimensiones calculadas para depuración
                                     Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
