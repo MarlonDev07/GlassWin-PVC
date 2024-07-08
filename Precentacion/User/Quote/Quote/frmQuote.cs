@@ -775,7 +775,7 @@ namespace Precentacion.User.Quote.Quote
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //Abre el HiperVinculo
-            System.Diagnostics.Process.Start("C:\\GlassWin\\Debug\\Medidas de Fabricacion");
+            //System.Diagnostics.Process.Start("C:\\GlassWin\\Debug\\Medidas de Fabricacion");
 
 
 

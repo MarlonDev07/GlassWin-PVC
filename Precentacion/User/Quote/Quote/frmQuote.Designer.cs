@@ -89,7 +89,6 @@
             this.btnSanBlast = new System.Windows.Forms.Button();
             this.cbIva = new System.Windows.Forms.ComboBox();
             this.btnPrefabricado = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
@@ -854,30 +853,6 @@
             this.btnPrefabricado.UseVisualStyleBackColor = false;
             this.btnPrefabricado.Click += new System.EventHandler(this.btnPrefabricado_Click);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.BackColor = System.Drawing.Color.White;
-            this.linkLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.linkLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.linkLabel1.ImageKey = "(ninguno)";
-            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(1436, 326);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(148, 29);
-            this.linkLabel1.TabIndex = 183;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Fabricacion";
-            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.linkLabel1.Visible = false;
-            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -899,8 +874,9 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(1372, 605);
+            this.button1.Location = new System.Drawing.Point(706, 540);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 46);
@@ -917,7 +893,6 @@
             this.ClientSize = new System.Drawing.Size(1554, 1049);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnPrefabricado);
             this.Controls.Add(this.cbIva);
             this.Controls.Add(this.btnSanBlast);
@@ -1041,7 +1016,6 @@
         private System.Windows.Forms.Button btnSanBlast;
         private System.Windows.Forms.ComboBox cbIva;
         private System.Windows.Forms.Button btnPrefabricado;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button button1;
