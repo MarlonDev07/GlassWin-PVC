@@ -1152,7 +1152,7 @@ namespace Precentacion.User.Quote.Quote
                 // Crea un nuevo objeto Font para los textos
                 iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
                 iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-
+                iTextSharp.text.Font textFont2 = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 7, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
                 // Agrega los textos a la segunda celda
                 PdfPCell textCell = new PdfPCell();
                 textCell.Border = PdfPCell.NO_BORDER;
@@ -1169,6 +1169,15 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(new Chunk("Cédula Jurídica : 3-101-897998", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }else if (CompanyCache.IdCompany == 31028013)
+                {
+                   
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-801388", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("650 METROS NORESTE Y 350 METROS NOROESTE DE KFC, BOSQUES DON JOSE, NICOYA.", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
@@ -1193,11 +1202,31 @@ namespace Precentacion.User.Quote.Quote
 
                 // Añade la palabra "COTIZACIÓN" debajo de la tabla
                 Paragraph cotizacionParagraph = new Paragraph("COTIZACIÓN", titleFont);
-                cotizacionParagraph.Alignment = Element.ALIGN_CENTER;
+                cotizacionParagraph.Alignment = Element.ALIGN_LEFT;
                 document.Add(cotizacionParagraph);
                 document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
 
+                // Agregar una línea de separación
+                PdfPTable lineaTable = new PdfPTable(1);
+                lineaTable.TotalWidth = 525f;
+                lineaTable.LockedWidth = true;
+
+                PdfPCell cellLinea = new PdfPCell(new Phrase(" "))
+                {
+                    BorderWidthTop = 1f, // Línea en la parte superior
+                    BorderWidthBottom = 0f, // Sin borde en la parte inferior
+                    BorderWidthLeft = 0f, // Sin borde en la parte izquierda
+                    BorderWidthRight = 0f, // Sin borde en la parte derecha
+                    FixedHeight = 10f, // Altura fija para la celda
+                    HorizontalAlignment = Element.ALIGN_CENTER
+                };
+                lineaTable.AddCell(cellLinea);
+
+                document.Add(lineaTable);
+
+                document.Add(new Paragraph(" "));
                 #endregion
+
 
                 #region Tabla de Informacion 
                 // Crear una tabla para los datos del proyecto y la información del cliente
@@ -1206,11 +1235,10 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.LockedWidth = true;
 
                 // Celda 1: Datos del Proyecto
-                PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                /*PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
                 {
                     BackgroundColor = new BaseColor(70, 130, 180),
-                    BorderWidth = 1f,
-                    //Colspan = 1, // Fusionar una columna para "Datos del Proyecto"
+                    Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_CENTER,
                     VerticalAlignment = Element.ALIGN_CENTER
                 };
@@ -1220,17 +1248,16 @@ namespace Precentacion.User.Quote.Quote
                 PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Cliente", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
                 {
                     BackgroundColor = new BaseColor(70, 130, 180),
-                    BorderWidth = 1f,
-                    Colspan = 1, // Fusionar una columna para "Información del Cliente"
+                    Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_CENTER,
                     VerticalAlignment = Element.ALIGN_MIDDLE
                 };
-                datosTable.AddCell(cellDatosCliente);
+                datosTable.AddCell(cellDatosCliente);*/
 
                 // Celda 3: Etiqueta "Cotización"
                 PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
                 {
-                    BorderWidth = 1,
+                    Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
                     VerticalAlignment = Element.ALIGN_MIDDLE
                 };
@@ -1239,7 +1266,7 @@ namespace Precentacion.User.Quote.Quote
                 // Celda 4: Etiqueta "Cliente"
                 PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Cliente: " + txtidClient.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
                 {
-                    BorderWidth = 1,
+                    Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
                     VerticalAlignment = Element.ALIGN_MIDDLE
                 };
@@ -1248,7 +1275,7 @@ namespace Precentacion.User.Quote.Quote
                 // Celda 5: Etiqueta "Forma Pago"
                 PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
                 {
-                    BorderWidth = 1,
+                    Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
                     VerticalAlignment = Element.ALIGN_MIDDLE
                 };
@@ -1257,31 +1284,33 @@ namespace Precentacion.User.Quote.Quote
                 // Celda 6: Etiqueta "Teléfono"
                 PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
                 {
-                    BorderWidth = 1,
+                    Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
                     VerticalAlignment = Element.ALIGN_MIDDLE
                 };
                 datosTable.AddCell(cellEtiquetaTelefono);
 
-                // Celda 6: Etiqueta "Dirección"
+                // Celda 7: Etiqueta "Dirección"
                 PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
                 {
-                    BorderWidth = 1,
+                    Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
                     VerticalAlignment = Element.ALIGN_MIDDLE
                 };
                 datosTable.AddCell(cellEtiquetaDireccion);
 
-                // Celda 7: Etiqueta "Correo"
+                // Celda 8: Etiqueta "Correo"
                 PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
                 {
-                    BorderWidth = 1,
+                    Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
                     VerticalAlignment = Element.ALIGN_MIDDLE
                 };
                 datosTable.AddCell(cellEtiquetaCorreo);
+
                 document.Add(datosTable);
                 document.Add(new Paragraph(" "));
+
 
                 #endregion
 
