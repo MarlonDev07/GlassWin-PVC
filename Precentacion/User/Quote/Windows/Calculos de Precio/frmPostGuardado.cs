@@ -26,34 +26,41 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
         public void ObtenerDatos(DataTable dt, decimal _Total) 
         {
-            //Setear el PrecioCosto
-            if (dt != null) 
+            try 
             {
-                Costo = 0;
-                foreach (DataRow dr in dt.Rows) 
+                //Setear el PrecioCosto
+                if (dt != null)
                 {
-                    Costo += Convert.ToInt32(dr["Price"]);
+                    Costo = 0;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        Costo += Convert.ToInt32(dr["Price"]);
+                    }
+                    txtPrecioCosto.Text = Costo.ToString("c");
                 }
-                txtPrecioCosto.Text = Costo.ToString("c");
-            }
 
-            //Setear el  SubTotal
-            if (_Total != 0)
+                //Setear el  SubTotal
+                if (_Total != 0)
+                {
+                    SubTotal = _Total;
+                    txtSubTotal.Text = SubTotal.ToString("c");
+                }
+
+                //Setear el Ajuste
+                decimal Ajuste = (SubTotal - Costo) / Costo;
+                Ajuste = Ajuste * 100;
+                //Redondear a 2 Decimales
+                Ajuste = Math.Round(Ajuste, 2);
+                txtUtilidad.Text = Ajuste.ToString() + "%";
+
+                //Calcular el Total
+                Total = SubTotal;
+                txtTotal.Text = Total.ToString("c");
+            } catch (Exception ex) 
             {
-                SubTotal = _Total;
-                txtSubTotal.Text = SubTotal.ToString("c");
+                MessageBox.Show("Ocurrió un error " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            //Setear el Ajuste
-            decimal Ajuste = (SubTotal - Costo)/Costo;
-            Ajuste = Ajuste * 100;
-            //Redondear a 2 Decimales
-            Ajuste = Math.Round(Ajuste, 2);
-            txtUtilidad.Text = Ajuste.ToString()+"%";
-
-            //Calcular el Total
-            Total = SubTotal;
-            txtTotal.Text = Total.ToString("c");
+            
         }
 
         private void numCantidad_ValueChanged(object sender, EventArgs e)
