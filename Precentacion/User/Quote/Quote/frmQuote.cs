@@ -266,16 +266,16 @@ namespace Precentacion.User.Quote.Quote
             {
 
                 cbOpcion.Visible = false;
-                txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
-                txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
-                txtConditional3.Text = "3.Se requiere realizar la visita para tomar medidas rectificadas";
-                txtConditional4.Text = "4.Forma de pago 50% adelanto 50% contra entrega";
-                txtConditional5.Text = "5.Entrega de prefabricados de 8 a 20 días hábiles";
-                txtConditional6.Text = "6.Por favor revisar cantidades, sistema y acabados";
-                txtConditional7.Text = "7.Validez de cotización 8 días";
-                txtConditional8.Text = "8.Precio puede variar según aumentos del mercado";
+                txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación.";
+                txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente.";
+                txtConditional3.Text = "3.Se requiere realizar la visita para tomar medidas rectificadas.";
+                txtConditional4.Text = "4.Forma de pago 50% adelanto 50% contra entrega.";
+                txtConditional5.Text = "5.Entrega de prefabricados de 8 a 20 días hábiles.";
+                txtConditional6.Text = "6.Por favor revisar cantidades, sistema y acabados.";
+                txtConditional7.Text = "7.Validez de cotización 8 días.";
+                txtConditional8.Text = "8.Precio puede variar según aumentos del mercado.";
                 txtConditional9.Text = "9.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
-                txtConditional10.Visible = false;
+                txtConditional10.Text = "10.Después del giro del 50%, no se aceptan devoluciones o cambios en el proyecto.";
 
             }
             //Vidrios Maky
@@ -1837,29 +1837,88 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-                if (CompanyCache.IdCompany == 112540885) {
+                if (CompanyCache.IdCompany == 112540885)
+                {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
                     document.Add(CuentasParagraph);
 
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones CR36010200009449083184.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
+                    // Crear tabla con 2 columnas para organizar texto e imágenes
+                    PdfPTable table = new PdfPTable(1);
+                    table.WidthPercentage = 100; // Ajustar el ancho de la tabla al 100% del documento
 
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta BAC colones 944908318.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
+                    // Agregar las cuentas y los logos en una tabla
+                    // Cuenta Banco Popular
+                    string rutaBP = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\logo_bancopopular.png";
+                    Image imgBancoPopular = Image.GetInstance(rutaBP);
+                    imgBancoPopular.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoBP = new PdfPCell(imgBancoPopular);
+                    cellLogoBP.Border = PdfPCell.NO_BORDER;
+                    cellLogoBP.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoBP);
 
-                    Paragraph Cuenta3Paragraph = new Paragraph("• Número SINPE Móvil 83984523.  \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta3Paragraph);
+                    PdfPCell cellTextBP = new PdfPCell(new Phrase("• Cuenta Banco Popular colones CR32016111120141093142.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextBP.Border = PdfPCell.NO_BORDER;
+                    cellTextBP.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextBP);
 
+                    // Cuenta IBAN
+                    string rutaIBAN = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\Logos-PR-BCR.png";
+                    Image imgIBAN = Image.GetInstance(rutaIBAN);
+                    imgIBAN.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoIBAN = new PdfPCell(imgIBAN);
+                    cellLogoIBAN.Border = PdfPCell.NO_BORDER;
+                    cellLogoIBAN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoIBAN);
+
+                    PdfPCell cellTextIBAN = new PdfPCell(new Phrase("• Cuenta IBAN colones CR36010200009449083184.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextIBAN.Border = PdfPCell.NO_BORDER;
+                    cellTextIBAN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextIBAN);
+
+                    // Cuenta BAC
+                    string rutaBAC = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\logo_bacredomatic.png";
+                    Image imgBAC = Image.GetInstance(rutaBAC);
+                    imgBAC.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoBAC = new PdfPCell(imgBAC);
+                    cellLogoBAC.Border = PdfPCell.NO_BORDER;
+                    cellLogoBAC.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoBAC);
+
+                    PdfPCell cellTextBAC = new PdfPCell(new Phrase("• Cuenta BAC colones 944908318.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextBAC.Border = PdfPCell.NO_BORDER;
+                    cellTextBAC.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextBAC);
+
+                    // SINPE Móvil
+                    string rutaSinpe = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\sinpe-movil-2.png";
+                    Image imgSINPE = Image.GetInstance(rutaSinpe);
+                    imgSINPE.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoSINPE = new PdfPCell(imgSINPE);
+                    cellLogoSINPE.Border = PdfPCell.NO_BORDER;
+                    cellLogoSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoSINPE);
+
+                    PdfPCell cellTextSINPE = new PdfPCell(new Phrase("• Número SINPE Móvil 83984523.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextSINPE.Border = PdfPCell.NO_BORDER;
+                    cellTextSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextSINPE);
+
+                    document.Add(table);
                 }
-                    #endregion
 
-                    #region Cerrar el documento
-                    // Cerrar el documento
-                    document.Close();
+
+
+
+
+
+
+
+                #endregion
+
+                #region Cerrar el documento
+                // Cerrar el documento
+                document.Close();
                 return true;
             }
             catch (Exception ex)
