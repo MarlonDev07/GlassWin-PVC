@@ -39,28 +39,38 @@ namespace Negocio.LoadProduct
                     System = "5020";
                 }
 
-
                 //Carga el DataTable con los datos de la base de datos
                 dt = loadProduct.loadAluminio(Color, System, supplier);
 
-                //Agrega la columna "Metraje" Y "Precio Total" solo si no existe
-                if (!dt.Columns.Contains("Metraje") || !dt.Columns.Contains("TotalPrice"))
+                //Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                if (!dt.Columns.Contains("Metraje"))
                 {
                     dt.Columns.Add("Metraje", typeof(decimal));
+                }
+
+                if (!dt.Columns.Contains("TotalPrice"))
+                {
                     dt.Columns.Add("TotalPrice", typeof(decimal));
+                }
+
+                if (!dt.Columns.Contains("TotalCost"))
+                {
+                    dt.Columns.Add("TotalCost", typeof(decimal));
                 }
 
                 foreach (DataRow item in dt.Rows)
                 {
                     string Description = item[0].ToString();
-                    //ClsWindows.Articulo = Description;
                     decimal Metraje = CalcMetraje(Description);
-                    decimal SalePrice = Convert.ToDecimal(item[1]);
+                    decimal SalePrice = Convert.ToDecimal(item[2]);
+                    decimal Cost = Convert.ToDecimal(item["Cost"]); // Asegúrate de que esta columna exista en tu DataTable
                     decimal Price = CalcPrice(Metraje, SalePrice);
+                    decimal TotalCost = Metraje * Cost;
 
-                    // Modifica directamente el valor de la columna "Metraje" en la fila actual
+                    // Modifica directamente el valor de las columnas en la fila actual
                     item["Metraje"] = Metraje;
                     item["TotalPrice"] = Price;
+                    item["TotalCost"] = TotalCost;
                 }
 
                 return dt;
@@ -70,6 +80,7 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
         public DataTable loadAluminioVentanaFija(string Color, string System, string supplier, string Material)
         {
             try
