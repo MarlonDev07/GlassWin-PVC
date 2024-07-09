@@ -583,6 +583,9 @@ namespace Precentacion.User.Quote.Quote
         public void btnApply_Click(object sender, EventArgs e)
         {
             try {
+                if (int.Parse(txtManoObra.Text) == 0 && int.Parse(txtDescuento.Text) == 0) {
+                    MessageBox.Show("Por favor, verifique que haya ingresado bien todos los datos.\nDebe ingresar la mano de obra, o el descuento.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 //Validar si txtManoObrea y txtDescuento son numeros
                 if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
                 {
