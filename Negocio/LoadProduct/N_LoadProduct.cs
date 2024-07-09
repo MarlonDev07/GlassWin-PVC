@@ -350,11 +350,41 @@ namespace Negocio.LoadProduct
             {
                 DataTable dt = new DataTable();
                 dt = loadProduct.loadAluminio(Color, System, supplier);
-                if (!dt.Columns.Contains("Metraje") || !dt.Columns.Contains("TotalPrice"))
+                if (!dt.Columns.Contains("Metraje") || !dt.Columns.Contains("TotalPrice") || !dt.Columns.Contains("TotalCosts"))
                 {
                     dt.Columns.Add("Metraje", typeof(decimal));
                     dt.Columns.Add("TotalPrice", typeof(decimal));
+
+                    // Verifica y agrega las columnas si no existen
+                    if (!dt.Columns.Contains("Metraje"))
+                    {
+                        dt.Columns.Add("Metraje", typeof(decimal));
+                    }
+
+                    if (!dt.Columns.Contains("TotalPrice"))
+                    {
+                        dt.Columns.Add("TotalPrice", typeof(decimal));
+                    }
+
+                    if (!dt.Columns.Contains("TotalCosts"))
+                    {
+                        dt.Columns.Add("TotalCosts", typeof(decimal));
+                    }
+
+                    // Itera sobre cada fila y calcula el valor de TotalCosts
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        // Verifica que las columnas Metraje y Cost existan y que no sean nulas
+                        if (dt.Columns.Contains("Metraje") && dt.Columns.Contains("Cost") && row["Metraje"] != DBNull.Value && row["Cost"] != DBNull.Value)
+                        {
+                            decimal metraje = Convert.ToDecimal(row["Metraje"]);
+                            decimal cost = Convert.ToDecimal(row["Cost"]);
+                            row["TotalCosts"] = metraje * cost;
+                        }
+                    }
                 }
+                
+
                 foreach (DataRow item in dt.Rows)
                 {
                     string Description = item[0].ToString();
