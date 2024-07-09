@@ -1009,7 +1009,13 @@ namespace Precentacion.User.Quote.Quote
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 //Abre el HiperVinculo
                 System.Diagnostics.Process.Start("C:\\GlassWin\\Debug\\Medidas de Fabricacion");
             }
@@ -1018,7 +1024,6 @@ namespace Precentacion.User.Quote.Quote
                 MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
-
         }
 
         private void SendQuoteforWhathsaap()
