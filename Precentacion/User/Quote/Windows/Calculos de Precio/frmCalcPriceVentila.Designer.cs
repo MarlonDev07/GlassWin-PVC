@@ -67,6 +67,8 @@
             this.panelDetalle = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUbicacion = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbVentila)).BeginInit();
             this.PanelMedidas.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -509,6 +511,8 @@
             // 
             // panelDetalle
             // 
+            this.panelDetalle.Controls.Add(this.label6);
+            this.panelDetalle.Controls.Add(this.label5);
             this.panelDetalle.Controls.Add(this.label4);
             this.panelDetalle.Controls.Add(this.dgvAccesorios);
             this.panelDetalle.Controls.Add(this.label7);
@@ -543,6 +547,28 @@
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(162, 25);
             this.txtUbicacion.TabIndex = 79;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(173, 238);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 20);
+            this.label5.TabIndex = 80;
+            this.label5.Text = "Accesorio";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(190, 369);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 20);
+            this.label6.TabIndex = 81;
+            this.label6.Text = "Vidrio";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmCalcPriceVentila
             // 
@@ -615,5 +641,7 @@
         private System.Windows.Forms.Panel panelDetalle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUbicacion;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }

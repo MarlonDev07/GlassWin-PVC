@@ -93,11 +93,18 @@ namespace Negocio.LoadProduct
 
                 dt = loadProduct.loadAluminio(Color, System, supplier);
 
-                // Agrega la columna "Metraje" solo si no existe
-                if (!dt.Columns.Contains("Metraje") || !dt.Columns.Contains("TotalPrice"))
+                // Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                if (!dt.Columns.Contains("Metraje"))
                 {
                     dt.Columns.Add("Metraje", typeof(decimal));
+                }
+                if (!dt.Columns.Contains("TotalPrice"))
+                {
                     dt.Columns.Add("TotalPrice", typeof(decimal));
+                }
+                if (!dt.Columns.Contains("TotalCost"))
+                {
+                    dt.Columns.Add("TotalCost", typeof(decimal));
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -146,21 +153,22 @@ namespace Negocio.LoadProduct
                         {
                             Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
                         }
-
                     }
                     else
                     {
                         Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, "");
                     }
 
-
-                    decimal SalePrice = Convert.ToDecimal(item[1]);
+                    decimal SalePrice = Convert.ToDecimal(item[2]);
+                    decimal Cost = Convert.ToDecimal(item["Cost"]); // Asumiendo que la columna "Cost" existe y tiene valores
                     decimal Price = CalcPrice(Metraje, SalePrice);
+                    decimal TotalCost = Metraje * Cost;
 
-                    // Modifica directamente el valor de la columna "Metraje" en la fila actual
+                    // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
                     item["Metraje"] = Metraje;
                     item["TotalPrice"] = Price;
-                    Console.WriteLine(item[0].ToString() + " " + Metraje.ToString() + " " + Price.ToString());
+                    item["TotalCost"] = TotalCost;
+                    Console.WriteLine($"{item[0]} {Metraje} {Price} {TotalCost}");
                 }
 
                 return dt;
@@ -170,6 +178,7 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
         public DataTable loadAccesorios(string System, string supplier)
         {
             try
