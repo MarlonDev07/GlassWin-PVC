@@ -4033,7 +4033,7 @@ namespace Negocio.LoadProduct
                     metraje = 2;
                     break;
                 case "Fibra Cedazo Akari":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2) * Convert.ToDecimal(ClsWindows.heigt);
+                    metraje = Convert.ToDecimal(ClsWindows.heigt);
                     break;
                 case "Empaque Cedazo Akari":
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 2) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
@@ -4095,7 +4095,7 @@ namespace Negocio.LoadProduct
                     metraje = 3;
                     break;
                 case "Fibra Cedazo Akari":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2) * Convert.ToDecimal(ClsWindows.heigt);
+                    metraje = Convert.ToDecimal(ClsWindows.heigt);
                     break;
                 case "Empaque Cedazo Akari":
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 2) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
@@ -4159,7 +4159,7 @@ namespace Negocio.LoadProduct
                     metraje = 2;
                     break;
                 case "Fibra Cedazo Akari":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 3) * (Convert.ToDecimal(ClsWindows.heigt) * 1);
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 1;
                     break;
                 case "Empaque Cedazo Akari":
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 3) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
@@ -4220,7 +4220,7 @@ namespace Negocio.LoadProduct
                     metraje = 4;
                     break;
                 case "Fibra Cedazo Akari":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
                     break;
                 case "Empaque Cedazo Akari":
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 4) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
@@ -4285,7 +4285,7 @@ namespace Negocio.LoadProduct
                     metraje = 4;
                     break;
                 case "Fibra Cedazo Akari":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
                     break;
                 case "Empaque Cedazo Akari":
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 4) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
