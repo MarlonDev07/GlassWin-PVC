@@ -1279,7 +1279,7 @@ namespace Precentacion.User.Quote.Quote
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\Prefalum.png";
+                    string Url = "\\Images\\Logos\\Prefalum2.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -1411,7 +1411,7 @@ namespace Precentacion.User.Quote.Quote
                 }
                 else if (CompanyCache.IdCompany == 111111111)
                 {
-                    paragraph.Add(new Chunk("EL COYOL ALAJUELA.", textFont2));
+                    paragraph.Add(new Chunk("EL COYOL ALAJUELA.\r\n", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
 
                     paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", textFont));
