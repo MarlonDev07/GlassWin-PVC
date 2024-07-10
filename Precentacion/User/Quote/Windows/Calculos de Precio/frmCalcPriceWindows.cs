@@ -2367,45 +2367,42 @@ namespace Precentacion.User.Quote.Windows
             }
         }
 
-        private DataTable ObtenerDatosDGV() 
+        private DataTable ObtenerDatosDGV()
         {
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Price", typeof(decimal));
 
-            
-            Action<DataGridView> agregarDatosFromDataGridView = (dataGridView) =>
+            Action<DataGridView, string> agregarDatosFromDataGridView = (dataGridView, columnName) =>
             {
                 if (dataGridView != null)
                 {
                     foreach (DataGridViewRow row in dataGridView.Rows)
                     {
-                        // Asegúrate de que la columna "TotalPrice" exista y contenga un valor válido
-                        if (row.Cells["TotalPrice"].Value != null && row.Cells["TotalPrice"].Value != DBNull.Value)
+                        if (row.Cells[columnName].Value != null && row.Cells[columnName].Value != DBNull.Value)
                         {
                             decimal totalPrice;
-                            if (Decimal.TryParse(row.Cells["TotalPrice"].Value.ToString(), out totalPrice))
+                            if (Decimal.TryParse(row.Cells[columnName].Value.ToString(), out totalPrice))
                             {
-                                dataTable.Rows.Add(totalPrice); 
-                            }
-                            else
-                            {
-                                
+                                dataTable.Rows.Add(totalPrice);
                             }
                         }
                     }
                 }
             };
 
-           
-            agregarDatosFromDataGridView(dgAluminio);
-            agregarDatosFromDataGridView(dgAccesorios);
-            agregarDatosFromDataGridView(dgVidrio);
-            agregarDatosFromDataGridView(dgAluminioAdd);
-            agregarDatosFromDataGridView(dgVidrioAdd);
-            agregarDatosFromDataGridView(dgvCerradura);
+            // Para dgAluminio, utiliza la columna "TotalCost"
+            agregarDatosFromDataGridView(dgAluminio, "TotalCost");
+
+            // Para los demás DataGridViews, utiliza la columna "TotalPrice"
+            agregarDatosFromDataGridView(dgAccesorios, "TotalPrice");
+            agregarDatosFromDataGridView(dgVidrio, "TotalPrice");
+            agregarDatosFromDataGridView(dgAluminioAdd, "TotalPrice");
+            agregarDatosFromDataGridView(dgVidrioAdd, "TotalPrice");
+            agregarDatosFromDataGridView(dgvCerradura, "TotalPrice");
 
             return dataTable; // Devuelve el DataTable lleno
         }
+
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
