@@ -1121,8 +1121,12 @@ namespace Precentacion.User.Quote.Quote
         {
             try
             {
+                
+                string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                string Url = "\\Medidas de Fabricacion";
+                string rutaCarpeta = ruta + Url;
                 //Abre el HiperVinculo
-                System.Diagnostics.Process.Start("C:\\GlassWin\\Debug\\Medidas de Fabricacion");
+                System.Diagnostics.Process.Start(rutaCarpeta);
             }
             catch (Exception ex)
             {
