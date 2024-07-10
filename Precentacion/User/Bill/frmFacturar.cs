@@ -487,6 +487,10 @@ namespace Precentacion.User.Bill
                             int anchoImagen = anchoVentana;
                             int altoImagen = altoVentana;
 
+                            // Asegúrate de que anchoImagen y altoImagen no sean 0
+                            if (anchoImagen == 0) anchoImagen = 200;//e.CellBounds.Width;
+                            if (altoImagen == 0) altoImagen = 200;//e.CellBounds.Height;
+
                             // Mostrar dimensiones de la imagen ajustada para depuración
                             Console.WriteLine($"Ancho imagen ajustada: {anchoImagen}, Alto imagen ajustada: {altoImagen}");
 

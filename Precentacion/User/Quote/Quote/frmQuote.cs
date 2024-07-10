@@ -68,30 +68,38 @@ namespace Precentacion.User.Quote.Quote
         #endregion
         private void InitializeCustomButtons()
         {
-            btnMinimize = new Button();
-            btnMinimize.Text = "_";
-            btnMinimize.Size = new Size(23, 23);
-            btnMinimize.Location = new Point(this.Width - 90, 0);
-            btnMinimize.Click += BtnMinimize_Click;
-            this.Controls.Add(btnMinimize);
+            try 
+            {
+                btnMinimize = new Button();
+                btnMinimize.Text = "_";
+                btnMinimize.Size = new Size(23, 23);
+                btnMinimize.Location = new Point(this.Width - 90, 0);
+                btnMinimize.Click += BtnMinimize_Click;
+                this.Controls.Add(btnMinimize);
 
-            btnMaximize = new Button();
-            btnMaximize.Text = "⬜";
-            btnMaximize.Size = new Size(23, 23);
-            btnMaximize.Location = new Point(this.Width - 60, 0);
-            btnMaximize.Click += BtnMaximize_Click;
-            this.Controls.Add(btnMaximize);
+                btnMaximize = new Button();
+                btnMaximize.Text = "⬜";
+                btnMaximize.Size = new Size(23, 23);
+                btnMaximize.Location = new Point(this.Width - 60, 0);
+                btnMaximize.Click += BtnMaximize_Click;
+                this.Controls.Add(btnMaximize);
 
-            btnClose = new Button();
-            btnClose.Text = "X";
-            btnClose.Size = new Size(23, 23);
-            btnClose.Location = new Point(this.Width - 30, 0);
-            btnClose.Click += BtnClose_Click;
-            this.Controls.Add(btnClose);
+                btnClose = new Button();
+                btnClose.Text = "X";
+                btnClose.Size = new Size(23, 23);
+                btnClose.Location = new Point(this.Width - 30, 0);
+                btnClose.Click += BtnClose_Click;
+                this.Controls.Add(btnClose);
 
-            cbIva.SelectedIndex = 6;
-            // Ejecutar el cálculo de IVA y precios automáticamente al cargar el formulario
-            cbIva_SelectedIndexChanged(this, EventArgs.Empty);
+                cbIva.SelectedIndex = 6;
+                // Ejecutar el cálculo de IVA y precios automáticamente al cargar el formulario
+                cbIva_SelectedIndexChanged(this, EventArgs.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
         }
 
         private void BtnMinimize_Click(object sender, EventArgs e)
@@ -111,12 +119,20 @@ namespace Precentacion.User.Quote.Quote
 
         private void frmQuote_Paint(object sender, PaintEventArgs e)
         {
-            // Crear un lápiz con el color y grosor deseado
-            using (Pen pen = new Pen(borderColor, borderWidth))
+            try
             {
-                // Dibujar solo el borde superior del formulario
-                e.Graphics.DrawLine(pen, 0, 0, this.ClientSize.Width, 0);
+                // Crear un lápiz con el color y grosor deseado
+                using (Pen pen = new Pen(borderColor, borderWidth))
+                {
+                    // Dibujar solo el borde superior del formulario
+                    e.Graphics.DrawLine(pen, 0, 0, this.ClientSize.Width, 0);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        
         }
 
         protected override void WndProc(ref Message m)
@@ -182,8 +198,16 @@ namespace Precentacion.User.Quote.Quote
 
         private void loadIDQuote()
         {
-            int ID = NQuote.InsertQuoteAndGetLastID(Date, "", "", "", 0, 0, 0, 0, 0, 4);
-            txtidQuote.Text = ID.ToString();
+            try
+            {
+                int ID = NQuote.InsertQuoteAndGetLastID(Date, "", "", "", 0, 0, 0, 0, 0, 4);
+                txtidQuote.Text = ID.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+           
         }
         private void loadDate()
         {
@@ -191,155 +215,211 @@ namespace Precentacion.User.Quote.Quote
         }
         public void loadWindows()
         {
-            //cbIva.SelectedIndex = 6;
-            DataTable dt = new DataTable();
-            dt = NQuote.LoadWindows(Convert.ToInt32(txtidQuote.Text));
-            dgCotizaciones.DataSource = dt;
-            dgCotizaciones.RowTemplate.Height = 250;
-            dgCotizaciones.Columns[0].Width = 90;
-            dgCotizaciones.Columns[1].Width = 300;
-            dgCotizaciones.Columns[2].Width = 200;
-            dgCotizaciones.Columns[3].Width = 115;
-            if (UserCache.Name == "VitroTaller")
+            try
             {
-                //Ocultar la Columna Precio
-                dgCotizaciones.Columns[3].Visible = false;
-            }
+                //cbIva.SelectedIndex = 6;
+                DataTable dt = new DataTable();
+                dt = NQuote.LoadWindows(Convert.ToInt32(txtidQuote.Text));
+                dgCotizaciones.DataSource = dt;
+                dgCotizaciones.RowTemplate.Height = 250;
+                dgCotizaciones.Columns[0].Width = 90;
+                dgCotizaciones.Columns[1].Width = 300;
+                dgCotizaciones.Columns[2].Width = 200;
+                dgCotizaciones.Columns[3].Width = 115;
+                if (UserCache.Name == "VitroTaller")
+                {
+                    //Ocultar la Columna Precio
+                    dgCotizaciones.Columns[3].Visible = false;
+                }
 
-            //Cambiar el nombre de las columnas
-            dgCotizaciones.Columns[2].HeaderText = "Descripcion";
-            dgCotizaciones.Columns[3].HeaderText = "Precio";
-            CalcPrices();
+                //Cambiar el nombre de las columnas
+                dgCotizaciones.Columns[2].HeaderText = "Descripcion";
+                dgCotizaciones.Columns[3].HeaderText = "Precio";
+                CalcPrices();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
 
 
         }
         public void LoadConditionals()
         {
-            //Vidrios Maky
-            if (CompanyCache.IdCompany == 205150849 || CompanyCache.IdCompany == 3101794685)
+            try
             {
-                cbOpcion.SelectedIndex = 0;
-                txtConditional2.Text = "2.El tiempo de entrega en promedio es de 15 días hábiles, y rige a partir de la cancelación del adelanto.";
-                txtConditional3.Text = "3.La garantía no cubre el vidrio cuando hay daños ocacionados por el cliente o terceros";
-                txtConditional4.Text = "4.Para un mejor acabado e instalación del producto, se recomienda que el área de instalación cuente con la primera capa o mano de pintura.";
-                txtConditional5.Text = "5.No se incluye refuerzos en paredes livianas.";
-                txtConditional6.Text = "6.No se incluye andamios. De ser necesarios se le pueden brindar por un costo adicional.";
-                txtConditional7.Text = "7.No es nuestra responsabilidad, si durante el proceso de instalación se perforan tuberías, sea de agua potable, de aguas negras o de conducción eléctrica.";
-                txtConditional8.Visible = false;
-                txtConditional9.Visible = false;
-                txtConditional10.Visible = false;
+                //Vidrios Maky
+                if (CompanyCache.IdCompany == 205150849 || CompanyCache.IdCompany == 3101794685)
+                {
+                    cbOpcion.SelectedIndex = 0;
+                    txtConditional2.Text = "2.El tiempo de entrega en promedio es de 15 días hábiles, y rige a partir de la cancelación del adelanto.";
+                    txtConditional3.Text = "3.La garantía no cubre el vidrio cuando hay daños ocacionados por el cliente o terceros";
+                    txtConditional4.Text = "4.Para un mejor acabado e instalación del producto, se recomienda que el área de instalación cuente con la primera capa o mano de pintura.";
+                    txtConditional5.Text = "5.No se incluye refuerzos en paredes livianas.";
+                    txtConditional6.Text = "6.No se incluye andamios. De ser necesarios se le pueden brindar por un costo adicional.";
+                    txtConditional7.Text = "7.No es nuestra responsabilidad, si durante el proceso de instalación se perforan tuberías, sea de agua potable, de aguas negras o de conducción eléctrica.";
+                    txtConditional8.Visible = false;
+                    txtConditional9.Visible = false;
+                    txtConditional10.Visible = false;
+                }
+                //Vidrios DiAlex
+                if (CompanyCache.IdCompany == 111560456)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Cotización valida por 10 días naturales después de la fecha de emisión";
+                    txtConditional2.Text = "2.Se requiere el 60% de anticipo, 20% trascurrida la obra y el 20% restante contra entrega";
+                    txtConditional3.Text = "3.Cualquier variación en las cantidades o detalles en esta Oferta-Contrato requiere de una nueva cotización.";
+                    txtConditional4.Text = "4.Plazo de entrega 22 días hábiles a partir de emitida la Orden de Compra";
+                    txtConditional5.Visible = false;
+                    txtConditional6.Visible = false;
+                    txtConditional7.Visible = false;
+                    txtConditional8.Visible = false;
+                    txtConditional9.Visible = false;
+                    txtConditional10.Visible = false;
+                }
+                //Aluvi
+                if (CompanyCache.IdCompany == 31025820)
+                {
+
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
+                    txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
+                    txtConditional3.Text = "3.Se cotizan productos marca Extralum";
+                    txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
+                    txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
+                    txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
+                    txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
+                    txtConditional8.Text = "8.Validez de cotización 8 días";
+                    txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
+                    txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
+
+                }
+                //Vidrios Altura
+                if (CompanyCache.IdCompany == 112540885)
+                {
+
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación.";
+                    txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente.";
+                    txtConditional3.Text = "3.Se requiere realizar la visita para tomar medidas rectificadas.";
+                    txtConditional4.Text = "4.Forma de pago 50% adelanto 50% contra entrega.";
+                    txtConditional5.Text = "5.Entrega de prefabricados de 8 a 20 días hábiles.";
+                    txtConditional6.Text = "6.Por favor revisar cantidades, sistema y acabados.";
+                    txtConditional7.Text = "7.Validez de cotización 8 días.";
+                    txtConditional8.Text = "8.Precio puede variar según aumentos del mercado.";
+                    txtConditional9.Text = "9.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
+                    txtConditional10.Text = "10.Después del giro del 50%, no se aceptan devoluciones o cambios en el proyecto.";
+
+                }
+                //Vidrios Maky
+                if (CompanyCache.IdCompany == 25550555)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
+                    txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
+                    txtConditional3.Text = "3.Se cotizan productos marca Extralum";
+                    txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
+                    txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
+                    txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
+                    txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
+                    txtConditional8.Text = "8.Validez de cotización 8 días";
+                    txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
+                    txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
+
+                }
+                //J123
+                if (CompanyCache.IdCompany == 1230123)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
+                    txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
+                    txtConditional3.Text = "3.Se cotizan productos marca Extralum";
+                    txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
+                    txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
+                    txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
+                    txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
+                    txtConditional8.Text = "8.Validez de cotización 8 días";
+                    txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
+                    txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
+
+                }
+                //Prefalum
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
+                    txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
+                    txtConditional3.Text = "3.Se cotizan productos marca Extralum";
+                    txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
+                    txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
+                    txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
+                    txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
+                    txtConditional8.Text = "8.Validez de cotización 8 días";
+                    txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
+                    txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
+
+                }
+                //Vidriera Palmares
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
+                    txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
+                    txtConditional3.Text = "3.Se cotizan productos marca Extralum";
+                    txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
+                    txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
+                    txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
+                    txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
+                    txtConditional8.Text = "8.Validez de cotización 8 días";
+                    txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
+                    txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
+
+                }
+                //Innova
+                if (CompanyCache.IdCompany == 31028013)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Garantía 12 meses contra defectos de fábrica e instalación";
+                    txtConditional2.Text = "2.El costo total de la proforma incluye mano de obra.";
+                    txtConditional3.Text = "3.Tiempo de entrega: 4 a 5 semanas después de la fecha de pago del primer adelanto";
+                    txtConditional4.Text = "4.FORMA DE PAGO: 70% de adelanto - 30% contra entrega del proyecto";
+                    txtConditional5.Visible = false;
+                    txtConditional6.Visible = false;
+                    txtConditional7.Visible = false;
+                    txtConditional8.Visible = false;
+                    txtConditional9.Visible = false;
+                    txtConditional10.Visible = false;
+
+                }
             }
-            //Vidrios DiAlex
-            if (CompanyCache.IdCompany == 111560456)
+            catch (Exception ex)
             {
-                cbOpcion.Visible = false;
-                txtConditional1.Text = "1.Cotización valida por 10 días naturales después de la fecha de emisión";
-                txtConditional2.Text = "2.Se requiere el 60% de anticipo, 20% trascurrida la obra y el 20% restante contra entrega";
-                txtConditional3.Text = "3.Cualquier variación en las cantidades o detalles en esta Oferta-Contrato requiere de una nueva cotización.";
-                txtConditional4.Text = "4.Plazo de entrega 22 días hábiles a partir de emitida la Orden de Compra";
-                txtConditional5.Visible = false;
-                txtConditional6.Visible = false;
-                txtConditional7.Visible = false;
-                txtConditional8.Visible = false;
-                txtConditional9.Visible = false;
-                txtConditional10.Visible = false;
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            //Aluvi
-            if (CompanyCache.IdCompany == 31025820)
-            {
-
-                cbOpcion.Visible = false;
-                txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
-                txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
-                txtConditional3.Text = "3.Se cotizan productos marca Extralum";
-                txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
-                txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
-                txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
-                txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
-                txtConditional8.Text = "8.Validez de cotización 8 días";
-                txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
-                txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
-
-            }
-            //Vidrios Altura
-            if (CompanyCache.IdCompany == 112540885)
-            {
-
-                cbOpcion.Visible = false;
-                txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación.";
-                txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente.";
-                txtConditional3.Text = "3.Se requiere realizar la visita para tomar medidas rectificadas.";
-                txtConditional4.Text = "4.Forma de pago 50% adelanto 50% contra entrega.";
-                txtConditional5.Text = "5.Entrega de prefabricados de 8 a 20 días hábiles.";
-                txtConditional6.Text = "6.Por favor revisar cantidades, sistema y acabados.";
-                txtConditional7.Text = "7.Validez de cotización 8 días.";
-                txtConditional8.Text = "8.Precio puede variar según aumentos del mercado.";
-                txtConditional9.Text = "9.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
-                txtConditional10.Text = "10.Después del giro del 50%, no se aceptan devoluciones o cambios en el proyecto.";
-
-            }
-            //Vidrios Maky
-            if (CompanyCache.IdCompany == 25550555)
-            {
-                cbOpcion.Visible = false;
-                txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
-                txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
-                txtConditional3.Text = "3.Se cotizan productos marca Extralum";
-                txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
-                txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
-                txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
-                txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
-                txtConditional8.Text = "8.Validez de cotización 8 días";
-                txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
-                txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
-
-            }
-            //J123
-            if (CompanyCache.IdCompany == 1230123)
-            {
-                cbOpcion.Visible = false;
-                txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
-                txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
-                txtConditional3.Text = "3.Se cotizan productos marca Extralum";
-                txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
-                txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
-                txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
-                txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
-                txtConditional8.Text = "8.Validez de cotización 8 días";
-                txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
-                txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
-
-            }
-            //Innova
-            if (CompanyCache.IdCompany == 31028013)
-            {
-                cbOpcion.Visible = false;
-                txtConditional1.Text = "1.Garantía 12 meses contra defectos de fábrica e instalación";
-                txtConditional2.Text = "2.El costo total de la proforma incluye mano de obra.";
-                txtConditional3.Text = "3.Tiempo de entrega: 4 a 5 semanas después de la fecha de pago del primer adelanto";
-                txtConditional4.Text = "4.FORMA DE PAGO: 70% de adelanto - 30% contra entrega del proyecto";
-                txtConditional5.Visible = false;
-                txtConditional6.Visible = false;
-                txtConditional7.Visible = false;
-                txtConditional8.Visible = false;
-                txtConditional9.Visible = false;
-                txtConditional10.Visible = false;
-
-            }
+           
 
         }
         public void LoadDataQuote()
         {
-            DataTable dtQuote = new DataTable();
-            dtQuote = NQuote.LoadDataQuote(Convert.ToInt32(txtidQuote.Text));
-            //Obtener el Valor de La Columna Discount y Labour
-            Descuento = Convert.ToDecimal(dtQuote.Rows[0]["Discount"]);
-            ManoObra = Convert.ToDecimal(dtQuote.Rows[0]["Labour"]);
-            //Asignar los valores a los TextBox
-            txtDescuento.Text = Descuento.ToString();
-            txtManoObra.Text = ManoObra.ToString();
-            //Volver a Calcular los Precios
-            CalcPrices();
+            try
+            {
+                DataTable dtQuote = new DataTable();
+                dtQuote = NQuote.LoadDataQuote(Convert.ToInt32(txtidQuote.Text));
+                //Obtener el Valor de La Columna Discount y Labour
+                Descuento = Convert.ToDecimal(dtQuote.Rows[0]["Discount"]);
+                ManoObra = Convert.ToDecimal(dtQuote.Rows[0]["Labour"]);
+                //Asignar los valores a los TextBox
+                txtDescuento.Text = Descuento.ToString();
+                txtManoObra.Text = ManoObra.ToString();
+                //Volver a Calcular los Precios
+                CalcPrices();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+          
         }
         #endregion
 
@@ -376,8 +456,9 @@ namespace Precentacion.User.Quote.Quote
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show("Mensaje: " + ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 frmManagerClient frm = new frmManagerClient();
                 frm.EventFormClose = false;
                 frm.Show();
@@ -624,95 +705,103 @@ namespace Precentacion.User.Quote.Quote
 
         private void dgCotizaciones_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+            try
             {
-                var cellValue = dgCotizaciones.Rows[e.RowIndex].Cells[1].Value;
-
-                if (cellValue != null && !string.IsNullOrEmpty(cellValue.ToString()))
+                if (e.RowIndex >= 0 && e.ColumnIndex == 1)
                 {
-                    string rutaRelativa = cellValue.ToString();
+                    var cellValue = dgCotizaciones.Rows[e.RowIndex].Cells[1].Value;
 
-                    Console.WriteLine($"Ruta relativa: {rutaRelativa}");
-
-                    for (int i = 0; i < dgCotizaciones.Rows[e.RowIndex].Cells.Count; i++)
+                    if (cellValue != null && !string.IsNullOrEmpty(cellValue.ToString()))
                     {
-                        var cellVal = dgCotizaciones.Rows[e.RowIndex].Cells[i].Value;
-                        Console.WriteLine($"Celda {i}: {cellVal?.ToString() ?? "null"}");
-                    }
+                        string rutaRelativa = cellValue.ToString();
 
-                    string directorioDeTrabajo = Directory.GetCurrentDirectory();
-                    Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
+                        Console.WriteLine($"Ruta relativa: {rutaRelativa}");
 
-                    string rutaAbsoluta;
-
-                    bool esExclusivo = rutaRelativa.StartsWith("EXCLUSIVO:");
-                    if (esExclusivo)
-                    {
-                        rutaRelativa = rutaRelativa.Replace("EXCLUSIVO:", "");
-                    }
-
-                    if (Path.IsPathRooted(rutaRelativa))
-                    {
-                        if (File.Exists(rutaRelativa))
+                        for (int i = 0; i < dgCotizaciones.Rows[e.RowIndex].Cells.Count; i++)
                         {
-                            rutaAbsoluta = rutaRelativa;
+                            var cellVal = dgCotizaciones.Rows[e.RowIndex].Cells[i].Value;
+                            Console.WriteLine($"Celda {i}: {cellVal?.ToString() ?? "null"}");
                         }
-                        else
+
+                        string directorioDeTrabajo = Directory.GetCurrentDirectory();
+                        Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
+
+                        string rutaAbsoluta;
+
+                        bool esExclusivo = rutaRelativa.StartsWith("EXCLUSIVO:");
+                        if (esExclusivo)
                         {
-                            string fileName = Path.GetFileName(rutaRelativa);
-                            rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
+                            rutaRelativa = rutaRelativa.Replace("EXCLUSIVO:", "");
                         }
-                    }
-                    else
-                    {
-                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaRelativa);
-                        rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
-                    }
 
-                    Console.WriteLine($"Ruta absoluta: {rutaAbsoluta}");
-
-                    if (File.Exists(rutaAbsoluta))
-                    {
-                        e.PaintBackground(e.CellBounds, true);
-
-                        using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
+                        if (Path.IsPathRooted(rutaRelativa))
                         {
-                            int anchoImagen = img.Width;
-                            int altoImagen = img.Height;
-
-                            if (!esExclusivo)
+                            if (File.Exists(rutaRelativa))
                             {
-                                decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
-                                decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
-                                int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
-                                int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
-
-                                anchoImagen = anchoVentana;
-                                altoImagen = altoVentana;
+                                rutaAbsoluta = rutaRelativa;
                             }
                             else
                             {
-                                float ratio = Math.Min((float)e.CellBounds.Width / anchoImagen, (float)e.CellBounds.Height / altoImagen);
-                                anchoImagen = (int)(anchoImagen * ratio);
-                                altoImagen = (int)(altoImagen * ratio);
+                                string fileName = Path.GetFileName(rutaRelativa);
+                                rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
                             }
-
-                            // Asegúrate de que anchoImagen y altoImagen no sean 0
-                            if (anchoImagen == 0) anchoImagen = 200;//e.CellBounds.Width;
-                            if (altoImagen == 0) altoImagen = 200;//e.CellBounds.Height;
-
-                            Console.WriteLine($"Ancho imagen: {anchoImagen}, Alto imagen: {altoImagen}");
-
-                            int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
-                            int y = e.CellBounds.Top + (e.CellBounds.Height - altoImagen) / 2;
-
-                            e.Graphics.DrawImage(img, new System.Drawing.Rectangle(x, y, anchoImagen, altoImagen));
+                        }
+                        else
+                        {
+                            rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaRelativa);
+                            rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
                         }
 
-                        e.Handled = true;
+                        Console.WriteLine($"Ruta absoluta: {rutaAbsoluta}");
+
+                        if (File.Exists(rutaAbsoluta))
+                        {
+                            e.PaintBackground(e.CellBounds, true);
+
+                            using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
+                            {
+                                int anchoImagen = img.Width;
+                                int altoImagen = img.Height;
+
+                                if (!esExclusivo)
+                                {
+                                    decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
+                                    decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
+                                    int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
+                                    int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
+
+                                    anchoImagen = anchoVentana;
+                                    altoImagen = altoVentana;
+                                }
+                                else
+                                {
+                                    float ratio = Math.Min((float)e.CellBounds.Width / anchoImagen, (float)e.CellBounds.Height / altoImagen);
+                                    anchoImagen = (int)(anchoImagen * ratio);
+                                    altoImagen = (int)(altoImagen * ratio);
+                                }
+
+                                // Asegúrate de que anchoImagen y altoImagen no sean 0
+                                if (anchoImagen == 0) anchoImagen = 200;//e.CellBounds.Width;
+                                if (altoImagen == 0) altoImagen = 200;//e.CellBounds.Height;
+
+                                Console.WriteLine($"Ancho imagen: {anchoImagen}, Alto imagen: {altoImagen}");
+
+                                int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
+                                int y = e.CellBounds.Top + (e.CellBounds.Height - altoImagen) / 2;
+
+                                e.Graphics.DrawImage(img, new System.Drawing.Rectangle(x, y, anchoImagen, altoImagen));
+                            }
+
+                            e.Handled = true;
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
         }
 
 
@@ -720,18 +809,26 @@ namespace Precentacion.User.Quote.Quote
 
         private void cbOpcion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbOpcion.SelectedIndex == 0)
+            try
             {
-                txtConditional1.Text = "1.50% por concepto de adelanto para inicio de producción e instalación, y 50% contra entrega del proyecto.";
+                if (cbOpcion.SelectedIndex == 0)
+                {
+                    txtConditional1.Text = "1.50% por concepto de adelanto para inicio de producción e instalación, y 50% contra entrega del proyecto.";
+                }
+                if (cbOpcion.SelectedIndex == 1)
+                {
+                    txtConditional1.Text = "1.50% por concepto de adelanto para inicio de producción e instalación, un 25% contra avance del proyecto y un 25% al finalizar el proyecto.";
+                }
+                if (cbOpcion.SelectedIndex == 2)
+                {
+                    txtConditional1.Text = "1.50% por concepto de adelanto para inicio de producción e instalación, un 20% contra primer avance del proyecto, un 20% contra segundo avance del proyecto y un 10% al finalizar el proyecto.";
+                }
             }
-            if (cbOpcion.SelectedIndex == 1)
+            catch (Exception ex)
             {
-                txtConditional1.Text = "1.50% por concepto de adelanto para inicio de producción e instalación, un 25% contra avance del proyecto y un 25% al finalizar el proyecto.";
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            if (cbOpcion.SelectedIndex == 2)
-            {
-                txtConditional1.Text = "1.50% por concepto de adelanto para inicio de producción e instalación, un 20% contra primer avance del proyecto, un 20% contra segundo avance del proyecto y un 10% al finalizar el proyecto.";
-            }
+          
         }
 
         private void txtidClient_KeyPress(object sender, KeyPressEventArgs e)
@@ -942,6 +1039,11 @@ namespace Precentacion.User.Quote.Quote
                             SubTotal = total;
                             Total = total;
                         }
+                    }
+                    else
+                    {
+                        SubTotal = total;
+                        Total = total;
                     }
                 }
                 else
@@ -1168,6 +1270,24 @@ namespace Precentacion.User.Quote.Quote
 
                 }
                 //Usuario de Nel Fin
+                //Prefalum, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Prefalum.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidriera Palmares, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrieraPalmares.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 if (CompanyCache.IdCompany == 31025820)
                 {
                     //Obtener la Ruta de la Carpeta bin
@@ -1283,6 +1403,36 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(new Chunk("650 METROS NORESTE Y 350 METROS NOROESTE DE KFC, BOSQUES DON JOSE, NICOYA.", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 111111111)
+                {
+                    paragraph.Add(new Chunk("EL COYOL ALAJUELA.", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "6134 7128", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@prefalumcr.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "ventas@prefalumcr.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 222222222)
+                {
+                    paragraph.Add(new Chunk("PALMARES, COSTA RICA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "2-222-22222", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidrierapalmares.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Sitio Web: " + "http://www.vidrierapalmares.com/", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
                 else
@@ -1905,6 +2055,36 @@ namespace Precentacion.User.Quote.Quote
                     table.AddCell(cellTextSINPE);
 
                     document.Add(table);
+                }
+                //Prefalum
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //Vidriera Palmares
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
                 }
 
 
