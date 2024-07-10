@@ -197,11 +197,18 @@ namespace Negocio.LoadProduct
                 }
                 dt = loadProduct.loadAccesorios(System, supplier);
 
-                // Agrega la columna "Metraje" solo si no existe
-                if (!dt.Columns.Contains("Metraje") || !dt.Columns.Contains("TotalPrice"))
+                // Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                if (!dt.Columns.Contains("Metraje"))
                 {
                     dt.Columns.Add("Metraje", typeof(decimal));
+                }
+                if (!dt.Columns.Contains("TotalPrice"))
+                {
                     dt.Columns.Add("TotalPrice", typeof(decimal));
+                }
+                if (!dt.Columns.Contains("TotalCost"))
+                {
+                    dt.Columns.Add("TotalCost", typeof(decimal));
                 }
 
                 if (ClsWindows.System == "EuAbatible")
@@ -211,12 +218,15 @@ namespace Negocio.LoadProduct
                         string Description = item[0].ToString();
                         decimal Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, "");
                         decimal SalePrice = Convert.ToDecimal(item[1]);
+                        decimal Cost = Convert.ToDecimal(item["Cost"]); // Asumiendo que la columna "Cost" existe y tiene valores
                         decimal Price = CalcPrice(Metraje, SalePrice);
+                        decimal TotalCost = Metraje * Cost;
 
-                        // Modifica directamente el valor de la columna "Metraje" en la fila actual
+                        // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
                         item["Metraje"] = Metraje;
                         item["TotalPrice"] = Price;
-                        Console.WriteLine(item[0].ToString() + " " + Metraje.ToString() + " " + Price.ToString());
+                        item["TotalCost"] = TotalCost;
+                        Console.WriteLine($"{Description} {Metraje} {Price} {TotalCost}");
                     }
                 }
                 else
@@ -224,15 +234,17 @@ namespace Negocio.LoadProduct
                     foreach (DataRow item in dt.Rows)
                     {
                         string Description = item[0].ToString();
-
                         decimal Metraje = CalcMetraje(Description);
                         decimal SalePrice = Convert.ToDecimal(item[1]);
+                        decimal Cost = Convert.ToDecimal(item["Cost"]); // Asumiendo que la columna "Cost" existe y tiene valores
                         decimal Price = CalcPrice(Metraje, SalePrice);
+                        decimal TotalCost = Metraje * Cost;
 
-                        // Modifica directamente el valor de la columna "Metraje" en la fila actual
+                        // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
                         item["Metraje"] = Metraje;
                         item["TotalPrice"] = Price;
-                        Console.WriteLine(item[0].ToString() + " " + Metraje.ToString() + " " + Price.ToString());
+                        item["TotalCost"] = TotalCost;
+                        Console.WriteLine($"{Description} {Metraje} {Price} {TotalCost}");
                     }
                 }
 
@@ -243,6 +255,7 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
         public DataTable loadOnlyGlass()
         {
             try
@@ -262,11 +275,21 @@ namespace Negocio.LoadProduct
             {
                 DataTable dt = new DataTable();
                 dt = loadProduct.loadPricesGlass(supplier, Description);
-                if (!dt.Columns.Contains("Metraje") || !dt.Columns.Contains("TotalPrice"))
+
+                // Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                if (!dt.Columns.Contains("Metraje"))
                 {
                     dt.Columns.Add("Metraje", typeof(decimal));
+                }
+                if (!dt.Columns.Contains("TotalPrice"))
+                {
                     dt.Columns.Add("TotalPrice", typeof(decimal));
                 }
+                if (!dt.Columns.Contains("TotalCost"))
+                {
+                    dt.Columns.Add("TotalCost", typeof(decimal));
+                }
+
                 foreach (DataRow item in dt.Rows)
                 {
                     decimal Metraje = ClsWindows.Weight * ClsWindows.heigt;
@@ -276,12 +299,15 @@ namespace Negocio.LoadProduct
                     }
 
                     decimal SalePrice = Convert.ToDecimal(item[1]);
+                    decimal Cost = Convert.ToDecimal(item["Cost"]); // Asumiendo que la columna "Cost" existe y tiene valores
                     decimal Price = CalcPrice(Metraje, SalePrice);
+                    decimal TotalCost = Metraje * Cost;
 
-                    // Modifica directamente el valor de la columna "Metraje" en la fila actual
+                    // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
                     item["Metraje"] = Metraje;
                     item["TotalPrice"] = Price;
-                    Console.WriteLine(item[0].ToString() + " " + Metraje.ToString() + " " + Price.ToString());
+                    item["TotalCost"] = TotalCost;
+                    Console.WriteLine($"{item[0]} {Metraje} {Price} {TotalCost}");
                 }
                 return dt;
             }
@@ -290,34 +316,47 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
         public DataTable LoadPricesLock(string supplier, string Description)
         {
             try
             {
                 DataTable dt = new DataTable();
 
+                if (ClsWindows.System == "8025 2 Vias" || ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 2 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta" || ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
                 {
-                    if (ClsWindows.System == "8025 2 Vias" || ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 2 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta" || ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
-                    {
-                        dt = loadProduct.LoadPricesLock(supplier, Description);
-                        if (!dt.Columns.Contains("Metraje") || !dt.Columns.Contains("TotalPrice"))
-                        {
-                            dt.Columns.Add("Metraje", typeof(decimal));
-                            dt.Columns.Add("TotalPrice", typeof(decimal));
-                        }
-                        foreach (DataRow item in dt.Rows)
-                        {
-                            decimal Metraje = CalcMetrajeLock(Description);
-                            decimal SalePrice = Convert.ToDecimal(item[1]);
-                            decimal Price = CalcPrice(Metraje, SalePrice);
+                    dt = loadProduct.LoadPricesLock(supplier, Description);
 
-                            // Modifica directamente el valor de la columna "Metraje" en la fila actual
-                            item["Metraje"] = Metraje;
-                            item["TotalPrice"] = Price;
-                            Console.WriteLine(item[0].ToString() + " " + Metraje.ToString() + " " + Price.ToString());
-                        }
+                    // Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                    if (!dt.Columns.Contains("Metraje"))
+                    {
+                        dt.Columns.Add("Metraje", typeof(decimal));
+                    }
+                    if (!dt.Columns.Contains("TotalPrice"))
+                    {
+                        dt.Columns.Add("TotalPrice", typeof(decimal));
+                    }
+                    if (!dt.Columns.Contains("TotalCost"))
+                    {
+                        dt.Columns.Add("TotalCost", typeof(decimal));
+                    }
+
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        decimal Metraje = CalcMetrajeLock(Description);
+                        decimal SalePrice = Convert.ToDecimal(item[1]);
+                        decimal Cost = Convert.ToDecimal(item["Cost"]); // Asumiendo que la columna "Cost" existe y tiene valores
+                        decimal Price = CalcPrice(Metraje, SalePrice);
+                        decimal TotalCost = Metraje * Cost;
+
+                        // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
+                        item["Metraje"] = Metraje;
+                        item["TotalPrice"] = Price;
+                        item["TotalCost"] = TotalCost;
+                        Console.WriteLine($"{item[0]} {Metraje} {Price} {TotalCost}");
                     }
                 }
+
                 return dt;
             }
             catch (Exception)
@@ -325,6 +364,7 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
         public DataTable LoadPriceNewGlass(string supplier, string Description, decimal Weight, decimal Heigt)
         {
             try
@@ -421,22 +461,35 @@ namespace Negocio.LoadProduct
             {
                 DataTable dt = new DataTable();
                 dt = loadProduct.loadAluminio(Color, System, supplier);
-                if (!dt.Columns.Contains("Metraje") || !dt.Columns.Contains("TotalPrice"))
+
+                // Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                if (!dt.Columns.Contains("Metraje"))
                 {
                     dt.Columns.Add("Metraje", typeof(decimal));
+                }
+                if (!dt.Columns.Contains("TotalPrice"))
+                {
                     dt.Columns.Add("TotalPrice", typeof(decimal));
                 }
+                if (!dt.Columns.Contains("TotalCost"))
+                {
+                    dt.Columns.Add("TotalCost", typeof(decimal));
+                }
+
                 foreach (DataRow item in dt.Rows)
                 {
                     string Description = item[0].ToString();
                     decimal Metraje = CalclMetrajeCedazo(Description);
                     decimal SalePrice = Convert.ToDecimal(item[1]);
+                    decimal Cost = Convert.ToDecimal(item["Cost"]); // Asumiendo que la columna "Cost" existe y tiene valores
                     decimal Price = CalcPrice(Metraje, SalePrice);
+                    decimal TotalCost = Metraje * Cost;
 
-                    // Modifica directamente el valor de la columna "Metraje" en la fila actual
+                    // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
                     item["Metraje"] = Metraje;
                     item["TotalPrice"] = Price;
-                    Console.WriteLine(item[0].ToString() + " " + Metraje.ToString() + " " + Price.ToString());
+                    item["TotalCost"] = TotalCost;
+                    Console.WriteLine($"{item[0]} {Metraje} {Price} {TotalCost}");
                 }
                 return dt;
             }
@@ -445,6 +498,7 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
         public DataTable loadAccesoriosCedazo(string System, string supplier)
         {
             try
@@ -453,11 +507,18 @@ namespace Negocio.LoadProduct
 
                 dt = loadProduct.loadAccesorios(System, supplier);
 
-                // Agrega la columna "Metraje" solo si no existe
-                if (!dt.Columns.Contains("Metraje") || !dt.Columns.Contains("TotalPrice"))
+                // Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                if (!dt.Columns.Contains("Metraje"))
                 {
                     dt.Columns.Add("Metraje", typeof(decimal));
+                }
+                if (!dt.Columns.Contains("TotalPrice"))
+                {
                     dt.Columns.Add("TotalPrice", typeof(decimal));
+                }
+                if (!dt.Columns.Contains("TotalCost"))
+                {
+                    dt.Columns.Add("TotalCost", typeof(decimal));
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -465,12 +526,15 @@ namespace Negocio.LoadProduct
                     string Description = item[0].ToString();
                     decimal Metraje = CalclMetrajeCedazo(Description);
                     decimal SalePrice = Convert.ToDecimal(item[1]);
+                    decimal Cost = Convert.ToDecimal(item["Cost"]); // Asumiendo que la columna "Cost" existe y tiene valores
                     decimal Price = CalcPrice(Metraje, SalePrice);
+                    decimal TotalCost = Metraje * Cost;
 
-                    // Modifica directamente el valor de la columna "Metraje" en la fila actual
+                    // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
                     item["Metraje"] = Metraje;
                     item["TotalPrice"] = Price;
-                    Console.WriteLine(item[0].ToString() + " " + Metraje.ToString() + " " + Price.ToString());
+                    item["TotalCost"] = TotalCost;
+                    Console.WriteLine($"{item[0]} {Metraje} {Price} {TotalCost}");
                 }
 
                 return dt;
@@ -480,6 +544,7 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
         public DataTable LoadAluminioVentanaFija(string Color, string System, string supplier, decimal Weight, decimal Heigt, string Material)
         {
             try

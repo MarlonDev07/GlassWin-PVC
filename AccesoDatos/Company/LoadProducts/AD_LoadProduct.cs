@@ -17,7 +17,7 @@ namespace AccesoDatos.Company.LoadProducts
 
                 if (UserCache.Name != "InnovaGlass")
 				{
-                     sql = "select P.Description,PP.Cost,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
+                     sql = "select P.Description,PP.Cost,PP.SalePrice, PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
                 }else 
 				{
                      sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
@@ -44,7 +44,7 @@ namespace AccesoDatos.Company.LoadProducts
 				string sql = "";
                 if (UserCache.Name != "InnovaGlass") 
 				{
-                    sql = "select P.Description,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color = 'Negro' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Accesorios' and p.System = '" + System + "'";
+                    sql = "select P.Description,PP.SalePrice,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color = 'Negro' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Accesorios' and p.System = '" + System + "'";
 				}
 				else
 				{
@@ -89,7 +89,7 @@ namespace AccesoDatos.Company.LoadProducts
 				string sql = "";
                 if (UserCache.Name != "InnovaGlass") 
 				{
-                    sql = "select P.Description,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE  P.Description = '" + Description + "'";
+                    sql = "select P.Description,PP.SalePrice,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE  P.Description = '" + Description + "'";
                 }else
 				{
                     sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE P.Description = '" + Description + "'";
@@ -116,7 +116,7 @@ namespace AccesoDatos.Company.LoadProducts
 				string sql = "";
 				if (UserCache.Name != "InnovaGlass") 
 				{
-					sql = "select P.Description,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
+					sql = "select P.Description,PP.SalePrice, PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
                 }else
 				{
                     sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";

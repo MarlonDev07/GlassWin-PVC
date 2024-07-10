@@ -2394,11 +2394,11 @@ namespace Precentacion.User.Quote.Windows
             agregarDatosFromDataGridView(dgAluminio, "TotalCost");
 
             // Para los demás DataGridViews, utiliza la columna "TotalPrice"
-            agregarDatosFromDataGridView(dgAccesorios, "TotalPrice");
-            agregarDatosFromDataGridView(dgVidrio, "TotalPrice");
-            agregarDatosFromDataGridView(dgAluminioAdd, "TotalPrice");
-            agregarDatosFromDataGridView(dgVidrioAdd, "TotalPrice");
-            agregarDatosFromDataGridView(dgvCerradura, "TotalPrice");
+            agregarDatosFromDataGridView(dgAccesorios, "TotalCost");
+            agregarDatosFromDataGridView(dgVidrio, "TotalCost");
+            agregarDatosFromDataGridView(dgAluminioAdd, "TotalCost");
+            agregarDatosFromDataGridView(dgVidrioAdd, "TotalPrTotalCostice");
+            agregarDatosFromDataGridView(dgvCerradura, "TotalCost");
 
             return dataTable; // Devuelve el DataTable lleno
         }
