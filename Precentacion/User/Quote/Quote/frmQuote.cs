@@ -1652,8 +1652,6 @@ namespace Precentacion.User.Quote.Quote
                             if (dgCotizaciones.Columns[j].HeaderText == "URL")
                             {
                                 string rutaImagen = dgCotizaciones[j, i].Value.ToString();
-
-                                // Obtener la versión actual de la aplicación
                                 System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
                                 string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
 
@@ -1664,11 +1662,7 @@ namespace Precentacion.User.Quote.Quote
                                 string directorioDeTrabajo = Directory.GetCurrentDirectory();
                                 Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
 
-                                // Imprimir ruta corregida para depuración
-                                Console.WriteLine($"Ruta corregida: {rutaCorregida}");
-
                                 string rutaAbsoluta;
-
                                 bool esExclusivo = rutaCorregida.StartsWith("EXCLUSIVO:");
                                 if (esExclusivo)
                                 {
@@ -1693,8 +1687,6 @@ namespace Precentacion.User.Quote.Quote
                                     rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
                                 }
 
-                                Console.WriteLine($"Ruta absoluta: {rutaAbsoluta}");
-
                                 if (!string.IsNullOrEmpty(rutaAbsoluta) && File.Exists(rutaAbsoluta))
                                 {
                                     // Obtener dimensiones en metros y convertirlas a píxeles
@@ -1704,8 +1696,8 @@ namespace Precentacion.User.Quote.Quote
                                     int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
                                     int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
 
-                                    if (anchoVentana == 0) anchoVentana = 150;
-                                    if (altoVentana == 0) altoVentana = 100;
+                                    if (anchoVentana == 0) anchoVentana = 150;//e.CellBounds.Width;
+                                    if (altoVentana == 0) altoVentana = 100;//e.CellBounds.Height;
 
                                     // Mostrar dimensiones calculadas para depuración
                                     Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
@@ -1713,8 +1705,8 @@ namespace Precentacion.User.Quote.Quote
                                     // Cargar la imagen y ajustar su tamaño
                                     iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
 
-                                    // Ajustar el tamaño de la imagen con ScaleToFit para que no pase del alto y ancho asignado
-                                    img.ScaleToFit(anchoVentana, altoVentana);
+                                    // Ajustar el tamaño de la imagen con ScaleAbsolute
+                                    img.ScaleAbsolute(anchoVentana, altoVentana);
 
                                     PdfPCell celdaImagen = new PdfPCell(img);
                                     celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -1765,6 +1757,7 @@ namespace Precentacion.User.Quote.Quote
                         }
                     }
                 }
+
                 // Agregar la tabla al documento
                 document.Add(tabla);
 
