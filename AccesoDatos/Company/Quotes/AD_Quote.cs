@@ -45,7 +45,7 @@ namespace AccesoDatos.Company.Quotes
             try
             {
                 DataTable dataTable = new DataTable();
-                string query = "select Q.IdClient,Q.IdQuote,Q.Date,C.Name,Q.ProjectName,Q.Address,Q.SubTotal,Q.IVA,Q.Total from Quote Q Inner Join Client C ON Q.IdClient = C.IdClient where C.IdCompany = @IdCompany and State = 'Pending'";
+                string query = "select Q.IdClient, Q.IdQuote, Q.Date, C.Name, Q.ProjectName, Q.Address, Q.SubTotal, Q.IVA, Q.Total from Quote Q Inner Join Client C ON Q.IdClient = C.IdClient where C.IdCompany = @IdCompany and State = 'Pending' order by Q.Date desc";
                 SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdCompany", CompanyCache.IdCompany);
@@ -65,7 +65,7 @@ namespace AccesoDatos.Company.Quotes
             try
             {
                 DataTable dataTable = new DataTable();
-                string query = "select Q.IdClient,Q.IdQuote,Q.Date,C.Name,Q.ProjectName,Q.Address,Q.SubTotal,Q.IVA,Q.Total from Quote Q Inner Join Client C ON Q.IdClient = C.IdClient where C.IdCompany = @IdCompany and State = 'Factura'";
+                string query = "select Q.IdClient,Q.IdQuote,Q.Date,C.Name,Q.ProjectName,Q.Address,Q.SubTotal,Q.IVA,Q.Total from Quote Q Inner Join Client C ON Q.IdClient = C.IdClient where C.IdCompany = @IdCompany and State = 'Factura' order by Q.Date desc";
                 SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdCompany", CompanyCache.IdCompany);
