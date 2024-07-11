@@ -430,38 +430,34 @@ namespace Precentacion.User.Bill
                     // Imprimir ruta relativa para depuración
                     Console.WriteLine($"Ruta relativa: {rutaRelativa}");
 
-                    // Imprimir todas las celdas de la fila para depuración
-                    for (int i = 0; i < dgvGlass.Rows[e.RowIndex].Cells.Count; i++)
-                    {
-                        var cellVal = dgvGlass.Rows[e.RowIndex].Cells[i].Value;
-                        Console.WriteLine($"Celda {i}: {cellVal?.ToString() ?? "null"}");
-                    }
+                    // Obtener la versión actual de la aplicación
+                    System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                    string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
+
+                    // Reemplazar la versión en la ruta con la versión actual
+                    string rutaCorregida = ReemplazarVersionEnRuta(rutaRelativa, versionActualString);
+
+                    // Imprimir ruta corregida para depuración
+                    Console.WriteLine($"Ruta corregida: {rutaCorregida}");
 
                     string directorioDeTrabajo = Directory.GetCurrentDirectory();
-
-                    // Imprimir el directorio de trabajo actual para depuración
-                    Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
-
                     string rutaAbsoluta;
 
-                    if (Path.IsPathRooted(rutaRelativa))
+                    if (Path.IsPathRooted(rutaCorregida))
                     {
-                        // Si la ruta ya es absoluta, asegúrate de que sea correcta
-                        if (File.Exists(rutaRelativa))
+                        if (File.Exists(rutaCorregida))
                         {
-                            rutaAbsoluta = rutaRelativa;
+                            rutaAbsoluta = rutaCorregida;
                         }
                         else
                         {
-                            // La ruta es absoluta pero incorrecta, intenta corregirla
-                            string fileName = Path.GetFileName(rutaRelativa);
+                            string fileName = Path.GetFileName(rutaCorregida);
                             rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
                         }
                     }
                     else
                     {
-                        // Si la ruta es relativa, conviértela a absoluta
-                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaRelativa);
+                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaCorregida);
                         rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
                     }
 
@@ -474,24 +470,19 @@ namespace Precentacion.User.Bill
 
                         using (System.Drawing.Image img = System.Drawing.Image.FromFile(rutaAbsoluta))
                         {
-                            // Obtener dimensiones del usuario y convertirlas a píxeles
                             decimal anchoEnMetros = ObtenerAncho(dgvGlass.Rows[e.RowIndex].Cells[1].Value.ToString());
                             decimal alturaEnMetros = ObtenerAlto(dgvGlass.Rows[e.RowIndex].Cells[1].Value.ToString());
                             int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
                             int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
 
-                            // Mostrar dimensiones calculadas para depuración
                             Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
 
-                            // Ajustar el tamaño de la imagen a las dimensiones especificadas por el usuario
                             int anchoImagen = anchoVentana;
                             int altoImagen = altoVentana;
 
-                            // Asegúrate de que anchoImagen y altoImagen no sean 0
-                            if (anchoImagen == 0) anchoImagen = 200;//e.CellBounds.Width;
-                            if (altoImagen == 0) altoImagen = 200;//e.CellBounds.Height;
+                            if (anchoImagen == 0) anchoImagen = 200;
+                            if (altoImagen == 0) altoImagen = 200;
 
-                            // Mostrar dimensiones de la imagen ajustada para depuración
                             Console.WriteLine($"Ancho imagen ajustada: {anchoImagen}, Alto imagen ajustada: {altoImagen}");
 
                             int x = e.CellBounds.Left + (e.CellBounds.Width - anchoImagen) / 2;
@@ -505,6 +496,14 @@ namespace Precentacion.User.Bill
                 }
             }
         }
+
+        private string ReemplazarVersionEnRuta(string ruta, string versionActual)
+        {
+            // Suponiendo que la parte de la versión siempre está en el formato "GlassWinX.X.X.XX"
+            string patron = @"GlassWin\d+\.\d+\.\d+\.\d+";
+            return System.Text.RegularExpressions.Regex.Replace(ruta, patron, versionActual);
+        }
+
 
 
         private void rbSelect_CheckedChanged(object sender, EventArgs e)

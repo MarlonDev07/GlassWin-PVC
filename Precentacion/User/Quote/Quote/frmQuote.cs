@@ -740,29 +740,39 @@ namespace Precentacion.User.Quote.Quote
                         string directorioDeTrabajo = Directory.GetCurrentDirectory();
                         Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
 
+                        // Obtener la versión actual de la aplicación
+                        System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                        string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
+
+                        // Reemplazar la versión en la ruta con la versión actual
+                        string rutaCorregida = ReemplazarVersionEnRuta(rutaRelativa, versionActualString);
+
+                        // Imprimir ruta corregida para depuración
+                        Console.WriteLine($"Ruta corregida: {rutaCorregida}");
+
                         string rutaAbsoluta;
 
-                        bool esExclusivo = rutaRelativa.StartsWith("EXCLUSIVO:");
+                        bool esExclusivo = rutaCorregida.StartsWith("EXCLUSIVO:");
                         if (esExclusivo)
                         {
-                            rutaRelativa = rutaRelativa.Replace("EXCLUSIVO:", "");
+                            rutaCorregida = rutaCorregida.Replace("EXCLUSIVO:", "");
                         }
 
-                        if (Path.IsPathRooted(rutaRelativa))
+                        if (Path.IsPathRooted(rutaCorregida))
                         {
-                            if (File.Exists(rutaRelativa))
+                            if (File.Exists(rutaCorregida))
                             {
-                                rutaAbsoluta = rutaRelativa;
+                                rutaAbsoluta = rutaCorregida;
                             }
                             else
                             {
-                                string fileName = Path.GetFileName(rutaRelativa);
+                                string fileName = Path.GetFileName(rutaCorregida);
                                 rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
                             }
                         }
                         else
                         {
-                            rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaRelativa);
+                            rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaCorregida);
                             rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
                         }
 
@@ -795,8 +805,8 @@ namespace Precentacion.User.Quote.Quote
                                 }
 
                                 // Asegúrate de que anchoImagen y altoImagen no sean 0
-                                if (anchoImagen == 0) anchoImagen = 200;//e.CellBounds.Width;
-                                if (altoImagen == 0) altoImagen = 200;//e.CellBounds.Height;
+                                if (anchoImagen == 0) anchoImagen = 200;
+                                if (altoImagen == 0) altoImagen = 200;
 
                                 Console.WriteLine($"Ancho imagen: {anchoImagen}, Alto imagen: {altoImagen}");
 
@@ -815,8 +825,15 @@ namespace Precentacion.User.Quote.Quote
             {
                 MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            
         }
+
+        private string ReemplazarVersionEnRuta(string ruta, string versionActual)
+        {
+            // Suponiendo que la parte de la versión siempre está en el formato "GlassWinX.X.X.XX"
+            string patron = @"GlassWin\d+\.\d+\.\d+\.\d+";
+            return System.Text.RegularExpressions.Regex.Replace(ruta, patron, versionActual);
+        }
+
 
 
 
@@ -1637,23 +1654,31 @@ namespace Precentacion.User.Quote.Quote
                             if (dgCotizaciones.Columns[j].HeaderText == "URL")
                             {
                                 string rutaImagen = dgCotizaciones[j, i].Value.ToString();
-                                if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+
+                                // Obtener la versión actual de la aplicación
+                                System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                                string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
+
+                                // Reemplazar la versión en la ruta con la versión actual
+                                string rutaCorregida = ReemplazarVersionEnRuta(rutaImagen, versionActualString);
+
+                                if (!string.IsNullOrEmpty(rutaCorregida) && File.Exists(rutaCorregida))
                                 {
                                     // Obtener dimensiones en metros y convertirlas a píxeles
                                     decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
                                     decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
-                                  
+
                                     int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
                                     int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
 
-                                    if (anchoVentana == 0) anchoVentana = 150;//e.CellBounds.Width;
-                                    if (altoVentana == 0) altoVentana = 100;//e.CellBounds.Height;
+                                    if (anchoVentana == 0) anchoVentana = 150;
+                                    if (altoVentana == 0) altoVentana = 100;
 
                                     // Mostrar dimensiones calculadas para depuración
                                     Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
 
                                     // Cargar la imagen y ajustar su tamaño
-                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaImagen);
+                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaCorregida);
 
                                     // Ajustar el tamaño de la imagen con ScaleAbsolute
                                     img.ScaleAbsolute(anchoVentana, altoVentana);
@@ -1707,7 +1732,6 @@ namespace Precentacion.User.Quote.Quote
                         }
                     }
                 }
-
                 // Agregar la tabla al documento
                 document.Add(tabla);
 
