@@ -700,6 +700,7 @@
             this.dgvDesglose.Size = new System.Drawing.Size(682, 378);
             this.dgvDesglose.TabIndex = 0;
             this.dgvDesglose.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDesglose_CellValueChanged);
+            this.dgvDesglose.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvDesglose_DataError);
             // 
             // imageList
             // 

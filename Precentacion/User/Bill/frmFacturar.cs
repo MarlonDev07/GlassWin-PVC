@@ -811,25 +811,25 @@ namespace Precentacion.User.Bill
         #endregion
 
         #region Desglose de Material
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabControl.SelectedIndex == 2)
+            private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
             {
-                if (dgvDesglose.Rows.Count == 0)
+                if (tabControl.SelectedIndex == 2)
                 {
-                    CargarDesglose();
-                    ConfigDataGridDesglose();
-                    //Caragar el Tamaño de la Pieza
-                    CargarTamañoPieza();
+                    if (dgvDesglose.Rows.Count == 0)
+                    {
+                        CargarDesglose();
+                        ConfigDataGridDesglose();
+                        //Caragar el Tamaño de la Pieza
+                        CargarTamañoPieza();
+
+                    }
 
                 }
-
-            }
-            if (tabControl.SelectedIndex == 3)
-            {
+                if (tabControl.SelectedIndex == 3)
+                {
                
+                }
             }
-        }
 
         private void dgvDesglose_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -839,246 +839,254 @@ namespace Precentacion.User.Bill
                 {
                     if (dgvDesglose.Rows[e.RowIndex].Cells[2].Value != null)
                     {
-                        decimal Metraje = Convert.ToDecimal(dgvDesglose.Rows[e.RowIndex].Cells[2].Value);
-                        string Tamaño = dgvDesglose.Rows[e.RowIndex].Cells[4].Value.ToString();
-                        //Validar si Tamaño Tiene punto en lugar de Coma
-                        if (Tamaño.ToString().Contains("."))
-                        {
-                            Tamaño = Tamaño.ToString().Replace(".", ",");
-                        }
-            
-                        decimal Resultado = Metraje / Convert.ToDecimal(Tamaño);
-                        //Redondear siempre a la Unidad mayor
-                        Resultado = Math.Ceiling(Resultado);
+                        // Limpieza del valor para eliminar espacios y caracteres no deseados
+                        string metrajeStr = dgvDesglose.Rows[e.RowIndex].Cells[2].Value.ToString().Trim();
+                        string tamañoStr = dgvDesglose.Rows[e.RowIndex].Cells[4].Value.ToString().Trim();
 
-                        dgvDesglose.Rows[e.RowIndex].Cells[5].Value = Resultado;
+                        // Validar si Tamaño tiene punto en lugar de coma y reemplazarlo
+                        if (tamañoStr.Contains("."))
+                        {
+                            tamañoStr = tamañoStr.Replace(".", ",");
+                        }
+
+                        // Convertir los valores a decimal
+                        decimal metraje = Convert.ToDecimal(metrajeStr);
+                        decimal tamaño = Convert.ToDecimal(tamañoStr);
+
+                        // Calcular el resultado
+                        decimal resultado = metraje / tamaño;
+                        resultado = Math.Ceiling(resultado); // Redondear siempre a la unidad mayor
+
+                        // Asignar el valor calculado a la celda correspondiente
+                        dgvDesglose.Rows[e.RowIndex].Cells[5].Value = resultado;
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                // Manejar la excepción y mostrar el mensaje de error
+                MessageBox.Show($"Error al calcular el valor en la fila {e.RowIndex + 1}: {ex.Message}", "Error en el DataGridView", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
+
 
         private void btnGenerarDesglose_Click(object sender, EventArgs e)
-        {
-            #region Crear el documento
-            // Obtener el directorio del escritorio y las carpetas necesarias
-            string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string CarpetaFactura = Path.Combine(escritorio, "Desglose Material");
-            string carpetaNombre = Path.Combine(CarpetaFactura, txtidClient.Text.Trim());
-            string NameFile = "Desglose de Material n° " + txtidQuote.Text + ".pdf";
-
-            // Verificar si la carpeta "Proformas" existe, si no, crearla
-            if (!Directory.Exists(CarpetaFactura))
             {
-                Directory.CreateDirectory(CarpetaFactura);
-            }
+                #region Crear el documento
+                // Obtener el directorio del escritorio y las carpetas necesarias
+                string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string CarpetaFactura = Path.Combine(escritorio, "Desglose Material");
+                string carpetaNombre = Path.Combine(CarpetaFactura, txtidClient.Text.Trim());
+                string NameFile = "Desglose de Material n° " + txtidQuote.Text + ".pdf";
 
-            // Verificar si la carpeta con el nombre existe, si no, crearla
-            if (!Directory.Exists(carpetaNombre))
-            {
-                Directory.CreateDirectory(carpetaNombre);
-            }
-
-            // Crear la ruta completa del archivo PDF
-            string rutaArchivoPDF = Path.Combine(carpetaNombre, NameFile);
-
-            Document document = new Document();
-            // Crea un nuevo objeto PdfWriter para escribir el documento en un archivo
-            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
-
-            // Asigna el objeto PdfWriter al documento
-            document.Open();
-            #endregion
-            try
-            {
-                #region Seleccion de Proveedor
-                string Option = cbProveedorDesglose.Text;
-                string NombreProvedor = "";
-                string TelefonoProvedor = "";
-                string CorreoProvedor = "";
-                switch (Option)
+                // Verificar si la carpeta "Proformas" existe, si no, crearla
+                if (!Directory.Exists(CarpetaFactura))
                 {
-                    case "Extralum":
-                        NombreProvedor = "Extralum";
-                        TelefonoProvedor = "2277-1900";
-                        CorreoProvedor = "aavila@extralum.co.cr";
-                        break;
-                    case "Macopa":
-                        NombreProvedor = "Macopa";
-                        TelefonoProvedor = "2010-7310";
-                        CorreoProvedor = "proyectosvidrios@macopa.com";
-                        break;
-                    case "Espejos el Mundo":
-                        NombreProvedor = "Espejos el Mundo";
-                        TelefonoProvedor = "2293-4961";
-                        CorreoProvedor = "N/A";
-                        break;
-                    default:
-                        break;
+                    Directory.CreateDirectory(CarpetaFactura);
                 }
+
+                // Verificar si la carpeta con el nombre existe, si no, crearla
+                if (!Directory.Exists(carpetaNombre))
+                {
+                    Directory.CreateDirectory(carpetaNombre);
+                }
+
+                // Crear la ruta completa del archivo PDF
+                string rutaArchivoPDF = Path.Combine(carpetaNombre, NameFile);
+
+                Document document = new Document();
+                // Crea un nuevo objeto PdfWriter para escribir el documento en un archivo
+                PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
+
+                // Asigna el objeto PdfWriter al documento
+                document.Open();
                 #endregion
-
-                #region Tabla de Informacion 
-                // Crear una tabla para los datos del proyecto y la información del cliente
-                PdfPTable datosTable = new PdfPTable(2);
-                datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
-                datosTable.LockedWidth = true;
-
-                // Celda 1: Datos del Proyecto
-                PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                try
                 {
-                    BackgroundColor = new BaseColor(70, 130, 180),
-                    BorderWidth = 1f,
-                    //Colspan = 1, // Fusionar una columna para "Datos del Proyecto"
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_CENTER
-                };
-                datosTable.AddCell(cellDatosProyecto);
-
-                // Celda 2: Información del Cliente
-                PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Provedor", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
-                {
-                    BackgroundColor = new BaseColor(70, 130, 180),
-                    BorderWidth = 1f,
-                    Colspan = 1, // Fusionar una columna para "Información del Cliente"
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellDatosCliente);
-
-                // Celda 3: Etiqueta "Cotización"
-                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaCotizacion);
-
-                // Celda 4: Etiqueta "Cliente"
-                PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Provedor: " + NombreProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaCliente);
-
-                // Celda 5: Etiqueta "Forma Pago"
-                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaFormaPago);
-
-                // Celda 6: Etiqueta "Teléfono"
-                PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + TelefonoProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaTelefono);
-
-                // Celda 6: Etiqueta "Dirección"
-                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaDireccion);
-
-                // Celda 7: Etiqueta "Correo"
-                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + CorreoProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaCorreo);
-                document.Add(datosTable);
-                document.Add(new Paragraph(" "));
-
-                #endregion
-
-                #region Tabla de Productos
-                //Agregar los datos del dgvDesglose a la tabla de pdf
-                PdfPTable tabla = new PdfPTable(dgvDesglose.Columns.Count);
-                tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
-                tabla.LockedWidth = true;
-                float[] tablaW = { 100, 0, 30f, 0, 32, 32 }; // Ancho de las columnas
-                tabla.SetWidths(tablaW);
-                //Modificar el alto de las columnas
-
-
-
-                // Agregar encabezados de columna
-                for (int i = 0; i < dgvDesglose.Columns.Count; i++)
-                {
-                    if (dgvDesglose.Columns[i].HeaderText == "")
+                    #region Seleccion de Proveedor
+                    string Option = cbProveedorDesglose.Text;
+                    string NombreProvedor = "";
+                    string TelefonoProvedor = "";
+                    string CorreoProvedor = "";
+                    switch (Option)
                     {
-
+                        case "Extralum":
+                            NombreProvedor = "Extralum";
+                            TelefonoProvedor = "2277-1900";
+                            CorreoProvedor = "aavila@extralum.co.cr";
+                            break;
+                        case "Macopa":
+                            NombreProvedor = "Macopa";
+                            TelefonoProvedor = "2010-7310";
+                            CorreoProvedor = "proyectosvidrios@macopa.com";
+                            break;
+                        case "Espejos el Mundo":
+                            NombreProvedor = "Espejos el Mundo";
+                            TelefonoProvedor = "2293-4961";
+                            CorreoProvedor = "N/A";
+                            break;
+                        default:
+                            break;
                     }
-                    PdfPCell celda = new PdfPCell(new Phrase(dgvDesglose.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
-                    celda.HorizontalAlignment = Element.ALIGN_CENTER;
-                    celda.BackgroundColor = new BaseColor(70, 130, 180);
-                    tabla.AddCell(celda);
-                }
+                    #endregion
 
-                // Agregar filas y celdas de datos con imágenes
-                for (int i = 0; i < dgvDesglose.Rows.Count; i++)
-                {
-                    for (int j = 0; j < dgvDesglose.Columns.Count; j++)
+                    #region Tabla de Informacion 
+                    // Crear una tabla para los datos del proyecto y la información del cliente
+                    PdfPTable datosTable = new PdfPTable(2);
+                    datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
+                    datosTable.LockedWidth = true;
+
+                    // Celda 1: Datos del Proyecto
+                    PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
                     {
-                        if (dgvDesglose[j, i].Value != null)
+                        BackgroundColor = new BaseColor(70, 130, 180),
+                        BorderWidth = 1f,
+                        //Colspan = 1, // Fusionar una columna para "Datos del Proyecto"
+                        HorizontalAlignment = Element.ALIGN_CENTER,
+                        VerticalAlignment = Element.ALIGN_CENTER
+                    };
+                    datosTable.AddCell(cellDatosProyecto);
+
+                    // Celda 2: Información del Cliente
+                    PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Provedor", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                    {
+                        BackgroundColor = new BaseColor(70, 130, 180),
+                        BorderWidth = 1f,
+                        Colspan = 1, // Fusionar una columna para "Información del Cliente"
+                        HorizontalAlignment = Element.ALIGN_CENTER,
+                        VerticalAlignment = Element.ALIGN_MIDDLE
+                    };
+                    datosTable.AddCell(cellDatosCliente);
+
+                    // Celda 3: Etiqueta "Cotización"
+                    PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                    {
+                        BorderWidth = 1,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                        VerticalAlignment = Element.ALIGN_MIDDLE
+                    };
+                    datosTable.AddCell(cellEtiquetaCotizacion);
+
+                    // Celda 4: Etiqueta "Cliente"
+                    PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Provedor: " + NombreProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                    {
+                        BorderWidth = 1,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                        VerticalAlignment = Element.ALIGN_MIDDLE
+                    };
+                    datosTable.AddCell(cellEtiquetaCliente);
+
+                    // Celda 5: Etiqueta "Forma Pago"
+                    PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                    {
+                        BorderWidth = 1,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                        VerticalAlignment = Element.ALIGN_MIDDLE
+                    };
+                    datosTable.AddCell(cellEtiquetaFormaPago);
+
+                    // Celda 6: Etiqueta "Teléfono"
+                    PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + TelefonoProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                    {
+                        BorderWidth = 1,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                        VerticalAlignment = Element.ALIGN_MIDDLE
+                    };
+                    datosTable.AddCell(cellEtiquetaTelefono);
+
+                    // Celda 6: Etiqueta "Dirección"
+                    PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                    {
+                        BorderWidth = 1,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                        VerticalAlignment = Element.ALIGN_MIDDLE
+                    };
+                    datosTable.AddCell(cellEtiquetaDireccion);
+
+                    // Celda 7: Etiqueta "Correo"
+                    PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + CorreoProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                    {
+                        BorderWidth = 1,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                        VerticalAlignment = Element.ALIGN_MIDDLE
+                    };
+                    datosTable.AddCell(cellEtiquetaCorreo);
+                    document.Add(datosTable);
+                    document.Add(new Paragraph(" "));
+
+                    #endregion
+
+                    #region Tabla de Productos
+                    //Agregar los datos del dgvDesglose a la tabla de pdf
+                    PdfPTable tabla = new PdfPTable(dgvDesglose.Columns.Count);
+                    tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
+                    tabla.LockedWidth = true;
+                    float[] tablaW = { 100, 0, 30f, 0, 32, 32 }; // Ancho de las columnas
+                    tabla.SetWidths(tablaW);
+                    //Modificar el alto de las columnas
+
+
+
+                    // Agregar encabezados de columna
+                    for (int i = 0; i < dgvDesglose.Columns.Count; i++)
+                    {
+                        if (dgvDesglose.Columns[i].HeaderText == "")
                         {
-                            PdfPCell cell = null;
 
-                            if (dgvDesglose.Columns[j].HeaderText == "Description")
+                        }
+                        PdfPCell celda = new PdfPCell(new Phrase(dgvDesglose.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
+                        celda.HorizontalAlignment = Element.ALIGN_CENTER;
+                        celda.BackgroundColor = new BaseColor(70, 130, 180);
+                        tabla.AddCell(celda);
+                    }
+
+                    // Agregar filas y celdas de datos con imágenes
+                    for (int i = 0; i < dgvDesglose.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dgvDesglose.Columns.Count; j++)
+                        {
+                            if (dgvDesglose[j, i].Value != null)
                             {
-                                // Para la columna "Descripción", alinea el texto a la izquierda
-                                cell = new PdfPCell(new Phrase(dgvDesglose[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
-                                cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                            }
-                            else
-                            {
-                                // Para otras columnas, mantén el texto centrado
-                                cell = new PdfPCell(new Phrase(dgvDesglose[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                                PdfPCell cell = null;
+
+                                if (dgvDesglose.Columns[j].HeaderText == "Description")
+                                {
+                                    // Para la columna "Descripción", alinea el texto a la izquierda
+                                    cell = new PdfPCell(new Phrase(dgvDesglose[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                }
+                                else
+                                {
+                                    // Para otras columnas, mantén el texto centrado
+                                    cell = new PdfPCell(new Phrase(dgvDesglose[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                                    cell.VerticalAlignment = Element.ALIGN_CENTER;
+                                }
+
+                                // Ajusta el tamaño de las celdas
+                                cell.FixedHeight = 30f; // Aumentamos la altura a 150 unidades
+                                cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
+
+                                // Centrar contenido verticalmente
                                 cell.VerticalAlignment = Element.ALIGN_CENTER;
+                                tabla.AddCell(cell);
                             }
-
-                            // Ajusta el tamaño de las celdas
-                            cell.FixedHeight = 30f; // Aumentamos la altura a 150 unidades
-                            cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
-
-                            // Centrar contenido verticalmente
-                            cell.VerticalAlignment = Element.ALIGN_CENTER;
-                            tabla.AddCell(cell);
                         }
                     }
+
+                    // Agregar la tabla al documento
+                    document.Add(tabla);
+                    #endregion
+                    //Cerrar el documento
+                    document.Close();
+                    MessageBox.Show("Desglose de Material Generado Correctamente", "Desglose de Material", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
+                catch (Exception)
+                {
+                    document.Close();
 
-                // Agregar la tabla al documento
-                document.Add(tabla);
-                #endregion
-                //Cerrar el documento
-                document.Close();
-                MessageBox.Show("Desglose de Material Generado Correctamente", "Desglose de Material", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                }
             }
-            catch (Exception)
-            {
-                document.Close();
-
-            }
-        }
 
         private void CargarTamañoPieza()
         {
@@ -1105,12 +1113,10 @@ namespace Precentacion.User.Bill
                 // Convertir el DataTable a un diccionario para una búsqueda rápida
                 Dictionary<string, decimal> tamanos = new Dictionary<string, decimal>();
                 foreach (DataRow row in dt.Rows)
-                {                                           
+                {
                     string nombre = row["Description"].ToString().Trim(); // Asegúrate de usar el nombre correcto de la columna de descripción
-                
                     decimal tamaño = Convert.ToDecimal(row["Tamaño"]);
 
-                 
                     if (!tamanos.ContainsKey(nombre))
                     {
                         tamanos.Add(nombre, tamaño);
@@ -1131,7 +1137,24 @@ namespace Precentacion.User.Bill
                         {
                             row.Cells[4].Value = row.Cells[2].Value;
                             row.Cells[5].Value = row.Cells[2].Value;
+                        }
+                    }
 
+                    // Validar y limpiar el valor de la columna "SalePrice"
+                    if (row.Cells["SalePrice"].Value != null)
+                    {
+                        string salePriceStr = row.Cells["SalePrice"].Value.ToString();
+                        salePriceStr = salePriceStr.Replace(" ", ""); // Eliminar espacios
+
+                        // Validar si el valor es decimal y convertirlo
+                        if (decimal.TryParse(salePriceStr, out decimal salePrice))
+                        {
+                            row.Cells["SalePrice"].Value = salePrice;
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Valor inválido en la columna 'SalePrice' en la fila {row.Index + 1}. Valor: '{salePriceStr}'", "Error en los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            row.Cells["SalePrice"].Value = DBNull.Value; // O establece un valor por defecto
                         }
                     }
                 }
@@ -1144,27 +1167,29 @@ namespace Precentacion.User.Bill
         }
 
 
+        // Método para cargar datos en el DataGridView
+
 
         private List<PriceProductClass> CargarLista() 
-        {
-            //Cargar la Lita con el dgvDesglose
-            List<PriceProductClass> Lista = new List<PriceProductClass>();
-            foreach (DataGridViewRow item in dgvDesglose.Rows)
             {
-                //Validar que el Item no sea Nulo
-                if (item.Cells[1].Value != null)
+                //Cargar la Lita con el dgvDesglose
+                List<PriceProductClass> Lista = new List<PriceProductClass>();
+                foreach (DataGridViewRow item in dgvDesglose.Rows)
                 {
-                    PriceProductClass priceProduct = new PriceProductClass();
-                    priceProduct.Nombre = item.Cells[0].Value.ToString();
-                    priceProduct.Supplier = cbProveedorDesglose.Text;
-                    priceProduct.Color = "Natural";
-                    Lista.Add(priceProduct);
+                    //Validar que el Item no sea Nulo
+                    if (item.Cells[1].Value != null)
+                    {
+                        PriceProductClass priceProduct = new PriceProductClass();
+                        priceProduct.Nombre = item.Cells[0].Value.ToString();
+                        priceProduct.Supplier = cbProveedorDesglose.Text;
+                        priceProduct.Color = "Natural";
+                        Lista.Add(priceProduct);
+                    }
                 }
-            }
                
-            return Lista;
+                return Lista;
 
-        }
+            }
 
         #endregion
 
@@ -2547,6 +2572,31 @@ namespace Precentacion.User.Bill
                 return 1.5m;
             }
         }
+
+        private void dgvDesglose_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            // Mostrar un mensaje de error
+            //MessageBox.Show($"Error en la columna '{dgvDesglose.Columns[e.ColumnIndex].HeaderText}' y fila '{e.RowIndex + 1}'. Detalle del error: {e.Exception.Message}", "Error en el DataGridView", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            // Puedes manejar diferentes acciones dependiendo del tipo de error
+            switch (e.Context)
+            {
+                case DataGridViewDataErrorContexts.Commit:
+                    //MessageBox.Show("Error de commit.");
+                    break;
+                case DataGridViewDataErrorContexts.CurrentCellChange:
+                    //MessageBox.Show("Error al cambiar de celda.");
+                    break;
+                case DataGridViewDataErrorContexts.Parsing:
+                    //MessageBox.Show("Error de parsing.");
+                    break;
+                case DataGridViewDataErrorContexts.LeaveControl:
+                    //MessageBox.Show("Error al dejar el control.");
+                    break;
+            }
+
+            // Indicar que el error ha sido manejado
+            e.ThrowException = false;
+        }
     }
 }
-
