@@ -376,6 +376,22 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+                //Perfect Glass
+                if (CompanyCache.IdCompany == 333333333)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
+                    txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
+                    txtConditional3.Text = "3.Se cotizan productos marca Extralum";
+                    txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
+                    txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
+                    txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
+                    txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
+                    txtConditional8.Text = "8.Validez de cotización 8 días";
+                    txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
+                    txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
+
+                }
                 //Innova
                 if (CompanyCache.IdCompany == 31028013)
                 {
@@ -1292,6 +1308,15 @@ namespace Precentacion.User.Quote.Quote
                     rutaLogo = ruta + Url;
 
                 }
+                //Perfect Glass, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 333333333)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\PerfectGlass.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 if (CompanyCache.IdCompany == 31025820)
                 {
                     //Obtener la Ruta de la Carpeta bin
@@ -1437,6 +1462,20 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(new Chunk("Correo: " + "info@vidrierapalmares.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Sitio Web: " + "http://www.vidrierapalmares.com/", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 333333333)
+                {
+                    paragraph.Add(new Chunk("SAN RAMÓN, ALAJUELA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-333-33333", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("WhatsApp: +(506) " + "8671 5008", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "crperfectglass@gmail.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
                 else
@@ -2077,6 +2116,20 @@ namespace Precentacion.User.Quote.Quote
                 }
                 //Vidriera Palmares
                 if (CompanyCache.IdCompany == 222222222)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                if (CompanyCache.IdCompany == 333333333)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
