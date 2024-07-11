@@ -1641,8 +1641,6 @@ namespace Precentacion.User.Quote.Quote
                     celda.BackgroundColor = new BaseColor(70, 130, 180);
                     tabla.AddCell(celda);
                 }
-
-                // Agregar filas y celdas de datos con imágenes
                 for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
                 {
                     for (int j = 0; j < dgCotizaciones.Columns.Count; j++)
@@ -1662,7 +1660,42 @@ namespace Precentacion.User.Quote.Quote
                                 // Reemplazar la versión en la ruta con la versión actual
                                 string rutaCorregida = ReemplazarVersionEnRuta(rutaImagen, versionActualString);
 
-                                if (!string.IsNullOrEmpty(rutaCorregida) && File.Exists(rutaCorregida))
+                                // Obtener el directorio de trabajo actual
+                                string directorioDeTrabajo = Directory.GetCurrentDirectory();
+                                Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
+
+                                // Imprimir ruta corregida para depuración
+                                Console.WriteLine($"Ruta corregida: {rutaCorregida}");
+
+                                string rutaAbsoluta;
+
+                                bool esExclusivo = rutaCorregida.StartsWith("EXCLUSIVO:");
+                                if (esExclusivo)
+                                {
+                                    rutaCorregida = rutaCorregida.Replace("EXCLUSIVO:", "");
+                                }
+
+                                if (Path.IsPathRooted(rutaCorregida))
+                                {
+                                    if (File.Exists(rutaCorregida))
+                                    {
+                                        rutaAbsoluta = rutaCorregida;
+                                    }
+                                    else
+                                    {
+                                        string fileName = Path.GetFileName(rutaCorregida);
+                                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
+                                    }
+                                }
+                                else
+                                {
+                                    rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaCorregida);
+                                    rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
+                                }
+
+                                Console.WriteLine($"Ruta absoluta: {rutaAbsoluta}");
+
+                                if (!string.IsNullOrEmpty(rutaAbsoluta) && File.Exists(rutaAbsoluta))
                                 {
                                     // Obtener dimensiones en metros y convertirlas a píxeles
                                     decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
@@ -1678,10 +1711,10 @@ namespace Precentacion.User.Quote.Quote
                                     Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
 
                                     // Cargar la imagen y ajustar su tamaño
-                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaCorregida);
+                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
 
-                                    // Ajustar el tamaño de la imagen con ScaleAbsolute
-                                    img.ScaleAbsolute(anchoVentana, altoVentana);
+                                    // Ajustar el tamaño de la imagen con ScaleToFit para que no pase del alto y ancho asignado
+                                    img.ScaleToFit(anchoVentana, altoVentana);
 
                                     PdfPCell celdaImagen = new PdfPCell(img);
                                     celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
