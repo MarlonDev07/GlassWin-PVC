@@ -356,7 +356,7 @@ namespace Precentacion.User.Quote.Windows
                 {
                     if (i != Aluminiodt.Rows.Count - 1)
                     {
-                        PrecioAluminio += Convert.ToDecimal(Aluminiodt.Rows[i].Cells[3].Value.ToString());
+                        PrecioAluminio += Convert.ToDecimal(Aluminiodt.Rows[i].Cells[5].Value.ToString());
                     }
                 }
 
@@ -365,7 +365,7 @@ namespace Precentacion.User.Quote.Windows
                 {
                     if (i != Vidriodt.Rows.Count - 1)
                     {
-                        PrecioVidrio += Convert.ToDecimal(Vidriodt.Rows[i].Cells[3].Value.ToString());
+                        PrecioVidrio += Convert.ToDecimal(Vidriodt.Rows[i].Cells[1].Value.ToString());
                     }
                 }
 
