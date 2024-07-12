@@ -193,7 +193,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                 {
                     if (i != Aluminiodt.Rows.Count - 1)
                     {
-                        PrecioAluminio += Convert.ToDecimal(Aluminiodt.Rows[i].Cells[3].Value.ToString());
+                        PrecioAluminio += Convert.ToDecimal(Aluminiodt.Rows[i].Cells[5].Value.ToString());
                     }
                 }
 
@@ -202,7 +202,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                 {
                     if (i != Vidriodt.Rows.Count - 1)
                     {
-                        PrecioVidrio += Convert.ToDecimal(Vidriodt.Rows[i].Cells[3].Value.ToString());
+                        PrecioVidrio += Convert.ToDecimal(Vidriodt.Rows[i].Cells[4].Value.ToString());
                     }
                 }
 
@@ -663,6 +663,11 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         private void button2_Click_1(object sender, EventArgs e)
         {
             panelDetalle.Visible = false;
+        }
+
+        private void panelDetalle_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
