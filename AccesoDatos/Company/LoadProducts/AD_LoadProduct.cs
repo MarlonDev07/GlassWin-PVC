@@ -17,7 +17,7 @@ namespace AccesoDatos.Company.LoadProducts
 
                 if (UserCache.Name != "InnovaGlass")
 				{
-                     sql = "select P.Description,PP.Cost,PP.SalePrice, PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
+                     sql = "select P.Description,PP.SalePrice, PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
                 }else 
 				{
                      sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";

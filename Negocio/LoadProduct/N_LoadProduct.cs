@@ -62,7 +62,7 @@ namespace Negocio.LoadProduct
                 {
                     string Description = item[0].ToString();
                     decimal Metraje = CalcMetraje(Description);
-                    decimal SalePrice = Convert.ToDecimal(item[2]);
+                    decimal SalePrice = Convert.ToDecimal(item[1]);
                     decimal Cost = Convert.ToDecimal(item["Cost"]); // Asegúrate de que esta columna exista en tu DataTable
                     decimal Price = CalcPrice(Metraje, SalePrice);
                     decimal TotalCost = Metraje * Cost;

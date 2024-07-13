@@ -323,11 +323,16 @@ namespace Precentacion.User.Bill
                 //Cargar el dtTotalAluminio en el dgv
                 dgvDesglose.DataSource = dtTotalDesglose;
 
-                //Redonder todos los Metrajes a dos decimales 
+                // Redondear todos los Metrajes a dos decimales 
                 foreach (DataGridViewRow row in dgvDesglose.Rows)
                 {
-                    row.Cells[2].Value = Convert.ToDecimal(row.Cells[2].Value).ToString("N2");
+                    if (row.Cells["Metraje"].Value != null &&
+                        decimal.TryParse(row.Cells["Metraje"].Value.ToString(), out decimal metraje))
+                    {
+                        row.Cells["Metraje"].Value = metraje.ToString("N2");
+                    }
                 }
+
 
             }
 
@@ -2576,22 +2581,22 @@ namespace Precentacion.User.Bill
         private void dgvDesglose_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             // Mostrar un mensaje de error
-            //MessageBox.Show($"Error en la columna '{dgvDesglose.Columns[e.ColumnIndex].HeaderText}' y fila '{e.RowIndex + 1}'. Detalle del error: {e.Exception.Message}", "Error en el DataGridView", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"Error en la columna '{dgvDesglose.Columns[e.ColumnIndex].HeaderText}' y fila '{e.RowIndex + 1}'. Detalle del error: {e.Exception.Message}", "Error en el DataGridView", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // Puedes manejar diferentes acciones dependiendo del tipo de error
             switch (e.Context)
             {
                 case DataGridViewDataErrorContexts.Commit:
-                    //MessageBox.Show("Error de commit.");
+                    MessageBox.Show("Error de commit.");
                     break;
                 case DataGridViewDataErrorContexts.CurrentCellChange:
-                    //MessageBox.Show("Error al cambiar de celda.");
+                    MessageBox.Show("Error al cambiar de celda.");
                     break;
                 case DataGridViewDataErrorContexts.Parsing:
-                    //MessageBox.Show("Error de parsing.");
+                    MessageBox.Show("Error de parsing.");
                     break;
                 case DataGridViewDataErrorContexts.LeaveControl:
-                    //MessageBox.Show("Error al dejar el control.");
+                    MessageBox.Show("Error al dejar el control.");
                     break;
             }
 
