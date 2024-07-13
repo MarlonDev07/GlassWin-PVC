@@ -1166,6 +1166,17 @@ namespace Precentacion.User.Quote.Quote
             }
         }
 
+        private void dgCotizaciones_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            // Muestra el mensaje de error en la consola o en un MessageBox
+            Console.WriteLine($"Error en la celda [{e.RowIndex}, {e.ColumnIndex}]: {e.Exception.Message}");
+            MessageBox.Show($"Error en la celda [{e.RowIndex}, {e.ColumnIndex}]: {e.Exception.Message}", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            // Opcionalmente, puedes evitar que el error se propague
+            e.ThrowException = false;
+        }
+
+
         private void SendQuoteforWhathsaap()
         {
             //Preguntar si desea enviar la cotizacion por whatsapp
