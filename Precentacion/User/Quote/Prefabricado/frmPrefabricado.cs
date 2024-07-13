@@ -379,12 +379,26 @@ namespace Precentacion.User.Quote.Prefabricado
                 {
                     dgvPrefabricado.CurrentRow.Cells[0].Value = dataTable.Rows[0]["IdPrice"].ToString();
                     dgvPrefabricado.CurrentRow.Cells[1].Value = dataTable.Rows[0]["Description"].ToString();
-                    dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                    if (UserCache.Name == "InnovaGlass")
+                    {
+                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["Cost"].ToString();
+                    }
+                    else {
+                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                    }
+                    
 
                 }
                 if (Seleccion == 1)
                 {
-                    dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                    if (UserCache.Name == "InnovaGlass")
+                    {
+                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["Cost"].ToString();
+                    }
+                    else {
+                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                    }
+                        
                 }
             }
             else
