@@ -189,7 +189,7 @@ namespace Precentacion.User.DashBoard
         private void pictureBox4_Click_1(object sender, EventArgs e)
         {
             frmAdminDashboard frmDashUser = new frmAdminDashboard();
-            frmDashUser.Owner = this;
+            //frmDashUser.Owner = this;
             frmDashUser.Show();
             this.WindowState = FormWindowState.Minimized;
 
