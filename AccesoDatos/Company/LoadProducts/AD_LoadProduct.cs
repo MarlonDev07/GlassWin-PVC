@@ -16,13 +16,14 @@ namespace AccesoDatos.Company.LoadProducts
 				string sql = "";
 
                 if (UserCache.Name != "InnovaGlass")
-				{
-                     sql = "select P.Description,PP.SalePrice, PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
-                }else 
-				{
-                     sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
+                {
+                    sql = "select P.Description,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
                 }
-				SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                else
+                {
+                    sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
+                }
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
 				da.Fill(dt);
 				con.CloseConnection();
 				return dt;
@@ -42,16 +43,16 @@ namespace AccesoDatos.Company.LoadProducts
 				DataTable dt = new DataTable();
 				ClsConnection con = new ClsConnection();
 				string sql = "";
-                if (UserCache.Name != "InnovaGlass") 
-				{
-                    sql = "select P.Description,PP.SalePrice,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color = 'Negro' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Accesorios' and p.System = '" + System + "'";
-				}
-				else
-				{
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "select P.Description,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color = 'Negro' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Accesorios' and p.System = '" + System + "'";
+                }
+                else
+                {
                     sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color = 'Negro' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Accesorios' and p.System = '" + System + "'";
                 }
-                   
-				SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
 				da.Fill(dt);
 				con.CloseConnection();
 				return dt;
@@ -87,12 +88,13 @@ namespace AccesoDatos.Company.LoadProducts
                 DataTable dataTable = new DataTable();
                 ClsConnection con = new ClsConnection();
 				string sql = "";
-                if (UserCache.Name != "InnovaGlass") 
-				{
-                    sql = "select P.Description,PP.SalePrice,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE  P.Description = '" + Description + "'";
-                }else
-				{
-                    sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE P.Description = '" + Description + "'";
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "select P.Description,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
+                }
+                else
+                {
+                    sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
                 }
                 SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
                 da.Fill(dataTable);
@@ -114,13 +116,14 @@ namespace AccesoDatos.Company.LoadProducts
                 ClsConnection con = new ClsConnection();
 
 				string sql = "";
-				if (UserCache.Name != "InnovaGlass") 
-				{
-					sql = "select P.Description,PP.SalePrice, PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
-                }else
-				{
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "select P.Description,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
+                }
+                else
+                {
                     sql = "select P.Description,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
-				}
+                }
                 SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
                 da.Fill(dataTable);
                 con.CloseConnection();

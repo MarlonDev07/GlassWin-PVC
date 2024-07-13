@@ -388,22 +388,28 @@ namespace Precentacion.User.Quote.Windows
                 dtAluminio = loadProduct.loadAluminio(cbColor.Text, ClsWindows.System, cbSupplier.Text);
                 dgAluminio.AutoGenerateColumns = true;
                 dgAluminio.DataSource = dtAluminio;
+            
 
                 DataTable dtAccesorios = new DataTable();
                 dtAccesorios = loadProduct.loadAccesorios(ClsWindows.System, cbSupplier.Text);
                 dgAccesorios.AutoGenerateColumns = true;
                 dgAccesorios.DataSource = dtAccesorios;
 
+
+
+
                 DataTable dtVidrio = new DataTable();
                 dtVidrio = loadProduct.loadPricesGlass(cbSupplier.Text, cbVidrio.Text);
                 dgVidrio.AutoGenerateColumns = true;
                 dgVidrio.DataSource = dtVidrio;
 
+         
                 DataTable dtLock = new DataTable();
                 dtLock = loadProduct.LoadPricesLock(cbSupplier.Text, Lock);
                 dgvCerradura.AutoGenerateColumns = true;
                 dgvCerradura.DataSource = dtLock;
 
+        
                 if (cbCedazo.Checked == true)
                 {
                     DataTable dtCedazoAluminio = new DataTable();
@@ -2372,7 +2378,7 @@ namespace Precentacion.User.Quote.Windows
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Price", typeof(decimal));
 
-            Action<DataGridView, string> agregarDatosFromDataGridView = (dataGridView, columnName) =>
+                Action<DataGridView, string> agregarDatosFromDataGridView = (dataGridView, columnName) =>
             {
                 if (dataGridView != null)
                 {
@@ -2391,14 +2397,14 @@ namespace Precentacion.User.Quote.Windows
             };
 
             // Para dgAluminio, utiliza la columna "TotalCost"
-            agregarDatosFromDataGridView(dgAluminio, "TotalCost");
+            agregarDatosFromDataGridView(dgAluminio, "TotalPrice");
 
             // Para los demás DataGridViews, utiliza la columna "TotalPrice"
-            agregarDatosFromDataGridView(dgAccesorios, "TotalCost");
-            agregarDatosFromDataGridView(dgVidrio, "TotalCost");
-            agregarDatosFromDataGridView(dgAluminioAdd, "TotalCost");
+            agregarDatosFromDataGridView(dgAccesorios, "TotalPrice");
+            agregarDatosFromDataGridView(dgVidrio, "TotalPrice");
+            agregarDatosFromDataGridView(dgAluminioAdd, "TotalPrice");
             agregarDatosFromDataGridView(dgVidrioAdd, "TotalPrTotalCostice");
-            agregarDatosFromDataGridView(dgvCerradura, "TotalCost");
+            agregarDatosFromDataGridView(dgvCerradura, "TotalPrice");
 
             return dataTable; // Devuelve el DataTable lleno
         }

@@ -198,7 +198,7 @@ namespace Precentacion.User.Bill
                         {
                             Material = "1x2";
                         }
-                        if(Descripcion.Contains("1 3/4x3")) 
+                        if (Descripcion.Contains("1 3/4x3"))
                         {
                             Material = "1 3/4x3";
                         }
@@ -240,7 +240,7 @@ namespace Precentacion.User.Bill
                             {
                                 DataRow[] rows = dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'");
                                 rows[0]["Metraje"] = Convert.ToDecimal(rows[0]["Metraje"]) + Convert.ToDecimal(item["Metraje"]);
-                                
+
                             }
                             else
                             {
@@ -259,7 +259,7 @@ namespace Precentacion.User.Bill
                     foreach (DataRow item in dtAccesorios.Rows)
                     {
                         item["Metraje"] = Convert.ToDecimal(item["Metraje"]) * Convert.ToDecimal(Cantidad);
-                                              
+
 
                     }
 
@@ -277,7 +277,7 @@ namespace Precentacion.User.Bill
                             {
                                 DataRow[] rows = dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'");
                                 rows[0]["Metraje"] = Convert.ToDecimal(rows[0]["Metraje"]) + Convert.ToDecimal(item["Metraje"]);
-                                
+
 
                             }
                             else
@@ -308,7 +308,7 @@ namespace Precentacion.User.Bill
                             {
                                 DataRow[] rows = dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'");
                                 rows[0]["Metraje"] = Convert.ToDecimal(rows[0]["Metraje"]) + Convert.ToDecimal(item["Metraje"]);
-                                
+
                             }
                             else
                             {
@@ -323,16 +323,11 @@ namespace Precentacion.User.Bill
                 //Cargar el dtTotalAluminio en el dgv
                 dgvDesglose.DataSource = dtTotalDesglose;
 
-                // Redondear todos los Metrajes a dos decimales 
+                //Redonder todos los Metrajes a dos decimales 
                 foreach (DataGridViewRow row in dgvDesglose.Rows)
                 {
-                    if (row.Cells["Metraje"].Value != null &&
-                        decimal.TryParse(row.Cells["Metraje"].Value.ToString(), out decimal metraje))
-                    {
-                        row.Cells["Metraje"].Value = metraje.ToString("N2");
-                    }
+                    row.Cells[2].Value = Convert.ToDecimal(row.Cells[2].Value).ToString("N2");
                 }
-
 
             }
 
@@ -340,7 +335,7 @@ namespace Precentacion.User.Bill
             {
                 MessageBox.Show("Error al Cargar el Desglose", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
         }
         private void ConfigDataGridDesglose()
         {
@@ -1144,24 +1139,47 @@ namespace Precentacion.User.Bill
                             row.Cells[5].Value = row.Cells[2].Value;
                         }
                     }
-
-                    // Validar y limpiar el valor de la columna "SalePrice"
-                    if (row.Cells["SalePrice"].Value != null)
+                    if (UserCache.Name == "InnovaGlass")
                     {
-                        string salePriceStr = row.Cells["SalePrice"].Value.ToString();
-                        salePriceStr = salePriceStr.Replace(" ", ""); // Eliminar espacios
+                        // Validar y limpiar el valor de la columna "SalePrice"
+                        if (row.Cells["Cost"].Value != null)
+                        {
+                            string salePriceStr = row.Cells["Cost"].Value.ToString();
+                            salePriceStr = salePriceStr.Replace(" ", ""); // Eliminar espacios
 
-                        // Validar si el valor es decimal y convertirlo
-                        if (decimal.TryParse(salePriceStr, out decimal salePrice))
-                        {
-                            row.Cells["SalePrice"].Value = salePrice;
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Valor inválido en la columna 'SalePrice' en la fila {row.Index + 1}. Valor: '{salePriceStr}'", "Error en los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            row.Cells["SalePrice"].Value = DBNull.Value; // O establece un valor por defecto
+                            // Validar si el valor es decimal y convertirlo
+                            if (decimal.TryParse(salePriceStr, out decimal salePrice))
+                            {
+                                row.Cells["Cost"].Value = salePrice;
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Valor inválido en la columna 'SalePrice' en la fila {row.Index + 1}. Valor: '{salePriceStr}'", "Error en los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                row.Cells["Cost"].Value = DBNull.Value; // O establece un valor por defecto
+                            }
                         }
                     }
+                    else {
+                        // Validar y limpiar el valor de la columna "SalePrice"
+                        if (row.Cells["SalePrice"].Value != null)
+                        {
+                            string salePriceStr = row.Cells["SalePrice"].Value.ToString();
+                            salePriceStr = salePriceStr.Replace(" ", ""); // Eliminar espacios
+
+                            // Validar si el valor es decimal y convertirlo
+                            if (decimal.TryParse(salePriceStr, out decimal salePrice))
+                            {
+                                row.Cells["SalePrice"].Value = salePrice;
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Valor inválido en la columna 'SalePrice' en la fila {row.Index + 1}. Valor: '{salePriceStr}'", "Error en los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                row.Cells["SalePrice"].Value = DBNull.Value; // O establece un valor por defecto
+                            }
+                        }
+                    }
+
+                 
                 }
             }
             catch (Exception ex)
@@ -2581,22 +2599,22 @@ namespace Precentacion.User.Bill
         private void dgvDesglose_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             // Mostrar un mensaje de error
-            MessageBox.Show($"Error en la columna '{dgvDesglose.Columns[e.ColumnIndex].HeaderText}' y fila '{e.RowIndex + 1}'. Detalle del error: {e.Exception.Message}", "Error en el DataGridView", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show($"Error en la columna '{dgvDesglose.Columns[e.ColumnIndex].HeaderText}' y fila '{e.RowIndex + 1}'. Detalle del error: {e.Exception.Message}", "Error en el DataGridView", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // Puedes manejar diferentes acciones dependiendo del tipo de error
             switch (e.Context)
             {
                 case DataGridViewDataErrorContexts.Commit:
-                    MessageBox.Show("Error de commit.");
+                    //MessageBox.Show("Error de commit.");
                     break;
                 case DataGridViewDataErrorContexts.CurrentCellChange:
-                    MessageBox.Show("Error al cambiar de celda.");
+                    //MessageBox.Show("Error al cambiar de celda.");
                     break;
                 case DataGridViewDataErrorContexts.Parsing:
-                    MessageBox.Show("Error de parsing.");
+                    //MessageBox.Show("Error de parsing.");
                     break;
                 case DataGridViewDataErrorContexts.LeaveControl:
-                    MessageBox.Show("Error al dejar el control.");
+                    //MessageBox.Show("Error al dejar el control.");
                     break;
             }
 
