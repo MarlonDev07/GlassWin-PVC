@@ -1407,6 +1407,17 @@ namespace Precentacion.User.Bill
 
                 // Agrega la imagen a la primera celda
                 string rutaLogo = "";
+                Console.WriteLine(CompanyCache.IdCompany);
+                //
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
                 if (CompanyCache.IdCompany == 310171783)
                 {
                     //Obtener la Ruta de la Carpeta bin
@@ -1471,7 +1482,6 @@ namespace Precentacion.User.Bill
                 }
                 if (CompanyCache.IdCompany == 1230123)
                 {
-                    //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\GlassWinLogo.png";
                     rutaLogo = ruta + Url;
@@ -1632,50 +1642,101 @@ namespace Precentacion.User.Bill
                     tabla.AddCell(celda);
                 }
 
-                // Agregar filas y celdas de datos con imágenes
                 for (int i = 0; i < dgvGlass.Rows.Count; i++)
                 {
                     for (int j = 0; j < dgvGlass.Columns.Count; j++)
                     {
                         if (dgvGlass[j, i].Value != null)
                         {
-                            // Si es la columna de imagen (ajusta según tu estructura de datos)
+                            PdfPCell cell = null;
+
                             if (dgvGlass.Columns[j].HeaderText == "URL")
                             {
                                 string rutaImagen = dgvGlass[j, i].Value.ToString();
-                                if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+                                System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                                string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
+
+                                // Reemplazar la versión en la ruta con la versión actual
+                                string rutaCorregida = ReemplazarVersionEnRuta(rutaImagen, versionActualString);
+
+                                // Obtener el directorio de trabajo actual
+                                string directorioDeTrabajo = Directory.GetCurrentDirectory();
+                                Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
+
+                                string rutaAbsoluta;
+                                bool esExclusivo = rutaCorregida.StartsWith("EXCLUSIVO:");
+                                if (esExclusivo)
                                 {
-                                    // Agregar la imagen al PDF y ajustar su tamaño
-                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaImagen);
-                                    img.ScaleToFit(100, 100); // Cambia el tamaño deseado aquí
+                                    rutaCorregida = rutaCorregida.Replace("EXCLUSIVO:", "");
+                                }
+
+                                if (Path.IsPathRooted(rutaCorregida))
+                                {
+                                    if (File.Exists(rutaCorregida))
+                                    {
+                                        rutaAbsoluta = rutaCorregida;
+                                    }
+                                    else
+                                    {
+                                        string fileName = Path.GetFileName(rutaCorregida);
+                                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
+                                    }
+                                }
+                                else
+                                {
+                                    rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaCorregida);
+                                    rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
+                                }
+
+                                if (!string.IsNullOrEmpty(rutaAbsoluta) && File.Exists(rutaAbsoluta))
+                                {
+                                    // Obtener dimensiones en metros y convertirlas a píxeles
+                                    decimal anchoEnMetros = ObtenerAncho(dgvGlass.Rows[i].Cells[2].Value.ToString());
+                                    decimal alturaEnMetros = ObtenerAlto(dgvGlass.Rows[i].Cells[2].Value.ToString());
+
+                                    int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
+                                    int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
+
+                                    if (anchoVentana == 0) anchoVentana = 150;//e.CellBounds.Width;
+                                    if (altoVentana == 0) altoVentana = 100;//e.CellBounds.Height;
+
+                                    // Mostrar dimensiones calculadas para depuración
+                                    Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
+
+                                    // Cargar la imagen y ajustar su tamaño
+                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
+
+                                    // Ajustar el tamaño de la imagen con ScaleAbsolute
+                                    img.ScaleAbsolute(anchoVentana, altoVentana);
+
                                     PdfPCell celdaImagen = new PdfPCell(img);
                                     celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
                                     celdaImagen.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                    celdaImagen.FixedHeight = altoVentana; // Ajustar la altura de la celda para coincidir con la imagen
                                     tabla.AddCell(celdaImagen);
                                 }
                                 else
                                 {
-                                    // Si no hay imagen, agrega una con texto que dice "No hay imagen"
-                                    PdfPCell celda = new PdfPCell(new Phrase("No hay imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
-                                    celda.HorizontalAlignment = Element.ALIGN_CENTER;
-                                    celda.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                    tabla.AddCell(celda);
+                                    // Agregar una celda con texto "Sin Imagen"
+                                    cell = new PdfPCell(new Phrase("Sin Imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                    // Ajustar el tamaño de la celda de la imagen
+                                    cell.FixedHeight = 50f; // Ajusta la altura según sea necesario
+                                    tabla.AddCell(cell);
                                 }
                             }
                             else
                             {
-                                PdfPCell cell = null;
-
-                                if (dgvGlass.Columns[j].HeaderText == "Description")
+                                if (dgvGlass.Columns[j].HeaderText == "Descripcion")
                                 {
                                     // Para la columna "Descripción", alinea el texto a la izquierda
                                     cell = new PdfPCell(new Phrase(dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                 }
-
-                                if (dgvGlass.Columns[j].HeaderText == "Precio")
+                                else if (dgvGlass.Columns[j].HeaderText == "Precio")
                                 {
-                                    // Para la columna "Descripción", alinea el texto a la izquierda
+                                    // Para la columna "Precio", alinea el texto a la izquierda y redondea a dos decimales
                                     decimal Prices = Convert.ToDecimal(dgvGlass[j, i].Value);
                                     Prices = Math.Round(Prices, 2);
                                     cell = new PdfPCell(new Phrase("¢" + Prices.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
@@ -1683,22 +1744,21 @@ namespace Precentacion.User.Bill
                                 }
                                 else
                                 {
-                                    // Para otras columnas, mantén el texto centrado
-                                    cell = new PdfPCell(new Phrase(dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 12)));
-                                    cell.VerticalAlignment = Element.ALIGN_LEFT;
+                                    cell = new PdfPCell(new Phrase(dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
                                 }
 
                                 // Ajusta el tamaño de las celdas
-                                cell.FixedHeight = 170f; // Aumentamos la altura a 150 unidades
-                                cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
-
-                                // Centrar contenido verticalmente
+                                cell.FixedHeight = 150f; // Ajusta la altura según sea necesario
+                                cell.PaddingLeft = 10f; // Agrega un relleno a la izquierda para alinear el texto correctamente
+                                                        // Centrar contenido verticalmente
                                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                                 tabla.AddCell(cell);
                             }
                         }
                     }
                 }
+
 
                 // Agregar la tabla al documento
                 document.Add(tabla);
@@ -1836,6 +1896,15 @@ namespace Precentacion.User.Bill
 
                 // Agrega la imagen a la primera celda
                 string rutaLogo = "";
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
                 if (CompanyCache.IdCompany == 310171783)
                 {
                     //Obtener la Ruta de la Carpeta bin
@@ -2061,65 +2130,116 @@ namespace Precentacion.User.Bill
                     tabla.AddCell(celda);
                 }
 
-                // Agregar filas y celdas de datos con imágenes
                 for (int i = 0; i < dgvGlass.Rows.Count; i++)
                 {
                     for (int j = 0; j < dgvGlass.Columns.Count; j++)
                     {
                         if (dgvGlass[j, i].Value != null)
                         {
-                            // Si es la columna de imagen (ajusta según tu estructura de datos)
+                            PdfPCell cell = null;
+
                             if (dgvGlass.Columns[j].HeaderText == "URL")
                             {
                                 string rutaImagen = dgvGlass[j, i].Value.ToString();
-                                if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+                                System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                                string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
+
+                                // Reemplazar la versión en la ruta con la versión actual
+                                string rutaCorregida = ReemplazarVersionEnRuta(rutaImagen, versionActualString);
+
+                                // Obtener el directorio de trabajo actual
+                                string directorioDeTrabajo = Directory.GetCurrentDirectory();
+                                Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
+
+                                string rutaAbsoluta;
+                                bool esExclusivo = rutaCorregida.StartsWith("EXCLUSIVO:");
+                                if (esExclusivo)
                                 {
-                                    // Agregar la imagen al PDF y ajustar su tamaño
-                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaImagen);
-                                    img.ScaleToFit(100, 100); // Cambia el tamaño deseado aquí
+                                    rutaCorregida = rutaCorregida.Replace("EXCLUSIVO:", "");
+                                }
+
+                                if (Path.IsPathRooted(rutaCorregida))
+                                {
+                                    if (File.Exists(rutaCorregida))
+                                    {
+                                        rutaAbsoluta = rutaCorregida;
+                                    }
+                                    else
+                                    {
+                                        string fileName = Path.GetFileName(rutaCorregida);
+                                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
+                                    }
+                                }
+                                else
+                                {
+                                    rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaCorregida);
+                                    rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
+                                }
+
+                                if (!string.IsNullOrEmpty(rutaAbsoluta) && File.Exists(rutaAbsoluta))
+                                {
+                                    // Obtener dimensiones en metros y convertirlas a píxeles
+                                    decimal anchoEnMetros = ObtenerAncho(dgvGlass.Rows[i].Cells[2].Value.ToString());
+                                    decimal alturaEnMetros = ObtenerAlto(dgvGlass.Rows[i].Cells[2].Value.ToString());
+
+                                    int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
+                                    int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
+
+                                    if (anchoVentana == 0) anchoVentana = 150;//e.CellBounds.Width;
+                                    if (altoVentana == 0) altoVentana = 100;//e.CellBounds.Height;
+
+                                    // Mostrar dimensiones calculadas para depuración
+                                    Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
+
+                                    // Cargar la imagen y ajustar su tamaño
+                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
+
+                                    // Ajustar el tamaño de la imagen con ScaleAbsolute
+                                    img.ScaleAbsolute(anchoVentana, altoVentana);
+
                                     PdfPCell celdaImagen = new PdfPCell(img);
                                     celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
                                     celdaImagen.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                    celdaImagen.FixedHeight = altoVentana; // Ajustar la altura de la celda para coincidir con la imagen
                                     tabla.AddCell(celdaImagen);
                                 }
                                 else
                                 {
-                                    // Si no hay imagen, agrega una con texto que dice "No hay imagen"
-                                    PdfPCell celda = new PdfPCell(new Phrase("No hay imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
-                                    celda.HorizontalAlignment = Element.ALIGN_CENTER;
-                                    celda.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                    tabla.AddCell(celda);
+                                    // Agregar una celda con texto "Sin Imagen"
+                                    cell = new PdfPCell(new Phrase("Sin Imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                    // Ajustar el tamaño de la celda de la imagen
+                                    cell.FixedHeight = 50f; // Ajusta la altura según sea necesario
+                                    tabla.AddCell(cell);
                                 }
                             }
                             else
                             {
-                                PdfPCell cell = null;
-
-                                if (dgvGlass.Columns[j].HeaderText == "Description")
+                                if (dgvGlass.Columns[j].HeaderText == "Descripcion")
                                 {
                                     // Para la columna "Descripción", alinea el texto a la izquierda
                                     cell = new PdfPCell(new Phrase(dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                 }
-
-                                if (dgvGlass.Columns[j].HeaderText == "Price")
+                                else if (dgvGlass.Columns[j].HeaderText == "Precio")
                                 {
-                                    // Para la columna "Descripción", alinea el texto a la izquierda
-                                    cell = new PdfPCell(new Phrase("¢" + dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                    // Para la columna "Precio", alinea el texto a la izquierda y redondea a dos decimales
+                                    decimal Prices = Convert.ToDecimal(dgvGlass[j, i].Value);
+                                    Prices = Math.Round(Prices, 2);
+                                    cell = new PdfPCell(new Phrase("¢" + Prices.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                 }
                                 else
                                 {
-                                    // Para otras columnas, mantén el texto centrado
-                                    cell = new PdfPCell(new Phrase(dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 12)));
-                                    cell.VerticalAlignment = Element.ALIGN_LEFT;
+                                    cell = new PdfPCell(new Phrase(dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
                                 }
 
                                 // Ajusta el tamaño de las celdas
-                                cell.FixedHeight = 170f; // Aumentamos la altura a 150 unidades
-                                cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
-
-                                // Centrar contenido verticalmente
+                                cell.FixedHeight = 150f; // Ajusta la altura según sea necesario
+                                cell.PaddingLeft = 10f; // Agrega un relleno a la izquierda para alinear el texto correctamente
+                                                        // Centrar contenido verticalmente
                                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                                 tabla.AddCell(cell);
                             }
@@ -2190,6 +2310,16 @@ namespace Precentacion.User.Bill
 
                 // Agrega la imagen a la primera celda
                 string rutaLogo = "";
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+
                 if (CompanyCache.IdCompany == 310171783)
                 {
                     //Obtener la Ruta de la Carpeta bin
@@ -2415,66 +2545,116 @@ namespace Precentacion.User.Bill
                     tabla.AddCell(celda);
                 }
 
-                // Agregar filas y celdas de datos con imágenes
                 for (int i = 0; i < dgvGlass.Rows.Count; i++)
                 {
                     for (int j = 0; j < dgvGlass.Columns.Count; j++)
                     {
                         if (dgvGlass[j, i].Value != null)
                         {
-                            // Si es la columna de imagen (ajusta según tu estructura de datos)
+                            PdfPCell cell = null;
+
                             if (dgvGlass.Columns[j].HeaderText == "URL")
                             {
                                 string rutaImagen = dgvGlass[j, i].Value.ToString();
-                                if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+                                System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                                string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
+
+                                // Reemplazar la versión en la ruta con la versión actual
+                                string rutaCorregida = ReemplazarVersionEnRuta(rutaImagen, versionActualString);
+
+                                // Obtener el directorio de trabajo actual
+                                string directorioDeTrabajo = Directory.GetCurrentDirectory();
+                                Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
+
+                                string rutaAbsoluta;
+                                bool esExclusivo = rutaCorregida.StartsWith("EXCLUSIVO:");
+                                if (esExclusivo)
                                 {
-                                    // Agregar la imagen al PDF y ajustar su tamaño
-                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaImagen);
-                                    img.ScaleToFit(100, 100); // Cambia el tamaño deseado aquí
+                                    rutaCorregida = rutaCorregida.Replace("EXCLUSIVO:", "");
+                                }
+
+                                if (Path.IsPathRooted(rutaCorregida))
+                                {
+                                    if (File.Exists(rutaCorregida))
+                                    {
+                                        rutaAbsoluta = rutaCorregida;
+                                    }
+                                    else
+                                    {
+                                        string fileName = Path.GetFileName(rutaCorregida);
+                                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
+                                    }
+                                }
+                                else
+                                {
+                                    rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaCorregida);
+                                    rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
+                                }
+
+                                if (!string.IsNullOrEmpty(rutaAbsoluta) && File.Exists(rutaAbsoluta))
+                                {
+                                    // Obtener dimensiones en metros y convertirlas a píxeles
+                                    decimal anchoEnMetros = ObtenerAncho(dgvGlass.Rows[i].Cells[2].Value.ToString());
+                                    decimal alturaEnMetros = ObtenerAlto(dgvGlass.Rows[i].Cells[2].Value.ToString());
+
+                                    int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
+                                    int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
+
+                                    if (anchoVentana == 0) anchoVentana = 150;//e.CellBounds.Width;
+                                    if (altoVentana == 0) altoVentana = 100;//e.CellBounds.Height;
+
+                                    // Mostrar dimensiones calculadas para depuración
+                                    Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
+
+                                    // Cargar la imagen y ajustar su tamaño
+                                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
+
+                                    // Ajustar el tamaño de la imagen con ScaleAbsolute
+                                    img.ScaleAbsolute(anchoVentana, altoVentana);
+
                                     PdfPCell celdaImagen = new PdfPCell(img);
                                     celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
                                     celdaImagen.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                    celdaImagen.FixedHeight = altoVentana; // Ajustar la altura de la celda para coincidir con la imagen
                                     tabla.AddCell(celdaImagen);
                                 }
                                 else
                                 {
-                                    // Si no hay imagen, agrega una con texto que dice "No hay imagen"
-                                    PdfPCell celda = new PdfPCell(new Phrase("No hay imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
-                                    celda.HorizontalAlignment = Element.ALIGN_CENTER;
-                                    celda.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                    tabla.AddCell(celda);
-
+                                    // Agregar una celda con texto "Sin Imagen"
+                                    cell = new PdfPCell(new Phrase("Sin Imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                    // Ajustar el tamaño de la celda de la imagen
+                                    cell.FixedHeight = 50f; // Ajusta la altura según sea necesario
+                                    tabla.AddCell(cell);
                                 }
                             }
                             else
                             {
-                                PdfPCell cell = null;
-
-                                if (dgvGlass.Columns[j].HeaderText == "Description")
+                                if (dgvGlass.Columns[j].HeaderText == "Descripcion")
                                 {
                                     // Para la columna "Descripción", alinea el texto a la izquierda
                                     cell = new PdfPCell(new Phrase(dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                 }
-
-                                if (dgvGlass.Columns[j].HeaderText == "Price")
+                                else if (dgvGlass.Columns[j].HeaderText == "Precio")
                                 {
-                                    // Para la columna "Descripción", alinea el texto a la izquierda
-                                    cell = new PdfPCell(new Phrase("¢" + dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                    // Para la columna "Precio", alinea el texto a la izquierda y redondea a dos decimales
+                                    decimal Prices = Convert.ToDecimal(dgvGlass[j, i].Value);
+                                    Prices = Math.Round(Prices, 2);
+                                    cell = new PdfPCell(new Phrase("¢" + Prices.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                 }
                                 else
                                 {
-                                    // Para otras columnas, mantén el texto centrado
-                                    cell = new PdfPCell(new Phrase(dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 12)));
-                                    cell.VerticalAlignment = Element.ALIGN_LEFT;
+                                    cell = new PdfPCell(new Phrase(dgvGlass[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
                                 }
 
                                 // Ajusta el tamaño de las celdas
-                                cell.FixedHeight = 170f; // Aumentamos la altura a 150 unidades
-                                cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
-
-                                // Centrar contenido verticalmente
+                                cell.FixedHeight = 150f; // Ajusta la altura según sea necesario
+                                cell.PaddingLeft = 10f; // Agrega un relleno a la izquierda para alinear el texto correctamente
+                                                        // Centrar contenido verticalmente
                                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                                 tabla.AddCell(cell);
                             }
