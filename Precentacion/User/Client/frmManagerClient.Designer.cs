@@ -113,7 +113,7 @@
             this.tabControl.Location = new System.Drawing.Point(3, 64);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(819, 473);
+            this.tabControl.Size = new System.Drawing.Size(819, 614);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -126,7 +126,7 @@
             this.tabLista.Location = new System.Drawing.Point(4, 32);
             this.tabLista.Name = "tabLista";
             this.tabLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLista.Size = new System.Drawing.Size(811, 437);
+            this.tabLista.Size = new System.Drawing.Size(811, 508);
             this.tabLista.TabIndex = 0;
             this.tabLista.Text = "Lista";
             this.tabLista.ToolTipText = "Lista de Clientes";
@@ -178,7 +178,7 @@
             this.dgvClient.ReadOnly = true;
             this.dgvClient.RowHeadersWidth = 62;
             this.dgvClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClient.Size = new System.Drawing.Size(806, 371);
+            this.dgvClient.Size = new System.Drawing.Size(806, 442);
             this.dgvClient.TabIndex = 0;
             this.dgvClient.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClient_CellDoubleClick);
             // 
@@ -229,7 +229,7 @@
             this.tabNew.Location = new System.Drawing.Point(4, 32);
             this.tabNew.Name = "tabNew";
             this.tabNew.Padding = new System.Windows.Forms.Padding(3);
-            this.tabNew.Size = new System.Drawing.Size(811, 541);
+            this.tabNew.Size = new System.Drawing.Size(811, 578);
             this.tabNew.TabIndex = 1;
             this.tabNew.Text = "Nuevo";
             this.tabNew.UseVisualStyleBackColor = true;
@@ -259,13 +259,13 @@
             this.PanelDataNew.Controls.Add(this.lblName);
             this.PanelDataNew.Location = new System.Drawing.Point(3, 48);
             this.PanelDataNew.Name = "PanelDataNew";
-            this.PanelDataNew.Size = new System.Drawing.Size(808, 487);
+            this.PanelDataNew.Size = new System.Drawing.Size(808, 524);
             this.PanelDataNew.TabIndex = 1;
             // 
             // dtpFechaVencimiento
             // 
             this.dtpFechaVencimiento.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dtpFechaVencimiento.Location = new System.Drawing.Point(32, 259);
+            this.dtpFechaVencimiento.Location = new System.Drawing.Point(32, 278);
             this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
             this.dtpFechaVencimiento.Size = new System.Drawing.Size(351, 20);
             this.dtpFechaVencimiento.TabIndex = 17;
@@ -274,7 +274,7 @@
             // txtDias
             // 
             this.txtDias.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDias.Location = new System.Drawing.Point(418, 259);
+            this.txtDias.Location = new System.Drawing.Point(418, 278);
             this.txtDias.Multiline = true;
             this.txtDias.Name = "txtDias";
             this.txtDias.Size = new System.Drawing.Size(351, 28);
@@ -284,7 +284,7 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(418, 221);
+            this.label10.Location = new System.Drawing.Point(418, 240);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 34);
             this.label10.TabIndex = 15;
@@ -295,7 +295,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(33, 221);
+            this.label9.Location = new System.Drawing.Point(33, 240);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(174, 34);
             this.label9.TabIndex = 13;
@@ -305,7 +305,7 @@
             // txtLimiteCredito
             // 
             this.txtLimiteCredito.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtLimiteCredito.Location = new System.Drawing.Point(418, 181);
+            this.txtLimiteCredito.Location = new System.Drawing.Point(418, 200);
             this.txtLimiteCredito.Multiline = true;
             this.txtLimiteCredito.Name = "txtLimiteCredito";
             this.txtLimiteCredito.Size = new System.Drawing.Size(357, 28);
@@ -315,7 +315,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(418, 143);
+            this.label7.Location = new System.Drawing.Point(418, 162);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(146, 34);
             this.label7.TabIndex = 11;
@@ -326,7 +326,7 @@
             // 
             this.lblAgenda.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAgenda.AutoSize = true;
-            this.lblAgenda.Location = new System.Drawing.Point(352, 338);
+            this.lblAgenda.Location = new System.Drawing.Point(352, 357);
             this.lblAgenda.Name = "lblAgenda";
             this.lblAgenda.Size = new System.Drawing.Size(123, 13);
             this.lblAgenda.TabIndex = 10;
@@ -342,7 +342,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(684, 384);
+            this.button1.Location = new System.Drawing.Point(684, 403);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(91, 83);
             this.button1.TabIndex = 9;
@@ -352,7 +352,7 @@
             // txtName
             // 
             this.txtName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtName.Location = new System.Drawing.Point(32, 32);
+            this.txtName.Location = new System.Drawing.Point(32, 51);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(357, 28);
@@ -361,7 +361,7 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmail.Location = new System.Drawing.Point(423, 112);
+            this.txtEmail.Location = new System.Drawing.Point(423, 131);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(357, 28);
@@ -370,7 +370,7 @@
             // txtAddress
             // 
             this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtAddress.Location = new System.Drawing.Point(32, 111);
+            this.txtAddress.Location = new System.Drawing.Point(32, 130);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(357, 98);
@@ -379,7 +379,7 @@
             // txtPhone
             // 
             this.txtPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPhone.Location = new System.Drawing.Point(418, 32);
+            this.txtPhone.Location = new System.Drawing.Point(418, 51);
             this.txtPhone.Multiline = true;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(357, 28);
@@ -393,7 +393,7 @@
             this.btnAcceptNew.FlatAppearance.BorderSize = 0;
             this.btnAcceptNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAcceptNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAcceptNew.Image")));
-            this.btnAcceptNew.Location = new System.Drawing.Point(33, 392);
+            this.btnAcceptNew.Location = new System.Drawing.Point(33, 411);
             this.btnAcceptNew.Name = "btnAcceptNew";
             this.btnAcceptNew.Size = new System.Drawing.Size(88, 66);
             this.btnAcceptNew.TabIndex = 8;
@@ -404,7 +404,7 @@
             // 
             this.lblEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEmail.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(418, 74);
+            this.lblEmail.Location = new System.Drawing.Point(418, 93);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(83, 34);
             this.lblEmail.TabIndex = 6;
@@ -415,7 +415,7 @@
             // 
             this.lblAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAddress.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(28, 77);
+            this.lblAddress.Location = new System.Drawing.Point(28, 96);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(102, 31);
             this.lblAddress.TabIndex = 4;
@@ -426,7 +426,7 @@
             // 
             this.lblPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPhone.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(418, 0);
+            this.lblPhone.Location = new System.Drawing.Point(418, 19);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(95, 31);
             this.lblPhone.TabIndex = 2;
@@ -437,7 +437,7 @@
             // 
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblName.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(28, 0);
+            this.lblName.Location = new System.Drawing.Point(28, 19);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(91, 28);
             this.lblName.TabIndex = 0;
@@ -783,7 +783,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(825, 540);
+            this.ClientSize = new System.Drawing.Size(825, 681);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(825, 483);
