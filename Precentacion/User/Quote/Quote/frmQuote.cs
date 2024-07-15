@@ -21,6 +21,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Image = iTextSharp.text.Image;
 
@@ -1175,8 +1176,7 @@ namespace Precentacion.User.Quote.Quote
             // Opcionalmente, puedes evitar que el error se propague
             e.ThrowException = false;
         }
-
-
+      
         private void SendQuoteforWhathsaap()
         {
             //Preguntar si desea enviar la cotizacion por whatsapp
@@ -1234,6 +1234,8 @@ namespace Precentacion.User.Quote.Quote
                 return 1.5m;
             }
         }
+
+       
         private decimal ObtenerAlto(string Descripcion)
         {
             if (!Descripcion.Contains("Exclusivo"))
@@ -1261,6 +1263,8 @@ namespace Precentacion.User.Quote.Quote
                 return 1.5m;
             }
         }
+
+     
         #endregion
 
         #region Generacion de pdf
@@ -2227,6 +2231,37 @@ namespace Precentacion.User.Quote.Quote
             #endregion
         }
 
+        #endregion
+
+        #region Mover form
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        // Variables para almacenar la posición del mouse
+        private bool isDragging = false;
+        private Point startPoint = new Point(0, 0);
+        private void frmQuote_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point p = PointToScreen(e.Location);
+                Location = new Point(p.X - startPoint.X, p.Y - startPoint.Y);
+            }
+        }
+        private void frmQuote_MouseUp(object sender, MouseEventArgs e)
+        {
+            // Cuando el botón del mouse es soltado
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = false;
+            }
+        }
+        private void frmQuote_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
         #endregion
     }
 }
