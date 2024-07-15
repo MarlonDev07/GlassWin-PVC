@@ -38,6 +38,8 @@ namespace Precentacion.User.Quote.Windows
         bool AceptarAlto = false;
         public int NumCantidad = 1;
         decimal AjustePrecio = 0;
+        DataTable dtAluminio2 = new DataTable();
+        DataTable dtGlass2 = new DataTable();
 
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
@@ -942,6 +944,8 @@ namespace Precentacion.User.Quote.Windows
 
                     //Cargar el DataTable con los precios del vidrio
                     dtGlass = loadProduct.LoadPriceNewGlass(cbSupplier.Text, cbGlass.Text, Weigth, Height);
+                    //Para la utilidad
+                    dtGlass2 = loadProduct.LoadPriceNewGlassUtilidad(cbSupplier.Text, cbGlass.Text, Weigth, Height);
 
                     // Validar si el DataTable está vacío
                     if (dtGlass.Rows.Count != 0)
@@ -974,6 +978,7 @@ namespace Precentacion.User.Quote.Windows
             {
                 //Crear un DataTable para cargar los precios del vidrio Nuevo
                 DataTable dtAluminio = new DataTable();
+                DataTable dtAluminio2 = new DataTable();
 
                 //Obtener Datos del Vidrio
                 decimal Weigth = Convert.ToDecimal(txtAddWeigth.Text);
@@ -983,6 +988,8 @@ namespace Precentacion.User.Quote.Windows
 
                 //Cargar el DataTable con los precios del vidrio
                 dtAluminio = loadProduct.LoadAluminioFijo(Color, "Vidrio Fijo", Supplier, Weigth, Height, cbAluminio.Text, Convert.ToInt16(txtDiviciones.Value));
+                //Para la utilidad
+                dtAluminio2 = loadProduct.LoadAluminioFijoUtilidad(Color, "Vidrio Fijo", Supplier, Weigth, Height, cbAluminio.Text, Convert.ToInt16(txtDiviciones.Value));
 
                 //Validar si el DataTable está vacío
                 if (dtAluminio.Rows.Count != 0)
@@ -2375,10 +2382,64 @@ namespace Precentacion.User.Quote.Windows
 
         private DataTable ObtenerDatosDGV()
         {
+            DataTable dtAluminio = new DataTable();
+            dtAluminio = loadProduct.loadAluminioUtilidad(cbColor.Text, ClsWindows.System, cbSupplier.Text);
+
+            DataTable dtAccesorios = new DataTable();
+            dtAccesorios = loadProduct.loadAccesoriosUtilidad(ClsWindows.System, cbSupplier.Text);
+
+            DataTable dtVidrio = new DataTable();
+            dtVidrio = loadProduct.loadPricesGlassUtilidad(cbSupplier.Text, cbVidrio.Text);
+
+            DataTable dtLock = new DataTable();
+            dtLock = loadProduct.LoadPricesLockUtilidades(cbSupplier.Text, Lock);
+
+         
+
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Price", typeof(decimal));
 
-                Action<DataGridView, string> agregarDatosFromDataGridView = (dataGridView, columnName) =>
+            Action<DataTable, string> agregarDatosFromDataTable = (sourceTable, columnName) =>
+            {
+                if (sourceTable != null)
+                {
+                    foreach (DataRow row in sourceTable.Rows)
+                    {
+                        if (row[columnName] != null && row[columnName] != DBNull.Value)
+                        {
+                            decimal totalPrice;
+                            if (Decimal.TryParse(row[columnName].ToString(), out totalPrice))
+                            {
+                                dataTable.Rows.Add(totalPrice);
+                            }
+                        }
+                    }
+                }
+            };
+
+            // Para dgAluminio, utiliza la columna "TotalCost"
+            agregarDatosFromDataTable(dtAluminio, "TotalCost");
+
+            // Para los demás DataGridViews, utiliza la columna "TotalPrice"
+            agregarDatosFromDataTable(dtAccesorios, "TotalCost");
+            agregarDatosFromDataTable(dtVidrio, "TotalCost");
+            agregarDatosFromDataTable(dtAluminio2, "TotalCost");
+            agregarDatosFromDataTable(dtGlass2, "TotalCost");
+            agregarDatosFromDataTable(dtLock, "TotalCost");
+
+            return dataTable; // Devuelve el DataTable lleno
+        }
+
+        private DataTable ObtenerDatosDGV2()
+        {
+            DataTable dtAluminio = new DataTable();
+            dtAluminio = loadProduct.loadAluminio(cbColor.Text, ClsWindows.System, cbSupplier.Text);
+
+
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Price", typeof(decimal));
+
+            Action<DataGridView, string> agregarDatosFromDataGridView = (dataGridView, columnName) =>
             {
                 if (dataGridView != null)
                 {
