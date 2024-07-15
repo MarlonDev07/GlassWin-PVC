@@ -12,11 +12,14 @@ namespace AccesoDatos.DataBase
 
         public ClsConnection()
         {
-            if (CompanyCache.IdCompany == 112540885) 
+            if (CompanyCache.IdCompany == 112540885)
             {
                 connectionString = ConfigurationManager.ConnectionStrings["VidriosAltura"].ConnectionString;
                 Conexion = new SqlConnection(connectionString);
-            }
+            } /*else if (CompanyCache.IdCompany == 31028013) {
+                connectionString = ConfigurationManager.ConnectionStrings["InnovaGlassDB2"].ConnectionString;
+                Conexion = new SqlConnection(connectionString);
+            }*/
             else
             {
                 if (CompanyCache.IdCompany == 31025820)
@@ -29,6 +32,7 @@ namespace AccesoDatos.DataBase
                     connectionString = ConfigurationManager.ConnectionStrings["GlassWinDB"].ConnectionString;
                     Conexion = new SqlConnection(connectionString);
                 }
+                
             }
         }
 
