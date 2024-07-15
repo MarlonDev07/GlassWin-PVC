@@ -113,7 +113,7 @@
             this.tabControl.Location = new System.Drawing.Point(3, 64);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(819, 577);
+            this.tabControl.Size = new System.Drawing.Size(819, 473);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -125,8 +125,8 @@
             this.tabLista.ImageIndex = 2;
             this.tabLista.Location = new System.Drawing.Point(4, 32);
             this.tabLista.Name = "tabLista";
-            this.tabLista.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabLista.Size = new System.Drawing.Size(811, 541);
+            this.tabLista.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLista.Size = new System.Drawing.Size(811, 437);
             this.tabLista.TabIndex = 0;
             this.tabLista.Text = "Lista";
             this.tabLista.ToolTipText = "Lista de Clientes";
@@ -178,7 +178,7 @@
             this.dgvClient.ReadOnly = true;
             this.dgvClient.RowHeadersWidth = 62;
             this.dgvClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClient.Size = new System.Drawing.Size(806, 364);
+            this.dgvClient.Size = new System.Drawing.Size(806, 371);
             this.dgvClient.TabIndex = 0;
             this.dgvClient.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClient_CellDoubleClick);
             // 
@@ -228,7 +228,7 @@
             this.tabNew.ImageIndex = 6;
             this.tabNew.Location = new System.Drawing.Point(4, 32);
             this.tabNew.Name = "tabNew";
-            this.tabNew.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabNew.Padding = new System.Windows.Forms.Padding(3);
             this.tabNew.Size = new System.Drawing.Size(811, 541);
             this.tabNew.TabIndex = 1;
             this.tabNew.Text = "Nuevo";
@@ -463,7 +463,7 @@
             this.tabEdit.ImageIndex = 7;
             this.tabEdit.Location = new System.Drawing.Point(4, 32);
             this.tabEdit.Name = "tabEdit";
-            this.tabEdit.Size = new System.Drawing.Size(812, 541);
+            this.tabEdit.Size = new System.Drawing.Size(811, 541);
             this.tabEdit.TabIndex = 2;
             this.tabEdit.Text = "Editar";
             this.tabEdit.UseVisualStyleBackColor = true;
@@ -694,7 +694,7 @@
             this.lblTitleEdit.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitleEdit.Location = new System.Drawing.Point(0, 0);
             this.lblTitleEdit.Name = "lblTitleEdit";
-            this.lblTitleEdit.Size = new System.Drawing.Size(812, 42);
+            this.lblTitleEdit.Size = new System.Drawing.Size(811, 42);
             this.lblTitleEdit.TabIndex = 2;
             this.lblTitleEdit.Text = "Editar Cliente";
             this.lblTitleEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -707,7 +707,7 @@
             this.tabPageEstadistica.ImageIndex = 8;
             this.tabPageEstadistica.Location = new System.Drawing.Point(4, 32);
             this.tabPageEstadistica.Name = "tabPageEstadistica";
-            this.tabPageEstadistica.Size = new System.Drawing.Size(812, 541);
+            this.tabPageEstadistica.Size = new System.Drawing.Size(811, 541);
             this.tabPageEstadistica.TabIndex = 3;
             this.tabPageEstadistica.Text = "Estadistica";
             this.tabPageEstadistica.UseVisualStyleBackColor = true;
@@ -783,7 +783,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(825, 644);
+            this.ClientSize = new System.Drawing.Size(825, 540);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(825, 483);
