@@ -2543,6 +2543,7 @@ namespace Precentacion.User.Quote.Windows
                 label10.Visible = false;
                 PanelVidrioFijo.Visible = false;
                 cbVidrio.Visible = false;
+                lblVidrio.Visible = false;
             }
         }
 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalcPriceWindows));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -49,7 +50,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalcPriceWindows));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -165,7 +165,7 @@
             this.lblTituloCotizacion.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblTituloCotizacion.Location = new System.Drawing.Point(0, 0);
             this.lblTituloCotizacion.Name = "lblTituloCotizacion";
-            this.lblTituloCotizacion.Size = new System.Drawing.Size(1171, 37);
+            this.lblTituloCotizacion.Size = new System.Drawing.Size(1170, 37);
             this.lblTituloCotizacion.TabIndex = 2;
             this.lblTituloCotizacion.Text = "Cotizacion de Ventana:";
             this.lblTituloCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -178,7 +178,7 @@
             this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUbicacion.BackColor = System.Drawing.Color.Orange;
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(869, 8);
+            this.txtUbicacion.Location = new System.Drawing.Point(842, 8);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(162, 23);
             this.txtUbicacion.TabIndex = 46;
@@ -941,7 +941,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(272, 7);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(408, 24);
+            this.lblDescripcion.Size = new System.Drawing.Size(381, 24);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripcion";
             // 
@@ -951,7 +951,7 @@
             this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(686, 7);
+            this.label1.Location = new System.Drawing.Point(659, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 24);
             this.label1.TabIndex = 63;
@@ -987,7 +987,7 @@
             // 
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(1111, 5);
+            this.btnCerrar.Location = new System.Drawing.Point(1084, 5);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(36, 29);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -999,7 +999,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1039, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(1012, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(51, 29);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1027,7 +1027,7 @@
             this.PanelDetalle.Location = new System.Drawing.Point(-6, 0);
             this.PanelDetalle.Name = "PanelDetalle";
             this.PanelDetalle.Size = new System.Drawing.Size(1182, 851);
-            this.PanelDetalle.TabIndex = 71;
+            this.PanelDetalle.TabIndex = 73;
             this.PanelDetalle.Visible = false;
             // 
             // button2
@@ -1279,7 +1279,6 @@
             // 
             this.btnHidePanelDG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHidePanelDG.BackColor = System.Drawing.Color.Transparent;
-            this.btnHidePanelDG.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHidePanelDG.BackgroundImage")));
             this.btnHidePanelDG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHidePanelDG.FlatAppearance.BorderSize = 0;
             this.btnHidePanelDG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
