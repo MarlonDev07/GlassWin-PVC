@@ -1417,6 +1417,32 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Prefalum, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Prefalum2.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidriera Palmares, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrieraPalmares.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 333333333)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\PerfectGlass.png";
+                    rutaLogo = ruta + Url;
+
+                }
 
                 if (CompanyCache.IdCompany == 310171783)
                 {
@@ -1904,6 +1930,33 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Prefalum, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Prefalum2.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidriera Palmares, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrieraPalmares.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                if (CompanyCache.IdCompany == 333333333)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\PerfectGlass.png";
+                    rutaLogo = ruta + Url;
+
+                }
 
                 if (CompanyCache.IdCompany == 310171783)
                 {
@@ -2319,7 +2372,32 @@ namespace Precentacion.User.Bill
 
                 }
 
+                //Prefalum, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Prefalum2.png";
+                    rutaLogo = ruta + Url;
 
+                }
+                //Vidriera Palmares, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrieraPalmares.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 333333333)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\PerfectGlass.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 if (CompanyCache.IdCompany == 310171783)
                 {
                     //Obtener la Ruta de la Carpeta bin
