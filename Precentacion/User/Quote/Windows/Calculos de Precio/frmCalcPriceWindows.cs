@@ -2571,5 +2571,10 @@ namespace Precentacion.User.Quote.Windows
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void button2_Click_5(object sender, EventArgs e)
+        {
+            PanelDetalle.Visible = false;
+        }
     }
 }
