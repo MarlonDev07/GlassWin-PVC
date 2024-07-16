@@ -2575,6 +2575,7 @@ namespace Precentacion.User.Quote.Windows
         private void button2_Click_5(object sender, EventArgs e)
         {
             PanelDetalle.Visible = false;
+            PanelMedidas.Visible = true;
         }
     }
 }
