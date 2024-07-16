@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio.Company.Quote;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,18 +14,22 @@ namespace Precentacion.User.Bill
 {
     public partial class frmOptimizador : Form
     {
+        //Variables
+        N_Quote NQuote = new N_Quote();
         public frmOptimizador()
         {
             InitializeComponent();
             // Configurar el DataGridView al inicializar el formulario
-            ConfigureDataGridView();
+           // ConfigureDataGridView();
+            LoadProjects();
+            cbProyecto.Focus();
         }
 
         private void ConfigureDataGridView()
         {
             // Definir columnas para el DataGridView
-            dgvResults.Columns.Add("colBar", "Barra");
-            dgvResults.Columns.Add("colCuts", "Cortes");
+            dgvResults1.Columns.Add("colBar", "Barra");
+            dgvResults1.Columns.Add("colCuts", "Cortes");
         }
 
         private void btnOptimize_Click(object sender, EventArgs e)
@@ -45,12 +50,12 @@ namespace Precentacion.User.Bill
                 List<List<double>> optimizedCuts = OptimizeCuts(availableBars, requiredLengths);
 
                 // Mostrar los resultados en el DataGridView
-                dgvResults.Rows.Clear();
+                dgvResults1.Rows.Clear();
                 for (int i = 0; i < optimizedCuts.Count; i++)
                 {
                     string bar = "Barra " + (i + 1);
                     string cuts = string.Join(", ", optimizedCuts[i].Select(c => c.ToString("0.00") + " m"));
-                    dgvResults.Rows.Add(bar, cuts);
+                    dgvResults1.Rows.Add(bar, cuts);
                 }
             }
             catch (FormatException ex)
@@ -107,5 +112,80 @@ namespace Precentacion.User.Bill
 
             return optimizedCuts;
         }
+
+        private void cbProyecto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // Cargar el IdQuote en txtOrden y Name en txtName
+                if (cbProyecto.SelectedIndex > 0)
+                {
+                    DataRowView selectedRow = (DataRowView)cbProyecto.SelectedItem;
+                    int idQuote = Convert.ToInt32(selectedRow["IdQuote"]);
+                    string name = selectedRow["Name"].ToString();
+
+                    txtOrden.Text = idQuote.ToString();
+                    txtName.Text = name; // Asignar el valor del campo "Name" al TextBox correspondiente
+
+                    // Cargar los detalles del producto en dgvResults1
+                    DataTable productDetails = NQuote.GetProductDetailsByIdQuote(idQuote);
+                    if (productDetails != null)
+                    {
+                        dgvResults1.DataSource = productDetails;
+                    }
+                    else
+                    {
+                        dgvResults1.DataSource = null;
+                        MessageBox.Show("No se encontraron detalles del producto para la cotización seleccionada.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    txtOrden.Clear(); // Limpiar el campo si no hay proyecto seleccionado
+                    txtName.Clear(); // Limpiar el campo de nombre si no hay proyecto seleccionado
+                    dgvResults1.DataSource = null; // Limpiar el DataGridView si no hay proyecto seleccionado
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar las ventanas: " + ex.Message);
+            }
+        }
+
+
+
+        //Metodo para cargar los proyectos
+        private void LoadProjects()
+        {
+            try
+            {
+                DataTable projects = NQuote.GetProjectsByCompanyId();
+
+                if (projects != null)
+                {
+                    // Crear una nueva fila con valores en blanco
+                    DataRow blankRow = projects.NewRow();
+                    blankRow["ProjectName"] = "";
+                    blankRow["IdQuote"] = DBNull.Value; // O el valor que consideres apropiado para un ID vacío
+                    blankRow["Name"] = ""; // Agregar el campo "Name" en blanco
+                    projects.Rows.InsertAt(blankRow, 0); // Insertar la fila al inicio del DataTable
+
+                    cbProyecto.DataSource = projects;
+                    cbProyecto.DisplayMember = "ProjectName";
+                    cbProyecto.ValueMember = "IdQuote";
+                    //CargaCompleta = true;
+                    cbProyecto.SelectedIndex = 0;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron proyectos para la compañía seleccionada.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los proyectos: " + ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }

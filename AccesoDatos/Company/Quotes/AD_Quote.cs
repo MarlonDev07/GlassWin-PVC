@@ -19,13 +19,40 @@ namespace AccesoDatos.Company.Quotes
         {
             Cnn = new DataBase.ClsConnection();
         }
+        //Cargar los datos de las ventanas en el dgv
+        public DataTable LoadProductDetailsByIdQuote(int idQuote)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                string query = "SELECT DISTINCT p.idProduct, w.IdQuote, w.IdWindows, w.Glass, w.Width, w.Height, p.System, p.Description, pp.Tamaño " +
+                               "FROM Product p " +
+                               "INNER JOIN Price pp ON p.idProduct = pp.idProduct " +
+                               "INNER JOIN Windows w ON p.System = w.System " +
+                               "WHERE w.IdQuote = @IdQuote AND pp.Tamaño > 0" +
+                               "ORDER BY w.IdWindows DESC";
+                SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdQuote", idQuote);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los detalles del producto: " + ex.Message);
+                return null;
+            }
+        }
+
         //Metodo que devuelve los proyectos por IdCompany del cliente
         public DataTable LoadProjectsByCompanyId()
         {
             try
             {
                 DataTable dataTable = new DataTable();
-                string query = "select Q.ProjectName, Q.IdQuote from Quote Q Inner Join Client C ON Q.IdClient = C.IdClient where C.IdCompany = @IdCompany";
+                string query = "select Q.ProjectName, Q.IdQuote, C.Name from Quote Q Inner Join Client C ON Q.IdClient = C.IdClient where C.IdCompany = @IdCompany ORDER BY Q.Date DESC";
                 SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdCompany", CompanyCache.IdCompany);

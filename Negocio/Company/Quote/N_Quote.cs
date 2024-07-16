@@ -11,6 +11,12 @@ namespace Negocio.Company.Quote
     public class N_Quote
     {
         AD_Quote ADQuote = new AD_Quote();
+        //Cargar los datos de las ventanas:
+        public DataTable GetProductDetailsByIdQuote(int idQuote)
+        {
+            return ADQuote.LoadProductDetailsByIdQuote(idQuote);
+        }
+
         //Metodo para cargar los proyectos del usuario en sesion
         public DataTable GetProjectsByCompanyId()
         {

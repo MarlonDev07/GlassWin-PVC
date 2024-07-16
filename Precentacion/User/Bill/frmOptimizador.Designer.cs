@@ -31,28 +31,32 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtOrden = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dgvResults = new System.Windows.Forms.DataGridView();
+            this.dgvResults1 = new System.Windows.Forms.DataGridView();
             this.txtAvailableBars = new System.Windows.Forms.TextBox();
             this.txtRequiredLengths = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnOptimize = new System.Windows.Forms.Button();
+            this.cbProyecto = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResults1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 6);
+            this.label1.Location = new System.Drawing.Point(174, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
@@ -62,7 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(333, 9);
+            this.label2.Location = new System.Drawing.Point(381, 19);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 13);
@@ -72,49 +76,45 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(181, 9);
+            this.label3.Location = new System.Drawing.Point(5, 16);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Proyecto";
             // 
-            // textBox1
+            // txtOrden
             // 
-            this.textBox1.Location = new System.Drawing.Point(184, 24);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtOrden.BackColor = System.Drawing.SystemColors.Info;
+            this.txtOrden.Enabled = false;
+            this.txtOrden.Location = new System.Drawing.Point(383, 34);
+            this.txtOrden.Margin = new System.Windows.Forms.Padding(2);
+            this.txtOrden.Name = "txtOrden";
+            this.txtOrden.Size = new System.Drawing.Size(117, 20);
+            this.txtOrden.TabIndex = 4;
             // 
-            // textBox2
+            // txtName
             // 
-            this.textBox2.Location = new System.Drawing.Point(335, 24);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(117, 20);
-            this.textBox2.TabIndex = 4;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(11, 24);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(139, 20);
-            this.textBox3.TabIndex = 5;
+            this.txtName.BackColor = System.Drawing.SystemColors.Info;
+            this.txtName.Enabled = false;
+            this.txtName.Location = new System.Drawing.Point(177, 34);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(139, 20);
+            this.txtName.TabIndex = 5;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(489, 24);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(579, 34);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(135, 20);
             this.dateTimePicker1.TabIndex = 6;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(682, 24);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker2.Location = new System.Drawing.Point(796, 34);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(135, 20);
             this.dateTimePicker2.TabIndex = 7;
@@ -122,7 +122,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(679, 9);
+            this.label4.Location = new System.Drawing.Point(793, 19);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
@@ -132,7 +132,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(486, 9);
+            this.label5.Location = new System.Drawing.Point(576, 19);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 13);
@@ -141,100 +141,135 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(11, 45);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 58);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(85, 76);
+            this.pictureBox1.Size = new System.Drawing.Size(149, 137);
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
-            // dgvResults
+            // dgvResults1
             // 
-            this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults.Location = new System.Drawing.Point(8, 136);
-            this.dgvResults.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dgvResults.Name = "dgvResults";
-            this.dgvResults.RowHeadersWidth = 62;
-            this.dgvResults.RowTemplate.Height = 28;
-            this.dgvResults.Size = new System.Drawing.Size(807, 252);
-            this.dgvResults.TabIndex = 11;
+            this.dgvResults1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResults1.Location = new System.Drawing.Point(5, 18);
+            this.dgvResults1.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvResults1.Name = "dgvResults1";
+            this.dgvResults1.RowHeadersWidth = 62;
+            this.dgvResults1.RowTemplate.Height = 28;
+            this.dgvResults1.Size = new System.Drawing.Size(932, 257);
+            this.dgvResults1.TabIndex = 11;
             // 
             // txtAvailableBars
             // 
-            this.txtAvailableBars.Location = new System.Drawing.Point(184, 104);
-            this.txtAvailableBars.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAvailableBars.Location = new System.Drawing.Point(179, 114);
+            this.txtAvailableBars.Margin = new System.Windows.Forms.Padding(2);
             this.txtAvailableBars.Name = "txtAvailableBars";
-            this.txtAvailableBars.Size = new System.Drawing.Size(133, 20);
+            this.txtAvailableBars.Size = new System.Drawing.Size(139, 20);
             this.txtAvailableBars.TabIndex = 12;
+            this.txtAvailableBars.Visible = false;
             // 
             // txtRequiredLengths
             // 
-            this.txtRequiredLengths.Location = new System.Drawing.Point(366, 104);
-            this.txtRequiredLengths.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRequiredLengths.Location = new System.Drawing.Point(384, 114);
+            this.txtRequiredLengths.Margin = new System.Windows.Forms.Padding(2);
             this.txtRequiredLengths.Name = "txtRequiredLengths";
-            this.txtRequiredLengths.Size = new System.Drawing.Size(231, 20);
+            this.txtRequiredLengths.Size = new System.Drawing.Size(330, 20);
             this.txtRequiredLengths.TabIndex = 13;
+            this.txtRequiredLengths.Visible = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(185, 80);
+            this.label6.Location = new System.Drawing.Point(176, 90);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 13);
             this.label6.TabIndex = 14;
             this.label6.Text = "Barras disponibles";
+            this.label6.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(363, 80);
+            this.label7.Location = new System.Drawing.Point(384, 90);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(116, 13);
             this.label7.TabIndex = 15;
             this.label7.Text = "Longitudes Requeridas";
+            this.label7.Visible = false;
             // 
             // btnOptimize
             // 
-            this.btnOptimize.Location = new System.Drawing.Point(619, 94);
-            this.btnOptimize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOptimize.Location = new System.Drawing.Point(855, 107);
+            this.btnOptimize.Margin = new System.Windows.Forms.Padding(2);
             this.btnOptimize.Name = "btnOptimize";
             this.btnOptimize.Size = new System.Drawing.Size(76, 27);
             this.btnOptimize.TabIndex = 16;
             this.btnOptimize.Text = "Optimizar";
             this.btnOptimize.UseVisualStyleBackColor = true;
+            this.btnOptimize.Visible = false;
             this.btnOptimize.Click += new System.EventHandler(this.btnOptimize_Click);
+            // 
+            // cbProyecto
+            // 
+            this.cbProyecto.FormattingEnabled = true;
+            this.cbProyecto.Location = new System.Drawing.Point(8, 33);
+            this.cbProyecto.Name = "cbProyecto";
+            this.cbProyecto.Size = new System.Drawing.Size(149, 21);
+            this.cbProyecto.TabIndex = 17;
+            this.cbProyecto.SelectedIndexChanged += new System.EventHandler(this.cbProyecto_SelectedIndexChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cbProyecto);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnOptimize);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtOrden);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtName);
+            this.groupBox1.Controls.Add(this.txtRequiredLengths);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.txtAvailableBars);
+            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Location = new System.Drawing.Point(9, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(942, 81);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvResults1);
+            this.groupBox2.Location = new System.Drawing.Point(8, 109);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(942, 280);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
             // 
             // frmOptimizador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 400);
-            this.Controls.Add(this.btnOptimize);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtRequiredLengths);
-            this.Controls.Add(this.txtAvailableBars);
-            this.Controls.Add(this.dgvResults);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClientSize = new System.Drawing.Size(962, 423);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmOptimizador";
             this.Text = "frmOptimizador";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResults1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -243,19 +278,21 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtOrden;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dgvResults;
+        private System.Windows.Forms.DataGridView dgvResults1;
         private System.Windows.Forms.TextBox txtAvailableBars;
         private System.Windows.Forms.TextBox txtRequiredLengths;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnOptimize;
+        private System.Windows.Forms.ComboBox cbProyecto;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

@@ -133,9 +133,9 @@ namespace Precentacion.User.DashBoard
         }
         private void btnCalendar_Click(object sender, EventArgs e)
         {
-            // System.Diagnostics.Process.Start("https://calendar.google.com/calendar/u/0/r/tasks");
-            frmOptimizador frm = new frmOptimizador();
-            frm.Show();
+            System.Diagnostics.Process.Start("https://calendar.google.com/calendar/u/0/r/tasks");
+            //frmOptimizador frm = new frmOptimizador();
+            //frm.Show();
         }
         private void btnAdmProyecto_Click(object sender, EventArgs e)
         {
