@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalcPriceWindows));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -53,7 +54,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalcPriceWindows));
             this.lblTituloCotizacion = new System.Windows.Forms.Label();
             this.txtUbicacion = new System.Windows.Forms.TextBox();
             this.panelCerradura = new System.Windows.Forms.Panel();
@@ -118,6 +118,9 @@
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbVentana = new System.Windows.Forms.PictureBox();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelDetalle = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.dgAluminioAdd = new System.Windows.Forms.DataGridView();
@@ -133,9 +136,6 @@
             this.lblAluminio = new System.Windows.Forms.Label();
             this.lblArticulo = new System.Windows.Forms.Label();
             this.lblDetalleCotizacion = new System.Windows.Forms.Label();
-            this.pbVentana = new System.Windows.Forms.PictureBox();
-            this.btnCerrar = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelCerradura.SuspendLayout();
             this.contextMenuStripOpciones.SuspendLayout();
             this.PanelMedidas.SuspendLayout();
@@ -144,6 +144,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiviciones)).BeginInit();
             this.PanelHaladera.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrioAdd)).BeginInit();
@@ -151,9 +154,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTituloCotizacion
@@ -975,6 +975,38 @@
             this.panel1.Size = new System.Drawing.Size(1170, 851);
             this.panel1.TabIndex = 64;
             // 
+            // pbVentana
+            // 
+            this.pbVentana.Location = new System.Drawing.Point(380, 353);
+            this.pbVentana.Name = "pbVentana";
+            this.pbVentana.Size = new System.Drawing.Size(473, 324);
+            this.pbVentana.TabIndex = 66;
+            this.pbVentana.TabStop = false;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
+            this.btnCerrar.Location = new System.Drawing.Point(1129, 5);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(36, 29);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCerrar.TabIndex = 65;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnBackSistema_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1057, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(51, 29);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 132;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // PanelDetalle
             // 
             this.PanelDetalle.BackColor = System.Drawing.Color.LightGray;
@@ -995,7 +1027,7 @@
             this.PanelDetalle.Location = new System.Drawing.Point(-6, 0);
             this.PanelDetalle.Name = "PanelDetalle";
             this.PanelDetalle.Size = new System.Drawing.Size(1182, 851);
-            this.PanelDetalle.TabIndex = 73;
+            this.PanelDetalle.TabIndex = 74;
             this.PanelDetalle.Visible = false;
             // 
             // button2
@@ -1009,7 +1041,7 @@
             this.button2.TabIndex = 131;
             this.button2.Text = "Cerrar";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_5);
+            this.button2.Click += new System.EventHandler(this.button2_Click_6);
             // 
             // dgAluminioAdd
             // 
@@ -1365,38 +1397,6 @@
             this.lblDetalleCotizacion.Text = "Detalle de Cotizacion";
             this.lblDetalleCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbVentana
-            // 
-            this.pbVentana.Location = new System.Drawing.Point(380, 353);
-            this.pbVentana.Name = "pbVentana";
-            this.pbVentana.Size = new System.Drawing.Size(473, 324);
-            this.pbVentana.TabIndex = 66;
-            this.pbVentana.TabStop = false;
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(1129, 5);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(36, 29);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnCerrar.TabIndex = 65;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnBackSistema_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1057, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(51, 29);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 132;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // frmCalcPriceWindows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1430,6 +1430,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiviciones)).EndInit();
             this.PanelHaladera.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PanelDetalle.ResumeLayout(false);
             this.PanelDetalle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminioAdd)).EndInit();
@@ -1438,9 +1441,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgAluminio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAccesorios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgVidrio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVentana)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

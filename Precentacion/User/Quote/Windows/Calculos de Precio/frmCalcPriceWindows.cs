@@ -387,7 +387,9 @@ namespace Precentacion.User.Quote.Windows
             {
 
                 DataTable dtAluminio = new DataTable();
+                loadProduct.CedazoValor(Cedazo);
                 dtAluminio = loadProduct.loadAluminio(cbColor.Text, ClsWindows.System, cbSupplier.Text);
+                
                 dgAluminio.AutoGenerateColumns = true;
                 dgAluminio.DataSource = dtAluminio;
             
@@ -2573,6 +2575,12 @@ namespace Precentacion.User.Quote.Windows
         }
 
         private void button2_Click_5(object sender, EventArgs e)
+        {
+            PanelDetalle.Visible = false;
+            PanelMedidas.Visible = true;
+        }
+
+        private void button2_Click_6(object sender, EventArgs e)
         {
             PanelDetalle.Visible = false;
             PanelMedidas.Visible = true;
