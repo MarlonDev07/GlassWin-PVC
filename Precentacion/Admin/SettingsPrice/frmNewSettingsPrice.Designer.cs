@@ -214,7 +214,8 @@
             "Cedazo 1",
             "Cedazo 2",
             "Ventila1Fijo",
-            "FijoMovilMovilMovil"});
+            "FijoMovilMovilMovil",
+            "2ViasMovilMovilMovil"});
             this.cbDesing.Location = new System.Drawing.Point(275, 33);
             this.cbDesing.Name = "cbDesing";
             this.cbDesing.Size = new System.Drawing.Size(121, 28);
