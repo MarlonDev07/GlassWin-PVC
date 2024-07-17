@@ -16,13 +16,20 @@ namespace Precentacion.User.Bill
     {
         //Variables
         N_Quote NQuote = new N_Quote();
+        private double[] availableBars;
+        private double[] requiredLengths;
+
         public frmOptimizador(double[] requiredLengths, double[] availableBars)
         {
             InitializeComponent();
+            this.requiredLengths = requiredLengths;
+            this.availableBars = availableBars;
+
             // Configurar el DataGridView al inicializar el formulario
-           // ConfigureDataGridView();
-            LoadProjects();
-            cbProyecto.Focus();
+            ConfigureDataGridView();
+
+            // Ejecutar la optimización
+            OptimizeCutsAndDisplayResults();
         }
 
         private void ConfigureDataGridView()
@@ -32,20 +39,10 @@ namespace Precentacion.User.Bill
             dgvResults1.Columns.Add("colCuts", "Cortes");
         }
 
-        private void btnOptimize_Click(object sender, EventArgs e)
+        private void OptimizeCutsAndDisplayResults()
         {
             try
             {
-                // Obtener y validar las barras disponibles del TextBox
-                double[] availableBars = txtAvailableBars.Text.Split(',')
-                    .Select(s => ParseDouble(s.Trim()))
-                    .ToArray();
-
-                // Obtener y validar las longitudes requeridas del TextBox
-                double[] requiredLengths = txtRequiredLengths.Text.Split(',')
-                    .Select(s => ParseDouble(s.Trim()))
-                    .ToArray();
-
                 // Llamar al método OptimizeCuts
                 List<List<double>> optimizedCuts = OptimizeCuts(availableBars, requiredLengths);
 
@@ -66,15 +63,6 @@ namespace Precentacion.User.Bill
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private double ParseDouble(string input)
-        {
-            if (!double.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out double result))
-            {
-                throw new FormatException("La cadena de entrada no tiene el formato correcto.");
-            }
-            return result;
         }
 
         private List<List<double>> OptimizeCuts(double[] availableBars, double[] requiredLengths)
@@ -112,6 +100,20 @@ namespace Precentacion.User.Bill
 
             return optimizedCuts;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void cbProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -185,6 +187,41 @@ namespace Precentacion.User.Bill
             {
                 MessageBox.Show("Ocurrió un error al cargar los proyectos: " + ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        private void btnOptimize_Click(object sender, EventArgs e)
+        {
+           /* try
+            {
+                // Obtener y validar las barras disponibles del TextBox
+                double[] availableBars = txtAvailableBars.Text.Split(',')
+                    .Select(s => ParseDouble(s.Trim()))
+                    .ToArray();
+
+                // Obtener y validar las longitudes requeridas del TextBox
+                double[] requiredLengths = txtRequiredLengths.Text.Split(',')
+                    .Select(s => ParseDouble(s.Trim()))
+                    .ToArray();
+
+                // Llamar al método OptimizeCuts
+                List<List<double>> optimizedCuts = OptimizeCuts(availableBars, requiredLengths);
+
+                // Mostrar los resultados en el DataGridView
+                dgvResults1.Rows.Clear();
+                for (int i = 0; i < optimizedCuts.Count; i++)
+                {
+                    string bar = "Barra " + (i + 1);
+                    string cuts = string.Join(", ", optimizedCuts[i].Select(c => c.ToString("0.00") + " m"));
+                    dgvResults1.Rows.Add(bar, cuts);
+                }
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Error: La cadena de entrada no tiene el formato correcto. Asegúrese de que los datos ingresados sean números válidos y estén separados por comas.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
         }
 
     }

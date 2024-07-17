@@ -183,6 +183,7 @@ namespace Precentacion.User.Quote.Windows
             {
                 // Carga la imagen y asígnala al botón
                 btnFijoMMM.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\8040FijoMovilMovilMovil.jpeg");
+                btn2ViasMMM.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\SC MMM NATURAL.jpeg");
             }
             else
             {
@@ -201,6 +202,14 @@ namespace Precentacion.User.Quote.Windows
         private void frmSelectDesing_FormClosing_1(object sender, FormClosingEventArgs e)
         {
            
+        }
+
+        private void btn2ViasMMM_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "2ViasMovilMovilMovil";
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Show();
+            this.Close();
         }
     }
 }

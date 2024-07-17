@@ -1056,7 +1056,9 @@ namespace Negocio.LoadProduct
                         case "FijoMovilMovil":
                             metraje = Calc8040_2Vias_FijoMovilMovil(Description);
                             break;
-
+                        case "2ViasMovilMovilMovil":
+                            metraje = Calc8040_2Vias_MovilMovilMovil(Description);
+                            break;
                     }
                     break;
                 case "8040 3 Vias":
