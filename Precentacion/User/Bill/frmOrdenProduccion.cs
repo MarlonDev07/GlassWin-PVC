@@ -50,7 +50,7 @@ namespace Precentacion.User.Bill
             optimizeMenuItem.Click += contextMenuStrip1_Click;
             contextMenu.Items.Add(optimizeMenuItem);
             dgvOrdenProduccion.ContextMenuStrip = contextMenu;
-            contextMenu.Visible = false;
+            //contextMenu.Visible = false;
 
 
 
