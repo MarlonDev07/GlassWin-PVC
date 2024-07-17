@@ -1404,6 +1404,9 @@ namespace Negocio.LoadProduct
                 case "FijoMovilMovilFijo":
                     metraje = 1;
                     break;
+                case "2ViasMovilMovilMovil":
+                    metraje = 2;
+                    break;
             }
 
 
