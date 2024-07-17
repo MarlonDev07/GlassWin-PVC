@@ -4402,11 +4402,62 @@ namespace Negocio.LoadProduct
             }
             return metraje;
         }
+        private decimal Calc6030_2Vias_MovilMovilMovil(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Contramarco Superior-Lateral Akari 3 Vias":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    break;
+                case "Contramarco Inferior Akari 3 Vias":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    break;
+                case "Marco Hoja 6030":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    break;
+                case "Marco Hoja Enganche 6030":
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
+                    break;
+               
 
-        #endregion
 
-        #region 6030 3 Vias
-        private decimal Calc6030_3Vias_FijoMovil(string Description)
+                //*******************Accesorios********************//
+                case "Rodin 6030":
+                    metraje = 6;
+                    break;
+                case "Escuadra Union Universal":
+                    metraje = 12;
+                    break;
+                case "Escuadra Contramarco 2 Vias Akari":
+                    metraje = 4;
+                    break;
+                case "Botaguas Akari":
+                    metraje = 3;
+                    break;
+                case "Corta Vientos":
+                    metraje = 4;
+                    break;
+                case "Tapa Rodin":
+                    metraje = 6;
+                    break;
+                case "Empaque Akari":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                    break;
+                case "Felpa Akari ":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 12 + (Convert.ToDecimal(ClsWindows.heigt) * 16);
+                    break;
+                case "Cerradura Impacto Akari":
+                    metraje = 2;
+                    break;
+
+            }
+            return metraje;
+
+            #endregion
+
+            #region 6030 3 Vias
+            private decimal Calc6030_3Vias_FijoMovil(string Description)
         {
             decimal metraje = 0;
             switch (Description)
