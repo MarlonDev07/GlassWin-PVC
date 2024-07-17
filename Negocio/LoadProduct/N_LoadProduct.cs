@@ -2072,7 +2072,7 @@ namespace Negocio.LoadProduct
                 case "Inferior 5020":
                     metraje = Convert.ToDecimal(ClsWindows.Weight) / 2;
                     break;
-                case "Marco Cedazo 1/2 Fijo ":
+                case "Marco Cedazo 1/2 Fijo":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2 * 2 ) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
 
