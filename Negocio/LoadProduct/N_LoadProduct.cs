@@ -1942,7 +1942,7 @@ namespace Negocio.LoadProduct
             switch (Descripcion)
             {
                 case "Marco Cedazo 1/2 Fijo":
-                    Metraje = Convert.ToDecimal(((ClsWindows.Weight) / 2) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    Metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2 * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Empaque Cedazo 1/2":
                     Metraje = Convert.ToDecimal(((ClsWindows.Weight) / 2) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
@@ -2054,7 +2054,7 @@ namespace Negocio.LoadProduct
         private decimal Calc5020FijoMovil(string Description)
         {
             decimal metraje = 0;
-            if (Cedazo)
+           if (Cedazo)
             {
                 switch (Description)
                 {
@@ -2085,7 +2085,7 @@ namespace Negocio.LoadProduct
 
 
 
-                    //*******************Accesorios********************//
+                    //*******************Accesorios********************////
                     case string s when s.Contains("Cerradura"):
                         metraje = 1;
                         break;
@@ -2136,7 +2136,7 @@ namespace Negocio.LoadProduct
 
 
 
-                    //*******************Accesorios********************//
+                    //*******************Accesorios********************////
                     case string s when s.Contains("Cerradura"):
                         metraje = 1;
                         break;
@@ -2160,8 +2160,7 @@ namespace Negocio.LoadProduct
                         break;
                 }
             }
-            
-            
+
             return metraje;
         }
         private decimal Calc5020MovilMovil(string Description)

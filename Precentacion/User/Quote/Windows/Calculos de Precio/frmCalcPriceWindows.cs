@@ -414,10 +414,10 @@ namespace Precentacion.User.Quote.Windows
                 dgvCerradura.DataSource = dtLock;
 
         
-                if (cbCedazo.Checked == true)
-                {
-                    DataTable dtCedazoAluminio = new DataTable();
-                    dtCedazoAluminio = loadProduct.LoadAluminioCedazo(cbColor.Text, "Cedazo", cbSupplier.Text);
+              //  if (cbCedazo.Checked == true)
+               // {
+                   /* DataTable dtCedazoAluminio = new DataTable();
+                    dtCedazoAluminio = loadProduct.LoadAluminioCedazo(cbColor.Text, ClsWindows.System, cbSupplier.Text);
                     foreach (DataRow row in dtCedazoAluminio.Rows)
                     {
                         dtAluminio.ImportRow(row);
@@ -425,21 +425,21 @@ namespace Precentacion.User.Quote.Windows
                     dgAccesorios.DataSource = dtAluminio;
 
                     DataTable dtCedazoAccesorios = new DataTable();
-                    dtCedazoAccesorios = loadProduct.loadAccesoriosCedazo("Cedazo", cbSupplier.Text);
+                    dtCedazoAccesorios = loadProduct.loadAccesoriosCedazo(ClsWindows.System, cbSupplier.Text);
                     //Agregar al dgvAccesorios sin eliminar los datos que ya tiene
                     foreach (DataRow row in dtCedazoAccesorios.Rows)
                     {
                         dtAccesorios.ImportRow(row);
                     }
-                    dgAccesorios.DataSource = dtAccesorios;
+                    dgAccesorios.DataSource = dtAccesorios;*/
 
 
 
-                }
+               // }
 
 
-                else
-                {
+               // else
+              //  {
 
                     string descripcion = ClsWindows.System + ClsWindows.Desing + cbColor.Text;
                     if (ClsWindows.System == "CedazoAkari")
@@ -458,7 +458,7 @@ namespace Precentacion.User.Quote.Windows
                         QuitarArticulos();
                     }
 
-                }
+                //}
 
             }
         }
