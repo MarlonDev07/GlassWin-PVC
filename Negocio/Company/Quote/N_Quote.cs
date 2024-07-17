@@ -93,6 +93,18 @@ namespace Negocio.Company.Quote
             }
         }
 
+        public DataTable GetProductSizes(string productName)
+        {
+            try
+            {
+                return ADQuote.GetProductSizes(productName);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
 
 
         public Decimal CalcTotal(DataTable dtWindows)

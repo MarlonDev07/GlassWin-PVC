@@ -152,7 +152,7 @@
             // dgvResults1
             // 
             this.dgvResults1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults1.Location = new System.Drawing.Point(5, 18);
+            this.dgvResults1.Location = new System.Drawing.Point(5, 22);
             this.dgvResults1.Margin = new System.Windows.Forms.Padding(2);
             this.dgvResults1.Name = "dgvResults1";
             this.dgvResults1.RowHeadersWidth = 62;
@@ -241,14 +241,14 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(9, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(942, 81);
+            this.groupBox1.Size = new System.Drawing.Size(942, 158);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvResults1);
-            this.groupBox2.Location = new System.Drawing.Point(8, 109);
+            this.groupBox2.Location = new System.Drawing.Point(8, 181);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(942, 280);
             this.groupBox2.TabIndex = 19;
@@ -258,7 +258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 423);
+            this.ClientSize = new System.Drawing.Size(962, 591);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);

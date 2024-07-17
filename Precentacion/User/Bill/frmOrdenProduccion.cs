@@ -18,6 +18,8 @@ using Dominio.Model.ClassWindows;
 using Precentacion.User.DashBoard;
 using Rectangle = iTextSharp.text.Rectangle;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
+using System.Globalization;
+using System.Data.SqlClient;
 
 
 namespace Precentacion.User.Bill
@@ -42,6 +44,13 @@ namespace Precentacion.User.Bill
             dtpFechaSalida.CustomFormat = "dddd, dd MMMM yyyy - hh:mm tt";
 
             cbProyecto.SelectedIndexChanged += cbProyecto_SelectedIndexChanged;
+
+            ContextMenuStrip contextMenu = new ContextMenuStrip();
+            ToolStripMenuItem optimizeMenuItem = new ToolStripMenuItem("Optimizar");
+            optimizeMenuItem.Click += contextMenuStrip1_Click;
+            contextMenu.Items.Add(optimizeMenuItem);
+            dgvOrdenProduccion.ContextMenuStrip = contextMenu;
+
 
 
         }
@@ -533,6 +542,61 @@ namespace Precentacion.User.Bill
             frm.Show();
             frm.BringToFront();
         }
-                  
+
+        private void contextMenuStrip1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtener la celda seleccionada
+                if (dgvOrdenProduccion.SelectedCells.Count > 0)
+                {
+                    int columnIndex = dgvOrdenProduccion.SelectedCells[0].ColumnIndex;
+                    string columnName = dgvOrdenProduccion.Columns[columnIndex].Name;
+
+                    // Verificar si la columna es una de las columnas de artículos
+                    string[] validColumns = { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "VerticalCentro" };
+                    if (validColumns.Contains(columnName))
+                    {
+                        List<double> requiredLengths = new List<double>();
+                        foreach (DataGridViewRow row in dgvOrdenProduccion.Rows)
+                        {
+                            if (row.Cells[columnIndex].Value != null)
+                            {
+                                string value = row.Cells[columnIndex].Value.ToString();
+                                if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out double length))
+                                {
+                                    requiredLengths.Add(length);
+                                }
+                            }
+                        }
+
+                        // Obtener los tamaños de los productos desde la base de datos
+                        DataTable productSizesTable = NQuote.GetProductSizes(columnName);
+                        List<double> availableBars = new List<double>();
+                        foreach (DataRow row in productSizesTable.Rows)
+                        {
+                            if (row["Tamaño"] != DBNull.Value)
+                            {
+                                double size = Convert.ToDouble(row["Tamaño"]);
+                                availableBars.Add(size);
+                            }
+                        }
+
+                        // Mostrar el formulario del optimizador
+                        frmOptimizador optimizerForm = new frmOptimizador(requiredLengths.ToArray(), availableBars.ToArray());
+                        optimizerForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione una columna válida para optimizar.", "Columna no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
+        
 }

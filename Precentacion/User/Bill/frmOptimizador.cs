@@ -16,7 +16,7 @@ namespace Precentacion.User.Bill
     {
         //Variables
         N_Quote NQuote = new N_Quote();
-        public frmOptimizador()
+        public frmOptimizador(double[] requiredLengths, double[] availableBars)
         {
             InitializeComponent();
             // Configurar el DataGridView al inicializar el formulario
