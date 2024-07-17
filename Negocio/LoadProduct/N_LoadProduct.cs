@@ -3594,6 +3594,63 @@ namespace Negocio.LoadProduct
             }
             return metraje;
         }
+        private decimal Calc8040_2Vias_MovilMovilMovil(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Contramarco Superior-Lateral Akari 3 Vias":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight)) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    break;
+                case "Contramarco Inferior Akari 3 Vias":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    break;
+                case "Marco Hoja 8040":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                    break;
+                case "Adaptador Enganche-Porta Felpa":
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                    break;
+                case "Rampa Akari 8040":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    break;
+
+                //*******************Accesorios********************//
+                case "Rodin 8040":
+                    metraje = 6;
+                    break;
+                case "Escuadra Union Universal":
+                    metraje = 12;
+                    break;
+                case "Escuadra Contramarco 3 Vias Akari":
+                    metraje = 8;
+                    break;
+                case "Botaguas Akari":
+                    metraje = 4;
+                    break;
+                case "Corta Vientos":
+                    metraje = 8;
+                    break;
+                case "Tapa Rodin":
+                    metraje = 6;
+                    break;
+                case "Jaladera Sencilla":
+                    metraje = 0;
+                    break;
+                case "Tornillo Ensamble":
+                    metraje = 8;
+                    break;
+                case "Empaque Akari":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                    break;
+                case "Felpa Akari ":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 12) + (Convert.ToDecimal(ClsWindows.heigt) * 16);
+                    break;
+
+            }
+            return metraje;
+
+        }
         #endregion
 
         #region 8040 3 Vias
