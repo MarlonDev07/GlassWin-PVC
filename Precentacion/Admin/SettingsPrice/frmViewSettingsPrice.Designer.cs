@@ -377,7 +377,8 @@
             "CedazoAkari",
             "Cedazo1/2",
             "Puerta Liviana",
-            "PuertaEuAbatible"});
+            "PuertaEuAbatible",
+            "Puerta Baño"});
             this.cbSystem.Location = new System.Drawing.Point(390, 68);
             this.cbSystem.Name = "cbSystem";
             this.cbSystem.Size = new System.Drawing.Size(121, 28);
