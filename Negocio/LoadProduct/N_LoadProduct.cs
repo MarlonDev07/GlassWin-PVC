@@ -1106,6 +1106,9 @@ namespace Negocio.LoadProduct
                         case "FijoMovilMovilFijo":
                             metraje = Calc6030_2Vias_FijoMovilMovilFijo(Description);
                             break;
+                        case "2ViasMovilMovilMovil":
+                            metraje = Calc6030_2Vias_MovilMovilMovil(Description);
+                            break;
                     }
                     break;
                 case "6030 3 Vias":
@@ -4419,7 +4422,7 @@ namespace Negocio.LoadProduct
                 case "Marco Hoja Enganche 6030":
                     metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
                     break;
-               
+
 
 
                 //*******************Accesorios********************//
@@ -4453,12 +4456,13 @@ namespace Negocio.LoadProduct
 
             }
             return metraje;
+        }
 
             #endregion
 
             #region 6030 3 Vias
             private decimal Calc6030_3Vias_FijoMovil(string Description)
-        {
+            {
             decimal metraje = 0;
             switch (Description)
             {
