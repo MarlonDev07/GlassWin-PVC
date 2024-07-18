@@ -194,6 +194,7 @@
             "MovilFijoMovil",
             "FijoMovilMovilFijo",
             "FijoMovilMovil",
+            "MovilMovilMovil",
             "1 Hoja Horizontal",
             "2 Hoja Horizontal",
             "3 Hoja Horizontal",
