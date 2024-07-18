@@ -53,12 +53,19 @@ namespace Precentacion.User.Quote.Windows
         #region Constructor
         public frmCalcPriceWindows()
         {
-            InitializeComponent();
-            Initialize();
-            timer.Tick += Timer_Tick;
+            try {
+                InitializeComponent();
+                Initialize();
+                timer.Tick += Timer_Tick;
 
-            pbVentana.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            pbVentana.SizeMode = PictureBoxSizeMode.Zoom;
+                pbVentana.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+                pbVentana.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
         }
         #endregion
 
@@ -94,37 +101,52 @@ namespace Precentacion.User.Quote.Windows
         #region Initialize Functions
         private void Initialize()
         {
-            cbColor.SelectedIndex = 0;
+            try {
+                cbColor.SelectedIndex = 0;
 
-            lblDescripcion.Text = "Sistema " + ClsWindows.System + " Con Diseño " + ClsWindows.Desing;
-            if (ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "6030 3 Vias")
-            {
-                //Añadir Texto al la Descripcion
-                lblDescripcion.Text += " Con Cedazo";
+                lblDescripcion.Text = "Sistema " + ClsWindows.System + " Con Diseño " + ClsWindows.Desing;
+                if (ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "6030 3 Vias")
+                {
+                    //Añadir Texto al la Descripcion
+                    lblDescripcion.Text += " Con Cedazo";
+                }
+                cbImpacto.Checked = true;
+                loadPicture();
+                loadGlass();
+                loadPanelLock();
+                loadPanelHaladera();
+                MostrarOpcionesCedazo();
+                ConfigPantalla();
+                ConfPictureBox();
+                CargarProveedor();
             }
-            cbImpacto.Checked = true;
-            loadPicture();
-            loadGlass();
-            loadPanelLock();
-            loadPanelHaladera();
-            MostrarOpcionesCedazo();
-            ConfigPantalla();
-            ConfPictureBox();
-            CargarProveedor();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+   
 
 
         }
         private void loadPanelHaladera()
         {
-            if (ClsWindows.System == "Puerta Lujo")
+            try 
             {
-                PanelHaladera.Visible = true;
-                cbkHaladeraConcha.Checked = true;
-                cbkBaraaEmpuje.Checked = true;
-                cbkCilindronPestillo.Checked = true;
-                cbkContramarco.Checked = true;
-                cbkBrazoHidraulico.Checked = true;
+                if (ClsWindows.System == "Puerta Lujo")
+                {
+                    PanelHaladera.Visible = true;
+                    cbkHaladeraConcha.Checked = true;
+                    cbkBaraaEmpuje.Checked = true;
+                    cbkCilindronPestillo.Checked = true;
+                    cbkContramarco.Checked = true;
+                    cbkBrazoHidraulico.Checked = true;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        
         }
         private void loadPicture()
         {
@@ -154,131 +176,166 @@ namespace Precentacion.User.Quote.Windows
         }
         private void loadGlass()
         {
-            DataTable dtVidrio = new DataTable();
-            dtVidrio = loadProduct.loadOnlyGlass();
-            cbVidrio.DataSource = dtVidrio;
-            cbVidrio.DisplayMember = "Description";
-            cbVidrio.ValueMember = "Description";
-            cbVidrio.DataSource = dtVidrio;
+            try {
+                DataTable dtVidrio = new DataTable();
+                dtVidrio = loadProduct.loadOnlyGlass();
+                cbVidrio.DataSource = dtVidrio;
+                cbVidrio.DisplayMember = "Description";
+                cbVidrio.ValueMember = "Description";
+                cbVidrio.DataSource = dtVidrio;
 
-            DataTable dtGlass = new DataTable();
-            dtGlass = loadProduct.loadOnlyGlass();
-            cbGlass.DataSource = dtGlass;
-            cbGlass.DisplayMember = "Description";
-            cbGlass.ValueMember = "Description";
-            cbGlass.DataSource = dtGlass;
+                DataTable dtGlass = new DataTable();
+                dtGlass = loadProduct.loadOnlyGlass();
+                cbGlass.DataSource = dtGlass;
+                cbGlass.DisplayMember = "Description";
+                cbGlass.ValueMember = "Description";
+                cbGlass.DataSource = dtGlass;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
         }
         private void loadPanelLock()
         {
-            if (ClsWindows.System == "8025 2 Vias" || ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 2 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta" || ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
-            {
-                panelCerradura.Visible = true;
-                cbCilindro.Visible = false;
-
-                if (ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta")
+            try {
+                if (ClsWindows.System == "8025 2 Vias" || ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 2 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta" || ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
                 {
-                    cbCilindro.Visible = true;
-                    cbPico.Text = "kid EU Multi con llave";
-                }
-                if (ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
-                {
-                    cbPico.Text = "kid EU Multi con llave";
-                    cbSPuesta.Visible = false;
-                }
+                    panelCerradura.Visible = true;
+                    cbCilindro.Visible = false;
 
+                    if (ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta")
+                    {
+                        cbCilindro.Visible = true;
+                        cbPico.Text = "kid EU Multi con llave";
+                    }
+                    if (ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
+                    {
+                        cbPico.Text = "kid EU Multi con llave";
+                        cbSPuesta.Visible = false;
+                    }
+
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+         
         }
         private void ConfPictureBox()
         {
-            if (ClsWindows.System != "Puerta Lujo" && ClsWindows.System != "8025 2 Vias" && ClsWindows.System != "8025 3 Vias" && ClsWindows.System != "8040 2 Vias" && ClsWindows.System != "8040 3 Vias" && ClsWindows.System != "Europa 2 Vias Puerta" && ClsWindows.System != "Europa 3 Vias Puerta" && ClsWindows.System != "Europa 2 Vias" && ClsWindows.System != "Europa 3 Vias")
-            {
-                //Mover la Imagen Hacia Arriba
-                Point pt = pbVentana.Location;
-                pt.Y = 200;
-                pbVentana.Location = pt;
-
-
-            }
-            else
-            {
-                if (ClsWindows.System != "Puerta Lujo")
+            try {
+                if (ClsWindows.System != "Puerta Lujo" && ClsWindows.System != "8025 2 Vias" && ClsWindows.System != "8025 3 Vias" && ClsWindows.System != "8040 2 Vias" && ClsWindows.System != "8040 3 Vias" && ClsWindows.System != "Europa 2 Vias Puerta" && ClsWindows.System != "Europa 3 Vias Puerta" && ClsWindows.System != "Europa 2 Vias" && ClsWindows.System != "Europa 3 Vias")
                 {
                     //Mover la Imagen Hacia Arriba
                     Point pt = pbVentana.Location;
-                    pt.Y = 300;
+                    pt.Y = 200;
                     pbVentana.Location = pt;
+
+
                 }
                 else
                 {
-                    //Mover la Imagen Hacia Arriba
-                    Point pt = PanelHaladera.Location;
-                    pt.Y = 170;
-                    PanelHaladera.Location = pt;
+                    if (ClsWindows.System != "Puerta Lujo")
+                    {
+                        //Mover la Imagen Hacia Arriba
+                        Point pt = pbVentana.Location;
+                        pt.Y = 300;
+                        pbVentana.Location = pt;
+                    }
+                    else
+                    {
+                        //Mover la Imagen Hacia Arriba
+                        Point pt = PanelHaladera.Location;
+                        pt.Y = 170;
+                        PanelHaladera.Location = pt;
+                    }
+                }
+                if (ClsWindows.System == "Ventila" && ClsWindows.Desing != "1 Hoja Horizontal" && ClsWindows.Desing != "2 Hoja Horizontal")
+                {
+                    pbVentana.Width = 400;
+                    pbVentana.Height = 100;
+                }
+                if (ClsWindows.System == "Puerta Liviana")
+                {
+                    pbVentana.Width = 270;
+                    pbVentana.Height = 270;
+                }
+                if (ClsWindows.System == "Ventila" && ClsWindows.Desing == "2 Hoja Vertical" || ClsWindows.Desing == "1 Hoja 1 Fijo Vertical" || ClsWindows.Desing == "3 Hoja Vertical")
+                {
+                    pbVentana.Width = 200;
+                    pbVentana.Height = 250;
+
+                    Point pt = pbVentana.Location;
+
+                    pt.X = 90;
+
+                    pbVentana.Location = pt;
+
+
                 }
             }
-            if (ClsWindows.System == "Ventila" && ClsWindows.Desing != "1 Hoja Horizontal" && ClsWindows.Desing != "2 Hoja Horizontal")
+            catch (Exception ex)
             {
-                pbVentana.Width = 400;
-                pbVentana.Height = 100;
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (ClsWindows.System == "Puerta Liviana")
-            {
-                pbVentana.Width = 270;
-                pbVentana.Height = 270;
-            }
-            if (ClsWindows.System == "Ventila" && ClsWindows.Desing == "2 Hoja Vertical" || ClsWindows.Desing == "1 Hoja 1 Fijo Vertical" || ClsWindows.Desing == "3 Hoja Vertical")
-            {
-                pbVentana.Width = 200;
-                pbVentana.Height = 250;
-
-                Point pt = pbVentana.Location;
-
-                pt.X = 90;
-
-                pbVentana.Location = pt;
-
-
-            }
+           
         }
         private void MostrarOpcionesCedazo()
         {
-            if (ClsWindows.System.Contains("3 Vias"))
-            {
-                lblPosicionCedazo.Visible = true;
-                ckExterno.Visible = true;
-                ckInterno.Visible = true;
+            try {
+                if (ClsWindows.System.Contains("3 Vias"))
+                {
+                    lblPosicionCedazo.Visible = true;
+                    ckExterno.Visible = true;
+                    ckInterno.Visible = true;
+                }
+                else
+                {
+                    lblPosicionCedazo.Visible = false;
+                    ckInterno.Visible = false;
+                    ckExterno.Visible = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblPosicionCedazo.Visible = false;
-                ckInterno.Visible = false;
-                ckExterno.Visible = false;
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+          
         }
         private void ConfigPantalla()
         {
-            if (ClsWindows.System == "Cedazo 1/2")
-            {
-                switch (ClsWindows.Desing)
+            try {
+                if (ClsWindows.System == "Cedazo 1/2")
                 {
-                    case "Cedazo 12":
-                        lblDescripcion.Text = "Cedazo 1/2";
-                        break;
-                    case "Cedazo 1":
-                        lblDescripcion.Text = "Cedazo 1";
-                        break;
-                    case "Cedazo 2":
-                        lblDescripcion.Text = "Cedazo 2";
-                        break;
+                    switch (ClsWindows.Desing)
+                    {
+                        case "Cedazo 12":
+                            lblDescripcion.Text = "Cedazo 1/2";
+                            break;
+                        case "Cedazo 1":
+                            lblDescripcion.Text = "Cedazo 1";
+                            break;
+                        case "Cedazo 2":
+                            lblDescripcion.Text = "Cedazo 2";
+                            break;
+                    }
+                    lblVidrio.Visible = false;
+                    cbVidrio.Visible = false;
+                    cbVidrio.Text = "N/A";
+                    lblVidrioMetricas.Visible = false;
+                    cbCedazo.Visible = false;
+                    label10.Visible = false;
+                    PanelVidrioFijo.Visible = false;
                 }
-                lblVidrio.Visible = false;
-                cbVidrio.Visible = false;
-                cbVidrio.Text = "N/A";
-                lblVidrioMetricas.Visible = false;
-                cbCedazo.Visible = false;
-                label10.Visible = false;
-                PanelVidrioFijo.Visible = false;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+         
         }
 
         #endregion
@@ -286,71 +343,86 @@ namespace Precentacion.User.Quote.Windows
         #region Buttons
         private void btnBackSistema_Click(object sender, EventArgs e)
         {
-            if (PanelDetalle.Visible == true)
-            {
-                MessageBox.Show("Pulse el botón 'Cerrar' en la parte inferior de este formulario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else {
-                switch (ClsWindows.System)
+            try {
+                if (PanelDetalle.Visible == true)
                 {
-                    case "Ventila":
-                        frmSelectDesingVentila frm = new frmSelectDesingVentila();
-                        frm.Show();
-                        this.Close();
-                        break;
-                    case "Puerta Lujo":
-                        frmSelecDesingPuertLujo frmpl = new frmSelecDesingPuertLujo();
-                        frmpl.Show();
-                        this.Close();
-                        break;
-                    case "Cedazo 1/2":
-                        frmSelectSystem frmce = new frmSelectSystem();
-                        frmce.Show();
-                        this.Close();
-                        break;
-                    case "Puerta Liviana":
-                        frmSelecDesingPuertLujo frmpu = new frmSelecDesingPuertLujo();
-                        frmpu.Show();
-                        this.Close();
-                        break;
-                    case "Ventila Euro":
-                        frmSelectDesingVentila frm2 = new frmSelectDesingVentila();
-                        frm2.Show();
-                        this.Close();
-                        break;
-                    case "PuertaEuAbatible":
-                        ClsWindows.System = "PuertaEuAbatible";
-                        frmSelecDesingPuertLujo frm3 = new frmSelecDesingPuertLujo();
-                        frm3.system2 = ClsWindows.System;
-                        frm3.Show();
-                        this.Close();
-                        break;
-                    default:
-                        switch (ClsWindows.Desing)
-                        {
-                            case "CedazoAkariFijoMovil":
-                                frmSelecDesingCedazo frmCedazo = new frmSelecDesingCedazo();
-                                frmCedazo.Show();
-                                this.Close();
-                                return;
-                            case "CedazoAkariFijoMovilMovilFijo":
-                                frmSelecDesingCedazo frmCedazo2 = new frmSelecDesingCedazo();
-                                frmCedazo2.Show();
-                                this.Close();
-                                return;
-                        }
-                        frmSelectDesing frmde = new frmSelectDesing();
-                        frmde.Show();
-                        this.Close();
-                        break;
+                    MessageBox.Show("Pulse el botón 'Cerrar' en la parte inferior de este formulario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    switch (ClsWindows.System)
+                    {
+                        case "Ventila":
+                            frmSelectDesingVentila frm = new frmSelectDesingVentila();
+                            frm.Show();
+                            this.Close();
+                            break;
+                        case "Puerta Lujo":
+                            frmSelecDesingPuertLujo frmpl = new frmSelecDesingPuertLujo();
+                            frmpl.Show();
+                            this.Close();
+                            break;
+                        case "Cedazo 1/2":
+                            frmSelectSystem frmce = new frmSelectSystem();
+                            frmce.Show();
+                            this.Close();
+                            break;
+                        case "Puerta Liviana":
+                            frmSelecDesingPuertLujo frmpu = new frmSelecDesingPuertLujo();
+                            frmpu.Show();
+                            this.Close();
+                            break;
+                        case "Ventila Euro":
+                            frmSelectDesingVentila frm2 = new frmSelectDesingVentila();
+                            frm2.Show();
+                            this.Close();
+                            break;
+                        case "PuertaEuAbatible":
+                            ClsWindows.System = "PuertaEuAbatible";
+                            frmSelecDesingPuertLujo frm3 = new frmSelecDesingPuertLujo();
+                            frm3.system2 = ClsWindows.System;
+                            frm3.Show();
+                            this.Close();
+                            break;
+                        default:
+                            switch (ClsWindows.Desing)
+                            {
+                                case "CedazoAkariFijoMovil":
+                                    frmSelecDesingCedazo frmCedazo = new frmSelecDesingCedazo();
+                                    frmCedazo.Show();
+                                    this.Close();
+                                    return;
+                                case "CedazoAkariFijoMovilMovilFijo":
+                                    frmSelecDesingCedazo frmCedazo2 = new frmSelecDesingCedazo();
+                                    frmCedazo2.Show();
+                                    this.Close();
+                                    return;
+                            }
+                            frmSelectDesing frmde = new frmSelectDesing();
+                            frmde.Show();
+                            this.Close();
+                            break;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
 
         }
         private void btnDesglose_Click(object sender, EventArgs e)
         {
-            PanelDetalle.Visible = true;
-            PanelMedidas.Visible = false;
+            try {
+                PanelDetalle.Visible = true;
+                PanelMedidas.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
         private void btnCargar_Click(object sender, EventArgs e)
         {
@@ -380,66 +452,65 @@ namespace Precentacion.User.Quote.Windows
                 MessageBox.Show("No hay ninguna imagen cargada en el PictureBox.");
             }
 
+            try {
+                Calculator = true;
+                if (ValidarCampos())
+                {
+
+                    DataTable dtAluminio = new DataTable();
+                    loadProduct.CedazoValor(Cedazo);
+                    dtAluminio = loadProduct.loadAluminio(cbColor.Text, ClsWindows.System, cbSupplier.Text);
+
+                    dgAluminio.AutoGenerateColumns = true;
+                    dgAluminio.DataSource = dtAluminio;
 
 
-            Calculator = true;
-            if (ValidarCampos())
-            {
-
-                DataTable dtAluminio = new DataTable();
-                loadProduct.CedazoValor(Cedazo);
-                dtAluminio = loadProduct.loadAluminio(cbColor.Text, ClsWindows.System, cbSupplier.Text);
-                
-                dgAluminio.AutoGenerateColumns = true;
-                dgAluminio.DataSource = dtAluminio;
-            
-
-                DataTable dtAccesorios = new DataTable();
-                dtAccesorios = loadProduct.loadAccesorios(ClsWindows.System, cbSupplier.Text);
-                dgAccesorios.AutoGenerateColumns = true;
-                dgAccesorios.DataSource = dtAccesorios;
-
-
-
-
-                DataTable dtVidrio = new DataTable();
-                dtVidrio = loadProduct.loadPricesGlass(cbSupplier.Text, cbVidrio.Text);
-                dgVidrio.AutoGenerateColumns = true;
-                dgVidrio.DataSource = dtVidrio;
-
-         
-                DataTable dtLock = new DataTable();
-                dtLock = loadProduct.LoadPricesLock(cbSupplier.Text, Lock);
-                dgvCerradura.AutoGenerateColumns = true;
-                dgvCerradura.DataSource = dtLock;
-
-        
-              //  if (cbCedazo.Checked == true)
-               // {
-                   /* DataTable dtCedazoAluminio = new DataTable();
-                    dtCedazoAluminio = loadProduct.LoadAluminioCedazo(cbColor.Text, ClsWindows.System, cbSupplier.Text);
-                    foreach (DataRow row in dtCedazoAluminio.Rows)
-                    {
-                        dtAluminio.ImportRow(row);
-                    }
-                    dgAccesorios.DataSource = dtAluminio;
-
-                    DataTable dtCedazoAccesorios = new DataTable();
-                    dtCedazoAccesorios = loadProduct.loadAccesoriosCedazo(ClsWindows.System, cbSupplier.Text);
-                    //Agregar al dgvAccesorios sin eliminar los datos que ya tiene
-                    foreach (DataRow row in dtCedazoAccesorios.Rows)
-                    {
-                        dtAccesorios.ImportRow(row);
-                    }
-                    dgAccesorios.DataSource = dtAccesorios;*/
+                    DataTable dtAccesorios = new DataTable();
+                    dtAccesorios = loadProduct.loadAccesorios(ClsWindows.System, cbSupplier.Text);
+                    dgAccesorios.AutoGenerateColumns = true;
+                    dgAccesorios.DataSource = dtAccesorios;
 
 
 
-               // }
+
+                    DataTable dtVidrio = new DataTable();
+                    dtVidrio = loadProduct.loadPricesGlass(cbSupplier.Text, cbVidrio.Text);
+                    dgVidrio.AutoGenerateColumns = true;
+                    dgVidrio.DataSource = dtVidrio;
 
 
-               // else
-              //  {
+                    DataTable dtLock = new DataTable();
+                    dtLock = loadProduct.LoadPricesLock(cbSupplier.Text, Lock);
+                    dgvCerradura.AutoGenerateColumns = true;
+                    dgvCerradura.DataSource = dtLock;
+
+
+                    //  if (cbCedazo.Checked == true)
+                    // {
+                    /* DataTable dtCedazoAluminio = new DataTable();
+                     dtCedazoAluminio = loadProduct.LoadAluminioCedazo(cbColor.Text, ClsWindows.System, cbSupplier.Text);
+                     foreach (DataRow row in dtCedazoAluminio.Rows)
+                     {
+                         dtAluminio.ImportRow(row);
+                     }
+                     dgAccesorios.DataSource = dtAluminio;
+
+                     DataTable dtCedazoAccesorios = new DataTable();
+                     dtCedazoAccesorios = loadProduct.loadAccesoriosCedazo(ClsWindows.System, cbSupplier.Text);
+                     //Agregar al dgvAccesorios sin eliminar los datos que ya tiene
+                     foreach (DataRow row in dtCedazoAccesorios.Rows)
+                     {
+                         dtAccesorios.ImportRow(row);
+                     }
+                     dgAccesorios.DataSource = dtAccesorios;*/
+
+
+
+                    // }
+
+
+                    // else
+                    //  {
 
                     string descripcion = ClsWindows.System + ClsWindows.Desing + cbColor.Text;
                     if (ClsWindows.System == "CedazoAkari")
@@ -451,16 +522,24 @@ namespace Precentacion.User.Quote.Windows
                         descripcion = "Cedazo1/2" + ClsWindows.Desing + cbColor.Text;
                     }
                     SubTotal = loadProduct.CalcTotalPrice(dtAluminio, dtAccesorios, dtVidrio, dtLock, descripcion, cbSupplier.Text);
-                    AjustePrecio = loadProduct.LoadAjustePrecio(cbSupplier.Text,descripcion);
+                    AjustePrecio = loadProduct.LoadAjustePrecio(cbSupplier.Text, descripcion);
                     txtTotal.Text = SubTotal.ToString("C");
                     if (ClsWindows.System == "Puerta Lujo")
                     {
                         QuitarArticulos();
                     }
 
-                //}
+                    //}
+
+                }
 
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+           
         }
 
         #region Función para redimensionar la imagen
@@ -516,62 +595,79 @@ namespace Precentacion.User.Quote.Windows
         #region Insert Windows
         private string CreateDescription()
         {
-            //crear descripcion de la ventana que incluya el sistema, diseño, color, vidrio separado por saltos de linea
-            string description = "";
-            description += "Sistema: " + ClsWindows.System + "\n";
-            description += "Diseño: " + ClsWindows.Desing + "\n";
-            if (ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "6030 3 Vias")
-            {
-                //Añadir Texto al la Descripcion
-                description += "Con Cedazo" + "\n";
+
+            try {
+                //crear descripcion de la ventana que incluya el sistema, diseño, color, vidrio separado por saltos de linea
+                string description = "";
+                description += "Sistema: " + ClsWindows.System + "\n";
+                description += "Diseño: " + ClsWindows.Desing + "\n";
+                if (ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "6030 3 Vias")
+                {
+                    //Añadir Texto al la Descripcion
+                    description += "Con Cedazo" + "\n";
+                }
+                if (ckInterno.Checked)
+                {
+                    description += "Cedazo Interno" + "\n";
+                }
+                if (ckExterno.Checked)
+                {
+                    description += "Cedazo Externo" + "\n";
+                }
+                description += "Color: " + cbColor.Text + "\n";
+                description += "Vidrio: " + cbVidrio.Text + "\n";
+                if (ClsWindows.System == "Ventila")
+                {
+                    description += "Cerradura: VT " + "\n";
+                }
+                else
+                {
+                    description += "Cerradura: " + ClsWindows.Lock + "\n";
+                }
+                description += "Ancho: " + ClsWindows.Weight + "\n";
+                description += "Alto: " + ClsWindows.heigt + "\n";
+                if (txtAddWeigth.Text != "" && txtAddHeight.Text != "")
+                {
+                    description += "Ancho Fijo: " + txtAddWeigth.Text + "\n";
+                    description += "Alto Fijo: " + txtAddHeight.Text + "\n";
+                }
+                //Añadir la Ubicacion
+                if (txtUbicacion.Text != "")
+                {
+                    description += "Ubicacion: " + txtUbicacion.Text + "\n";
+                }
+                //Añadir la cantidad 
+                description += "Cantidad: " + NumCantidad + "\n";
+                return description;
             }
-            if (ckInterno.Checked)
+            catch (Exception ex)
             {
-                description += "Cedazo Interno" + "\n";
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
             }
-            if (ckExterno.Checked)
-            {
-                description += "Cedazo Externo" + "\n";
-            }
-            description += "Color: " + cbColor.Text + "\n";
-            description += "Vidrio: " + cbVidrio.Text + "\n";
-            if (ClsWindows.System == "Ventila")
-            {
-                description += "Cerradura: VT " + "\n";
-            }
-            else
-            {
-                description += "Cerradura: " + ClsWindows.Lock + "\n";
-            }
-            description += "Ancho: " + ClsWindows.Weight + "\n";
-            description += "Alto: " + ClsWindows.heigt + "\n";
-            if (txtAddWeigth.Text != "" && txtAddHeight.Text != "")
-            {
-                description += "Ancho Fijo: " + txtAddWeigth.Text + "\n";
-                description += "Alto Fijo: " + txtAddHeight.Text + "\n";
-            }
-            //Añadir la Ubicacion
-            if (txtUbicacion.Text != "")
-            {
-                description += "Ubicacion: " + txtUbicacion.Text + "\n";
-            }
-            //Añadir la cantidad 
-            description += "Cantidad: " + NumCantidad + "\n";
-            return description;
+           
         }
         private string CreateURL()
         {
-            //Obtener la ruta relativa de la Imagen de la ventana
-            string url = "";
-            if (cbUbicacion.Text != "")
-            {
-                url = "Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + "fijo" + cbUbicacion.Text + ".jpeg";
+            try {
+                //Obtener la ruta relativa de la Imagen de la ventana
+                string url = "";
+                if (cbUbicacion.Text != "")
+                {
+                    url = "Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + "fijo" + cbUbicacion.Text + ".jpeg";
+                }
+                else
+                {
+                    url = "Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + ".jpeg";
+                }
+                return url;
             }
-            else
+            catch (Exception ex)
             {
-                url = "Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + ".jpeg";
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
             }
-            return url;
+         
 
 
 
@@ -579,22 +675,29 @@ namespace Precentacion.User.Quote.Windows
         }
         private void SelectLock()
         {
-            if (panelCerradura.Visible == true)
-            {
-                if (cbPico.Checked)
+            try {
+                if (panelCerradura.Visible == true)
                 {
-                    ClsWindows.Lock = cbPico.Text;
+                    if (cbPico.Checked)
+                    {
+                        ClsWindows.Lock = cbPico.Text;
+                    }
+                    if (cbSPuesta.Checked)
+                    {
+                        ClsWindows.Lock = cbSPuesta.Text;
+                    }
+                    if (cbImpacto.Checked)
+                    {
+                        ClsWindows.Lock = cbImpacto.Text;
+                    }
                 }
-                if (cbSPuesta.Checked)
-                {
-                    ClsWindows.Lock = cbSPuesta.Text;
-                }
-                if (cbImpacto.Checked)
-                {
-                    ClsWindows.Lock = cbImpacto.Text;
-                }
+                else { ClsWindows.Lock = "Cerradura Impacto"; }
             }
-            else { ClsWindows.Lock = "Cerradura Impacto"; }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+          
 
         }
         public void btnInsertar_Click(object sender, EventArgs e)
@@ -660,7 +763,7 @@ namespace Precentacion.User.Quote.Windows
             catch (Exception ex)
             {
 
-                MessageBox.Show("Error Inesperado " + ex);
+                MessageBox.Show("Error Inesperado " + ex.Message);
             }
 
         }
@@ -695,7 +798,7 @@ namespace Precentacion.User.Quote.Windows
             }
             catch (Exception)
             {
-
+               // MessageBox.Show("ERROR");
             }
 
 
@@ -703,44 +806,66 @@ namespace Precentacion.User.Quote.Windows
         
         private void cbPico_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbPico.Checked && ClsWindows.System != "Europa 2 Vias Puerta")
-            {
-                Lock = "Cerradura Pico Lora con Jaladera Doble";
-                cbImpacto.Checked = false;
-                cbSPuesta.Checked = false;
+            try {
+                if (cbPico.Checked && ClsWindows.System != "Europa 2 Vias Puerta")
+                {
+                    Lock = "Cerradura Pico Lora con Jaladera Doble";
+                    cbImpacto.Checked = false;
+                    cbSPuesta.Checked = false;
 
+                }
+                if (cbPico.Checked && ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta" || cbPico.Checked && ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
+                {
+                    Lock = "kid EU Multi con llave";
+                    cbImpacto.Checked = false;
+                    cbSPuesta.Checked = false;
+                }
             }
-            if (cbPico.Checked && ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta" || cbPico.Checked && ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
+            catch (Exception ex)
             {
-                Lock = "kid EU Multi con llave";
-                cbImpacto.Checked = false;
-                cbSPuesta.Checked = false;
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        
         }
         private void cbSPuesta_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbSPuesta.Checked)
-            {
-                if (ClsWindows.Desing != "FijoMovilMovilFijo")
+            try {
+                if (cbSPuesta.Checked)
                 {
-                    Lock = "Cerradura SobrePuesta para FM";
+                    if (ClsWindows.Desing != "FijoMovilMovilFijo")
+                    {
+                        Lock = "Cerradura SobrePuesta para FM";
+                    }
+                    else
+                    {
+                        Lock = "Cerradura Sobre Puesta FMMF";
+                    }
+                    cbImpacto.Checked = false;
+                    cbPico.Checked = false;
                 }
-                else
-                {
-                    Lock = "Cerradura Sobre Puesta FMMF";
-                }
-                cbImpacto.Checked = false;
-                cbPico.Checked = false;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        
         }
         private void cbImpacto_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbImpacto.Checked)
-            {
-                Lock = "Cerradura Impacto Akari";
-                cbPico.Checked = false;
-                cbSPuesta.Checked = false;
+            try {
+
+                if (cbImpacto.Checked)
+                {
+                    Lock = "Cerradura Impacto Akari";
+                    cbPico.Checked = false;
+                    cbSPuesta.Checked = false;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
         #endregion
@@ -748,81 +873,103 @@ namespace Precentacion.User.Quote.Windows
         #region Support Functions
         private bool ValidarCampos()
         {
-            if (txtAlto.Text == "")
-            {
-                MessageBox.Show("Debe ingresar el alto de la ventana");
-                return false;
-            }
-            if (txtAncho.Text == "")
-            {
-                MessageBox.Show("Debe ingresar el ancho de la ventana");
-                return false;
-            }
-            if (cbSupplier.Text == "")
-            {
-                MessageBox.Show("Debe seleccionar un proveedor");
-                return false;
-            }
-            if (cbVidrio.Text == "")
-            {
-                MessageBox.Show("Debe seleccionar un vidrio");
-                return false;
-            }
-            if (Calculator == true)
-            {
-                Calculator = false;
-                return true;
-            }
-            else
-            {
-                if (txtTotal.Text == "")
+            try {
+
+                if (txtAlto.Text == "")
                 {
-                    MessageBox.Show("Debe Calcular el Precio de la ventana");
+                    MessageBox.Show("Debe ingresar el alto de la ventana");
                     return false;
                 }
+                if (txtAncho.Text == "")
+                {
+                    MessageBox.Show("Debe ingresar el ancho de la ventana");
+                    return false;
+                }
+                if (cbSupplier.Text == "")
+                {
+                    MessageBox.Show("Debe seleccionar un proveedor");
+                    return false;
+                }
+                if (cbVidrio.Text == "")
+                {
+                    MessageBox.Show("Debe seleccionar un vidrio");
+                    return false;
+                }
+                if (Calculator == true)
+                {
+                    Calculator = false;
+                    return true;
+                }
+                else
+                {
+                    if (txtTotal.Text == "")
+                    {
+                        MessageBox.Show("Debe Calcular el Precio de la ventana");
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
             }
 
-            return true;
         }
         private void CleanController()
         {
-            txtAlto.Text = "";
-            txtAncho.Text = "";
-            txtTotal.Text = "";
-            txtTotalPrice.Text = "";
-            cbSupplier.Text = "";
-            cbColor.Text = "";
-            cbImpacto.Checked = true;
-            cbPico.Checked = false;
-            cbSPuesta.Checked = false;
-            dgAluminio.DataSource = null;
-            dgAccesorios.DataSource = null;
-            dgVidrio.DataSource = null;
+            try {
+                txtAlto.Text = "";
+                txtAncho.Text = "";
+                txtTotal.Text = "";
+                txtTotalPrice.Text = "";
+                cbSupplier.Text = "";
+                cbColor.Text = "";
+                cbImpacto.Checked = true;
+                cbPico.Checked = false;
+                cbSPuesta.Checked = false;
+                dgAluminio.DataSource = null;
+                dgAccesorios.DataSource = null;
+                dgVidrio.DataSource = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+         
         }
         private void DetectarPunto()
         {
-            if (txtAncho.Text.Contains("."))
-            {
-                txtAncho.Text = txtAncho.Text.Replace(".", ",");
-                //Posicionar el cursor al final del texto
-                txtAncho.SelectionStart = txtAncho.Text.Length;
+            try {
+                if (txtAncho.Text.Contains("."))
+                {
+                    txtAncho.Text = txtAncho.Text.Replace(".", ",");
+                    //Posicionar el cursor al final del texto
+                    txtAncho.SelectionStart = txtAncho.Text.Length;
+                }
+                if (txtAlto.Text.Contains("."))
+                {
+                    txtAlto.Text = txtAlto.Text.Replace(".", ",");
+                    //Posicionar el cursor al final del texto
+                    txtAlto.SelectionStart = txtAlto.Text.Length;
+                }
+                if (txtAddHeight.Text.Contains("."))
+                {
+                    txtAddHeight.Text = txtAddHeight.Text.Replace(".", ",");
+                    txtAddHeight.SelectionStart = txtAddHeight.Text.Length;
+                }
+                if (txtAddWeigth.Text.Contains("."))
+                {
+                    txtAddWeigth.Text = txtAddWeigth.Text.Replace(".", ",");
+                    txtAddWeigth.SelectionStart = txtAddWeigth.Text.Length;
+                }
             }
-            if (txtAlto.Text.Contains("."))
-            {
-                txtAlto.Text = txtAlto.Text.Replace(".", ",");
-                //Posicionar el cursor al final del texto
-                txtAlto.SelectionStart = txtAlto.Text.Length;
+            catch (Exception ex) {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (txtAddHeight.Text.Contains("."))
-            {
-                txtAddHeight.Text = txtAddHeight.Text.Replace(".", ",");
-                txtAddHeight.SelectionStart = txtAddHeight.Text.Length;
-            }
-            if (txtAddWeigth.Text.Contains("."))
-            {
-                txtAddWeigth.Text = txtAddWeigth.Text.Replace(".", ",");
-                txtAddWeigth.SelectionStart = txtAddWeigth.Text.Length;
-            }
+          
         }
 
         #endregion
@@ -983,6 +1130,12 @@ namespace Precentacion.User.Quote.Windows
         }
         private bool LoadAddAluminio()
         {
+
+            try { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             bool Res = false;
             //Validar Campos
             if (ValidateField())
@@ -1400,144 +1553,152 @@ namespace Precentacion.User.Quote.Windows
 
         private void Advertencias()
         {
-            #region Alto
-            if (txtAlto.Text != "")
-            {
-                if (AceptarAlto == false)
+            try {
+                #region Alto
+                if (txtAlto.Text != "")
                 {
-                    switch (ClsWindows.System)
+                    if (AceptarAlto == false)
                     {
-                        case "5020":
-                            if (ClsWindows.heigt >= 1.61m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 1.60 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "5020 3 Vias":
-                            if (ClsWindows.heigt >= 1.61m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 1.60 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "Ventila":
-                            if (ClsWindows.heigt >= 1.15m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 1.15 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "8025 2 Vias":
-                            if (ClsWindows.heigt >= 2.35m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "8025 3 Vias":
-                            if (ClsWindows.heigt >= 2.35m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "8040 2 Vias":
-                            if (ClsWindows.heigt >= 2.35m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "8040 3 Vias":
-                            if (ClsWindows.heigt >= 2.35m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "6030 2 Vias":
-                            if (ClsWindows.heigt >= 1.85m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 1.85 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "6030 3 Vias":
-                            if (ClsWindows.heigt >= 1.85m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 1.85 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "CedazoAkari":
-                            if (ClsWindows.heigt >= 2.35m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "Europa 2 Vias":
-                            if (ClsWindows.heigt >= 3.00m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 3 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "Europa 3 Vias":
-                            if (ClsWindows.heigt >= 3.00m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 3 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "Europa 2 Vias Puerta":
-                            if (ClsWindows.heigt >= 3.00m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 3 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "Europa 3 Vias Puerta":
-                            if (ClsWindows.heigt >= 3.00m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 3 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "Puerta Lujo":
-                            if (ClsWindows.heigt >= 2.35m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "Puerta Baño":
-                            if (ClsWindows.heigt >= 1.83m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 1.83 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "Puerta Liviana":
-                            if (ClsWindows.heigt >= 2.30m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 2.30 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
-                        case "PuertaEuAbatible":
-                            if (ClsWindows.heigt >= 3m)
-                            {
-                                MessageBox.Show("El alto maximo para este sistema es de 3 Metros");
-                                AceptarAlto = true;
-                            }
-                            break;
+                        switch (ClsWindows.System)
+                        {
+                            case "5020":
+                                if (ClsWindows.heigt >= 1.61m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 1.60 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "5020 3 Vias":
+                                if (ClsWindows.heigt >= 1.61m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 1.60 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "Ventila":
+                                if (ClsWindows.heigt >= 1.15m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 1.15 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "8025 2 Vias":
+                                if (ClsWindows.heigt >= 2.35m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "8025 3 Vias":
+                                if (ClsWindows.heigt >= 2.35m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "8040 2 Vias":
+                                if (ClsWindows.heigt >= 2.35m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "8040 3 Vias":
+                                if (ClsWindows.heigt >= 2.35m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "6030 2 Vias":
+                                if (ClsWindows.heigt >= 1.85m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 1.85 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "6030 3 Vias":
+                                if (ClsWindows.heigt >= 1.85m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 1.85 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "CedazoAkari":
+                                if (ClsWindows.heigt >= 2.35m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "Europa 2 Vias":
+                                if (ClsWindows.heigt >= 3.00m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 3 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "Europa 3 Vias":
+                                if (ClsWindows.heigt >= 3.00m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 3 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "Europa 2 Vias Puerta":
+                                if (ClsWindows.heigt >= 3.00m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 3 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "Europa 3 Vias Puerta":
+                                if (ClsWindows.heigt >= 3.00m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 3 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "Puerta Lujo":
+                                if (ClsWindows.heigt >= 2.35m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 2.35 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "Puerta Baño":
+                                if (ClsWindows.heigt >= 1.83m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 1.83 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "Puerta Liviana":
+                                if (ClsWindows.heigt >= 2.30m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 2.30 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                            case "PuertaEuAbatible":
+                                if (ClsWindows.heigt >= 3m)
+                                {
+                                    MessageBox.Show("El alto maximo para este sistema es de 3 Metros");
+                                    AceptarAlto = true;
+                                }
+                                break;
+                        }
                     }
-                }
 
+                }
+                #endregion
             }
-            #endregion
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+           
 
             #region Ancho
             if (txtAncho.Text != "")
@@ -2339,34 +2500,34 @@ namespace Precentacion.User.Quote.Windows
 
         private void AjustarTamañoPictureBox(PictureBox pb, int newWidth, int newHeight)
         {
-            /*try
+            try
             {
+                // Obtener el tamaño del contenedor padre
+                var parentSize = pb.Parent.ClientSize;
 
+                // Mantener la imagen dentro de los límites del contenedor padre
+                if (newWidth > MaxWidth)
+                {
+                    newWidth = MaxWidth;
+                }
+                if (newHeight > MaxHeight)
+                {
+                    newHeight = MaxHeight;
+                }
+
+                // Ajustar el tamaño del PictureBox
+                pb.Width = newWidth;
+                pb.Height = newHeight;
+
+                // Centrar el PictureBox en su contenedor padre
+                pb.Left = (parentSize.Width - pb.Width) / 2;
+                pb.Top = (parentSize.Height - pb.Height) / 2;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
-            // Obtener el tamaño del contenedor padre
-            var parentSize = pb.Parent.ClientSize;
-
-            // Mantener la imagen dentro de los límites del contenedor padre
-            if (newWidth > MaxWidth)
-            {
-                newWidth = MaxWidth;
             }
-            if (newHeight > MaxHeight)
-            {
-                newHeight = MaxHeight;
-            }
-
-            // Ajustar el tamaño del PictureBox
-            pb.Width = newWidth;
-            pb.Height = newHeight;
-
-            // Centrar el PictureBox en su contenedor padre
-            pb.Left = (parentSize.Width - pb.Width) / 2;
-            pb.Top = (parentSize.Height - pb.Height) / 2;
+            
         }
 
         private void añadirVidrioFijoToolStripMenuItem_Click(object sender, EventArgs e)
