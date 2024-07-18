@@ -36,8 +36,22 @@ namespace Precentacion.User.Bill
         {
             // Definir columnas para el DataGridView
             dgvResults1.Columns.Add("colBar", "Barra");
+            dgvResults1.Columns.Add("colUbicacion", "Ubicación");
+           // dgvResults1.Columns.Add("colMedidas", "Medidas");
             dgvResults1.Columns.Add("colCuts", "Cortes");
+            dgvResults1.Columns.Add("colResiduos", "Residuos"); // Nueva columna para residuos
+            AdjustColumnWidthsToFitContent();
         }
+
+
+        private void AdjustColumnWidthsToFitContent()
+        {
+            foreach (DataGridViewColumn column in dgvResults1.Columns)
+            {
+                dgvResults1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+        }
+
 
         private void OptimizeCutsAndDisplayResults()
         {
@@ -48,11 +62,33 @@ namespace Precentacion.User.Bill
 
                 // Mostrar los resultados en el DataGridView
                 dgvResults1.Rows.Clear();
+
+                // Obtén el DataGridView del formulario de producción
+                var productionForm = Application.OpenForms.OfType<frmOrdenProduccion>().FirstOrDefault();
+                if (productionForm == null)
+                {
+                    MessageBox.Show("No se pudo encontrar el formulario de producción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var dgvOrdenProduccion = productionForm.dgvOrdenProduccion;
+
                 for (int i = 0; i < optimizedCuts.Count; i++)
                 {
                     string bar = "Barra " + (i + 1);
                     string cuts = string.Join(", ", optimizedCuts[i].Select(c => c.ToString("0.00") + " m"));
-                    dgvResults1.Rows.Add(bar, cuts);
+
+                    // Obtener Ubicación y Medidas (se asume que se usa el índice de fila para obtener la información)
+                    var ubicacion = dgvOrdenProduccion.Rows[i].Cells["Ubicacion"].Value?.ToString() ?? "";
+                   // var medidas = dgvOrdenProduccion.Rows[i].Cells["Cargador"].Value?.ToString() ?? "";
+
+                    // Calcular el residuo
+                    decimal totalCuts = optimizedCuts[i].Sum();
+                    decimal barLength = availableBars[i];
+                    decimal residue = barLength - totalCuts;
+
+                    // Añadir la fila al DataGridView
+                    dgvResults1.Rows.Add(bar, ubicacion, /*medidas,*/ cuts, residue.ToString("0.00") + " m");
                 }
             }
             catch (FormatException ex)
@@ -64,6 +100,7 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private List<List<decimal>> OptimizeCuts(decimal[] availableBars, decimal[] requiredLengths)
         {

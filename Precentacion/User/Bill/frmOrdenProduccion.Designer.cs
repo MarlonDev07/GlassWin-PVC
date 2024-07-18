@@ -69,9 +69,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dgvOrdenProduccion = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Diseno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cargador = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -429,9 +429,9 @@
             // 
             this.dgvOrdenProduccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrdenProduccion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
+            this.Tipo,
+            this.Ubicacion,
+            this.Diseno,
             this.Column4,
             this.Column5,
             this.Cargador,
@@ -462,26 +462,26 @@
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
             // 
-            // Column1
+            // Tipo
             // 
-            this.Column1.HeaderText = "Tipo";
-            this.Column1.MinimumWidth = 8;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 150;
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.MinimumWidth = 8;
+            this.Tipo.Name = "Tipo";
+            this.Tipo.Width = 150;
             // 
-            // Column2
+            // Ubicacion
             // 
-            this.Column2.HeaderText = "Ubicación";
-            this.Column2.MinimumWidth = 8;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 110;
+            this.Ubicacion.HeaderText = "Ubicación";
+            this.Ubicacion.MinimumWidth = 8;
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.Width = 110;
             // 
-            // Column3
+            // Diseno
             // 
-            this.Column3.HeaderText = "Diseño";
-            this.Column3.MinimumWidth = 8;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 110;
+            this.Diseno.HeaderText = "Diseño";
+            this.Diseno.MinimumWidth = 8;
+            this.Diseno.Name = "Diseno";
+            this.Diseno.Width = 110;
             // 
             // Column4
             // 
@@ -624,8 +624,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbProyecto;
         private System.Windows.Forms.TextBox txtOrden;
         private System.Windows.Forms.Label label5;
@@ -638,7 +636,6 @@
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Panel panelContenedor;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvOrdenProduccion;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvOrdenProduccion8025;
         private System.Windows.Forms.Label label6;
@@ -664,9 +661,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PisaAlfombra;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Diseno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cargador;
@@ -683,5 +680,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn VerticalCentro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        public System.Windows.Forms.DataGridView dgvOrdenProduccion;
+        public System.Windows.Forms.GroupBox groupBox1;
     }
 }

@@ -152,7 +152,7 @@
             // dgvResults1
             // 
             this.dgvResults1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults1.Location = new System.Drawing.Point(5, 22);
+            this.dgvResults1.Location = new System.Drawing.Point(5, 103);
             this.dgvResults1.Margin = new System.Windows.Forms.Padding(2);
             this.dgvResults1.Name = "dgvResults1";
             this.dgvResults1.RowHeadersWidth = 62;
@@ -241,16 +241,17 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(9, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(942, 158);
+            this.groupBox1.Size = new System.Drawing.Size(942, 31);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Visible = false;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvResults1);
-            this.groupBox2.Location = new System.Drawing.Point(8, 181);
+            this.groupBox2.Location = new System.Drawing.Point(8, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(942, 280);
+            this.groupBox2.Size = new System.Drawing.Size(942, 421);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             // 

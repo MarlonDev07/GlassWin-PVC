@@ -33,6 +33,8 @@ namespace Precentacion.User.Bill
         List<string> Piezas8025 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "PisaAlfombra"};
         List<decimal> ResultadosRebajo = new List<decimal>();
         List<decimal> ResultadosCantidad = new List<decimal>();
+        //public DataGridView dgvOrdenProduccion;
+
         public frmOrdenProduccion()
         {
             InitializeComponent();
@@ -45,12 +47,12 @@ namespace Precentacion.User.Bill
 
             cbProyecto.SelectedIndexChanged += cbProyecto_SelectedIndexChanged;
 
-            /*ContextMenuStrip contextMenu = new ContextMenuStrip();
+            ContextMenuStrip contextMenu = new ContextMenuStrip();
             ToolStripMenuItem optimizeMenuItem = new ToolStripMenuItem("Optimizar");
             optimizeMenuItem.Click += contextMenuStrip1_Click;
             contextMenu.Items.Add(optimizeMenuItem);
             dgvOrdenProduccion.ContextMenuStrip = contextMenu;
-            //contextMenu.Visible = false;*/
+            //contextMenu.Visible = false;
             
 
 
@@ -622,6 +624,7 @@ namespace Precentacion.User.Bill
 
                         // Mostrar el formulario del optimizador
                         frmOptimizador optimizerForm = new frmOptimizador(requiredLengths.ToArray(), availableBars.ToArray());
+                        optimizerForm.TopMost = true;
                         optimizerForm.ShowDialog();
                     }
                     else

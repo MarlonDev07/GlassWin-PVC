@@ -466,34 +466,43 @@ namespace Precentacion.User.Quote.Windows
         #region Función para redimensionar la imagen
         private Bitmap ResizeImage(Image image, int width, int height)
         {
-            // Crear un nuevo Bitmap con el tamaño deseado
-            var destImage = new Bitmap(width, height);
+            try {
+                // Crear un nuevo Bitmap con el tamaño deseado
+                var destImage = new Bitmap(width, height);
 
-            // Establecer la resolución del nuevo Bitmap igual a la resolución de la imagen original
-            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+                // Establecer la resolución del nuevo Bitmap igual a la resolución de la imagen original
+                destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
-            // Usar Graphics para dibujar la imagen redimensionada
-            using (var graphics = Graphics.FromImage(destImage))
-            {
-                // Configurar la calidad de composición, interpolación, suavizado y compensación de píxeles para el objeto Graphics
-                graphics.CompositingMode = CompositingMode.SourceCopy;
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = SmoothingMode.HighQuality;
-                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-                // Configurar el modo de envoltura de imagen para el objeto Graphics
-                using (var wrapMode = new ImageAttributes())
+                // Usar Graphics para dibujar la imagen redimensionada
+                using (var graphics = Graphics.FromImage(destImage))
                 {
-                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    // Configurar la calidad de composición, interpolación, suavizado y compensación de píxeles para el objeto Graphics
+                    graphics.CompositingMode = CompositingMode.SourceCopy;
+                    graphics.CompositingQuality = CompositingQuality.HighQuality;
+                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    graphics.SmoothingMode = SmoothingMode.HighQuality;
+                    graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-                    // Dibujar la imagen original redimensionada en el rectángulo de destino utilizando el objeto Graphics
-                    graphics.DrawImage(image, new Rectangle(0, 0, width, height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                    // Configurar el modo de envoltura de imagen para el objeto Graphics
+                    using (var wrapMode = new ImageAttributes())
+                    {
+                        wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+
+                        // Dibujar la imagen original redimensionada en el rectángulo de destino utilizando el objeto Graphics
+                        graphics.DrawImage(image, new Rectangle(0, 0, width, height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                    }
                 }
+                // Devolver la imagen redimensionada
+                return destImage;
+
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
 
-            // Devolver la imagen redimensionada
-            return destImage;
+           
+
         }
         #endregion
 
@@ -2298,6 +2307,7 @@ namespace Precentacion.User.Quote.Windows
                 }
                 catch (FormatException)
                 {
+                    
                 }
             }
             else
@@ -2329,6 +2339,14 @@ namespace Precentacion.User.Quote.Windows
 
         private void AjustarTamañoPictureBox(PictureBox pb, int newWidth, int newHeight)
         {
+            /*try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
             // Obtener el tamaño del contenedor padre
             var parentSize = pb.Parent.ClientSize;
 
