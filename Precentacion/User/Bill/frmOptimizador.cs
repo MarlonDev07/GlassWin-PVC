@@ -16,10 +16,10 @@ namespace Precentacion.User.Bill
     {
         //Variables
         N_Quote NQuote = new N_Quote();
-        private double[] availableBars;
-        private double[] requiredLengths;
+        private decimal[] availableBars;
+        private decimal[] requiredLengths;
 
-        public frmOptimizador(double[] requiredLengths, double[] availableBars)
+        public frmOptimizador(decimal[] requiredLengths, decimal[] availableBars)
         {
             InitializeComponent();
             this.requiredLengths = requiredLengths;
@@ -44,7 +44,7 @@ namespace Precentacion.User.Bill
             try
             {
                 // Llamar al método OptimizeCuts
-                List<List<double>> optimizedCuts = OptimizeCuts(availableBars, requiredLengths);
+                List<List<decimal>> optimizedCuts = OptimizeCuts(availableBars, requiredLengths);
 
                 // Mostrar los resultados en el DataGridView
                 dgvResults1.Rows.Clear();
@@ -65,21 +65,21 @@ namespace Precentacion.User.Bill
             }
         }
 
-        private List<List<double>> OptimizeCuts(double[] availableBars, double[] requiredLengths)
+        private List<List<decimal>> OptimizeCuts(decimal[] availableBars, decimal[] requiredLengths)
         {
             // Ordenar las longitudes requeridas de mayor a menor
             Array.Sort(requiredLengths);
             Array.Reverse(requiredLengths);
 
             // Lista para almacenar los cortes óptimos para cada barra
-            List<List<double>> optimizedCuts = new List<List<double>>();
+            List<List<decimal>> optimizedCuts = new List<List<decimal>>();
 
-            foreach (double bar in availableBars)
+            foreach (decimal bar in availableBars)
             {
-                List<double> cuts = new List<double>();
-                double remainingLength = bar;
+                List<decimal> cuts = new List<decimal>();
+                decimal remainingLength = bar;
 
-                foreach (double length in requiredLengths.ToList())
+                foreach (decimal length in requiredLengths.ToList())
                 {
                     if (remainingLength >= length)
                     {
@@ -95,7 +95,7 @@ namespace Precentacion.User.Bill
             // Agregar cualquier corte que no pudo ser optimizado
             if (requiredLengths.Length > 0)
             {
-                optimizedCuts.Add(new List<double>(requiredLengths));
+                optimizedCuts.Add(new List<decimal>(requiredLengths));
             }
 
             return optimizedCuts;

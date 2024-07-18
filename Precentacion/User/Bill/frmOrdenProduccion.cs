@@ -50,8 +50,8 @@ namespace Precentacion.User.Bill
             optimizeMenuItem.Click += contextMenuStrip1_Click;
             contextMenu.Items.Add(optimizeMenuItem);
             dgvOrdenProduccion.ContextMenuStrip = contextMenu;
-            //contextMenu.Visible = false;
-            */
+            //contextMenu.Visible = false;*/
+            
 
 
         }
@@ -555,33 +555,70 @@ namespace Precentacion.User.Bill
                     string columnName = dgvOrdenProduccion.Columns[columnIndex].Name;
 
                     // Verificar si la columna es una de las columnas de artículos
-                    string[] validColumns = { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "VerticalCentro" };
+                    string[] validColumns = { "Cargador" }; // Puedes agregar más columnas aquí
                     if (validColumns.Contains(columnName))
                     {
-                        List<double> requiredLengths = new List<double>();
+                        List<decimal> requiredLengths = new List<decimal>();
                         foreach (DataGridViewRow row in dgvOrdenProduccion.Rows)
                         {
                             if (row.Cells[columnIndex].Value != null)
                             {
                                 string value = row.Cells[columnIndex].Value.ToString();
-                                if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out double length))
+
+                                // Intentar convertir directamente la cadena a decimal
+                                try
                                 {
+                                    decimal length = decimal.Parse(value, CultureInfo.GetCultureInfo("es-ES"));
+                                    requiredLengths.Add(length);
+                                }
+                                catch (FormatException)
+                                {
+                                    // Si falla, intentar con InvariantCulture
+                                    decimal length = decimal.Parse(value.Replace(',', '.'), CultureInfo.InvariantCulture);
                                     requiredLengths.Add(length);
                                 }
                             }
                         }
 
-                        // Obtener los tamaños de los productos desde la base de datos
+                        //DE ESA FORMA SE OBTIENE LA CANTIDAD DE TAMAÑOS QUE SE NECESITEN
+                        // Inicializar la lista para los tamaños disponibles
+                        List<decimal> availableBars = new List<decimal>();
+
+                        // Iterar sobre la cantidad de registros en requiredLengths
+                        int index = 0;
+                        while (index < requiredLengths.Count)
+                        {
+                            // Hacer la consulta a la base de datos
+                            DataTable productSizesTable = NQuote.GetProductSizes(columnName);
+
+                            // Procesar los resultados de la consulta
+                            foreach (DataRow row in productSizesTable.Rows)
+                            {
+                                if (row["Tamaño"] != DBNull.Value)
+                                {
+                                    decimal size = Convert.ToDecimal(row["Tamaño"], CultureInfo.InvariantCulture);
+                                    availableBars.Add(size);
+                                }
+                            }
+
+                            // Incrementar el índice
+                            index++;
+                        }
+
+                        /*DE ESTA MANERA SOLO SE OBTIENE 1 TAMAÑO*/
+                        /*
                         DataTable productSizesTable = NQuote.GetProductSizes(columnName);
-                        List<double> availableBars = new List<double>();
+                        List<decimal> availableBars = new List<decimal>();
                         foreach (DataRow row in productSizesTable.Rows)
                         {
                             if (row["Tamaño"] != DBNull.Value)
                             {
-                                double size = Convert.ToDouble(row["Tamaño"]);
+                                decimal size = Convert.ToDecimal(row["Tamaño"], CultureInfo.InvariantCulture);
                                 availableBars.Add(size);
                             }
-                        }
+                        }*/
+
+
 
                         // Mostrar el formulario del optimizador
                         frmOptimizador optimizerForm = new frmOptimizador(requiredLengths.ToArray(), availableBars.ToArray());
@@ -598,6 +635,8 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
     }
-        
+
 }

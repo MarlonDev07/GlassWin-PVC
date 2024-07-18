@@ -8605,7 +8605,7 @@ namespace Negocio.LoadProduct
             decimal SettingPrice = 0;
             if (UserCache.Name == "InnovaGlass")
             {
-                SettingPrice = 0.13m;
+                SettingPrice = 0.1856m;
             }
             else
             {

@@ -68,26 +68,26 @@
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvOrdenProduccion = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cargador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Umbral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jamba = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Superior = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inferior = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vertical = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VerticalCentro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox1.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -434,19 +434,19 @@
             this.Column3,
             this.Column4,
             this.Column5,
-            this.Column6,
+            this.Cargador,
             this.Column7,
-            this.Column8,
+            this.Umbral,
             this.Column9,
-            this.Column10,
+            this.Jamba,
             this.Column11,
-            this.Column12,
+            this.Superior,
             this.Column13,
-            this.Column14,
+            this.Inferior,
             this.Column15,
-            this.Column16,
+            this.Vertical,
             this.Column17,
-            this.Column18,
+            this.VerticalCentro,
             this.Column19});
             this.dgvOrdenProduccion.Location = new System.Drawing.Point(2, 36);
             this.dgvOrdenProduccion.Margin = new System.Windows.Forms.Padding(2);
@@ -455,6 +455,12 @@
             this.dgvOrdenProduccion.RowTemplate.Height = 28;
             this.dgvOrdenProduccion.Size = new System.Drawing.Size(974, 230);
             this.dgvOrdenProduccion.TabIndex = 1;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
             // 
             // Column1
             // 
@@ -491,12 +497,12 @@
             this.Column5.Name = "Column5";
             this.Column5.Width = 150;
             // 
-            // Column6
+            // Cargador
             // 
-            this.Column6.HeaderText = "Cargador";
-            this.Column6.MinimumWidth = 8;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 150;
+            this.Cargador.HeaderText = "Cargador";
+            this.Cargador.MinimumWidth = 8;
+            this.Cargador.Name = "Cargador";
+            this.Cargador.Width = 150;
             // 
             // Column7
             // 
@@ -505,12 +511,12 @@
             this.Column7.Name = "Column7";
             this.Column7.Width = 90;
             // 
-            // Column8
+            // Umbral
             // 
-            this.Column8.HeaderText = "Umbral";
-            this.Column8.MinimumWidth = 8;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 150;
+            this.Umbral.HeaderText = "Umbral";
+            this.Umbral.MinimumWidth = 8;
+            this.Umbral.Name = "Umbral";
+            this.Umbral.Width = 150;
             // 
             // Column9
             // 
@@ -519,12 +525,12 @@
             this.Column9.Name = "Column9";
             this.Column9.Width = 90;
             // 
-            // Column10
+            // Jamba
             // 
-            this.Column10.HeaderText = "Jamba";
-            this.Column10.MinimumWidth = 8;
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 150;
+            this.Jamba.HeaderText = "Jamba";
+            this.Jamba.MinimumWidth = 8;
+            this.Jamba.Name = "Jamba";
+            this.Jamba.Width = 150;
             // 
             // Column11
             // 
@@ -533,12 +539,12 @@
             this.Column11.Name = "Column11";
             this.Column11.Width = 90;
             // 
-            // Column12
+            // Superior
             // 
-            this.Column12.HeaderText = "Superior";
-            this.Column12.MinimumWidth = 8;
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 150;
+            this.Superior.HeaderText = "Superior";
+            this.Superior.MinimumWidth = 8;
+            this.Superior.Name = "Superior";
+            this.Superior.Width = 150;
             // 
             // Column13
             // 
@@ -547,12 +553,12 @@
             this.Column13.Name = "Column13";
             this.Column13.Width = 90;
             // 
-            // Column14
+            // Inferior
             // 
-            this.Column14.HeaderText = "Inferior";
-            this.Column14.MinimumWidth = 8;
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 150;
+            this.Inferior.HeaderText = "Inferior";
+            this.Inferior.MinimumWidth = 8;
+            this.Inferior.Name = "Inferior";
+            this.Inferior.Width = 150;
             // 
             // Column15
             // 
@@ -561,12 +567,12 @@
             this.Column15.Name = "Column15";
             this.Column15.Width = 90;
             // 
-            // Column16
+            // Vertical
             // 
-            this.Column16.HeaderText = "Vertical";
-            this.Column16.MinimumWidth = 8;
-            this.Column16.Name = "Column16";
-            this.Column16.Width = 150;
+            this.Vertical.HeaderText = "Vertical";
+            this.Vertical.MinimumWidth = 8;
+            this.Vertical.Name = "Vertical";
+            this.Vertical.Width = 150;
             // 
             // Column17
             // 
@@ -575,12 +581,12 @@
             this.Column17.Name = "Column17";
             this.Column17.Width = 90;
             // 
-            // Column18
+            // VerticalCentro
             // 
-            this.Column18.HeaderText = "Vertical Centro";
-            this.Column18.MinimumWidth = 8;
-            this.Column18.Name = "Column18";
-            this.Column18.Width = 150;
+            this.VerticalCentro.HeaderText = "Vertical Centro";
+            this.VerticalCentro.MinimumWidth = 8;
+            this.VerticalCentro.Name = "VerticalCentro";
+            this.VerticalCentro.Width = 150;
             // 
             // Column19
             // 
@@ -588,12 +594,6 @@
             this.Column19.MinimumWidth = 8;
             this.Column19.Name = "Column19";
             this.Column19.Width = 90;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
             // 
             // frmOrdenProduccion
             // 
@@ -642,25 +642,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvOrdenProduccion8025;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -683,5 +664,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PisaAlfombra;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cargador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Umbral;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Jamba;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Superior;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inferior;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vertical;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VerticalCentro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
     }
 }

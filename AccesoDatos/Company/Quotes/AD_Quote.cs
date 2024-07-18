@@ -236,7 +236,7 @@ namespace AccesoDatos.Company.Quotes
             try
             {
                 DataTable dataTable = new DataTable();
-                SqlCommand cmd = new SqlCommand("SELECT Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Nombre = @ProductName", Cnn.OpenConecction());
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = @ProductName and Tamaño = 6.40", Cnn.OpenConecction());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@ProductName", productName + " 5020");
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
