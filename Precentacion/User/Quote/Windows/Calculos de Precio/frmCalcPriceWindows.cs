@@ -545,7 +545,7 @@ namespace Precentacion.User.Quote.Windows
         #region Función para redimensionar la imagen
         private Bitmap ResizeImage(Image image, int width, int height)
         {
-            try {
+           // try {
                 // Crear un nuevo Bitmap con el tamaño deseado
                 var destImage = new Bitmap(width, height);
 
@@ -574,11 +574,11 @@ namespace Precentacion.User.Quote.Windows
                 // Devolver la imagen redimensionada
                 return destImage;
 
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+           // }
+           // catch (Exception ex) {
+               // MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return destImage;
+           // }
 
            
 
