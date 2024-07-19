@@ -78,9 +78,15 @@ namespace Precentacion.User.Bill
                     string bar = "Barra " + (i + 1);
                     string cuts = string.Join(", ", optimizedCuts[i].Select(c => c.ToString("0.00") + " m"));
 
-                    // Obtener Ubicación y Medidas (se asume que se usa el índice de fila para obtener la información)
+                    // Si "Cortes" está vacío, saltar esta iteración
+                    if (string.IsNullOrWhiteSpace(cuts))
+                    {
+                        continue;
+                    }
+
+                    // Obtener Ubicación (se asume que se usa el índice de fila para obtener la información)
                     var ubicacion = dgvOrdenProduccion.Rows[i].Cells["Ubicacion"].Value?.ToString() ?? "";
-                   // var medidas = dgvOrdenProduccion.Rows[i].Cells["Cargador"].Value?.ToString() ?? "";
+                    // var medidas = dgvOrdenProduccion.Rows[i].Cells["Cargador"].Value?.ToString() ?? "";
 
                     // Calcular el residuo
                     decimal totalCuts = optimizedCuts[i].Sum();
@@ -100,6 +106,7 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private List<List<decimal>> OptimizeCuts(decimal[] availableBars, decimal[] requiredLengths)
