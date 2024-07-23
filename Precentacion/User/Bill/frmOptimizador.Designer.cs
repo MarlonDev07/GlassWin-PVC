@@ -157,7 +157,7 @@
             this.dgvResults1.Name = "dgvResults1";
             this.dgvResults1.RowHeadersWidth = 62;
             this.dgvResults1.RowTemplate.Height = 28;
-            this.dgvResults1.Size = new System.Drawing.Size(932, 257);
+            this.dgvResults1.Size = new System.Drawing.Size(1344, 257);
             this.dgvResults1.TabIndex = 11;
             // 
             // txtAvailableBars
@@ -251,7 +251,7 @@
             this.groupBox2.Controls.Add(this.dgvResults1);
             this.groupBox2.Location = new System.Drawing.Point(8, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(942, 421);
+            this.groupBox2.Size = new System.Drawing.Size(1354, 421);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             // 
@@ -259,7 +259,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 591);
+            this.ClientSize = new System.Drawing.Size(1374, 591);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);

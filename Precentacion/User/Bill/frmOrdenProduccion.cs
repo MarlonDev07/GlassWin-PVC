@@ -591,6 +591,7 @@ namespace Precentacion.User.Bill
                         while (index < requiredLengths.Count)
                         {
                             // Hacer la consulta a la base de datos
+
                             DataTable productSizesTable = NQuote.GetProductSizes(columnName);
 
                             // Procesar los resultados de la consulta
@@ -638,6 +639,12 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
+
+
+
 
 
     }

@@ -14,7 +14,7 @@ namespace Precentacion.User.Bill
 {
     public partial class frmOptimizador : Form
     {
-        //Variables
+        // Variables
         N_Quote NQuote = new N_Quote();
         private decimal[] availableBars;
         private decimal[] requiredLengths;
@@ -37,12 +37,10 @@ namespace Precentacion.User.Bill
             // Definir columnas para el DataGridView
             dgvResults1.Columns.Add("colBar", "Barra");
             dgvResults1.Columns.Add("colUbicacion", "Ubicación");
-           // dgvResults1.Columns.Add("colMedidas", "Medidas");
             dgvResults1.Columns.Add("colCuts", "Cortes");
             dgvResults1.Columns.Add("colResiduos", "Residuos"); // Nueva columna para residuos
             AdjustColumnWidthsToFitContent();
         }
-
 
         private void AdjustColumnWidthsToFitContent()
         {
@@ -52,13 +50,17 @@ namespace Precentacion.User.Bill
             }
         }
 
-
         private void OptimizeCutsAndDisplayResults()
         {
             try
             {
+                // Asignar números secuenciales a las longitudes requeridas
+                List<(decimal length, int number)> requiredLengthsWithNumbers = requiredLengths
+                    .Select((length, index) => (length, number: index + 1))
+                    .ToList();
+
                 // Llamar al método OptimizeCuts
-                List<List<decimal>> optimizedCuts = OptimizeCuts(availableBars, requiredLengths);
+                List<List<(decimal length, int number)>> optimizedCuts = OptimizeCuts(availableBars, requiredLengthsWithNumbers);
 
                 // Mostrar los resultados en el DataGridView
                 dgvResults1.Rows.Clear();
@@ -76,7 +78,7 @@ namespace Precentacion.User.Bill
                 for (int i = 0; i < optimizedCuts.Count; i++)
                 {
                     string bar = "Barra " + (i + 1);
-                    string cuts = string.Join(", ", optimizedCuts[i].Select(c => c.ToString("0.00") + " m"));
+                    string cuts = string.Join(", ", optimizedCuts[i].Select(c => $"{c.length:0.00} m (V{c.number})"));
 
                     // Si "Cortes" está vacío, saltar esta iteración
                     if (string.IsNullOrWhiteSpace(cuts))
@@ -86,15 +88,14 @@ namespace Precentacion.User.Bill
 
                     // Obtener Ubicación (se asume que se usa el índice de fila para obtener la información)
                     var ubicacion = dgvOrdenProduccion.Rows[i].Cells["Ubicacion"].Value?.ToString() ?? "";
-                    // var medidas = dgvOrdenProduccion.Rows[i].Cells["Cargador"].Value?.ToString() ?? "";
 
                     // Calcular el residuo
-                    decimal totalCuts = optimizedCuts[i].Sum();
+                    decimal totalCuts = optimizedCuts[i].Sum(c => c.length);
                     decimal barLength = availableBars[i];
                     decimal residue = barLength - totalCuts;
 
                     // Añadir la fila al DataGridView
-                    dgvResults1.Rows.Add(bar, ubicacion, /*medidas,*/ cuts, residue.ToString("0.00") + " m");
+                    dgvResults1.Rows.Add(bar, ubicacion, cuts, residue.ToString("0.00") + " m");
                 }
             }
             catch (FormatException ex)
@@ -107,29 +108,30 @@ namespace Precentacion.User.Bill
             }
         }
 
-
-
-        private List<List<decimal>> OptimizeCuts(decimal[] availableBars, decimal[] requiredLengths)
+        private List<List<(decimal length, int number)>> OptimizeCuts(decimal[] availableBars, List<(decimal length, int number)> requiredLengthsWithNumbers)
         {
             // Ordenar las longitudes requeridas de mayor a menor
-            Array.Sort(requiredLengths);
-            Array.Reverse(requiredLengths);
+            requiredLengthsWithNumbers = requiredLengthsWithNumbers
+                .OrderByDescending(x => x.length)
+                .ToList();
 
             // Lista para almacenar los cortes óptimos para cada barra
-            List<List<decimal>> optimizedCuts = new List<List<decimal>>();
+            List<List<(decimal length, int number)>> optimizedCuts = new List<List<(decimal length, int number)>>();
 
             foreach (decimal bar in availableBars)
             {
-                List<decimal> cuts = new List<decimal>();
+                List<(decimal length, int number)> cuts = new List<(decimal length, int number)>();
                 decimal remainingLength = bar;
 
-                foreach (decimal length in requiredLengths.ToList())
+                foreach (var lengthWithNumber in requiredLengthsWithNumbers.ToList())
                 {
-                    if (remainingLength >= length)
+                    if (remainingLength >= lengthWithNumber.length)
                     {
-                        cuts.Add(length);
-                        remainingLength -= length;
-                        requiredLengths = requiredLengths.Where(val => val != length).ToArray();
+                        cuts.Add(lengthWithNumber);
+                        remainingLength -= lengthWithNumber.length;
+                        requiredLengthsWithNumbers = requiredLengthsWithNumbers
+                            .Where(val => val.number != lengthWithNumber.number)
+                            .ToList();
                     }
                 }
 
@@ -137,13 +139,15 @@ namespace Precentacion.User.Bill
             }
 
             // Agregar cualquier corte que no pudo ser optimizado
-            if (requiredLengths.Length > 0)
+            if (requiredLengthsWithNumbers.Count > 0)
             {
-                optimizedCuts.Add(new List<decimal>(requiredLengths));
+                optimizedCuts.Add(new List<(decimal length, int number)>(requiredLengthsWithNumbers));
             }
 
             return optimizedCuts;
         }
+
+
 
 
 
