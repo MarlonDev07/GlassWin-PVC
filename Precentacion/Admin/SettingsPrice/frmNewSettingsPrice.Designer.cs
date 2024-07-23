@@ -216,7 +216,8 @@
             "Cedazo 2",
             "Ventila1Fijo",
             "FijoMovilMovilMovil",
-            "2ViasMovilMovilMovil"});
+            "2ViasMovilMovilMovil",
+            "PuertaBañoMovilMovil"});
             this.cbDesing.Location = new System.Drawing.Point(275, 33);
             this.cbDesing.Name = "cbDesing";
             this.cbDesing.Size = new System.Drawing.Size(121, 28);
@@ -260,7 +261,7 @@
             "Cedazo1/2",
             "Puerta Liviana",
             "PuertaEuAbatible",
-            "Puerta Baño"});
+            "PuertaBaño"});
             this.cbSystem.Location = new System.Drawing.Point(66, 34);
             this.cbSystem.Name = "cbSystem";
             this.cbSystem.Size = new System.Drawing.Size(121, 28);
