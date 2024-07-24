@@ -5,11 +5,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Drawing;
+using System.IO;
 namespace Precentacion.User.Bill
 {
     public partial class frmOptimizador : Form
@@ -18,6 +21,8 @@ namespace Precentacion.User.Bill
         N_Quote NQuote = new N_Quote();
         private decimal[] availableBars;
         private decimal[] requiredLengths;
+        private Image defaultImage;
+        private Image specificImage;
 
         public frmOptimizador(decimal[] requiredLengths, decimal[] availableBars)
         {
@@ -28,6 +33,15 @@ namespace Precentacion.User.Bill
             // Configurar el DataGridView al inicializar el formulario
             ConfigureDataGridView();
 
+            // Cargar las imágenes
+            string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+            string defaultUrl = "\\Images\\SelectionDesigns\\corte45.jpeg";
+            string specificUrl = "\\Images\\SelectionDesigns\\corte90.jpeg";
+            string rutaDefaultImage = ruta + defaultUrl;
+            string rutaSpecificImage = ruta + specificUrl;
+            defaultImage = Image.FromFile(rutaDefaultImage);
+            specificImage = Image.FromFile(rutaSpecificImage);
+
             // Ejecutar la optimización
             OptimizeCutsAndDisplayResults();
         }
@@ -36,9 +50,21 @@ namespace Precentacion.User.Bill
         {
             // Definir columnas para el DataGridView
             dgvResults1.Columns.Add("colBar", "Barra");
-            dgvResults1.Columns.Add("colUbicacion", "Tipo Corte");
+
+            // Crear y añadir una columna de imagen con imagen por defecto
+            DataGridViewImageColumn imageColumn = new DataGridViewImageColumn
+            {
+                Name = "colUbicacion",
+                HeaderText = "Tipo Corte",
+                ImageLayout = DataGridViewImageCellLayout.Zoom
+            };
+            imageColumn.DefaultCellStyle.NullValue = defaultImage; // Establecer la imagen por defecto
+            dgvResults1.Columns.Add(imageColumn);
+
             dgvResults1.Columns.Add("colCuts", "Cortes");
             dgvResults1.Columns.Add("colResiduos", "Residuos"); // Nueva columna para residuos
+
+            // Ajustar el tamaño de las columnas
             AdjustColumnWidthsToFitContent();
         }
 
@@ -46,7 +72,7 @@ namespace Precentacion.User.Bill
         {
             foreach (DataGridViewColumn column in dgvResults1.Columns)
             {
-                dgvResults1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
@@ -65,20 +91,13 @@ namespace Precentacion.User.Bill
                 // Mostrar los resultados en el DataGridView
                 dgvResults1.Rows.Clear();
 
-                // Obtén el DataGridView del formulario de producción
-                var productionForm = Application.OpenForms.OfType<frmOrdenProduccion>().FirstOrDefault();
-                if (productionForm == null)
-                {
-                    MessageBox.Show("No se pudo encontrar el formulario de producción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                var dgvOrdenProduccion = productionForm.dgvOrdenProduccion;
-
                 for (int i = 0; i < optimizedCuts.Count; i++)
                 {
                     string bar = "Barra " + (i + 1);
                     string cuts = string.Join(", ", optimizedCuts[i].Select(c => $"{c.length:0.00} m (V{c.number})"));
+
+                    // Seleccionar la imagen adecuada
+                    Image ubicacionImage = string.IsNullOrWhiteSpace(cuts) ? defaultImage : specificImage;
 
                     // Si "Cortes" está vacío, saltar esta iteración
                     if (string.IsNullOrWhiteSpace(cuts))
@@ -86,17 +105,18 @@ namespace Precentacion.User.Bill
                         continue;
                     }
 
-                    // Obtener Ubicación (se asume que se usa el índice de fila para obtener la información)
-                    var ubicacion = dgvOrdenProduccion.Rows[i].Cells["Ubicacion"].Value?.ToString() ?? "";
-
                     // Calcular el residuo
                     decimal totalCuts = optimizedCuts[i].Sum(c => c.length);
                     decimal barLength = availableBars[i];
                     decimal residue = barLength - totalCuts;
 
-                    // Añadir la fila al DataGridView
-                    dgvResults1.Rows.Add(bar, ubicacion, cuts, residue.ToString("0.00") + " m");
+                    // Añadir la fila al DataGridView, incluyendo la imagen
+                    dgvResults1.Rows.Add(bar, ubicacionImage, cuts, residue.ToString("0.00") + " m");
                 }
+
+                // Añadir una fila en blanco al final con la imagen por defecto
+                dgvResults1.Rows.Add("", defaultImage, "", "");
+
             }
             catch (FormatException ex)
             {
@@ -107,6 +127,10 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
+
 
         private List<List<(decimal length, int number)>> OptimizeCuts(decimal[] availableBars, List<(decimal length, int number)> requiredLengthsWithNumbers)
         {
@@ -147,130 +171,17 @@ namespace Precentacion.User.Bill
             return optimizedCuts;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private void cbProyecto_SelectedIndexChanged(object sender, EventArgs e)
+        private void dgvResults1_DataError_1(object sender, DataGridViewDataErrorEventArgs e)
         {
-            try
+            // Asignar la imagen por defecto a la celda que causa el error
+            if (e.Context == DataGridViewDataErrorContexts.Formatting || e.Context == DataGridViewDataErrorContexts.Display)
             {
-                // Cargar el IdQuote en txtOrden y Name en txtName
-                if (cbProyecto.SelectedIndex > 0)
+                if (dgvResults1.Columns[e.ColumnIndex] is DataGridViewImageColumn)
                 {
-                    DataRowView selectedRow = (DataRowView)cbProyecto.SelectedItem;
-                    int idQuote = Convert.ToInt32(selectedRow["IdQuote"]);
-                    string name = selectedRow["Name"].ToString();
-
-                    txtOrden.Text = idQuote.ToString();
-                    txtName.Text = name; // Asignar el valor del campo "Name" al TextBox correspondiente
-
-                    // Cargar los detalles del producto en dgvResults1
-                    DataTable productDetails = NQuote.GetProductDetailsByIdQuote(idQuote);
-                    if (productDetails != null)
-                    {
-                        dgvResults1.DataSource = productDetails;
-                    }
-                    else
-                    {
-                        dgvResults1.DataSource = null;
-                        MessageBox.Show("No se encontraron detalles del producto para la cotización seleccionada.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
+                    dgvResults1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = defaultImage;
+                    e.ThrowException = false; // Suprimir la excepción
                 }
-                else
-                {
-                    txtOrden.Clear(); // Limpiar el campo si no hay proyecto seleccionado
-                    txtName.Clear(); // Limpiar el campo de nombre si no hay proyecto seleccionado
-                    dgvResults1.DataSource = null; // Limpiar el DataGridView si no hay proyecto seleccionado
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error al cargar las ventanas: " + ex.Message);
             }
         }
-
-
-
-        //Metodo para cargar los proyectos
-        private void LoadProjects()
-        {
-            try
-            {
-                DataTable projects = NQuote.GetProjectsByCompanyId();
-
-                if (projects != null)
-                {
-                    // Crear una nueva fila con valores en blanco
-                    DataRow blankRow = projects.NewRow();
-                    blankRow["ProjectName"] = "";
-                    blankRow["IdQuote"] = DBNull.Value; // O el valor que consideres apropiado para un ID vacío
-                    blankRow["Name"] = ""; // Agregar el campo "Name" en blanco
-                    projects.Rows.InsertAt(blankRow, 0); // Insertar la fila al inicio del DataTable
-
-                    cbProyecto.DataSource = projects;
-                    cbProyecto.DisplayMember = "ProjectName";
-                    cbProyecto.ValueMember = "IdQuote";
-                    //CargaCompleta = true;
-                    cbProyecto.SelectedIndex = 0;
-                }
-                else
-                {
-                    MessageBox.Show("No se encontraron proyectos para la compañía seleccionada.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error al cargar los proyectos: " + ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private void btnOptimize_Click(object sender, EventArgs e)
-        {
-           /* try
-            {
-                // Obtener y validar las barras disponibles del TextBox
-                double[] availableBars = txtAvailableBars.Text.Split(',')
-                    .Select(s => ParseDouble(s.Trim()))
-                    .ToArray();
-
-                // Obtener y validar las longitudes requeridas del TextBox
-                double[] requiredLengths = txtRequiredLengths.Text.Split(',')
-                    .Select(s => ParseDouble(s.Trim()))
-                    .ToArray();
-
-                // Llamar al método OptimizeCuts
-                List<List<double>> optimizedCuts = OptimizeCuts(availableBars, requiredLengths);
-
-                // Mostrar los resultados en el DataGridView
-                dgvResults1.Rows.Clear();
-                for (int i = 0; i < optimizedCuts.Count; i++)
-                {
-                    string bar = "Barra " + (i + 1);
-                    string cuts = string.Join(", ", optimizedCuts[i].Select(c => c.ToString("0.00") + " m"));
-                    dgvResults1.Rows.Add(bar, cuts);
-                }
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show("Error: La cadena de entrada no tiene el formato correcto. Asegúrese de que los datos ingresados sean números válidos y estén separados por comas.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
-        }
-
     }
 }
