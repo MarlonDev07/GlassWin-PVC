@@ -18,6 +18,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
     public partial class frmCalcPuertaBaño : MaterialSkin.Controls.MaterialForm
     {
         public string design2 { get; set; }
+        N_LoadProduct n_LoadProduct = new N_LoadProduct();
         string Url = "";
         decimal Price = 0;
         decimal TempPrice = 0;
@@ -326,30 +327,39 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         private void SumarValores(DataTable dtAluminio, DataTable dtVidrio, DataTable dtAccesorios)
         {
             DataTable dataTableAluminio = dtAluminio;
-            //Sumar los valores de la tabla Aluminio
+            // Sumar los valores de la tabla Aluminio
             clsPuertaBaño.Price = 0;
             foreach (DataRow row in dataTableAluminio.Rows)
             {
                 clsPuertaBaño.Price += Convert.ToDecimal(row["TotalPrice"]);
             }
 
-            //Sumar los valores de la tabla Vidrio
+            // Sumar los valores de la tabla Vidrio
             DataTable dataTableVidrio = dtVidrio;
             foreach (DataRow row in dataTableVidrio.Rows)
             {
                 clsPuertaBaño.Price += Convert.ToDecimal(row["TotalPrice"]);
             }
 
-            //Sumar los valores de la tabla Accesorios
+            // Sumar los valores de la tabla Accesorios
             DataTable dataTableAccesorios = dtAccesorios;
             foreach (DataRow row in dataTableAccesorios.Rows)
             {
                 clsPuertaBaño.Price += Convert.ToDecimal(row["TotalPrice"]);
             }
 
+            // Obtener la descripción y el ajuste porcentual
+            string Descripcion = clsPuertaBaño.System + clsPuertaBaño.Desing + cbColor.Text;
+            decimal AjustePorcentual = n_LoadProduct.LoadAjustePrecio(cbSupplier.Text, Descripcion);
 
-            txtTotalPrice.Text = clsPuertaBaño.Price.ToString("C");
+            // Calcular el ajuste y el precio total ajustado
+            decimal Ajuste = clsPuertaBaño.Price * (AjustePorcentual / 100);
+            decimal PrecioTotalAjustado = clsPuertaBaño.Price + Ajuste;
+
+            // Mostrar el precio total ajustado en el TextBox
+            txtTotalPrice.Text = PrecioTotalAjustado.ToString("C");
         }
+
         #endregion
 
         #region Botones
