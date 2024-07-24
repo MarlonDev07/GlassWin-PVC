@@ -49,20 +49,20 @@ namespace Precentacion.User.Bill
         private void ConfigureDataGridView()
         {
             // Definir columnas para el DataGridView
-            dgvResults1.Columns.Add("colBar", "Barra");
+            dgvResults1.Columns.Add("colBar", "Barra 6.40");
 
             // Crear y añadir una columna de imagen con imagen por defecto
             DataGridViewImageColumn imageColumn = new DataGridViewImageColumn
             {
                 Name = "colUbicacion",
-                HeaderText = "Tipo Corte",
+                HeaderText = "Corte",
                 ImageLayout = DataGridViewImageCellLayout.Zoom
             };
             imageColumn.DefaultCellStyle.NullValue = defaultImage; // Establecer la imagen por defecto
             dgvResults1.Columns.Add(imageColumn);
 
-            dgvResults1.Columns.Add("colCuts", "Cortes");
-            dgvResults1.Columns.Add("colResiduos", "Residuos"); // Nueva columna para residuos
+            dgvResults1.Columns.Add("colCuts", "Dimensiones");
+            dgvResults1.Columns.Add("colResiduos", "Retal"); // Nueva columna para residuos
 
             // Ajustar el tamaño de las columnas
             AdjustColumnWidthsToFitContent();
