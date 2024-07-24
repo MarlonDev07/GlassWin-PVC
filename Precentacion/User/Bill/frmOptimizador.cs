@@ -36,7 +36,7 @@ namespace Precentacion.User.Bill
         {
             // Definir columnas para el DataGridView
             dgvResults1.Columns.Add("colBar", "Barra");
-            dgvResults1.Columns.Add("colUbicacion", "Ubicación");
+            dgvResults1.Columns.Add("colUbicacion", "Tipo Corte");
             dgvResults1.Columns.Add("colCuts", "Cortes");
             dgvResults1.Columns.Add("colResiduos", "Residuos"); // Nueva columna para residuos
             AdjustColumnWidthsToFitContent();
