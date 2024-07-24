@@ -352,9 +352,9 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             string Descripcion = clsPuertaBaño.System + clsPuertaBaño.Desing + cbColor.Text;
             decimal AjustePorcentual = n_LoadProduct.LoadAjustePrecio(cbSupplier.Text, Descripcion);
 
-            // Calcular el ajuste y el precio total ajustado
-            decimal Ajuste = clsPuertaBaño.Price * (AjustePorcentual / 100);
-            decimal PrecioTotalAjustado = clsPuertaBaño.Price + Ajuste;
+            decimal PrecioTotalNoAjustado = clsPuertaBaño.Price * AjustePorcentual;
+            decimal PrecioTotalAjustado = clsPuertaBaño.Price + PrecioTotalNoAjustado;
+
 
             // Mostrar el precio total ajustado en el TextBox
             txtTotalPrice.Text = PrecioTotalAjustado.ToString("C");
