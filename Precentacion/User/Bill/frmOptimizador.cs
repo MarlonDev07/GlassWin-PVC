@@ -30,7 +30,6 @@ namespace Precentacion.User.Bill
         private Image defaultImage;
         private Image specificImage;
 
-
         public frmOptimizador(decimal[] requiredLengths, decimal[] availableBars, decimal[] requiredLengthsU, decimal[] availableBarsU, decimal[] requiredLengthsJ, decimal[] availableBarsJ, decimal[] requiredLengthsS, decimal[] availableBarsS)
         {
             InitializeComponent();
@@ -68,8 +67,6 @@ namespace Precentacion.User.Bill
             OptimizeCutsAndDisplayResults(dgvResults3, requiredLengthsJ, availableBarsJ);
             OptimizeCutsAndDisplayResults(dgvResults4, requiredLengthsS, availableBarsS);
         }
-
-
 
         private void ConfigureDataGridView(DataGridView dgv, Image defaultImage)
         {
@@ -120,7 +117,7 @@ namespace Precentacion.User.Bill
                 for (int i = 0; i < optimizedCuts.Count; i++)
                 {
                     string bar = "Barra " + (i + 1);
-                    string cuts = string.Join(", ", optimizedCuts[i].Select(c => $"{c.length:0.00} m (V{c.number})"));
+                    string cuts = string.Join(", ", optimizedCuts[i].Select(c => $"{c.length.ToString("0.000", CultureInfo.InvariantCulture)} m (V{c.number})"));
 
                     // Seleccionar la imagen adecuada
                     Image ubicacionImage = string.IsNullOrWhiteSpace(cuts) ? defaultImage : specificImage;
@@ -137,7 +134,7 @@ namespace Precentacion.User.Bill
                     decimal residue = barLength - totalCuts;
 
                     // Añadir la fila al DataGridView, incluyendo la imagen
-                    dgv.Rows.Add(bar, ubicacionImage, cuts, residue.ToString("0.00") + " m");
+                    dgv.Rows.Add(bar, ubicacionImage, cuts, residue.ToString("0.000", CultureInfo.InvariantCulture) + " m");
                 }
 
                 // Añadir una fila en blanco al final con la imagen por defecto
