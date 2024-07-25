@@ -27,10 +27,17 @@ namespace Precentacion.User.Bill
         private decimal[] requiredLengthsJ;
         private decimal[] availableBarsS;
         private decimal[] requiredLengthsS;
+        private decimal[] availableBarsI;
+        private decimal[] requiredLengthsI;
+        private decimal[] availableBarsV;
+        private decimal[] requiredLengthsV;
+        private decimal[] availableBarsVC;
+        private decimal[] requiredLengthsVC;
         private Image defaultImage;
         private Image specificImage;
 
-        public frmOptimizador(decimal[] requiredLengths, decimal[] availableBars, decimal[] requiredLengthsU, decimal[] availableBarsU, decimal[] requiredLengthsJ, decimal[] availableBarsJ, decimal[] requiredLengthsS, decimal[] availableBarsS)
+
+        public frmOptimizador(decimal[] requiredLengths, decimal[] availableBars, decimal[] requiredLengthsU, decimal[] availableBarsU, decimal[] requiredLengthsJ, decimal[] availableBarsJ, decimal[] requiredLengthsS, decimal[] availableBarsS, decimal[] requiredLengthsI, decimal[] availableBarsI, decimal[] requiredLengthsV, decimal[] availableBarsV, decimal[] requiredLengthsVC, decimal[] availableBarsVC)
         {
             InitializeComponent();
             // Cargador
@@ -45,12 +52,24 @@ namespace Precentacion.User.Bill
             // Superior
             this.requiredLengthsS = requiredLengthsS;
             this.availableBarsS = availableBarsS;
+            // Inferior
+            this.requiredLengthsI = requiredLengthsI;
+            this.availableBarsI = availableBarsI;
+            // Vertical
+            this.requiredLengthsV = requiredLengthsV;
+            this.availableBarsV = availableBarsV;
+            // Vertical Centro
+            this.requiredLengthsVC = requiredLengthsVC;
+            this.availableBarsVC = availableBarsVC;
 
             // Configurar los DataGridView al inicializar el formulario
             ConfigureDataGridView(dgvResults1, defaultImage);
             ConfigureDataGridView(dgvResults2, defaultImage);
             ConfigureDataGridView(dgvResults3, defaultImage);
             ConfigureDataGridView(dgvResults4, defaultImage);
+            ConfigureDataGridView(dgvResults5, defaultImage);
+            ConfigureDataGridView(dgvResults6, defaultImage);
+            ConfigureDataGridView(dgvResults7, defaultImage);
 
             // Cargar las imágenes
             string ruta = Path.GetDirectoryName(Application.ExecutablePath);
@@ -66,7 +85,11 @@ namespace Precentacion.User.Bill
             OptimizeCutsAndDisplayResults(dgvResults2, requiredLengthsU, availableBarsU);
             OptimizeCutsAndDisplayResults(dgvResults3, requiredLengthsJ, availableBarsJ);
             OptimizeCutsAndDisplayResults(dgvResults4, requiredLengthsS, availableBarsS);
+            OptimizeCutsAndDisplayResults(dgvResults5, requiredLengthsI, availableBarsI);
+            OptimizeCutsAndDisplayResults(dgvResults6, requiredLengthsV, availableBarsV);
+            OptimizeCutsAndDisplayResults(dgvResults7, requiredLengthsVC, availableBarsVC);
         }
+
 
         private void ConfigureDataGridView(DataGridView dgv, Image defaultImage)
         {

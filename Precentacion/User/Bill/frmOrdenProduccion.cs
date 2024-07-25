@@ -557,7 +557,7 @@ namespace Precentacion.User.Bill
                     string columnName = dgvOrdenProduccion.Columns[columnIndex].Name;
 
                     // Verificar si la columna es una de las columnas de artículos
-                    string[] validColumns = { "Cargador", "Umbral", "Jamba", "Superior" }; // Añadimos "Superior" aquí
+                    string[] validColumns = { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "VerticalCentro" }; // Añadimos "Inferior" aquí
 
                     // Declarar las listas de longitudes y barras disponibles
                     List<decimal> requiredLengths = new List<decimal>();
@@ -568,6 +568,12 @@ namespace Precentacion.User.Bill
                     List<decimal> availableBarsJ = new List<decimal>();
                     List<decimal> requiredLengthsS = new List<decimal>();
                     List<decimal> availableBarsS = new List<decimal>();
+                    List<decimal> requiredLengthsI = new List<decimal>();
+                    List<decimal> availableBarsI = new List<decimal>();
+                    List<decimal> requiredLengthsV = new List<decimal>();
+                    List<decimal> availableBarsV = new List<decimal>();
+                    List<decimal> requiredLengthsVC = new List<decimal>();
+                    List<decimal> availableBarsVC = new List<decimal>();
 
                     if (validColumns.Contains(columnName))
                     {
@@ -602,6 +608,18 @@ namespace Precentacion.User.Bill
                                         {
                                             requiredLengthsS.Add(length);
                                         }
+                                        else if (validColumn == "Inferior")
+                                        {
+                                            requiredLengthsI.Add(length);
+                                        }
+                                        else if (validColumn == "Vertical")
+                                        {
+                                            requiredLengthsV.Add(length);
+                                        }
+                                        else if (validColumn == "VerticalCentro")
+                                        {
+                                            requiredLengthsVC.Add(length);
+                                        }
                                     }
                                 }
                             }
@@ -612,11 +630,14 @@ namespace Precentacion.User.Bill
                         FillAvailableBars("Umbral", availableBarsU, requiredLengthsU.Count);
                         FillAvailableBars("Jamba", availableBarsJ, requiredLengthsJ.Count);
                         FillAvailableBars("Superior", availableBarsS, requiredLengthsS.Count);
+                        FillAvailableBars("Inferior", availableBarsI, requiredLengthsI.Count);
+                        FillAvailableBars("Vertical", availableBarsV, requiredLengthsV.Count);
+                        FillAvailableBars("VerticalCentro", availableBarsVC, requiredLengthsVC.Count);
 
                         // Mostrar el formulario del optimizador
-                        frmOptimizador optimizerForm = new frmOptimizador(requiredLengths.ToArray(), availableBars.ToArray(), requiredLengthsU.ToArray(), availableBarsU.ToArray(), requiredLengthsJ.ToArray(), availableBarsJ.ToArray(), requiredLengthsS.ToArray(), availableBarsS.ToArray());
+                        frmOptimizador optimizerForm = new frmOptimizador(requiredLengths.ToArray(), availableBars.ToArray(), requiredLengthsU.ToArray(), availableBarsU.ToArray(), requiredLengthsJ.ToArray(), availableBarsJ.ToArray(), requiredLengthsS.ToArray(), availableBarsS.ToArray(), requiredLengthsI.ToArray(), availableBarsI.ToArray(), requiredLengthsV.ToArray(), availableBarsV.ToArray(), requiredLengthsVC.ToArray(), availableBarsVC.ToArray());
                         optimizerForm.TopMost = true;
-                        optimizerForm.ShowDialog();
+                        optimizerForm.Show();
                     }
                     else
                     {
@@ -635,7 +656,13 @@ namespace Precentacion.User.Bill
             for (int i = 0; i < requiredCount; i++)
             {
                 // Hacer la consulta a la base de datos
-                DataTable productSizesTable = columnName == "Cargador" ? NQuote.GetProductSizes(columnName) : columnName == "Umbral" ? NQuote.GetProductSizesU(columnName) : columnName == "Jamba" ? NQuote.GetProductSizesJ(columnName) : NQuote.GetProductSizesS(columnName);
+                DataTable productSizesTable = columnName == "Cargador" ? NQuote.GetProductSizes(columnName) :
+                                              columnName == "Umbral" ? NQuote.GetProductSizesU(columnName) :
+                                              columnName == "Jamba" ? NQuote.GetProductSizesJ(columnName) :
+                                              columnName == "Superior" ? NQuote.GetProductSizesS(columnName) :
+                                              columnName == "Inferior" ? NQuote.GetProductSizesI(columnName) :
+                                              columnName == "Vertical" ? NQuote.GetProductSizesV(columnName) :
+                                              NQuote.GetProductSizesVC(columnName);
 
                 // Procesar los resultados de la consulta
                 foreach (DataRow row in productSizesTable.Rows)
@@ -648,6 +675,9 @@ namespace Precentacion.User.Bill
                 }
             }
         }
+
+
+
 
 
     }

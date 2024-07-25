@@ -141,6 +141,42 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
+        //Inferior
+        public DataTable GetProductSizesI(string productName)
+        {
+            try
+            {
+                return ADQuote.GetProductSizesInferior(productName);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //Vertical
+        public DataTable GetProductSizesV(string productName)
+        {
+            try
+            {
+                return ADQuote.GetProductSizesVertical(productName);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //Vertical Centro
+        public DataTable GetProductSizesVC(string productName)
+        {
+            try
+            {
+                return ADQuote.GetProductSizesVerticalC(productName);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         public Decimal CalcTotal(DataTable dtWindows)
         {

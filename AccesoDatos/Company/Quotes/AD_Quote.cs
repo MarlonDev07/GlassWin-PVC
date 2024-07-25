@@ -306,6 +306,84 @@ namespace AccesoDatos.Company.Quotes
                 return null;
             }
         }
+        public DataTable GetProductSizesInferior(string productName)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = @ProductName and Tamaño = 6.40", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@ProductName", productName + " 5020");
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public DataTable GetProductSizesVertical(string productName)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = @ProductName and Tamaño = 6.40", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@ProductName", productName + " 5020");
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public DataTable GetProductSizesVerticalC(string productName)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                string query;
+
+                // Verificar si el nombre del producto es "VerticalCentro"
+                if (productName == "VerticalCentro")
+                {
+                    // Usar "Vertical Centro" en la consulta
+                    query = "SELECT DISTINCT Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = 'Vertical Centro 5020' AND Tamaño = 6.40";
+                }
+                else
+                {
+                    // Usar el nombre del producto tal como está
+                    query = "SELECT DISTINCT Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = @ProductName AND Tamaño = 6.40";
+                }
+
+                using (SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction()))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    if (productName != "VerticalCentro")
+                    {
+                        cmd.Parameters.AddWithValue("@ProductName", productName + " 5020");
+                    }
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dataTable);
+                    }
+                }
+
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                // Manejar el error según sea necesario
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
 
 
 
