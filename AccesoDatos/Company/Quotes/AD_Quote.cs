@@ -288,6 +288,26 @@ namespace AccesoDatos.Company.Quotes
             }
         }
 
+        public DataTable GetProductSizesSuperior(string productName)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = @ProductName and Tamaño = 6.40", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@ProductName", productName + " 5020");
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
 
 
         public bool UpdatePriceWindows(int IdWindows, decimal Price)

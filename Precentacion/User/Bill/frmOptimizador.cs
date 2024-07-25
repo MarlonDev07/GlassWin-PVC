@@ -25,11 +25,13 @@ namespace Precentacion.User.Bill
         private decimal[] requiredLengthsU;
         private decimal[] availableBarsJ;
         private decimal[] requiredLengthsJ;
+        private decimal[] availableBarsS;
+        private decimal[] requiredLengthsS;
         private Image defaultImage;
         private Image specificImage;
 
 
-        public frmOptimizador(decimal[] requiredLengths, decimal[] availableBars, decimal[] requiredLengthsU, decimal[] availableBarsU, decimal[] requiredLengthsJ, decimal[] availableBarsJ)
+        public frmOptimizador(decimal[] requiredLengths, decimal[] availableBars, decimal[] requiredLengthsU, decimal[] availableBarsU, decimal[] requiredLengthsJ, decimal[] availableBarsJ, decimal[] requiredLengthsS, decimal[] availableBarsS)
         {
             InitializeComponent();
             // Cargador
@@ -41,11 +43,15 @@ namespace Precentacion.User.Bill
             // Jamba
             this.requiredLengthsJ = requiredLengthsJ;
             this.availableBarsJ = availableBarsJ;
+            // Superior
+            this.requiredLengthsS = requiredLengthsS;
+            this.availableBarsS = availableBarsS;
 
             // Configurar los DataGridView al inicializar el formulario
             ConfigureDataGridView(dgvResults1, defaultImage);
             ConfigureDataGridView(dgvResults2, defaultImage);
             ConfigureDataGridView(dgvResults3, defaultImage);
+            ConfigureDataGridView(dgvResults4, defaultImage);
 
             // Cargar las imágenes
             string ruta = Path.GetDirectoryName(Application.ExecutablePath);
@@ -60,7 +66,9 @@ namespace Precentacion.User.Bill
             OptimizeCutsAndDisplayResults(dgvResults1, requiredLengths, availableBars);
             OptimizeCutsAndDisplayResults(dgvResults2, requiredLengthsU, availableBarsU);
             OptimizeCutsAndDisplayResults(dgvResults3, requiredLengthsJ, availableBarsJ);
+            OptimizeCutsAndDisplayResults(dgvResults4, requiredLengthsS, availableBarsS);
         }
+
 
 
         private void ConfigureDataGridView(DataGridView dgv, Image defaultImage)

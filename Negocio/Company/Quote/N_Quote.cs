@@ -129,6 +129,18 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
+        //Superior
+        public DataTable GetProductSizesS(string productName)
+        {
+            try
+            {
+                return ADQuote.GetProductSizesSuperior(productName);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         public Decimal CalcTotal(DataTable dtWindows)
         {

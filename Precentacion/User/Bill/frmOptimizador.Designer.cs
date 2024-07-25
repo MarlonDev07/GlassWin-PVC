@@ -33,19 +33,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvResults2 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.dgvResults4 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dgvResults3 = new System.Windows.Forms.DataGridView();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.dgvResults2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResults4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResults2)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvResults1
@@ -82,6 +87,9 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.pictureBox4);
+            this.panel1.Controls.Add(this.dgvResults4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox3);
@@ -96,36 +104,36 @@
             this.panel1.Size = new System.Drawing.Size(1369, 608);
             this.panel1.TabIndex = 14;
             // 
-            // dgvResults2
+            // label4
             // 
-            this.dgvResults2.AllowUserToAddRows = false;
-            this.dgvResults2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults2.Location = new System.Drawing.Point(9, 445);
-            this.dgvResults2.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvResults2.Name = "dgvResults2";
-            this.dgvResults2.RowHeadersWidth = 62;
-            this.dgvResults2.RowTemplate.Height = 28;
-            this.dgvResults2.Size = new System.Drawing.Size(1344, 265);
-            this.dgvResults2.TabIndex = 14;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(219, 1178);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(326, 42);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "006 Superior 5020";
             // 
-            // label2
+            // pictureBox4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(220, 396);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(304, 42);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "002 Umbral 5020";
+            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
+            this.pictureBox4.Location = new System.Drawing.Point(9, 1172);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(209, 50);
+            this.pictureBox4.TabIndex = 21;
+            this.pictureBox4.TabStop = false;
             // 
-            // pictureBox2
+            // dgvResults4
             // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(10, 390);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(209, 50);
-            this.pictureBox2.TabIndex = 15;
-            this.pictureBox2.TabStop = false;
+            this.dgvResults4.AllowUserToAddRows = false;
+            this.dgvResults4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResults4.Location = new System.Drawing.Point(8, 1227);
+            this.dgvResults4.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvResults4.Name = "dgvResults4";
+            this.dgvResults4.RowHeadersWidth = 62;
+            this.dgvResults4.RowTemplate.Height = 28;
+            this.dgvResults4.Size = new System.Drawing.Size(1344, 265);
+            this.dgvResults4.TabIndex = 20;
             // 
             // label3
             // 
@@ -136,6 +144,16 @@
             this.label3.Size = new System.Drawing.Size(297, 42);
             this.label3.TabIndex = 19;
             this.label3.Text = "004 Jamba 5020";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(220, 396);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(304, 42);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "002 Umbral 5020";
             // 
             // pictureBox3
             // 
@@ -158,6 +176,27 @@
             this.dgvResults3.Size = new System.Drawing.Size(1344, 265);
             this.dgvResults3.TabIndex = 17;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(10, 390);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(209, 50);
+            this.pictureBox2.TabIndex = 15;
+            this.pictureBox2.TabStop = false;
+            // 
+            // dgvResults2
+            // 
+            this.dgvResults2.AllowUserToAddRows = false;
+            this.dgvResults2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResults2.Location = new System.Drawing.Point(9, 445);
+            this.dgvResults2.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvResults2.Name = "dgvResults2";
+            this.dgvResults2.RowHeadersWidth = 62;
+            this.dgvResults2.RowTemplate.Height = 28;
+            this.dgvResults2.Size = new System.Drawing.Size(1344, 265);
+            this.dgvResults2.TabIndex = 14;
+            // 
             // frmOptimizador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,10 +210,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResults4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResults2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -190,5 +231,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.DataGridView dgvResults3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.DataGridView dgvResults4;
     }
 }
