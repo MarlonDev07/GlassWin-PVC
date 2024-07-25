@@ -66,6 +66,9 @@
             this.btnOcultar = new System.Windows.Forms.Button();
             this.dgvAluminio = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             this.PanelMedidas.SuspendLayout();
@@ -384,9 +387,9 @@
             this.cbVidrio.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.cbVidrio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVidrio.FormattingEnabled = true;
-            this.cbVidrio.Location = new System.Drawing.Point(494, 50);
+            this.cbVidrio.Location = new System.Drawing.Point(474, 50);
             this.cbVidrio.Name = "cbVidrio";
-            this.cbVidrio.Size = new System.Drawing.Size(90, 21);
+            this.cbVidrio.Size = new System.Drawing.Size(138, 21);
             this.cbVidrio.TabIndex = 24;
             this.cbVidrio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboBox_KeyPress);
             // 
@@ -414,9 +417,9 @@
             this.lblVidrio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblVidrio.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVidrio.ForeColor = System.Drawing.Color.Black;
-            this.lblVidrio.Location = new System.Drawing.Point(494, 25);
+            this.lblVidrio.Location = new System.Drawing.Point(474, 25);
             this.lblVidrio.Name = "lblVidrio";
-            this.lblVidrio.Size = new System.Drawing.Size(90, 20);
+            this.lblVidrio.Size = new System.Drawing.Size(138, 20);
             this.lblVidrio.TabIndex = 17;
             this.lblVidrio.Text = "Vidrio";
             this.lblVidrio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -480,14 +483,17 @@
             // 
             // panelDesglose
             // 
+            this.panelDesglose.Controls.Add(this.label10);
+            this.panelDesglose.Controls.Add(this.label8);
+            this.panelDesglose.Controls.Add(this.label7);
             this.panelDesglose.Controls.Add(this.dgvAccesorios);
             this.panelDesglose.Controls.Add(this.dgvVidrio);
             this.panelDesglose.Controls.Add(this.btnOcultar);
             this.panelDesglose.Controls.Add(this.dgvAluminio);
             this.panelDesglose.Controls.Add(this.label5);
-            this.panelDesglose.Location = new System.Drawing.Point(0, 57);
+            this.panelDesglose.Location = new System.Drawing.Point(0, 67);
             this.panelDesglose.Name = "panelDesglose";
-            this.panelDesglose.Size = new System.Drawing.Size(1043, 659);
+            this.panelDesglose.Size = new System.Drawing.Size(1043, 649);
             this.panelDesglose.TabIndex = 68;
             this.panelDesglose.Visible = false;
             // 
@@ -495,20 +501,20 @@
             // 
             this.dgvAccesorios.BackgroundColor = System.Drawing.Color.White;
             this.dgvAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAccesorios.Location = new System.Drawing.Point(240, 323);
+            this.dgvAccesorios.Location = new System.Drawing.Point(240, 425);
             this.dgvAccesorios.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAccesorios.Name = "dgvAccesorios";
-            this.dgvAccesorios.Size = new System.Drawing.Size(593, 98);
+            this.dgvAccesorios.Size = new System.Drawing.Size(593, 139);
             this.dgvAccesorios.TabIndex = 46;
             // 
             // dgvVidrio
             // 
             this.dgvVidrio.BackgroundColor = System.Drawing.Color.White;
             this.dgvVidrio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVidrio.Location = new System.Drawing.Point(240, 244);
+            this.dgvVidrio.Location = new System.Drawing.Point(240, 250);
             this.dgvVidrio.Margin = new System.Windows.Forms.Padding(2);
             this.dgvVidrio.Name = "dgvVidrio";
-            this.dgvVidrio.Size = new System.Drawing.Size(594, 76);
+            this.dgvVidrio.Size = new System.Drawing.Size(594, 129);
             this.dgvVidrio.TabIndex = 45;
             // 
             // btnOcultar
@@ -518,7 +524,7 @@
             this.btnOcultar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOcultar.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOcultar.ForeColor = System.Drawing.Color.White;
-            this.btnOcultar.Location = new System.Drawing.Point(465, 486);
+            this.btnOcultar.Location = new System.Drawing.Point(465, 593);
             this.btnOcultar.Name = "btnOcultar";
             this.btnOcultar.Size = new System.Drawing.Size(151, 30);
             this.btnOcultar.TabIndex = 44;
@@ -530,10 +536,10 @@
             // 
             this.dgvAluminio.BackgroundColor = System.Drawing.Color.White;
             this.dgvAluminio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAluminio.Location = new System.Drawing.Point(240, 141);
+            this.dgvAluminio.Location = new System.Drawing.Point(240, 57);
             this.dgvAluminio.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAluminio.Name = "dgvAluminio";
-            this.dgvAluminio.Size = new System.Drawing.Size(594, 98);
+            this.dgvAluminio.Size = new System.Drawing.Size(594, 168);
             this.dgvAluminio.TabIndex = 43;
             // 
             // label5
@@ -549,6 +555,45 @@
             this.label5.TabIndex = 42;
             this.label5.Text = "Desglose";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(123, 117);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 23);
+            this.label7.TabIndex = 67;
+            this.label7.Text = "Aluminio";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(123, 486);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(97, 23);
+            this.label8.TabIndex = 68;
+            this.label8.Text = "Accesorios";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(123, 313);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 23);
+            this.label10.TabIndex = 69;
+            this.label10.Text = "Vidrio";
             // 
             // frmCalcPuertaBaño
             // 
@@ -576,6 +621,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picPuertaBaño)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.panelDesglose.ResumeLayout(false);
+            this.panelDesglose.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVidrio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluminio)).EndInit();
@@ -623,5 +669,8 @@
         private System.Windows.Forms.Button btnOcultar;
         private System.Windows.Forms.DataGridView dgvAluminio;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }

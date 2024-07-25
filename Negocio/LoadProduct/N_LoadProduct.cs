@@ -8319,10 +8319,10 @@ namespace Negocio.LoadProduct
             {
                 //Aluminio
                 case "Cargador PB Liso":
-                    Metraje = Weigth;
+                    Metraje = WeigthPanel;//Weigth;
                     break;
                 case "Umbral PB Liso":
-                    Metraje = Weigth;
+                    Metraje = WeigthPanel;//Weigth;
                     break;
                 case "Jamba PB Liso":
                     Metraje = 3.6m;
@@ -8331,52 +8331,53 @@ namespace Negocio.LoadProduct
                     Metraje = 7.2m;
                     break;
                 case "Superior PB Liso":
-                    Metraje = Weigth;
+                    Metraje = WeigthPanel;//Weigth;
                     break;
                 case "Inferior PB Liso":
-                    Metraje = Weigth;
+                    Metraje = WeigthPanel;//Weigth;
                     break;
                 case "Pañera PB Liso":
-                    Metraje = Weigth * 2;
+                    Metraje = WeigthPanel * 2; //Weigth * 2;
                     break;
                 case "Escuadra Pañera PB Liso":
                     Metraje = 0.4m;
                     break;
                 //Lamina
                 case "Lamina Plastica 122":
-                    if (Weigth <= 1.22m)
+                    if (WeigthPanel <= 1.22m)//Weigth
                     {
                         Metraje = 1;
                     }
                     else
                     {
-                        if (Weigth >= 1.83m && Weigth <= 2.44m)
+                        if (WeigthPanel >= 1.83m && WeigthPanel <= 2.44m)//Weigth 
                         {
                             Metraje = 2;
                         }
                     }
                     break;
+                    //TODOS LOS WeightPanel eran Weight antes
                 case "Lamina Plastica 65":
-                    if (Weigth >= 1.23m && Weigth <= 1.30m)
+                    if (WeigthPanel >= 1.23m && WeigthPanel <= 1.30m)
                     {
                         Metraje = 2;
                     }
                     break;
                 case "Lamina Plastica 75":
-                    if (Weigth >= 1.31m && Weigth <= 1.50m)
+                    if (WeigthPanel >= 1.31m && WeigthPanel <= 1.50m)
                     {
                         Metraje = 2;
                     }
                     break;
                 case "Lamina Plastica 91":
-                    if (Weigth >= 1.51m && Weigth <= 1.82m)
+                    if (WeigthPanel >= 1.51m && WeigthPanel <= 1.82m)
                     {
                         Metraje = 2;
                     }
                     break;
                 //Accesorios
                 case "Empaque U PB":
-                    Metraje = (Weigth / 2) + (Heigth * 4);
+                    Metraje = (WeigthPanel / 2) + (Heigth * 4);
                     break;
                 case "Rodin PB":
                     Metraje = 4;

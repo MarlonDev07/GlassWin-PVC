@@ -165,7 +165,7 @@
             this.lblTituloCotizacion.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblTituloCotizacion.Location = new System.Drawing.Point(0, 0);
             this.lblTituloCotizacion.Name = "lblTituloCotizacion";
-            this.lblTituloCotizacion.Size = new System.Drawing.Size(1170, 37);
+            this.lblTituloCotizacion.Size = new System.Drawing.Size(1171, 37);
             this.lblTituloCotizacion.TabIndex = 2;
             this.lblTituloCotizacion.Text = "Cotizacion de Ventana:";
             this.lblTituloCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -178,7 +178,7 @@
             this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUbicacion.BackColor = System.Drawing.Color.Orange;
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(870, 8);
+            this.txtUbicacion.Location = new System.Drawing.Point(854, 8);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(162, 23);
             this.txtUbicacion.TabIndex = 46;
@@ -941,7 +941,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(272, 7);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(443, 24);
+            this.lblDescripcion.Size = new System.Drawing.Size(427, 24);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripcion";
             // 
@@ -951,7 +951,7 @@
             this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(721, 7);
+            this.label1.Location = new System.Drawing.Point(705, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(130, 24);
             this.label1.TabIndex = 63;
@@ -1377,7 +1377,7 @@
             // 
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(1112, 5);
+            this.btnCerrar.Location = new System.Drawing.Point(1096, 5);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(36, 29);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1389,7 +1389,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1040, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(1024, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(51, 29);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
