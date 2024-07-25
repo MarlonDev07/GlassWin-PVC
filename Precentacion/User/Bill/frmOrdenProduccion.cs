@@ -557,74 +557,57 @@ namespace Precentacion.User.Bill
                     string columnName = dgvOrdenProduccion.Columns[columnIndex].Name;
 
                     // Verificar si la columna es una de las columnas de artículos
-                    string[] validColumns = { "Cargador" }; // Puedes agregar más columnas aquí
+                    string[] validColumns = { "Cargador", "Umbral", "Jamba" }; // Añadimos "Jamba" aquí
+
+                    // Declarar las listas de longitudes y barras disponibles
+                    List<decimal> requiredLengths = new List<decimal>();
+                    List<decimal> availableBars = new List<decimal>();
+                    List<decimal> requiredLengthsU = new List<decimal>();
+                    List<decimal> availableBarsU = new List<decimal>();
+                    List<decimal> requiredLengthsJ = new List<decimal>();
+                    List<decimal> availableBarsJ = new List<decimal>();
+
                     if (validColumns.Contains(columnName))
                     {
-                        List<decimal> requiredLengths = new List<decimal>();
+                        // Procesar todas las filas para todas las columnas válidas
                         foreach (DataGridViewRow row in dgvOrdenProduccion.Rows)
                         {
-                            if (row.Cells[columnIndex].Value != null)
+                            foreach (string validColumn in validColumns)
                             {
-                                string value = row.Cells[columnIndex].Value.ToString();
+                                int validColumnIndex = dgvOrdenProduccion.Columns[validColumn].Index;
+                                if (row.Cells[validColumnIndex].Value != null)
+                                {
+                                    string value = row.Cells[validColumnIndex].Value.ToString();
+                                    decimal length;
 
-                                // Intentar convertir directamente la cadena a decimal
-                                try
-                                {
-                                    decimal length = decimal.Parse(value, CultureInfo.GetCultureInfo("es-ES"));
-                                    requiredLengths.Add(length);
-                                }
-                                catch (FormatException)
-                                {
-                                    // Si falla, intentar con InvariantCulture
-                                    decimal length = decimal.Parse(value.Replace(',', '.'), CultureInfo.InvariantCulture);
-                                    requiredLengths.Add(length);
+                                    // Intentar convertir directamente la cadena a decimal
+                                    if (decimal.TryParse(value, NumberStyles.Any, CultureInfo.GetCultureInfo("es-ES"), out length) ||
+                                        decimal.TryParse(value.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out length))
+                                    {
+                                        if (validColumn == "Cargador")
+                                        {
+                                            requiredLengths.Add(length);
+                                        }
+                                        else if (validColumn == "Umbral")
+                                        {
+                                            requiredLengthsU.Add(length);
+                                        }
+                                        else if (validColumn == "Jamba")
+                                        {
+                                            requiredLengthsJ.Add(length);
+                                        }
+                                    }
                                 }
                             }
                         }
 
-                        //DE ESA FORMA SE OBTIENE LA CANTIDAD DE TAMAÑOS QUE SE NECESITEN
-                        // Inicializar la lista para los tamaños disponibles
-                        List<decimal> availableBars = new List<decimal>();
-
-                        // Iterar sobre la cantidad de registros en requiredLengths
-                        int index = 0;
-                        while (index < requiredLengths.Count)
-                        {
-                            // Hacer la consulta a la base de datos
-
-                            DataTable productSizesTable = NQuote.GetProductSizes(columnName);
-
-                            // Procesar los resultados de la consulta
-                            foreach (DataRow row in productSizesTable.Rows)
-                            {
-                                if (row["Tamaño"] != DBNull.Value)
-                                {
-                                    decimal size = Convert.ToDecimal(row["Tamaño"], CultureInfo.InvariantCulture);
-                                    availableBars.Add(size);
-                                }
-                            }
-
-                            // Incrementar el índice
-                            index++;
-                        }
-
-                        /*DE ESTA MANERA SOLO SE OBTIENE 1 TAMAÑO*/
-                        /*
-                        DataTable productSizesTable = NQuote.GetProductSizes(columnName);
-                        List<decimal> availableBars = new List<decimal>();
-                        foreach (DataRow row in productSizesTable.Rows)
-                        {
-                            if (row["Tamaño"] != DBNull.Value)
-                            {
-                                decimal size = Convert.ToDecimal(row["Tamaño"], CultureInfo.InvariantCulture);
-                                availableBars.Add(size);
-                            }
-                        }*/
-
-
+                        // Obtener los tamaños de producto de la base de datos y llenar las barras disponibles
+                        FillAvailableBars("Cargador", availableBars, requiredLengths.Count);
+                        FillAvailableBars("Umbral", availableBarsU, requiredLengthsU.Count);
+                        FillAvailableBars("Jamba", availableBarsJ, requiredLengthsJ.Count);
 
                         // Mostrar el formulario del optimizador
-                        frmOptimizador optimizerForm = new frmOptimizador(requiredLengths.ToArray(), availableBars.ToArray());
+                        frmOptimizador optimizerForm = new frmOptimizador(requiredLengths.ToArray(), availableBars.ToArray(), requiredLengthsU.ToArray(), availableBarsU.ToArray(), requiredLengthsJ.ToArray(), availableBarsJ.ToArray());
                         optimizerForm.TopMost = true;
                         optimizerForm.ShowDialog();
                     }
@@ -640,12 +623,24 @@ namespace Precentacion.User.Bill
             }
         }
 
+        private void FillAvailableBars(string columnName, List<decimal> availableBars, int requiredCount)
+        {
+            for (int i = 0; i < requiredCount; i++)
+            {
+                // Hacer la consulta a la base de datos
+                DataTable productSizesTable = columnName == "Cargador" ? NQuote.GetProductSizes(columnName) : columnName == "Umbral" ? NQuote.GetProductSizesU(columnName) : NQuote.GetProductSizesJ(columnName);
 
-
-
-
-
-
+                // Procesar los resultados de la consulta
+                foreach (DataRow row in productSizesTable.Rows)
+                {
+                    if (row["Tamaño"] != DBNull.Value)
+                    {
+                        decimal size = Convert.ToDecimal(row["Tamaño"], CultureInfo.InvariantCulture);
+                        availableBars.Add(size);
+                    }
+                }
+            }
+        }
 
     }
 

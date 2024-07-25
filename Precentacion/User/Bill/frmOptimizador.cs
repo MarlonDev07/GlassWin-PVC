@@ -21,62 +21,80 @@ namespace Precentacion.User.Bill
         N_Quote NQuote = new N_Quote();
         private decimal[] availableBars;
         private decimal[] requiredLengths;
+        private decimal[] availableBarsU;
+        private decimal[] requiredLengthsU;
+        private decimal[] availableBarsJ;
+        private decimal[] requiredLengthsJ;
         private Image defaultImage;
         private Image specificImage;
 
-        public frmOptimizador(decimal[] requiredLengths, decimal[] availableBars)
+
+        public frmOptimizador(decimal[] requiredLengths, decimal[] availableBars, decimal[] requiredLengthsU, decimal[] availableBarsU, decimal[] requiredLengthsJ, decimal[] availableBarsJ)
         {
             InitializeComponent();
+            // Cargador
             this.requiredLengths = requiredLengths;
             this.availableBars = availableBars;
+            // Umbral
+            this.requiredLengthsU = requiredLengthsU;
+            this.availableBarsU = availableBarsU;
+            // Jamba
+            this.requiredLengthsJ = requiredLengthsJ;
+            this.availableBarsJ = availableBarsJ;
 
-            // Configurar el DataGridView al inicializar el formulario
-            ConfigureDataGridView();
+            // Configurar los DataGridView al inicializar el formulario
+            ConfigureDataGridView(dgvResults1, defaultImage);
+            ConfigureDataGridView(dgvResults2, defaultImage);
+            ConfigureDataGridView(dgvResults3, defaultImage);
 
             // Cargar las imágenes
             string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-            string defaultUrl = "\\Images\\SelectionDesigns\\corte45.jpeg";
-            string specificUrl = "\\Images\\SelectionDesigns\\corte90.jpeg";
-            string rutaDefaultImage = ruta + defaultUrl;
-            string rutaSpecificImage = ruta + specificUrl;
+            string defaultUrl = "Images\\SelectionDesigns\\corte45.jpeg";
+            string specificUrl = "Images\\SelectionDesigns\\corte90.jpeg";
+            string rutaDefaultImage = Path.Combine(ruta, defaultUrl);
+            string rutaSpecificImage = Path.Combine(ruta, specificUrl);
             defaultImage = Image.FromFile(rutaDefaultImage);
             specificImage = Image.FromFile(rutaSpecificImage);
 
             // Ejecutar la optimización
-            OptimizeCutsAndDisplayResults();
+            OptimizeCutsAndDisplayResults(dgvResults1, requiredLengths, availableBars);
+            OptimizeCutsAndDisplayResults(dgvResults2, requiredLengthsU, availableBarsU);
+            OptimizeCutsAndDisplayResults(dgvResults3, requiredLengthsJ, availableBarsJ);
         }
 
-        private void ConfigureDataGridView()
+
+        private void ConfigureDataGridView(DataGridView dgv, Image defaultImage)
         {
             // Definir columnas para el DataGridView
-            dgvResults1.Columns.Add("colBar", "Barra 6.40");
+            dgv.Columns.Clear();
+            dgv.Columns.Add("colBar", "Barra 6.40");
 
             // Crear y añadir una columna de imagen con imagen por defecto
             DataGridViewImageColumn imageColumn = new DataGridViewImageColumn
             {
                 Name = "colUbicacion",
                 HeaderText = "Corte",
-                ImageLayout = DataGridViewImageCellLayout.Zoom
+                ImageLayout = DataGridViewImageCellLayout.Zoom,
+                DefaultCellStyle = { NullValue = defaultImage }
             };
-            imageColumn.DefaultCellStyle.NullValue = defaultImage; // Establecer la imagen por defecto
-            dgvResults1.Columns.Add(imageColumn);
+            dgv.Columns.Add(imageColumn);
 
-            dgvResults1.Columns.Add("colCuts", "Dimensiones");
-            dgvResults1.Columns.Add("colResiduos", "Retal"); // Nueva columna para residuos
+            dgv.Columns.Add("colCuts", "Dimensiones");
+            dgv.Columns.Add("colResiduos", "Retal"); // Nueva columna para residuos
 
             // Ajustar el tamaño de las columnas
-            AdjustColumnWidthsToFitContent();
+            AdjustColumnWidthsToFitContent(dgv);
         }
 
-        private void AdjustColumnWidthsToFitContent()
+        private void AdjustColumnWidthsToFitContent(DataGridView dgv)
         {
-            foreach (DataGridViewColumn column in dgvResults1.Columns)
+            foreach (DataGridViewColumn column in dgv.Columns)
             {
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
-        private void OptimizeCutsAndDisplayResults()
+        private void OptimizeCutsAndDisplayResults(DataGridView dgv, decimal[] requiredLengths, decimal[] availableBars)
         {
             try
             {
@@ -89,7 +107,7 @@ namespace Precentacion.User.Bill
                 List<List<(decimal length, int number)>> optimizedCuts = OptimizeCuts(availableBars, requiredLengthsWithNumbers);
 
                 // Mostrar los resultados en el DataGridView
-                dgvResults1.Rows.Clear();
+                dgv.Rows.Clear();
 
                 for (int i = 0; i < optimizedCuts.Count; i++)
                 {
@@ -111,11 +129,11 @@ namespace Precentacion.User.Bill
                     decimal residue = barLength - totalCuts;
 
                     // Añadir la fila al DataGridView, incluyendo la imagen
-                    dgvResults1.Rows.Add(bar, ubicacionImage, cuts, residue.ToString("0.00") + " m");
+                    dgv.Rows.Add(bar, ubicacionImage, cuts, residue.ToString("0.00") + " m");
                 }
 
                 // Añadir una fila en blanco al final con la imagen por defecto
-                dgvResults1.Rows.Add("", defaultImage, "", "");
+                dgv.Rows.Add("", defaultImage, "", "");
 
             }
             catch (FormatException ex)
@@ -127,10 +145,6 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
 
         private List<List<(decimal length, int number)>> OptimizeCuts(decimal[] availableBars, List<(decimal length, int number)> requiredLengthsWithNumbers)
         {
@@ -169,19 +183,6 @@ namespace Precentacion.User.Bill
             }
 
             return optimizedCuts;
-        }
-
-        private void dgvResults1_DataError_1(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            // Asignar la imagen por defecto a la celda que causa el error
-            if (e.Context == DataGridViewDataErrorContexts.Formatting || e.Context == DataGridViewDataErrorContexts.Display)
-            {
-                if (dgvResults1.Columns[e.ColumnIndex] is DataGridViewImageColumn)
-                {
-                    dgvResults1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = defaultImage;
-                    e.ThrowException = false; // Suprimir la excepción
-                }
-            }
         }
     }
 }

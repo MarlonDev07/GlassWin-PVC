@@ -92,7 +92,7 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
-
+        //Cargador
         public DataTable GetProductSizes(string productName)
         {
             try
@@ -104,8 +104,31 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
+        //Umbral
+        public DataTable GetProductSizesU(string productName)
+        {
+            try
+            {
+                return ADQuote.GetProductSizesUmbral(productName);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
-
+        //Jamba
+        public DataTable GetProductSizesJ(string productName)
+        {
+            try
+            {
+                return ADQuote.GetProductSizesJamba(productName);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         public Decimal CalcTotal(DataTable dtWindows)
         {
