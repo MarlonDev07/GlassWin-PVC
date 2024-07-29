@@ -155,11 +155,11 @@
             // 
             this.dgvResults7.AllowUserToAddRows = false;
             this.dgvResults7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults7.Location = new System.Drawing.Point(3, 3742);
+            this.dgvResults7.Location = new System.Drawing.Point(14, 3742);
             this.dgvResults7.Name = "dgvResults7";
             this.dgvResults7.RowHeadersWidth = 62;
             this.dgvResults7.RowTemplate.Height = 28;
-            this.dgvResults7.Size = new System.Drawing.Size(2016, 408);
+            this.dgvResults7.Size = new System.Drawing.Size(1871, 408);
             this.dgvResults7.TabIndex = 29;
             // 
             // label6
@@ -187,11 +187,11 @@
             // 
             this.dgvResults6.AllowUserToAddRows = false;
             this.dgvResults6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults6.Location = new System.Drawing.Point(3, 3120);
+            this.dgvResults6.Location = new System.Drawing.Point(14, 3120);
             this.dgvResults6.Name = "dgvResults6";
             this.dgvResults6.RowHeadersWidth = 62;
             this.dgvResults6.RowTemplate.Height = 28;
-            this.dgvResults6.Size = new System.Drawing.Size(2016, 408);
+            this.dgvResults6.Size = new System.Drawing.Size(1871, 408);
             this.dgvResults6.TabIndex = 26;
             // 
             // label5
@@ -219,11 +219,11 @@
             // 
             this.dgvResults5.AllowUserToAddRows = false;
             this.dgvResults5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults5.Location = new System.Drawing.Point(3, 2503);
+            this.dgvResults5.Location = new System.Drawing.Point(14, 2503);
             this.dgvResults5.Name = "dgvResults5";
             this.dgvResults5.RowHeadersWidth = 62;
             this.dgvResults5.RowTemplate.Height = 28;
-            this.dgvResults5.Size = new System.Drawing.Size(2016, 408);
+            this.dgvResults5.Size = new System.Drawing.Size(1871, 408);
             this.dgvResults5.TabIndex = 23;
             // 
             // label4
@@ -251,11 +251,11 @@
             // 
             this.dgvResults4.AllowUserToAddRows = false;
             this.dgvResults4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults4.Location = new System.Drawing.Point(12, 1888);
+            this.dgvResults4.Location = new System.Drawing.Point(14, 1888);
             this.dgvResults4.Name = "dgvResults4";
             this.dgvResults4.RowHeadersWidth = 62;
             this.dgvResults4.RowTemplate.Height = 28;
-            this.dgvResults4.Size = new System.Drawing.Size(2016, 408);
+            this.dgvResults4.Size = new System.Drawing.Size(1871, 408);
             this.dgvResults4.TabIndex = 20;
             // 
             // label3
@@ -294,11 +294,11 @@
             // 
             this.dgvResults3.AllowUserToAddRows = false;
             this.dgvResults3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults3.Location = new System.Drawing.Point(12, 1272);
+            this.dgvResults3.Location = new System.Drawing.Point(14, 1272);
             this.dgvResults3.Name = "dgvResults3";
             this.dgvResults3.RowHeadersWidth = 62;
             this.dgvResults3.RowTemplate.Height = 28;
-            this.dgvResults3.Size = new System.Drawing.Size(2016, 408);
+            this.dgvResults3.Size = new System.Drawing.Size(1871, 408);
             this.dgvResults3.TabIndex = 17;
             // 
             // pictureBox2
@@ -315,11 +315,11 @@
             // 
             this.dgvResults2.AllowUserToAddRows = false;
             this.dgvResults2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults2.Location = new System.Drawing.Point(14, 685);
+            this.dgvResults2.Location = new System.Drawing.Point(15, 685);
             this.dgvResults2.Name = "dgvResults2";
             this.dgvResults2.RowHeadersWidth = 62;
             this.dgvResults2.RowTemplate.Height = 28;
-            this.dgvResults2.Size = new System.Drawing.Size(2016, 408);
+            this.dgvResults2.Size = new System.Drawing.Size(1870, 408);
             this.dgvResults2.TabIndex = 14;
             // 
             // frmOptimizador
@@ -330,6 +330,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmOptimizador";
             this.Text = "frmOptimizador";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
