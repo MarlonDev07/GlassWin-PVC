@@ -83,7 +83,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(330, 72);
+            this.label1.Location = new System.Drawing.Point(340, 72);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(507, 64);
@@ -96,7 +96,8 @@
             this.pictureBox1.Location = new System.Drawing.Point(15, 63);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(314, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(326, 77);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
@@ -134,7 +135,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(328, 3663);
+            this.label7.Location = new System.Drawing.Point(196, 3811);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(645, 64);
@@ -144,10 +145,10 @@
             // pictureBox7
             // 
             this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
-            this.pictureBox7.Location = new System.Drawing.Point(14, 3654);
+            this.pictureBox7.Location = new System.Drawing.Point(14, 3717);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(314, 77);
+            this.pictureBox7.Size = new System.Drawing.Size(142, 156);
             this.pictureBox7.TabIndex = 30;
             this.pictureBox7.TabStop = false;
             // 
@@ -155,7 +156,7 @@
             // 
             this.dgvResults7.AllowUserToAddRows = false;
             this.dgvResults7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults7.Location = new System.Drawing.Point(14, 3742);
+            this.dgvResults7.Location = new System.Drawing.Point(14, 3885);
             this.dgvResults7.Name = "dgvResults7";
             this.dgvResults7.RowHeadersWidth = 62;
             this.dgvResults7.RowTemplate.Height = 28;
@@ -166,7 +167,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(328, 3042);
+            this.label6.Location = new System.Drawing.Point(284, 3195);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(462, 64);
@@ -176,10 +177,10 @@
             // pictureBox6
             // 
             this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
-            this.pictureBox6.Location = new System.Drawing.Point(14, 3032);
+            this.pictureBox6.Location = new System.Drawing.Point(14, 3143);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(314, 77);
+            this.pictureBox6.Size = new System.Drawing.Size(253, 116);
             this.pictureBox6.TabIndex = 27;
             this.pictureBox6.TabStop = false;
             // 
@@ -187,7 +188,7 @@
             // 
             this.dgvResults6.AllowUserToAddRows = false;
             this.dgvResults6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults6.Location = new System.Drawing.Point(14, 3120);
+            this.dgvResults6.Location = new System.Drawing.Point(14, 3277);
             this.dgvResults6.Name = "dgvResults6";
             this.dgvResults6.RowHeadersWidth = 62;
             this.dgvResults6.RowTemplate.Height = 28;
@@ -198,7 +199,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(328, 2425);
+            this.label5.Location = new System.Drawing.Point(134, 2611);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(450, 64);
@@ -208,10 +209,10 @@
             // pictureBox5
             // 
             this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
-            this.pictureBox5.Location = new System.Drawing.Point(14, 2415);
+            this.pictureBox5.Location = new System.Drawing.Point(14, 2380);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(314, 77);
+            this.pictureBox5.Size = new System.Drawing.Size(99, 299);
             this.pictureBox5.TabIndex = 24;
             this.pictureBox5.TabStop = false;
             // 
@@ -219,7 +220,7 @@
             // 
             this.dgvResults5.AllowUserToAddRows = false;
             this.dgvResults5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults5.Location = new System.Drawing.Point(14, 2503);
+            this.dgvResults5.Location = new System.Drawing.Point(14, 2689);
             this.dgvResults5.Name = "dgvResults5";
             this.dgvResults5.RowHeadersWidth = 62;
             this.dgvResults5.RowTemplate.Height = 28;
@@ -230,7 +231,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(328, 1812);
+            this.label4.Location = new System.Drawing.Point(162, 1867);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(486, 64);
@@ -240,10 +241,10 @@
             // pictureBox4
             // 
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
-            this.pictureBox4.Location = new System.Drawing.Point(14, 1803);
+            this.pictureBox4.Location = new System.Drawing.Point(14, 1698);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(314, 77);
+            this.pictureBox4.Size = new System.Drawing.Size(103, 237);
             this.pictureBox4.TabIndex = 21;
             this.pictureBox4.TabStop = false;
             // 
@@ -251,7 +252,7 @@
             // 
             this.dgvResults4.AllowUserToAddRows = false;
             this.dgvResults4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults4.Location = new System.Drawing.Point(14, 1888);
+            this.dgvResults4.Location = new System.Drawing.Point(12, 1943);
             this.dgvResults4.Name = "dgvResults4";
             this.dgvResults4.RowHeadersWidth = 62;
             this.dgvResults4.RowTemplate.Height = 28;
@@ -262,7 +263,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(328, 1197);
+            this.label3.Location = new System.Drawing.Point(331, 1197);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(442, 64);
@@ -273,7 +274,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(330, 609);
+            this.label2.Location = new System.Drawing.Point(333, 609);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(455, 64);
@@ -283,10 +284,10 @@
             // pictureBox3
             // 
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(14, 1188);
+            this.pictureBox3.Location = new System.Drawing.Point(14, 1134);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(314, 77);
+            this.pictureBox3.Size = new System.Drawing.Size(295, 131);
             this.pictureBox3.TabIndex = 18;
             this.pictureBox3.TabStop = false;
             // 
@@ -304,10 +305,10 @@
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(15, 600);
+            this.pictureBox2.Location = new System.Drawing.Point(15, 572);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(314, 77);
+            this.pictureBox2.Size = new System.Drawing.Size(310, 105);
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
             // 
