@@ -47,13 +47,13 @@ namespace Precentacion.User.Bill
 
             cbProyecto.SelectedIndexChanged += cbProyecto_SelectedIndexChanged;
 
-            ContextMenuStrip contextMenu = new ContextMenuStrip();
-            ToolStripMenuItem optimizeMenuItem = new ToolStripMenuItem("Optimizar");
-            optimizeMenuItem.Click += contextMenuStrip1_Click;
-            contextMenu.Items.Add(optimizeMenuItem);
-            dgvOrdenProduccion.ContextMenuStrip = contextMenu;
+            //ContextMenuStrip contextMenu = new ContextMenuStrip();
+            //ToolStripMenuItem optimizeMenuItem = new ToolStripMenuItem("Optimizar");
+            //optimizeMenuItem.Click += contextMenuStrip1_Click;
+            //contextMenu.Items.Add(optimizeMenuItem);
+            //dgvOrdenProduccion.ContextMenuStrip = contextMenu;
             //contextMenu.Visible = false;
-            
+
 
 
         }
@@ -97,6 +97,9 @@ namespace Precentacion.User.Bill
                 int IdQuote = Convert.ToInt32(cbProyecto.SelectedValue);
                 //Obtener las ventanas del proyecto
                 DataTable windows = NQuote.WindowsData(IdQuote);
+
+                int contadorVentana = 1;
+
                 //Validar si se encontraron ventanas
                 if (windows.Rows.Count != 0)
                 {
@@ -134,14 +137,18 @@ namespace Precentacion.User.Bill
                                 ResultadosRebajo[3], ResultadosCantidad[3],
                                 ResultadosRebajo[4], ResultadosCantidad[4],
                                 ResultadosRebajo[5], ResultadosCantidad[5],
-                                ResultadosRebajo[6], ResultadosCantidad[6]);
+                                ResultadosRebajo[6], ResultadosCantidad[6],
+                                contadorVentana);
+
+                            //Incrementar el contador para la próxima fila
+                            contadorVentana++;
 
                             //Limpiar las Listas de Resultados
                             ResultadosRebajo.Clear();
                             ResultadosCantidad.Clear();
-
                         }
                         #endregion
+
 
                         #region 8025
                         if (row["System"].ToString() == "8025 2 Vias" || row["System"].ToString() == "8025 3 Vias")
@@ -556,24 +563,12 @@ namespace Precentacion.User.Bill
                     int columnIndex = dgvOrdenProduccion.SelectedCells[0].ColumnIndex;
                     string columnName = dgvOrdenProduccion.Columns[columnIndex].Name;
 
-                    // Verificar si la columna es una de las columnas de artículos
-                    string[] validColumns = { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "VerticalCentro" }; // Añadimos "Inferior" aquí
+                    // Agregar columnas válidas para "Jamba"
+                    string[] validColumns = { "Jamba" }; // Puedes agregar otras columnas si es necesario
 
-                    // Declarar las listas de longitudes y barras disponibles
-                    List<decimal> requiredLengths = new List<decimal>();
-                    List<decimal> availableBars = new List<decimal>();
-                    List<decimal> requiredLengthsU = new List<decimal>();
-                    List<decimal> availableBarsU = new List<decimal>();
-                    List<decimal> requiredLengthsJ = new List<decimal>();
+                    // Declarar listas para longitudes y barras disponibles
+                    List<(decimal length, int window)> requiredLengthsJ = new List<(decimal length, int window)>();
                     List<decimal> availableBarsJ = new List<decimal>();
-                    List<decimal> requiredLengthsS = new List<decimal>();
-                    List<decimal> availableBarsS = new List<decimal>();
-                    List<decimal> requiredLengthsI = new List<decimal>();
-                    List<decimal> availableBarsI = new List<decimal>();
-                    List<decimal> requiredLengthsV = new List<decimal>();
-                    List<decimal> availableBarsV = new List<decimal>();
-                    List<decimal> requiredLengthsVC = new List<decimal>();
-                    List<decimal> availableBarsVC = new List<decimal>();
 
                     if (validColumns.Contains(columnName))
                     {
@@ -583,42 +578,27 @@ namespace Precentacion.User.Bill
                             foreach (string validColumn in validColumns)
                             {
                                 int validColumnIndex = dgvOrdenProduccion.Columns[validColumn].Index;
-                                if (row.Cells[validColumnIndex].Value != null)
+                                int cantJambaIndex = dgvOrdenProduccion.Columns["cantJamba"].Index; // Índice de la columna de cantidad
+                                int ventanaIndex = dgvOrdenProduccion.Columns["Ventana"].Index; // Índice de la columna de ventana
+
+                                if (row.Cells[validColumnIndex].Value != null && row.Cells[cantJambaIndex].Value != null && row.Cells[ventanaIndex].Value != null)
                                 {
                                     string value = row.Cells[validColumnIndex].Value.ToString();
+                                    string cantJambaValue = row.Cells[cantJambaIndex].Value.ToString();
+                                    string ventanaValue = row.Cells[ventanaIndex].Value.ToString();
                                     decimal length;
+                                    int cantidad;
+                                    int ventana;
 
-                                    // Intentar convertir directamente la cadena a decimal
-                                    if (decimal.TryParse(value, NumberStyles.Any, CultureInfo.GetCultureInfo("es-ES"), out length) ||
-                                        decimal.TryParse(value.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out length))
+                                    // Intentar convertir la cadena a decimal y la cantidad a int
+                                    if ((decimal.TryParse(value, NumberStyles.Any, CultureInfo.GetCultureInfo("es-ES"), out length) ||
+                                         decimal.TryParse(value.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out length)) &&
+                                        int.TryParse(cantJambaValue, out cantidad) &&
+                                        int.TryParse(ventanaValue, out ventana))
                                     {
-                                        if (validColumn == "Cargador")
+                                        for (int i = 0; i < cantidad; i++)
                                         {
-                                            requiredLengths.Add(length);
-                                        }
-                                        else if (validColumn == "Umbral")
-                                        {
-                                            requiredLengthsU.Add(length);
-                                        }
-                                        else if (validColumn == "Jamba")
-                                        {
-                                            requiredLengthsJ.Add(length);
-                                        }
-                                        else if (validColumn == "Superior")
-                                        {
-                                            requiredLengthsS.Add(length);
-                                        }
-                                        else if (validColumn == "Inferior")
-                                        {
-                                            requiredLengthsI.Add(length);
-                                        }
-                                        else if (validColumn == "Vertical")
-                                        {
-                                            requiredLengthsV.Add(length);
-                                        }
-                                        else if (validColumn == "VerticalCentro")
-                                        {
-                                            requiredLengthsVC.Add(length);
+                                            requiredLengthsJ.Add((length, ventana));
                                         }
                                     }
                                 }
@@ -626,16 +606,10 @@ namespace Precentacion.User.Bill
                         }
 
                         // Obtener los tamaños de producto de la base de datos y llenar las barras disponibles
-                        FillAvailableBars("Cargador", availableBars, requiredLengths.Count);
-                        FillAvailableBars("Umbral", availableBarsU, requiredLengthsU.Count);
                         FillAvailableBars("Jamba", availableBarsJ, requiredLengthsJ.Count);
-                        FillAvailableBars("Superior", availableBarsS, requiredLengthsS.Count);
-                        FillAvailableBars("Inferior", availableBarsI, requiredLengthsI.Count);
-                        FillAvailableBars("Vertical", availableBarsV, requiredLengthsV.Count);
-                        FillAvailableBars("VerticalCentro", availableBarsVC, requiredLengthsVC.Count);
 
                         // Mostrar el formulario del optimizador
-                        frmOptimizador optimizerForm = new frmOptimizador(requiredLengths.ToArray(), availableBars.ToArray(), requiredLengthsU.ToArray(), availableBarsU.ToArray(), requiredLengthsJ.ToArray(), availableBarsJ.ToArray(), requiredLengthsS.ToArray(), availableBarsS.ToArray(), requiredLengthsI.ToArray(), availableBarsI.ToArray(), requiredLengthsV.ToArray(), availableBarsV.ToArray(), requiredLengthsVC.ToArray(), availableBarsVC.ToArray());
+                        frmOptimizador optimizerForm = new frmOptimizador(requiredLengthsJ.ToArray(), availableBarsJ.ToArray());
                         optimizerForm.TopMost = true;
                         optimizerForm.Show();
                     }
@@ -643,6 +617,7 @@ namespace Precentacion.User.Bill
                     {
                         MessageBox.Show("Seleccione una columna válida para optimizar.", "Columna no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+
                 }
             }
             catch (Exception ex)
@@ -650,6 +625,7 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void FillAvailableBars(string columnName, List<decimal> availableBars, int requiredCount)
         {
