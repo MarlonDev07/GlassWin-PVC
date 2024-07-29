@@ -166,7 +166,7 @@ namespace Precentacion.User.Bill
                 }
 
                 // Añadir una fila en blanco al final con la imagen por defecto
-                dgv.Rows.Add("", defaultImage, "", "");
+                //dgv.Rows.Add("", defaultImage, "", "");
 
             }
             catch (FormatException ex)
