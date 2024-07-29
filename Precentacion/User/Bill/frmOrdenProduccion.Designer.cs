@@ -592,6 +592,7 @@
             this.Ventana.HeaderText = "Ventana";
             this.Ventana.MinimumWidth = 8;
             this.Ventana.Name = "Ventana";
+            this.Ventana.Visible = false;
             this.Ventana.Width = 150;
             // 
             // frmOrdenProduccion
