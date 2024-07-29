@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOptimizador));
             this.dgvResults1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbCargador = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -40,31 +40,32 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.dgvResults6 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pbInferior = new System.Windows.Forms.PictureBox();
             this.dgvResults5 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbSuperior = new System.Windows.Forms.PictureBox();
             this.dgvResults4 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pbJamba = new System.Windows.Forms.PictureBox();
             this.dgvResults3 = new System.Windows.Forms.DataGridView();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pbUmbral = new System.Windows.Forms.PictureBox();
             this.dgvResults2 = new System.Windows.Forms.DataGridView();
+            this.btnImprimir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargador)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInferior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSuperior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbJamba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUmbral)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,16 +91,16 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "003 Cargador 5020";
             // 
-            // pictureBox1
+            // pbCargador
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(15, 63);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(326, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.pbCargador.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCargador.BackgroundImage")));
+            this.pbCargador.Location = new System.Drawing.Point(15, 63);
+            this.pbCargador.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbCargador.Name = "pbCargador";
+            this.pbCargador.Size = new System.Drawing.Size(326, 77);
+            this.pbCargador.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargador.TabIndex = 12;
+            this.pbCargador.TabStop = false;
             // 
             // panel1
             // 
@@ -111,24 +112,24 @@
             this.panel1.Controls.Add(this.pictureBox6);
             this.panel1.Controls.Add(this.dgvResults6);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.pictureBox5);
+            this.panel1.Controls.Add(this.pbInferior);
             this.panel1.Controls.Add(this.dgvResults5);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.pictureBox4);
+            this.panel1.Controls.Add(this.pbSuperior);
             this.panel1.Controls.Add(this.dgvResults4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.pictureBox3);
+            this.panel1.Controls.Add(this.pbJamba);
             this.panel1.Controls.Add(this.dgvResults3);
-            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.pbUmbral);
             this.panel1.Controls.Add(this.dgvResults2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dgvResults1);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pbCargador);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1916, 935);
+            this.panel1.Size = new System.Drawing.Size(1916, 827);
             this.panel1.TabIndex = 14;
             // 
             // label7
@@ -206,15 +207,15 @@
             this.label5.TabIndex = 25;
             this.label5.Text = "005 Inferior 5020";
             // 
-            // pictureBox5
+            // pbInferior
             // 
-            this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
-            this.pictureBox5.Location = new System.Drawing.Point(14, 2380);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(99, 299);
-            this.pictureBox5.TabIndex = 24;
-            this.pictureBox5.TabStop = false;
+            this.pbInferior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbInferior.BackgroundImage")));
+            this.pbInferior.Location = new System.Drawing.Point(14, 2380);
+            this.pbInferior.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbInferior.Name = "pbInferior";
+            this.pbInferior.Size = new System.Drawing.Size(99, 299);
+            this.pbInferior.TabIndex = 24;
+            this.pbInferior.TabStop = false;
             // 
             // dgvResults5
             // 
@@ -238,15 +239,15 @@
             this.label4.TabIndex = 22;
             this.label4.Text = "006 Superior 5020";
             // 
-            // pictureBox4
+            // pbSuperior
             // 
-            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
-            this.pictureBox4.Location = new System.Drawing.Point(14, 1698);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(103, 237);
-            this.pictureBox4.TabIndex = 21;
-            this.pictureBox4.TabStop = false;
+            this.pbSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbSuperior.BackgroundImage")));
+            this.pbSuperior.Location = new System.Drawing.Point(14, 1698);
+            this.pbSuperior.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbSuperior.Name = "pbSuperior";
+            this.pbSuperior.Size = new System.Drawing.Size(103, 237);
+            this.pbSuperior.TabIndex = 21;
+            this.pbSuperior.TabStop = false;
             // 
             // dgvResults4
             // 
@@ -281,15 +282,15 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "002 Umbral 5020";
             // 
-            // pictureBox3
+            // pbJamba
             // 
-            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(14, 1134);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(295, 131);
-            this.pictureBox3.TabIndex = 18;
-            this.pictureBox3.TabStop = false;
+            this.pbJamba.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbJamba.BackgroundImage")));
+            this.pbJamba.Location = new System.Drawing.Point(14, 1134);
+            this.pbJamba.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbJamba.Name = "pbJamba";
+            this.pbJamba.Size = new System.Drawing.Size(295, 131);
+            this.pbJamba.TabIndex = 18;
+            this.pbJamba.TabStop = false;
             // 
             // dgvResults3
             // 
@@ -302,15 +303,15 @@
             this.dgvResults3.Size = new System.Drawing.Size(1871, 408);
             this.dgvResults3.TabIndex = 17;
             // 
-            // pictureBox2
+            // pbUmbral
             // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(15, 572);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(310, 105);
-            this.pictureBox2.TabIndex = 15;
-            this.pictureBox2.TabStop = false;
+            this.pbUmbral.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbUmbral.BackgroundImage")));
+            this.pbUmbral.Location = new System.Drawing.Point(15, 572);
+            this.pbUmbral.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbUmbral.Name = "pbUmbral";
+            this.pbUmbral.Size = new System.Drawing.Size(310, 105);
+            this.pbUmbral.TabIndex = 15;
+            this.pbUmbral.TabStop = false;
             // 
             // dgvResults2
             // 
@@ -323,30 +324,42 @@
             this.dgvResults2.Size = new System.Drawing.Size(1870, 408);
             this.dgvResults2.TabIndex = 14;
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.Location = new System.Drawing.Point(1793, 848);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(92, 74);
+            this.btnImprimir.TabIndex = 15;
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // frmOptimizador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 989);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.panel1);
             this.Name = "frmOptimizador";
             this.Text = "frmOptimizador";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargador)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInferior)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSuperior)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbJamba)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUmbral)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults2)).EndInit();
             this.ResumeLayout(false);
 
@@ -355,19 +368,19 @@
         #endregion
         private System.Windows.Forms.DataGridView dgvResults1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbCargador;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbUmbral;
         private System.Windows.Forms.DataGridView dgvResults2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pbJamba;
         private System.Windows.Forms.DataGridView dgvResults3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pbSuperior;
         private System.Windows.Forms.DataGridView dgvResults4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pbInferior;
         private System.Windows.Forms.DataGridView dgvResults5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox6;
@@ -375,5 +388,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.DataGridView dgvResults7;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
