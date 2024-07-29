@@ -20,22 +20,21 @@ namespace Precentacion.User.Bill
         // Variables
         N_Quote NQuote = new N_Quote();
         private decimal[] availableBars;
-        private decimal[] requiredLengths;
+        private (decimal length, int window)[] requiredLengths;
         private decimal[] availableBarsU;
-        private decimal[] requiredLengthsU;
+        private (decimal length, int window)[] requiredLengthsU;
         private decimal[] availableBarsJ;
         private (decimal length, int window)[] requiredLengthsJ;
         private decimal[] availableBarsS;
-        private decimal[] requiredLengthsS;
+        private (decimal length, int window)[] requiredLengthsS;
         private decimal[] availableBarsI;
-        private decimal[] requiredLengthsI;
+        private (decimal length, int window)[] requiredLengthsI;
         private decimal[] availableBarsV;
-        private decimal[] requiredLengthsV;
+        private (decimal length, int window)[] requiredLengthsV;
         private decimal[] availableBarsVC;
-        private decimal[] requiredLengthsVC;
+        private (decimal length, int window)[] requiredLengthsVC;
         private Image defaultImage;
         private Image specificImage;
-
 
         public frmOptimizador((decimal length, int window)[] requiredLengthsJ, decimal[] availableBarsJ)
         {
@@ -51,8 +50,6 @@ namespace Precentacion.User.Bill
             // Ejecutar la optimización
             OptimizeCutsAndDisplayResults(dgvResults3, requiredLengthsJ, availableBarsJ);
         }
-
-
 
         private void ConfigureDataGridView(DataGridView dgv, Image defaultImage)
         {
@@ -137,7 +134,6 @@ namespace Precentacion.User.Bill
             }
         }
 
-
         private List<List<(decimal length, int window, int number)>> OptimizeCuts(decimal[] availableBars, List<(decimal length, int window, int number)> requiredLengthsWithNumbers)
         {
             // Ordenar las longitudes requeridas de mayor a menor
@@ -176,6 +172,7 @@ namespace Precentacion.User.Bill
 
             return optimizedCuts;
         }
+
 
     }
 }

@@ -81,13 +81,13 @@
             this.Jamba = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantJamba = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Superior = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantSuperior = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inferior = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantInferior = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vertical = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantVertical = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VerticalCentro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantVerticalC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ventana = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panelContenedor.SuspendLayout();
@@ -432,13 +432,13 @@
             this.Jamba,
             this.cantJamba,
             this.Superior,
-            this.Column13,
+            this.cantSuperior,
             this.Inferior,
-            this.Column15,
+            this.cantInferior,
             this.Vertical,
-            this.Column17,
+            this.cantVertical,
             this.VerticalCentro,
-            this.Column19,
+            this.cantVerticalC,
             this.Ventana});
             this.dgvOrdenProduccion.Location = new System.Drawing.Point(3, 55);
             this.dgvOrdenProduccion.Name = "dgvOrdenProduccion";
@@ -538,12 +538,12 @@
             this.Superior.Name = "Superior";
             this.Superior.Width = 150;
             // 
-            // Column13
+            // cantSuperior
             // 
-            this.Column13.HeaderText = "Cant";
-            this.Column13.MinimumWidth = 8;
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 90;
+            this.cantSuperior.HeaderText = "Cant";
+            this.cantSuperior.MinimumWidth = 8;
+            this.cantSuperior.Name = "cantSuperior";
+            this.cantSuperior.Width = 90;
             // 
             // Inferior
             // 
@@ -552,12 +552,12 @@
             this.Inferior.Name = "Inferior";
             this.Inferior.Width = 150;
             // 
-            // Column15
+            // cantInferior
             // 
-            this.Column15.HeaderText = "Cant";
-            this.Column15.MinimumWidth = 8;
-            this.Column15.Name = "Column15";
-            this.Column15.Width = 90;
+            this.cantInferior.HeaderText = "Cant";
+            this.cantInferior.MinimumWidth = 8;
+            this.cantInferior.Name = "cantInferior";
+            this.cantInferior.Width = 90;
             // 
             // Vertical
             // 
@@ -566,12 +566,12 @@
             this.Vertical.Name = "Vertical";
             this.Vertical.Width = 150;
             // 
-            // Column17
+            // cantVertical
             // 
-            this.Column17.HeaderText = "Cant";
-            this.Column17.MinimumWidth = 8;
-            this.Column17.Name = "Column17";
-            this.Column17.Width = 90;
+            this.cantVertical.HeaderText = "Cant";
+            this.cantVertical.MinimumWidth = 8;
+            this.cantVertical.Name = "cantVertical";
+            this.cantVertical.Width = 90;
             // 
             // VerticalCentro
             // 
@@ -580,12 +580,12 @@
             this.VerticalCentro.Name = "VerticalCentro";
             this.VerticalCentro.Width = 150;
             // 
-            // Column19
+            // cantVerticalC
             // 
-            this.Column19.HeaderText = "Cant";
-            this.Column19.MinimumWidth = 8;
-            this.Column19.Name = "Column19";
-            this.Column19.Width = 90;
+            this.cantVerticalC.HeaderText = "Cant";
+            this.cantVerticalC.MinimumWidth = 8;
+            this.cantVerticalC.Name = "cantVerticalC";
+            this.cantVerticalC.Width = 90;
             // 
             // Ventana
             // 
@@ -674,13 +674,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Jamba;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantJamba;
         private System.Windows.Forms.DataGridViewTextBoxColumn Superior;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantSuperior;
         private System.Windows.Forms.DataGridViewTextBoxColumn Inferior;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantInferior;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vertical;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantVertical;
         private System.Windows.Forms.DataGridViewTextBoxColumn VerticalCentro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantVerticalC;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ventana;
     }
 }

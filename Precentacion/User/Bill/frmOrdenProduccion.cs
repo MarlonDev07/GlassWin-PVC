@@ -47,7 +47,7 @@ namespace Precentacion.User.Bill
 
             cbProyecto.SelectedIndexChanged += cbProyecto_SelectedIndexChanged;
 
-            //ContextMenuStrip contextMenu = new ContextMenuStrip();
+            // ContextMenuStrip contextMenu = new ContextMenuStrip();
             //ToolStripMenuItem optimizeMenuItem = new ToolStripMenuItem("Optimizar");
             //optimizeMenuItem.Click += contextMenuStrip1_Click;
             //contextMenu.Items.Add(optimizeMenuItem);
