@@ -10,34 +10,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.Drawing;
 using System.IO;
+//using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Diagnostics;
+using iTextSharp.text;
+using Image = System.Drawing.Image;
+
+
 namespace Precentacion.User.Bill
 {
     public partial class frmOptimizador : Form
     {
         // Variables
         N_Quote NQuote = new N_Quote();
+        private (decimal length, int window)[] requiredLengths;
         private decimal[] availableBars;
-        private decimal[] requiredLengths;
+        private (decimal length, int window)[] requiredLengthsU;
         private decimal[] availableBarsU;
-        private decimal[] requiredLengthsU;
+        private (decimal length, int window)[] requiredLengthsJ;
         private decimal[] availableBarsJ;
-        private decimal[] requiredLengthsJ;
+        private (decimal length, int window)[] requiredLengthsS;
         private decimal[] availableBarsS;
-        private decimal[] requiredLengthsS;
+        private (decimal length, int window)[] requiredLengthsI;
         private decimal[] availableBarsI;
-        private decimal[] requiredLengthsI;
+        private (decimal length, int window)[] requiredLengthsV;
         private decimal[] availableBarsV;
-        private decimal[] requiredLengthsV;
+        private (decimal length, int window)[] requiredLengthsVC;
         private decimal[] availableBarsVC;
-        private decimal[] requiredLengthsVC;
         private Image defaultImage;
         private Image specificImage;
 
-
-        public frmOptimizador(decimal[] requiredLengths, decimal[] availableBars, decimal[] requiredLengthsU, decimal[] availableBarsU, decimal[] requiredLengthsJ, decimal[] availableBarsJ, decimal[] requiredLengthsS, decimal[] availableBarsS, decimal[] requiredLengthsI, decimal[] availableBarsI, decimal[] requiredLengthsV, decimal[] availableBarsV, decimal[] requiredLengthsVC, decimal[] availableBarsVC)
+        public frmOptimizador(
+            (decimal length, int window)[] requiredLengths, decimal[] availableBars,
+            (decimal length, int window)[] requiredLengthsU, decimal[] availableBarsU,
+            (decimal length, int window)[] requiredLengthsJ, decimal[] availableBarsJ,
+            (decimal length, int window)[] requiredLengthsS, decimal[] availableBarsS,
+            (decimal length, int window)[] requiredLengthsI, decimal[] availableBarsI,
+            (decimal length, int window)[] requiredLengthsV, decimal[] availableBarsV,
+            (decimal length, int window)[] requiredLengthsVC, decimal[] availableBarsVC)
         {
             InitializeComponent();
             // Cargador
@@ -90,7 +102,6 @@ namespace Precentacion.User.Bill
             OptimizeCutsAndDisplayResults(dgvResults7, requiredLengthsVC, availableBarsVC);
         }
 
-
         private void ConfigureDataGridView(DataGridView dgv, Image defaultImage)
         {
             // Definir columnas para el DataGridView
@@ -122,17 +133,17 @@ namespace Precentacion.User.Bill
             }
         }
 
-        private void OptimizeCutsAndDisplayResults(DataGridView dgv, decimal[] requiredLengths, decimal[] availableBars)
+        private void OptimizeCutsAndDisplayResults(DataGridView dgv, (decimal length, int window)[] requiredLengths, decimal[] availableBars)
         {
             try
             {
                 // Asignar números secuenciales a las longitudes requeridas
-                List<(decimal length, int number)> requiredLengthsWithNumbers = requiredLengths
-                    .Select((length, index) => (length, number: index + 1))
+                List<(decimal length, int window, int number)> requiredLengthsWithNumbers = requiredLengths
+                    .Select((length, index) => (length.length, length.window, number: index + 1))
                     .ToList();
 
                 // Llamar al método OptimizeCuts
-                List<List<(decimal length, int number)>> optimizedCuts = OptimizeCuts(availableBars, requiredLengthsWithNumbers);
+                List<List<(decimal length, int window, int number)>> optimizedCuts = OptimizeCuts(availableBars, requiredLengthsWithNumbers);
 
                 // Mostrar los resultados en el DataGridView
                 dgv.Rows.Clear();
@@ -140,7 +151,7 @@ namespace Precentacion.User.Bill
                 for (int i = 0; i < optimizedCuts.Count; i++)
                 {
                     string bar = "Barra " + (i + 1);
-                    string cuts = string.Join(", ", optimizedCuts[i].Select(c => $"{c.length.ToString("0.000", CultureInfo.InvariantCulture)} m (V{c.number})"));
+                    string cuts = string.Join(", ", optimizedCuts[i].Select(c => $"{c.length.ToString("0.000", CultureInfo.InvariantCulture)} m (V{c.window})"));
 
                     // Seleccionar la imagen adecuada
                     Image ubicacionImage = string.IsNullOrWhiteSpace(cuts) ? defaultImage : specificImage;
@@ -161,7 +172,7 @@ namespace Precentacion.User.Bill
                 }
 
                 // Añadir una fila en blanco al final con la imagen por defecto
-                dgv.Rows.Add("", defaultImage, "", "");
+                //dgv.Rows.Add("", defaultImage, "", "");
 
             }
             catch (FormatException ex)
@@ -174,7 +185,7 @@ namespace Precentacion.User.Bill
             }
         }
 
-        private List<List<(decimal length, int number)>> OptimizeCuts(decimal[] availableBars, List<(decimal length, int number)> requiredLengthsWithNumbers)
+        private List<List<(decimal length, int window, int number)>> OptimizeCuts(decimal[] availableBars, List<(decimal length, int window, int number)> requiredLengthsWithNumbers)
         {
             // Ordenar las longitudes requeridas de mayor a menor
             requiredLengthsWithNumbers = requiredLengthsWithNumbers
@@ -182,11 +193,11 @@ namespace Precentacion.User.Bill
                 .ToList();
 
             // Lista para almacenar los cortes óptimos para cada barra
-            List<List<(decimal length, int number)>> optimizedCuts = new List<List<(decimal length, int number)>>();
+            List<List<(decimal length, int window, int number)>> optimizedCuts = new List<List<(decimal length, int window, int number)>>();
 
             foreach (decimal bar in availableBars)
             {
-                List<(decimal length, int number)> cuts = new List<(decimal length, int number)>();
+                List<(decimal length, int window, int number)> cuts = new List<(decimal length, int window, int number)>();
                 decimal remainingLength = bar;
 
                 foreach (var lengthWithNumber in requiredLengthsWithNumbers.ToList())
@@ -207,7 +218,7 @@ namespace Precentacion.User.Bill
             // Agregar cualquier corte que no pudo ser optimizado
             if (requiredLengthsWithNumbers.Count > 0)
             {
-                optimizedCuts.Add(new List<(decimal length, int number)>(requiredLengthsWithNumbers));
+                optimizedCuts.Add(new List<(decimal length, int window, int number)>(requiredLengthsWithNumbers));
             }
 
             return optimizedCuts;
@@ -249,7 +260,6 @@ namespace Precentacion.User.Bill
 
 
 
-        //Comentario de Prueba
         private void AddDataGridViewToPdf(Document pdfDoc, DataGridView dgv, string title, string imageName)
         {
             // Ruta de la imagen
@@ -329,9 +339,11 @@ namespace Precentacion.User.Bill
             pdfDoc.Add(new Paragraph("\n")); // Agregar un espacio entre tablas
         }
 
-
-
-
+        private void btnImprimir_Click_1(object sender, EventArgs e)
+        {
+            // Llama a la función para imprimir todos los DataGridViews en un único PDF
+            ExportDataGridViewsToPdf("Resultados_Optimizacion.pdf");
+            MessageBox.Show("PDF generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
-
