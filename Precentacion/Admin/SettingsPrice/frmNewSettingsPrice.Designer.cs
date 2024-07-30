@@ -261,7 +261,7 @@
             "Cedazo1/2",
             "Puerta Liviana",
             "PuertaEuAbatible",
-            "PuertaBaño"});
+            "Puerta Baño"});
             this.cbSystem.Location = new System.Drawing.Point(66, 34);
             this.cbSystem.Name = "cbSystem";
             this.cbSystem.Size = new System.Drawing.Size(121, 28);
