@@ -39,6 +39,23 @@ namespace Precentacion.User.Bill
         private decimal[] availableBarsV;
         private (decimal length, int window)[] requiredLengthsVC;
         private decimal[] availableBarsVC;
+
+        private (decimal length, int window)[] requiredLengthsC8025;
+        private decimal[] availableBarsC8025;
+        private (decimal length, int window)[] requiredLengthsU8025;
+        private decimal[] availableBarsU8025;
+        private (decimal length, int window)[] requiredLengthsJ8025;
+        private decimal[] availableBarsJ8025;
+        private (decimal length, int window)[] requiredLengthsS8025;
+        private decimal[] availableBarsS8025;
+        private (decimal length, int window)[] requiredLengthsI8025;
+        private decimal[] availableBarsI8025;
+        private (decimal length, int window)[] requiredLengthsV8025;
+        private decimal[] availableBarsV8025;
+        private (decimal length, int window)[] requiredLengthsVC8025;
+        private decimal[] availableBarsVC8025;
+        private (decimal length, int window)[] requiredLengthsPA8025;
+        private decimal[] availableBarsPA8025;
         private Image defaultImage;
         private Image specificImage;
 
@@ -49,7 +66,17 @@ namespace Precentacion.User.Bill
             (decimal length, int window)[] requiredLengthsS, decimal[] availableBarsS,
             (decimal length, int window)[] requiredLengthsI, decimal[] availableBarsI,
             (decimal length, int window)[] requiredLengthsV, decimal[] availableBarsV,
-            (decimal length, int window)[] requiredLengthsVC, decimal[] availableBarsVC)
+            (decimal length, int window)[] requiredLengthsVC, decimal[] availableBarsVC,
+
+            (decimal length, int window)[] requiredLengthsC8025, decimal[] availableBarsC8025,
+            (decimal length, int window)[] requiredLengthsU8025, decimal[] availableBarsU8025,
+            (decimal length, int window)[] requiredLengthsJ8025, decimal[] availableBarsJ8025,
+            (decimal length, int window)[] requiredLengthsS8025, decimal[] availableBarsS8025,
+            (decimal length, int window)[] requiredLengthsI8025, decimal[] availableBarsI8025,
+            (decimal length, int window)[] requiredLengthsV8025, decimal[] availableBarsV8025,
+            (decimal length, int window)[] requiredLengthsVC8025, decimal[] availableBarsVC8025,
+            (decimal length, int window)[] requiredLengthsPA8025, decimal[] availableBarsPA8025
+            )
         {
             InitializeComponent();
             // Cargador
@@ -74,6 +101,32 @@ namespace Precentacion.User.Bill
             this.requiredLengthsVC = requiredLengthsVC;
             this.availableBarsVC = availableBarsVC;
 
+            // Cargador 8025
+            this.requiredLengthsC8025 = requiredLengthsC8025;
+            this.availableBarsC8025 = availableBarsC8025;
+            // Umbral 8025
+            this.requiredLengthsU8025 = requiredLengthsU8025;
+            this.availableBarsU8025 = availableBarsU8025;
+            // Jamba 8025
+            this.requiredLengthsJ8025 = requiredLengthsJ8025;
+            this.availableBarsJ8025 = availableBarsJ8025;
+            // Superior 8025
+            this.requiredLengthsS8025 = requiredLengthsS8025;
+            this.availableBarsS8025 = availableBarsS8025;
+            // Inferior 8025
+            this.requiredLengthsI8025 = requiredLengthsI8025;
+            this.availableBarsI8025 = availableBarsI8025;
+            // Vertical 8025
+            this.requiredLengthsV8025 = requiredLengthsV8025;
+            this.availableBarsV8025 = availableBarsV8025;
+            // Vertical Centro 8025
+            this.requiredLengthsVC8025 = requiredLengthsVC8025;
+            this.availableBarsVC8025 = availableBarsVC8025;
+            // Pisa Alfombra 8025
+            this.requiredLengthsPA8025 = requiredLengthsPA8025;
+            this.availableBarsPA8025 = availableBarsPA8025;
+
+
             // Configurar los DataGridView al inicializar el formulario
             ConfigureDataGridView(dgvResults1, defaultImage);
             ConfigureDataGridView(dgvResults2, defaultImage);
@@ -82,6 +135,16 @@ namespace Precentacion.User.Bill
             ConfigureDataGridView(dgvResults5, defaultImage);
             ConfigureDataGridView(dgvResults6, defaultImage);
             ConfigureDataGridView(dgvResults7, defaultImage);
+
+            // Configurar los DataGridView al inicializar el formulario
+            ConfigureDataGridView(dgvCargador8025, defaultImage);
+            ConfigureDataGridView(dgvUmbral8025, defaultImage);
+            ConfigureDataGridView(dgvJamba8025, defaultImage);
+            ConfigureDataGridView(dgvSuperior8025, defaultImage);
+            ConfigureDataGridView(dgvInferior8025, defaultImage);
+            ConfigureDataGridView(dgvVertical8025, defaultImage);
+            ConfigureDataGridView(dgvVerticalC8025, defaultImage);
+            ConfigureDataGridView(dgvPisaAl8025, defaultImage);
 
             // Cargar las imágenes
             string ruta = Path.GetDirectoryName(Application.ExecutablePath);
@@ -100,6 +163,16 @@ namespace Precentacion.User.Bill
             OptimizeCutsAndDisplayResults(dgvResults5, requiredLengthsI, availableBarsI);
             OptimizeCutsAndDisplayResults(dgvResults6, requiredLengthsV, availableBarsV);
             OptimizeCutsAndDisplayResults(dgvResults7, requiredLengthsVC, availableBarsVC);
+
+            // Ejecutar la optimización
+            OptimizeCutsAndDisplayResults(dgvCargador8025, requiredLengthsC8025, availableBarsC8025);
+            OptimizeCutsAndDisplayResults(dgvUmbral8025, requiredLengthsU8025, availableBarsU8025);
+            OptimizeCutsAndDisplayResults(dgvJamba8025, requiredLengthsJ8025, availableBarsJ8025);
+            OptimizeCutsAndDisplayResults(dgvSuperior8025, requiredLengthsS8025, availableBarsS8025);
+            OptimizeCutsAndDisplayResults(dgvInferior8025, requiredLengthsI8025, availableBarsI8025);
+            OptimizeCutsAndDisplayResults(dgvVertical8025, requiredLengthsV8025, availableBarsV8025);
+            OptimizeCutsAndDisplayResults(dgvVerticalC8025, requiredLengthsVC8025, availableBarsVC8025);
+            OptimizeCutsAndDisplayResults(dgvPisaAl8025, requiredLengthsPA8025, availableBarsPA8025);
         }
 
         private void ConfigureDataGridView(DataGridView dgv, Image defaultImage)
@@ -224,7 +297,8 @@ namespace Precentacion.User.Bill
             return optimizedCuts;
         }
 
-        private void btnImprimir_Click(object sender, EventArgs e)
+
+        private void btnImprimir_Click_1(object sender, EventArgs e)
         {
             // Llama a la función para imprimir todos los DataGridViews en un único PDF
             ExportDataGridViewsToPdf("Resultados_Optimizacion.pdf");
@@ -240,6 +314,8 @@ namespace Precentacion.User.Bill
                 PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(folderPath, FileMode.Create));
                 pdfDoc.Open();
 
+                // Título 1
+                AddTitleToPdf(pdfDoc, "Optimización 5020");
                 AddDataGridViewToPdf(pdfDoc, dgvResults1, "003 Cargador 5020", "cargador.jpeg");
                 AddDataGridViewToPdf(pdfDoc, dgvResults2, "002 Umbral 5020", "umbral.jpeg");
                 AddDataGridViewToPdf(pdfDoc, dgvResults3, "004 Jamba 5020", "jamba.jpeg");
@@ -247,6 +323,17 @@ namespace Precentacion.User.Bill
                 AddDataGridViewToPdf(pdfDoc, dgvResults5, "005 Inferior 5020", "inferior2.jpeg");
                 AddDataGridViewToPdf(pdfDoc, dgvResults6, "007 Vertical 5020", "vertical.jpeg");
                 AddDataGridViewToPdf(pdfDoc, dgvResults7, "008 Vertical Centro 5020", "verticalC.jpeg");
+
+                // Título 2
+                AddTitleToPdf(pdfDoc, "Optimización 8025");
+                AddDataGridViewToPdf(pdfDoc, dgvCargador8025, "016 Cargador 8025", "cargador.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvUmbral8025, "017 Umbral 8025", "umbral.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvJamba8025, "018 Jamba 8025", "jamba.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvSuperior8025, "022 Superior 8025", "superior2.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvInferior8025, "023 Inferior 8025", "inferior2.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvVertical8025, "024 Vertical 8025", "vertical.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvVerticalC8025, "025 Vertical Centro 8025", "verticalC.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvPisaAl8025, "027 Pisa Alfombra 8025", "verticalC.jpeg");
             }
             catch (Exception ex)
             {
@@ -258,6 +345,17 @@ namespace Precentacion.User.Bill
             }
         }
 
+
+        private void AddTitleToPdf(Document pdfDoc, string title)
+        {
+            iTextSharp.text.Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16);
+            Paragraph titleParagraph = new Paragraph(title, titleFont)
+            {
+                Alignment = Element.ALIGN_CENTER,
+                SpacingAfter = 10f
+            };
+            pdfDoc.Add(titleParagraph);
+        }
 
 
         private void AddDataGridViewToPdf(Document pdfDoc, DataGridView dgv, string title, string imageName)
@@ -339,11 +437,5 @@ namespace Precentacion.User.Bill
             pdfDoc.Add(new Paragraph("\n")); // Agregar un espacio entre tablas
         }
 
-        private void btnImprimir_Click_1(object sender, EventArgs e)
-        {
-            // Llama a la función para imprimir todos los DataGridViews en un único PDF
-            ExportDataGridViewsToPdf("Resultados_Optimizacion.pdf");
-            MessageBox.Show("PDF generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
     }
 }

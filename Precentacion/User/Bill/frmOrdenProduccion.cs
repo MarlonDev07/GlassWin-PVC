@@ -47,11 +47,11 @@ namespace Precentacion.User.Bill
 
             cbProyecto.SelectedIndexChanged += cbProyecto_SelectedIndexChanged;
 
-            ContextMenuStrip contextMenu = new ContextMenuStrip();
+            /*ContextMenuStrip contextMenu = new ContextMenuStrip();
             ToolStripMenuItem optimizeMenuItem = new ToolStripMenuItem("Optimizar");
             optimizeMenuItem.Click += contextMenuStrip1_Click;
             contextMenu.Items.Add(optimizeMenuItem);
-            dgvOrdenProduccion.ContextMenuStrip = contextMenu;
+            dgvOrdenProduccion.ContextMenuStrip = contextMenu;*/
             //contextMenu.Visible = false;
 
 
@@ -103,6 +103,10 @@ namespace Precentacion.User.Bill
                 //Validar si se encontraron ventanas
                 if (windows.Rows.Count != 0)
                 {
+                    // Contador para la columna Ventana
+                    int contadorVentana5020 = 1;
+                    int contadorVentana8025 = 1;
+
                     // Recorrer las ventanas
                     foreach (DataRow row in windows.Rows)
                     {
@@ -138,17 +142,16 @@ namespace Precentacion.User.Bill
                                 ResultadosRebajo[4], ResultadosCantidad[4],
                                 ResultadosRebajo[5], ResultadosCantidad[5],
                                 ResultadosRebajo[6], ResultadosCantidad[6],
-                                contadorVentana);
+                                contadorVentana5020);
 
-                            //Incrementar el contador para la próxima fila
-                            contadorVentana++;
+                            // Incrementar el contador para la próxima fila
+                            contadorVentana5020++;
 
-                            //Limpiar las Listas de Resultados
+                            // Limpiar las Listas de Resultados
                             ResultadosRebajo.Clear();
                             ResultadosCantidad.Clear();
                         }
                         #endregion
-
 
                         #region 8025
                         if (row["System"].ToString() == "8025 2 Vias" || row["System"].ToString() == "8025 3 Vias")
@@ -164,7 +167,7 @@ namespace Precentacion.User.Bill
                             string Ancho = row["Width"].ToString();
                             string Alto = row["Height"].ToString();
 
-                            //Recorrer las piezas del sistema 5020
+                            //Recorrer las piezas del sistema 8025
                             foreach (string pieza in Piezas8025)
                             {
                                 //Calcular los rebajos y Agregarlos A la Lista de Resultados
@@ -182,17 +185,20 @@ namespace Precentacion.User.Bill
                                 ResultadosRebajo[4], ResultadosCantidad[4],
                                 ResultadosRebajo[5], ResultadosCantidad[5],
                                 ResultadosRebajo[6], ResultadosCantidad[6],
-                                ResultadosRebajo[7], ResultadosCantidad[7]
-                                );
+                                ResultadosRebajo[7], ResultadosCantidad[7],
+                                contadorVentana8025);
 
-                            //Limpiar las Listas de Resultados
+                            // Incrementar el contador para la próxima fila
+                            contadorVentana8025++;
+
+                            // Limpiar las Listas de Resultados
                             ResultadosRebajo.Clear();
                             ResultadosCantidad.Clear();
-
                         }
                         #endregion
                     }
                 }
+
                 else
                 {
                     MessageBox.Show("No hay ventanas para el proyecto seleccionado.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -481,7 +487,7 @@ namespace Precentacion.User.Bill
                 };
 
                 // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas2 = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f };
+                float[] anchosColumnas2 = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f };
                 table8025.SetWidths(anchosColumnas2);
 
                 // Celda 1: Encabezados de las columnas
@@ -555,7 +561,7 @@ namespace Precentacion.User.Bill
 
         private void contextMenuStrip1_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 // Obtener la celda seleccionada
                 if (dgvOrdenProduccion.SelectedCells.Count > 0)
@@ -654,8 +660,221 @@ namespace Precentacion.User.Bill
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
+        }
+
+
+        private void btnOptimizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvOrdenProduccion.SelectedCells.Count == 0 && dgvOrdenProduccion8025.SelectedCells.Count == 0)
+                {
+                    MessageBox.Show("Debe elegir un proyecto antes de usar el optimizador.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else 
+                {
+                    // Mostrar el mensaje de confirmación
+                    DialogResult result = MessageBox.Show("El optimizador está aún en desarrollo, ¿Desea continuar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    // Si el usuario elige "No", cerrar la ejecución del método
+                    if (result == DialogResult.No)
+                    {
+                        return;
+                    }
+                    #region 5020
+                    // Obtener la celda seleccionada
+                    if (dgvOrdenProduccion.SelectedCells.Count > 0 && dgvOrdenProduccion8025.SelectedCells.Count > 0)
+                    {
+                        int columnIndex = dgvOrdenProduccion.SelectedCells[0].ColumnIndex;
+                        string columnName = dgvOrdenProduccion.Columns[columnIndex].Name;
+
+                        int columnIndex2 = dgvOrdenProduccion8025.SelectedCells[0].ColumnIndex;
+                        string columnName2 = dgvOrdenProduccion8025.Columns[columnIndex2].Name;
+
+                        // Diccionario con columnas válidas y sus respectivas columnas de cantidad
+                        Dictionary<string, string> validColumns = new Dictionary<string, string>
+                    {
+                        { "Cargador", "cantCargador" },
+                        { "Umbral", "cantUmbral" },
+                        { "Jamba", "cantJamba" },
+                        { "Superior", "cantSuperior" },
+                        { "Inferior", "cantInferior" },
+                        { "Vertical", "cantVertical" },
+                        { "VerticalCentro", "cantVerticalC" }
+                    };
+                        // Diccionario con columnas válidas y sus respectivas columnas de cantidad
+                        Dictionary<string, string> validColumns2 = new Dictionary<string, string>
+                    {
+                       { "Cargador8025", "cantCargador8025" },
+                       { "Umbral8025", "cantUmbral8025" },
+                       { "Jamba8025", "cantJamba8025" },
+                       { "Superior8025", "cantSuperior8025" },
+                       { "Inferior8025", "cantInferior8025" },
+                       { "Vertical8025", "cantVertical8025" },
+                       { "VerticalCentro8025", "Cantidad" },
+                       { "PisaAlfombra", "cantPisaAlfombra" },
+                    };
+
+                        // Diccionario para almacenar longitudes requeridas por columna
+                        Dictionary<string, List<(decimal length, int window)>> requiredLengthsDict = new Dictionary<string, List<(decimal length, int window)>>();
+                        foreach (var column in validColumns.Keys)
+                        {
+                            requiredLengthsDict[column] = new List<(decimal length, int window)>();
+                        }
+
+                        // Diccionario para almacenar longitudes requeridas por columna
+                        Dictionary<string, List<(decimal length, int window)>> requiredLengthsDict2 = new Dictionary<string, List<(decimal length, int window)>>();
+                        foreach (var column in validColumns2.Keys)
+                        {
+                            requiredLengthsDict2[column] = new List<(decimal length, int window)>();
+                        }
+
+                        // Diccionario para almacenar barras disponibles por columna
+                        Dictionary<string, List<decimal>> availableBarsDict = new Dictionary<string, List<decimal>>();
+                        foreach (var column in validColumns.Keys)
+                        {
+                            availableBarsDict[column] = new List<decimal>();
+                        }
+
+                        // Diccionario para almacenar barras disponibles por columna
+                        Dictionary<string, List<decimal>> availableBarsDict2 = new Dictionary<string, List<decimal>>();
+                        foreach (var column in validColumns2.Keys)
+                        {
+                            availableBarsDict2[column] = new List<decimal>();
+                        }
+
+
+
+                        // Procesar filas
+                        foreach (DataGridViewRow row in dgvOrdenProduccion.Rows)
+                        {
+                            int ventanaIndex = dgvOrdenProduccion.Columns["Ventana"].Index; // Índice de la columna de ventana
+                            if (row.Cells[ventanaIndex].Value != null)
+                            {
+                                string ventanaValue = row.Cells[ventanaIndex].Value.ToString();
+                                int ventana;
+                                if (int.TryParse(ventanaValue, out ventana))
+                                {
+                                    foreach (var column in validColumns.Keys)
+                                    {
+                                        int colIndex = dgvOrdenProduccion.Columns[column].Index;
+                                        int cantIndex = dgvOrdenProduccion.Columns[validColumns[column]].Index;
+
+                                        if (row.Cells[colIndex].Value != null && row.Cells[cantIndex].Value != null)
+                                        {
+                                            string value = row.Cells[colIndex].Value.ToString();
+                                            string cantValue = row.Cells[cantIndex].Value.ToString();
+                                            decimal length;
+                                            int cantidad;
+
+                                            // Intentar convertir la cadena a decimal y la cantidad a int
+                                            if ((decimal.TryParse(value, NumberStyles.Any, CultureInfo.GetCultureInfo("es-ES"), out length) ||
+                                                 decimal.TryParse(value.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out length)) &&
+                                                int.TryParse(cantValue, out cantidad))
+                                            {
+                                                for (int i = 0; i < cantidad; i++)
+                                                {
+                                                    requiredLengthsDict[column].Add((length, ventana));
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
+                        // Procesar filas
+                        foreach (DataGridViewRow row in dgvOrdenProduccion8025.Rows)
+                        {
+                            int ventanaIndex = dgvOrdenProduccion8025.Columns["Ventana8025"].Index; // Índice de la columna de ventana
+                            if (row.Cells[ventanaIndex].Value != null)
+                            {
+                                string ventanaValue = row.Cells[ventanaIndex].Value.ToString();
+                                int ventana;
+                                if (int.TryParse(ventanaValue, out ventana))
+                                {
+                                    foreach (var column in validColumns2.Keys)
+                                    {
+                                        int colIndex = dgvOrdenProduccion8025.Columns[column].Index;
+                                        int cantIndex = dgvOrdenProduccion8025.Columns[validColumns2[column]].Index;
+
+                                        if (row.Cells[colIndex].Value != null && row.Cells[cantIndex].Value != null)
+                                        {
+                                            string value = row.Cells[colIndex].Value.ToString();
+                                            string cantValue = row.Cells[cantIndex].Value.ToString();
+                                            decimal length;
+                                            int cantidad;
+
+                                            // Intentar convertir la cadena a decimal y la cantidad a int
+                                            if ((decimal.TryParse(value, NumberStyles.Any, CultureInfo.GetCultureInfo("es-ES"), out length) ||
+                                                 decimal.TryParse(value.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out length)) &&
+                                                int.TryParse(cantValue, out cantidad))
+                                            {
+                                                for (int i = 0; i < cantidad; i++)
+                                                {
+                                                    requiredLengthsDict2[column].Add((length, ventana));
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
+                        // Obtener los tamaños de producto de la base de datos y llenar las barras disponibles
+                        foreach (var column in validColumns.Keys)
+                        {
+                            FillAvailableBars(column, availableBarsDict[column], requiredLengthsDict[column].Count);
+                        }
+
+                        // Obtener los tamaños de producto de la base de datos y llenar las barras disponibles
+                        foreach (var column in validColumns2.Keys)
+                        {
+                            FillAvailableBars2(column, availableBarsDict2[column], requiredLengthsDict2[column].Count);
+                        }
+
+                        // Mostrar el formulario del optimizador
+                        frmOptimizador optimizerForm = new frmOptimizador(
+                            requiredLengthsDict["Cargador"].ToArray(), availableBarsDict["Cargador"].ToArray(),
+                            requiredLengthsDict["Umbral"].ToArray(), availableBarsDict["Umbral"].ToArray(),
+                            requiredLengthsDict["Jamba"].ToArray(), availableBarsDict["Jamba"].ToArray(),
+                            requiredLengthsDict["Superior"].ToArray(), availableBarsDict["Superior"].ToArray(),
+                            requiredLengthsDict["Inferior"].ToArray(), availableBarsDict["Inferior"].ToArray(),
+                            requiredLengthsDict["Vertical"].ToArray(), availableBarsDict["Vertical"].ToArray(),
+                            requiredLengthsDict["VerticalCentro"].ToArray(), availableBarsDict["VerticalCentro"].ToArray(),
+
+                            requiredLengthsDict2["Cargador8025"].ToArray(), availableBarsDict2["Cargador8025"].ToArray(),
+                            requiredLengthsDict2["Umbral8025"].ToArray(), availableBarsDict2["Umbral8025"].ToArray(),
+                            requiredLengthsDict2["Jamba8025"].ToArray(), availableBarsDict2["Jamba8025"].ToArray(),
+                            requiredLengthsDict2["Superior8025"].ToArray(), availableBarsDict2["Superior8025"].ToArray(),
+                            requiredLengthsDict2["Inferior8025"].ToArray(), availableBarsDict2["Inferior8025"].ToArray(),
+                            requiredLengthsDict2["Vertical8025"].ToArray(), availableBarsDict2["Vertical8025"].ToArray(),
+                            requiredLengthsDict2["VerticalCentro8025"].ToArray(), availableBarsDict2["VerticalCentro8025"].ToArray(),
+                            requiredLengthsDict2["PisaAlfombra"].ToArray(), availableBarsDict2["PisaAlfombra"].ToArray()
+
+
+                        );
+                        optimizerForm.TopMost = true;
+                        optimizerForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione una columna válida para optimizar.", "Columna no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    #endregion 5020
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 
@@ -685,10 +904,32 @@ namespace Precentacion.User.Bill
             }
         }
 
+        private void FillAvailableBars2(string columnName, List<decimal> availableBars, int requiredCount)
+        {
+            for (int i = 0; i < requiredCount; i++)
+            {
+                // Hacer la consulta a la base de datos
+                DataTable productSizesTable2 = columnName == "Cargador8025" ? NQuote.GetProductSizes8025() :
+                                              columnName == "Umbral8025" ? NQuote.GetProductSizesU8025() :
+                                              columnName == "Jamba8025" ? NQuote.GetProductSizesJ8025() :
+                                              columnName == "Superior8025" ? NQuote.GetProductSizesS8025() :
+                                              columnName == "Inferior8025" ? NQuote.GetProductSizesI8025() :
+                                              columnName == "Vertical8025" ? NQuote.GetProductSizesV8025() :
+                                              columnName == "VerticalCentro8025" ? NQuote.GetProductSizesVC8025() : 
+                                              NQuote.GetProductSizesPisaAlformbra8025();
 
-
-
-
+                // Procesar los resultados de la consulta
+                foreach (DataRow row in productSizesTable2.Rows)
+                {
+                    if (row["Tamaño"] != DBNull.Value)
+                    {
+                        decimal size = Convert.ToDecimal(row["Tamaño"], CultureInfo.InvariantCulture);
+                        availableBars.Add(size);
+                    }
+                }
+            }
+        }
     }
 
 }
+

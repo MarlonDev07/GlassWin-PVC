@@ -92,7 +92,7 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
-        //Cargador
+        //Cargador 5020
         public DataTable GetProductSizes(string productName)
         {
             try
@@ -104,7 +104,19 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
-        //Umbral
+        //Cargador 8025
+        public DataTable GetProductSizes8025()
+        {
+            try
+            {
+                return ADQuote.GetProductSizes8025();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //Umbral 5020
         public DataTable GetProductSizesU(string productName)
         {
             try
@@ -116,8 +128,20 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
+        //Umbral 8025
+        public DataTable GetProductSizesU8025( )
+        {
+            try
+            {
+                return ADQuote.GetProductSizesUmbral8025();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
-        //Jamba
+        //Jamba 5020
         public DataTable GetProductSizesJ(string productName)
         {
             try
@@ -129,7 +153,19 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
-        //Superior
+        //Jamba 8025
+        public DataTable GetProductSizesJ8025()
+        {
+            try
+            {
+                return ADQuote.GetProductSizesJamba8025();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //Superior 5020
         public DataTable GetProductSizesS(string productName)
         {
             try
@@ -141,7 +177,19 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
-        //Inferior
+        //Superior 8025
+        public DataTable GetProductSizesS8025()
+        {
+            try
+            {
+                return ADQuote.GetProductSizesSuperior8025();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //Inferior 5020
         public DataTable GetProductSizesI(string productName)
         {
             try
@@ -153,7 +201,19 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
-        //Vertical
+        //Inferior 8025
+        public DataTable GetProductSizesI8025()
+        {
+            try
+            {
+                return ADQuote.GetProductSizesInferior8025();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //Vertical 5020
         public DataTable GetProductSizesV(string productName)
         {
             try
@@ -165,7 +225,19 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
-        //Vertical Centro
+        //Vertical 8025
+        public DataTable GetProductSizesV8025()
+        {
+            try
+            {
+                return ADQuote.GetProductSizesVertical8025();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //Vertical Centro 5020
         public DataTable GetProductSizesVC(string productName)
         {
             try
@@ -177,7 +249,30 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
-
+        //Vertical Centro 8025
+        public DataTable GetProductSizesVC8025()
+        {
+            try
+            {
+                return ADQuote.GetProductSizesVerticalC8025();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //PisaAlformbra 8025
+        public DataTable GetProductSizesPisaAlformbra8025()
+        {
+            try
+            {
+                return ADQuote.GetProductSizesPisaAlfombra8025();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public Decimal CalcTotal(DataTable dtWindows)
         {
             try

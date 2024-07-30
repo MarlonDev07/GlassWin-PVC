@@ -231,6 +231,7 @@ namespace AccesoDatos.Company.Quotes
             }
         }
 
+        //5020
         public DataTable GetProductSizes(string productName)
         {
             try
@@ -249,7 +250,25 @@ namespace AccesoDatos.Company.Quotes
                 return null;
             }
         }
-
+        //8025
+        public DataTable GetProductSizes8025()
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = 'Cargador 8025' and Tamaño = 6.40", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //5020
         public DataTable GetProductSizesUmbral(string productName)
         {
             try
@@ -268,7 +287,25 @@ namespace AccesoDatos.Company.Quotes
                 return null;
             }
         }
-
+        //8025
+        public DataTable GetProductSizesUmbral8025()
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = 'Umbral 8025' and Tamaño = 6.40", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //5020
         public DataTable GetProductSizesJamba(string productName)
         {
             try
@@ -287,7 +324,26 @@ namespace AccesoDatos.Company.Quotes
                 return null;
             }
         }
+        //8025
+        public DataTable GetProductSizesJamba8025()
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = 'Jamba 8025' and Tamaño = 4.60", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
+        //5020
         public DataTable GetProductSizesSuperior(string productName)
         {
             try
@@ -306,6 +362,25 @@ namespace AccesoDatos.Company.Quotes
                 return null;
             }
         }
+        //8025
+        public DataTable GetProductSizesSuperior8025()
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = 'Superior 8025' and Tamaño = 6.40", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //5020
         public DataTable GetProductSizesInferior(string productName)
         {
             try
@@ -324,6 +399,25 @@ namespace AccesoDatos.Company.Quotes
                 return null;
             }
         }
+        //8025
+        public DataTable GetProductSizesInferior8025()
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = 'Inferior 8025' and Tamaño = 6.40", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //5020
         public DataTable GetProductSizesVertical(string productName)
         {
             try
@@ -342,6 +436,25 @@ namespace AccesoDatos.Company.Quotes
                 return null;
             }
         }
+        //8025
+        public DataTable GetProductSizesVertical8025()
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = 'Vertical 8025' and Tamaño = 4.60", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //5020
         public DataTable GetProductSizesVerticalC(string productName)
         {
             try
@@ -381,6 +494,42 @@ namespace AccesoDatos.Company.Quotes
             {
                 // Manejar el error según sea necesario
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //8025
+        public DataTable GetProductSizesVerticalC8025()
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = 'Vertical Centro 8025' and Tamaño = 4.60", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        //8025
+        public DataTable GetProductSizesPisaAlfombra8025()
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT  Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct WHERE pr.Description = 'Pisalfombra 8025' and Tamaño = 6.40", Cnn.OpenConecction());
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                Cnn.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
                 return null;
             }
         }
