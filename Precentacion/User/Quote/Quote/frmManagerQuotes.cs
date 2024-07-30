@@ -53,7 +53,7 @@ namespace Precentacion.User.Quote.Quote
                 dgvQuotes.Columns[2].HeaderText = "Fecha";
                 dgvQuotes.Columns[3].HeaderText = "Nombre del Cliente";
                 dgvQuotes.Columns[4].HeaderText = "Nombre del Proyecto";
-                dgvQuotes.Columns[5].HeaderText = "Direcccion";
+                dgvQuotes.Columns[5].HeaderText = "Dirección";
                 dgvQuotes.Columns[6].HeaderText = "Subtotal";
                 dgvQuotes.Columns[7].HeaderText = "Impuesto";
                 dgvQuotes.Columns[8].HeaderText = "Total";
