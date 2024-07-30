@@ -212,5 +212,126 @@ namespace Precentacion.User.Bill
 
             return optimizedCuts;
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            // Llama a la función para imprimir todos los DataGridViews en un único PDF
+            ExportDataGridViewsToPdf("Resultados_Optimizacion.pdf");
+            MessageBox.Show("PDF generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ExportDataGridViewsToPdf(string filename)
+        {
+            Document pdfDoc = new Document(PageSize.A4.Rotate());
+            try
+            {
+                string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), filename);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(folderPath, FileMode.Create));
+                pdfDoc.Open();
+
+                AddDataGridViewToPdf(pdfDoc, dgvResults1, "003 Cargador 5020", "cargador.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvResults2, "002 Umbral 5020", "umbral.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvResults3, "004 Jamba 5020", "jamba.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvResults4, "006 Superior 5020", "superior2.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvResults5, "005 Inferior 5020", "inferior2.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvResults6, "007 Vertical 5020", "vertical.jpeg");
+                AddDataGridViewToPdf(pdfDoc, dgvResults7, "008 Vertical Centro 5020", "verticalC.jpeg");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar el PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                pdfDoc.Close();
+            }
+        }
+
+
+
+        //Comentario de Prueba
+        private void AddDataGridViewToPdf(Document pdfDoc, DataGridView dgv, string title, string imageName)
+        {
+            // Ruta de la imagen
+            string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+            string url = $"\\Images\\Optimizador\\{imageName}";
+            string rutaImagen = ruta + url;
+
+            // Crear una tabla PDF con una celda para la imagen y otra para el título
+            PdfPTable titleTable = new PdfPTable(2);
+            titleTable.WidthPercentage = 100;
+            titleTable.SetWidths(new float[] { 1f, 8f });
+
+            // Agregar la imagen a la celda
+            iTextSharp.text.Image titleImage = iTextSharp.text.Image.GetInstance(rutaImagen);
+            PdfPCell imageTitleCell = new PdfPCell(titleImage, true)
+            {
+                Border = iTextSharp.text.Rectangle.NO_BORDER,
+                Padding = 5
+            };
+            titleTable.AddCell(imageTitleCell);
+
+            // Agregar el título de la sección a la celda
+            PdfPCell titleTextCell = new PdfPCell(new Phrase(title, FontFactory.GetFont("Arial", 16, iTextSharp.text.Font.BOLD)))
+            {
+                Border = iTextSharp.text.Rectangle.NO_BORDER,
+                Padding = 5,
+                HorizontalAlignment = Element.ALIGN_LEFT
+            };
+            titleTable.AddCell(titleTextCell);
+
+            // Agregar la tabla de título con imagen al documento
+            pdfDoc.Add(titleTable);
+            pdfDoc.Add(new Paragraph("\n"));
+
+            // Crear una tabla PDF con el mismo número de columnas que el DataGridView
+            PdfPTable dataGridTable = new PdfPTable(dgv.ColumnCount);
+            dataGridTable.WidthPercentage = 100;
+
+            // Ajustar los anchos de las columnas (ej. 20%, 20%, 30%, 30%)
+            float[] columnWidths = { 1f, 1f, 8f, 1f };
+            dataGridTable.SetWidths(columnWidths);
+
+            // Añadir las cabeceras de columna
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                PdfPCell headerCell = new PdfPCell(new Phrase(column.HeaderText))
+                {
+                    BackgroundColor = new BaseColor(240, 240, 240)
+                };
+                dataGridTable.AddCell(headerCell);
+            }
+
+            // Añadir las filas de datos
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null)
+                    {
+                        if (cell.ValueType == typeof(System.Drawing.Image))
+                        {
+                            // Agregar imagen a la celda si el valor es una imagen
+                            System.Drawing.Image cellImage = (System.Drawing.Image)cell.Value;
+                            iTextSharp.text.Image pdfCellImage = iTextSharp.text.Image.GetInstance(cellImage, System.Drawing.Imaging.ImageFormat.Png);
+                            PdfPCell cellImageCell = new PdfPCell(pdfCellImage, true);
+                            dataGridTable.AddCell(cellImageCell);
+                        }
+                        else
+                        {
+                            dataGridTable.AddCell(new Phrase(cell.Value.ToString()));
+                        }
+                    }
+                }
+            }
+
+            pdfDoc.Add(dataGridTable);
+            pdfDoc.Add(new Paragraph("\n")); // Agregar un espacio entre tablas
+        }
+
+
+
+
     }
 }
+
