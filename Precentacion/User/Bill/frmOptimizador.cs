@@ -437,5 +437,14 @@ namespace Precentacion.User.Bill
             pdfDoc.Add(new Paragraph("\n")); // Agregar un espacio entre tablas
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
