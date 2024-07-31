@@ -331,7 +331,7 @@ namespace Precentacion.User.Bill
         private void btnImprimir_Click_1(object sender, EventArgs e)
         {
             // Llama a la función para imprimir todos los DataGridViews en un único PDF
-            ExportDataGridViewsToPdf("Resultados_Optimizacion.pdf");
+            ExportDataGridViewsToPdf($"Resultados Optimizacion {orden}.pdf");
             MessageBox.Show("PDF generado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
