@@ -145,7 +145,8 @@ namespace Precentacion.User.Employer
                 cbPaymentUpdate.Text = dgvEmployers.CurrentRow.Cells[11].Value.ToString();
                 dtDateofBirthUpdate.Value = Convert.ToDateTime(dgvEmployers.CurrentRow.Cells[5].Value.ToString());
                 dtDateofEntryUpdate.Value = Convert.ToDateTime(dgvEmployers.CurrentRow.Cells[6].Value.ToString());
-                CalcSalaryUpdate_textchange(sender, e);
+                //CalcSalaryUpdate_textchange(sender, e);
+                txtSalaryxHoursUpdate.Text = dgvEmployers.CurrentRow.Cells[12].Value.ToString();
                 tabControlEmployers.SelectedIndex = 2;
             }
             catch (Exception)
@@ -346,7 +347,8 @@ namespace Precentacion.User.Employer
                 string Payment = cbPaymentNew.Text;
                 DateTime DateofBirth = dtDateofBirthNew.Value;
                 DateTime DateofEntry = dtDateofEntryNew.Value;
-                if (N_Employer.InsertEmployer(Id, Name, LastName, Salary.ToString(), "", DateofBirth.ToString(), DateofEntry.ToString(), Phone, Email, Address, Position, Payment, SalaryxHours))
+                decimal SalarioHora = Convert.ToDecimal(txtSalaryxHoursNew.Text);
+                if (N_Employer.InsertEmployer(Id, Name, LastName, Salary.ToString(), "", DateofBirth.ToString(), DateofEntry.ToString(), Phone, Email, Address, Position, Payment, SalarioHora /*SalaryxHours*/))
                 {
                     MessageBox.Show("Empleado Registrado Correctamente", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadEmployers();
@@ -535,7 +537,8 @@ namespace Precentacion.User.Employer
                 string Payment = cbPaymentUpdate.Text;
                 DateTime DateofBirth = dtDateofBirthUpdate.Value;
                 DateTime DateofEntry = dtDateofEntryUpdate.Value;
-                if (N_Employer.UpdateEmployer(Id, Name, LastName, Salary.ToString(), "", DateofBirth.ToString(), DateofEntry.ToString(), Phone, Email, Address, Position, Payment, SalaryxHours))
+                decimal SalaryHours = Convert.ToDecimal(txtSalaryxHoursUpdate.Text);
+                if (N_Employer.UpdateEmployer(Id, Name, LastName, Salary.ToString(), "", DateofBirth.ToString(), DateofEntry.ToString(), Phone, Email, Address, Position, Payment, SalaryHours/*SalaryxHours*/))
                 {
                     MessageBox.Show("Empleado Actualizado Correctamente", "Actualizacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadEmployers();
