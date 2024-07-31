@@ -836,6 +836,9 @@ namespace Precentacion.User.Bill
                             FillAvailableBars2(column, availableBarsDict2[column], requiredLengthsDict2[column].Count);
                         }
 
+                        string orden = txtOrden.Text;
+                        string proyecto = cbProyecto.Text;
+
                         // Mostrar el formulario del optimizador
                         frmOptimizador optimizerForm = new frmOptimizador(
                             requiredLengthsDict["Cargador"].ToArray(), availableBarsDict["Cargador"].ToArray(),
@@ -853,7 +856,11 @@ namespace Precentacion.User.Bill
                             requiredLengthsDict2["Inferior8025"].ToArray(), availableBarsDict2["Inferior8025"].ToArray(),
                             requiredLengthsDict2["Vertical8025"].ToArray(), availableBarsDict2["Vertical8025"].ToArray(),
                             requiredLengthsDict2["VerticalCentro8025"].ToArray(), availableBarsDict2["VerticalCentro8025"].ToArray(),
-                            requiredLengthsDict2["PisaAlfombra"].ToArray(), availableBarsDict2["PisaAlfombra"].ToArray()
+                            requiredLengthsDict2["PisaAlfombra"].ToArray(), availableBarsDict2["PisaAlfombra"].ToArray(),
+
+                            orden,proyecto
+
+
 
 
                         );

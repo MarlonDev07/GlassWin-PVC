@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrdenProduccion));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOptimizar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dtpFechaSalida = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
@@ -45,6 +46,28 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvOrdenProduccion8025 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cargador8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantCargador8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Umbral8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantUmbral8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jamba8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantJamba8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Superior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantSuperior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inferior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantInferior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vertical8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantVertical8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VerticalCentro8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PisaAlfombra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantPisaAlfombra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ventana8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvOrdenProduccion = new System.Windows.Forms.DataGridView();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,29 +91,6 @@
             this.cantVerticalC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ventana = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnOptimizar = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cargador8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantCargador8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Umbral8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantUmbral8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Jamba8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantJamba8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Superior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantSuperior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inferior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantInferior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vertical8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantVertical8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VerticalCentro8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PisaAlfombra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantPisaAlfombra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ventana8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -113,12 +113,22 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 64);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1313, 177);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(1329, 177);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnOptimizar
+            // 
+            this.btnOptimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnOptimizar.Image")));
+            this.btnOptimizar.Location = new System.Drawing.Point(95, 124);
+            this.btnOptimizar.Name = "btnOptimizar";
+            this.btnOptimizar.Size = new System.Drawing.Size(61, 48);
+            this.btnOptimizar.TabIndex = 10;
+            this.btnOptimizar.UseVisualStyleBackColor = true;
+            this.btnOptimizar.Click += new System.EventHandler(this.btnOptimizar_Click);
             // 
             // btnImprimir
             // 
@@ -133,7 +143,7 @@
             // dtpFechaSalida
             // 
             this.dtpFechaSalida.Location = new System.Drawing.Point(175, 78);
-            this.dtpFechaSalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaSalida.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaSalida.Name = "dtpFechaSalida";
             this.dtpFechaSalida.Size = new System.Drawing.Size(196, 20);
             this.dtpFechaSalida.TabIndex = 8;
@@ -141,7 +151,7 @@
             // dtpFechaInicio
             // 
             this.dtpFechaInicio.Location = new System.Drawing.Point(175, 57);
-            this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(196, 20);
             this.dtpFechaInicio.TabIndex = 7;
@@ -150,7 +160,7 @@
             // 
             this.cbProyecto.FormattingEnabled = true;
             this.cbProyecto.Location = new System.Drawing.Point(175, 35);
-            this.cbProyecto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbProyecto.Margin = new System.Windows.Forms.Padding(2);
             this.cbProyecto.Name = "cbProyecto";
             this.cbProyecto.Size = new System.Drawing.Size(196, 21);
             this.cbProyecto.TabIndex = 6;
@@ -159,7 +169,7 @@
             // txtOrden
             // 
             this.txtOrden.Location = new System.Drawing.Point(175, 15);
-            this.txtOrden.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtOrden.Margin = new System.Windows.Forms.Padding(2);
             this.txtOrden.Name = "txtOrden";
             this.txtOrden.Size = new System.Drawing.Size(196, 20);
             this.txtOrden.TabIndex = 5;
@@ -265,212 +275,12 @@
             this.cantPisaAlfombra,
             this.Ventana8025});
             this.dgvOrdenProduccion8025.Location = new System.Drawing.Point(2, 321);
-            this.dgvOrdenProduccion8025.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvOrdenProduccion8025.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrdenProduccion8025.Name = "dgvOrdenProduccion8025";
             this.dgvOrdenProduccion8025.RowHeadersWidth = 62;
             this.dgvOrdenProduccion8025.RowTemplate.Height = 28;
             this.dgvOrdenProduccion8025.Size = new System.Drawing.Size(974, 230);
             this.dgvOrdenProduccion8025.TabIndex = 11;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(2, 8);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(222, 20);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Orden de Producción 5020";
-            // 
-            // dgvOrdenProduccion
-            // 
-            this.dgvOrdenProduccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrdenProduccion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Tipo,
-            this.Ubicacion,
-            this.Diseno,
-            this.Column4,
-            this.Column5,
-            this.Cargador,
-            this.cantCargador,
-            this.Umbral,
-            this.cantUmbral,
-            this.Jamba,
-            this.cantJamba,
-            this.Superior,
-            this.cantSuperior,
-            this.Inferior,
-            this.cantInferior,
-            this.Vertical,
-            this.cantVertical,
-            this.VerticalCentro,
-            this.cantVerticalC,
-            this.Ventana});
-            this.dgvOrdenProduccion.Location = new System.Drawing.Point(2, 36);
-            this.dgvOrdenProduccion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dgvOrdenProduccion.Name = "dgvOrdenProduccion";
-            this.dgvOrdenProduccion.RowHeadersWidth = 62;
-            this.dgvOrdenProduccion.RowTemplate.Height = 28;
-            this.dgvOrdenProduccion.Size = new System.Drawing.Size(974, 230);
-            this.dgvOrdenProduccion.TabIndex = 1;
-            // 
-            // Tipo
-            // 
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.MinimumWidth = 8;
-            this.Tipo.Name = "Tipo";
-            this.Tipo.Width = 150;
-            // 
-            // Ubicacion
-            // 
-            this.Ubicacion.HeaderText = "Ubicación";
-            this.Ubicacion.MinimumWidth = 8;
-            this.Ubicacion.Name = "Ubicacion";
-            this.Ubicacion.Width = 110;
-            // 
-            // Diseno
-            // 
-            this.Diseno.HeaderText = "Diseño";
-            this.Diseno.MinimumWidth = 8;
-            this.Diseno.Name = "Diseno";
-            this.Diseno.Width = 110;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Ancho";
-            this.Column4.MinimumWidth = 8;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 150;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Alto";
-            this.Column5.MinimumWidth = 8;
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 150;
-            // 
-            // Cargador
-            // 
-            this.Cargador.HeaderText = "Cargador";
-            this.Cargador.MinimumWidth = 8;
-            this.Cargador.Name = "Cargador";
-            this.Cargador.Width = 150;
-            // 
-            // cantCargador
-            // 
-            this.cantCargador.HeaderText = "Cant";
-            this.cantCargador.MinimumWidth = 8;
-            this.cantCargador.Name = "cantCargador";
-            this.cantCargador.Width = 90;
-            // 
-            // Umbral
-            // 
-            this.Umbral.HeaderText = "Umbral";
-            this.Umbral.MinimumWidth = 8;
-            this.Umbral.Name = "Umbral";
-            this.Umbral.Width = 150;
-            // 
-            // cantUmbral
-            // 
-            this.cantUmbral.HeaderText = "Cant";
-            this.cantUmbral.MinimumWidth = 8;
-            this.cantUmbral.Name = "cantUmbral";
-            this.cantUmbral.Width = 90;
-            // 
-            // Jamba
-            // 
-            this.Jamba.HeaderText = "Jamba";
-            this.Jamba.MinimumWidth = 8;
-            this.Jamba.Name = "Jamba";
-            this.Jamba.Width = 150;
-            // 
-            // cantJamba
-            // 
-            this.cantJamba.HeaderText = "Cant";
-            this.cantJamba.MinimumWidth = 8;
-            this.cantJamba.Name = "cantJamba";
-            this.cantJamba.Width = 90;
-            // 
-            // Superior
-            // 
-            this.Superior.HeaderText = "Superior";
-            this.Superior.MinimumWidth = 8;
-            this.Superior.Name = "Superior";
-            this.Superior.Width = 150;
-            // 
-            // cantSuperior
-            // 
-            this.cantSuperior.HeaderText = "Cant";
-            this.cantSuperior.MinimumWidth = 8;
-            this.cantSuperior.Name = "cantSuperior";
-            this.cantSuperior.Width = 90;
-            // 
-            // Inferior
-            // 
-            this.Inferior.HeaderText = "Inferior";
-            this.Inferior.MinimumWidth = 8;
-            this.Inferior.Name = "Inferior";
-            this.Inferior.Width = 150;
-            // 
-            // cantInferior
-            // 
-            this.cantInferior.HeaderText = "Cant";
-            this.cantInferior.MinimumWidth = 8;
-            this.cantInferior.Name = "cantInferior";
-            this.cantInferior.Width = 90;
-            // 
-            // Vertical
-            // 
-            this.Vertical.HeaderText = "Vertical";
-            this.Vertical.MinimumWidth = 8;
-            this.Vertical.Name = "Vertical";
-            this.Vertical.Width = 150;
-            // 
-            // cantVertical
-            // 
-            this.cantVertical.HeaderText = "Cant";
-            this.cantVertical.MinimumWidth = 8;
-            this.cantVertical.Name = "cantVertical";
-            this.cantVertical.Width = 90;
-            // 
-            // VerticalCentro
-            // 
-            this.VerticalCentro.HeaderText = "Vertical Centro";
-            this.VerticalCentro.MinimumWidth = 8;
-            this.VerticalCentro.Name = "VerticalCentro";
-            this.VerticalCentro.Width = 150;
-            // 
-            // cantVerticalC
-            // 
-            this.cantVerticalC.HeaderText = "Cant";
-            this.cantVerticalC.MinimumWidth = 8;
-            this.cantVerticalC.Name = "cantVerticalC";
-            this.cantVerticalC.Width = 90;
-            // 
-            // Ventana
-            // 
-            this.Ventana.HeaderText = "Ventana";
-            this.Ventana.MinimumWidth = 8;
-            this.Ventana.Name = "Ventana";
-            this.Ventana.Width = 150;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
-            // 
-            // btnOptimizar
-            // 
-            this.btnOptimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnOptimizar.Image")));
-            this.btnOptimizar.Location = new System.Drawing.Point(95, 124);
-            this.btnOptimizar.Name = "btnOptimizar";
-            this.btnOptimizar.Size = new System.Drawing.Size(61, 48);
-            this.btnOptimizar.TabIndex = 10;
-            this.btnOptimizar.UseVisualStyleBackColor = true;
-            this.btnOptimizar.Click += new System.EventHandler(this.btnOptimizar_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -625,17 +435,207 @@
             this.Ventana8025.Name = "Ventana8025";
             this.Ventana8025.Visible = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(2, 8);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(222, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Orden de Producción 5020";
+            // 
+            // dgvOrdenProduccion
+            // 
+            this.dgvOrdenProduccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrdenProduccion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Tipo,
+            this.Ubicacion,
+            this.Diseno,
+            this.Column4,
+            this.Column5,
+            this.Cargador,
+            this.cantCargador,
+            this.Umbral,
+            this.cantUmbral,
+            this.Jamba,
+            this.cantJamba,
+            this.Superior,
+            this.cantSuperior,
+            this.Inferior,
+            this.cantInferior,
+            this.Vertical,
+            this.cantVertical,
+            this.VerticalCentro,
+            this.cantVerticalC,
+            this.Ventana});
+            this.dgvOrdenProduccion.Location = new System.Drawing.Point(2, 36);
+            this.dgvOrdenProduccion.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvOrdenProduccion.Name = "dgvOrdenProduccion";
+            this.dgvOrdenProduccion.RowHeadersWidth = 62;
+            this.dgvOrdenProduccion.RowTemplate.Height = 28;
+            this.dgvOrdenProduccion.Size = new System.Drawing.Size(974, 230);
+            this.dgvOrdenProduccion.TabIndex = 1;
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.MinimumWidth = 8;
+            this.Tipo.Name = "Tipo";
+            this.Tipo.Width = 150;
+            // 
+            // Ubicacion
+            // 
+            this.Ubicacion.HeaderText = "Ubicación";
+            this.Ubicacion.MinimumWidth = 8;
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.Width = 110;
+            // 
+            // Diseno
+            // 
+            this.Diseno.HeaderText = "Diseño";
+            this.Diseno.MinimumWidth = 8;
+            this.Diseno.Name = "Diseno";
+            this.Diseno.Width = 110;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Ancho";
+            this.Column4.MinimumWidth = 8;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 150;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Alto";
+            this.Column5.MinimumWidth = 8;
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 150;
+            // 
+            // Cargador
+            // 
+            this.Cargador.HeaderText = "Cargador";
+            this.Cargador.MinimumWidth = 8;
+            this.Cargador.Name = "Cargador";
+            this.Cargador.Width = 150;
+            // 
+            // cantCargador
+            // 
+            this.cantCargador.HeaderText = "Cant";
+            this.cantCargador.MinimumWidth = 8;
+            this.cantCargador.Name = "cantCargador";
+            this.cantCargador.Width = 90;
+            // 
+            // Umbral
+            // 
+            this.Umbral.HeaderText = "Umbral";
+            this.Umbral.MinimumWidth = 8;
+            this.Umbral.Name = "Umbral";
+            this.Umbral.Width = 150;
+            // 
+            // cantUmbral
+            // 
+            this.cantUmbral.HeaderText = "Cant";
+            this.cantUmbral.MinimumWidth = 8;
+            this.cantUmbral.Name = "cantUmbral";
+            this.cantUmbral.Width = 90;
+            // 
+            // Jamba
+            // 
+            this.Jamba.HeaderText = "Jamba";
+            this.Jamba.MinimumWidth = 8;
+            this.Jamba.Name = "Jamba";
+            this.Jamba.Width = 150;
+            // 
+            // cantJamba
+            // 
+            this.cantJamba.HeaderText = "Cant";
+            this.cantJamba.MinimumWidth = 8;
+            this.cantJamba.Name = "cantJamba";
+            this.cantJamba.Width = 90;
+            // 
+            // Superior
+            // 
+            this.Superior.HeaderText = "Superior";
+            this.Superior.MinimumWidth = 8;
+            this.Superior.Name = "Superior";
+            this.Superior.Width = 150;
+            // 
+            // cantSuperior
+            // 
+            this.cantSuperior.HeaderText = "Cant";
+            this.cantSuperior.MinimumWidth = 8;
+            this.cantSuperior.Name = "cantSuperior";
+            this.cantSuperior.Width = 90;
+            // 
+            // Inferior
+            // 
+            this.Inferior.HeaderText = "Inferior";
+            this.Inferior.MinimumWidth = 8;
+            this.Inferior.Name = "Inferior";
+            this.Inferior.Width = 150;
+            // 
+            // cantInferior
+            // 
+            this.cantInferior.HeaderText = "Cant";
+            this.cantInferior.MinimumWidth = 8;
+            this.cantInferior.Name = "cantInferior";
+            this.cantInferior.Width = 90;
+            // 
+            // Vertical
+            // 
+            this.Vertical.HeaderText = "Vertical";
+            this.Vertical.MinimumWidth = 8;
+            this.Vertical.Name = "Vertical";
+            this.Vertical.Width = 150;
+            // 
+            // cantVertical
+            // 
+            this.cantVertical.HeaderText = "Cant";
+            this.cantVertical.MinimumWidth = 8;
+            this.cantVertical.Name = "cantVertical";
+            this.cantVertical.Width = 90;
+            // 
+            // VerticalCentro
+            // 
+            this.VerticalCentro.HeaderText = "Vertical Centro";
+            this.VerticalCentro.MinimumWidth = 8;
+            this.VerticalCentro.Name = "VerticalCentro";
+            this.VerticalCentro.Width = 150;
+            // 
+            // cantVerticalC
+            // 
+            this.cantVerticalC.HeaderText = "Cant";
+            this.cantVerticalC.MinimumWidth = 8;
+            this.cantVerticalC.Name = "cantVerticalC";
+            this.cantVerticalC.Width = 90;
+            // 
+            // Ventana
+            // 
+            this.Ventana.HeaderText = "Ventana";
+            this.Ventana.MinimumWidth = 8;
+            this.Ventana.Name = "Ventana";
+            this.Ventana.Width = 150;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
+            // 
             // frmOrdenProduccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1319, 772);
+            this.ClientSize = new System.Drawing.Size(1335, 811);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmOrdenProduccion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

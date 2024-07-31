@@ -169,7 +169,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dgvResults1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(2, 41);
+            this.panel1.Location = new System.Drawing.Point(2, 65);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1279, 285);
             this.panel1.TabIndex = 14;
@@ -365,9 +365,9 @@
             // btnImprimir
             // 
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
-            this.btnImprimir.Location = new System.Drawing.Point(1196, 687);
+            this.btnImprimir.Location = new System.Drawing.Point(1196, 697);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(61, 48);
+            this.btnImprimir.Size = new System.Drawing.Size(60, 48);
             this.btnImprimir.TabIndex = 15;
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click_1);
@@ -376,7 +376,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(5, 3);
+            this.label8.Location = new System.Drawing.Point(5, 27);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(258, 33);
             this.label8.TabIndex = 16;
@@ -386,7 +386,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 346);
+            this.label9.Location = new System.Drawing.Point(6, 370);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(258, 33);
             this.label9.TabIndex = 17;
@@ -420,7 +420,7 @@
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.dgvCargador8025);
             this.panel2.Controls.Add(this.pictureBox8);
-            this.panel2.Location = new System.Drawing.Point(2, 382);
+            this.panel2.Location = new System.Drawing.Point(2, 406);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1279, 285);
             this.panel2.TabIndex = 18;

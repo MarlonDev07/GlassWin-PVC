@@ -17,6 +17,7 @@ using iTextSharp.text.pdf;
 using System.Diagnostics;
 using iTextSharp.text;
 using Image = System.Drawing.Image;
+using Org.BouncyCastle.Asn1.X500;
 
 
 namespace Precentacion.User.Bill
@@ -58,6 +59,8 @@ namespace Precentacion.User.Bill
         private decimal[] availableBarsPA8025;
         private Image defaultImage;
         private Image specificImage;
+        string orden;
+        string proyecto;
 
         public frmOptimizador(
             (decimal length, int window)[] requiredLengths, decimal[] availableBars,
@@ -75,10 +78,14 @@ namespace Precentacion.User.Bill
             (decimal length, int window)[] requiredLengthsI8025, decimal[] availableBarsI8025,
             (decimal length, int window)[] requiredLengthsV8025, decimal[] availableBarsV8025,
             (decimal length, int window)[] requiredLengthsVC8025, decimal[] availableBarsVC8025,
-            (decimal length, int window)[] requiredLengthsPA8025, decimal[] availableBarsPA8025
+            (decimal length, int window)[] requiredLengthsPA8025, decimal[] availableBarsPA8025,
+            string orden, string proyecto
             )
         {
             InitializeComponent();
+            this.orden = orden;
+            this.proyecto = proyecto;
+
             // Cargador
             this.requiredLengths = requiredLengths;
             this.availableBars = availableBars;
@@ -139,11 +146,11 @@ namespace Precentacion.User.Bill
             // Configurar los DataGridView al inicializar el formulario
             ConfigureDataGridView(dgvCargador8025, defaultImage);
             ConfigureDataGridView(dgvUmbral8025, defaultImage);
-            ConfigureDataGridView(dgvJamba8025, defaultImage);
+            ConfigureDataGridView2(dgvJamba8025, defaultImage);
             ConfigureDataGridView(dgvSuperior8025, defaultImage);
             ConfigureDataGridView(dgvInferior8025, defaultImage);
-            ConfigureDataGridView(dgvVertical8025, defaultImage);
-            ConfigureDataGridView(dgvVerticalC8025, defaultImage);
+            ConfigureDataGridView2(dgvVertical8025, defaultImage);
+            ConfigureDataGridView2(dgvVerticalC8025, defaultImage);
             ConfigureDataGridView(dgvPisaAl8025, defaultImage);
 
             // Cargar las imágenes
@@ -197,6 +204,29 @@ namespace Precentacion.User.Bill
             // Ajustar el tamaño de las columnas
             AdjustColumnWidthsToFitContent(dgv);
         }
+        private void ConfigureDataGridView2(DataGridView dgv, Image defaultImage)
+        {
+            // Definir columnas para el DataGridView
+            dgv.Columns.Clear();
+            dgv.Columns.Add("colBar", "Barra 4.60");
+
+            // Crear y añadir una columna de imagen con imagen por defecto
+            DataGridViewImageColumn imageColumn = new DataGridViewImageColumn
+            {
+                Name = "colUbicacion",
+                HeaderText = "Corte",
+                ImageLayout = DataGridViewImageCellLayout.Zoom,
+                DefaultCellStyle = { NullValue = defaultImage }
+            };
+            dgv.Columns.Add(imageColumn);
+
+            dgv.Columns.Add("colCuts", "Dimensiones");
+            dgv.Columns.Add("colResiduos", "Retal"); // Nueva columna para residuos
+
+            // Ajustar el tamaño de las columnas
+            AdjustColumnWidthsToFitContent(dgv);
+        }
+
 
         private void AdjustColumnWidthsToFitContent(DataGridView dgv)
         {
@@ -314,6 +344,9 @@ namespace Precentacion.User.Bill
                 PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(folderPath, FileMode.Create));
                 pdfDoc.Open();
 
+                // Info general
+                AddGeneralInfoToPdf(pdfDoc, orden, proyecto);
+
                 // Título 1
                 AddTitleToPdf(pdfDoc, "Optimización 5020");
                 AddDataGridViewToPdf(pdfDoc, dgvResults1, "003 Cargador 5020", "cargador.jpeg");
@@ -343,6 +376,22 @@ namespace Precentacion.User.Bill
             {
                 pdfDoc.Close();
             }
+        }
+
+        // Método para agregar la información general al PDF
+        private void AddGeneralInfoToPdf(Document pdfDoc, string orden, string proyecto)
+        {
+            // Configura el estilo de fuente y tamaño
+            iTextSharp.text.Font font = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
+
+            // Añadir N° Orden
+            pdfDoc.Add(new Paragraph($"N° Orden: {orden}", font));
+
+            // Añadir Proyecto
+            pdfDoc.Add(new Paragraph($"Proyecto: {proyecto}", font));
+
+            // Añadir un espacio entre las secciones
+            pdfDoc.Add(new Paragraph("\n"));
         }
 
 
