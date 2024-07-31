@@ -46,28 +46,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvOrdenProduccion8025 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cargador8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantCargador8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Umbral8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantUmbral8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Jamba8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantJamba8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Superior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantSuperior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inferior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantInferior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vertical8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantVertical8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VerticalCentro8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PisaAlfombra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantPisaAlfombra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ventana8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvOrdenProduccion = new System.Windows.Forms.DataGridView();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,6 +69,28 @@
             this.cantVerticalC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ventana = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cargador8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantCargador8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Umbral8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantUmbral8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jamba8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantJamba8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Superior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantSuperior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inferior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantInferior8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vertical8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantVertical8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VerticalCentro8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PisaAlfombra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantPisaAlfombra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ventana8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -116,7 +116,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1329, 177);
+            this.groupBox1.Size = new System.Drawing.Size(1345, 177);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -281,159 +281,6 @@
             this.dgvOrdenProduccion8025.RowTemplate.Height = 28;
             this.dgvOrdenProduccion8025.Size = new System.Drawing.Size(974, 230);
             this.dgvOrdenProduccion8025.TabIndex = 11;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Tipo";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Ubicación";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Diseño";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Ancho";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Alto";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 150;
-            // 
-            // Cargador8025
-            // 
-            this.Cargador8025.HeaderText = "Cargador";
-            this.Cargador8025.MinimumWidth = 8;
-            this.Cargador8025.Name = "Cargador8025";
-            this.Cargador8025.Width = 150;
-            // 
-            // cantCargador8025
-            // 
-            this.cantCargador8025.HeaderText = "Cant";
-            this.cantCargador8025.MinimumWidth = 8;
-            this.cantCargador8025.Name = "cantCargador8025";
-            this.cantCargador8025.Width = 90;
-            // 
-            // Umbral8025
-            // 
-            this.Umbral8025.HeaderText = "Umbral";
-            this.Umbral8025.MinimumWidth = 8;
-            this.Umbral8025.Name = "Umbral8025";
-            this.Umbral8025.Width = 150;
-            // 
-            // cantUmbral8025
-            // 
-            this.cantUmbral8025.HeaderText = "Cant";
-            this.cantUmbral8025.MinimumWidth = 8;
-            this.cantUmbral8025.Name = "cantUmbral8025";
-            this.cantUmbral8025.Width = 90;
-            // 
-            // Jamba8025
-            // 
-            this.Jamba8025.HeaderText = "Jamba";
-            this.Jamba8025.MinimumWidth = 8;
-            this.Jamba8025.Name = "Jamba8025";
-            this.Jamba8025.Width = 150;
-            // 
-            // cantJamba8025
-            // 
-            this.cantJamba8025.HeaderText = "Cant";
-            this.cantJamba8025.MinimumWidth = 8;
-            this.cantJamba8025.Name = "cantJamba8025";
-            this.cantJamba8025.Width = 90;
-            // 
-            // Superior8025
-            // 
-            this.Superior8025.HeaderText = "Superior";
-            this.Superior8025.MinimumWidth = 8;
-            this.Superior8025.Name = "Superior8025";
-            this.Superior8025.Width = 150;
-            // 
-            // cantSuperior8025
-            // 
-            this.cantSuperior8025.HeaderText = "Cant";
-            this.cantSuperior8025.MinimumWidth = 8;
-            this.cantSuperior8025.Name = "cantSuperior8025";
-            this.cantSuperior8025.Width = 90;
-            // 
-            // Inferior8025
-            // 
-            this.Inferior8025.HeaderText = "Inferior";
-            this.Inferior8025.MinimumWidth = 8;
-            this.Inferior8025.Name = "Inferior8025";
-            this.Inferior8025.Width = 150;
-            // 
-            // cantInferior8025
-            // 
-            this.cantInferior8025.HeaderText = "Cant";
-            this.cantInferior8025.MinimumWidth = 8;
-            this.cantInferior8025.Name = "cantInferior8025";
-            this.cantInferior8025.Width = 90;
-            // 
-            // Vertical8025
-            // 
-            this.Vertical8025.HeaderText = "Vertical";
-            this.Vertical8025.MinimumWidth = 8;
-            this.Vertical8025.Name = "Vertical8025";
-            this.Vertical8025.Width = 150;
-            // 
-            // cantVertical8025
-            // 
-            this.cantVertical8025.HeaderText = "Cant";
-            this.cantVertical8025.MinimumWidth = 8;
-            this.cantVertical8025.Name = "cantVertical8025";
-            this.cantVertical8025.Width = 90;
-            // 
-            // VerticalCentro8025
-            // 
-            this.VerticalCentro8025.HeaderText = "Vertical Centro";
-            this.VerticalCentro8025.MinimumWidth = 8;
-            this.VerticalCentro8025.Name = "VerticalCentro8025";
-            this.VerticalCentro8025.Width = 150;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cant";
-            this.Cantidad.MinimumWidth = 8;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 150;
-            // 
-            // PisaAlfombra
-            // 
-            this.PisaAlfombra.HeaderText = "PisaAlfombra";
-            this.PisaAlfombra.MinimumWidth = 8;
-            this.PisaAlfombra.Name = "PisaAlfombra";
-            this.PisaAlfombra.Width = 150;
-            // 
-            // cantPisaAlfombra
-            // 
-            this.cantPisaAlfombra.HeaderText = "Cant";
-            this.cantPisaAlfombra.MinimumWidth = 8;
-            this.cantPisaAlfombra.Name = "cantPisaAlfombra";
-            this.cantPisaAlfombra.Width = 90;
-            // 
-            // Ventana8025
-            // 
-            this.Ventana8025.HeaderText = "Ventana";
-            this.Ventana8025.Name = "Ventana8025";
-            this.Ventana8025.Visible = false;
             // 
             // label6
             // 
@@ -625,13 +472,165 @@
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Tipo";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Ubicación";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Diseño";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Ancho";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Alto";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 150;
+            // 
+            // Cargador8025
+            // 
+            this.Cargador8025.HeaderText = "Cargador";
+            this.Cargador8025.MinimumWidth = 8;
+            this.Cargador8025.Name = "Cargador8025";
+            this.Cargador8025.Width = 150;
+            // 
+            // cantCargador8025
+            // 
+            this.cantCargador8025.HeaderText = "Cant";
+            this.cantCargador8025.MinimumWidth = 8;
+            this.cantCargador8025.Name = "cantCargador8025";
+            this.cantCargador8025.Width = 90;
+            // 
+            // Umbral8025
+            // 
+            this.Umbral8025.HeaderText = "Umbral";
+            this.Umbral8025.MinimumWidth = 8;
+            this.Umbral8025.Name = "Umbral8025";
+            this.Umbral8025.Width = 150;
+            // 
+            // cantUmbral8025
+            // 
+            this.cantUmbral8025.HeaderText = "Cant";
+            this.cantUmbral8025.MinimumWidth = 8;
+            this.cantUmbral8025.Name = "cantUmbral8025";
+            this.cantUmbral8025.Width = 90;
+            // 
+            // Jamba8025
+            // 
+            this.Jamba8025.HeaderText = "Jamba";
+            this.Jamba8025.MinimumWidth = 8;
+            this.Jamba8025.Name = "Jamba8025";
+            this.Jamba8025.Width = 150;
+            // 
+            // cantJamba8025
+            // 
+            this.cantJamba8025.HeaderText = "Cant";
+            this.cantJamba8025.MinimumWidth = 8;
+            this.cantJamba8025.Name = "cantJamba8025";
+            this.cantJamba8025.Width = 90;
+            // 
+            // Superior8025
+            // 
+            this.Superior8025.HeaderText = "Superior";
+            this.Superior8025.MinimumWidth = 8;
+            this.Superior8025.Name = "Superior8025";
+            this.Superior8025.Width = 150;
+            // 
+            // cantSuperior8025
+            // 
+            this.cantSuperior8025.HeaderText = "Cant";
+            this.cantSuperior8025.MinimumWidth = 8;
+            this.cantSuperior8025.Name = "cantSuperior8025";
+            this.cantSuperior8025.Width = 90;
+            // 
+            // Inferior8025
+            // 
+            this.Inferior8025.HeaderText = "Inferior";
+            this.Inferior8025.MinimumWidth = 8;
+            this.Inferior8025.Name = "Inferior8025";
+            this.Inferior8025.Width = 150;
+            // 
+            // cantInferior8025
+            // 
+            this.cantInferior8025.HeaderText = "Cant";
+            this.cantInferior8025.MinimumWidth = 8;
+            this.cantInferior8025.Name = "cantInferior8025";
+            this.cantInferior8025.Width = 90;
+            // 
+            // Vertical8025
+            // 
+            this.Vertical8025.HeaderText = "Vertical";
+            this.Vertical8025.MinimumWidth = 8;
+            this.Vertical8025.Name = "Vertical8025";
+            this.Vertical8025.Width = 150;
+            // 
+            // cantVertical8025
+            // 
+            this.cantVertical8025.HeaderText = "Cant";
+            this.cantVertical8025.MinimumWidth = 8;
+            this.cantVertical8025.Name = "cantVertical8025";
+            this.cantVertical8025.Width = 90;
+            // 
+            // VerticalCentro8025
+            // 
+            this.VerticalCentro8025.HeaderText = "Vertical Centro";
+            this.VerticalCentro8025.MinimumWidth = 8;
+            this.VerticalCentro8025.Name = "VerticalCentro8025";
+            this.VerticalCentro8025.Width = 150;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cant";
+            this.Cantidad.MinimumWidth = 8;
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 150;
+            // 
+            // PisaAlfombra
+            // 
+            this.PisaAlfombra.HeaderText = "PisaAlfombra";
+            this.PisaAlfombra.MinimumWidth = 8;
+            this.PisaAlfombra.Name = "PisaAlfombra";
+            this.PisaAlfombra.Width = 150;
+            // 
+            // cantPisaAlfombra
+            // 
+            this.cantPisaAlfombra.HeaderText = "Cant";
+            this.cantPisaAlfombra.MinimumWidth = 8;
+            this.cantPisaAlfombra.Name = "cantPisaAlfombra";
+            this.cantPisaAlfombra.Width = 90;
+            // 
+            // Ventana8025
+            // 
+            this.Ventana8025.HeaderText = "Ventana";
+            this.Ventana8025.Name = "Ventana8025";
+            // 
             // frmOrdenProduccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1335, 811);
+            this.ClientSize = new System.Drawing.Size(1351, 850);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

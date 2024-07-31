@@ -93,14 +93,14 @@ namespace Precentacion.User.Bill
         {
             try
             {
-                //Obtener el Id del proyecto seleccionado
+                // Obtener el Id del proyecto seleccionado
                 int IdQuote = Convert.ToInt32(cbProyecto.SelectedValue);
-                //Obtener las ventanas del proyecto
+                // Obtener las ventanas del proyecto
                 DataTable windows = NQuote.WindowsData(IdQuote);
 
                 int contadorVentana = 1;
 
-                //Validar si se encontraron ventanas
+                // Validar si se encontraron ventanas
                 if (windows.Rows.Count != 0)
                 {
                     // Contador para la columna Ventana
@@ -118,38 +118,48 @@ namespace Precentacion.User.Bill
                             string pattern = @"\nUbicacion:\s*(.*)";
                             System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(DescripcionUbicacion, pattern);
                             string Ubicacion = match.Groups[1].Value;
-                            //Agregar los Valores a Variables
+
+                            // Obtener el valor de Cantidad
+                            pattern = @"Cantidad:\s*(\d+)";
+                            match = System.Text.RegularExpressions.Regex.Match(DescripcionUbicacion, pattern);
+                            int Cantidad = int.Parse(match.Groups[1].Value);
+
+                            // Agregar los Valores a Variables
                             string Sistema = row["System"].ToString();
                             string Diseño = row["Design"].ToString();
                             string Ancho = row["Width"].ToString();
                             string Alto = row["Height"].ToString();
 
-                            //Recorrer las piezas del sistema 5020
-                            foreach (string pieza in Piezas5020)
+                            // Recorrer la cantidad de ventanas
+                            for (int i = 0; i < Cantidad; i++)
                             {
-                                //Calcular los rebajos y Agregarlos A la Lista de Resultados
-                                ResultadosRebajo.Add(NOrden.CalculoRebajos5020(Diseño, Ancho, Alto, pieza));
-                                //Calcular la Cantidad de Piezas y Agregarlos A la Lista de Resultados
-                                ResultadosCantidad.Add(NOrden.CalculoCantidadPiezas(Diseño, pieza));
+                                // Recorrer las piezas del sistema 5020
+                                foreach (string pieza in Piezas5020)
+                                {
+                                    // Calcular los rebajos y Agregarlos A la Lista de Resultados
+                                    ResultadosRebajo.Add(NOrden.CalculoRebajos5020(Diseño, Ancho, Alto, pieza));
+                                    // Calcular la Cantidad de Piezas y Agregarlos A la Lista de Resultados
+                                    ResultadosCantidad.Add(NOrden.CalculoCantidadPiezas(Diseño, pieza));
+                                }
+
+                                // Agregar los Resultados al DataGridView
+                                dgvOrdenProduccion.Rows.Add(Sistema, Ubicacion, Diseño, Ancho, Alto,
+                                    ResultadosRebajo[0], ResultadosCantidad[0],
+                                    ResultadosRebajo[1], ResultadosCantidad[1],
+                                    ResultadosRebajo[2], ResultadosCantidad[2],
+                                    ResultadosRebajo[3], ResultadosCantidad[3],
+                                    ResultadosRebajo[4], ResultadosCantidad[4],
+                                    ResultadosRebajo[5], ResultadosCantidad[5],
+                                    ResultadosRebajo[6], ResultadosCantidad[6],
+                                    contadorVentana5020);
+
+                                // Incrementar el contador para la próxima fila
+                                contadorVentana5020++;
+
+                                // Limpiar las Listas de Resultados
+                                ResultadosRebajo.Clear();
+                                ResultadosCantidad.Clear();
                             }
-
-                            //Agregar los Resultados al DataGridView
-                            dgvOrdenProduccion.Rows.Add(Sistema, Ubicacion, Diseño, Ancho, Alto,
-                                ResultadosRebajo[0], ResultadosCantidad[0],
-                                ResultadosRebajo[1], ResultadosCantidad[1],
-                                ResultadosRebajo[2], ResultadosCantidad[2],
-                                ResultadosRebajo[3], ResultadosCantidad[3],
-                                ResultadosRebajo[4], ResultadosCantidad[4],
-                                ResultadosRebajo[5], ResultadosCantidad[5],
-                                ResultadosRebajo[6], ResultadosCantidad[6],
-                                contadorVentana5020);
-
-                            // Incrementar el contador para la próxima fila
-                            contadorVentana5020++;
-
-                            // Limpiar las Listas de Resultados
-                            ResultadosRebajo.Clear();
-                            ResultadosCantidad.Clear();
                         }
                         #endregion
 
@@ -161,56 +171,64 @@ namespace Precentacion.User.Bill
                             string pattern = @"\nUbicacion:\s*(.*)";
                             System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(DescripcionUbicacion, pattern);
                             string Ubicacion = match.Groups[1].Value;
-                            //Agregar los Valores a Variables
+
+                            // Obtener el valor de Cantidad
+                            pattern = @"Cantidad:\s*(\d+)";
+                            match = System.Text.RegularExpressions.Regex.Match(DescripcionUbicacion, pattern);
+                            int Cantidad = int.Parse(match.Groups[1].Value);
+
+                            // Agregar los Valores a Variables
                             string Sistema = row["System"].ToString();
                             string Diseño = row["Design"].ToString();
                             string Ancho = row["Width"].ToString();
                             string Alto = row["Height"].ToString();
 
-                            //Recorrer las piezas del sistema 8025
-                            foreach (string pieza in Piezas8025)
+                            // Recorrer la cantidad de ventanas
+                            for (int i = 0; i < Cantidad; i++)
                             {
-                                //Calcular los rebajos y Agregarlos A la Lista de Resultados
-                                ResultadosRebajo.Add(NOrden.CalculoRebajos8025(Diseño, Ancho, Alto, pieza));
-                                //Calcular la Cantidad de Piezas y Agregarlos A la Lista de Resultados
-                                ResultadosCantidad.Add(NOrden.CalculoCantidadPiezas8025(Diseño, pieza));
+                                // Recorrer las piezas del sistema 8025
+                                foreach (string pieza in Piezas8025)
+                                {
+                                    // Calcular los rebajos y Agregarlos A la Lista de Resultados
+                                    ResultadosRebajo.Add(NOrden.CalculoRebajos8025(Diseño, Ancho, Alto, pieza));
+                                    // Calcular la Cantidad de Piezas y Agregarlos A la Lista de Resultados
+                                    ResultadosCantidad.Add(NOrden.CalculoCantidadPiezas8025(Diseño, pieza));
+                                }
+
+                                // Agregar los Resultados al DataGridView
+                                dgvOrdenProduccion8025.Rows.Add(Sistema, Ubicacion, Diseño, Ancho, Alto,
+                                    ResultadosRebajo[0], ResultadosCantidad[0],
+                                    ResultadosRebajo[1], ResultadosCantidad[1],
+                                    ResultadosRebajo[2], ResultadosCantidad[2],
+                                    ResultadosRebajo[3], ResultadosCantidad[3],
+                                    ResultadosRebajo[4], ResultadosCantidad[4],
+                                    ResultadosRebajo[5], ResultadosCantidad[5],
+                                    ResultadosRebajo[6], ResultadosCantidad[6],
+                                    ResultadosRebajo[7], ResultadosCantidad[7],
+                                    contadorVentana8025);
+
+                                // Incrementar el contador para la próxima fila
+                                contadorVentana8025++;
+
+                                // Limpiar las Listas de Resultados
+                                ResultadosRebajo.Clear();
+                                ResultadosCantidad.Clear();
                             }
-
-                            //Agregar los Resultados al DataGridView
-                            dgvOrdenProduccion8025.Rows.Add(Sistema, Ubicacion, Diseño, Ancho, Alto,
-                                ResultadosRebajo[0], ResultadosCantidad[0],
-                                ResultadosRebajo[1], ResultadosCantidad[1],
-                                ResultadosRebajo[2], ResultadosCantidad[2],
-                                ResultadosRebajo[3], ResultadosCantidad[3],
-                                ResultadosRebajo[4], ResultadosCantidad[4],
-                                ResultadosRebajo[5], ResultadosCantidad[5],
-                                ResultadosRebajo[6], ResultadosCantidad[6],
-                                ResultadosRebajo[7], ResultadosCantidad[7],
-                                contadorVentana8025);
-
-                            // Incrementar el contador para la próxima fila
-                            contadorVentana8025++;
-
-                            // Limpiar las Listas de Resultados
-                            ResultadosRebajo.Clear();
-                            ResultadosCantidad.Clear();
                         }
                         #endregion
                     }
                 }
-
                 else
                 {
                     MessageBox.Show("No hay ventanas para el proyecto seleccionado.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error al cargar las ventanas: " + ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void frmOrdenProduccion_Load(object sender, EventArgs e)
         {
