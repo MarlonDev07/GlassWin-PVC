@@ -887,7 +887,7 @@ namespace Precentacion.User.Bill
                     }
                     else
                     {
-                        MessageBox.Show("Seleccione una columna válida para optimizar.", "Columna no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("La tabla del sistema 8025 o la del sistema 5020 está vacía. Las dos tablas deben de tener datos para su optimización.", "Tabla vacía", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     #endregion 5020
                 }
