@@ -30,7 +30,7 @@ namespace Negocio.Company
         {
             try
             {
-                bool result = ObjCDCompany.Create(Convert.ToInt64(ID),Convert.ToInt32(IDCompany), phone, Address, Url, Name);
+                bool result = ObjCDCompany.Create(Convert.ToInt64(ID),Convert.ToInt64(IDCompany), phone, Address, Url, Name);
                 return result;
             }
             catch (Exception)
