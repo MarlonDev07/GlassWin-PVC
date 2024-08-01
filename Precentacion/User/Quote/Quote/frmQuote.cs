@@ -1375,7 +1375,7 @@ namespace Precentacion.User.Quote.Quote
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\mercadoVidrio.jpeg";
+                    string Url = "\\Images\\Logos\\mercadoVidrio.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -1484,7 +1484,7 @@ namespace Precentacion.User.Quote.Quote
                 // Crea un nuevo objeto Font para los textos
                 iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
                 iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-                iTextSharp.text.Font textFont2 = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 7, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
+                iTextSharp.text.Font textFont2 = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 9, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
                 // Agrega los textos a la segunda celda
                 PdfPCell textCell = new PdfPCell();
                 textCell.Border = PdfPCell.NO_BORDER;
