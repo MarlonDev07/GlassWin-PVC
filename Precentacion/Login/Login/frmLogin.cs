@@ -47,6 +47,7 @@ namespace Precentacion.Login
             if (txtUserName.Text != "Ingrese el Usuario" && txtPassWord.Text != "Ingrese la Contraseña")
             {
                N_Login LoginData = new N_Login();
+                //LoginData.pasarUsuario(txtUserName.Text);
                bool ValidLogin = LoginData.LoginUser(txtUserName.Text, txtPassWord.Text);
                if (ValidLogin == true) 
                {

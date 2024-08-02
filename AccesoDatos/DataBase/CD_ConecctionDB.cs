@@ -9,17 +9,17 @@ namespace AccesoDatos.DataBase
     {
         private SqlConnection Conexion;
         private string connectionString;
+        public string usuario;
+      
 
-        public ClsConnection()
+        public ClsConnection(string user)
         {
+            this.usuario = user;
             if (CompanyCache.IdCompany == 112540885)
             {
                 connectionString = ConfigurationManager.ConnectionStrings["VidriosAltura"].ConnectionString;
                 Conexion = new SqlConnection(connectionString);
-            } /*else if (CompanyCache.IdCompany == 31028013) {
-                connectionString = ConfigurationManager.ConnectionStrings["InnovaGlassDB2"].ConnectionString;
-                Conexion = new SqlConnection(connectionString);
-            }*/
+            } 
             else
             {
                 if (CompanyCache.IdCompany == 31025820)
@@ -27,12 +27,45 @@ namespace AccesoDatos.DataBase
                     connectionString = ConfigurationManager.ConnectionStrings["GWAluvi"].ConnectionString;
                     Conexion = new SqlConnection(connectionString);
                 }
+                /*if (usuario == "MercadoVidrio2024")
+                {
+                    connectionString = ConfigurationManager.ConnectionStrings["MercadoVidrio"].ConnectionString;
+                    Conexion = new SqlConnection(connectionString);
+                }*/
                 else
                 {
                     connectionString = ConfigurationManager.ConnectionStrings["GlassWinDB"].ConnectionString;
                     Conexion = new SqlConnection(connectionString);
                 }
                 
+            }
+        }
+        public ClsConnection()
+        {
+            
+            if (CompanyCache.IdCompany == 112540885)
+            {
+                connectionString = ConfigurationManager.ConnectionStrings["VidriosAltura"].ConnectionString;
+                Conexion = new SqlConnection(connectionString);
+            }
+            else
+            {
+                if (CompanyCache.IdCompany == 31025820)
+                {
+                    connectionString = ConfigurationManager.ConnectionStrings["GWAluvi"].ConnectionString;
+                    Conexion = new SqlConnection(connectionString);
+                }
+                /*if (usuario == "MercadoVidrio2024" || CompanyCache.IdCompany == 3102879949)
+                {
+                    connectionString = ConfigurationManager.ConnectionStrings["MercadoVidrio"].ConnectionString;
+                    Conexion = new SqlConnection(connectionString);
+                }*/
+                else
+                {
+                    connectionString = ConfigurationManager.ConnectionStrings["GlassWinDB"].ConnectionString;
+                    Conexion = new SqlConnection(connectionString);
+                }
+
             }
         }
 

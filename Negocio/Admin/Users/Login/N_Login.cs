@@ -8,6 +8,7 @@ namespace Negocio.Login
     public class N_Login
     {
         AccesoDatos.Login.CD_Login datalogin = new AccesoDatos.Login.CD_Login();
+       // AccesoDatos.DataBase.ClsConnection dataConexion = new AccesoDatos.DataBase.ClsConnection();
 
         #region Encrypter
         static string ComputeSHA512(string s)
@@ -49,6 +50,10 @@ namespace Negocio.Login
             }
             
         }
+        /*public void pasarUsuario(string User) {
+
+            dataConexion.obtenerUsuario(User);
+        }*/
         #endregion
     }
 }
