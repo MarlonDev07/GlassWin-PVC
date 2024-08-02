@@ -20,6 +20,7 @@ using Dominio.ClassFunction.InputBox;
 using Negocio.Company.Account;
 using Precentacion.User.DashBoard;
 
+
 namespace Precentacion.User.AgregarFactura
 {
     public partial class frmAgregarFacturaProveedor : MaterialSkin.Controls.MaterialForm
@@ -34,12 +35,15 @@ namespace Precentacion.User.AgregarFactura
         bool ColumnaVisible = false;
         bool Seleccionada = false;
         string Facturas = "Cancelada";
+        bool edicion = false;
+        private string rutaImagen;
         public frmAgregarFacturaProveedor()
         {
             InitializeComponent();
             CargarCombo();
             CargarDataGridPendiente();
             CalcularTotal();
+          
         }
 
         #region Cargas Iniciales
@@ -58,6 +62,9 @@ namespace Precentacion.User.AgregarFactura
                 //Ocultar Columnas
                 dgvFacturas.Columns[0].Visible = false;
                 dgvFacturas.Columns[2].Visible = false;
+                //dgvFacturas.Columns[7].Visible = false;
+                // dgvFacturas.Columns[8].Visible = false;
+
 
                 if (ColumnaVisible == true)
                 {
@@ -66,7 +73,7 @@ namespace Precentacion.User.AgregarFactura
                     DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
                     chk.HeaderText = "Seleccionar";
                     chk.Name = "chk";
-                    dgvFacturas.Columns.Insert(7, chk);
+                    dgvFacturas.Columns.Insert(10, chk);
                     //Agregar un evento para el Check cada que se seleccione
                     dgvFacturas.CellContentClick += new DataGridViewCellEventHandler(dgvFacturas_CellContentClick);
                 }
@@ -77,6 +84,10 @@ namespace Precentacion.User.AgregarFactura
                 dgvFacturas.Columns[4].HeaderText = "Fecha Compra";
                 dgvFacturas.Columns[5].HeaderText = "Fecha Vencimiento";
                 dgvFacturas.Columns[6].HeaderText = "Monto";
+                dgvFacturas.Columns[7].HeaderText = "PEV";
+                dgvFacturas.Columns[8].HeaderText = "Bodega";
+                dgvFacturas.Columns[9].HeaderText = "Factura";
+               dgvFacturas.Columns[9].Visible = false;
 
                 //Ocultar todas las Facturas que el Monto sea 0
                 foreach (DataGridViewRow row in dgvFacturas.Rows)
@@ -103,6 +114,12 @@ namespace Precentacion.User.AgregarFactura
                 throw;
             }
         }
+
+
+
+
+
+
         private void CargarDataGridCancelada()
         {
             try
@@ -125,6 +142,10 @@ namespace Precentacion.User.AgregarFactura
                 dgvFacturas.Columns[4].HeaderText = "Fecha Compra";
                 dgvFacturas.Columns[5].HeaderText = "Fecha Vencimiento";
                 dgvFacturas.Columns[6].HeaderText = "Monto";
+                dgvFacturas.Columns[7].HeaderText = "PEV";
+
+                dgvFacturas.Columns[8].HeaderText = "Bodega";
+
 
 
                 //Ajustar el Ancho de las Columnas al ancho del DGV
@@ -241,101 +262,165 @@ namespace Precentacion.User.AgregarFactura
         }
         #endregion
 
+        private void ReiniciarFormulario()
+        {
+            // Limpiar campos de texto
+            txtMonto.Clear();
+            txtNumFactura.Clear();
+            txtPEV.Clear();
+            txtBodega.Clear();
+
+            // Reiniciar DateTimePickers a la fecha actual
+            dtpFechaCompra.Value = DateTime.Now;
+            dtpFechaVencimiento.Value = DateTime.Now;
+
+            // Reiniciar el ComboBox de proveedores
+            cbProveedor.SelectedIndex = -1;
+
+            // Restablecer el título y botones
+            lblTitulo.Text = "Crear Factura";
+            btnCrear.Enabled = true;
+            btnCrear.Visible = true; // Mostrar el botón de crear
+            btnEliminar.Enabled = false;
+            btnEditar.Enabled = false;
+            btnEditar.Visible = false; // Ocultar el botón de editar
+
+            // Reiniciar variable de edición
+            edicion = false;
+        }
+
         private void btnCrear_Click(object sender, EventArgs e)
         {
             try
             {
+                if (cbProveedor.Text == "Extralum")
+                {
+                    IdProveedor = 2;
+                }
+                if (cbProveedor.Text == "Macopa")
+                {
+                    IdProveedor = 3;
+                }
+                if (cbProveedor.Text == "Nelson Martinez Vargas")
+                {
+                    IdProveedor = 4;
+                }
+                if (cbProveedor.Text == "Vidrios Rocha")
+                {
+                    IdProveedor = 5;
+                }
+
                 N_FactProveedor n_FactProveedor = new N_FactProveedor();
-                n_FactProveedor.InsertarFacturaProveedor(IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text);
+                n_FactProveedor.InsertarFacturaProveedor(IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen);
                 N_Gastos n_Gastos = new N_Gastos();
                 n_Gastos.InsertarGastos(IdProyecto, dtpFechaCompra.Value, "Factura n°" + txtNumFactura.Text, Convert.ToDecimal(txtMonto.Text));
+
                 CargarDataGridPendiente();
-                MessageBox.Show("Factura Creada Correctamente");
+                MessageBox.Show("Factura Creada Correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Reiniciar el formulario después de crear una nueva factura
+                ReiniciarFormulario();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al Crear Factura: " + ex.Message);
+                MessageBox.Show("Error al Crear Factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Obtener el id de la factura
+            // Obtener los datos de la factura seleccionada y llenar los campos
             IdFactura = Convert.ToInt32(dgvFacturas.CurrentRow.Cells[2].Value);
-            //Obtener el id del proveedor
             IdProveedor = Convert.ToInt32(dgvFacturas.CurrentRow.Cells[0].Value);
-            //Obtener la fecha de compra
             dtpFechaCompra.Value = Convert.ToDateTime(dgvFacturas.CurrentRow.Cells[4].Value);
-            //Obtener la fecha de vencimiento
             dtpFechaVencimiento.Value = Convert.ToDateTime(dgvFacturas.CurrentRow.Cells[5].Value);
-            //Obtener el monto
             txtMonto.Text = dgvFacturas.CurrentRow.Cells[6].Value.ToString();
-            //Obtener el numero de factura
             txtNumFactura.Text = dgvFacturas.CurrentRow.Cells[3].Value.ToString();
-
-            //Seleccionar el proveedor en el combo segun el id
+            txtPEV.Text = dgvFacturas.CurrentRow.Cells[7].Value.ToString();
+            txtBodega.Text = dgvFacturas.CurrentRow.Cells[8].Value.ToString();
             cbProveedor.SelectedValue = IdProveedor;
 
-            //Cambiar el texto
+            // Obtener la URL de la imagen y cargarla en el PictureBox
+            rutaImagen = dgvFacturas.CurrentRow.Cells[9].Value.ToString(); // Suponiendo que la URL está en la columna 9
+            pbAccesorioExclusivo.Image = System.Drawing.Image.FromFile(rutaImagen);
+            pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+
             lblTitulo.Text = "Editar Factura";
 
-            //Desactivar el boton de crear
+            // Ocultar el botón de crear y mostrar el botón de editar
+            btnCrear.Visible = false;
+            btnEditar.Visible = true;
             btnCrear.Enabled = false;
             btnEliminar.Enabled = false;
+            edicion = true;
 
-            //Pasar al tab de Mantenimiento
             tabControlPrincipal.SelectedTab = tabPageConsulta;
-
         }
+
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
             {
-                N_FactProveedor n_FactProveedor = new N_FactProveedor();
-                n_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text);
-                CargarDataGridPendiente();
+                if (cbProveedor.Text == "Extralum")
+                {
+                    IdProveedor = 2;
+                }
+                if (cbProveedor.Text == "Macopa")
+                {
+                    IdProveedor = 3;
+                }
+                if (cbProveedor.Text == "Nelson Martinez Vargas")
+                {
+                    IdProveedor = 4;
+                }
+                if (cbProveedor.Text == "Vidrios Rocha")
+                {
+                    IdProveedor = 5;
+                }
 
+                N_FactProveedor n_FactProveedor = new N_FactProveedor();
+                n_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text);
+
+                MessageBox.Show("Factura Editada Correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CargarDataGridPendiente();
+                tabControlPrincipal.SelectedTab = tabPageLista;
+
+                // Reiniciar el formulario después de editar una factura
+                ReiniciarFormulario();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Obtener el id de la factura
+            // Obtener los datos de la factura seleccionada y llenar los campos
             IdFactura = Convert.ToInt32(dgvFacturas.CurrentRow.Cells[0].Value);
-            //Obtener el id del proveedor
             IdProveedor = Convert.ToInt32(dgvFacturas.CurrentRow.Cells[2].Value);
-            //Obtener la fecha de compra
             dtpFechaCompra.Value = Convert.ToDateTime(dgvFacturas.CurrentRow.Cells[3].Value);
-            //Obtener la fecha de vencimiento
             dtpFechaVencimiento.Value = Convert.ToDateTime(dgvFacturas.CurrentRow.Cells[4].Value);
-            //Obtener el monto
             txtMonto.Text = dgvFacturas.CurrentRow.Cells[5].Value.ToString();
-            //Obtener el numero de factura
             txtNumFactura.Text = dgvFacturas.CurrentRow.Cells[6].Value.ToString();
-
-            //Seleccionar el proveedor en el combo segun el id
             cbProveedor.SelectedValue = IdProveedor;
 
-            //Cambiar el texto
             lblTitulo.Text = "Eliminar Factura";
 
-            //Activar el boton de crear
             btnEliminar.Enabled = true;
-
-            //Desactivar el boton de editar y crear
             btnCrear.Enabled = false;
             btnEditar.Enabled = false;
 
-            //Pasar al tab de Mantenimiento
             tabControlPrincipal.SelectedTab = tabPageConsulta;
         }
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-                //Preguntar si esta seguro de eliminar
+                // Confirmar eliminación
                 DialogResult result = MessageBox.Show("¿Estas seguro de eliminar la factura?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.No)
                 {
@@ -345,7 +430,11 @@ namespace Precentacion.User.AgregarFactura
                 {
                     N_FactProveedor n_FactProveedor = new N_FactProveedor();
                     n_FactProveedor.EliminarFacturaProveedor(IdFactura);
+
                     CargarDataGridPendiente();
+
+                    // Reiniciar el formulario después de eliminar una factura
+                    ReiniciarFormulario();
                 }
             }
             catch (Exception ex)
@@ -353,6 +442,8 @@ namespace Precentacion.User.AgregarFactura
                 MessageBox.Show(ex.Message);
             }
         }
+
+
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             dgvFacturas.CurrentCell = null;
@@ -786,9 +877,9 @@ namespace Precentacion.User.AgregarFactura
         private void dgvFacturas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
                 // Verificar si la columna seleccionada es la del Check
-                if (e.ColumnIndex == 7 && e.RowIndex != -1) // Asegurarse de que no sea la fila de encabezado
+                if (e.ColumnIndex == 10 && e.RowIndex != -1) // Asegurarse de que no sea la fila de encabezado
                 {
-                    DataGridViewCheckBoxCell chkCell = dgvFacturas.Rows[e.RowIndex].Cells[7] as DataGridViewCheckBoxCell;
+                    DataGridViewCheckBoxCell chkCell = dgvFacturas.Rows[e.RowIndex].Cells[10] as DataGridViewCheckBoxCell;
 
                     if (chkCell != null)
                     {
@@ -845,5 +936,47 @@ namespace Precentacion.User.AgregarFactura
             frm.BringToFront();
             
         }
+
+        private void txtNumFactura_TextChanged(object sender, EventArgs e)
+        {
+           /* if (txtNumFactura.Text == "" && btnEditar.Visible == true)
+            {
+                btnEditar.Visible = false;
+                btnCrear.Visible = true;
+            }*/
+        }
+
+        private void btnCargarImagen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Abrir un dialogo para seleccionar la imagen
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Title = "Seleccione una imagen";
+                dialog.Multiselect = false;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = Path.GetFileName(dialog.FileName);
+                    string destinationPath = Path.Combine(Application.StartupPath, "Images", "Facturas", fileName);
+
+
+                    // Crear la carpeta si no existe
+                    Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
+
+                    // Copiar la imagen seleccionada a la carpeta de destino
+                    File.Copy(dialog.FileName, destinationPath, true);
+
+                    rutaImagen = destinationPath; // Guardar la ruta completa de la imagen
+                    pbAccesorioExclusivo.Image = System.Drawing.Image.FromFile(rutaImagen);
+                    pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrió un error al cargar la imagen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

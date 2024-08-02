@@ -52,6 +52,12 @@
             this.tabPageConsulta = new System.Windows.Forms.TabPage();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
+            this.btnCargarImagen = new System.Windows.Forms.Button();
+            this.pbAccesorioExclusivo = new System.Windows.Forms.PictureBox();
+            this.txtBodega = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPEV = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnCrear = new System.Windows.Forms.Button();
@@ -74,6 +80,7 @@
             this.contextMenuStrip1.SuspendLayout();
             this.tabPageConsulta.SuspendLayout();
             this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAccesorioExclusivo)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlPrincipal
@@ -84,7 +91,7 @@
             this.tabControlPrincipal.Location = new System.Drawing.Point(3, 64);
             this.tabControlPrincipal.Name = "tabControlPrincipal";
             this.tabControlPrincipal.SelectedIndex = 0;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(684, 439);
+            this.tabControlPrincipal.Size = new System.Drawing.Size(892, 591);
             this.tabControlPrincipal.TabIndex = 0;
             // 
             // tabPageLista
@@ -105,7 +112,7 @@
             this.tabPageLista.Location = new System.Drawing.Point(4, 22);
             this.tabPageLista.Name = "tabPageLista";
             this.tabPageLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLista.Size = new System.Drawing.Size(676, 413);
+            this.tabPageLista.Size = new System.Drawing.Size(799, 565);
             this.tabPageLista.TabIndex = 0;
             this.tabPageLista.Text = "Facturas";
             this.tabPageLista.UseVisualStyleBackColor = true;
@@ -113,7 +120,7 @@
             // txtTotalAbonar
             // 
             this.txtTotalAbonar.Enabled = false;
-            this.txtTotalAbonar.Location = new System.Drawing.Point(339, 383);
+            this.txtTotalAbonar.Location = new System.Drawing.Point(339, 535);
             this.txtTotalAbonar.Name = "txtTotalAbonar";
             this.txtTotalAbonar.Size = new System.Drawing.Size(100, 20);
             this.txtTotalAbonar.TabIndex = 15;
@@ -141,7 +148,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(214, 381);
+            this.btnCancel.Location = new System.Drawing.Point(214, 533);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(98, 23);
             this.btnCancel.TabIndex = 11;
@@ -152,7 +159,7 @@
             // 
             // btnAbonarLista
             // 
-            this.btnAbonarLista.Location = new System.Drawing.Point(110, 381);
+            this.btnAbonarLista.Location = new System.Drawing.Point(110, 533);
             this.btnAbonarLista.Name = "btnAbonarLista";
             this.btnAbonarLista.Size = new System.Drawing.Size(98, 23);
             this.btnAbonarLista.TabIndex = 10;
@@ -163,7 +170,7 @@
             // 
             // btnAbonar
             // 
-            this.btnAbonar.Location = new System.Drawing.Point(6, 381);
+            this.btnAbonar.Location = new System.Drawing.Point(6, 533);
             this.btnAbonar.Name = "btnAbonar";
             this.btnAbonar.Size = new System.Drawing.Size(98, 23);
             this.btnAbonar.TabIndex = 9;
@@ -174,7 +181,7 @@
             // txtTotal
             // 
             this.txtTotal.Enabled = false;
-            this.txtTotal.Location = new System.Drawing.Point(572, 383);
+            this.txtTotal.Location = new System.Drawing.Point(548, 535);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(100, 20);
             this.txtTotal.TabIndex = 8;
@@ -183,7 +190,7 @@
             // 
             this.lblMontoTotal.BackColor = System.Drawing.Color.Transparent;
             this.lblMontoTotal.Font = new System.Drawing.Font("Imprint MT Shadow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMontoTotal.Location = new System.Drawing.Point(484, 379);
+            this.lblMontoTotal.Location = new System.Drawing.Point(460, 531);
             this.lblMontoTotal.Name = "lblMontoTotal";
             this.lblMontoTotal.Size = new System.Drawing.Size(82, 25);
             this.lblMontoTotal.TabIndex = 7;
@@ -231,6 +238,7 @@
             // 
             // dgvFacturas
             // 
+            this.dgvFacturas.AllowUserToAddRows = false;
             this.dgvFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -238,7 +246,7 @@
             this.dgvFacturas.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvFacturas.Location = new System.Drawing.Point(3, 31);
             this.dgvFacturas.Name = "dgvFacturas";
-            this.dgvFacturas.Size = new System.Drawing.Size(670, 342);
+            this.dgvFacturas.Size = new System.Drawing.Size(793, 494);
             this.dgvFacturas.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -278,7 +286,7 @@
             this.tabPageConsulta.Location = new System.Drawing.Point(4, 22);
             this.tabPageConsulta.Name = "tabPageConsulta";
             this.tabPageConsulta.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConsulta.Size = new System.Drawing.Size(676, 413);
+            this.tabPageConsulta.Size = new System.Drawing.Size(884, 565);
             this.tabPageConsulta.TabIndex = 1;
             this.tabPageConsulta.Text = "Mant.Facturas";
             this.tabPageConsulta.UseVisualStyleBackColor = true;
@@ -293,7 +301,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(3, 3);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(670, 45);
+            this.lblTitulo.Size = new System.Drawing.Size(878, 45);
             this.lblTitulo.TabIndex = 13;
             this.lblTitulo.Text = "Registro de Factura de Compra ";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -305,6 +313,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel.Controls.Add(this.btnCargarImagen);
+            this.panel.Controls.Add(this.pbAccesorioExclusivo);
+            this.panel.Controls.Add(this.txtBodega);
+            this.panel.Controls.Add(this.label10);
+            this.panel.Controls.Add(this.txtPEV);
+            this.panel.Controls.Add(this.label9);
             this.panel.Controls.Add(this.btnEliminar);
             this.panel.Controls.Add(this.btnEditar);
             this.panel.Controls.Add(this.btnCrear);
@@ -322,8 +336,64 @@
             this.panel.Controls.Add(this.cbProyecto);
             this.panel.Location = new System.Drawing.Point(6, 51);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(664, 351);
+            this.panel.Size = new System.Drawing.Size(872, 503);
             this.panel.TabIndex = 12;
+            // 
+            // btnCargarImagen
+            // 
+            this.btnCargarImagen.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargarImagen.Location = new System.Drawing.Point(644, 437);
+            this.btnCargarImagen.Name = "btnCargarImagen";
+            this.btnCargarImagen.Size = new System.Drawing.Size(205, 31);
+            this.btnCargarImagen.TabIndex = 22;
+            this.btnCargarImagen.Text = "Cargar la Imagen";
+            this.btnCargarImagen.UseVisualStyleBackColor = true;
+            this.btnCargarImagen.Click += new System.EventHandler(this.btnCargarImagen_Click);
+            // 
+            // pbAccesorioExclusivo
+            // 
+            this.pbAccesorioExclusivo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbAccesorioExclusivo.Location = new System.Drawing.Point(644, 233);
+            this.pbAccesorioExclusivo.Name = "pbAccesorioExclusivo";
+            this.pbAccesorioExclusivo.Size = new System.Drawing.Size(205, 189);
+            this.pbAccesorioExclusivo.TabIndex = 21;
+            this.pbAccesorioExclusivo.TabStop = false;
+            // 
+            // txtBodega
+            // 
+            this.txtBodega.Location = new System.Drawing.Point(644, 189);
+            this.txtBodega.Name = "txtBodega";
+            this.txtBodega.Size = new System.Drawing.Size(205, 20);
+            this.txtBodega.TabIndex = 20;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(490, 186);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 23);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Bodega:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtPEV
+            // 
+            this.txtPEV.Location = new System.Drawing.Point(644, 12);
+            this.txtPEV.Name = "txtPEV";
+            this.txtPEV.Size = new System.Drawing.Size(205, 20);
+            this.txtPEV.TabIndex = 18;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(490, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 23);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "PEV:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnEliminar
             // 
@@ -331,7 +401,7 @@
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminar.FlatAppearance.BorderSize = 0;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(162, 282);
+            this.btnEliminar.Location = new System.Drawing.Point(143, 446);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(60, 52);
             this.btnEliminar.TabIndex = 16;
@@ -345,12 +415,13 @@
             this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEditar.FlatAppearance.BorderSize = 0;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Location = new System.Drawing.Point(86, 282);
+            this.btnEditar.Location = new System.Drawing.Point(74, 446);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(58, 52);
             this.btnEditar.TabIndex = 15;
             this.toolTip.SetToolTip(this.btnEditar, "Editar Factura");
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Visible = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnCrear
@@ -359,7 +430,7 @@
             this.btnCrear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCrear.FlatAppearance.BorderSize = 0;
             this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrear.Location = new System.Drawing.Point(7, 282);
+            this.btnCrear.Location = new System.Drawing.Point(4, 446);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(58, 52);
             this.btnCrear.TabIndex = 14;
@@ -376,7 +447,7 @@
             // 
             // dtpFechaVencimiento
             // 
-            this.dtpFechaVencimiento.Location = new System.Drawing.Point(421, 131);
+            this.dtpFechaVencimiento.Location = new System.Drawing.Point(644, 131);
             this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
             this.dtpFechaVencimiento.Size = new System.Drawing.Size(205, 20);
             this.dtpFechaVencimiento.TabIndex = 12;
@@ -396,18 +467,18 @@
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(304, 128);
+            this.label5.Location = new System.Drawing.Point(490, 128);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 23);
+            this.label5.Size = new System.Drawing.Size(101, 23);
             this.label5.TabIndex = 8;
             this.label5.Text = "Vencimiento:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtMonto
             // 
-            this.txtMonto.Location = new System.Drawing.Point(458, 70);
+            this.txtMonto.Location = new System.Drawing.Point(644, 70);
             this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(168, 20);
+            this.txtMonto.Size = new System.Drawing.Size(205, 20);
             this.txtMonto.TabIndex = 11;
             // 
             // txtNumFactura
@@ -416,12 +487,13 @@
             this.txtNumFactura.Name = "txtNumFactura";
             this.txtNumFactura.Size = new System.Drawing.Size(200, 20);
             this.txtNumFactura.TabIndex = 1;
+            this.txtNumFactura.TextChanged += new System.EventHandler(this.txtNumFactura_TextChanged);
             // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(298, 70);
+            this.label6.Location = new System.Drawing.Point(484, 70);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(154, 23);
             this.label6.TabIndex = 10;
@@ -444,7 +516,7 @@
             this.cbProveedor.FormattingEnabled = true;
             this.cbProveedor.Location = new System.Drawing.Point(98, 9);
             this.cbProveedor.Name = "cbProveedor";
-            this.cbProveedor.Size = new System.Drawing.Size(528, 21);
+            this.cbProveedor.Size = new System.Drawing.Size(200, 21);
             this.cbProveedor.TabIndex = 5;
             this.cbProveedor.SelectedIndexChanged += new System.EventHandler(this.cbProveedor_SelectedIndexChanged);
             // 
@@ -483,8 +555,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 506);
+            this.ClientSize = new System.Drawing.Size(898, 658);
             this.Controls.Add(this.tabControlPrincipal);
+            this.MaximizeBox = false;
             this.Name = "frmAgregarFacturaProveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modulo de Cuentas  por Pagar";
@@ -497,6 +570,7 @@
             this.tabPageConsulta.ResumeLayout(false);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAccesorioExclusivo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -541,5 +615,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnFactCanceladas;
         private System.Windows.Forms.TextBox txtTotalAbonar;
+        private System.Windows.Forms.TextBox txtPEV;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtBodega;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnCargarImagen;
+        private System.Windows.Forms.PictureBox pbAccesorioExclusivo;
     }
 }

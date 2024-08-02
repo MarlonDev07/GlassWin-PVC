@@ -33,22 +33,22 @@ namespace Negocio.Company.FactProveedor
                 throw;
             }
         }
-        public bool InsertarFacturaProveedor(int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, string Monto, string NumFactura)
+        public bool InsertarFacturaProveedor(int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, string Monto, string NumFactura, string pev, string bodega, string url)
         {
             try
             {
-                return ad_FactProveedor.InsertarFacturaProveedor(IdProveedor, FechaCompra, FechaVencimiento, Monto, NumFactura);
+                return ad_FactProveedor.InsertarFacturaProveedor(IdProveedor, FechaCompra, FechaVencimiento, Monto, NumFactura, pev, bodega, url);
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        public bool ActualizarFacturaProveedor(int IdFactura, int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, string Monto, string NumFactura)
+        public bool ActualizarFacturaProveedor(int IdFactura, int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, string Monto, string NumFactura, string pev, string bodega)
         {
             try
             {
-                return ad_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, FechaCompra, FechaVencimiento, Monto, NumFactura);
+                return ad_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, FechaCompra, FechaVencimiento, Monto, NumFactura, pev, bodega);
             }
             catch (Exception)
             {
