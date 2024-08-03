@@ -35,7 +35,7 @@ namespace Precentacion.User.AgregarFactura
         bool ColumnaVisible = false;
         bool Seleccionada = false;
         string Facturas = "Cancelada";
-        bool edicion = false;
+       
         private string rutaImagen;
         public frmAgregarFacturaProveedor()
         {
@@ -43,7 +43,29 @@ namespace Precentacion.User.AgregarFactura
             CargarCombo();
             CargarDataGridPendiente();
             CalcularTotal();
-          
+            habilitaciones();
+
+
+        }
+        public void habilitaciones() {
+            if (lblTitulo.Text == "Crear Factura" || lblTitulo.Text == "Registro de Factura de Compra ")
+            {
+                btnCrear.Enabled = true;
+                btnEditar.Enabled = false;
+                btnEliminar.Enabled = false;
+            }
+            else if (lblTitulo.Text == "Editar Factura")
+            {
+                btnEditar.Enabled = true;
+                btnEliminar.Enabled = false;
+                btnCrear.Enabled = false;
+            }
+            else if (lblTitulo.Text == "Eliminar Factura")
+            {
+                btnEditar.Enabled = false;
+                btnEliminar.Enabled = true;
+                btnCrear.Enabled = false;
+            }
         }
 
         #region Cargas Iniciales
@@ -84,7 +106,7 @@ namespace Precentacion.User.AgregarFactura
                 dgvFacturas.Columns[4].HeaderText = "Fecha Compra";
                 dgvFacturas.Columns[5].HeaderText = "Fecha Vencimiento";
                 dgvFacturas.Columns[6].HeaderText = "Monto";
-                dgvFacturas.Columns[7].HeaderText = "PEV";
+                dgvFacturas.Columns[7].HeaderText = "PDV";
                 dgvFacturas.Columns[8].HeaderText = "Bodega";
                 dgvFacturas.Columns[9].HeaderText = "Factura";
                dgvFacturas.Columns[9].Visible = false;
@@ -142,7 +164,7 @@ namespace Precentacion.User.AgregarFactura
                 dgvFacturas.Columns[4].HeaderText = "Fecha Compra";
                 dgvFacturas.Columns[5].HeaderText = "Fecha Vencimiento";
                 dgvFacturas.Columns[6].HeaderText = "Monto";
-                dgvFacturas.Columns[7].HeaderText = "PEV";
+                dgvFacturas.Columns[7].HeaderText = "PDV";
 
                 dgvFacturas.Columns[8].HeaderText = "Bodega";
 
@@ -279,14 +301,7 @@ namespace Precentacion.User.AgregarFactura
 
             // Restablecer el título y botones
             lblTitulo.Text = "Crear Factura";
-            btnCrear.Enabled = true;
-            btnCrear.Visible = true; // Mostrar el botón de crear
-            btnEliminar.Enabled = false;
-            btnEditar.Enabled = false;
-            btnEditar.Visible = false; // Ocultar el botón de editar
-
-            // Reiniciar variable de edición
-            edicion = false;
+           btnCrear.Enabled = true;
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
@@ -311,7 +326,7 @@ namespace Precentacion.User.AgregarFactura
                 }
 
                 N_FactProveedor n_FactProveedor = new N_FactProveedor();
-                n_FactProveedor.InsertarFacturaProveedor(IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen);
+                n_FactProveedor.InsertarFacturaProveedor(IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen = "URL");
                 N_Gastos n_Gastos = new N_Gastos();
                 n_Gastos.InsertarGastos(IdProyecto, dtpFechaCompra.Value, "Factura n°" + txtNumFactura.Text, Convert.ToDecimal(txtMonto.Text));
 
@@ -320,6 +335,7 @@ namespace Precentacion.User.AgregarFactura
 
                 // Reiniciar el formulario después de crear una nueva factura
                 ReiniciarFormulario();
+                tabControlPrincipal.SelectedTab = tabPageLista;
             }
             catch (Exception ex)
             {
@@ -341,18 +357,13 @@ namespace Precentacion.User.AgregarFactura
             cbProveedor.SelectedValue = IdProveedor;
 
             // Obtener la URL de la imagen y cargarla en el PictureBox
-            rutaImagen = dgvFacturas.CurrentRow.Cells[9].Value.ToString(); // Suponiendo que la URL está en la columna 9
+           /* rutaImagen = dgvFacturas.CurrentRow.Cells[9].Value.ToString(); // Suponiendo que la URL está en la columna 9
             pbAccesorioExclusivo.Image = System.Drawing.Image.FromFile(rutaImagen);
-            pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;*/
 
             lblTitulo.Text = "Editar Factura";
+            habilitaciones();
 
-            // Ocultar el botón de crear y mostrar el botón de editar
-            btnCrear.Visible = false;
-            btnEditar.Visible = true;
-            btnCrear.Enabled = false;
-            btnEliminar.Enabled = false;
-            edicion = true;
 
             tabControlPrincipal.SelectedTab = tabPageConsulta;
         }
@@ -362,6 +373,9 @@ namespace Precentacion.User.AgregarFactura
         {
             try
             {
+                // Obtener la ruta de la imagen actual antes de la edición
+               // string rutaImagenActual = ObtenerRutaImagenActual(IdFactura); // Método que obtiene la ruta de la imagen actual desde la base de datos
+
                 if (cbProveedor.Text == "Extralum")
                 {
                     IdProveedor = 2;
@@ -380,7 +394,19 @@ namespace Precentacion.User.AgregarFactura
                 }
 
                 N_FactProveedor n_FactProveedor = new N_FactProveedor();
-                n_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text);
+
+                /*// Comparar la ruta de la imagen actual con la nueva ruta
+                if (!string.IsNullOrEmpty(rutaImagenActual) && rutaImagenActual != rutaImagen)
+                {
+                    // Eliminar la imagen actual si las rutas son diferentes
+                    if (File.Exists(rutaImagenActual))
+                    {
+                        File.Delete(rutaImagenActual);
+                    }
+                }*/
+
+                // Actualizar la factura con la nueva ruta de la imagen
+                n_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen = "URL");
 
                 MessageBox.Show("Factura Editada Correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -396,22 +422,40 @@ namespace Precentacion.User.AgregarFactura
             }
         }
 
+        // Método para obtener la ruta de la imagen actual desde la base de datos
+        private string ObtenerRutaImagenActual(int idFactura)
+        {
+            N_FactProveedor n_FactProveedor = new N_FactProveedor();
+            return n_FactProveedor.ObtenerRutaImagen(idFactura); // Implementa este método en tu clase N_FactProveedor
+        }
+
+
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Obtener los datos de la factura seleccionada y llenar los campos
-            IdFactura = Convert.ToInt32(dgvFacturas.CurrentRow.Cells[0].Value);
-            IdProveedor = Convert.ToInt32(dgvFacturas.CurrentRow.Cells[2].Value);
-            dtpFechaCompra.Value = Convert.ToDateTime(dgvFacturas.CurrentRow.Cells[3].Value);
-            dtpFechaVencimiento.Value = Convert.ToDateTime(dgvFacturas.CurrentRow.Cells[4].Value);
-            txtMonto.Text = dgvFacturas.CurrentRow.Cells[5].Value.ToString();
-            txtNumFactura.Text = dgvFacturas.CurrentRow.Cells[6].Value.ToString();
+            IdFactura = Convert.ToInt32(dgvFacturas.CurrentRow.Cells[2].Value);
+            IdProveedor = Convert.ToInt32(dgvFacturas.CurrentRow.Cells[0].Value);
+            dtpFechaCompra.Value = Convert.ToDateTime(dgvFacturas.CurrentRow.Cells[4].Value);
+            dtpFechaVencimiento.Value = Convert.ToDateTime(dgvFacturas.CurrentRow.Cells[5].Value);
+            txtMonto.Text = dgvFacturas.CurrentRow.Cells[6].Value.ToString();
+            txtNumFactura.Text = dgvFacturas.CurrentRow.Cells[3].Value.ToString();
+            txtPEV.Text = dgvFacturas.CurrentRow.Cells[7].Value.ToString();
+            txtBodega.Text = dgvFacturas.CurrentRow.Cells[8].Value.ToString();
             cbProveedor.SelectedValue = IdProveedor;
 
+            // Obtener la URL de la imagen y cargarla en el PictureBox
+           /* rutaImagen = dgvFacturas.CurrentRow.Cells[9].Value.ToString(); // Suponiendo que la URL está en la columna 9
+            pbAccesorioExclusivo.Image = System.Drawing.Image.FromFile(rutaImagen);
+            pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+            */
             lblTitulo.Text = "Eliminar Factura";
+            habilitaciones();
 
-            btnEliminar.Enabled = true;
-            btnCrear.Enabled = false;
-            btnEditar.Enabled = false;
+
+
+
+
+
 
             tabControlPrincipal.SelectedTab = tabPageConsulta;
         }
@@ -435,6 +479,7 @@ namespace Precentacion.User.AgregarFactura
 
                     // Reiniciar el formulario después de eliminar una factura
                     ReiniciarFormulario();
+                    tabControlPrincipal.SelectedTab = tabPageLista;
                 }
             }
             catch (Exception ex)

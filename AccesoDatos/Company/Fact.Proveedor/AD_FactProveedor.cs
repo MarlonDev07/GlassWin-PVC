@@ -87,14 +87,42 @@ namespace AccesoDatos.Company.Fact.Proveedor
                 throw ex;
             }
         }
+        public string ObtenerRutaImagen(int idFactura)
+        {
+            try
+            {
+                string rutaImagen = null;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = Cnn.OpenConecction();
+                cmd.CommandText = "SELECT urlFactura FROM FacturaProveedor WHERE IdFactura = @IdFactura";
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdFactura", idFactura);
 
-        public bool ActualizarFacturaProveedor(int IdFactura, int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, string Monto, string NumFactura, string pev, string bodega)
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    rutaImagen = reader["urlFactura"] as string;
+                }
+
+                reader.Close();
+                Cnn.CloseConnection();
+
+                return rutaImagen;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool ActualizarFacturaProveedor(int IdFactura, int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, string Monto, string NumFactura, string pev, string bodega, string urlFactura)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Cnn.OpenConecction();
-                string query = @"UPDATE FacturaProveedor SET IdProveedor = @IdProveedor, FechaCompra = @FechaCompra, FechaVencimiento = @FechaVencimiento, Monto = @Monto, NumFactura = @NumFactura, PEV = @pev, bodega = @bodega
+                string query = @"UPDATE FacturaProveedor SET IdProveedor = @IdProveedor, FechaCompra = @FechaCompra, FechaVencimiento = @FechaVencimiento, Monto = @Monto, NumFactura = @NumFactura, PEV = @pev, bodega = @bodega, urlFactura = @urlFactura
                          WHERE IdFactura = @IdFactura";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdFactura", IdFactura);
@@ -105,6 +133,7 @@ namespace AccesoDatos.Company.Fact.Proveedor
                 cmd.Parameters.AddWithValue("@NumFactura", NumFactura);
                 cmd.Parameters.AddWithValue("@PEV", pev);
                 cmd.Parameters.AddWithValue("@bodega", bodega);
+                cmd.Parameters.AddWithValue("@urlFactura", urlFactura);
 
                 cmd.CommandText = query;
                 cmd.ExecuteNonQuery();

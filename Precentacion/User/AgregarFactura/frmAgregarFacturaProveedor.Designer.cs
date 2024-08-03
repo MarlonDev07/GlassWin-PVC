@@ -91,7 +91,7 @@
             this.tabControlPrincipal.Location = new System.Drawing.Point(3, 64);
             this.tabControlPrincipal.Name = "tabControlPrincipal";
             this.tabControlPrincipal.SelectedIndex = 0;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(892, 591);
+            this.tabControlPrincipal.Size = new System.Drawing.Size(950, 591);
             this.tabControlPrincipal.TabIndex = 0;
             // 
             // tabPageLista
@@ -112,7 +112,7 @@
             this.tabPageLista.Location = new System.Drawing.Point(4, 22);
             this.tabPageLista.Name = "tabPageLista";
             this.tabPageLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLista.Size = new System.Drawing.Size(799, 565);
+            this.tabPageLista.Size = new System.Drawing.Size(942, 565);
             this.tabPageLista.TabIndex = 0;
             this.tabPageLista.Text = "Facturas";
             this.tabPageLista.UseVisualStyleBackColor = true;
@@ -246,7 +246,7 @@
             this.dgvFacturas.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvFacturas.Location = new System.Drawing.Point(3, 31);
             this.dgvFacturas.Name = "dgvFacturas";
-            this.dgvFacturas.Size = new System.Drawing.Size(793, 494);
+            this.dgvFacturas.Size = new System.Drawing.Size(933, 494);
             this.dgvFacturas.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -286,7 +286,7 @@
             this.tabPageConsulta.Location = new System.Drawing.Point(4, 22);
             this.tabPageConsulta.Name = "tabPageConsulta";
             this.tabPageConsulta.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConsulta.Size = new System.Drawing.Size(884, 565);
+            this.tabPageConsulta.Size = new System.Drawing.Size(942, 565);
             this.tabPageConsulta.TabIndex = 1;
             this.tabPageConsulta.Text = "Mant.Facturas";
             this.tabPageConsulta.UseVisualStyleBackColor = true;
@@ -301,7 +301,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(3, 3);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(878, 45);
+            this.lblTitulo.Size = new System.Drawing.Size(936, 45);
             this.lblTitulo.TabIndex = 13;
             this.lblTitulo.Text = "Registro de Factura de Compra ";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -336,7 +336,7 @@
             this.panel.Controls.Add(this.cbProyecto);
             this.panel.Location = new System.Drawing.Point(6, 51);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(872, 503);
+            this.panel.Size = new System.Drawing.Size(930, 503);
             this.panel.TabIndex = 12;
             // 
             // btnCargarImagen
@@ -348,6 +348,7 @@
             this.btnCargarImagen.TabIndex = 22;
             this.btnCargarImagen.Text = "Cargar la Imagen";
             this.btnCargarImagen.UseVisualStyleBackColor = true;
+            this.btnCargarImagen.Visible = false;
             this.btnCargarImagen.Click += new System.EventHandler(this.btnCargarImagen_Click);
             // 
             // pbAccesorioExclusivo
@@ -358,6 +359,7 @@
             this.pbAccesorioExclusivo.Size = new System.Drawing.Size(205, 189);
             this.pbAccesorioExclusivo.TabIndex = 21;
             this.pbAccesorioExclusivo.TabStop = false;
+            this.pbAccesorioExclusivo.Visible = false;
             // 
             // txtBodega
             // 
@@ -392,7 +394,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 23);
             this.label9.TabIndex = 17;
-            this.label9.Text = "PEV:";
+            this.label9.Text = "PDV:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnEliminar
@@ -421,7 +423,6 @@
             this.btnEditar.TabIndex = 15;
             this.toolTip.SetToolTip(this.btnEditar, "Editar Factura");
             this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Visible = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnCrear
@@ -555,7 +556,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 658);
+            this.ClientSize = new System.Drawing.Size(956, 658);
             this.Controls.Add(this.tabControlPrincipal);
             this.MaximizeBox = false;
             this.Name = "frmAgregarFacturaProveedor";
