@@ -140,6 +140,7 @@ namespace Precentacion.User.Quote.Windows
                     cbkCilindronPestillo.Checked = true;
                     cbkContramarco.Checked = true;
                     cbkBrazoHidraulico.Checked = true;
+                    cbkUmbral.Checked = true;
                 }
             }
             catch (Exception ex)
@@ -1540,6 +1541,44 @@ namespace Precentacion.User.Quote.Windows
                                 txtTotal.Text = SubTotal.ToString("C");
                                 //Quitar la Fila del DataGridView
                                 dgAluminio.Rows.Remove(row);
+                            }
+                        }
+                    }
+                }
+                if (cbkUmbral.Checked == false)
+                {
+                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
+                    foreach (DataGridViewRow row in dgAluminio.Rows)
+                    {
+                        //Validar si la Fila Esta Vacía
+                        if (row.Cells["Description"].Value != null)
+                        {
+                            if (row.Cells["Description"].Value.ToString() == "Umbral 4 PL D40")
+                            {
+                                //Quitar el Precio del Total
+                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
+                                txtTotal.Text = SubTotal.ToString("C");
+                                //Quitar la Fila del DataGridView
+                                dgAluminio.Rows.Remove(row);
+                            }
+                        }
+                    }
+                }
+                if (cbkPH206.Checked == true)
+                {
+                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
+                    foreach (DataGridViewRow row in dgAccesorios.Rows)
+                    {
+                        //Validar si la Fila Esta Vacía
+                        if (row.Cells["Description"].Value != null)
+                        {
+                            if (row.Cells["Description"].Value.ToString() == "Juego Cerradura 31/32 AL DT1850")
+                            {
+                                //Quitar el Precio del Total
+                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
+                                txtTotal.Text = SubTotal.ToString("C");
+                                //Quitar la Fila del DataGridView
+                                dgAccesorios.Rows.Remove(row);
                             }
                         }
                     }
