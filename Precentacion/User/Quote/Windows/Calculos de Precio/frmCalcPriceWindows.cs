@@ -623,7 +623,19 @@ namespace Precentacion.User.Quote.Windows
                 }
                 else
                 {
-                    description += "Cerradura: " + ClsWindows.Lock + "\n";
+                    if (ClsWindows.System == "PuertaEuAbatible")
+                    {
+                        description += "Cerradura: " + "Cerradura Doble Manija Europa" + "\n";
+                    }
+                    if (ClsWindows.System == "Puerta Lujo")
+                    {
+                        description += "Cerradura: " + "Cerradura Completa" + "\n";
+                    }
+
+                    else
+                    {
+                        description += "Cerradura: " + ClsWindows.Lock + "\n";
+                    }
                 }
                 description += "Ancho: " + ClsWindows.Weight + "\n";
                 description += "Alto: " + ClsWindows.heigt + "\n";
