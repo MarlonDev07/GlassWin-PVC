@@ -19,6 +19,7 @@ using System.Xml.Linq;
 using Dominio.ClassFunction.InputBox;
 using Negocio.Company.Account;
 using Precentacion.User.DashBoard;
+using System.Threading;
 
 
 namespace Precentacion.User.AgregarFactura
@@ -35,8 +36,7 @@ namespace Precentacion.User.AgregarFactura
         bool ColumnaVisible = false;
         bool Seleccionada = false;
         string Facturas = "Cancelada";
-       
-        private string rutaImagen;
+        string rutaImagen;
         public frmAgregarFacturaProveedor()
         {
             InitializeComponent();
@@ -325,8 +325,12 @@ namespace Precentacion.User.AgregarFactura
                     IdProveedor = 5;
                 }
 
+                string imagePath = string.Empty;
+
                 N_FactProveedor n_FactProveedor = new N_FactProveedor();
-                n_FactProveedor.InsertarFacturaProveedor(IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen = "URL");
+                n_FactProveedor.InsertarFacturaProveedor(IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen);
+
+                // Código para insertar en la tabla Gastos...
                 N_Gastos n_Gastos = new N_Gastos();
                 n_Gastos.InsertarGastos(IdProyecto, dtpFechaCompra.Value, "Factura n°" + txtNumFactura.Text, Convert.ToDecimal(txtMonto.Text));
 
@@ -356,17 +360,27 @@ namespace Precentacion.User.AgregarFactura
             txtBodega.Text = dgvFacturas.CurrentRow.Cells[8].Value.ToString();
             cbProveedor.SelectedValue = IdProveedor;
 
-            // Obtener la URL de la imagen y cargarla en el PictureBox
-           /* rutaImagen = dgvFacturas.CurrentRow.Cells[9].Value.ToString(); // Suponiendo que la URL está en la columna 9
-            pbAccesorioExclusivo.Image = System.Drawing.Image.FromFile(rutaImagen);
-            pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;*/
+            N_FactProveedor n_FactProveedor = new N_FactProveedor();
+            string urlImagen = n_FactProveedor.obtenerURLFactura(IdFactura);
+            rutaImagen = urlImagen;
+
+            // Cargar la imagen en el PictureBox
+            if (!string.IsNullOrEmpty(urlImagen) && File.Exists(urlImagen))
+            {
+                pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
+                pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                pbAccesorioExclusivo.Image = null; // O una imagen por defecto
+            }
 
             lblTitulo.Text = "Editar Factura";
             habilitaciones();
 
-
             tabControlPrincipal.SelectedTab = tabPageConsulta;
         }
+
 
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -393,20 +407,12 @@ namespace Precentacion.User.AgregarFactura
                     IdProveedor = 5;
                 }
 
+                string imagePath = string.Empty;
+
+               
+
                 N_FactProveedor n_FactProveedor = new N_FactProveedor();
-
-                /*// Comparar la ruta de la imagen actual con la nueva ruta
-                if (!string.IsNullOrEmpty(rutaImagenActual) && rutaImagenActual != rutaImagen)
-                {
-                    // Eliminar la imagen actual si las rutas son diferentes
-                    if (File.Exists(rutaImagenActual))
-                    {
-                        File.Delete(rutaImagenActual);
-                    }
-                }*/
-
-                // Actualizar la factura con la nueva ruta de la imagen
-                n_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen = "URL");
+                n_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen);
 
                 MessageBox.Show("Factura Editada Correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -422,13 +428,7 @@ namespace Precentacion.User.AgregarFactura
             }
         }
 
-        // Método para obtener la ruta de la imagen actual desde la base de datos
-        private string ObtenerRutaImagenActual(int idFactura)
-        {
-            N_FactProveedor n_FactProveedor = new N_FactProveedor();
-            return n_FactProveedor.ObtenerRutaImagen(idFactura); // Implementa este método en tu clase N_FactProveedor
-        }
-
+   
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -443,14 +443,23 @@ namespace Precentacion.User.AgregarFactura
             txtBodega.Text = dgvFacturas.CurrentRow.Cells[8].Value.ToString();
             cbProveedor.SelectedValue = IdProveedor;
 
-            // Obtener la URL de la imagen y cargarla en el PictureBox
-           /* rutaImagen = dgvFacturas.CurrentRow.Cells[9].Value.ToString(); // Suponiendo que la URL está en la columna 9
-            pbAccesorioExclusivo.Image = System.Drawing.Image.FromFile(rutaImagen);
-            pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
-            */
+            N_FactProveedor n_FactProveedor = new N_FactProveedor();
+            string urlImagen = n_FactProveedor.obtenerURLFactura(IdFactura);
+            rutaImagen = urlImagen;
+
+            // Cargar la imagen en el PictureBox
+            if (!string.IsNullOrEmpty(urlImagen) && File.Exists(urlImagen))
+            {
+                pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
+                pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                pbAccesorioExclusivo.Image = null; // O una imagen por defecto
+            }
             lblTitulo.Text = "Eliminar Factura";
             habilitaciones();
-
+            btnCargarImagen.Visible = false;
 
 
 
@@ -465,28 +474,54 @@ namespace Precentacion.User.AgregarFactura
             try
             {
                 // Confirmar eliminación
-                DialogResult result = MessageBox.Show("¿Estas seguro de eliminar la factura?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Estás seguro de eliminar la factura?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.No)
                 {
                     return;
                 }
-                else
+
+                // Eliminar factura de la base de datos
+                N_FactProveedor n_FactProveedor = new N_FactProveedor();
+                n_FactProveedor.EliminarFacturaProveedor(IdFactura);
+
+                // Intentar eliminar la imagen del sistema de archivos
+                if (File.Exists(rutaImagen))
                 {
-                    N_FactProveedor n_FactProveedor = new N_FactProveedor();
-                    n_FactProveedor.EliminarFacturaProveedor(IdFactura);
+                    bool eliminado = false;
+                    int intentos = 0;
+                    while (!eliminado && intentos < 5)
+                    {
+                        try
+                        {
+                            File.Delete(rutaImagen);
+                            eliminado = true;
+                        }
+                        catch (IOException)
+                        {
+                            // Esperar antes de intentar de nuevo
+                            Thread.Sleep(1000);
+                            intentos++;
+                        }
+                    }
 
-                    CargarDataGridPendiente();
-
-                    // Reiniciar el formulario después de eliminar una factura
-                    ReiniciarFormulario();
-                    tabControlPrincipal.SelectedTab = tabPageLista;
+                    if (!eliminado)
+                    {
+                       // MessageBox.Show("No se pudo eliminar el archivo porque está siendo utilizado por otro proceso.");
+                    }
                 }
+
+                // Recargar datos y reiniciar formulario
+                CargarDataGridPendiente();
+                ReiniciarFormulario();
+                tabControlPrincipal.SelectedTab = tabPageLista;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
+
+
 
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -995,32 +1030,47 @@ namespace Precentacion.User.AgregarFactura
         {
             try
             {
-                // Abrir un dialogo para seleccionar la imagen
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Title = "Seleccione una imagen";
-                dialog.Multiselect = false;
-
-                if (dialog.ShowDialog() == DialogResult.OK)
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
-                    string fileName = Path.GetFileName(dialog.FileName);
-                    string destinationPath = Path.Combine(Application.StartupPath, "Images", "Facturas", fileName);
+                    openFileDialog.InitialDirectory = "c:\\";
+                    openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+                    openFileDialog.FilterIndex = 2;
+                    openFileDialog.RestoreDirectory = true;
 
-
-                    // Crear la carpeta si no existe
-                    Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
-
-                    // Copiar la imagen seleccionada a la carpeta de destino
-                    File.Copy(dialog.FileName, destinationPath, true);
-
-                    rutaImagen = destinationPath; // Guardar la ruta completa de la imagen
-                    pbAccesorioExclusivo.Image = System.Drawing.Image.FromFile(rutaImagen);
-                    pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Obtener la ruta del archivo seleccionada
+                        string filePath = openFileDialog.FileName;
+                        // Mostrar la imagen en el PictureBox
+                        pbAccesorioExclusivo.Image = new Bitmap(filePath);
+                        pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                        GuardarImagen(openFileDialog.FileName);
+                    }
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("Ocurrió un error al cargar la imagen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private string GuardarImagen(string sourcePath)
+        {
+            // Obtener la ruta de la carpeta Documentos del usuario
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            // Crear la ruta para la carpeta "Facturas" dentro de Documentos
+            string directoryPath = Path.Combine(documentsPath, "Facturas");
+            Directory.CreateDirectory(directoryPath); // Crear el directorio si no existe
+
+            // Obtener el nombre del archivo de la ruta de origen
+            string fileName = Path.GetFileName(sourcePath);
+            // Crear la ruta de destino en la carpeta "Facturas"
+            string destinationPath = Path.Combine(directoryPath, fileName);
+
+            // Copiar el archivo seleccionado al directorio de destino
+            File.Copy(sourcePath, destinationPath, true);
+            rutaImagen = destinationPath;
+
+            return destinationPath;
         }
 
     }

@@ -57,6 +57,37 @@ namespace AccesoDatos.Company.Fact.Proveedor
             }
         }
 
+        public string obtenerURLFactura(int idFactura)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                SqlDataReader Read;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = Cnn.OpenConecction();
+                cmd.CommandText = "select urlFactura from facturaProveedor where idFactura = @idFactura";
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@idFactura", idFactura);
+                Read = cmd.ExecuteReader();
+                dataTable.Load(Read);
+                Cnn.CloseConnection();
+
+                if (dataTable.Rows.Count > 0)
+                {
+                    return dataTable.Rows[0]["urlFactura"].ToString();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
 
         public bool InsertarFacturaProveedor(int IdProveedor, DateTime FechaCompra,DateTime FechaVencimiento, string Monto, string NumFactura, string pev, string bodega, string urlFactura)
         {

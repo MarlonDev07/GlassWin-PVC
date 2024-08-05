@@ -348,7 +348,6 @@
             this.btnCargarImagen.TabIndex = 22;
             this.btnCargarImagen.Text = "Cargar la Imagen";
             this.btnCargarImagen.UseVisualStyleBackColor = true;
-            this.btnCargarImagen.Visible = false;
             this.btnCargarImagen.Click += new System.EventHandler(this.btnCargarImagen_Click);
             // 
             // pbAccesorioExclusivo
@@ -359,7 +358,6 @@
             this.pbAccesorioExclusivo.Size = new System.Drawing.Size(205, 189);
             this.pbAccesorioExclusivo.TabIndex = 21;
             this.pbAccesorioExclusivo.TabStop = false;
-            this.pbAccesorioExclusivo.Visible = false;
             // 
             // txtBodega
             // 

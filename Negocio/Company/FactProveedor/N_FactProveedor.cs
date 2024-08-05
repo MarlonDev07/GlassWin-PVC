@@ -33,6 +33,17 @@ namespace Negocio.Company.FactProveedor
                 throw;
             }
         }
+        public string obtenerURLFactura(int idFactura)
+        {
+            try
+            {
+                return ad_FactProveedor.obtenerURLFactura(idFactura);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public bool InsertarFacturaProveedor(int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, string Monto, string NumFactura, string pev, string bodega, string url)
         {
             try
