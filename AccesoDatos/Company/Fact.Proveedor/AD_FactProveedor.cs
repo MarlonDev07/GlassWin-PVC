@@ -43,7 +43,7 @@ namespace AccesoDatos.Company.Fact.Proveedor
                 SqlDataReader Read;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Cnn.OpenConecction();
-                cmd.CommandText = "Select RegProveedor.IdProvedor ,RegProveedor.Nombre, FacturaProveedor.IdFactura, FacturaProveedor.NumFactura, FacturaProveedor.FechaCompra, FacturaProveedor.FechaVencimiento, FacturaProveedor.Monto, FacturaProveedor.PEV, FacturaProveedor.bodega, FacturaProveedor.urlFactura\r\nFrom FacturaProveedor\r\nINNER JOIN RegProveedor\r\nON FacturaProveedor.IdProveedor = RegProveedor.IdProvedor WHERE FacturaProveedor.IdEmpresa = @Id and FacturaProveedor.Monto = 0";
+                cmd.CommandText = "Select RegProveedor.IdProvedor ,RegProveedor.Nombre, FacturaProveedor.IdFactura, FacturaProveedor.NumFactura, FacturaProveedor.FechaCompra, FacturaProveedor.FechaVencimiento, FacturaProveedor.Monto, FacturaProveedor.PEV, FacturaProveedor.bodega\r\nFrom FacturaProveedor\r\nINNER JOIN RegProveedor\r\nON FacturaProveedor.IdProveedor = RegProveedor.IdProvedor WHERE FacturaProveedor.IdEmpresa = @Id and FacturaProveedor.Monto = 0";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@Id", CompanyCache.IdCompany);
                 Read = cmd.ExecuteReader();

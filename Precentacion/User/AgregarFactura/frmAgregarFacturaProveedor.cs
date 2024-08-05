@@ -37,6 +37,8 @@ namespace Precentacion.User.AgregarFactura
         bool Seleccionada = false;
         string Facturas = "Cancelada";
         string rutaImagen;
+        bool fromButton = false;
+
         public frmAgregarFacturaProveedor()
         {
             InitializeComponent();
@@ -308,6 +310,7 @@ namespace Precentacion.User.AgregarFactura
         {
             try
             {
+               
                 if (cbProveedor.Text == "Extralum")
                 {
                     IdProveedor = 2;
@@ -337,9 +340,7 @@ namespace Precentacion.User.AgregarFactura
                 CargarDataGridPendiente();
                 MessageBox.Show("Factura Creada Correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Reiniciar el formulario después de crear una nueva factura
-                ReiniciarFormulario();
-                tabControlPrincipal.SelectedTab = tabPageLista;
+               
             }
             catch (Exception ex)
             {
@@ -387,8 +388,7 @@ namespace Precentacion.User.AgregarFactura
         {
             try
             {
-                // Obtener la ruta de la imagen actual antes de la edición
-               // string rutaImagenActual = ObtenerRutaImagenActual(IdFactura); // Método que obtiene la ruta de la imagen actual desde la base de datos
+               
 
                 if (cbProveedor.Text == "Extralum")
                 {
@@ -417,10 +417,7 @@ namespace Precentacion.User.AgregarFactura
                 MessageBox.Show("Factura Editada Correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 CargarDataGridPendiente();
-                tabControlPrincipal.SelectedTab = tabPageLista;
-
-                // Reiniciar el formulario después de editar una factura
-                ReiniciarFormulario();
+            
             }
             catch (Exception ex)
             {
@@ -473,6 +470,7 @@ namespace Precentacion.User.AgregarFactura
         {
             try
             {
+                
                 // Confirmar eliminación
                 DialogResult result = MessageBox.Show("¿Estás seguro de eliminar la factura?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.No)
@@ -483,6 +481,7 @@ namespace Precentacion.User.AgregarFactura
                 // Eliminar factura de la base de datos
                 N_FactProveedor n_FactProveedor = new N_FactProveedor();
                 n_FactProveedor.EliminarFacturaProveedor(IdFactura);
+                MessageBox.Show("Eliminado con exito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Intentar eliminar la imagen del sistema de archivos
                 if (File.Exists(rutaImagen))
@@ -512,8 +511,7 @@ namespace Precentacion.User.AgregarFactura
 
                 // Recargar datos y reiniciar formulario
                 CargarDataGridPendiente();
-                ReiniciarFormulario();
-                tabControlPrincipal.SelectedTab = tabPageLista;
+               
             }
             catch (Exception ex)
             {
@@ -1073,5 +1071,128 @@ namespace Precentacion.User.AgregarFactura
             return destinationPath;
         }
 
+        private void verToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Obtener los datos de la factura seleccionada y llenar los campos
+            IdFactura = Convert.ToInt32(dgvFacturas.CurrentRow.Cells[2].Value);
+            IdProveedor = Convert.ToInt32(dgvFacturas.CurrentRow.Cells[0].Value);
+            dtpFechaCompra.Value = Convert.ToDateTime(dgvFacturas.CurrentRow.Cells[4].Value);
+            dtpFechaVencimiento.Value = Convert.ToDateTime(dgvFacturas.CurrentRow.Cells[5].Value);
+            txtMonto.Text = dgvFacturas.CurrentRow.Cells[6].Value.ToString();
+            txtNumFactura.Text = dgvFacturas.CurrentRow.Cells[3].Value.ToString();
+            txtPEV.Text = dgvFacturas.CurrentRow.Cells[7].Value.ToString();
+            txtBodega.Text = dgvFacturas.CurrentRow.Cells[8].Value.ToString();
+            cbProveedor.SelectedValue = IdProveedor;
+
+            N_FactProveedor n_FactProveedor = new N_FactProveedor();
+            string urlImagen = n_FactProveedor.obtenerURLFactura(IdFactura);
+            rutaImagen = urlImagen;
+
+            // Cargar la imagen en el PictureBox
+            if (!string.IsNullOrEmpty(urlImagen) && File.Exists(urlImagen))
+            {
+                pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
+                pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                pbAccesorioExclusivo.Image = null; // O una imagen por defecto
+            }
+
+            lblTitulo.Text = "Ver Factura";
+
+            btnCrear.Visible = false;
+            btnEditar.Visible = false;
+            btnEliminar.Visible = false;
+            btnCargarImagen.Visible = false;
+
+            cbProveedor.Enabled = false;
+            txtNumFactura.Enabled = false;
+            dtpFechaCompra.Enabled = false;
+            cbProyecto.Enabled = false;
+            txtPEV.Enabled = false;
+            txtMonto.Enabled = false;
+            dtpFechaVencimiento.Enabled = false;
+            txtBodega.Enabled = false;
+            btnBack.Visible = true;
+
+
+            tabControlPrincipal.SelectedTab = tabPageConsulta;
+            CargarDataGridPendiente();
+        }
+
+        private void nuevaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           /*ReiniciarFormulario();
+           tabControlPrincipal.SelectedTab = tabPageConsulta;*/
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            ReiniciarFormulario();
+            tabControlPrincipal.SelectedTab = tabPageConsulta;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            fromButton = true;
+            // Limpiar campos de texto
+            txtMonto.Clear();
+            txtNumFactura.Clear();
+            txtPEV.Clear();
+            txtBodega.Clear();
+            pbAccesorioExclusivo.Image = null;
+            dtpFechaCompra.Value = DateTime.Now;
+            dtpFechaVencimiento.Value = DateTime.Now;
+            cbProveedor.Enabled = true;
+            txtNumFactura.Enabled = true;
+            dtpFechaCompra.Enabled = true;
+            cbProyecto.Enabled = true;
+            txtPEV.Enabled = true;
+            txtMonto.Enabled = true;
+            dtpFechaVencimiento.Enabled = true;
+            txtBodega.Enabled = true;
+            btnBack.Visible = false;
+
+            btnCrear.Visible = true;
+            btnEditar.Visible = true;
+            btnEliminar.Visible = true;
+            btnCargarImagen.Visible = true;
+            btnBack.Visible = true;
+
+
+            // Reiniciar DateTimePickers a la fecha actual
+            dtpFechaCompra.Value = DateTime.Now;
+            dtpFechaVencimiento.Value = DateTime.Now;
+
+            // Reiniciar el ComboBox de proveedores
+            cbProveedor.SelectedIndex = -1;
+
+            // Restablecer el título y botones
+            lblTitulo.Text = "Crear Factura";
+            habilitaciones();
+            tabControlPrincipal.SelectedTab = tabPageLista;
+            fromButton = false;
+        }
+
+        private void tabControlPrincipal_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            // Verifica si la pestaña seleccionada es la pestaña de lista (tabPageLista)
+            if (e.TabPage == tabPageLista)
+            {
+                // Solo muestra el mensaje si el cambio no es debido al botón
+                if (!fromButton &&
+                    (lblTitulo.Text == "Registro de Factura de Compra" ||
+                     lblTitulo.Text == "Crear Factura" ||
+                     lblTitulo.Text == "Editar Factura" ||
+                     lblTitulo.Text == "Eliminar Factura" ||
+                     lblTitulo.Text == "Ver Factura"))
+                {
+                    // Cancela el cambio de pestaña y muestra el mensaje
+                    e.Cancel = true;
+                    MessageBox.Show("No puede regresar a la pestaña de lista desde aquí.");
+                }
+            }
+        }
     }
 }
