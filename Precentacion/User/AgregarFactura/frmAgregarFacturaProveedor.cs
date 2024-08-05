@@ -499,9 +499,9 @@ namespace Precentacion.User.AgregarFactura
                         catch (IOException)
                         {
                             // Esperar antes de intentar de nuevo
-                            Thread.Sleep(1000);
+                            Thread.Sleep(500);
                             intentos++;
-                        }
+                        } 
                     }
 
                     if (!eliminado)
