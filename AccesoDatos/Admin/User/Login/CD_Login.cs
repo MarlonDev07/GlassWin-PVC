@@ -15,7 +15,7 @@ namespace AccesoDatos.Login
             bool resp = false;
             try
             {
-                ClsConnection Conn = new ClsConnection(user);
+                ClsConnection Conn = new ClsConnection();
                 using (var command = new SqlCommand())
                 {
                     command.Connection = Conn.OpenConecction();
@@ -38,7 +38,7 @@ namespace AccesoDatos.Login
                             if (UserCache.Roll == "User")
                             {
                                 UserCache.Expiration = reader.GetDateTime(7);
-                                bool res = LoadDataCompany(UserCache.IdUser, user);
+                                bool res = LoadDataCompany(UserCache.IdUser);
                                 if (res)
                                 {
                                     resp = true;
@@ -66,7 +66,7 @@ namespace AccesoDatos.Login
             }
         }
 
-        public bool LoadDataCompany(Int64 IDUser, string user) 
+        public bool LoadDataCompany(Int64 IDUser ) 
         {
             try
             {
@@ -74,7 +74,7 @@ namespace AccesoDatos.Login
                 {
                     IDUser = 25550555;
                 }
-                ClsConnection Conn = new ClsConnection(user);
+                ClsConnection Conn = new ClsConnection();
 
                 using (var command = new SqlCommand())
                 {
