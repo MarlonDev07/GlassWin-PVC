@@ -4526,7 +4526,7 @@ namespace Negocio.LoadProduct
 
             #endregion
 
-            #region 6030 3 Vias
+        #region 6030 3 Vias
             private decimal Calc6030_3Vias_FijoMovil(string Description)
             {
             decimal metraje = 0;
@@ -7716,6 +7716,10 @@ namespace Negocio.LoadProduct
                     break;
 
                 case "CIERRA PUERTA COMPACTO AL 303":
+                    Metraje = 1;
+                    break;
+
+                case "PH206":
                     Metraje = 1;
                     break;
 
