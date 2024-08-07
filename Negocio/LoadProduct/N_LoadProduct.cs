@@ -7812,6 +7812,10 @@ namespace Negocio.LoadProduct
                 case "CIERRA PUERTA COMPACTO AL 303":
                     Metraje = 2;
                     break;
+                case "PH206":
+                    Metraje = 1;
+                    break;
+
             }
             return Metraje;
         }
@@ -7885,6 +7889,10 @@ namespace Negocio.LoadProduct
                 case "CIERRA PUERTA COMPACTO AL 303":
                     Metraje = 1;
                     break;
+                case "PH206":
+                    Metraje = 1;
+                    break;
+
             }
 
 
@@ -7969,6 +7977,10 @@ namespace Negocio.LoadProduct
                 case "CIERRA PUERTA COMPACTO AL 303":
                     Metraje = 2;
                     break;
+                case "PH206":
+                    Metraje = 1;
+                    break;
+
             }
             return Metraje;
         }
