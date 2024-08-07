@@ -180,7 +180,7 @@
             this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUbicacion.BackColor = System.Drawing.Color.Orange;
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(830, 8);
+            this.txtUbicacion.Location = new System.Drawing.Point(826, 8);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(162, 23);
             this.txtUbicacion.TabIndex = 46;
@@ -973,7 +973,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(272, 7);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(403, 24);
+            this.lblDescripcion.Size = new System.Drawing.Size(399, 24);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripción";
             // 
@@ -983,7 +983,7 @@
             this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(681, 7);
+            this.label1.Location = new System.Drawing.Point(677, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(130, 24);
             this.label1.TabIndex = 63;
@@ -1031,9 +1031,9 @@
             this.PanelDetalle.Controls.Add(this.lblAluminio);
             this.PanelDetalle.Controls.Add(this.lblArticulo);
             this.PanelDetalle.Controls.Add(this.lblDetalleCotizacion);
-            this.PanelDetalle.Location = new System.Drawing.Point(0, 37);
+            this.PanelDetalle.Location = new System.Drawing.Point(0, 34);
             this.PanelDetalle.Name = "PanelDetalle";
-            this.PanelDetalle.Size = new System.Drawing.Size(1183, 871);
+            this.PanelDetalle.Size = new System.Drawing.Size(1183, 874);
             this.PanelDetalle.TabIndex = 74;
             this.PanelDetalle.Visible = false;
             // 
@@ -1075,7 +1075,7 @@
             this.dgAluminioAdd.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgAluminioAdd.EnableHeadersVisualStyles = false;
             this.dgAluminioAdd.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgAluminioAdd.Location = new System.Drawing.Point(590, 186);
+            this.dgAluminioAdd.Location = new System.Drawing.Point(590, 188);
             this.dgAluminioAdd.Name = "dgAluminioAdd";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.SteelBlue;
@@ -1119,7 +1119,7 @@
             this.dgVidrioAdd.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgVidrioAdd.EnableHeadersVisualStyles = false;
             this.dgVidrioAdd.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgVidrioAdd.Location = new System.Drawing.Point(590, 507);
+            this.dgVidrioAdd.Location = new System.Drawing.Point(590, 509);
             this.dgVidrioAdd.Name = "dgVidrioAdd";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.SteelBlue;
@@ -1163,7 +1163,7 @@
             this.dgvCerradura.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvCerradura.EnableHeadersVisualStyles = false;
             this.dgvCerradura.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvCerradura.Location = new System.Drawing.Point(590, 607);
+            this.dgvCerradura.Location = new System.Drawing.Point(590, 609);
             this.dgvCerradura.Name = "dgvCerradura";
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.SteelBlue;
@@ -1188,7 +1188,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(745, 578);
+            this.label4.Location = new System.Drawing.Point(745, 580);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 26);
             this.label4.TabIndex = 126;
@@ -1219,7 +1219,7 @@
             this.dgAluminio.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgAluminio.EnableHeadersVisualStyles = false;
             this.dgAluminio.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgAluminio.Location = new System.Drawing.Point(138, 186);
+            this.dgAluminio.Location = new System.Drawing.Point(138, 188);
             this.dgAluminio.Margin = new System.Windows.Forms.Padding(2);
             this.dgAluminio.Name = "dgAluminio";
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1264,7 +1264,7 @@
             this.dgAccesorios.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgAccesorios.EnableHeadersVisualStyles = false;
             this.dgAccesorios.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgAccesorios.Location = new System.Drawing.Point(138, 422);
+            this.dgAccesorios.Location = new System.Drawing.Point(138, 424);
             this.dgAccesorios.Name = "dgAccesorios";
             dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle19.BackColor = System.Drawing.Color.SteelBlue;
@@ -1290,7 +1290,7 @@
             this.btnHidePanelDG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHidePanelDG.FlatAppearance.BorderSize = 0;
             this.btnHidePanelDG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHidePanelDG.Location = new System.Drawing.Point(1336, 1039);
+            this.btnHidePanelDG.Location = new System.Drawing.Point(1336, 1042);
             this.btnHidePanelDG.Name = "btnHidePanelDG";
             this.btnHidePanelDG.Size = new System.Drawing.Size(99, 58);
             this.btnHidePanelDG.TabIndex = 123;
@@ -1302,7 +1302,7 @@
             this.lblAccesorios.AutoSize = true;
             this.lblAccesorios.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAccesorios.ForeColor = System.Drawing.Color.Black;
-            this.lblAccesorios.Location = new System.Drawing.Point(4, 422);
+            this.lblAccesorios.Location = new System.Drawing.Point(4, 424);
             this.lblAccesorios.Name = "lblAccesorios";
             this.lblAccesorios.Size = new System.Drawing.Size(104, 23);
             this.lblAccesorios.TabIndex = 121;
@@ -1333,7 +1333,7 @@
             this.dgVidrio.DefaultCellStyle = dataGridViewCellStyle22;
             this.dgVidrio.EnableHeadersVisualStyles = false;
             this.dgVidrio.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgVidrio.Location = new System.Drawing.Point(590, 422);
+            this.dgVidrio.Location = new System.Drawing.Point(590, 424);
             this.dgVidrio.Name = "dgVidrio";
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.SteelBlue;
@@ -1358,7 +1358,7 @@
             this.lblVidrioMetricas.AutoSize = true;
             this.lblVidrioMetricas.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVidrioMetricas.ForeColor = System.Drawing.Color.Black;
-            this.lblVidrioMetricas.Location = new System.Drawing.Point(771, 393);
+            this.lblVidrioMetricas.Location = new System.Drawing.Point(771, 395);
             this.lblVidrioMetricas.Name = "lblVidrioMetricas";
             this.lblVidrioMetricas.Size = new System.Drawing.Size(68, 26);
             this.lblVidrioMetricas.TabIndex = 116;
@@ -1370,7 +1370,7 @@
             this.lblAluminio.AutoSize = true;
             this.lblAluminio.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAluminio.ForeColor = System.Drawing.Color.Black;
-            this.lblAluminio.Location = new System.Drawing.Point(8, 186);
+            this.lblAluminio.Location = new System.Drawing.Point(8, 188);
             this.lblAluminio.Name = "lblAluminio";
             this.lblAluminio.Size = new System.Drawing.Size(90, 26);
             this.lblAluminio.TabIndex = 115;
@@ -1408,7 +1408,7 @@
             // 
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(1072, 5);
+            this.btnCerrar.Location = new System.Drawing.Point(1068, 5);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(36, 29);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1420,7 +1420,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1000, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(996, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(51, 29);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

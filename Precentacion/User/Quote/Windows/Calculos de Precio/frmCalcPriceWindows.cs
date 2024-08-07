@@ -137,10 +137,11 @@ namespace Precentacion.User.Quote.Windows
                     PanelHaladera.Visible = true;
                     cbkHaladeraConcha.Checked = true;
                     cbkBaraaEmpuje.Checked = true;
-                    cbkCilindronPestillo.Checked = true;
-                    cbkContramarco.Checked = true;
-                    cbkBrazoHidraulico.Checked = true;
+                    cbkCilindronPestillo.Checked = false;
+                    cbkContramarco.Checked = false;
+                    cbkBrazoHidraulico.Checked = false;
                     cbkUmbral.Checked = true;
+                    cbkPH206.Checked = false;
                 }
             }
             catch (Exception ex)
