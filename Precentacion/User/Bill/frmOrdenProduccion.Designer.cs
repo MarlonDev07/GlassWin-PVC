@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrdenProduccion));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.dtpFechaSalida = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.cbProyecto = new System.Windows.Forms.ComboBox();
@@ -42,6 +43,8 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnOptimizar8025 = new System.Windows.Forms.Button();
+            this.btnOptimizar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvOrdenProduccion8025 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,9 +92,6 @@
             this.cantVerticalC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ventana = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnOptimizar = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnOptimizar8025 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -116,9 +116,19 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1090, 177);
+            this.groupBox1.Size = new System.Drawing.Size(1106, 177);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.Location = new System.Drawing.Point(16, 124);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(61, 48);
+            this.btnImprimir.TabIndex = 9;
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // dtpFechaSalida
             // 
@@ -218,6 +228,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(982, 620);
             this.panel1.TabIndex = 0;
+            // 
+            // btnOptimizar8025
+            // 
+            this.btnOptimizar8025.Image = ((System.Drawing.Image)(resources.GetObject("btnOptimizar8025.Image")));
+            this.btnOptimizar8025.Location = new System.Drawing.Point(937, 290);
+            this.btnOptimizar8025.Name = "btnOptimizar8025";
+            this.btnOptimizar8025.Size = new System.Drawing.Size(39, 29);
+            this.btnOptimizar8025.TabIndex = 11;
+            this.btnOptimizar8025.UseVisualStyleBackColor = true;
+            this.btnOptimizar8025.Click += new System.EventHandler(this.btnOptimizar8025_Click);
+            // 
+            // btnOptimizar
+            // 
+            this.btnOptimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnOptimizar.Image")));
+            this.btnOptimizar.Location = new System.Drawing.Point(937, 5);
+            this.btnOptimizar.Name = "btnOptimizar";
+            this.btnOptimizar.Size = new System.Drawing.Size(39, 29);
+            this.btnOptimizar.TabIndex = 10;
+            this.btnOptimizar.UseVisualStyleBackColor = true;
+            this.btnOptimizar.Click += new System.EventHandler(this.btnOptimizar_Click);
             // 
             // label7
             // 
@@ -606,43 +636,13 @@
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
             // 
-            // btnOptimizar
-            // 
-            this.btnOptimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnOptimizar.Image")));
-            this.btnOptimizar.Location = new System.Drawing.Point(937, 5);
-            this.btnOptimizar.Name = "btnOptimizar";
-            this.btnOptimizar.Size = new System.Drawing.Size(39, 29);
-            this.btnOptimizar.TabIndex = 10;
-            this.btnOptimizar.UseVisualStyleBackColor = true;
-            this.btnOptimizar.Click += new System.EventHandler(this.btnOptimizar_Click);
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
-            this.btnImprimir.Location = new System.Drawing.Point(16, 124);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(61, 48);
-            this.btnImprimir.TabIndex = 9;
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // btnOptimizar8025
-            // 
-            this.btnOptimizar8025.Image = ((System.Drawing.Image)(resources.GetObject("btnOptimizar8025.Image")));
-            this.btnOptimizar8025.Location = new System.Drawing.Point(937, 290);
-            this.btnOptimizar8025.Name = "btnOptimizar8025";
-            this.btnOptimizar8025.Size = new System.Drawing.Size(39, 29);
-            this.btnOptimizar8025.TabIndex = 11;
-            this.btnOptimizar8025.UseVisualStyleBackColor = true;
-            this.btnOptimizar8025.Click += new System.EventHandler(this.btnOptimizar8025_Click);
-            // 
             // frmOrdenProduccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1096, 729);
+            this.ClientSize = new System.Drawing.Size(1112, 768);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
