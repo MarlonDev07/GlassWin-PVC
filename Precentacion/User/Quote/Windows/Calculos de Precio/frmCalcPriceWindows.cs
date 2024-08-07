@@ -1596,6 +1596,25 @@ namespace Precentacion.User.Quote.Windows
                         }
                     }
                 }
+                if (cbkPH206.Checked == false)
+                {
+                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
+                    foreach (DataGridViewRow row in dgAccesorios.Rows)
+                    {
+                        //Validar si la Fila Esta Vacía
+                        if (row.Cells["Description"].Value != null)
+                        {
+                            if (row.Cells["Description"].Value.ToString() == "PH206")
+                            {
+                                //Quitar el Precio del Total
+                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
+                                txtTotal.Text = SubTotal.ToString("C");
+                                //Quitar la Fila del DataGridView
+                                dgAccesorios.Rows.Remove(row);
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception)
             {
