@@ -1479,7 +1479,7 @@ namespace Precentacion.User.Quote.Windows
                     }
                 }
 
-                if (cbkCilindronPestillo.Checked == false)
+                /*if (cbkCilindronPestillo.Checked == false)
                 {
                     //Quitar del dgvAccesorios el Articulo 'Cilindro con Pestillo'
                     foreach (DataGridViewRow row in dgAccesorios.Rows)
@@ -1497,7 +1497,7 @@ namespace Precentacion.User.Quote.Windows
                             }
                         }
                     }
-                }
+                }*/
 
                 if (cbkBrazoHidraulico.Checked == false)
                 {
