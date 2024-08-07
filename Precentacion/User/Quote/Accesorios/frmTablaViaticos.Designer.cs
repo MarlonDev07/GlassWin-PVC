@@ -82,6 +82,7 @@
             this.btnEnviar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSubTotalProforma = new System.Windows.Forms.TextBox();
+            this.btnImprimir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericVeiculos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericEmpleados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericDias)).BeginInit();
@@ -646,11 +647,22 @@
             this.txtSubTotalProforma.Size = new System.Drawing.Size(167, 20);
             this.txtSubTotalProforma.TabIndex = 54;
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(460, 563);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(164, 28);
+            this.btnImprimir.TabIndex = 55;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // frmTablaViaticos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 590);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.txtSubTotalProforma);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnEnviar);
@@ -775,5 +787,6 @@
         public System.Windows.Forms.TextBox txtTotalViaticos;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox txtSubTotalProforma;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
