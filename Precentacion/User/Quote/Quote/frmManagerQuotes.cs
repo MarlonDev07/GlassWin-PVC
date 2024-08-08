@@ -447,7 +447,7 @@ namespace Precentacion.User.Quote.Quote
                     int idQuote = Convert.ToInt32(dgvQuotes.SelectedRows[0].Cells[1].Value); // Asumiendo que el ID está en la columna 1
 
                     // Confirma la eliminación con el usuario
-                    DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar esta cotización? \nEsto eliminará completamente la proforma y sus ventanas.", "Confirmar eliminación", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar esta cotización? \nEsto eliminará completamente la proforma y sus ventanas.\nSe recomienda eliminar proformas de prueba o que definitivamente no se necesiten.", "Confirmar eliminación", MessageBoxButtons.YesNo);
 
                     if (result == DialogResult.Yes)
                     {
@@ -490,7 +490,7 @@ namespace Precentacion.User.Quote.Quote
                     int idQuote = Convert.ToInt32(dgvQuotes.SelectedRows[0].Cells[1].Value); // Asumiendo que el ID está en la columna 1
 
                     // Confirma la eliminación con el usuario
-                    DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar esta factura? \nEsto eliminará completamente la factura, la proforma y sus ventanas.", "Confirmar eliminación", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar esta factura? \nEsto eliminará completamente la factura, la proforma y sus ventanas.\nSe recomienda eliminar facturas de prueba o que definitivamente no se necesiten.", "Confirmar eliminación", MessageBoxButtons.YesNo);
 
                     if (result == DialogResult.Yes)
                     {
