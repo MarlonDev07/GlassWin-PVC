@@ -93,7 +93,7 @@
             this.tabControlPrincipal.Location = new System.Drawing.Point(3, 64);
             this.tabControlPrincipal.Name = "tabControlPrincipal";
             this.tabControlPrincipal.SelectedIndex = 0;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(896, 707);
+            this.tabControlPrincipal.Size = new System.Drawing.Size(898, 649);
             this.tabControlPrincipal.TabIndex = 0;
             this.tabControlPrincipal.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControlPrincipal_Selecting);
             // 
@@ -115,7 +115,7 @@
             this.tabPageLista.Location = new System.Drawing.Point(4, 22);
             this.tabPageLista.Name = "tabPageLista";
             this.tabPageLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLista.Size = new System.Drawing.Size(888, 681);
+            this.tabPageLista.Size = new System.Drawing.Size(890, 623);
             this.tabPageLista.TabIndex = 0;
             this.tabPageLista.Text = "Facturas";
             this.tabPageLista.UseVisualStyleBackColor = true;
@@ -123,7 +123,7 @@
             // txtTotalAbonar
             // 
             this.txtTotalAbonar.Enabled = false;
-            this.txtTotalAbonar.Location = new System.Drawing.Point(339, 652);
+            this.txtTotalAbonar.Location = new System.Drawing.Point(339, 585);
             this.txtTotalAbonar.Name = "txtTotalAbonar";
             this.txtTotalAbonar.Size = new System.Drawing.Size(100, 20);
             this.txtTotalAbonar.TabIndex = 15;
@@ -151,7 +151,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(214, 650);
+            this.btnCancel.Location = new System.Drawing.Point(214, 583);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(98, 23);
             this.btnCancel.TabIndex = 11;
@@ -162,7 +162,7 @@
             // 
             // btnAbonarLista
             // 
-            this.btnAbonarLista.Location = new System.Drawing.Point(110, 650);
+            this.btnAbonarLista.Location = new System.Drawing.Point(110, 583);
             this.btnAbonarLista.Name = "btnAbonarLista";
             this.btnAbonarLista.Size = new System.Drawing.Size(98, 23);
             this.btnAbonarLista.TabIndex = 10;
@@ -173,7 +173,7 @@
             // 
             // btnAbonar
             // 
-            this.btnAbonar.Location = new System.Drawing.Point(6, 650);
+            this.btnAbonar.Location = new System.Drawing.Point(6, 583);
             this.btnAbonar.Name = "btnAbonar";
             this.btnAbonar.Size = new System.Drawing.Size(98, 23);
             this.btnAbonar.TabIndex = 9;
@@ -184,7 +184,7 @@
             // txtTotal
             // 
             this.txtTotal.Enabled = false;
-            this.txtTotal.Location = new System.Drawing.Point(778, 652);
+            this.txtTotal.Location = new System.Drawing.Point(778, 585);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(100, 20);
             this.txtTotal.TabIndex = 8;
@@ -193,7 +193,7 @@
             // 
             this.lblMontoTotal.BackColor = System.Drawing.Color.Transparent;
             this.lblMontoTotal.Font = new System.Drawing.Font("Imprint MT Shadow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMontoTotal.Location = new System.Drawing.Point(690, 648);
+            this.lblMontoTotal.Location = new System.Drawing.Point(690, 581);
             this.lblMontoTotal.Name = "lblMontoTotal";
             this.lblMontoTotal.Size = new System.Drawing.Size(82, 25);
             this.lblMontoTotal.TabIndex = 7;
@@ -249,7 +249,7 @@
             this.dgvFacturas.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvFacturas.Location = new System.Drawing.Point(13, 30);
             this.dgvFacturas.Name = "dgvFacturas";
-            this.dgvFacturas.Size = new System.Drawing.Size(879, 610);
+            this.dgvFacturas.Size = new System.Drawing.Size(865, 547);
             this.dgvFacturas.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -297,7 +297,7 @@
             this.tabPageConsulta.Location = new System.Drawing.Point(4, 22);
             this.tabPageConsulta.Name = "tabPageConsulta";
             this.tabPageConsulta.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConsulta.Size = new System.Drawing.Size(888, 681);
+            this.tabPageConsulta.Size = new System.Drawing.Size(890, 623);
             this.tabPageConsulta.TabIndex = 1;
             this.tabPageConsulta.Text = "Mant.Facturas";
             this.tabPageConsulta.UseVisualStyleBackColor = true;
@@ -312,7 +312,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(3, 3);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(882, 45);
+            this.lblTitulo.Size = new System.Drawing.Size(884, 45);
             this.lblTitulo.TabIndex = 13;
             this.lblTitulo.Text = "Registro de Factura de Compra ";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -348,7 +348,7 @@
             this.panel.Controls.Add(this.cbProyecto);
             this.panel.Location = new System.Drawing.Point(6, 51);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(876, 619);
+            this.panel.Size = new System.Drawing.Size(878, 561);
             this.panel.TabIndex = 12;
             // 
             // btnBack
@@ -538,7 +538,7 @@
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminar.FlatAppearance.BorderSize = 0;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(143, 552);
+            this.btnEliminar.Location = new System.Drawing.Point(143, 504);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(60, 52);
             this.btnEliminar.TabIndex = 16;
@@ -552,7 +552,7 @@
             this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEditar.FlatAppearance.BorderSize = 0;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Location = new System.Drawing.Point(74, 552);
+            this.btnEditar.Location = new System.Drawing.Point(74, 504);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(58, 52);
             this.btnEditar.TabIndex = 15;
@@ -566,7 +566,7 @@
             this.btnCrear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCrear.FlatAppearance.BorderSize = 0;
             this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrear.Location = new System.Drawing.Point(4, 552);
+            this.btnCrear.Location = new System.Drawing.Point(4, 504);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(58, 52);
             this.btnCrear.TabIndex = 14;
@@ -578,7 +578,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 774);
+            this.ClientSize = new System.Drawing.Size(904, 716);
             this.Controls.Add(this.tabControlPrincipal);
             this.MaximizeBox = false;
             this.Name = "frmAgregarFacturaProveedor";
