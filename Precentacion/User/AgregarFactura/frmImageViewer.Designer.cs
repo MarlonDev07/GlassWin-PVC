@@ -36,6 +36,9 @@
             // 
             // pbImageViewer
             // 
+            this.pbImageViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbImageViewer.Location = new System.Drawing.Point(12, 8);
             this.pbImageViewer.Name = "pbImageViewer";
             this.pbImageViewer.Size = new System.Drawing.Size(792, 763);
@@ -44,6 +47,9 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.pbImageViewer);
             this.panel1.Location = new System.Drawing.Point(3, 4);
@@ -57,7 +63,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(839, 807);
             this.Controls.Add(this.panel1);
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmImageViewer";
             this.Text = "Visor de Imagen";
