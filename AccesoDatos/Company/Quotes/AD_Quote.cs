@@ -158,7 +158,7 @@ namespace AccesoDatos.Company.Quotes
                 using (SqlConnection connection = Cnn.OpenConecction())
                 {
                     // Abrir la conexión
-                    //connection.Open();
+                    // connection.Open();
 
                     // Verificar si el saldo pendiente es 0 en AccountReceivable
                     if (!IsOutstandingBalanceZero(idQuote, connection))
@@ -172,6 +172,12 @@ namespace AccesoDatos.Company.Quotes
                     {
                         try
                         {
+                            // Eliminar la relación en AdmProyecto
+                            DeleteAdmProyecto(idQuote, connection, transaction);
+
+                            // Eliminar la relación en AccountReceivable y PaymentsStatistics
+                            DeleteAccountReceivableAndPaymentsStatistics(idQuote, connection, transaction);
+
                             // Eliminar las relaciones en la tabla Bill
                             string deleteBillQuery = "DELETE FROM Bill WHERE IdQuote = @IdQuote";
                             using (SqlCommand deleteBillCommand = new SqlCommand(deleteBillQuery, connection, transaction))
@@ -219,10 +225,10 @@ namespace AccesoDatos.Company.Quotes
         private bool IsOutstandingBalanceZero(int idQuote, SqlConnection connection)
         {
             string query = @"
-            SELECT COUNT(*) 
-            FROM AccountReceivable AR
-            INNER JOIN Bill B ON AR.IdBill = B.IdBill
-            WHERE B.IdQuote = @IdQuote AND AR.OutstandingBalance <> 0";
+        SELECT COUNT(*) 
+        FROM AccountReceivable AR
+        INNER JOIN Bill B ON AR.IdBill = B.IdBill
+        WHERE B.IdQuote = @IdQuote AND AR.OutstandingBalance <> 0";
 
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -232,6 +238,79 @@ namespace AccesoDatos.Company.Quotes
                 return count == 0;
             }
         }
+
+        private void DeleteAdmProyecto(int idQuote, SqlConnection connection, SqlTransaction transaction)
+        {
+            // Obtener los IdAccount asociados con la IdQuote
+            string getAccountIdsQuery = @"
+        SELECT DISTINCT AR.IdAccount 
+        FROM AccountReceivable AR
+        INNER JOIN Bill B ON AR.IdBill = B.IdBill
+        WHERE B.IdQuote = @IdQuote";
+
+            List<int> accountIds = new List<int>();
+
+            using (SqlCommand getAccountIdsCommand = new SqlCommand(getAccountIdsQuery, connection, transaction))
+            {
+                getAccountIdsCommand.Parameters.AddWithValue("@IdQuote", idQuote);
+                using (SqlDataReader reader = getAccountIdsCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        accountIds.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+
+            // Eliminar los registros en AdmProyecto
+            if (accountIds.Count > 0)
+            {
+                string deleteAdmProyectoQuery = "DELETE FROM AdmProyecto WHERE IdCxC IN (" + string.Join(",", accountIds) + ")";
+                using (SqlCommand deleteAdmProyectoCommand = new SqlCommand(deleteAdmProyectoQuery, connection, transaction))
+                {
+                    deleteAdmProyectoCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void DeleteAccountReceivableAndPaymentsStatistics(int idQuote, SqlConnection connection, SqlTransaction transaction)
+        {
+            // Obtener los IdBill asociados con la IdQuote
+            string getBillIdsQuery = "SELECT IdBill FROM Bill WHERE IdQuote = @IdQuote";
+            List<int> billIds = new List<int>();
+
+            using (SqlCommand getBillIdsCommand = new SqlCommand(getBillIdsQuery, connection, transaction))
+            {
+                getBillIdsCommand.Parameters.AddWithValue("@IdQuote", idQuote);
+                using (SqlDataReader reader = getBillIdsCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        billIds.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+
+            // Eliminar los registros en AccountReceivable y PaymentsStatistics
+            if (billIds.Count > 0)
+            {
+                // Eliminar los registros en PaymentsStatistics
+                string deletePaymentsStatisticsQuery = "DELETE FROM PaymentsStatistics WHERE IdAccount IN (SELECT IdAccount FROM AccountReceivable WHERE IdBill IN (" + string.Join(",", billIds) + "))";
+                using (SqlCommand deletePaymentsStatisticsCommand = new SqlCommand(deletePaymentsStatisticsQuery, connection, transaction))
+                {
+                    deletePaymentsStatisticsCommand.ExecuteNonQuery();
+                }
+
+                // Eliminar los registros en AccountReceivable
+                string deleteAccountReceivableQuery = "DELETE FROM AccountReceivable WHERE IdBill IN (" + string.Join(",", billIds) + ")";
+                using (SqlCommand deleteAccountReceivableCommand = new SqlCommand(deleteAccountReceivableQuery, connection, transaction))
+                {
+                    deleteAccountReceivableCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
+
 
 
 

@@ -776,5 +776,15 @@ namespace Precentacion.User.Accounts
                 }
             }
         }
+
+        private void dgvEstadistica_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void frmManagerCxC_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

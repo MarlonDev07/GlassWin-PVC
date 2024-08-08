@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagerCxC));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagerCxC));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabClient = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
@@ -104,7 +104,7 @@
             this.TabControl.Location = new System.Drawing.Point(3, 64);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(820, 567);
+            this.TabControl.Size = new System.Drawing.Size(989, 519);
             this.TabControl.TabIndex = 0;
             this.TabControl.Tag = "";
             this.TabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
@@ -120,7 +120,7 @@
             this.tabClient.Location = new System.Drawing.Point(4, 39);
             this.tabClient.Name = "tabClient";
             this.tabClient.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClient.Size = new System.Drawing.Size(812, 524);
+            this.tabClient.Size = new System.Drawing.Size(882, 524);
             this.tabClient.TabIndex = 0;
             this.tabClient.Text = "Clientes";
             this.tabClient.ToolTipText = "Clientes con Cuentas por Cobrar";
@@ -139,7 +139,7 @@
             // 
             // txtBusquedaNombre2
             // 
-            this.txtBusquedaNombre2.Location = new System.Drawing.Point(30, 34);
+            this.txtBusquedaNombre2.Location = new System.Drawing.Point(7, 34);
             this.txtBusquedaNombre2.Name = "txtBusquedaNombre2";
             this.txtBusquedaNombre2.Size = new System.Drawing.Size(193, 20);
             this.txtBusquedaNombre2.TabIndex = 183;
@@ -148,7 +148,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(27, 3);
+            this.label11.Location = new System.Drawing.Point(11, 3);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(113, 13);
@@ -168,31 +168,31 @@
             // 
             // dgvClient
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClient.ContextMenuStrip = this.contextMenuStripClient;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvClient.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClient.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvClient.EnableHeadersVisualStyles = false;
-            this.dgvClient.Location = new System.Drawing.Point(30, 60);
+            this.dgvClient.Location = new System.Drawing.Point(6, 60);
             this.dgvClient.Name = "dgvClient";
             this.dgvClient.ReadOnly = true;
             this.dgvClient.RowHeadersWidth = 62;
             this.dgvClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClient.Size = new System.Drawing.Size(767, 441);
+            this.dgvClient.Size = new System.Drawing.Size(870, 441);
             this.dgvClient.TabIndex = 180;
             // 
             // contextMenuStripClient
@@ -220,7 +220,7 @@
             this.tabCxC.Location = new System.Drawing.Point(4, 39);
             this.tabCxC.Name = "tabCxC";
             this.tabCxC.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCxC.Size = new System.Drawing.Size(812, 524);
+            this.tabCxC.Size = new System.Drawing.Size(981, 476);
             this.tabCxC.TabIndex = 1;
             this.tabCxC.Text = "Cuentas x Cobrar ";
             this.tabCxC.ToolTipText = "Cuentas por Cobrar ";
@@ -235,7 +235,7 @@
             this.groupBox1.Controls.Add(this.txtTotal);
             this.groupBox1.Location = new System.Drawing.Point(3, 439);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(780, 88);
+            this.groupBox1.Size = new System.Drawing.Size(963, 88);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             // 
@@ -246,7 +246,7 @@
             this.btnnewCxC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnnewCxC.FlatAppearance.BorderSize = 2;
             this.btnnewCxC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnnewCxC.Location = new System.Drawing.Point(3, 35);
+            this.btnnewCxC.Location = new System.Drawing.Point(3, 41);
             this.btnnewCxC.Name = "btnnewCxC";
             this.btnnewCxC.Size = new System.Drawing.Size(48, 38);
             this.btnnewCxC.TabIndex = 18;
@@ -255,7 +255,7 @@
             // 
             // txtPendiente
             // 
-            this.txtPendiente.Location = new System.Drawing.Point(573, 53);
+            this.txtPendiente.Location = new System.Drawing.Point(801, 53);
             this.txtPendiente.Name = "txtPendiente";
             this.txtPendiente.Size = new System.Drawing.Size(153, 20);
             this.txtPendiente.TabIndex = 8;
@@ -265,7 +265,7 @@
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(465, 16);
+            this.label1.Location = new System.Drawing.Point(693, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 22);
             this.label1.TabIndex = 5;
@@ -276,7 +276,7 @@
             this.label2.AutoSize = true;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(611, 16);
+            this.label2.Location = new System.Drawing.Point(839, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 22);
             this.label2.TabIndex = 7;
@@ -284,7 +284,7 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(401, 53);
+            this.txtTotal.Location = new System.Drawing.Point(629, 53);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(146, 20);
             this.txtTotal.TabIndex = 6;
@@ -294,38 +294,37 @@
             this.Paneldgv.Controls.Add(this.dgvCxC);
             this.Paneldgv.Location = new System.Drawing.Point(3, 83);
             this.Paneldgv.Name = "Paneldgv";
-            this.Paneldgv.Size = new System.Drawing.Size(780, 350);
+            this.Paneldgv.Size = new System.Drawing.Size(972, 350);
             this.Paneldgv.TabIndex = 4;
             // 
             // dgvCxC
             // 
             this.dgvCxC.AllowDrop = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCxC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCxC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCxC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCxC.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCxC.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvCxC.Dock = System.Windows.Forms.DockStyle.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCxC.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCxC.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dgvCxC.EnableHeadersVisualStyles = false;
             this.dgvCxC.Location = new System.Drawing.Point(0, 0);
             this.dgvCxC.Name = "dgvCxC";
             this.dgvCxC.RowHeadersWidth = 62;
             this.dgvCxC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCxC.Size = new System.Drawing.Size(780, 350);
+            this.dgvCxC.Size = new System.Drawing.Size(963, 350);
             this.dgvCxC.TabIndex = 181;
             this.dgvCxC.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCxC_CellContentClick);
             this.dgvCxC.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCxC_CellContentDoubleClick);
@@ -367,12 +366,12 @@
             this.PanelDataClient.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelDataClient.Location = new System.Drawing.Point(3, 26);
             this.PanelDataClient.Name = "PanelDataClient";
-            this.PanelDataClient.Size = new System.Drawing.Size(806, 51);
+            this.PanelDataClient.Size = new System.Drawing.Size(975, 51);
             this.PanelDataClient.TabIndex = 2;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(554, 10);
+            this.button2.Location = new System.Drawing.Point(729, 10);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(138, 25);
             this.button2.TabIndex = 7;
@@ -384,7 +383,7 @@
             // 
             this.txtCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCount.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCount.Location = new System.Drawing.Point(434, 10);
+            this.txtCount.Location = new System.Drawing.Point(603, 10);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(93, 32);
             this.txtCount.TabIndex = 6;
@@ -393,7 +392,7 @@
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(364, 1);
+            this.pictureBox3.Location = new System.Drawing.Point(533, 1);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(64, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -404,7 +403,7 @@
             // 
             this.txtName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtName.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(226, 13);
+            this.txtName.Location = new System.Drawing.Point(310, 13);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(122, 32);
             this.txtName.TabIndex = 4;
@@ -413,7 +412,7 @@
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(156, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(240, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -445,7 +444,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(3, 3);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(806, 23);
+            this.lblTitle.Size = new System.Drawing.Size(975, 23);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Cuentas por Cobrar";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -458,7 +457,7 @@
             this.tabEstadistica.ImageKey = "credit.png";
             this.tabEstadistica.Location = new System.Drawing.Point(4, 39);
             this.tabEstadistica.Name = "tabEstadistica";
-            this.tabEstadistica.Size = new System.Drawing.Size(812, 524);
+            this.tabEstadistica.Size = new System.Drawing.Size(981, 524);
             this.tabEstadistica.TabIndex = 2;
             this.tabEstadistica.Text = "Recibos";
             this.tabEstadistica.UseVisualStyleBackColor = true;
@@ -486,7 +485,7 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(806, 529);
+            this.groupBox2.Size = new System.Drawing.Size(975, 529);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
@@ -495,7 +494,7 @@
             this.panel1.Controls.Add(this.dgvEstadistica);
             this.panel1.Location = new System.Drawing.Point(6, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(794, 480);
+            this.panel1.Size = new System.Drawing.Size(963, 480);
             this.panel1.TabIndex = 0;
             // 
             // dgvEstadistica
@@ -504,8 +503,9 @@
             this.dgvEstadistica.Location = new System.Drawing.Point(3, 6);
             this.dgvEstadistica.Name = "dgvEstadistica";
             this.dgvEstadistica.RowHeadersWidth = 62;
-            this.dgvEstadistica.Size = new System.Drawing.Size(800, 471);
+            this.dgvEstadistica.Size = new System.Drawing.Size(957, 471);
             this.dgvEstadistica.TabIndex = 0;
+            this.dgvEstadistica.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstadistica_CellContentClick);
             // 
             // imageList
             // 
@@ -542,7 +542,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 634);
+            this.ClientSize = new System.Drawing.Size(995, 586);
             this.Controls.Add(this.TabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -550,6 +550,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cuentas por Cobrar";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManagerCxC_FormClosing);
+            this.Load += new System.EventHandler(this.frmManagerCxC_Load);
             this.TabControl.ResumeLayout(false);
             this.tabClient.ResumeLayout(false);
             this.tabClient.PerformLayout();
