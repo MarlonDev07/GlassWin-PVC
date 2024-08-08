@@ -158,7 +158,14 @@ namespace AccesoDatos.Company.Quotes
                 using (SqlConnection connection = Cnn.OpenConecction())
                 {
                     // Abrir la conexión
-                   // connection.Open();
+                    //connection.Open();
+
+                    // Verificar si el saldo pendiente es 0 en AccountReceivable
+                    if (!IsOutstandingBalanceZero(idQuote, connection))
+                    {
+                        // Saldo pendiente no es 0, no se puede eliminar
+                        return false;
+                    }
 
                     // Crear una transacción para asegurar que todas las operaciones se completen correctamente
                     using (SqlTransaction transaction = connection.BeginTransaction())
@@ -208,6 +215,24 @@ namespace AccesoDatos.Company.Quotes
                 return false;
             }
         }
+
+        private bool IsOutstandingBalanceZero(int idQuote, SqlConnection connection)
+        {
+            string query = @"
+            SELECT COUNT(*) 
+            FROM AccountReceivable AR
+            INNER JOIN Bill B ON AR.IdBill = B.IdBill
+            WHERE B.IdQuote = @IdQuote AND AR.OutstandingBalance <> 0";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@IdQuote", idQuote);
+                int count = (int)command.ExecuteScalar();
+                // Si el conteo es mayor a 0, significa que hay al menos una factura con saldo pendiente
+                return count == 0;
+            }
+        }
+
 
 
         public int InsertQuoteAndGetLastID(DateTime Date, string ProjectName, string Address, string Condition, decimal Discount, decimal Labour, decimal IVA, decimal SubTotal, decimal Total, int IdClient)

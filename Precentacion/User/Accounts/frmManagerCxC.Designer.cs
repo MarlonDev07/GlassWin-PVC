@@ -104,7 +104,7 @@
             this.TabControl.Location = new System.Drawing.Point(3, 64);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(820, 536);
+            this.TabControl.Size = new System.Drawing.Size(820, 567);
             this.TabControl.TabIndex = 0;
             this.TabControl.Tag = "";
             this.TabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
@@ -119,8 +119,8 @@
             this.tabClient.ImageIndex = 0;
             this.tabClient.Location = new System.Drawing.Point(4, 39);
             this.tabClient.Name = "tabClient";
-            this.tabClient.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabClient.Size = new System.Drawing.Size(812, 493);
+            this.tabClient.Padding = new System.Windows.Forms.Padding(3);
+            this.tabClient.Size = new System.Drawing.Size(812, 524);
             this.tabClient.TabIndex = 0;
             this.tabClient.Text = "Clientes";
             this.tabClient.ToolTipText = "Clientes con Cuentas por Cobrar";
@@ -129,7 +129,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(260, 29);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(169, 27);
             this.button1.TabIndex = 184;
@@ -159,7 +159,7 @@
             // 
             this.txtBusquedaNombre.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBusquedaNombre.Location = new System.Drawing.Point(584, 18);
-            this.txtBusquedaNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBusquedaNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtBusquedaNombre.Multiline = true;
             this.txtBusquedaNombre.Name = "txtBusquedaNombre";
             this.txtBusquedaNombre.Size = new System.Drawing.Size(193, 25);
@@ -219,8 +219,8 @@
             this.tabCxC.ImageIndex = 1;
             this.tabCxC.Location = new System.Drawing.Point(4, 39);
             this.tabCxC.Name = "tabCxC";
-            this.tabCxC.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabCxC.Size = new System.Drawing.Size(812, 493);
+            this.tabCxC.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCxC.Size = new System.Drawing.Size(812, 524);
             this.tabCxC.TabIndex = 1;
             this.tabCxC.Text = "Cuentas x Cobrar ";
             this.tabCxC.ToolTipText = "Cuentas por Cobrar ";
@@ -458,7 +458,7 @@
             this.tabEstadistica.ImageKey = "credit.png";
             this.tabEstadistica.Location = new System.Drawing.Point(4, 39);
             this.tabEstadistica.Name = "tabEstadistica";
-            this.tabEstadistica.Size = new System.Drawing.Size(812, 493);
+            this.tabEstadistica.Size = new System.Drawing.Size(812, 524);
             this.tabEstadistica.TabIndex = 2;
             this.tabEstadistica.Text = "Recibos";
             this.tabEstadistica.UseVisualStyleBackColor = true;
@@ -466,7 +466,7 @@
             // txtTotalRecibo
             // 
             this.txtTotalRecibo.Location = new System.Drawing.Point(617, 536);
-            this.txtTotalRecibo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTotalRecibo.Margin = new System.Windows.Forms.Padding(2);
             this.txtTotalRecibo.Name = "txtTotalRecibo";
             this.txtTotalRecibo.Size = new System.Drawing.Size(187, 20);
             this.txtTotalRecibo.TabIndex = 2;
@@ -542,7 +542,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 603);
+            this.ClientSize = new System.Drawing.Size(826, 634);
             this.Controls.Add(this.TabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

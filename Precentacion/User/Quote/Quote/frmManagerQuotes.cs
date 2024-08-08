@@ -505,7 +505,7 @@ namespace Precentacion.User.Quote.Quote
                         }
                         else
                         {
-                            MessageBox.Show("Error al eliminar la factura.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Error al eliminar la factura.\n Verifique que el cliente no tenga saldos pendientes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
