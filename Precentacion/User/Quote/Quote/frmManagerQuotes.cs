@@ -32,7 +32,7 @@ namespace Precentacion.User.Quote.Quote
             InitializeComponent();
             frmManagerQuotes_Load(null, null);
             QuoteUI.loadMaterial(this);
-
+         
             // Suscribe el evento RowPrePaint
             dgvQuotes.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dgvQuotes_RowPrePaint);
         }
@@ -45,7 +45,7 @@ namespace Precentacion.User.Quote.Quote
             if (dataTable != null)
             {
                 dgvQuotes.DataSource = dataTable;
-                //Hacer Invisbles la Columna [0]
+                //Hacer Invisibles la Columna [0]
                 dgvQuotes.Columns[0].Visible = false;
 
                 //Cambiar Nombre de las Columnas
@@ -65,6 +65,18 @@ namespace Precentacion.User.Quote.Quote
                 dgvQuotes.DefaultCellStyle.SelectionBackColor = Color.Green;
                 dgvQuotes.DefaultCellStyle.SelectionForeColor = Color.Green;
                 CargarTotales();
+
+                // Controlar visibilidad del eliminarToolStripMenuItem
+                if (btnVerEstadosProforma.Text == "Ver Facturas" || this.Text == "Proformas")
+                {
+                    eliminarToolStripMenuItem.Visible = true;
+                    eliminarFacturaToolStripMenuItem.Visible = false;
+                }
+                else
+                {
+                    eliminarToolStripMenuItem.Visible = false;
+                    eliminarFacturaToolStripMenuItem.Visible = true;
+                }
             }
         }
         #endregion
@@ -214,6 +226,16 @@ namespace Precentacion.User.Quote.Quote
                 CargarTotales();
                 btnVerEstadosProforma.Text = "Ver Facturas";
                 this.Text = "Proformas"; 
+            }
+            if (btnVerEstadosProforma.Text == "Ver Facturas" || this.Text == "Proformas")
+            {
+                eliminarToolStripMenuItem.Visible = true;
+                eliminarFacturaToolStripMenuItem.Visible = false;
+            }
+            else
+            {
+                eliminarToolStripMenuItem.Visible = false;
+                eliminarFacturaToolStripMenuItem.Visible = true;
             }
         }
 
@@ -410,6 +432,92 @@ namespace Precentacion.User.Quote.Quote
                 MessageBox.Show("Error al generar la hoja de producción: " + EX.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            try 
+            {
+               
+                // Verifica si se ha seleccionado una fila
+                if (dgvQuotes.SelectedRows.Count > 0)
+                {
+                    // Obtiene el ID del quote seleccionado
+                    int idQuote = Convert.ToInt32(dgvQuotes.SelectedRows[0].Cells[1].Value); // Asumiendo que el ID está en la columna 1
+
+                    // Confirma la eliminación con el usuario
+                    DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar esta cotización? \nEsto eliminará completamente la proforma y sus ventanas.", "Confirmar eliminación", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Llama al método de eliminación en la capa de negocios
+                        bool success = NQuote.DeleteQuote(idQuote);
+
+                        if (success)
+                        {
+                            MessageBox.Show("Cotización eliminada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Actualiza el DataGridView para reflejar los cambios
+                            frmManagerQuotes_Load(null, null);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al eliminar la cotización.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, seleccione una cotización para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+        }
+
+        private void eliminarFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                // Verifica si se ha seleccionado una fila
+                if (dgvQuotes.SelectedRows.Count > 0)
+                {
+                    // Obtiene el ID del quote seleccionado
+                    int idQuote = Convert.ToInt32(dgvQuotes.SelectedRows[0].Cells[1].Value); // Asumiendo que el ID está en la columna 1
+
+                    // Confirma la eliminación con el usuario
+                    DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar esta factura? \nEsto eliminará completamente la factura, la proforma y sus ventanas.", "Confirmar eliminación", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Llama al método de eliminación en la capa de negocios
+                        bool success = NQuote.DeleteBill(idQuote);
+
+                        if (success)
+                        {
+                            MessageBox.Show("Factura eliminada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Actualiza el DataGridView para reflejar los cambios
+                            frmManagerQuotes_Load(null, null);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al eliminar la factura.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, seleccione una factura para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 

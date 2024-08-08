@@ -67,6 +67,16 @@ namespace Negocio.Company.Quote
             catch { return false; }
         }
 
+        public bool DeleteBill(int idQuote)
+        {
+            try
+            {
+                return ADQuote.DeleteBill(idQuote);
+            }
+            catch { return false; }
+        }
+
+
         public DataTable LoadWindows(int idQuote) 
         {
             try

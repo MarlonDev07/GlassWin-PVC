@@ -48,6 +48,8 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtIva = new System.Windows.Forms.TextBox();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuotes)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -103,28 +105,30 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cotizarToolStripMenuItem,
             this.editarProformaToolStripMenuItem,
-            this.facturarProformaToolStripMenuItem});
+            this.facturarProformaToolStripMenuItem,
+            this.eliminarToolStripMenuItem,
+            this.eliminarFacturaToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 136);
             // 
             // cotizarToolStripMenuItem
             // 
             this.cotizarToolStripMenuItem.Name = "cotizarToolStripMenuItem";
-            this.cotizarToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.cotizarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cotizarToolStripMenuItem.Text = "Cotizar";
             this.cotizarToolStripMenuItem.Click += new System.EventHandler(this.cotizarToolStripMenuItem_Click);
             // 
             // editarProformaToolStripMenuItem
             // 
             this.editarProformaToolStripMenuItem.Name = "editarProformaToolStripMenuItem";
-            this.editarProformaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.editarProformaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editarProformaToolStripMenuItem.Text = "Editar Proforma";
             this.editarProformaToolStripMenuItem.Click += new System.EventHandler(this.editarProformaToolStripMenuItem_Click);
             // 
             // facturarProformaToolStripMenuItem
             // 
             this.facturarProformaToolStripMenuItem.Name = "facturarProformaToolStripMenuItem";
-            this.facturarProformaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.facturarProformaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.facturarProformaToolStripMenuItem.Text = "Facturar Proforma";
             this.facturarProformaToolStripMenuItem.Click += new System.EventHandler(this.facturarProformaToolStripMenuItem_Click);
             // 
@@ -215,6 +219,22 @@
             this.txtSubtotal.TabIndex = 12;
             this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar Proforma";
+            this.eliminarToolStripMenuItem.Visible = false;
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
+            // 
+            // eliminarFacturaToolStripMenuItem
+            // 
+            this.eliminarFacturaToolStripMenuItem.Name = "eliminarFacturaToolStripMenuItem";
+            this.eliminarFacturaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarFacturaToolStripMenuItem.Text = "Eliminar Factura";
+            this.eliminarFacturaToolStripMenuItem.Visible = false;
+            this.eliminarFacturaToolStripMenuItem.Click += new System.EventHandler(this.eliminarFacturaToolStripMenuItem_Click);
+            // 
             // frmManagerQuotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,5 +280,7 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.TextBox txtIva;
         private System.Windows.Forms.TextBox txtSubtotal;
+        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarFacturaToolStripMenuItem;
     }
 }

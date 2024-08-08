@@ -151,6 +151,64 @@ namespace AccesoDatos.Company.Quotes
             }
             catch { return false; }
         }
+        public bool DeleteBill(int idQuote)
+        {
+            try
+            {
+                using (SqlConnection connection = Cnn.OpenConecction())
+                {
+                    // Abrir la conexión
+                   // connection.Open();
+
+                    // Crear una transacción para asegurar que todas las operaciones se completen correctamente
+                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Eliminar las relaciones en la tabla Bill
+                            string deleteBillQuery = "DELETE FROM Bill WHERE IdQuote = @IdQuote";
+                            using (SqlCommand deleteBillCommand = new SqlCommand(deleteBillQuery, connection, transaction))
+                            {
+                                deleteBillCommand.Parameters.AddWithValue("@IdQuote", idQuote);
+                                deleteBillCommand.ExecuteNonQuery();
+                            }
+
+                            // Eliminar las relaciones en la tabla Windows
+                            string deleteWindowsQuery = "DELETE FROM Windows WHERE IdQuote = @IdQuote";
+                            using (SqlCommand deleteWindowsCommand = new SqlCommand(deleteWindowsQuery, connection, transaction))
+                            {
+                                deleteWindowsCommand.Parameters.AddWithValue("@IdQuote", idQuote);
+                                deleteWindowsCommand.ExecuteNonQuery();
+                            }
+
+                            // Eliminar el registro en la tabla Quote
+                            string deleteQuoteQuery = "DELETE FROM Quote WHERE IdQuote = @IdQuote";
+                            using (SqlCommand deleteQuoteCommand = new SqlCommand(deleteQuoteQuery, connection, transaction))
+                            {
+                                deleteQuoteCommand.Parameters.AddWithValue("@IdQuote", idQuote);
+                                deleteQuoteCommand.ExecuteNonQuery();
+                            }
+
+                            // Confirmar la transacción si todo salió bien
+                            transaction.Commit();
+                            return true;
+                        }
+                        catch (Exception)
+                        {
+                            // Revertir la transacción en caso de error
+                            transaction.Rollback();
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Manejar errores de conexión u otros errores
+                return false;
+            }
+        }
+
 
         public int InsertQuoteAndGetLastID(DateTime Date, string ProjectName, string Address, string Condition, decimal Discount, decimal Labour, decimal IVA, decimal SubTotal, decimal Total, int IdClient)
         {
