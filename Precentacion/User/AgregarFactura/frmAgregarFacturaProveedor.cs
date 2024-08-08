@@ -108,7 +108,7 @@ namespace Precentacion.User.AgregarFactura
                 dgvFacturas.Columns[4].HeaderText = "Fecha Compra";
                 dgvFacturas.Columns[5].HeaderText = "Fecha Vencimiento";
                 dgvFacturas.Columns[6].HeaderText = "Monto";
-                dgvFacturas.Columns[7].HeaderText = "PDV";
+                dgvFacturas.Columns[7].HeaderText = "PEV";
                 dgvFacturas.Columns[8].HeaderText = "Bodega";
                 dgvFacturas.Columns[9].HeaderText = "Factura";
                dgvFacturas.Columns[9].Visible = false;
@@ -166,7 +166,7 @@ namespace Precentacion.User.AgregarFactura
                 dgvFacturas.Columns[4].HeaderText = "Fecha Compra";
                 dgvFacturas.Columns[5].HeaderText = "Fecha Vencimiento";
                 dgvFacturas.Columns[6].HeaderText = "Monto";
-                dgvFacturas.Columns[7].HeaderText = "PDV";
+                dgvFacturas.Columns[7].HeaderText = "PEV";
 
                 dgvFacturas.Columns[8].HeaderText = "Bodega";
 

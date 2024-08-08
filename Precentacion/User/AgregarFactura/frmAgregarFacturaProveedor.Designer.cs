@@ -247,7 +247,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFacturas.ContextMenuStrip = this.contextMenuStrip1;
-            this.dgvFacturas.Location = new System.Drawing.Point(3, 31);
+            this.dgvFacturas.Location = new System.Drawing.Point(13, 30);
             this.dgvFacturas.Name = "dgvFacturas";
             this.dgvFacturas.Size = new System.Drawing.Size(879, 610);
             this.dgvFacturas.TabIndex = 0;
@@ -406,7 +406,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 23);
             this.label9.TabIndex = 17;
-            this.label9.Text = "PDV:";
+            this.label9.Text = "PEV:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dtpFechaCompra
