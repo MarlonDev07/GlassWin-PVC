@@ -1635,85 +1635,38 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
                 datosTable.LockedWidth = true;
 
-                // Celda 1: Datos del Proyecto
-                /*PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
-                {
-                    BackgroundColor = new BaseColor(70, 130, 180),
-                    Border = PdfPCell.NO_BORDER, // Sin borde
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_CENTER
-                };
-                datosTable.AddCell(cellDatosProyecto);
+                // Añadir celdas de datos en dos filas para asegurar que todas se muestren
+                // Fila 1
+                datosTable.AddCell(new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+                datosTable.AddCell(new PdfPCell(new Phrase("Cliente: " + txtidClient.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
 
-                // Celda 2: Información del Cliente
-                PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Cliente", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
-                {
-                    BackgroundColor = new BaseColor(70, 130, 180),
-                    Border = PdfPCell.NO_BORDER, // Sin borde
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellDatosCliente);*/
+                // Fila 2
+                datosTable.AddCell(new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+                datosTable.AddCell(new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
 
-                // Celda 3: Etiqueta "Cotización"
-                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    Border = PdfPCell.NO_BORDER, // Sin borde
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaCotizacion);
+                // Fila 3
+                datosTable.AddCell(new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+                datosTable.AddCell(new PdfPCell(new Phrase("Correo: " + txtEmail.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+                // Verifica si txtAdreesClient.Text está vacío o es nulo
+                string direccionCliente = string.IsNullOrWhiteSpace(txtAdreesClient.Text) ? "Sin dirección" : txtAdreesClient.Text;
 
-                // Celda 4: Etiqueta "Cliente"
-                PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Cliente: " + txtidClient.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                // Fila 4
+                datosTable.AddCell(new PdfPCell(new Phrase("")) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+                datosTable.AddCell(new PdfPCell(new Phrase("Dirección Cliente: " + direccionCliente, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
                 {
-                    Border = PdfPCell.NO_BORDER, // Sin borde
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaCliente);
+                    Border = PdfPCell.NO_BORDER,
+                    HorizontalAlignment = Element.ALIGN_LEFT
+                });
 
-                // Celda 5: Etiqueta "Forma Pago"
-                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    Border = PdfPCell.NO_BORDER, // Sin borde
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaFormaPago);
 
-                // Celda 6: Etiqueta "Teléfono"
-                PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    Border = PdfPCell.NO_BORDER, // Sin borde
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaTelefono);
 
-                // Celda 7: Etiqueta "Dirección"
-                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    Border = PdfPCell.NO_BORDER, // Sin borde
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaDireccion);
 
-                // Celda 8: Etiqueta "Correo"
-                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    Border = PdfPCell.NO_BORDER, // Sin borde
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaCorreo);
-
+                // Añadir tabla al documento
                 document.Add(datosTable);
                 document.Add(new Paragraph(" "));
 
-
                 #endregion
+
 
                 #region Tabla de Productos
                 // Crear una tabla con el número de columnas de tu DataGridView
