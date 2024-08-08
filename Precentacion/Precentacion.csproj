@@ -324,6 +324,12 @@
     <Compile Include="User\AgregarFactura\frmAgregarFacturaProveedor.Designer.cs">
       <DependentUpon>frmAgregarFacturaProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\AgregarFactura\frmImageViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\AgregarFactura\frmImageViewer.Designer.cs">
+      <DependentUpon>frmImageViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\Bill\BillUI.cs" />
     <Compile Include="User\Bill\frmFacturar.cs">
       <SubType>Form</SubType>
@@ -598,6 +604,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\AgregarFactura\frmAgregarFacturaProveedor.resx">
       <DependentUpon>frmAgregarFacturaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\AgregarFactura\frmImageViewer.resx">
+      <DependentUpon>frmImageViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Bill\frmFacturar.resx">
       <DependentUpon>frmFacturar.cs</DependentUpon>

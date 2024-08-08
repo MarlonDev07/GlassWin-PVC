@@ -630,7 +630,7 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label14.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(11, 88);
+            this.label14.Location = new System.Drawing.Point(11, 38);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(179, 16);
             this.label14.TabIndex = 18;
@@ -640,7 +640,7 @@
             // txtGastosProyecto
             // 
             this.txtGastosProyecto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.txtGastosProyecto.Location = new System.Drawing.Point(11, 107);
+            this.txtGastosProyecto.Location = new System.Drawing.Point(11, 57);
             this.txtGastosProyecto.Name = "txtGastosProyecto";
             this.txtGastosProyecto.ReadOnly = true;
             this.txtGastosProyecto.Size = new System.Drawing.Size(179, 20);
@@ -656,6 +656,7 @@
             this.label13.TabIndex = 16;
             this.label13.Text = "Compra Materiales";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label13.Visible = false;
             // 
             // txtMontoPagar
             // 
@@ -665,6 +666,7 @@
             this.txtMontoPagar.ReadOnly = true;
             this.txtMontoPagar.Size = new System.Drawing.Size(179, 20);
             this.txtMontoPagar.TabIndex = 15;
+            this.txtMontoPagar.Visible = false;
             // 
             // label10
             // 

@@ -1194,5 +1194,18 @@ namespace Precentacion.User.AgregarFactura
                 }
             }
         }
+
+        private void pbAccesorioExclusivo_Click(object sender, EventArgs e)
+        {
+            using (frmImageViewer viewer = new frmImageViewer())
+            {
+                // Establece la imagen del PictureBox del formulario principal en el nuevo formulario
+                viewer.ImageToDisplay = pbAccesorioExclusivo.Image;
+
+                // Muestra el nuevo formulario
+                viewer.ShowDialog();
+            }
+        }
+
     }
 }
