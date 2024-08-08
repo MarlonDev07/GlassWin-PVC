@@ -36,9 +36,9 @@
             // 
             // pbImageViewer
             // 
-            this.pbImageViewer.Location = new System.Drawing.Point(9, 8);
+            this.pbImageViewer.Location = new System.Drawing.Point(12, 8);
             this.pbImageViewer.Name = "pbImageViewer";
-            this.pbImageViewer.Size = new System.Drawing.Size(832, 927);
+            this.pbImageViewer.Size = new System.Drawing.Size(792, 763);
             this.pbImageViewer.TabIndex = 0;
             this.pbImageViewer.TabStop = false;
             // 
@@ -48,14 +48,14 @@
             this.panel1.Controls.Add(this.pbImageViewer);
             this.panel1.Location = new System.Drawing.Point(3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(824, 540);
+            this.panel1.Size = new System.Drawing.Size(824, 791);
             this.panel1.TabIndex = 1;
             // 
             // frmImageViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 556);
+            this.ClientSize = new System.Drawing.Size(839, 807);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
