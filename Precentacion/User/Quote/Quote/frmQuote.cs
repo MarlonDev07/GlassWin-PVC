@@ -2892,6 +2892,10 @@ namespace Precentacion.User.Quote.Quote
                     filaTabla.AddCell(cellTitulo);
                     document.Add(new Paragraph(" "));
 
+
+
+
+
                     // Obtener la descripción completa y dividirla en dos partes
                     string descripcionCompleta = row.Cells["Description"]?.Value?.ToString() ?? "Descripción no disponible";
                     string[] partesDescripcion = descripcionCompleta.Split(new[] { "\n" }, StringSplitOptions.None);
@@ -2904,7 +2908,7 @@ namespace Precentacion.User.Quote.Quote
                     // y el resto es la segunda parte.
                     for (int i = 0; i < partesDescripcion.Length; i++)
                     {
-                        if (i < 4) // Puedes ajustar este número según tu necesidad
+                        if (i < 5) // Puedes ajustar este número según tu necesidad
                         {
                             primeraParte += partesDescripcion[i] + ", "; // Cambié '\n' por ', ' para formato en fila
                         }
@@ -2935,6 +2939,61 @@ namespace Precentacion.User.Quote.Quote
                     string[] palabras = primeraParte.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     primeraParte = string.Join(" ", palabras.Where(p => p.ToLower() != "vid"));
 
+                    // Eliminar "cerradura" que está entre comas o espacios, pero dejar solo una instancia si aparece más de una vez
+                    string[] palabras2 = primeraParte.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    List<string> resultado2 = new List<string>();
+                    bool cerraduraVista = false;
+
+                    foreach (var palabra in palabras2)
+                    {
+                        if (palabra.ToLower() == "cerradura")
+                        {
+                            if (!cerraduraVista)
+                            {
+                                resultado2.Add(palabra);
+                                cerraduraVista = true;
+                            }
+                            // Si la palabra es "cerradura" y ya se ha visto, simplemente no la añadimos a resultado2
+                        }
+                        else
+                        {
+                            resultado2.Add(palabra);
+                        }
+                    }
+
+                    primeraParte = string.Join(" ", resultado2);
+
+
+                    // Verificar y eliminar duplicados de la palabra "cerradura"
+                    List<string> partesPrimeraParte = primeraParte.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    List<string> resultado = new List<string>();
+                    HashSet<string> palabrasVista = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+                    foreach (var parte in partesPrimeraParte)
+                    {
+                        string palabraLimpiada = parte.Trim().ToLower();
+                        if (palabraLimpiada == "cerradura")
+                        {
+                            if (!palabrasVista.Contains("cerradura"))
+                            {
+                                resultado.Add(parte);
+                                palabrasVista.Add("cerradura");
+                            }
+                        }
+                        else
+                        {
+                            resultado.Add(parte);
+                        }
+                    }
+
+                    primeraParte = string.Join(", ", resultado);
+
+                    // Asegurarse de que la primera parte termine con un punto
+                    if (!string.IsNullOrEmpty(primeraParte) && !primeraParte.TrimEnd().EndsWith("."))
+                    {
+                        primeraParte += ".";
+                    }
+
                     // Capitalizar solo la primera letra de la primera palabra
                     if (!string.IsNullOrEmpty(primeraParte))
                     {
@@ -2946,14 +3005,10 @@ namespace Precentacion.User.Quote.Quote
                     segundaParte = segundaParte.Replace(":", ""); // Eliminar los dos puntos
                     segundaParte = segundaParte.Replace(" vid ", " "); // Eliminar la palabra "vid" que está sola y rodeada por espacios
 
-                    // Asegurarse de que ambas partes terminen con un punto
-                    if (!primeraParte.EndsWith("."))
+                    // Asegurarse de que la segunda parte termine con un punto y no esté en una nueva línea
+                    if (!string.IsNullOrEmpty(segundaParte) && !segundaParte.TrimEnd().EndsWith("."))
                     {
-                        primeraParte += ".";
-                    }
-                    if (!segundaParte.EndsWith("."))
-                    {
-                        segundaParte += ".";
+                        segundaParte = segundaParte.TrimEnd() + ".";
                     }
 
                     // Primera parte en una celda
@@ -2974,6 +3029,10 @@ namespace Precentacion.User.Quote.Quote
                         Border = PdfPCell.NO_BORDER
                     };
                     filaTabla.AddCell(cellSegundaParte);
+
+
+
+
 
 
 
