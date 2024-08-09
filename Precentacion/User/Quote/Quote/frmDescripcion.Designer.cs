@@ -70,7 +70,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDescripcion";
-            this.Text = "frmDescripcion";
+            this.Text = "Descripción del proyecto";
             this.ResumeLayout(false);
             this.PerformLayout();
 

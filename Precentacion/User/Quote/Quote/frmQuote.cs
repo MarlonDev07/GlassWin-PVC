@@ -25,6 +25,8 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Image = iTextSharp.text.Image;
 using System.Text.RegularExpressions;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace Precentacion.User.Quote.Quote
 {
@@ -2483,8 +2485,12 @@ namespace Precentacion.User.Quote.Quote
                 iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
                 iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
                 iTextSharp.text.Font textFont2 = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 9, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
-                //Nuevas fuentes
-                iTextSharp.text.Font cotizacionFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 11, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+                // Crea una fuente Calibri con un tamaño de 11 puntos y en negrita
+                BaseFont calibriBaseFont = BaseFont.CreateFont(@"C:\Windows\Fonts\calibri.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                iTextSharp.text.Font cotizacionFont = new iTextSharp.text.Font(calibriBaseFont, 13, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+
+               
+                iTextSharp.text.Font calibrriFuente = new iTextSharp.text.Font(calibriBaseFont, 11, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
                 // Agrega los textos a la segunda celda
                 PdfPCell textCell = new PdfPCell();
                 textCell.Border = PdfPCell.NO_BORDER;
@@ -2492,7 +2498,114 @@ namespace Precentacion.User.Quote.Quote
                 // Alinea el contenido de la celda al centro
                 textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
 
-               //AQUI IBA LA PARTE DERECHA DE ARRIBA DEL DOCUMENTO ORIGINAL
+                //AQUI IBA LA PARTE DERECHA DE ARRIBA DEL DOCUMENTO ORIGINAL
+
+
+                // Agrega el párrafo y los chunks al documento
+                Paragraph paragraph = new Paragraph();
+                paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
+                if (CompanyCache.IdCompany == 999999999)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 9-999-99999", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                if (CompanyCache.IdCompany == 205150849)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-897998", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 31028013)
+                {
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-801388", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("650 METROS NORESTE Y 350 METROS NOROESTE DE KFC, BOSQUES DON JOSE, NICOYA.", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 111111111)
+                {
+                    paragraph.Add(new Chunk("EL COYOL ALAJUELA.\r\n", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "6134 7128", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@prefalumcr.com", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "ventas@prefalumcr.com", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 3102879949)
+                {
+                    paragraph.Add(new Chunk("Alto la cima, San Isidro, San Ramón.", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Alajuela, Frente a MTS Multiservicios de Costa Rica.\r\n", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-879949", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "8855-2828", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "facturacion@mercadodelvidrio.com", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 222222222)
+                {
+                    paragraph.Add(new Chunk("PALMARES, COSTA RICA.\r\n", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "2-222-22222", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidrierapalmares.com", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Sitio Web: " + "http://www.vidrierapalmares.com/", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 333333333)
+                {
+                    paragraph.Add(new Chunk("SAN RAMÓN, ALAJUELA.\r\n", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-333-33333", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("WhatsApp: +(506) " + "8671 5008", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "crperfectglass@gmail.com", calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                textCell.AddElement(paragraph);
+
+
+
 
                 Encabezado.AddCell(textCell);
 
@@ -2559,7 +2672,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.SetWidths(columnWidths2);
 
                 // Celda 1: Etiqueta "Cotización"
-                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Nombre: " + txtidClient.Text, infoFont))
+                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Nombre: " + txtidClient.Text, calibrriFuente))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2577,7 +2690,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.AddCell(cellEtiquetaCliente);
 
                 // Celda 3: Etiqueta "Forma Pago"
-                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, infoFont))
+                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, calibrriFuente))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2595,7 +2708,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.AddCell(cellEtiquetaTelefono);
 
                 // Celda 5: Etiqueta "Teléfono"
-                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, infoFont))
+                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, calibrriFuente))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2613,7 +2726,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.AddCell(cellvacia4);
 
                 // Celda 7: Etiqueta "Correo"
-                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, infoFont))
+                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, calibrriFuente))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2637,7 +2750,7 @@ namespace Precentacion.User.Quote.Quote
                 // Añadir primer párrafo
                 iTextSharp.text.Font bodyFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 11, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
-                Paragraph paragraph1 = new Paragraph("Presente:\nEsperando que sus proyectos personales y profesionales sean todo un éxito, le presentamos la cotización solicitada por su representada.", bodyFont)
+                Paragraph paragraph1 = new Paragraph("Presente:\nEsperando que sus proyectos personales y profesionales sean todo un éxito, le presentamos la cotización solicitada por su representada.", calibrriFuente)
                 {
                     Alignment = Element.ALIGN_LEFT
                 };
@@ -2645,7 +2758,7 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" ")); // Espacio en blanco
 
                 // Añadir el segundo párrafo con la descripción proporcionada
-                Paragraph paragraph2 = new Paragraph(descripcionTrabajo, bodyFont)
+                Paragraph paragraph2 = new Paragraph(descripcionTrabajo, calibrriFuente)
                 {
                     Alignment = Element.ALIGN_LEFT
                 };
@@ -2653,7 +2766,7 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" ")); // Espacio en blanco
 
                 // Añadir el monto total del proyecto
-                Paragraph paragraphMontoTotal = new Paragraph("Monto total del proyecto: " + txtTotal.Text, bodyFont)
+                Paragraph paragraphMontoTotal = new Paragraph("Monto total del proyecto: " + txtTotal.Text, calibrriFuente)
                 {
                     Alignment = Element.ALIGN_LEFT
                 };
@@ -2683,27 +2796,27 @@ namespace Precentacion.User.Quote.Quote
                     SpacingAfter = 10f, // Espaciado después del párrafo
                     Leading = 14f // Espaciado entre líneas
                 };
-                paragraphCondiciones.Add(new Chunk("Condiciones de la Oferta", condicionesFont));
+                paragraphCondiciones.Add(new Chunk("Condiciones de la Oferta", cotizacionFont));
                 paragraphCondiciones.Add(Chunk.NEWLINE); // Salto de línea
-                paragraphCondiciones.Add(new Chunk("       " + txtConditional1.Text, textFont));
+                paragraphCondiciones.Add(new Chunk("       " + txtConditional1.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk("       " + txtConditional2.Text, textFont));
+                paragraphCondiciones.Add(new Chunk("       " + txtConditional2.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk("       " + txtConditional3.Text, textFont));
+                paragraphCondiciones.Add(new Chunk("       " + txtConditional3.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk("       " + txtConditional4.Text, textFont));
+                paragraphCondiciones.Add(new Chunk("       " + txtConditional4.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk("       " + txtConditional5.Text, textFont));
+                paragraphCondiciones.Add(new Chunk("       " + txtConditional5.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk("       " + txtConditional6.Text, textFont));
+                paragraphCondiciones.Add(new Chunk("       " + txtConditional6.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk("       " + txtConditional7.Text, textFont));
+                paragraphCondiciones.Add(new Chunk("       " + txtConditional7.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk("       " + txtConditional8.Text, textFont));
+                paragraphCondiciones.Add(new Chunk("       " + txtConditional8.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk("       " + txtConditional9.Text, textFont));
+                paragraphCondiciones.Add(new Chunk("       " + txtConditional9.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk("       " + txtConditional10.Text, textFont));
+                paragraphCondiciones.Add(new Chunk("       " + txtConditional10.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
 
                 cellCondiciones.AddElement(paragraphCondiciones);
@@ -2726,18 +2839,18 @@ namespace Precentacion.User.Quote.Quote
 
                 // Agregar línea
                 Phrase firmaPhrase = new Phrase();
-                firmaPhrase.Add(new Chunk("____________________________________________________", textFont)); // Línea
+                firmaPhrase.Add(new Chunk("____________________________________________________", calibrriFuente)); // Línea
                 cellFirma.AddElement(firmaPhrase);
 
                 // Agregar el nombre del usuario debajo de la línea
                 Phrase nombrePhrase = new Phrase();
                 nombrePhrase.Add(Chunk.NEWLINE); // Salto de línea
-                nombrePhrase.Add(new Chunk(UserCache.Name, condicionesFont)); // Nombre del usuario
+                nombrePhrase.Add(new Chunk(UserCache.Name, calibrriFuente)); // Nombre del usuario
                 cellFirma.AddElement(nombrePhrase);
 
                 tableFirma.AddCell(cellFirma);
                 document.Add(tableFirma);
-              
+
 
                 #endregion
 
@@ -2770,7 +2883,7 @@ namespace Precentacion.User.Quote.Quote
                     filaTabla.WidthPercentage = 100f;
 
                     // Añadir el título para cada ventana
-                    PdfPCell cellTitulo = new PdfPCell(new Phrase($"Ventana tipo {contadorVentana}", fontTituloSeccion))
+                    PdfPCell cellTitulo = new PdfPCell(new Phrase($"Ventana tipo {contadorVentana}", cotizacionFont))
                     {
                         Colspan = 3, // Para que ocupe toda la columna de la tabla principal
                         Border = PdfPCell.NO_BORDER,
@@ -2778,7 +2891,6 @@ namespace Precentacion.User.Quote.Quote
                     };
                     filaTabla.AddCell(cellTitulo);
                     document.Add(new Paragraph(" "));
-                  
 
                     // Obtener la descripción completa y dividirla en dos partes
                     string descripcionCompleta = row.Cells["Description"]?.Value?.ToString() ?? "Descripción no disponible";
@@ -2814,8 +2926,38 @@ namespace Precentacion.User.Quote.Quote
                         segundaParte = segundaParte.TrimEnd(',', '\n'); // Elimina la coma y el salto de línea al final
                     }
 
+                    // Transformaciones en la primera parte
+                    primeraParte = primeraParte.Replace(":", ""); // Eliminar los dos puntos
+                    primeraParte = primeraParte.Replace(" vid ", " "); // Eliminar la palabra "vid" que está sola y rodeada por espacios
+
+                    // Asegurarse de que la palabra "vidrio" no se vea afectada
+                    // Eliminar "vid" que está entre comas o espacios, pero no afectará "vidrio"
+                    string[] palabras = primeraParte.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    primeraParte = string.Join(" ", palabras.Where(p => p.ToLower() != "vid"));
+
+                    // Capitalizar solo la primera letra de la primera palabra
+                    if (!string.IsNullOrEmpty(primeraParte))
+                    {
+                        primeraParte = char.ToUpper(primeraParte[0]) + primeraParte.Substring(1).ToLower();
+                    }
+
+                    // Segunda parte de la descripción
+                    // Puedes mantener la capitalización original de la segunda parte si es necesario
+                    segundaParte = segundaParte.Replace(":", ""); // Eliminar los dos puntos
+                    segundaParte = segundaParte.Replace(" vid ", " "); // Eliminar la palabra "vid" que está sola y rodeada por espacios
+
+                    // Asegurarse de que ambas partes terminen con un punto
+                    if (!primeraParte.EndsWith("."))
+                    {
+                        primeraParte += ".";
+                    }
+                    if (!segundaParte.EndsWith("."))
+                    {
+                        segundaParte += ".";
+                    }
+
                     // Primera parte en una celda
-                    PdfPCell cellPrimeraParte = new PdfPCell(new Phrase(primeraParte.Trim(), fontTexto))
+                    PdfPCell cellPrimeraParte = new PdfPCell(new Phrase(primeraParte.Trim(), calibrriFuente))
                     {
                         HorizontalAlignment = Element.ALIGN_LEFT,
                         Border = PdfPCell.NO_BORDER
@@ -2826,14 +2968,19 @@ namespace Precentacion.User.Quote.Quote
                     filaTabla.AddCell(new PdfPCell(new Phrase(" ")) { Border = PdfPCell.NO_BORDER });
 
                     // Segunda parte de la descripción
-                    PdfPCell cellSegundaParte = new PdfPCell(new Phrase(segundaParte.Trim(), fontTexto))
+                    PdfPCell cellSegundaParte = new PdfPCell(new Phrase(segundaParte.Trim(), calibrriFuente))
                     {
                         HorizontalAlignment = Element.ALIGN_LEFT,
                         Border = PdfPCell.NO_BORDER
                     };
                     filaTabla.AddCell(cellSegundaParte);
-                    document.Add(new Paragraph(" "));
-             
+
+
+
+
+                    // Espacio entre la descripción y la imagen
+                    filaTabla.AddCell(new PdfPCell(new Phrase(" ")) { Border = PdfPCell.NO_BORDER }); // Agregar un espacio adicional
+
                     // Imagen
                     PdfPCell cellImagen = new PdfPCell();
                     string rutaImagen = row.Cells["URL"]?.Value?.ToString() ?? string.Empty;
@@ -2852,28 +2999,44 @@ namespace Precentacion.User.Quote.Quote
                                 int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
 
                                 // Ajustar el ancho y la altura si son 0
-                                anchoVentana = anchoVentana > 0 ? anchoVentana : 150;
-                                altoVentana = altoVentana > 0 ? altoVentana : 100;
+                                if (anchoVentana == 0) anchoVentana = 150; // Ancho por defecto
+                                if (altoVentana == 0) altoVentana = 100; // Alto por defecto
 
-                                // Cargar la imagen y ajustar su tamaño
+                                // Mostrar dimensiones calculadas para depuración
+                                Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
+
+                                // Cargar la imagen
                                 iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
+
+                                // Ajustar el tamaño de la imagen con ScaleAbsolute
                                 img.ScaleAbsolute(anchoVentana, altoVentana);
 
-                                cellImagen.AddElement(img);
+                                // Crear una celda para la imagen
+                                PdfPCell cellImagenTemp = new PdfPCell(img)
+                                {
+                                    HorizontalAlignment = Element.ALIGN_LEFT,
+                                    Border = PdfPCell.NO_BORDER
+                                };
+                                filaTabla.AddCell(cellImagenTemp);
                             }
                             else
                             {
-                                cellImagen.Phrase = new Phrase("Imagen no disponible", fontTexto);
+                                PdfPCell cellImagenTemp = new PdfPCell(new Phrase("Imagen no disponible", calibrriFuente))
+                                {
+                                    HorizontalAlignment = Element.ALIGN_CENTER,
+                                    Border = PdfPCell.NO_BORDER
+                                };
+                                filaTabla.AddCell(cellImagenTemp);
                             }
                         }
                         catch (Exception)
                         {
-                            cellImagen.Phrase = new Phrase("Imagen no disponible", fontTexto);
+                            cellImagen.Phrase = new Phrase("Imagen no disponible", calibrriFuente);
                         }
                     }
                     else
                     {
-                        cellImagen.Phrase = new Phrase("Imagen no disponible", fontTexto);
+                        cellImagen.Phrase = new Phrase("Imagen no disponible", calibrriFuente);
                     }
                     cellImagen.HorizontalAlignment = Element.ALIGN_CENTER;
                     cellImagen.Border = PdfPCell.NO_BORDER;
@@ -2899,6 +3062,7 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" ")); // Agregar un espacio en blanco en el documento
 
                 #endregion
+
 
 
 
