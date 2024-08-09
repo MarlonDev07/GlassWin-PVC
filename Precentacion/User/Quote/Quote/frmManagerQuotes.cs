@@ -106,8 +106,8 @@ namespace Precentacion.User.Quote.Quote
                 frmQuote frmQuote = new frmQuote();
                 frmQuote.txtidClient.Text = dgvQuotes.CurrentRow.Cells[0].Value.ToString();
                 frmQuote.btnBuscar_Click(null, null);
-                frmQuote.txtProjetName.Text = dgvQuotes.CurrentRow.Cells[3].Value.ToString();
-                frmQuote.txtAddress.Text = dgvQuotes.CurrentRow.Cells[4].Value.ToString();
+                frmQuote.txtProjetName.Text = dgvQuotes.CurrentRow.Cells[4].Value.ToString();
+                frmQuote.txtAddress.Text = dgvQuotes.CurrentRow.Cells[5].Value.ToString();
                 frmQuote.txtidQuote.Text = dgvQuotes.CurrentRow.Cells[1].Value.ToString();
                 ((frmQuote)frmQuote).LoadDataQuote();
                 frmQuote.Edit = true;

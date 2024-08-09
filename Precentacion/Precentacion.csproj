@@ -418,6 +418,12 @@
     <Compile Include="User\Quote\Prefabricado\frmPrefabricado.Designer.cs">
       <DependentUpon>frmPrefabricado.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\Quote\Quote\frmDescripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Quote\frmDescripcion.Designer.cs">
+      <DependentUpon>frmDescripcion.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\Quote\Quote\frmManagerQuotes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -652,6 +658,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\Quote\Prefabricado\frmPrefabricado.resx">
       <DependentUpon>frmPrefabricado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Quote\frmDescripcion.resx">
+      <DependentUpon>frmDescripcion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Quote\Quote\frmManagerQuotes.resx">
       <DependentUpon>frmManagerQuotes.cs</DependentUpon>

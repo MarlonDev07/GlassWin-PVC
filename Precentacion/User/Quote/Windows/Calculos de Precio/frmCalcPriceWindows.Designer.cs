@@ -180,7 +180,7 @@
             this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUbicacion.BackColor = System.Drawing.Color.Orange;
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(826, 8);
+            this.txtUbicacion.Location = new System.Drawing.Point(822, 8);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(162, 23);
             this.txtUbicacion.TabIndex = 46;
@@ -213,33 +213,33 @@
             this.verDesgloseToolStripMenuItem,
             this.enviarProformaToolStripMenuItem});
             this.contextMenuStripOpciones.Name = "contextMenuStrip1";
-            this.contextMenuStripOpciones.Size = new System.Drawing.Size(166, 92);
+            this.contextMenuStripOpciones.Size = new System.Drawing.Size(181, 114);
             // 
             // añadirVidrioFijoToolStripMenuItem
             // 
             this.añadirVidrioFijoToolStripMenuItem.Name = "añadirVidrioFijoToolStripMenuItem";
-            this.añadirVidrioFijoToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.añadirVidrioFijoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.añadirVidrioFijoToolStripMenuItem.Text = "Añadir Vidrio Fijo";
             this.añadirVidrioFijoToolStripMenuItem.Click += new System.EventHandler(this.añadirVidrioFijoToolStripMenuItem_Click);
             // 
             // cotizarToolStripMenuItem
             // 
             this.cotizarToolStripMenuItem.Name = "cotizarToolStripMenuItem";
-            this.cotizarToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.cotizarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cotizarToolStripMenuItem.Text = "Cotizar";
             this.cotizarToolStripMenuItem.Click += new System.EventHandler(this.cotizarToolStripMenuItem_Click);
             // 
             // verDesgloseToolStripMenuItem
             // 
             this.verDesgloseToolStripMenuItem.Name = "verDesgloseToolStripMenuItem";
-            this.verDesgloseToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.verDesgloseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verDesgloseToolStripMenuItem.Text = "Ver Desglose";
             this.verDesgloseToolStripMenuItem.Click += new System.EventHandler(this.verDesgloseToolStripMenuItem_Click);
             // 
             // enviarProformaToolStripMenuItem
             // 
             this.enviarProformaToolStripMenuItem.Name = "enviarProformaToolStripMenuItem";
-            this.enviarProformaToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.enviarProformaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.enviarProformaToolStripMenuItem.Text = "Enviar Proforma";
             this.enviarProformaToolStripMenuItem.Click += new System.EventHandler(this.enviarProformaToolStripMenuItem_Click);
             // 
@@ -973,7 +973,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(272, 7);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(399, 24);
+            this.lblDescripcion.Size = new System.Drawing.Size(395, 24);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripción";
             // 
@@ -983,7 +983,7 @@
             this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(677, 7);
+            this.label1.Location = new System.Drawing.Point(673, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(130, 24);
             this.label1.TabIndex = 63;
@@ -1408,7 +1408,7 @@
             // 
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(1068, 5);
+            this.btnCerrar.Location = new System.Drawing.Point(1064, 5);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(36, 29);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1420,7 +1420,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(996, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(992, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(51, 29);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
