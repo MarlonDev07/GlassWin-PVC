@@ -2491,6 +2491,13 @@ namespace Precentacion.User.Quote.Quote
 
                
                 iTextSharp.text.Font calibrriFuente = new iTextSharp.text.Font(calibriBaseFont, 11, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                iTextSharp.text.Font calibrriFuente2 = new iTextSharp.text.Font(calibriBaseFont, 11, iTextSharp.text.Font.NORMAL, BaseColor.RED);
+                // Definir el color celeste azulado
+                BaseColor celesteAzulado = new BaseColor(0, 191, 255); // RGB para un tono celeste azulado
+
+                // Crear la fuente Calibri en el tono celeste azulado
+                iTextSharp.text.Font calibriFuente3 = new iTextSharp.text.Font(calibriBaseFont, 11, iTextSharp.text.Font.NORMAL, celesteAzulado);
+
                 // Agrega los textos a la segunda celda
                 PdfPCell textCell = new PdfPCell();
                 textCell.Border = PdfPCell.NO_BORDER;
@@ -2672,7 +2679,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.SetWidths(columnWidths2);
 
                 // Celda 1: Etiqueta "Cotización"
-                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Nombre: " + txtidClient.Text, calibrriFuente))
+                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Nombre: " + txtidClient.Text, calibriFuente3))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2690,7 +2697,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.AddCell(cellEtiquetaCliente);
 
                 // Celda 3: Etiqueta "Forma Pago"
-                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, calibrriFuente))
+                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, calibriFuente3))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2708,7 +2715,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.AddCell(cellEtiquetaTelefono);
 
                 // Celda 5: Etiqueta "Teléfono"
-                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, calibrriFuente))
+                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, calibriFuente3))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2726,7 +2733,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.AddCell(cellvacia4);
 
                 // Celda 7: Etiqueta "Correo"
-                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, calibrriFuente))
+                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, calibriFuente3))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2766,7 +2773,7 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" ")); // Espacio en blanco
 
                 // Añadir el monto total del proyecto
-                Paragraph paragraphMontoTotal = new Paragraph("Monto total del proyecto: " + txtTotal.Text, calibrriFuente)
+                Paragraph paragraphMontoTotal = new Paragraph("Monto total del proyecto: " + txtTotal.Text, calibrriFuente2)
                 {
                     Alignment = Element.ALIGN_LEFT
                 };
