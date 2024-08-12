@@ -1311,10 +1311,25 @@ namespace Precentacion.User.Quote.Quote
             }
         }
 
-     
+
         #endregion
 
         #region Generacion de pdf
+        // Función para agregar viñetas, excluyendo una viñeta adicional al final
+        private string AgregarViñetas(string texto)
+        {
+            // Dividir el texto en líneas y eliminar líneas vacías
+            var lineas = texto.Split('\n').Where(linea => !string.IsNullOrWhiteSpace(linea)).ToList();
+
+            // Agregar viñetas a cada línea
+            for (int i = 0; i < lineas.Count; i++)
+            {
+                lineas[i] = "• " + lineas[i].Trim();
+            }
+
+            // Unir las líneas con saltos de línea
+            return string.Join("\n", lineas);
+        }
         public bool Generate()
         {
             #region Crear el documento
@@ -1787,8 +1802,11 @@ namespace Precentacion.User.Quote.Quote
                             {
                                 if (dgCotizaciones.Columns[j].HeaderText == "Descripcion")
                                 {
-                                    // Para la columna "Descripción", alinea el texto a la izquierda
-                                    cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
+                                    // Obtener el texto de la celda y agregar viñetas
+                                    string textoConViñetas = AgregarViñetas(dgCotizaciones[j, i].Value.ToString());
+
+                                    // Crear la celda con el texto modificado
+                                    cell = new PdfPCell(new Phrase(textoConViñetas, FontFactory.GetFont(FontFactory.HELVETICA)));
                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                 }
                                 else if (dgCotizaciones.Columns[j].HeaderText == "Precio")
