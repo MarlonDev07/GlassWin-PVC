@@ -2679,7 +2679,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.SetWidths(columnWidths2);
 
                 // Celda 1: Etiqueta "Cotización"
-                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Nombre: " + txtidClient.Text, calibriFuente3))
+                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Nombre: " + txtidClient.Text, calibrriFuente))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2697,7 +2697,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.AddCell(cellEtiquetaCliente);
 
                 // Celda 3: Etiqueta "Forma Pago"
-                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, calibriFuente3))
+                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, calibrriFuente))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2715,7 +2715,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.AddCell(cellEtiquetaTelefono);
 
                 // Celda 5: Etiqueta "Teléfono"
-                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, calibriFuente3))
+                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, calibrriFuente))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2733,7 +2733,7 @@ namespace Precentacion.User.Quote.Quote
                 datosTable.AddCell(cellvacia4);
 
                 // Celda 7: Etiqueta "Correo"
-                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, calibriFuente3))
+                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, calibrriFuente))
                 {
                     Border = PdfPCell.NO_BORDER, // Sin borde
                     HorizontalAlignment = Element.ALIGN_LEFT,
@@ -2755,14 +2755,14 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" ")); // Espacio en blanco
 
                 // Añadir primer párrafo
-                iTextSharp.text.Font bodyFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 11, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                /*iTextSharp.text.Font bodyFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 11, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
                 Paragraph paragraph1 = new Paragraph("Presente:\nEsperando que sus proyectos personales y profesionales sean todo un éxito, le presentamos la cotización solicitada por su representada.", calibrriFuente)
                 {
                     Alignment = Element.ALIGN_LEFT
                 };
                 document.Add(paragraph1);
-                document.Add(new Paragraph(" ")); // Espacio en blanco
+                document.Add(new Paragraph(" ")); // Espacio en blanco*/
 
                 // Añadir el segundo párrafo con la descripción proporcionada
                 Paragraph paragraph2 = new Paragraph(descripcionTrabajo, calibrriFuente)
@@ -2779,6 +2779,7 @@ namespace Precentacion.User.Quote.Quote
                 };
                 document.Add(paragraphMontoTotal);
                 document.Add(new Paragraph(" ")); // Espacio en blanco
+                document.Add(new Paragraph(" "));
 
                 #endregion
                 #region Condiciones, Notas y Cuentas
@@ -2804,6 +2805,7 @@ namespace Precentacion.User.Quote.Quote
                     Leading = 14f // Espaciado entre líneas
                 };
                 paragraphCondiciones.Add(new Chunk("Condiciones de la Oferta", cotizacionFont));
+                document.Add(new Paragraph(" "));
                 paragraphCondiciones.Add(Chunk.NEWLINE); // Salto de línea
                 paragraphCondiciones.Add(new Chunk("       " + txtConditional1.Text, calibrriFuente));
                 paragraphCondiciones.Add(Chunk.NEWLINE);
@@ -3050,13 +3052,48 @@ namespace Precentacion.User.Quote.Quote
                     // Imagen
                     PdfPCell cellImagen = new PdfPCell();
                     string rutaImagen = row.Cells["URL"]?.Value?.ToString() ?? string.Empty;
+                    System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                    string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
+
+                    // Reemplazar la versión en la ruta con la versión actual
+                    string rutaCorregida = ReemplazarVersionEnRuta(rutaImagen, versionActualString);
+
+                    // Obtener el directorio de trabajo actual
+                    string directorioDeTrabajo = Directory.GetCurrentDirectory();
+                    Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
+
+
                     if (!string.IsNullOrEmpty(rutaImagen))
                     {
                         try
                         {
                             // Procesar la ruta de la imagen
-                            string rutaAbsoluta = Path.GetFullPath(rutaImagen);
-                            if (File.Exists(rutaAbsoluta))
+                            string rutaAbsoluta;
+                            bool esExclusivo = rutaCorregida.StartsWith("EXCLUSIVO:");
+                            if (esExclusivo)
+                            {
+                                rutaCorregida = rutaCorregida.Replace("EXCLUSIVO:", "");
+                            }
+
+                            if (Path.IsPathRooted(rutaCorregida))
+                            {
+                                if (File.Exists(rutaCorregida))
+                                {
+                                    rutaAbsoluta = rutaCorregida;
+                                }
+                                else
+                                {
+                                    string fileName = Path.GetFileName(rutaCorregida);
+                                    rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
+                                }
+                            }
+                            else
+                            {
+                                rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaCorregida);
+                                rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
+                            }
+
+                            if (!string.IsNullOrEmpty(rutaAbsoluta) && File.Exists(rutaAbsoluta))
                             {
                                 // Obtener dimensiones de la descripción y convertirlas a píxeles
                                 var (anchoEnMetros, alturaEnMetros) = ObtenerDimensionesDeDescripcion(descripcionCompleta);
