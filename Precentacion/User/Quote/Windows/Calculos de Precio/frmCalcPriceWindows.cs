@@ -432,16 +432,15 @@ namespace Precentacion.User.Quote.Windows
             {
                 try
                 {
-
                     // Convertir las dimensiones ingresadas por el usuario a píxeles
                     decimal anchoEnMetros = decimal.Parse(txtAncho.Text);
                     decimal alturaEnMetros = decimal.Parse(txtAlto.Text);
 
                     int newWidth = (int)(anchoEnMetros * MetrosAPixeles);
                     int newHeight = (int)(alturaEnMetros * MetrosAPixeles);
-                    //Redirecciona a la funcion
+                    // Redirecciona a la función
                     var resizedImage = ResizeImage(pbVentana.Image, newWidth, newHeight);
-                    //La imagen que devuelve la funcion va a ser la nueva imagen del pictureBox
+                    // La imagen que devuelve la función va a ser la nueva imagen del pictureBox
                     pbVentana.Image = resizedImage;
                 }
                 catch (FormatException)
@@ -454,11 +453,11 @@ namespace Precentacion.User.Quote.Windows
                 MessageBox.Show("No hay ninguna imagen cargada en el PictureBox.");
             }
 
-            try {
+            try
+            {
                 Calculator = true;
                 if (ValidarCampos())
                 {
-
                     DataTable dtAluminio = new DataTable();
                     loadProduct.CedazoValor(Cedazo);
                     dtAluminio = loadProduct.loadAluminio(cbColor.Text, ClsWindows.System, cbSupplier.Text);
@@ -466,54 +465,43 @@ namespace Precentacion.User.Quote.Windows
                     dgAluminio.AutoGenerateColumns = true;
                     dgAluminio.DataSource = dtAluminio;
 
-
                     DataTable dtAccesorios = new DataTable();
                     dtAccesorios = loadProduct.loadAccesorios(ClsWindows.System, cbSupplier.Text);
                     dgAccesorios.AutoGenerateColumns = true;
                     dgAccesorios.DataSource = dtAccesorios;
 
-
-
-
                     DataTable dtVidrio = new DataTable();
-                    dtVidrio = loadProduct.loadPricesGlass(cbSupplier.Text, cbVidrio.Text);
+                    string proveedorVidrio = cbSupplier.Text;
+
+                    if (cbVidrio.Text == "Vid 4 mm claro Alu")
+                    {
+                        proveedorVidrio = "Aluma";
+                    }
+                    else if (cbVidrio.Text.EndsWith("Ex"))
+                    {
+                        proveedorVidrio = "Extralum";
+                    }
+                    else if (cbVidrio.Text.EndsWith("Alu"))
+                    {
+                        proveedorVidrio = "Alumas";
+                    }
+                    else if (cbVidrio.Text.EndsWith("Ma"))
+                    {
+                        proveedorVidrio = "Macopa";
+                    }
+
+                    dtVidrio = loadProduct.loadPricesGlass(proveedorVidrio, cbVidrio.Text);
                     dgVidrio.AutoGenerateColumns = true;
                     dgVidrio.DataSource = dtVidrio;
-
 
                     DataTable dtLock = new DataTable();
                     dtLock = loadProduct.LoadPricesLock(cbSupplier.Text, Lock);
                     dgvCerradura.AutoGenerateColumns = true;
                     dgvCerradura.DataSource = dtLock;
 
+                    // Comentado el código de Cedazo por ahora
 
-                    //  if (cbCedazo.Checked == true)
-                    // {
-                    /* DataTable dtCedazoAluminio = new DataTable();
-                     dtCedazoAluminio = loadProduct.LoadAluminioCedazo(cbColor.Text, ClsWindows.System, cbSupplier.Text);
-                     foreach (DataRow row in dtCedazoAluminio.Rows)
-                     {
-                         dtAluminio.ImportRow(row);
-                     }
-                     dgAccesorios.DataSource = dtAluminio;
-
-                     DataTable dtCedazoAccesorios = new DataTable();
-                     dtCedazoAccesorios = loadProduct.loadAccesoriosCedazo(ClsWindows.System, cbSupplier.Text);
-                     //Agregar al dgvAccesorios sin eliminar los datos que ya tiene
-                     foreach (DataRow row in dtCedazoAccesorios.Rows)
-                     {
-                         dtAccesorios.ImportRow(row);
-                     }
-                     dgAccesorios.DataSource = dtAccesorios;*/
-
-
-
-                    // }
-
-
-                    // else
-                    //  {
-
+                    // Realiza los cálculos y ajustes de precios
                     string descripcion = ClsWindows.System + ClsWindows.Desing + cbColor.Text;
                     if (ClsWindows.System == "CedazoAkari")
                     {
@@ -530,19 +518,15 @@ namespace Precentacion.User.Quote.Windows
                     {
                         QuitarArticulos();
                     }
-
-                    //}
-
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-           
         }
+
+
 
         #region Función para redimensionar la imagen
         private Bitmap ResizeImage(Image image, int width, int height)
