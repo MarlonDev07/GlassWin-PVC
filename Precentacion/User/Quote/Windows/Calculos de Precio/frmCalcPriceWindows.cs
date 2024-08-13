@@ -511,13 +511,17 @@ namespace Precentacion.User.Quote.Windows
                     {
                         descripcion = "Cedazo1/2" + ClsWindows.Desing + cbColor.Text;
                     }
-                    SubTotal = loadProduct.CalcTotalPrice(dtAluminio, dtAccesorios, dtVidrio, dtLock, descripcion, cbSupplier.Text);
-                    AjustePrecio = loadProduct.LoadAjustePrecio(cbSupplier.Text, descripcion);
-                    txtTotal.Text = SubTotal.ToString("C");
                     if (ClsWindows.System == "Puerta Lujo")
                     {
                         QuitarArticulos();
                     }
+
+                    SubTotal = loadProduct.CalcTotalPrice(dtAluminio, dtAccesorios, dtVidrio, dtLock, descripcion, cbSupplier.Text);
+                  
+                    AjustePrecio = loadProduct.LoadAjustePrecio(cbSupplier.Text, descripcion);
+
+                    txtTotal.Text = SubTotal.ToString("C");
+                  
                 }
             }
             catch (Exception ex)
@@ -1423,188 +1427,75 @@ namespace Precentacion.User.Quote.Windows
             {
                 if (cbkHaladeraConcha.Checked == false)
                 {
-                    //Quitar del dgvAccesorios el Articulo 'Haladera Concha'
-                    foreach (DataGridViewRow row in dgAccesorios.Rows)
-                    {
-                        //Validar si la Fila Esta Vacía
-                        if (row.Cells["Description"].Value != null)
-                        {
-                            if (row.Cells["Description"].Value.ToString() == "Haladera Concha PL D41")
-                            {
-
-                                //Quitar el Precio del Total
-                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-                                txtTotal.Text = SubTotal.ToString("C");
-                                //Quitar la Fila del DataGridView
-                                dgAccesorios.Rows.Remove(row);
-
-                            }
-                        }
-                    }
+                    RemoveRowFromDataTable(dgAccesorios, "Description", "Haladera Concha PL D41");
                 }
 
                 if (cbkBaraaEmpuje.Checked == false)
                 {
-                    //Quitar del dgvAccesorios el Articulo 'Barra Empuje'
-                    foreach (DataGridViewRow row in dgAluminio.Rows)
-                    {
-                        //Validar si la Fila Esta Vacía
-                        if (row.Cells["Description"].Value != null)
-                        {
-                            if (row.Cells["Description"].Value.ToString() == "Barra de Empuje PL D42")
-                            {
-                                //Quitar el Precio del Total
-                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-                                txtTotal.Text = SubTotal.ToString("C");
-                                //Quitar la Fila del DataGridView
-                                dgAluminio.Rows.Remove(row);
-                            }
-                        }
-                    }
+                    RemoveRowFromDataTable(dgAluminio, "Description", "Barra de Empuje PL D42");
                 }
-
-                /*if (cbkCilindronPestillo.Checked == false)
-                {
-                    //Quitar del dgvAccesorios el Articulo 'Cilindro con Pestillo'
-                    foreach (DataGridViewRow row in dgAccesorios.Rows)
-                    {
-                        //Validar si la Fila Esta Vacía
-                        if (row.Cells["Description"].Value != null)
-                        {
-                            if (row.Cells["Description"].Value.ToString() == "Cilindro Tipo RIM RC051 PL")
-                            {
-                                //Quitar el Precio del Total
-                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-                                txtTotal.Text = SubTotal.ToString("C");
-                                //Quitar la Fila del DataGridView
-                                dgAccesorios.Rows.Remove(row);
-                            }
-                        }
-                    }
-                }*/
 
                 if (cbkBrazoHidraulico.Checked == false)
                 {
-                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
-                    foreach (DataGridViewRow row in dgAccesorios.Rows)
-                    {
-                        //Validar si la Fila Esta Vacía
-                        if (row.Cells["Description"].Value != null)
-                        {
-                            if (row.Cells["Description"].Value.ToString() == "CIERRA PUERTA COMPACTO AL 303")
-                            {
-                                //Quitar el Precio del Total
-                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-                                txtTotal.Text = SubTotal.ToString("C");
-                                //Quitar la Fila del DataGridView
-                                dgAccesorios.Rows.Remove(row);
-                            }
-                        }
-                    }
+                    RemoveRowFromDataTable(dgAccesorios, "Description", "CIERRA PUERTA COMPACTO AL 303");
                 }
 
                 if (cbkCilindronPestillo.Checked == false)
                 {
-                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
-                    foreach (DataGridViewRow row in dgAccesorios.Rows)
-                    {
-                        //Validar si la Fila Esta Vacía
-                        if (row.Cells["Description"].Value != null)
-                        {
-                            if (row.Cells["Description"].Value.ToString() == "Cilindro Tipo RIM RC051 PL")
-                            {
-                                //Quitar el Precio del Total
-                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-                                txtTotal.Text = SubTotal.ToString("C");
-                                //Quitar la Fila del DataGridView
-                                dgAccesorios.Rows.Remove(row);
-                            }
-                        }
-                    }
+                    RemoveRowFromDataTable(dgAccesorios, "Description", "Cilindro Tipo RIM RC051 PL");
                 }
 
                 if (cbkContramarco.Checked == false)
                 {
-                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
-                    foreach (DataGridViewRow row in dgAluminio.Rows)
-                    {
-                        //Validar si la Fila Esta Vacía
-                        if (row.Cells["Description"].Value != null)
-                        {
-                            if (row.Cells["Description"].Value.ToString() == "Tubo 1 Aleta 13/4x4 PL")
-                            {
-                                //Quitar el Precio del Total
-                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-                                txtTotal.Text = SubTotal.ToString("C");
-                                //Quitar la Fila del DataGridView
-                                dgAluminio.Rows.Remove(row);
-                            }
-                        }
-                    }
+                    RemoveRowFromDataTable(dgAluminio, "Description", "Tubo 1 Aleta 13/4x4 PL");
                 }
+
                 if (cbkUmbral.Checked == false)
                 {
-                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
-                    foreach (DataGridViewRow row in dgAluminio.Rows)
-                    {
-                        //Validar si la Fila Esta Vacía
-                        if (row.Cells["Description"].Value != null)
-                        {
-                            if (row.Cells["Description"].Value.ToString() == "Umbral 4 PL D40")
-                            {
-                                //Quitar el Precio del Total
-                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-                                txtTotal.Text = SubTotal.ToString("C");
-                                //Quitar la Fila del DataGridView
-                                dgAluminio.Rows.Remove(row);
-                            }
-                        }
-                    }
+                    RemoveRowFromDataTable(dgAluminio, "Description", "Umbral 4 PL D40");
                 }
+
                 if (cbkPH206.Checked == true)
                 {
-                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
-                    foreach (DataGridViewRow row in dgAccesorios.Rows)
-                    {
-                        //Validar si la Fila Esta Vacía
-                        if (row.Cells["Description"].Value != null)
-                        {
-                            if (row.Cells["Description"].Value.ToString() == "Juego Cerradura 31/32 AL DT1850")
-                            {
-                                //Quitar el Precio del Total
-                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-                                txtTotal.Text = SubTotal.ToString("C");
-                                //Quitar la Fila del DataGridView
-                                dgAccesorios.Rows.Remove(row);
-                            }
-                        }
-                    }
+                    RemoveRowFromDataTable(dgAccesorios, "Description", "Juego Cerradura 31/32 AL DT1850");
                 }
+
                 if (cbkPH206.Checked == false)
                 {
-                    //Quitar del dgvAccesorios el Articulo 'Cilindro'
-                    foreach (DataGridViewRow row in dgAccesorios.Rows)
-                    {
-                        //Validar si la Fila Esta Vacía
-                        if (row.Cells["Description"].Value != null)
-                        {
-                            if (row.Cells["Description"].Value.ToString() == "PH206")
-                            {
-                                //Quitar el Precio del Total
-                                SubTotal = SubTotal - Convert.ToDecimal(row.Cells["TotalPrice"].Value);
-                                txtTotal.Text = SubTotal.ToString("C");
-                                //Quitar la Fila del DataGridView
-                                dgAccesorios.Rows.Remove(row);
-                            }
-                        }
-                    }
+                    RemoveRowFromDataTable(dgAccesorios, "Description", "PH206");
                 }
+
+                // Actualiza los DataGridView después de modificar los DataTable
+                dgAccesorios.Refresh();
+                dgAluminio.Refresh();
             }
             catch (Exception)
             {
+                // Manejo de errores
             }
-
         }
+
+        private void RemoveRowFromDataTable(DataGridView dgv, string columnName, string value)
+        {
+            DataTable dt = (DataTable)dgv.DataSource;
+            if (dt != null)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row[columnName] != DBNull.Value && row[columnName].ToString() == value)
+                    {
+                        // Resta el precio al subtotal
+                        SubTotal -= Convert.ToDecimal(row["TotalPrice"]);
+                        txtTotal.Text = SubTotal.ToString("C");
+
+                        // Elimina la fila del DataTable
+                        dt.Rows.Remove(row);
+                        break;
+                    }
+                }
+            }
+        }
+
 
         private void Advertencias()
         {
