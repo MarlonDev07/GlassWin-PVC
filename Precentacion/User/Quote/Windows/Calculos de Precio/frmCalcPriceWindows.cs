@@ -53,7 +53,8 @@ namespace Precentacion.User.Quote.Windows
         #region Constructor
         public frmCalcPriceWindows()
         {
-            try {
+            try
+            {
                 InitializeComponent();
                 Initialize();
                 timer.Tick += Timer_Tick;
@@ -65,7 +66,7 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
+
         }
         #endregion
 
@@ -101,7 +102,8 @@ namespace Precentacion.User.Quote.Windows
         #region Initialize Functions
         private void Initialize()
         {
-            try {
+            try
+            {
                 cbColor.SelectedIndex = 0;
 
                 lblDescripcion.Text = "Sistema " + ClsWindows.System + " Con Diseño " + ClsWindows.Desing;
@@ -124,13 +126,13 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-   
+
 
 
         }
         private void loadPanelHaladera()
         {
-            try 
+            try
             {
                 if (ClsWindows.System == "Puerta Lujo")
                 {
@@ -148,7 +150,7 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        
+
         }
         private void loadPicture()
         {
@@ -178,7 +180,8 @@ namespace Precentacion.User.Quote.Windows
         }
         private void loadGlass()
         {
-            try {
+            try
+            {
                 DataTable dtVidrio = new DataTable();
                 dtVidrio = loadProduct.loadOnlyGlass();
                 cbVidrio.DataSource = dtVidrio;
@@ -197,11 +200,12 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
+
         }
         private void loadPanelLock()
         {
-            try {
+            try
+            {
                 if (ClsWindows.System == "8025 2 Vias" || ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 2 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta" || ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
                 {
                     panelCerradura.Visible = true;
@@ -224,11 +228,12 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-         
+
         }
         private void ConfPictureBox()
         {
-            try {
+            try
+            {
                 if (ClsWindows.System != "Puerta Lujo" && ClsWindows.System != "8025 2 Vias" && ClsWindows.System != "8025 3 Vias" && ClsWindows.System != "8040 2 Vias" && ClsWindows.System != "8040 3 Vias" && ClsWindows.System != "Europa 2 Vias Puerta" && ClsWindows.System != "Europa 3 Vias Puerta" && ClsWindows.System != "Europa 2 Vias" && ClsWindows.System != "Europa 3 Vias")
                 {
                     //Mover la Imagen Hacia Arriba
@@ -283,11 +288,12 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
+
         }
         private void MostrarOpcionesCedazo()
         {
-            try {
+            try
+            {
                 if (ClsWindows.System.Contains("3 Vias"))
                 {
                     lblPosicionCedazo.Visible = true;
@@ -305,11 +311,12 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-          
+
         }
         private void ConfigPantalla()
         {
-            try {
+            try
+            {
                 if (ClsWindows.System == "Cedazo 1/2")
                 {
                     switch (ClsWindows.Desing)
@@ -337,7 +344,7 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-         
+
         }
 
         #endregion
@@ -345,7 +352,8 @@ namespace Precentacion.User.Quote.Windows
         #region Buttons
         private void btnBackSistema_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 if (PanelDetalle.Visible == true)
                 {
                     MessageBox.Show("Pulse el botón 'Cerrar' en la parte inferior de este formulario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -411,12 +419,13 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
 
         }
         private void btnDesglose_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 PanelDetalle.Visible = true;
                 PanelMedidas.Visible = false;
             }
@@ -424,7 +433,7 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
         }
         private void btnCargar_Click(object sender, EventArgs e)
         {
@@ -432,16 +441,26 @@ namespace Precentacion.User.Quote.Windows
             {
                 try
                 {
-                    // Convertir las dimensiones ingresadas por el usuario a píxeles
-                    decimal anchoEnMetros = decimal.Parse(txtAncho.Text);
-                    decimal alturaEnMetros = decimal.Parse(txtAlto.Text);
 
-                    int newWidth = (int)(anchoEnMetros * MetrosAPixeles);
-                    int newHeight = (int)(alturaEnMetros * MetrosAPixeles);
-                    // Redirecciona a la función
+                    // Obtener las dimensiones desde ClsWindows
+                    decimal anchoEnPixeles = ConvertirDimensionAPixeles(ClsWindows.Weight.ToString());
+                    decimal alturaEnPixeles = ConvertirDimensionAPixeles(ClsWindows.heigt.ToString());
+
+                    int newWidth = (int)anchoEnPixeles;
+                    int newHeight = (int)alturaEnPixeles;
+
+                    // Redimensionar la imagen
                     var resizedImage = ResizeImage(pbVentana.Image, newWidth, newHeight);
-                    // La imagen que devuelve la función va a ser la nueva imagen del pictureBox
+
+                    // Asignar la imagen redimensionada al PictureBox
                     pbVentana.Image = resizedImage;
+
+
+
+
+
+
+
                 }
                 catch (FormatException)
                 {
@@ -517,11 +536,11 @@ namespace Precentacion.User.Quote.Windows
                     }
 
                     SubTotal = loadProduct.CalcTotalPrice(dtAluminio, dtAccesorios, dtVidrio, dtLock, descripcion, cbSupplier.Text);
-                  
+
                     AjustePrecio = loadProduct.LoadAjustePrecio(cbSupplier.Text, descripcion);
 
                     txtTotal.Text = SubTotal.ToString("C");
-                  
+
                 }
             }
             catch (Exception ex)
@@ -535,42 +554,42 @@ namespace Precentacion.User.Quote.Windows
         #region Función para redimensionar la imagen
         private Bitmap ResizeImage(Image image, int width, int height)
         {
-           // try {
-                // Crear un nuevo Bitmap con el tamaño deseado
-                var destImage = new Bitmap(width, height);
+            // try {
+            // Crear un nuevo Bitmap con el tamaño deseado
+            var destImage = new Bitmap(width, height);
 
-                // Establecer la resolución del nuevo Bitmap igual a la resolución de la imagen original
-                destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+            // Establecer la resolución del nuevo Bitmap igual a la resolución de la imagen original
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
-                // Usar Graphics para dibujar la imagen redimensionada
-                using (var graphics = Graphics.FromImage(destImage))
+            // Usar Graphics para dibujar la imagen redimensionada
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                // Configurar la calidad de composición, interpolación, suavizado y compensación de píxeles para el objeto Graphics
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                // Configurar el modo de envoltura de imagen para el objeto Graphics
+                using (var wrapMode = new ImageAttributes())
                 {
-                    // Configurar la calidad de composición, interpolación, suavizado y compensación de píxeles para el objeto Graphics
-                    graphics.CompositingMode = CompositingMode.SourceCopy;
-                    graphics.CompositingQuality = CompositingQuality.HighQuality;
-                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                    graphics.SmoothingMode = SmoothingMode.HighQuality;
-                    graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
 
-                    // Configurar el modo de envoltura de imagen para el objeto Graphics
-                    using (var wrapMode = new ImageAttributes())
-                    {
-                        wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-
-                        // Dibujar la imagen original redimensionada en el rectángulo de destino utilizando el objeto Graphics
-                        graphics.DrawImage(image, new Rectangle(0, 0, width, height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
-                    }
+                    // Dibujar la imagen original redimensionada en el rectángulo de destino utilizando el objeto Graphics
+                    graphics.DrawImage(image, new Rectangle(0, 0, width, height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
-                // Devolver la imagen redimensionada
-                return destImage;
+            }
+            // Devolver la imagen redimensionada
+            return destImage;
 
-           // }
-           // catch (Exception ex) {
-               // MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //return destImage;
-           // }
+            // }
+            // catch (Exception ex) {
+            // MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //return destImage;
+            // }
 
-           
+
 
         }
         #endregion
@@ -586,7 +605,8 @@ namespace Precentacion.User.Quote.Windows
         private string CreateDescription()
         {
 
-            try {
+            try
+            {
                 //crear descripcion de la ventana que incluya el sistema, diseño, color, vidrio separado por saltos de linea
                 string description = "";
                 description += "Sistema: " + ClsWindows.System + "\n";
@@ -647,11 +667,12 @@ namespace Precentacion.User.Quote.Windows
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return null;
             }
-           
+
         }
         private string CreateURL()
         {
-            try {
+            try
+            {
                 //Obtener la ruta relativa de la Imagen de la ventana
                 string url = "";
                 if (cbUbicacion.Text != "")
@@ -669,7 +690,7 @@ namespace Precentacion.User.Quote.Windows
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return null;
             }
-         
+
 
 
 
@@ -677,7 +698,8 @@ namespace Precentacion.User.Quote.Windows
         }
         private void SelectLock()
         {
-            try {
+            try
+            {
                 if (panelCerradura.Visible == true)
                 {
                     if (cbPico.Checked)
@@ -699,7 +721,7 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-          
+
 
         }
         public void btnInsertar_Click(object sender, EventArgs e)
@@ -780,35 +802,54 @@ namespace Precentacion.User.Quote.Windows
         {
             try
             {
+                // Procesar txtAlto
                 if (txtAlto.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
+
+                    decimal alto = Convert.ToDecimal(txtAlto.Text);
+                    if (alto >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        alto /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
-                    ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
+                    ClsWindows.heigt = alto;
                     button2_Click(sender, e);
-
-
                 }
+
+                // Procesar txtAncho
                 if (txtAncho.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
+
+                    decimal ancho = Convert.ToDecimal(txtAncho.Text);
+                    if (ancho >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        ancho /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
-                    ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
+                    ClsWindows.Weight = ancho;
                     button2_Click(sender, e);
                 }
-                Advertencias();
+
+                //Advertencias();
             }
             catch (Exception)
             {
-               // MessageBox.Show("ERROR");
+                // Manejar excepciones, si es necesario
+                // MessageBox.Show("ERROR");
             }
-
-
         }
-        
+
+
         private void cbPico_CheckedChanged(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 if (cbPico.Checked && ClsWindows.System != "Europa 2 Vias Puerta")
                 {
                     Lock = "Cerradura Pico Lora con Jaladera Doble";
@@ -827,11 +868,12 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        
+
         }
         private void cbSPuesta_CheckedChanged(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 if (cbSPuesta.Checked)
                 {
                     if (ClsWindows.Desing != "FijoMovilMovilFijo")
@@ -850,11 +892,12 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        
+
         }
         private void cbImpacto_CheckedChanged(object sender, EventArgs e)
         {
-            try {
+            try
+            {
 
                 if (cbImpacto.Checked)
                 {
@@ -875,7 +918,8 @@ namespace Precentacion.User.Quote.Windows
         #region Support Functions
         private bool ValidarCampos()
         {
-            try {
+            try
+            {
 
                 if (txtAlto.Text == "")
                 {
@@ -922,7 +966,8 @@ namespace Precentacion.User.Quote.Windows
         }
         private void CleanController()
         {
-            try {
+            try
+            {
                 txtAlto.Text = "";
                 txtAncho.Text = "";
                 txtTotal.Text = "";
@@ -940,11 +985,12 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-         
+
         }
         private void DetectarPunto()
         {
-            try {
+            try
+            {
                 if (txtAncho.Text.Contains("."))
                 {
                     txtAncho.Text = txtAncho.Text.Replace(".", ",");
@@ -968,10 +1014,11 @@ namespace Precentacion.User.Quote.Windows
                     txtAddWeigth.SelectionStart = txtAddWeigth.Text.Length;
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-          
+
         }
 
         #endregion
@@ -1234,7 +1281,7 @@ namespace Precentacion.User.Quote.Windows
                 {
                     SubTotal = Convert.ToDecimal(txtTotal.Text);
                     priceNewGlass = Convert.ToDecimal(txtPecioFijo.Text);
-                    totalPrice = SubTotal + priceNewGlass;                  
+                    totalPrice = SubTotal + priceNewGlass;
                     txtTotalPrice.Text = totalPrice.ToString("C");
                 }
                 catch (Exception)
@@ -1499,7 +1546,8 @@ namespace Precentacion.User.Quote.Windows
 
         private void Advertencias()
         {
-            try {
+            try
+            {
                 #region Alto
                 if (txtAlto.Text != "")
                 {
@@ -1644,7 +1692,7 @@ namespace Precentacion.User.Quote.Windows
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-           
+
 
             #region Ancho
             if (txtAncho.Text != "")
@@ -2392,13 +2440,9 @@ namespace Precentacion.User.Quote.Windows
             {
                 try
                 {
-                    // Obtener las dimensiones ingresadas por el usuario
-                    string anchoTexto = txtAncho.Text;
-                    string altoTexto = txtAlto.Text;
-
-                    // Convertir las dimensiones ingresadas por el usuario a píxeles
-                    decimal anchoEnPixeles = ConvertirDimensionAPixeles(anchoTexto);
-                    decimal alturaEnPixeles = ConvertirDimensionAPixeles(altoTexto);
+                    // Obtener las dimensiones desde ClsWindows
+                    decimal anchoEnPixeles = ConvertirDimensionAPixeles(ClsWindows.Weight.ToString());
+                    decimal alturaEnPixeles = ConvertirDimensionAPixeles(ClsWindows.heigt.ToString());
 
                     int newWidth = (int)anchoEnPixeles;
                     int newHeight = (int)alturaEnPixeles;
@@ -2414,7 +2458,8 @@ namespace Precentacion.User.Quote.Windows
                 }
                 catch (FormatException)
                 {
-                    
+                    // Manejo de errores, si es necesario
+                    // MessageBox.Show("Error en el formato de las dimensiones.");
                 }
             }
             else
@@ -2443,6 +2488,7 @@ namespace Precentacion.User.Quote.Windows
                 throw new FormatException("La dimensión no es válida.");
             }
         }
+
 
         private void AjustarTamañoPictureBox(PictureBox pb, int newWidth, int newHeight)
         {
@@ -2473,7 +2519,7 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void añadirVidrioFijoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2521,7 +2567,7 @@ namespace Precentacion.User.Quote.Windows
             DataTable dtLock = new DataTable();
             dtLock = loadProduct.LoadPricesLockUtilidades(cbSupplier.Text, Lock);
 
-         
+
 
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Price", typeof(decimal));
@@ -2665,7 +2711,8 @@ namespace Precentacion.User.Quote.Windows
 
                 }
             }
-            if (Design2 == "CedazoAkariFijoMovil" || Design2 == "CedazoAkariFijoMovilMovilFijo") {
+            if (Design2 == "CedazoAkariFijoMovil" || Design2 == "CedazoAkariFijoMovilMovilFijo")
+            {
                 label19.Visible = false;
                 label10.Visible = false;
                 PanelVidrioFijo.Visible = false;
@@ -2690,8 +2737,8 @@ namespace Precentacion.User.Quote.Windows
 
         private void button2_Click_4(object sender, EventArgs e)
         {
-            PanelDetalle.Visible=false;
-            PanelMedidas.Visible=true;
+            PanelDetalle.Visible = false;
+            PanelMedidas.Visible = true;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
