@@ -89,8 +89,56 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             cbSupplier.DataSource = ln_Proveedor.CargarProveedor();
             cbSupplier.DisplayMember = "Nombre";
         }
+        private decimal ConvertirDimensionAPixeles(string dimensionTexto)
+        {
+            // Validar que la cadena no esté vacía y que sea un número válido
+            if (!string.IsNullOrEmpty(dimensionTexto) && decimal.TryParse(dimensionTexto, out decimal dimension))
+            {
+                // Usar CentimetrosAPixeles si la dimensión empieza con 0, sino usar MetrosAPixeles
+                if (dimensionTexto.StartsWith("0"))
+                {
+                    return dimension * CentimetrosAPixeles;
+                }
+                else
+                {
+                    return dimension * MetrosAPixeles;
+                }
+            }
+            else
+            {
+                throw new FormatException("La dimensión no es válida.");
+            }
+        }
         private void btnCargar_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+                // Obtener las dimensiones desde ClsWindows
+                decimal anchoEnPixeles = ConvertirDimensionAPixeles(ClsWindows.Weight.ToString());
+                decimal alturaEnPixeles = ConvertirDimensionAPixeles(ClsWindows.heigt.ToString());
+
+                int newWidth = (int)anchoEnPixeles;
+                int newHeight = (int)alturaEnPixeles;
+
+                // Redimensionar la imagen
+                var resizedImage = ResizeImage(pbVentila.Image, newWidth, newHeight);
+
+                // Asignar la imagen redimensionada al PictureBox
+                pbVentila.Image = resizedImage;
+
+
+
+
+
+
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce valores válidos para el ancho y el alto.");
+            }
+
             N_LoadProduct n_LoadProduct = new N_LoadProduct();
             
             DataTable dtAluminio = n_LoadProduct.loadAluminio(cbColor.Text,ClsWindows.System,cbSupplier.Text);
@@ -149,19 +197,36 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             {
                 if (txtAlto.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
+
+                    decimal alto = Convert.ToDecimal(txtAlto.Text);
+                    if (alto >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        alto /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
-                    ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
-                    redimension_Click(sender, e);
+                    ClsWindows.heigt = alto;
+                    //redimension_Click(sender, e);
 
 
                 }
+                // Procesar txtAncho
                 if (txtAncho.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
+
+                    decimal ancho = Convert.ToDecimal(txtAncho.Text);
+                    if (ancho >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        ancho /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
-                    ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
-                    redimension_Click(sender, e);
+                    ClsWindows.Weight = ancho;
+                    // redimension_Click(sender, e);
                 }
                 //Advertencias();
             }
@@ -177,19 +242,36 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             {
                 if (txtAlto.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
+
+                    decimal alto = Convert.ToDecimal(txtAlto.Text);
+                    if (alto >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        alto /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
-                    ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
-                    redimension_Click(sender, e);
+                    ClsWindows.heigt = alto;
+                    //redimension_Click(sender, e);
 
 
                 }
+                // Procesar txtAncho
                 if (txtAncho.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
+
+                    decimal ancho = Convert.ToDecimal(txtAncho.Text);
+                    if (ancho >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        ancho /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
-                    ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
-                    redimension_Click(sender, e);
+                    ClsWindows.Weight = ancho;
+                    //redimension_Click(sender, e);
                 }
                 //Advertencias();
             }
