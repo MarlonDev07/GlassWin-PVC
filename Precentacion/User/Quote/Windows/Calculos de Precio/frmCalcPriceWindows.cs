@@ -534,6 +534,11 @@ namespace Precentacion.User.Quote.Windows
                     {
                         QuitarArticulos();
                     }
+                    if (ClsWindows.System == "5020" || ClsWindows.System == "6030 2 Vias")
+                    {
+                        QuitarArticulos();
+                    }
+
 
                     SubTotal = loadProduct.CalcTotalPrice(dtAluminio, dtAccesorios, dtVidrio, dtLock, descripcion, cbSupplier.Text);
 
@@ -1512,13 +1517,24 @@ namespace Precentacion.User.Quote.Windows
                     RemoveRowFromDataTable(dgAccesorios, "Description", "PH206");
                 }
 
+                // Verificar si cbkCedazo no está marcado
+                if (cbCedazo.Checked == false)
+                {
+                    RemoveRowFromDataTable(dgAccesorios, "Description", "Escuadra Cedazo 1/2");
+                    RemoveRowFromDataTable(dgAccesorios, "Description", "Empaque Cedazo 1/2");
+                    RemoveRowFromDataTable(dgAccesorios, "Description", "Fibra Cedazo 5020");
+
+                    RemoveRowFromDataTable(dgAluminio, "Description", "Marco Cedazo 1/2 Fijo");
+                }
+
                 // Actualiza los DataGridView después de modificar los DataTable
                 dgAccesorios.Refresh();
                 dgAluminio.Refresh();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // Manejo de errores
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
 
