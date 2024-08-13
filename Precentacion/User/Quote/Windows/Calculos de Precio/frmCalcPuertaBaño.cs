@@ -12,6 +12,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using Negocio.Proveedor;
 using Precentacion.User.Quote.Windows.Seleccion_Diseño;
+using iText.Kernel.Colors;
 
 namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 {
@@ -25,6 +26,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
         private const decimal CentimetrosAPixeles = 100.0m;
+        decimal anchoT;
         public frmCalcPuertaBaño()
         {
             InitializeComponent();
@@ -117,12 +119,52 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
                 if (txtAlto.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
+
+                    decimal alto = Convert.ToDecimal(txtAlto.Text);
+                    if (alto >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        alto /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
-                    ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
-                    redimension_Click(sender, e);
+                    clsPuertaBaño.heigt = alto;
+                    //redimension_Click(sender, e);
 
 
+                }
+                // Procesar txtAncho
+                if (txtAncho.Text != "")
+                {
+
+
+                    decimal ancho = Convert.ToDecimal(txtAncho.Text);
+                    if (ancho >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        ancho /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    clsPuertaBaño.WeightTotal = ancho;
+                    // redimension_Click(sender, e);
+                }
+                // Procesar txtAncho
+                if (txtAnchoPanel.Text != "")
+                {
+
+
+                    decimal ancho = Convert.ToDecimal(txtAnchoPanel.Text);
+                    if (ancho >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        ancho /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    clsPuertaBaño.WeightPanel = ancho;
+                    // redimension_Click(sender, e);
                 }
                 if (txtAncho.Text != "" || txtAnchoPanel.Text != "")
                 {
@@ -135,7 +177,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                     else {
                         ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
                     }
-                    redimension_Click(sender, e);
+                   // redimension_Click(sender, e);
                 }
                 //Advertencias();
             }
@@ -363,8 +405,56 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         #endregion
 
         #region Botones
+        private decimal ConvertirDimensionAPixeles(string dimensionTexto)
+        {
+            // Validar que la cadena no esté vacía y que sea un número válido
+            if (!string.IsNullOrEmpty(dimensionTexto) && decimal.TryParse(dimensionTexto, out decimal dimension))
+            {
+                // Usar CentimetrosAPixeles si la dimensión empieza con 0, sino usar MetrosAPixeles
+                if (dimensionTexto.StartsWith("0"))
+                {
+                    return dimension * CentimetrosAPixeles;
+                }
+                else
+                {
+                    return dimension * MetrosAPixeles;
+                }
+            }
+            else
+            {
+                throw new FormatException("La dimensión no es válida.");
+            }
+        }
         private void btnCargar_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+                    // Obtener las dimensiones desde ClsWindows
+                decimal anchoEnPixeles = ConvertirDimensionAPixeles(clsPuertaBaño.WeightPanel.ToString());
+                decimal alturaEnPixeles = ConvertirDimensionAPixeles(clsPuertaBaño.heigt.ToString());
+
+                int newWidth = (int)anchoEnPixeles;
+                int newHeight = (int)alturaEnPixeles;
+
+                // Redimensionar la imagen
+                var resizedImage = ResizeImage(picPuertaBaño.Image, newWidth, newHeight);
+
+                // Asignar la imagen redimensionada al PictureBox
+                picPuertaBaño.Image = resizedImage;
+
+
+
+
+
+
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce valores válidos para el ancho y el alto.");
+            }
+
             if (ValidarCampos())
             {
                 N_LoadProduct n_LoadProduct = new N_LoadProduct();
