@@ -122,11 +122,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
 
                     decimal alto = Convert.ToDecimal(txtAlto.Text);
-                    if (alto >= 1000)
-                    {
+                  
                         // Convertir a metros si el valor es mayor o igual a 1000
                         alto /= 1000;
-                    }
+                    
                     // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
                     clsPuertaBaño.heigt = alto;

@@ -489,11 +489,9 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
                 DetectarPunto();
                 decimal alto = Convert.ToDecimal(txtAlto2.Text);
-                if (alto >= 1000)
-                {
-                    // Convertir a metros si el valor es mayor o igual a 1000
+                // Convertir a metros si el valor es mayor o igual a 1000
                     alto /= 1000;
-                }
+                
                 // Detectar si el usuario ingresó un punto en vez de una coma
 
                 ClsWindows.heigt2 = alto;
@@ -558,11 +556,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
                     DetectarPunto();
                     decimal alto = Convert.ToDecimal(txtAlto.Text);
-                    if (alto >= 1000)
-                    {
+                  
                         // Convertir a metros si el valor es mayor o igual a 1000
                         alto /= 1000;
-                    }
+                    
                     // Detectar si el usuario ingresó un punto en vez de una coma
 
                     ClsWindows.heigt = alto;
@@ -575,11 +572,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
                     DetectarPunto();
                     decimal ancho = Convert.ToDecimal(txtAncho.Text);
-                    if (ancho >= 1000)
-                    {
+                   
                         // Convertir a metros si el valor es mayor o igual a 1000
                         ancho /= 1000;
-                    }
+                    
                     // Detectar si el usuario ingresó un punto en vez de una coma
 
                     ClsWindows.Weight = ancho;
@@ -604,11 +600,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
 
                     decimal alto = Convert.ToDecimal(txtAlto.Text);
-                    if (alto >= 1000)
-                    {
+                   
                         // Convertir a metros si el valor es mayor o igual a 1000
                         alto /= 1000;
-                    }
+                    
                     // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
                     ClsWindows.heigt = alto;
@@ -621,11 +616,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
 
                     decimal ancho = Convert.ToDecimal(txtAncho.Text);
-                    if (ancho >= 1000)
-                    {
+                   
                         // Convertir a metros si el valor es mayor o igual a 1000
                         ancho /= 1000;
-                    }
+                    
                     // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
                     ClsWindows.Weight = ancho;
@@ -828,11 +822,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
                 DetectarPunto();
                 decimal alto = Convert.ToDecimal(txtAlto2.Text);
-                if (alto >= 1000)
-                {
+              
                     // Convertir a metros si el valor es mayor o igual a 1000
                     alto /= 1000;
-                }
+                
                 // Detectar si el usuario ingresó un punto en vez de una coma
 
                 ClsWindows.heigt2 = alto;
