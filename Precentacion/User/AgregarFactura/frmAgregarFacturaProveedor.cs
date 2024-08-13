@@ -48,7 +48,30 @@ namespace Precentacion.User.AgregarFactura
             CalcularTotal();
             habilitaciones();
 
+            dgvFacturas.RowsAdded += (s, args) => CalcularTotalVisible(dgvFacturas);
+            dgvFacturas.RowsRemoved += (s, args) => CalcularTotalVisible(dgvFacturas);
+            dgvFacturas.CellValueChanged += (s, args) => CalcularTotalVisible(dgvFacturas);
+            dgvFacturas.DataError += (s, args) => CalcularTotalVisible(dgvFacturas);
 
+
+        }
+        private void dgvFacturas_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            CalcularTotalVisible(dgvFacturas);
+        }
+
+        private void dgvFacturas_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            CalcularTotalVisible(dgvFacturas);
+        }
+
+        private void dgvFacturas_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verificar si la columna es "Monto" y recalcular
+            if (dgvFacturas.Columns[e.ColumnIndex].HeaderText == "Monto")
+            {
+                CalcularTotalVisible(dgvFacturas);
+            }
         }
         public void habilitaciones() {
             if (lblTitulo.Text == "Crear Factura" || lblTitulo.Text == "Registro de Factura de Compra ")
@@ -963,11 +986,10 @@ namespace Precentacion.User.AgregarFactura
 
         private decimal CalcularTotalVisible(DataGridView dgv)
         {
-            txtTotal.Text = "";
             decimal total = 0;
             string nombreColumna = "Monto";
 
-            // Iterar sobre cada fila visible en el DataGridView
+            // Iterar sobre cada fila en el DataGridView
             foreach (DataGridViewRow fila in dgv.Rows)
             {
                 // Verificar si la fila está visible
@@ -981,10 +1003,13 @@ namespace Precentacion.User.AgregarFactura
                     }
                 }
             }
+
+            // Actualizar el TextBox con el total en formato de moneda
             txtTotal.Text = total.ToString("C");
 
             return total;
         }
+
 
         private void btnCancelBuscar_Click(object sender, EventArgs e)
         {
@@ -1250,5 +1275,14 @@ namespace Precentacion.User.AgregarFactura
             }
         }
 
+        private void dgvFacturas_RowsAdded_1(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            CalcularTotalVisible(dgvFacturas);
+        }
+
+        private void dgvFacturas_RowsRemoved_1(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            CalcularTotalVisible(dgvFacturas);
+        }
     }
 }
