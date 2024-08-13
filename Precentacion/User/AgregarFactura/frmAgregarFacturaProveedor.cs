@@ -20,6 +20,7 @@ using Dominio.ClassFunction.InputBox;
 using Negocio.Company.Account;
 using Precentacion.User.DashBoard;
 using System.Threading;
+using System.Globalization;
 
 
 namespace Precentacion.User.AgregarFactura
@@ -310,43 +311,66 @@ namespace Precentacion.User.AgregarFactura
         {
             try
             {
-               
+                // Verificar si el PictureBox tiene una imagen
+                if (pbAccesorioExclusivo.Image == null)
+                {
+                    MessageBox.Show("Debe agregar una imagen al accesorio exclusivo antes de guardar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 if (cbProveedor.Text == "Extralum")
                 {
                     IdProveedor = 2;
                 }
-                if (cbProveedor.Text == "Macopa")
+                else if (cbProveedor.Text == "Macopa")
                 {
                     IdProveedor = 3;
                 }
-                if (cbProveedor.Text == "Nelson Martinez Vargas")
+                else if (cbProveedor.Text == "Nelson Martinez Vargas")
                 {
                     IdProveedor = 4;
                 }
-                if (cbProveedor.Text == "Vidrios Rocha")
+                else if (cbProveedor.Text == "Vidrios Rocha")
                 {
                     IdProveedor = 5;
                 }
+                else
+                {
+                    MessageBox.Show("Proveedor no válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
+                // Reemplazar punto por coma en el texto de monto
+                string montoTexto = txtMonto.Text.Replace('.', ',');
+
+                // Validación del monto
+                decimal montoTotal;
+                if (!decimal.TryParse(montoTexto, NumberStyles.Number, CultureInfo.CurrentCulture, out montoTotal))
+                {
+                    MessageBox.Show("El monto ingresado no tiene el formato correcto. Asegúrese de ingresar un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Resto del código
                 string imagePath = string.Empty;
-
                 N_FactProveedor n_FactProveedor = new N_FactProveedor();
-                n_FactProveedor.InsertarFacturaProveedor(IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen);
+                n_FactProveedor.InsertarFacturaProveedor(IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, montoTotal, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen);
 
                 // Código para insertar en la tabla Gastos...
                 N_Gastos n_Gastos = new N_Gastos();
-                n_Gastos.InsertarGastos(IdProyecto, dtpFechaCompra.Value, "Factura n°" + txtNumFactura.Text, Convert.ToDecimal(txtMonto.Text));
+                n_Gastos.InsertarGastos(IdProyecto, dtpFechaCompra.Value, "Factura n°" + txtNumFactura.Text, montoTotal);
 
                 CargarDataGridPendiente();
                 MessageBox.Show("Factura Creada Correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al Crear Factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -388,44 +412,63 @@ namespace Precentacion.User.AgregarFactura
         {
             try
             {
-               
+                // Verificar si el PictureBox tiene una imagen
+                if (pbAccesorioExclusivo.Image == null)
+                {
+                    MessageBox.Show("Debe agregar una imagen al accesorio exclusivo antes de guardar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
+                // Asignar el IdProveedor basado en el texto del ComboBox
                 if (cbProveedor.Text == "Extralum")
                 {
                     IdProveedor = 2;
                 }
-                if (cbProveedor.Text == "Macopa")
+                else if (cbProveedor.Text == "Macopa")
                 {
                     IdProveedor = 3;
                 }
-                if (cbProveedor.Text == "Nelson Martinez Vargas")
+                else if (cbProveedor.Text == "Nelson Martinez Vargas")
                 {
                     IdProveedor = 4;
                 }
-                if (cbProveedor.Text == "Vidrios Rocha")
+                else if (cbProveedor.Text == "Vidrios Rocha")
                 {
                     IdProveedor = 5;
                 }
+                else
+                {
+                    MessageBox.Show("Proveedor no válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                string imagePath = string.Empty;
+                // Reemplazar punto por coma en el texto de monto
+                string montoTexto = txtMonto.Text.Replace('.', ',');
 
-               
+                // Validación del monto
+                decimal montoTotal;
+                if (!decimal.TryParse(montoTexto, NumberStyles.Number, CultureInfo.CurrentCulture, out montoTotal))
+                {
+                    MessageBox.Show("El monto ingresado no tiene el formato correcto. Asegúrese de ingresar un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
+                // Actualizar la factura
                 N_FactProveedor n_FactProveedor = new N_FactProveedor();
-                n_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, txtMonto.Text, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen);
+                n_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, montoTotal, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen);
 
                 MessageBox.Show("Factura Editada Correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 CargarDataGridPendiente();
-            
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al Editar Factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-   
+
+
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {

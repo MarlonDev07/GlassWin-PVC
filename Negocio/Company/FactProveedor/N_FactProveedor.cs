@@ -44,7 +44,7 @@ namespace Negocio.Company.FactProveedor
                 throw;
             }
         }
-        public bool InsertarFacturaProveedor(int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, string Monto, string NumFactura, string pev, string bodega, string url)
+        public bool InsertarFacturaProveedor(int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, decimal Monto, string NumFactura, string pev, string bodega, string url)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Negocio.Company.FactProveedor
                 throw;
             }
         }
-        public bool ActualizarFacturaProveedor(int IdFactura, int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, string Monto, string NumFactura, string pev, string bodega, string url)
+        public bool ActualizarFacturaProveedor(int IdFactura, int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, decimal Monto, string NumFactura, string pev, string bodega, string url)
         {
             try
             {

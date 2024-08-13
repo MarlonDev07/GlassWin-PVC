@@ -89,7 +89,7 @@ namespace AccesoDatos.Company.Fact.Proveedor
 
 
 
-        public bool InsertarFacturaProveedor(int IdProveedor, DateTime FechaCompra,DateTime FechaVencimiento, string Monto, string NumFactura, string pev, string bodega, string urlFactura)
+        public bool InsertarFacturaProveedor(int IdProveedor, DateTime FechaCompra,DateTime FechaVencimiento, decimal Monto, string NumFactura, string pev, string bodega, string urlFactura)
         {
             try
             {
@@ -147,7 +147,7 @@ namespace AccesoDatos.Company.Fact.Proveedor
             }
         }
 
-        public bool ActualizarFacturaProveedor(int IdFactura, int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, string Monto, string NumFactura, string pev, string bodega, string urlFactura)
+        public bool ActualizarFacturaProveedor(int IdFactura, int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, decimal Monto, string NumFactura, string pev, string bodega, string urlFactura)
         {
             try
             {
