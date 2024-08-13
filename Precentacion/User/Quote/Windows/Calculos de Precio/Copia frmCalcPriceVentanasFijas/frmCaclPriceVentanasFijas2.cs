@@ -23,6 +23,9 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         private const decimal MetrosAPixeles = 1000.0m;
         private const decimal CentimetrosAPixeles = 100.0m;
         N_LoadProduct n_LoadProduct = new N_LoadProduct();
+        // Tamaño máximo permitido para el PictureBox
+        private const int MaxWidth = 450;
+        private const int MaxHeight = 350;
         #endregion
         #region Constructor
 
@@ -44,15 +47,14 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         #region Metodos
         private Bitmap ResizeImage(Image image, int width, int height)
         {
-            // Rectángulo de destino para la imagen redimensionada
-            var destRect = new Rectangle(0, 0, width, height);
-            // Crear un nuevo objeto Bitmap para la imagen redimensionada
+            // try {
+            // Crear un nuevo Bitmap con el tamaño deseado
             var destImage = new Bitmap(width, height);
 
             // Establecer la resolución del nuevo Bitmap igual a la resolución de la imagen original
             destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
-            // Crear un objeto Graphics para la imagen redimensionada
+            // Usar Graphics para dibujar la imagen redimensionada
             using (var graphics = Graphics.FromImage(destImage))
             {
                 // Configurar la calidad de composición, interpolación, suavizado y compensación de píxeles para el objeto Graphics
@@ -66,13 +68,22 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                 using (var wrapMode = new ImageAttributes())
                 {
                     wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+
                     // Dibujar la imagen original redimensionada en el rectángulo de destino utilizando el objeto Graphics
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                    graphics.DrawImage(image, new Rectangle(0, 0, width, height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
             }
-
             // Devolver la imagen redimensionada
             return destImage;
+
+            // }
+            // catch (Exception ex) {
+            // MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //return destImage;
+            // }
+
+
+
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -80,27 +91,86 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
             {
                 try
                 {
+                    // Obtener las dimensiones desde ClsWindows
+                    decimal anchoEnPixeles = ConvertirDimensionAPixeles(ClsWindows.Weight.ToString());
+                    decimal alturaEnPixeles = ConvertirDimensionAPixeles(ClsWindows.heigt.ToString());
 
-                    // Convertir las dimensiones ingresadas por el usuario a píxeles
-                    decimal anchoEnMetros = decimal.Parse(txtAncho.Text);
-                    decimal alturaEnMetros = decimal.Parse(txtAlto.Text);
+                    int newWidth = (int)anchoEnPixeles;
+                    int newHeight = (int)alturaEnPixeles;
 
-                    int newWidth = (int)(anchoEnMetros * MetrosAPixeles);
-                    int newHeight = (int)(alturaEnMetros * MetrosAPixeles);
-                    //Redirecciona a la funcion
+                    // Redimensionar la imagen
                     var resizedImage = ResizeImage(pbVentana.Image, newWidth, newHeight);
-                    //La imagen que devuelve la funcion va a ser la nueva imagen del pictureBox
+
+                    // Asignar la imagen redimensionada al PictureBox
                     pbVentana.Image = resizedImage;
+
+                    // Ajustar el tamaño del PictureBox para que coincida con la nueva imagen
+                    AjustarTamañoPictureBox(pbVentana, newWidth, newHeight);
                 }
                 catch (FormatException)
                 {
-
+                    // Manejo de errores, si es necesario
+                    // MessageBox.Show("Error en el formato de las dimensiones.");
                 }
             }
             else
             {
                 MessageBox.Show("No hay ninguna imagen cargada en el PictureBox.");
             }
+        }
+
+        private decimal ConvertirDimensionAPixeles(string dimensionTexto)
+        {
+            // Validar que la cadena no esté vacía y que sea un número válido
+            if (!string.IsNullOrEmpty(dimensionTexto) && decimal.TryParse(dimensionTexto, out decimal dimension))
+            {
+                // Usar CentimetrosAPixeles si la dimensión empieza con 0, sino usar MetrosAPixeles
+                if (dimensionTexto.StartsWith("0"))
+                {
+                    return dimension * CentimetrosAPixeles;
+                }
+                else
+                {
+                    return dimension * MetrosAPixeles;
+                }
+            }
+            else
+            {
+                throw new FormatException("La dimensión no es válida.");
+            }
+        }
+
+
+        private void AjustarTamañoPictureBox(PictureBox pb, int newWidth, int newHeight)
+        {
+            try
+            {
+                // Obtener el tamaño del contenedor padre
+                var parentSize = pb.Parent.ClientSize;
+
+                // Mantener la imagen dentro de los límites del contenedor padre
+                if (newWidth > MaxWidth)
+                {
+                    newWidth = MaxWidth;
+                }
+                if (newHeight > MaxHeight)
+                {
+                    newHeight = MaxHeight;
+                }
+
+                // Ajustar el tamaño del PictureBox
+                pb.Width = newWidth;
+                pb.Height = newHeight;
+
+                // Centrar el PictureBox en su contenedor padre
+                pb.Left = (parentSize.Width - pb.Width) / 2;
+                pb.Top = (parentSize.Height - pb.Height) / 2;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private void DetectarPunto()
         {
@@ -116,6 +186,12 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                 //Posicionar el cursor al final del texto
                 txtAlto.SelectionStart = txtAlto.Text.Length;
             }
+            if (txtAlto2.Text.Contains("."))
+            {
+                txtAlto2.Text = txtAlto2.Text.Replace(".", ",");
+                //Posicionar el cursor al final del texto
+                txtAlto2.SelectionStart = txtAlto2.Text.Length;
+            }
 
         }
         private string CrearDescripcion()
@@ -128,8 +204,8 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
             description += "Vidrio: " + cbVidrio.Text + "\n";
             description += "Cantidad: " + txtCantidad.Value + "\n";
             description += "Alto: " + ClsWindows.heigt + "\n";
-            description += "Ancho: " + txtAlto2.Text + "\n";
-            description += "Ancho Total: " + ClsWindows.Weight + "\n";
+            description += "Ancho: " + ClsWindows.Weight + "\n";
+            description += "Alto Total: " + ClsWindows.heigt2 + "\n";
             description += "Material " + cbAluminio.Text + "\n";
 
             //Añadir la Ubicacion
@@ -193,7 +269,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                 {
                     if (i != Aluminiodt.Rows.Count - 1)
                     {
-                        PrecioAluminio += Convert.ToDecimal(Aluminiodt.Rows[i].Cells[5].Value.ToString());
+                        PrecioAluminio += Convert.ToDecimal(Aluminiodt.Rows[i].Cells[3].Value.ToString());
                     }
                 }
 
@@ -202,7 +278,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                 {
                     if (i != Vidriodt.Rows.Count - 1)
                     {
-                        PrecioVidrio += Convert.ToDecimal(Vidriodt.Rows[i].Cells[4].Value.ToString());
+                        PrecioVidrio += Convert.ToDecimal(Vidriodt.Rows[i].Cells[3].Value.ToString());
                     }
                 }
 
@@ -228,7 +304,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                 }
 
 
-                string Descripcion =  ClsWindows.System + ClsWindows.Desing + cbColor.Text;
+                string Descripcion = ClsWindows.System + ClsWindows.Desing + cbColor.Text;
                 decimal Ajuste = n_LoadProduct.LoadAjustePrecio(cbSupplier.Text, Descripcion);
 
                 PrecioTotal = Subtotal + (Subtotal * Ajuste);
@@ -264,7 +340,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                 pbVentana.Image = Image.FromFile(path);
                 URL = path;
 
-                
+
 
                 //Ajustar imagen
                 if (pbVentana.Image.Width > pbVentana.Width || pbVentana.Image.Height > pbVentana.Height)
@@ -380,18 +456,56 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
         #region Botones
 
+
         private void btnCargar_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            decimal alto2;
-            if (decimal.TryParse(txtAlto2.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out alto2))
-            {
-                ClsWindows.heigt2 = alto2;
+                // Obtener las dimensiones desde ClsWindows
+                decimal anchoEnPixeles = ConvertirDimensionAPixeles(ClsWindows.Weight.ToString());
+                decimal alturaEnPixeles = ConvertirDimensionAPixeles(ClsWindows.heigt.ToString());
+
+                int newWidth = (int)anchoEnPixeles;
+                int newHeight = (int)alturaEnPixeles;
+
+                // Redimensionar la imagen
+                var resizedImage = ResizeImage(pbVentana.Image, newWidth, newHeight);
+
+                // Asignar la imagen redimensionada al PictureBox
+                pbVentana.Image = resizedImage;
+
             }
-            else
+            catch (FormatException)
             {
-                MessageBox.Show("El valor introducido no tiene un formato numérico válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, introduce valores válidos para el ancho y el alto.");
             }
+
+
+
+            // Procesar txtAlto
+            if (txtAlto2.Text != "")
+            {
+
+                DetectarPunto();
+                decimal alto = Convert.ToDecimal(txtAlto2.Text);
+                if (alto >= 1000)
+                {
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    alto /= 1000;
+                }
+                // Detectar si el usuario ingresó un punto en vez de una coma
+
+                ClsWindows.heigt2 = alto;
+                //button2_Click(sender, e);
+            }
+
+
+
+
+
+
+
             if (ValidarCampos())
             {
                 DataTable dtAluminio = n_LoadProduct.loadAluminioVentanaFija(cbColor.Text, ClsWindows.System, cbSupplier.Text, cbAluminio.Text);
@@ -438,22 +552,40 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         {
             try
             {
+                // Procesar txtAlto
                 if (txtAlto.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
                     DetectarPunto();
-                    ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
-                    button2_Click(sender, e);
+                    decimal alto = Convert.ToDecimal(txtAlto.Text);
+                    if (alto >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        alto /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
 
-
+                    ClsWindows.heigt = alto;
+                    //button2_Click(sender, e);
                 }
+
+                // Procesar txtAncho
                 if (txtAncho.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
                     DetectarPunto();
-                    ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
-                    button2_Click(sender, e);
+                    decimal ancho = Convert.ToDecimal(txtAncho.Text);
+                    if (ancho >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        ancho /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+
+                    ClsWindows.Weight = ancho;
+                    // button2_Click(sender, e);
                 }
+
                 //Advertencias();
             }
             catch (Exception)
@@ -466,22 +598,40 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         {
             try
             {
+                // Procesar txtAlto
                 if (txtAlto.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
+
+                    decimal alto = Convert.ToDecimal(txtAlto.Text);
+                    if (alto >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        alto /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
-                    ClsWindows.heigt = Convert.ToDecimal(txtAlto.Text);
-                    button2_Click(sender, e);
-
-
+                    ClsWindows.heigt = alto;
+                    //button2_Click(sender, e);
                 }
+
+                // Procesar txtAncho
                 if (txtAncho.Text != "")
                 {
-                    //Detectar si el usuario ingreso un punto en vez de una coma
+
+
+                    decimal ancho = Convert.ToDecimal(txtAncho.Text);
+                    if (ancho >= 1000)
+                    {
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        ancho /= 1000;
+                    }
+                    // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
-                    ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
-                    button2_Click(sender, e);
+                    ClsWindows.Weight = ancho;
+                    // button2_Click(sender, e);
                 }
+
                 //Advertencias();
             }
             catch (Exception)
@@ -668,6 +818,26 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         private void panelDetalle_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtAlto2_TextChanged(object sender, EventArgs e)
+        {
+            // Procesar txtAlto
+            if (txtAlto2.Text != "")
+            {
+
+                DetectarPunto();
+                decimal alto = Convert.ToDecimal(txtAlto2.Text);
+                if (alto >= 1000)
+                {
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    alto /= 1000;
+                }
+                // Detectar si el usuario ingresó un punto en vez de una coma
+
+                ClsWindows.heigt2 = alto;
+                //button2_Click(sender, e);
+            }
         }
     }
 }
