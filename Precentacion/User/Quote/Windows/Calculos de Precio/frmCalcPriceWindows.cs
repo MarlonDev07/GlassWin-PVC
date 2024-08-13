@@ -816,7 +816,7 @@ namespace Precentacion.User.Quote.Windows
                     // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
                     ClsWindows.heigt = alto;
-                    button2_Click(sender, e);
+                    //button2_Click(sender, e);
                 }
 
                 // Procesar txtAncho
@@ -833,7 +833,7 @@ namespace Precentacion.User.Quote.Windows
                     // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
                     ClsWindows.Weight = ancho;
-                    button2_Click(sender, e);
+                   // button2_Click(sender, e);
                 }
 
                 //Advertencias();
