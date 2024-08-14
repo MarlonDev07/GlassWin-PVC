@@ -357,6 +357,26 @@ namespace Precentacion.User.AgregarFactura
                 {
                     IdProveedor = 5;
                 }
+                else if (cbProveedor.Text == "Extrusiones de Aluminio S.A.")
+                {
+                    IdProveedor = 11;
+                }
+                else if (cbProveedor.Text == "Bodega Dialex")
+                {
+                    IdProveedor = 8;
+                }
+                else if (cbProveedor.Text == "EXTRALUM Santo Domingo")
+                {
+                    IdProveedor = 12;
+                }
+                else if (cbProveedor.Text == "Instalaciones y Servicios Macopa S.A")
+                {
+                    IdProveedor = 13;
+                }
+                else if (cbProveedor.Text == "Carbone")
+                {
+                    IdProveedor = 14;
+                }
                 else
                 {
                     MessageBox.Show("Proveedor no válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -442,7 +462,6 @@ namespace Precentacion.User.AgregarFactura
                     return;
                 }
 
-                // Asignar el IdProveedor basado en el texto del ComboBox
                 if (cbProveedor.Text == "Extralum")
                 {
                     IdProveedor = 2;
@@ -458,6 +477,26 @@ namespace Precentacion.User.AgregarFactura
                 else if (cbProveedor.Text == "Vidrios Rocha")
                 {
                     IdProveedor = 5;
+                }
+                else if (cbProveedor.Text == "Extrusiones de Aluminio S.A.")
+                {
+                    IdProveedor = 11;
+                }
+                else if (cbProveedor.Text == "Bodega Dialex")
+                {
+                    IdProveedor = 8;
+                }
+                else if (cbProveedor.Text == "EXTRALUM Santo Domingo")
+                {
+                    IdProveedor = 12;
+                }
+                else if (cbProveedor.Text == "Instalaciones y Servicios Macopa S.A")
+                {
+                    IdProveedor = 13;
+                }
+                else if (cbProveedor.Text == "Carbone")
+                {
+                    IdProveedor = 14;
                 }
                 else
                 {
