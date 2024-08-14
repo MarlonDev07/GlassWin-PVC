@@ -1138,7 +1138,7 @@ namespace Precentacion.User.AgregarFactura
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.InitialDirectory = "c:\\";
-                    openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+                    openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png, *.jfif) | *.jpg; *.jpeg; *.png; *.jfif";
                     openFileDialog.FilterIndex = 2;
                     openFileDialog.RestoreDirectory = true;
 
