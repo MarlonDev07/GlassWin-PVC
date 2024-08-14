@@ -664,30 +664,7 @@ namespace Negocio.LoadProduct
                 {
                     dt.Columns.Add("Metraje", typeof(decimal));
                     dt.Columns.Add("TotalPrice", typeof(decimal));
-
-                    // Verifica y agrega las columnas si no existen
-                    if (!dt.Columns.Contains("Metraje"))
-                    {
-                        dt.Columns.Add("Metraje", typeof(decimal));
-                    }
-
-                    if (!dt.Columns.Contains("TotalPrice"))
-                    {
-                        dt.Columns.Add("TotalPrice", typeof(decimal));
-                    }
-
-                    // Itera sobre cada fila y calcula el valor de TotalCosts
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        // Verifica que las columnas Metraje y Cost existan y que no sean nulas
-                        if (dt.Columns.Contains("Metraje"))
-                        {
-                            decimal metraje = Convert.ToDecimal(row["Metraje"]);
-                        }
-                    }
                 }
-                
-
                 foreach (DataRow item in dt.Rows)
                 {
                     string Description = item[0].ToString();
@@ -702,7 +679,6 @@ namespace Negocio.LoadProduct
                 }
                 return dt;
             }
-
             catch (Exception)
             {
                 return null;

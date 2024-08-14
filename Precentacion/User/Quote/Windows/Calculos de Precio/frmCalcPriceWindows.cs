@@ -48,6 +48,8 @@ namespace Precentacion.User.Quote.Windows
         // Tamaño máximo permitido para el PictureBox
         private const int MaxWidth = 450;
         private const int MaxHeight = 350;
+        decimal anchoT;
+        decimal altoT;
         #endregion
 
         #region Constructor
@@ -653,10 +655,46 @@ namespace Precentacion.User.Quote.Windows
                 }
                 description += "Ancho: " + ClsWindows.Weight + "\n";
                 description += "Alto: " + ClsWindows.heigt + "\n";
+
+
+
+                // Procesar txtAlto
+                if (txtAddHeight.Text != "")
+                {
+
+
+                    decimal alto = Convert.ToDecimal(txtAddHeight.Text);
+
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    alto /= 1000;
+
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    altoT = alto;
+                    //button2_Click(sender, e);
+                }
+
+                // Procesar txtAncho
+                if (txtAddWeigth.Text != "")
+                {
+
+
+                    decimal ancho = Convert.ToDecimal(txtAddWeigth.Text);
+
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    ancho /= 1000;
+
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    anchoT = ancho;
+                    // button2_Click(sender, e);
+                }
+
+
                 if (txtAddWeigth.Text != "" && txtAddHeight.Text != "")
                 {
-                    description += "Ancho Fijo: " + txtAddWeigth.Text + "\n";
-                    description += "Alto Fijo: " + txtAddHeight.Text + "\n";
+                    description += "Ancho Fijo: " + anchoT + "\n";
+                    description += "Alto Fijo: " + altoT + "\n";
                 }
                 //Añadir la Ubicacion
                 if (txtUbicacion.Text != "")
@@ -1152,6 +1190,39 @@ namespace Precentacion.User.Quote.Windows
                     decimal Weigth = Convert.ToDecimal(txtAddWeigth.Text);
                     decimal Height = Convert.ToDecimal(txtAddHeight.Text);
 
+                    // Procesar txtAlto
+                    if (txtAddHeight.Text != "")
+                    {
+
+
+                        decimal alto = Convert.ToDecimal(txtAddHeight.Text);
+
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        alto /= 1000;
+
+                        // Detectar si el usuario ingresó un punto en vez de una coma
+                        DetectarPunto();
+                        Height = alto;
+                        //button2_Click(sender, e);
+                    }
+
+                    // Procesar txtAncho
+                    if (txtAddWeigth.Text != "")
+                    {
+
+
+                        decimal ancho = Convert.ToDecimal(txtAddWeigth.Text);
+
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        ancho /= 1000;
+
+                        // Detectar si el usuario ingresó un punto en vez de una coma
+                        DetectarPunto();
+                        Weigth = ancho;
+                        // button2_Click(sender, e);
+                    }
+
+
                     //Cargar el DataTable con los precios del vidrio
                     dtGlass = loadProduct.LoadPriceNewGlass(cbSupplier.Text, cbGlass.Text, Weigth, Height);
                     //Para la utilidad
@@ -1201,6 +1272,38 @@ namespace Precentacion.User.Quote.Windows
                 decimal Height = Convert.ToDecimal(txtAddHeight.Text);
                 string Color = cbColor.Text;
                 string Supplier = cbSupplier.Text;
+
+                // Procesar txtAlto
+                if (txtAddHeight.Text != "")
+                {
+
+
+                    decimal alto = Convert.ToDecimal(txtAddHeight.Text);
+
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    alto /= 1000;
+
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    Height = alto;
+                    //button2_Click(sender, e);
+                }
+
+                // Procesar txtAncho
+                if (txtAddWeigth.Text != "")
+                {
+
+
+                    decimal ancho = Convert.ToDecimal(txtAddWeigth.Text);
+
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    ancho /= 1000;
+
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    Weigth = ancho;
+                    // button2_Click(sender, e);
+                }
 
                 //Cargar el DataTable con los precios del vidrio
                 dtAluminio = loadProduct.LoadAluminioFijo(Color, "Vidrio Fijo", Supplier, Weigth, Height, cbAluminio.Text, Convert.ToInt16(txtDiviciones.Value));
