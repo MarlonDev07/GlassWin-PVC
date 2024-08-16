@@ -37,6 +37,89 @@ namespace AccesoDatos.Company.LoadProducts
 			}
 		}
 
+
+
+        public DataTable loadAluminioDesglose()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                ClsConnection con = new ClsConnection();
+                string sql = "";
+
+               
+               sql = "select P.Description from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE P.Category = 'Aluminio'";
+
+
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.Fill(dt);
+                con.CloseConnection();
+                return dt;
+
+            }
+            catch (Exception)
+            {
+
+                return null;
+
+            }
+        }
+
+        public DataTable loadAccesorioDesglose()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                ClsConnection con = new ClsConnection();
+                string sql = "";
+
+
+                sql = "select P.Description from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE P.Category = 'Accesorios'";
+
+
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.Fill(dt);
+                con.CloseConnection();
+                return dt;
+
+            }
+            catch (Exception)
+            {
+
+                return null;
+
+            }
+        }
+
+
+        public DataTable loadVidrioDesglose()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                ClsConnection con = new ClsConnection();
+                string sql = "";
+
+
+                sql = "select P.Description from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE P.Category = 'Vidrio'";
+
+
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.Fill(dt);
+                con.CloseConnection();
+                return dt;
+
+            }
+            catch (Exception)
+            {
+
+                return null;
+
+            }
+        }
+
+
+
         //LoadAluminio para la utilidad
         public DataTable loadAluminioUtilidad(string Color, string System, string supplier)
         {

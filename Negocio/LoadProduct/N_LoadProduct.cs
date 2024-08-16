@@ -238,6 +238,68 @@ namespace Negocio.LoadProduct
             }
         }
 
+
+
+
+
+
+
+        public DataTable loadAluminioDesglose()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+               
+                dt = loadProduct.loadAluminioDesglose();
+
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public DataTable loadAccesorioDesglose()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+
+                dt = loadProduct.loadAccesorioDesglose();
+
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public DataTable loadVidrioDesglose()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+
+                dt = loadProduct.loadVidrioDesglose();
+
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+
+
+
+
+
         public DataTable loadAccesorios(string System, string supplier)
         {
             try
