@@ -2415,7 +2415,7 @@ namespace Precentacion.User.Quote.Quote
             Document document = new Document();
             // Obtener el directorio del escritorio y las carpetas necesarias
             string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string carpetaProformas = Path.Combine(escritorio, "Proformas - PDF2");
+            string carpetaProformas = Path.Combine(escritorio, "Proformas");
             string carpetaNombre = Path.Combine(carpetaProformas, txtidClient.Text.Trim());
             string NameFile = "Cotizacion n° " + txtidQuote.Text + ".pdf";
 
@@ -3604,7 +3604,7 @@ namespace Precentacion.User.Quote.Quote
             Document document = new Document();
             // Obtener el directorio del escritorio y las carpetas necesarias
             string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string carpetaProformas = Path.Combine(escritorio, "Proformas PDF3");
+            string carpetaProformas = Path.Combine(escritorio, "Proformas");
             string carpetaNombre = Path.Combine(carpetaProformas, txtidClient.Text.Trim());
             string NameFile = "Cotizacion n° " + txtidQuote.Text + ".pdf";
 
@@ -3973,6 +3973,10 @@ namespace Precentacion.User.Quote.Quote
                 // Cambiar el nombre de las columnas en el DataGridView
                 dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
                 dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
+               
+                dgCotizaciones.Columns["Description"].HeaderText = "Descripción"; // Cambio aquí
+
+              
 
                 #region Tabla de Productos
                 // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "Precio" y "ID Ventana"
@@ -4089,7 +4093,7 @@ namespace Precentacion.User.Quote.Quote
                                         cell.FixedHeight = 50f; // Ajusta la altura según sea necesario
                                     }
                                 }
-                                else if (dgCotizaciones.Columns[j].HeaderText == "Descripcion")
+                                else if (dgCotizaciones.Columns[j].HeaderText == "Descripción") // Cambio aquí
                                 {
                                     // Obtener el texto de la celda y agregar viñetas
                                     string textoConViñetas = AgregarViñetas(dgCotizaciones[j, i].Value.ToString());
@@ -4132,13 +4136,13 @@ namespace Precentacion.User.Quote.Quote
                 // Agregar la celda a la tabla
                 tabla.AddCell(celdaMontoTotal);
 
-
                 // Agregar la tabla al documento
                 document.Add(tabla);
 
                 document.Add(new Paragraph(" ")); // Esto agrega un espacio en blanco en el documento
 
                 #endregion
+
 
 
 
