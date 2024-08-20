@@ -565,7 +565,7 @@ namespace Precentacion.User.Quote.Quote
                 {
                     bool res = false;
                     // Mostrar un cuadro de diálogo personalizado para seleccionar el diseño de PDF
-                    string[] options = { "Diseño 1", "Diseño 2", "Diseño 3" };
+                    string[] options = { "Diseño 1 (con desglose de precios) ", "Diseño 2 (precio total con portada de inicio) ", "Diseño 3 (precio total)" };
                     using (Form form = new Form())
                     {
                         ComboBox cbOptions = new ComboBox();
