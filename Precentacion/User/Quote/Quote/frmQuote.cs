@@ -3971,18 +3971,18 @@ namespace Precentacion.User.Quote.Quote
                 dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
 
                 #region Tabla de Productos
-                // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "Precio"
-                int numeroDeColumnas = dgCotizaciones.Columns.Count - 1; // Reducir el conteo de columnas por la columna "Precio"
+                // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "Precio" y "ID Ventana"
+                int numeroDeColumnas = dgCotizaciones.Columns.Count - 2; // Reducir el conteo de columnas por la columna "Precio" y "ID Ventana"
                 PdfPTable tabla = new PdfPTable(numeroDeColumnas);
                 tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades     
                 tabla.LockedWidth = true;
                 float[] tablaW = new float[numeroDeColumnas]; // Crear un array de anchos de columna con el nuevo número de columnas
 
-                // Copia los anchos de columnas existentes, excepto la columna "Precio"
+                // Copia los anchos de columnas existentes, excepto la columna "Precio" y "ID Ventana"
                 int k = 0;
                 for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
                 {
-                    if (dgCotizaciones.Columns[i].HeaderText != "Precio")
+                    if (dgCotizaciones.Columns[i].HeaderText != "Precio" && dgCotizaciones.Columns[i].HeaderText != "ID Ventana")
                     {
                         tablaW[k] = 190f; // Ajusta estos valores según los anchos de columna que desees
                         k++;
@@ -3990,10 +3990,10 @@ namespace Precentacion.User.Quote.Quote
                 }
                 tabla.SetWidths(tablaW);
 
-                // Agregar encabezados de columna, omitiendo "Precio"
+                // Agregar encabezados de columna, omitiendo "Precio" y "ID Ventana"
                 for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
                 {
-                    if (dgCotizaciones.Columns[i].HeaderText != "Precio")
+                    if (dgCotizaciones.Columns[i].HeaderText != "Precio" && dgCotizaciones.Columns[i].HeaderText != "ID Ventana")
                     {
                         PdfPCell celda = new PdfPCell(new Phrase(dgCotizaciones.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
                         celda.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -4002,12 +4002,12 @@ namespace Precentacion.User.Quote.Quote
                     }
                 }
 
-                // Agregar filas de datos, omitiendo la columna "Precio"
+                // Agregar filas de datos, omitiendo la columna "Precio" y "ID Ventana"
                 for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
                 {
                     for (int j = 0; j < dgCotizaciones.Columns.Count; j++)
                     {
-                        if (dgCotizaciones.Columns[j].HeaderText != "Precio")
+                        if (dgCotizaciones.Columns[j].HeaderText != "Precio" && dgCotizaciones.Columns[j].HeaderText != "ID Ventana")
                         {
                             PdfPCell cell = new PdfPCell(); // Inicializar la celda por defecto
 
@@ -4135,6 +4135,7 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" ")); // Esto agrega un espacio en blanco en el documento
 
                 #endregion
+
 
 
 
