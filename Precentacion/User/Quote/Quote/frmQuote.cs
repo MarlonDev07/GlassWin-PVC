@@ -3963,6 +3963,10 @@ namespace Precentacion.User.Quote.Quote
                 #endregion
 
 
+                // Cambiar el nombre de las columnas en el DataGridView
+                dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
+                dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
+
                 #region Tabla de Productos
                 // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "Precio"
                 int numeroDeColumnas = dgCotizaciones.Columns.Count - 1; // Reducir el conteo de columnas por la columna "Precio"
@@ -4006,7 +4010,7 @@ namespace Precentacion.User.Quote.Quote
 
                             if (dgCotizaciones[j, i].Value != null)
                             {
-                                if (dgCotizaciones.Columns[j].HeaderText == "URL")
+                                if (dgCotizaciones.Columns[j].HeaderText == "Diseño")
                                 {
                                     string rutaImagen = dgCotizaciones[j, i].Value.ToString();
                                     System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
@@ -4109,6 +4113,19 @@ namespace Precentacion.User.Quote.Quote
                     }
                 }
 
+                // Crear una celda para mostrar el monto total con bordes y fondo
+                PdfPCell celdaMontoTotal = new PdfPCell(new Phrase("Monto Total: " + (dolar ? txtTotal.Text : "¢" + txtTotal.Text), FontFactory.GetFont(FontFactory.HELVETICA, 12, BaseColor.WHITE)));
+                celdaMontoTotal.Colspan = numeroDeColumnas; // Hacer que la celda abarque todas las columnas
+                celdaMontoTotal.HorizontalAlignment = Element.ALIGN_RIGHT; // Alinear el texto a la derecha
+                celdaMontoTotal.Border = iTextSharp.text.Rectangle.BOX; // Aplicar borde a la celda completa
+                celdaMontoTotal.BorderWidth = 1f; // Espesor del borde
+                celdaMontoTotal.BackgroundColor = new BaseColor(70, 130, 180); // Color de fondo
+                celdaMontoTotal.Padding = 10f; // Agregar un padding para mejorar la apariencia
+
+                // Agregar la celda a la tabla
+                tabla.AddCell(celdaMontoTotal);
+
+
                 // Agregar la tabla al documento
                 document.Add(tabla);
 
@@ -4119,7 +4136,10 @@ namespace Precentacion.User.Quote.Quote
 
 
 
+
+
                 #region Precios
+                /*
                 // Crear un párrafo para mostrar el monto total
                 Paragraph paragraphTotal = new Paragraph();
 
@@ -4146,7 +4166,7 @@ namespace Precentacion.User.Quote.Quote
                 // Agregar el párrafo al documento
                 document.Add(paragraphTotal);
                 document.Add(new Paragraph(" ")); // Esto agrega un espacio en blanco en el documento
-
+                */
                 #endregion
 
 
