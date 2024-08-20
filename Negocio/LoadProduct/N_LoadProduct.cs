@@ -4905,7 +4905,7 @@ namespace Negocio.LoadProduct
                     metraje = 1;
                     break;
                 case "Cierre Embutir C/tornillo SL8726-BK EU":
-                    metraje = 1;
+                    metraje = 0;
                     break;
                 case "Escuadra 23x14mm CJ0410F EU":
                     metraje = 8;
@@ -4920,7 +4920,7 @@ namespace Negocio.LoadProduct
                     metraje = 1;
                     break;
                 case "Tandem Roller Zink Men-1T EU":
-                    metraje = 2;
+                    metraje = 4;
                     break;
                 case "Desague Normal VA18 EU ":
                     metraje = 3;
@@ -5708,7 +5708,7 @@ namespace Negocio.LoadProduct
                     metraje = 1;
                     break;
                 case "Tandem Roller Zink Men-1T EU":
-                    metraje = 2;
+                    metraje = 4;
                     break;
                 case "Desague Normal VA18 EU ":
                     metraje = 3;
