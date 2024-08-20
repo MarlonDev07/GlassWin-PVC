@@ -565,7 +565,7 @@ namespace Precentacion.User.Quote.Quote
                 {
                     bool res = false;
                     // Mostrar un cuadro de diálogo personalizado para seleccionar el diseño de PDF
-                    string[] options = { "Diseño 1 (con desglose de precios) ", "Diseño 2 (precio total con portada de inicio) ", "Diseño 3 (precio total)" };
+                    string[] options = { "Diseño 1 (con desglose de precios)", "Diseño 2 (precio total con portada de inicio)", "Diseño 3 (precio total)" };
                     using (Form form = new Form())
                     {
                         ComboBox cbOptions = new ComboBox();
@@ -589,10 +589,10 @@ namespace Precentacion.User.Quote.Quote
                             string selectedOption = cbOptions.SelectedItem.ToString();
                             switch (selectedOption)
                             {
-                                case "Diseño 1":
+                                case "Diseño 1 (con desglose de precios)":
                                     res = Generate(); // Usar el diseño habitual
                                     break;
-                                case "Diseño 2":
+                                case "Diseño 2 (precio total con portada de inicio)":
                                     // Mostrar el formulario para ingresar la descripción
                                     frmDescripcion descripcionForm = new frmDescripcion();
                                     if (descripcionForm.ShowDialog() == DialogResult.OK)
@@ -609,7 +609,7 @@ namespace Precentacion.User.Quote.Quote
                                         res = false;
                                     }
                                     break;
-                                case "Diseño 3":
+                                case "Diseño 3 (precio total)":
                                     res = GeneratePDF3(); // Llamar a la función para el tercer diseño de PDF
                                     break;
                             }
