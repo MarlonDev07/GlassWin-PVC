@@ -27,6 +27,12 @@ using Image = iTextSharp.text.Image;
 using System.Text.RegularExpressions;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using System.Net.Http;
+using System.Text;
+using System.Xml;
+using System.Threading.Tasks;
+using System.Globalization;
+
 
 namespace Precentacion.User.Quote.Quote
 {
@@ -44,6 +50,9 @@ namespace Precentacion.User.Quote.Quote
         private decimal Descuento;
         private decimal ManoObra;
         private decimal LimiteCredito;
+        decimal tasaCambio;
+        bool dolar = false;
+        bool colon = false;
         #endregion
 
         #region Constructor
@@ -58,6 +67,8 @@ namespace Precentacion.User.Quote.Quote
         private Button btnClose;
         public frmQuote()
         {
+          
+          
             InitializeComponent();
             loadFunction();
             this.FormBorderStyle = FormBorderStyle.None; // Eliminar el borde predeterminado
@@ -1812,12 +1823,36 @@ namespace Precentacion.User.Quote.Quote
                                 }
                                 else if (dgCotizaciones.Columns[j].HeaderText == "Precio")
                                 {
-                                    // Para la columna "Precio", alinea el texto a la izquierda y redondea a dos decimales
-                                    decimal Prices = Convert.ToDecimal(dgCotizaciones[j, i].Value);
-                                    Prices = Math.Round(Prices, 2);
-                                    cell = new PdfPCell(new Phrase("¢" + Prices.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                    // Obtener el valor de la celda y convertirlo a decimal
+                                    decimal precioColones = Convert.ToDecimal(dgCotizaciones[j, i].Value);
+
+                                    // Si dolar es true, convertir el precio a dólares
+                                    if (dolar)
+                                    {
+                                        // Asegúrate de que la tasa de cambio esté definida y sea mayor a cero
+                                        if (tasaCambio > 0)
+                                        {
+                                            decimal precioDolares = precioColones / tasaCambio;
+                                            precioDolares = Math.Round(precioDolares, 2);
+                                            cell = new PdfPCell(new Phrase("$" + precioDolares.ToString("F2"), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                        }
+                                        else
+                                        {
+                                            // Manejo de error si tasaCambio no es válida
+                                            cell = new PdfPCell(new Phrase("Error en tasa de cambio", FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Mantener el precio en colones
+                                        precioColones = Math.Round(precioColones, 2);
+                                        cell = new PdfPCell(new Phrase("¢" + precioColones.ToString("F2"), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                    }
+
+                                    // Alinear el texto a la izquierda
                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                 }
+
                                 else
                                 {
                                     cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
@@ -1866,16 +1901,27 @@ namespace Precentacion.User.Quote.Quote
                 tablePrecio.AddCell(cellp);
                 cellp.Phrase = new Phrase("IVA");
                 tablePrecio.AddCell(cellp);
-
                 cellp.Phrase = new Phrase("Total :");
                 tablePrecio.AddCell(cellp);
-                cellp.Phrase = new Phrase("¢" + txtSubtotal.Text);
-                tablePrecio.AddCell(cellp);
 
-                cellp.Phrase = new Phrase("¢" + txtIVA.Text);
-                tablePrecio.AddCell(cellp);
-                cellp.Phrase = new Phrase("¢" + txtTotal.Text);
-                tablePrecio.AddCell(cellp);
+                if (dolar)
+                {
+                    cellp.Phrase = new Phrase(txtSubtotal.Text);
+                    tablePrecio.AddCell(cellp);
+                    cellp.Phrase = new Phrase(txtIVA.Text);
+                    tablePrecio.AddCell(cellp);
+                    cellp.Phrase = new Phrase(txtTotal.Text);
+                    tablePrecio.AddCell(cellp);
+                }
+                else {
+                    cellp.Phrase = new Phrase("¢" + txtSubtotal.Text);
+                    tablePrecio.AddCell(cellp);
+                    cellp.Phrase = new Phrase("¢" + txtIVA.Text);
+                    tablePrecio.AddCell(cellp);
+                    cellp.Phrase = new Phrase("¢" + txtTotal.Text);
+                    tablePrecio.AddCell(cellp);
+                }
+              
 
                 // Agregar la tabla al documento
                 document.Add(tablePrecio);
@@ -3252,6 +3298,142 @@ namespace Precentacion.User.Quote.Quote
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         // Variables para almacenar la posición del mouse
         private bool isDragging = false;
+
+        private async void btnDolarCambio_Click(object sender, EventArgs e)
+        {
+            dolar = true;
+            colon = false;
+            cbIva.Enabled = false;
+            btnApply.Enabled = false;
+            // Obtener la fecha actual del sistema
+            string fechaActual = DateTime.Now.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            // Usar la fecha actual como fecha de inicio y fecha final
+            string fechaInicio = fechaActual;
+            string fechaFinal = fechaActual;
+
+            string valor = await TipoCambioService.ObtenerTipoCambioAsync(fechaInicio, fechaFinal);
+            Console.WriteLine($"Valor exacto recibido: '{valor}'");
+
+            // Elimina espacios en blanco alrededor
+            valor = valor.Trim();
+
+            Console.WriteLine($"Valor limpiado: '{valor}'");
+
+            // Intenta convertir el valor a decimal
+            if (decimal.TryParse(valor, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valorDecimal))
+            {
+                // Convertir a string y quitar ceros innecesarios usando el formato G29
+                string valorFinal = valorDecimal.ToString("G29", CultureInfo.InvariantCulture);
+                Console.WriteLine($"Valor convertido a decimal y limpiado: {valorFinal}");
+                tasaCambio = valorDecimal;
+
+                // Convertir el valor de txtTotal a decimal
+                if (Total != 0)
+                {
+                    // Calcular el valor en dólares
+                    decimal totalDolares = Total / tasaCambio;
+
+                    // Mostrar el valor en dólares en txtTotal
+                    txtTotal.Text = totalDolares.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
+
+                    //IVA
+                    // Calcular el valor en dólares
+                    decimal totalIVADolares = IVA / tasaCambio;
+
+                    // Mostrar el valor en dólares en txtTotal
+                    txtIVA.Text = totalIVADolares.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
+
+                    //Subtotal
+                    // Calcular el valor en dólares
+                    decimal subTotalDolares = SubTotal / tasaCambio;
+
+                    // Mostrar el valor en dólares en txtTotal
+                    txtSubtotal.Text = subTotalDolares.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
+                   
+
+
+                }
+                else
+                {
+                    MessageBox.Show("El valor en colones no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se pudo convertir el valor a decimal.");
+                MessageBox.Show("No se pudo obtener la tasa de cambio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCambioDolar2_Click(object sender, EventArgs e)
+        {
+            colon = true;
+            dolar = false;
+            cbIva.Enabled = true;
+            btnApply.Enabled = true;
+            // Verificar si los valores ya están en dólares
+            bool yaEnDolares = txtTotal.Text.StartsWith("₡") || txtIVA.Text.StartsWith("₡") || txtSubtotal.Text.StartsWith("₡");
+
+            if (yaEnDolares)
+            {
+                MessageBox.Show("Los valores ya están en colones.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return; // Salir del método sin realizar la conversión
+            }
+
+            // Asegúrate de que la tasa de cambio ha sido asignada correctamente
+            if (tasaCambio > 0)
+            {
+                // Convertir el valor de txtTotal en dólares a decimal
+                if (decimal.TryParse(txtTotal.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out decimal totalDolares))
+                {
+                    // Calcular el valor en colones
+                    decimal totalColones = totalDolares * tasaCambio;
+
+                    // Mostrar el valor en colones en txtTotal
+                    txtTotal.Text = totalColones.ToString("c", CultureInfo.GetCultureInfo("es-CR"));
+
+                    // Convertir el valor de txtIVA en dólares a decimal
+                    if (decimal.TryParse(txtIVA.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out decimal ivaDolares))
+                    {
+                        // Calcular el valor en colones
+                        decimal ivaColones = ivaDolares * tasaCambio;
+
+                        // Mostrar el valor en colones en txtIVA
+                        txtIVA.Text = ivaColones.ToString("c", CultureInfo.GetCultureInfo("es-CR"));
+                    }
+                    else
+                    {
+                        MessageBox.Show("El valor del IVA en dólares no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    // Convertir el valor de txtSubtotal en dólares a decimal
+                    if (decimal.TryParse(txtSubtotal.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out decimal subtotalDolares))
+                    {
+                        // Calcular el valor en colones
+                        decimal subtotalColones = subtotalDolares * tasaCambio;
+
+                        // Mostrar el valor en colones en txtSubtotal
+                        txtSubtotal.Text = subtotalColones.ToString("c", CultureInfo.GetCultureInfo("es-CR"));
+                    }
+                    else
+                    {
+                        MessageBox.Show("El valor del subtotal en dólares no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El valor en dólares de total no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("La tasa de cambio no está disponible o no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
         private Point startPoint = new Point(0, 0);
         private void frmQuote_MouseMove(object sender, MouseEventArgs e)
         {
@@ -3275,5 +3457,78 @@ namespace Precentacion.User.Quote.Quote
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
         #endregion
+        #region Tasa Cambio
+        public class TipoCambioService
+        {
+            private static readonly string url = "https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx";
+            private static readonly int codigoIndicador = 317; // Código para tipo de cambio de compra
+            private static readonly string nombreUsuario = "Alexander Durán Varela";
+            private static readonly string indicadorSubNivel = "N";
+            private static readonly string correoElectronico = "alexduva21@gmail.com";
+            private static readonly string tokenSuscripcion = "VANUNMANAA"; // Reemplazar con tu token real
+
+            public static async Task<string> ObtenerTipoCambioAsync(string fechaInicio, string fechaFinal)
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    // Crear el contenido de la solicitud en formato XML (SOAP)
+                    var soapEnvelope = $@"
+                <soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
+                    <soap:Body>
+                        <ObtenerIndicadoresEconomicos xmlns='http://ws.sdde.bccr.fi.cr'>
+                            <Indicador>{codigoIndicador}</Indicador>
+                            <FechaInicio>{fechaInicio}</FechaInicio>
+                            <FechaFinal>{fechaFinal}</FechaFinal>
+                            <Nombre>{nombreUsuario}</Nombre>
+                            <SubNiveles>{indicadorSubNivel}</SubNiveles>
+                            <CorreoElectronico>{correoElectronico}</CorreoElectronico>
+                            <Token>{tokenSuscripcion}</Token>
+                        </ObtenerIndicadoresEconomicos>
+                    </soap:Body>
+                </soap:Envelope>";
+
+                    // Crear el contenido de la solicitud
+                    var content = new StringContent(soapEnvelope, Encoding.UTF8, "text/xml");
+
+                    // Agregar el encabezado SOAPAction
+                    client.DefaultRequestHeaders.Add("SOAPAction", "http://ws.sdde.bccr.fi.cr/ObtenerIndicadoresEconomicos");
+
+                    // Hacer la solicitud POST
+                    HttpResponseMessage response = await client.PostAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseBody = await response.Content.ReadAsStringAsync();
+
+                        // Procesar el XML de respuesta
+                        XmlDocument doc = new XmlDocument();
+                        doc.LoadXml(responseBody);
+
+                        XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
+                        nsmgr.AddNamespace("soap", "http://schemas.xmlsoap.org/soap/envelope/");
+                        nsmgr.AddNamespace("diffgr", "urn:schemas-microsoft-com:xml-diffgram-v1");
+                        nsmgr.AddNamespace("msdata", "urn:schemas-microsoft-com:xml-msdata");
+
+                        // Extraer datos del XML
+                        XmlNode valorNode = doc.SelectSingleNode("//diffgr:diffgram/Datos_de_INGC011_CAT_INDICADORECONOMIC/INGC011_CAT_INDICADORECONOMIC/NUM_VALOR", nsmgr);
+
+                        if (valorNode != null)
+                        {
+                            return valorNode.InnerText; // Devolver el valor del tipo de cambio
+                        }
+                        else
+                        {
+                            return "No se encontraron los datos esperados en la respuesta.";
+                        }
+                    }
+                    else
+                    {
+                        return $"Error: {response.StatusCode}";
+                    }
+                }
+            }
+        }
     }
+        #endregion Tasa Cambio
 }
+
