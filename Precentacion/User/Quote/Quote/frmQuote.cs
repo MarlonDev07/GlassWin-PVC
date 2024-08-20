@@ -1742,6 +1742,9 @@ namespace Precentacion.User.Quote.Quote
 
                 #endregion
 
+                // Cambiar el nombre de las columnas en el DataGridView
+                dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
+                dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
 
                 #region Tabla de Productos
                 // Crear una tabla con el número de columnas de tu DataGridView
