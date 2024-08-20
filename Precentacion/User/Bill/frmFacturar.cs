@@ -1050,7 +1050,7 @@ namespace Precentacion.User.Bill
                         // Verificar si la descripción existe en dtAccesorio
                         else if (dtAccesorio.AsEnumerable().Any(r => r.Field<string>("Description") == description))
                         {
-                            categoria = "Accesorio";
+                            categoria = "Accesorios";
                         }
                         // Verificar si la descripción existe en dtVidrio
                         else if (dtVidrio.AsEnumerable().Any(r => r.Field<string>("Description") == description))
@@ -1077,46 +1077,87 @@ namespace Precentacion.User.Bill
                 tabla.SetWidths(tablaW);
 
                 // Agregar encabezados de columna
-                for (int i = 0; i < dgvDesglose.Columns.Count; i++)
+                /*for (int i = 0; i < dgvDesglose.Columns.Count; i++)
                 {
                     PdfPCell celda = new PdfPCell(new Phrase(dgvDesglose.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
                     celda.HorizontalAlignment = Element.ALIGN_CENTER;
                     celda.BackgroundColor = new BaseColor(70, 130, 180);
                     tabla.AddCell(celda);
-                }
+                }*/
 
-                // Agregar filas y celdas de datos con imágenes
-                foreach (var row in orderedRows)
+                // Agrupar las filas por categoría
+                var groupedRows = orderedRows.GroupBy(row => row.Cells["Categoría"].Value.ToString());
+
+                // Crear una tabla separada para cada categoría
+                foreach (var group in groupedRows)
                 {
-                    for (int j = 0; j < dgvDesglose.Columns.Count; j++)
+                    // Agregar un título para la categoría con fondo azul y letra blanca
+                    PdfPCell categoryTitleCell = new PdfPCell(new Phrase(group.Key, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.WHITE)));
+                    categoryTitleCell.Colspan = dgvDesglose.Columns.Count; // Hacer que la celda ocupe todas las columnas
+                    categoryTitleCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    categoryTitleCell.PaddingTop = 10f; // Agregar un espacio superior
+                    categoryTitleCell.PaddingBottom = 10f; // Agregar un espacio inferior
+
+                    // Establecer el color de fondo azul y el borde blanco
+                    categoryTitleCell.BackgroundColor = new BaseColor(70, 130, 180); // Azul (RGB: 0, 102, 204)
+                    categoryTitleCell.BorderColor = BaseColor.WHITE;
+
+                    tabla.AddCell(categoryTitleCell);
+
+                    // Agregar los encabezados de las columnas
+                    foreach (DataGridViewColumn column in dgvDesglose.Columns)
                     {
-                        if (row.Cells[j].Value != null)
+                        PdfPCell headerCell = new PdfPCell(new Phrase(column.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                        headerCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        tabla.AddCell(headerCell);
+                    }
+
+                    // Agregar las filas de datos para esta categoría
+                    foreach (var row in group)
+                    {
+                        for (int j = 0; j < dgvDesglose.Columns.Count; j++)
                         {
-                            PdfPCell cell = null;
+                            if (row.Cells[j].Value != null)
+                            {
+                                PdfPCell cell = null;
 
-                            if (dgvDesglose.Columns[j].HeaderText == "Description")
-                            {
-                                // Para la columna "Descripción", alinea el texto a la izquierda
-                                cell = new PdfPCell(new Phrase(row.Cells[j].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
-                                cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                            }
-                            else
-                            {
-                                // Para otras columnas, mantén el texto centrado
-                                cell = new PdfPCell(new Phrase(row.Cells[j].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                                if (dgvDesglose.Columns[j].HeaderText == "Description")
+                                {
+                                    // Para la columna "Descripción", alinea el texto a la izquierda
+                                    cell = new PdfPCell(new Phrase(row.Cells[j].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
+                                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                                }
+                                else
+                                {
+                                    // Para otras columnas, mantén el texto centrado
+                                    cell = new PdfPCell(new Phrase(row.Cells[j].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                }
+
+                                // Ajusta el tamaño de las celdas
+                                cell.FixedHeight = 30f; // Aumentamos la altura a 30 unidades
+                                cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
+
+                                // Centrar contenido verticalmente
                                 cell.VerticalAlignment = Element.ALIGN_CENTER;
+                                tabla.AddCell(cell);
                             }
-
-                            // Ajusta el tamaño de las celdas
-                            cell.FixedHeight = 30f; // Aumentamos la altura a 30 unidades
-                            cell.PaddingLeft = 5f; // Agrega un relleno a la izquierda para alinear el texto correctamente
-
-                            // Centrar contenido verticalmente
-                            cell.VerticalAlignment = Element.ALIGN_CENTER;
-                            tabla.AddCell(cell);
                         }
                     }
+
+                    // Agregar un espacio entre tablas
+                    PdfPCell emptyCell = new PdfPCell(new Phrase(" "));
+                    emptyCell.Border = Rectangle.NO_BORDER;
+                    emptyCell.Colspan = dgvDesglose.Columns.Count;
+                    emptyCell.FixedHeight = 10f;
+                    tabla.AddCell(emptyCell);
                 }
+
+
+
+
+
+
 
                 // Agregar la tabla al documento
                 document.Add(tabla);
