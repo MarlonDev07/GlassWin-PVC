@@ -21,6 +21,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Precentacion.User.Bill
 {
@@ -178,6 +179,35 @@ namespace Precentacion.User.Bill
                     System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(DescripcionCantidad, pattern);
                     int Cantidad = Convert.ToInt32(match.Groups[1].Value);
 
+
+
+
+                    // Patrón para extraer "Ancho Fijo"
+                    string patternAnchoFijo = @"Ancho Fijo:\s*([\d,.]+)";
+                    System.Text.RegularExpressions.Match matchAnchoFijo = System.Text.RegularExpressions.Regex.Match(DescripcionCantidad, patternAnchoFijo);
+                    decimal anchoFijo = matchAnchoFijo.Success ? Convert.ToDecimal(matchAnchoFijo.Groups[1].Value) : 0;
+
+                    // Patrón para extraer "Alto Fijo"
+                    string patternAltoFijo = @"Alto Fijo:\s*([\d,.]+)";
+                    System.Text.RegularExpressions.Match matchAltoFijo = System.Text.RegularExpressions.Regex.Match(DescripcionCantidad, patternAltoFijo);
+                    decimal altoFijo = matchAltoFijo.Success ? Convert.ToDecimal(matchAltoFijo.Groups[1].Value) : 0;
+
+                    // Patrón para extraer "Aluminio"
+                    string patternMaterial = @"Aluminio:\s*(.+)";
+                    System.Text.RegularExpressions.Match matchMaterial = System.Text.RegularExpressions.Regex.Match(DescripcionCantidad, patternMaterial);
+                    string material = matchMaterial.Success ? matchMaterial.Groups[1].Value : string.Empty;
+
+                    // Patrón para extraer "Divisiones"
+                    string patternDivisiones = @"Divisiones:\s*(\d+)";
+                    System.Text.RegularExpressions.Match matchDivisiones = System.Text.RegularExpressions.Regex.Match(DescripcionCantidad, patternDivisiones);
+                    int divisiones = matchDivisiones.Success ? Convert.ToInt32(matchDivisiones.Groups[1].Value) : 0;
+
+                    // Patrón para extraer "Vidrio"
+                    string patternVidrioF = @"Vidrio Fijo:\s*(.+)";
+                    System.Text.RegularExpressions.Match matchVidrio = System.Text.RegularExpressions.Regex.Match(DescripcionCantidad, patternVidrioF);
+                    string vidrioFijo = matchVidrio.Success ? matchVidrio.Groups[1].Value : string.Empty;
+
+
                     //Obtener el Sistema de la Ventana
                     string Sistema = row.Cells[10].Value.ToString();
                     ClsWindows.System = Sistema;
@@ -217,14 +247,47 @@ namespace Precentacion.User.Bill
                     }
                     else
                     {
-                        //Obtener el Total del Aluminio                     
-                        dtAluminio = NLoadProduct.loadAluminio(Color, Sistema, "Extralum");
+                        // Verificar si el sistema es "Ventila"
+                        if (ClsWindows.System == "Ventila")
+                        {
+                            string Descripcion = row.Cells[1].Value.ToString();
 
-                        //Obtener el Metraje del dt Aluminio y Multiplicarlo por la Cantidad de Ventanas                    
-                        foreach (DataRow item in dtAluminio.Rows)
+                            // Obtener el Total del Aluminio del Vidrio Fijo                      
+                            DataTable dtAluminioFijo = NLoadProduct.LoadAluminioFijo(Color, "Vidrio Fijo", "Extralum", anchoFijo, altoFijo, material, divisiones);
+
+                            // Obtener el Metraje del dtAluminioFijo y multiplicarlo por la Cantidad de Ventanas
+                            foreach (DataRow item in dtAluminioFijo.Rows)
+                            {
+                                item["Metraje"] = Convert.ToDecimal(item["Metraje"]) * Convert.ToDecimal(Cantidad);
+                            }
+
+                            // Agregar las filas del dtAluminioFijo al dtAluminio original
+                            dtAluminio.Merge(dtAluminioFijo);
+                        }
+
+                        // Obtener el Total del Aluminio                     
+                        DataTable dtAluminioSistema = NLoadProduct.loadAluminio(Color, Sistema, "Extralum");
+
+                        // Obtener el Metraje del dtAluminioSistema y multiplicarlo por la Cantidad de Ventanas                    
+                        foreach (DataRow item in dtAluminioSistema.Rows)
                         {
                             item["Metraje"] = Convert.ToDecimal(item["Metraje"]) * Convert.ToDecimal(Cantidad);
                         }
+
+                        // Agregar las filas del dtAluminioSistema al dtAluminio original
+                        dtAluminio.Merge(dtAluminioSistema);
+
+                        // Eliminar filas donde la columna Metraje tenga un valor de 0
+                        foreach (DataRow row2 in dtAluminio.Rows.Cast<DataRow>().ToList())
+                        {
+                            if (Convert.ToDecimal(row2["Metraje"]) == 0)
+                            {
+                                row2.Delete();
+                            }
+                        }
+
+                        // Asegúrate de aceptar los cambios para que se eliminen las filas marcadas para eliminación
+                        dtAluminio.AcceptChanges();
                     }
                     //Validar todos las Celdas del dtAluminio para agregarlas al dtTotalDesglose                    
                     if (dtTotalDesglose.Rows.Count == 0)
@@ -286,15 +349,53 @@ namespace Precentacion.User.Bill
                             }
                         }
                     }
-                    //Obtener el Total de los Vidrios                      
-                    DataTable dtVidrios = NLoadProduct.loadPricesGlass("Extralum", Vidrio);
-                    //Obtener el Metraje del dt Vidrios y Multiplicarlo por la Cantidad de Ventanas
-                    foreach (DataRow item in dtVidrios.Rows)
+                    // Declarar la variable dtVidrios antes de su uso
+                    DataTable dtVidrios = new DataTable();
+
+                    // Verificar si el sistema es "Ventila"
+                    if (ClsWindows.System == "Ventila")
+                    {
+                        string Descripcion = row.Cells[1].Value.ToString();
+
+                        // Obtener el Total del Vidrio Fijo
+                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlass("Extralum", vidrioFijo, anchoFijo, altoFijo);
+
+                        // Obtener el Metraje del dtVidriosFijo y multiplicarlo por la Cantidad de Ventanas
+                        foreach (DataRow item in dtVidriosFijo.Rows)
+                        {
+                            item["Metraje"] = Convert.ToDecimal(item["Metraje"]) * Convert.ToDecimal(Cantidad);
+                        }
+
+                        // Agregar las filas del dtVidriosFijo al dtVidrios original
+                        dtVidrios.Merge(dtVidriosFijo);
+                    }
+
+                    // Obtener el Total de los Vidrios (del sistema general)
+                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlass("Extralum", Vidrio);
+
+                    // Obtener el Metraje del dtVidriosSistema y multiplicarlo por la Cantidad de Ventanas
+                    foreach (DataRow item in dtVidriosSistema.Rows)
                     {
                         item["Metraje"] = Convert.ToDecimal(item["Metraje"]) * Convert.ToDecimal(Cantidad);
                     }
 
-                    //Validar todos las Celdas del dtVidrios para agregarlas al dtTotalDesglose                     
+                    // Agregar las filas del dtVidriosSistema al dtVidrios original
+                    dtVidrios.Merge(dtVidriosSistema);
+
+                    // Eliminar filas donde la columna Metraje tenga un valor de 0
+                    foreach (DataRow row2 in dtVidrios.Rows.Cast<DataRow>().ToList())
+                    {
+                        if (Convert.ToDecimal(row2["Metraje"]) == 0)
+                        {
+                            row2.Delete();
+                        }
+                    }
+
+                    // Asegúrate de aceptar los cambios para que se eliminen las filas marcadas para eliminación
+                    dtVidrios.AcceptChanges();
+
+
+                    // Validar todas las celdas del dtVidrios para agregarlas al dtTotalDesglose
                     if (dtTotalDesglose.Rows.Count == 0)
                     {
                         dtTotalDesglose = dtVidrios;
@@ -303,12 +404,11 @@ namespace Precentacion.User.Bill
                     {
                         foreach (DataRow item in dtVidrios.Rows)
                         {
-                            //Validar si la celda Description tiene el mismo valor y si es asi sumar el Metraje                    
-                            if (dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'").Length > 0)
+                            // Validar si la celda Description tiene el mismo valor y, si es así, sumar el Metraje
+                            DataRow[] rows = dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'");
+                            if (rows.Length > 0)
                             {
-                                DataRow[] rows = dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'");
                                 rows[0]["Metraje"] = Convert.ToDecimal(rows[0]["Metraje"]) + Convert.ToDecimal(item["Metraje"]);
-
                             }
                             else
                             {
@@ -316,6 +416,7 @@ namespace Precentacion.User.Bill
                             }
                         }
                     }
+
                 }
                 //Eliminar del DataTable la fila que el Metraje sea 0
                 dtTotalDesglose = dtTotalDesglose.Select("Metraje > 0").CopyToDataTable();

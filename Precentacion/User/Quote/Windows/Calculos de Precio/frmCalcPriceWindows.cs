@@ -691,11 +691,11 @@ namespace Precentacion.User.Quote.Windows
                 }
 
 
-                if (txtAddWeigth.Text != "" && txtAddHeight.Text != "")
-                {
-                    description += "Ancho Fijo: " + anchoT + "\n";
-                    description += "Alto Fijo: " + altoT + "\n";
-                }
+                //if (txtAddWeigth.Text != "" && txtAddHeight.Text != "")
+                //{
+                //description += "Ancho Fijo: " + anchoT + "\n";
+                //description += "Alto Fijo: " + altoT + "\n";
+                //}
                 //Añadir la Ubicacion
                 if (txtUbicacion.Text != "")
                 {
@@ -703,6 +703,18 @@ namespace Precentacion.User.Quote.Windows
                 }
                 //Añadir la cantidad 
                 description += "Cantidad: " + NumCantidad + "\n";
+                if (txtAddWeigth.Text != "" && txtAddHeight.Text != "")
+                {
+                    description += "\n";
+                    description += "Vidrio Fijo\n";
+                    description += "Ancho Fijo: " + anchoT + "\n";
+                    description += "Alto Fijo: " + altoT + "\n";
+                    description += "Aluminio: " + cbAluminio.Text + "\n";
+                    description += "Ubicación: " + cbUbicacion.Text + "\n";
+                    description += "Divisiones: " + txtDiviciones.Text + "\n";
+                    description += "Vidrio Fijo: " + cbGlass.Text + "\n";
+
+                }
                 return description;
             }
             catch (Exception ex)
