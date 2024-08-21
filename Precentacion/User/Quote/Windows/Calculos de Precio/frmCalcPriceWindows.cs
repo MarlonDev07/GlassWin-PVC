@@ -2808,8 +2808,8 @@ namespace Precentacion.User.Quote.Windows
         {
             if (Design2 == "1 Hoja Horizontal" || Design2 == "2 Hoja Horizontal" || Design2 == "3 Hoja Horizontal" || Design2 == "4 Hoja Horizontal" || Design2 == "5 Hoja Horizontal" || Design2 == "6 Hoja Horizontal" || Design2 == "2 Hoja Vertical" || Design2 == "1 Hoja 1 Fijo Vertical" || Design2 == "3 Hoja Vertical")
             {
-                label10.Visible = false;
-                PanelVidrioFijo.Visible = false;
+                label10.Visible = true;
+                PanelVidrioFijo.Visible = true;
             }
             else if (System2 == "Ventila Euro")
             {
@@ -2835,6 +2835,11 @@ namespace Precentacion.User.Quote.Windows
                 PanelVidrioFijo.Visible = false;
                 cbVidrio.Visible = false;
                 lblVidrio.Visible = false;
+            }
+            if (System2 == "Ventila") 
+            {
+                label10.Visible = true;
+                PanelVidrioFijo.Visible = true;
             }
         }
 
