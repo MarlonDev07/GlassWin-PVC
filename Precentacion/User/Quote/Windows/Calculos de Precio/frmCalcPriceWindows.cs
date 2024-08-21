@@ -63,6 +63,9 @@ namespace Precentacion.User.Quote.Windows
 
                 pbVentana.Anchor = AnchorStyles.Top | AnchorStyles.Left;
                 pbVentana.SizeMode = PictureBoxSizeMode.Zoom;
+                // Agregar nuevas opciones al ComboBox
+                cbUbicacion.Items.Add("Superior Corredizo");
+                cbUbicacion.Items.Add("Inferior Corredizo");
             }
             catch (Exception ex)
             {
