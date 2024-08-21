@@ -248,7 +248,7 @@ namespace Precentacion.User.Bill
                     else
                     {
                         // Verificar si el sistema es "Ventila"
-                        if (ClsWindows.System == "Ventila")
+                        if (anchoFijo > 0)
                         {
                             string Descripcion = row.Cells[1].Value.ToString();
 
@@ -353,7 +353,7 @@ namespace Precentacion.User.Bill
                     DataTable dtVidrios = new DataTable();
 
                     // Verificar si el sistema es "Ventila"
-                    if (ClsWindows.System == "Ventila")
+                    if (anchoFijo > 0)
                     {
                         string Descripcion = row.Cells[1].Value.ToString();
 
