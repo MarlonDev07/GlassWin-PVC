@@ -1122,7 +1122,7 @@ namespace Precentacion.User.Quote.Windows
         #region Restricciones y Validaciones
         private void Restricciones()
         {
-            if (cbGlass.SelectedIndex == 0 && ClsWindows.System != "5020")
+            if (cbGlass.SelectedIndex == 0 && ClsWindows.System != "5020" && ClsWindows.System != "Ventila")
             {
                 DialogResult res = MessageBox.Show("El Aluminio seleccionado no es compatible con el sistema seleccionado, ¿Desea continuar?", "Aluminio no compatible", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (res == DialogResult.No)
