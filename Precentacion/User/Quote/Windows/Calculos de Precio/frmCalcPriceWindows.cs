@@ -2836,7 +2836,7 @@ namespace Precentacion.User.Quote.Windows
                 cbVidrio.Visible = false;
                 lblVidrio.Visible = false;
             }
-            if (System2 == "Ventila") 
+            if (ClsWindows.System == "Ventila") 
             {
                 label10.Visible = true;
                 PanelVidrioFijo.Visible = true;
