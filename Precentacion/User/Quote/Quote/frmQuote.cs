@@ -1743,8 +1743,11 @@ namespace Precentacion.User.Quote.Quote
                 #endregion
 
                 // Cambiar el nombre de las columnas en el DataGridView
-                dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
+                //dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
                 dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
+                dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
+              
+
 
                 #region Tabla de Productos
                 // Crear una tabla con el número de columnas de tu DataGridView
@@ -1770,7 +1773,7 @@ namespace Precentacion.User.Quote.Quote
                         {
                             PdfPCell cell = null;
 
-                            if (dgCotizaciones.Columns[j].HeaderText == "URL")
+                            if (dgCotizaciones.Columns[j].HeaderText == "Diseño")
                             {
                                 string rutaImagen = dgCotizaciones[j, i].Value.ToString();
                                 System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
