@@ -7608,7 +7608,7 @@ namespace Negocio.LoadProduct
 
                 //*******************Accesorios********************//
                 case "Cierre VT":
-                    metraje = 1;
+                    metraje = 3;
                     break;
                 case "Cremona 8":
                     if (ClsWindows.heigt >= 0.50m && ClsWindows.heigt <= 0.80m)
@@ -7664,7 +7664,7 @@ namespace Negocio.LoadProduct
                     metraje = 12;
                     break;
                 case "Empaque VT":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 18) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 24) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
                     break;
 
             }
