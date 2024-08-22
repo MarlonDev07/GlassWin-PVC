@@ -424,6 +424,12 @@
     <Compile Include="User\Quote\Quote\frmDescripcion.Designer.cs">
       <DependentUpon>frmDescripcion.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\Quote\Quote\frmDesglose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Quote\Quote\frmDesglose.Designer.cs">
+      <DependentUpon>frmDesglose.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\Quote\Quote\frmManagerQuotes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -661,6 +667,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\Quote\Quote\frmDescripcion.resx">
       <DependentUpon>frmDescripcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Quote\Quote\frmDesglose.resx">
+      <DependentUpon>frmDesglose.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Quote\Quote\frmManagerQuotes.resx">
       <DependentUpon>frmManagerQuotes.cs</DependentUpon>

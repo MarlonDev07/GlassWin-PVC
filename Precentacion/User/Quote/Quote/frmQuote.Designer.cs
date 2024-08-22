@@ -29,28 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuote));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuote));
             this.txtConditional5 = new System.Windows.Forms.TextBox();
             this.txtConditional4 = new System.Windows.Forms.TextBox();
             this.txtConditional3 = new System.Windows.Forms.TextBox();
             this.txtConditional2 = new System.Windows.Forms.TextBox();
             this.txtConditional1 = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtIVA = new System.Windows.Forms.TextBox();
-            this.btnSistemas = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtManoObra = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.lblTotalPago = new System.Windows.Forms.Label();
-            this.btnRefrescar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.dgCotizaciones = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.agregarAccesorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,16 +80,21 @@
             this.txtConditional10 = new System.Windows.Forms.TextBox();
             this.txtConditional9 = new System.Windows.Forms.TextBox();
             this.txtConditional8 = new System.Windows.Forms.TextBox();
-            this.btnExclusivo = new System.Windows.Forms.Button();
-            this.btnViaticos = new System.Windows.Forms.Button();
-            this.btnSanBlast = new System.Windows.Forms.Button();
             this.cbIva = new System.Windows.Forms.ComboBox();
-            this.btnPrefabricado = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             this.btnDolarCambio = new System.Windows.Forms.Button();
             this.btnCambioDolar2 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnPrefabricado = new System.Windows.Forms.Button();
+            this.btnSanBlast = new System.Windows.Forms.Button();
+            this.btnViaticos = new System.Windows.Forms.Button();
+            this.btnExclusivo = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnSistemas = new System.Windows.Forms.Button();
+            this.btnRefrescar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCargarDesglose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgCotizaciones)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -154,21 +155,6 @@
             this.txtConditional1.Size = new System.Drawing.Size(880, 18);
             this.txtConditional1.TabIndex = 7;
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnBuscar.BackColor = System.Drawing.Color.SeaShell;
-            this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnBuscar.Location = new System.Drawing.Point(957, 17);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(28, 26);
-            this.btnBuscar.TabIndex = 147;
-            this.btnBuscar.Text = " ";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // txtSubtotal
             // 
             this.txtSubtotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -203,21 +189,6 @@
             this.txtIVA.ReadOnly = true;
             this.txtIVA.Size = new System.Drawing.Size(95, 26);
             this.txtIVA.TabIndex = 143;
-            // 
-            // btnSistemas
-            // 
-            this.btnSistemas.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSistemas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSistemas.BackgroundImage")));
-            this.btnSistemas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSistemas.FlatAppearance.BorderSize = 2;
-            this.btnSistemas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSistemas.Image = ((System.Drawing.Image)(resources.GetObject("btnSistemas.Image")));
-            this.btnSistemas.Location = new System.Drawing.Point(39, 347);
-            this.btnSistemas.Name = "btnSistemas";
-            this.btnSistemas.Size = new System.Drawing.Size(34, 30);
-            this.btnSistemas.TabIndex = 17;
-            this.btnSistemas.UseVisualStyleBackColor = true;
-            this.btnSistemas.Click += new System.EventHandler(this.btnSistemas_Click);
             // 
             // label1
             // 
@@ -281,34 +252,6 @@
             this.lblTotalPago.TabIndex = 134;
             this.lblTotalPago.Text = "Total Pagar";
             this.lblTotalPago.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnRefrescar
-            // 
-            this.btnRefrescar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnRefrescar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRefrescar.BackgroundImage")));
-            this.btnRefrescar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnRefrescar.FlatAppearance.BorderSize = 2;
-            this.btnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefrescar.Location = new System.Drawing.Point(87, 347);
-            this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(36, 30);
-            this.btnRefrescar.TabIndex = 18;
-            this.btnRefrescar.UseVisualStyleBackColor = true;
-            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnGuardar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.BackgroundImage")));
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(830, 611);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(73, 67);
-            this.btnGuardar.TabIndex = 20;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // dgCotizaciones
             // 
@@ -728,51 +671,6 @@
             this.txtConditional8.Size = new System.Drawing.Size(880, 18);
             this.txtConditional8.TabIndex = 174;
             // 
-            // btnExclusivo
-            // 
-            this.btnExclusivo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnExclusivo.BackColor = System.Drawing.Color.Transparent;
-            this.btnExclusivo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExclusivo.ForeColor = System.Drawing.Color.Black;
-            this.btnExclusivo.Image = ((System.Drawing.Image)(resources.GetObject("btnExclusivo.Image")));
-            this.btnExclusivo.Location = new System.Drawing.Point(387, 347);
-            this.btnExclusivo.Name = "btnExclusivo";
-            this.btnExclusivo.Size = new System.Drawing.Size(65, 30);
-            this.btnExclusivo.TabIndex = 178;
-            this.toolTip1.SetToolTip(this.btnExclusivo, "Carga de Sistemas Manuales");
-            this.btnExclusivo.UseVisualStyleBackColor = false;
-            this.btnExclusivo.Click += new System.EventHandler(this.btnExclusivo_Click);
-            // 
-            // btnViaticos
-            // 
-            this.btnViaticos.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnViaticos.BackColor = System.Drawing.Color.Transparent;
-            this.btnViaticos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViaticos.ForeColor = System.Drawing.Color.Black;
-            this.btnViaticos.Image = ((System.Drawing.Image)(resources.GetObject("btnViaticos.Image")));
-            this.btnViaticos.Location = new System.Drawing.Point(133, 347);
-            this.btnViaticos.Name = "btnViaticos";
-            this.btnViaticos.Size = new System.Drawing.Size(65, 30);
-            this.btnViaticos.TabIndex = 179;
-            this.toolTip1.SetToolTip(this.btnViaticos, "Cargar Viáticos\r\n");
-            this.btnViaticos.UseVisualStyleBackColor = false;
-            this.btnViaticos.Click += new System.EventHandler(this.btnViaticos_Click);
-            // 
-            // btnSanBlast
-            // 
-            this.btnSanBlast.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSanBlast.BackColor = System.Drawing.Color.Transparent;
-            this.btnSanBlast.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSanBlast.ForeColor = System.Drawing.Color.Black;
-            this.btnSanBlast.Image = ((System.Drawing.Image)(resources.GetObject("btnSanBlast.Image")));
-            this.btnSanBlast.Location = new System.Drawing.Point(218, 347);
-            this.btnSanBlast.Name = "btnSanBlast";
-            this.btnSanBlast.Size = new System.Drawing.Size(65, 30);
-            this.btnSanBlast.TabIndex = 180;
-            this.toolTip1.SetToolTip(this.btnSanBlast, "Diseños Arenados");
-            this.btnSanBlast.UseVisualStyleBackColor = false;
-            this.btnSanBlast.Click += new System.EventHandler(this.btnSanBlast_Click);
-            // 
             // cbIva
             // 
             this.cbIva.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -791,21 +689,6 @@
             this.cbIva.TabIndex = 181;
             this.cbIva.SelectedIndexChanged += new System.EventHandler(this.cbIva_SelectedIndexChanged);
             // 
-            // btnPrefabricado
-            // 
-            this.btnPrefabricado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnPrefabricado.BackColor = System.Drawing.Color.Transparent;
-            this.btnPrefabricado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrefabricado.ForeColor = System.Drawing.Color.Black;
-            this.btnPrefabricado.Image = ((System.Drawing.Image)(resources.GetObject("btnPrefabricado.Image")));
-            this.btnPrefabricado.Location = new System.Drawing.Point(302, 347);
-            this.btnPrefabricado.Name = "btnPrefabricado";
-            this.btnPrefabricado.Size = new System.Drawing.Size(65, 30);
-            this.btnPrefabricado.TabIndex = 182;
-            this.toolTip1.SetToolTip(this.btnPrefabricado, "Carga de Artículos Unitarios");
-            this.btnPrefabricado.UseVisualStyleBackColor = false;
-            this.btnPrefabricado.Click += new System.EventHandler(this.btnPrefabricado_Click);
-            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -823,21 +706,6 @@
             // toolTip1
             // 
             this.toolTip1.Tag = "";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(472, 347);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 30);
-            this.button2.TabIndex = 186;
-            this.toolTip1.SetToolTip(this.button2, "Hojas para Fabricación en Excel");
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnDolarCambio
             // 
@@ -861,12 +729,161 @@
             this.btnCambioDolar2.UseVisualStyleBackColor = true;
             this.btnCambioDolar2.Click += new System.EventHandler(this.btnCambioDolar2_Click);
             // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(472, 347);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(65, 30);
+            this.button2.TabIndex = 186;
+            this.toolTip1.SetToolTip(this.button2, "Hojas para Fabricación en Excel");
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnPrefabricado
+            // 
+            this.btnPrefabricado.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnPrefabricado.BackColor = System.Drawing.Color.Transparent;
+            this.btnPrefabricado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrefabricado.ForeColor = System.Drawing.Color.Black;
+            this.btnPrefabricado.Image = ((System.Drawing.Image)(resources.GetObject("btnPrefabricado.Image")));
+            this.btnPrefabricado.Location = new System.Drawing.Point(302, 347);
+            this.btnPrefabricado.Name = "btnPrefabricado";
+            this.btnPrefabricado.Size = new System.Drawing.Size(65, 30);
+            this.btnPrefabricado.TabIndex = 182;
+            this.toolTip1.SetToolTip(this.btnPrefabricado, "Carga de Artículos Unitarios");
+            this.btnPrefabricado.UseVisualStyleBackColor = false;
+            this.btnPrefabricado.Click += new System.EventHandler(this.btnPrefabricado_Click);
+            // 
+            // btnSanBlast
+            // 
+            this.btnSanBlast.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSanBlast.BackColor = System.Drawing.Color.Transparent;
+            this.btnSanBlast.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSanBlast.ForeColor = System.Drawing.Color.Black;
+            this.btnSanBlast.Image = ((System.Drawing.Image)(resources.GetObject("btnSanBlast.Image")));
+            this.btnSanBlast.Location = new System.Drawing.Point(218, 347);
+            this.btnSanBlast.Name = "btnSanBlast";
+            this.btnSanBlast.Size = new System.Drawing.Size(65, 30);
+            this.btnSanBlast.TabIndex = 180;
+            this.toolTip1.SetToolTip(this.btnSanBlast, "Diseños Arenados");
+            this.btnSanBlast.UseVisualStyleBackColor = false;
+            this.btnSanBlast.Click += new System.EventHandler(this.btnSanBlast_Click);
+            // 
+            // btnViaticos
+            // 
+            this.btnViaticos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnViaticos.BackColor = System.Drawing.Color.Transparent;
+            this.btnViaticos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViaticos.ForeColor = System.Drawing.Color.Black;
+            this.btnViaticos.Image = ((System.Drawing.Image)(resources.GetObject("btnViaticos.Image")));
+            this.btnViaticos.Location = new System.Drawing.Point(133, 347);
+            this.btnViaticos.Name = "btnViaticos";
+            this.btnViaticos.Size = new System.Drawing.Size(65, 30);
+            this.btnViaticos.TabIndex = 179;
+            this.toolTip1.SetToolTip(this.btnViaticos, "Cargar Viáticos\r\n");
+            this.btnViaticos.UseVisualStyleBackColor = false;
+            this.btnViaticos.Click += new System.EventHandler(this.btnViaticos_Click);
+            // 
+            // btnExclusivo
+            // 
+            this.btnExclusivo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnExclusivo.BackColor = System.Drawing.Color.Transparent;
+            this.btnExclusivo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExclusivo.ForeColor = System.Drawing.Color.Black;
+            this.btnExclusivo.Image = ((System.Drawing.Image)(resources.GetObject("btnExclusivo.Image")));
+            this.btnExclusivo.Location = new System.Drawing.Point(387, 347);
+            this.btnExclusivo.Name = "btnExclusivo";
+            this.btnExclusivo.Size = new System.Drawing.Size(65, 30);
+            this.btnExclusivo.TabIndex = 178;
+            this.toolTip1.SetToolTip(this.btnExclusivo, "Carga de Sistemas Manuales");
+            this.btnExclusivo.UseVisualStyleBackColor = false;
+            this.btnExclusivo.Click += new System.EventHandler(this.btnExclusivo_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnBuscar.BackColor = System.Drawing.Color.SeaShell;
+            this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBuscar.Location = new System.Drawing.Point(957, 17);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(28, 26);
+            this.btnBuscar.TabIndex = 147;
+            this.btnBuscar.Text = " ";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnSistemas
+            // 
+            this.btnSistemas.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSistemas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSistemas.BackgroundImage")));
+            this.btnSistemas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSistemas.FlatAppearance.BorderSize = 2;
+            this.btnSistemas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSistemas.Image = ((System.Drawing.Image)(resources.GetObject("btnSistemas.Image")));
+            this.btnSistemas.Location = new System.Drawing.Point(39, 347);
+            this.btnSistemas.Name = "btnSistemas";
+            this.btnSistemas.Size = new System.Drawing.Size(34, 30);
+            this.btnSistemas.TabIndex = 17;
+            this.btnSistemas.UseVisualStyleBackColor = true;
+            this.btnSistemas.Click += new System.EventHandler(this.btnSistemas_Click);
+            // 
+            // btnRefrescar
+            // 
+            this.btnRefrescar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnRefrescar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRefrescar.BackgroundImage")));
+            this.btnRefrescar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRefrescar.FlatAppearance.BorderSize = 2;
+            this.btnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefrescar.Location = new System.Drawing.Point(87, 347);
+            this.btnRefrescar.Name = "btnRefrescar";
+            this.btnRefrescar.Size = new System.Drawing.Size(36, 30);
+            this.btnRefrescar.TabIndex = 18;
+            this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnGuardar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.BackgroundImage")));
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Location = new System.Drawing.Point(830, 611);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(73, 67);
+            this.btnGuardar.TabIndex = 20;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnCargarDesglose
+            // 
+            this.btnCargarDesglose.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCargarDesglose.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarDesglose.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargarDesglose.ForeColor = System.Drawing.Color.Black;
+            this.btnCargarDesglose.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarDesglose.Image")));
+            this.btnCargarDesglose.Location = new System.Drawing.Point(558, 347);
+            this.btnCargarDesglose.Name = "btnCargarDesglose";
+            this.btnCargarDesglose.Size = new System.Drawing.Size(65, 30);
+            this.btnCargarDesglose.TabIndex = 190;
+            this.toolTip1.SetToolTip(this.btnCargarDesglose, "Hojas para Fabricación en Excel");
+            this.btnCargarDesglose.UseVisualStyleBackColor = false;
+            this.btnCargarDesglose.Click += new System.EventHandler(this.btnCargarDesglose_Click);
+            // 
             // frmQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1036, 682);
+            this.Controls.Add(this.btnCargarDesglose);
             this.Controls.Add(this.btnCambioDolar2);
             this.Controls.Add(this.btnDolarCambio);
             this.Controls.Add(this.button2);
@@ -1001,5 +1018,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnDolarCambio;
         private System.Windows.Forms.Button btnCambioDolar2;
+        private System.Windows.Forms.Button btnCargarDesglose;
     }
 }
