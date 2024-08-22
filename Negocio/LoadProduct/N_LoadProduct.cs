@@ -76,6 +76,76 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
+
+
+
+
+
+        public DataTable loadAluminioDesglose(string Color, string System, string supplier)
+        {
+
+            try
+            {
+                DataTable dt = new DataTable();
+                if (ClsWindows.System == "6030 2 Vias" || ClsWindows.System == "6030 3 Vias" || ClsWindows.System == "8040 2 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "CedazoAkari")
+                {
+                    System = "Akari";
+                }
+                if (ClsWindows.System == "8025 2 Vias" || ClsWindows.System == "8025 3 Vias")
+                {
+                    System = "8025";
+                }
+                if (ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias" || ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta")
+                {
+                    System = "EuCorredizo";
+                }
+                if (ClsWindows.System == "PuertaEuAbatible" || ClsWindows.System == "Ventila Euro")
+                {
+                    System = "EuAbatible";
+                }
+                if (ClsWindows.System == "5020 3 Vias" || ClsWindows.System == "Cedazo 1/2")
+                {
+                    System = "5020";
+                }
+
+                //Carga el DataTable con los datos de la base de datos
+                dt = loadProduct.loadAluminioDesglose(Color, System, supplier);
+
+                //Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                if (!dt.Columns.Contains("Metraje"))
+                {
+                    dt.Columns.Add("Metraje", typeof(decimal));
+                }
+
+                /*if (!dt.Columns.Contains("TotalPrice"))
+                {
+                    dt.Columns.Add("TotalPrice", typeof(decimal));
+                }*/
+                foreach (DataRow item in dt.Rows)
+                {
+                    string Description = item[0].ToString();
+                    decimal Metraje = CalcMetraje(Description);
+                    decimal SalePrice = Convert.ToDecimal(item[1]);
+                    //decimal Price = CalcPrice(Metraje, SalePrice);
+
+                    // Modifica directamente el valor de las columnas en la fila actual
+                    item["Metraje"] = Metraje;
+                    //item["TotalPrice"] = Price;
+                }
+
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+
+
+
         //Load Aluminio utilidad
         public DataTable loadAluminioUtilidad(string Color, string System, string supplier)
         {
@@ -239,6 +309,100 @@ namespace Negocio.LoadProduct
         }
 
 
+        public DataTable loadAluminioVentanaFijaDesglose(string Color, string System, string supplier, string Material)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                if (ClsWindows.System == "PuertaEuAbatible")
+                {
+                    System = "EuAbatible";
+                }
+
+                dt = loadProduct.loadAluminioDesglose(Color, System, supplier);
+
+                // Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                if (!dt.Columns.Contains("Metraje"))
+                {
+                    dt.Columns.Add("Metraje", typeof(decimal));
+                }
+                /*if (!dt.Columns.Contains("TotalPrice"))
+                {
+                    dt.Columns.Add("TotalPrice", typeof(decimal));
+                }*/
+
+                foreach (DataRow item in dt.Rows)
+                {
+                    decimal Metraje = 0;
+                    string Description = item[0].ToString();
+                    if (ClsWindows.System == "Vidrio Fijo")
+                    {
+                        if (ClsWindows.Desing == "FijoGeotrica")
+                        {
+                            Metraje = CalclMetrajeFijoAjusteAlto(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoGeotricaDivision")
+                        {
+                            Metraje = CalclMetrajeFijoAjusteAlto1Divicion(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoGeotrica2Division")
+                        {
+                            Metraje = CalclMetrajeFijoAjusteAlto2Divicion(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoGeotricaInvertido")
+                        {
+                            Metraje = CalclMetrajeFijoAjusteAltoinvertido(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoGeotricaInvertidoDivision")
+                        {
+                            Metraje = CalclMetrajeFijoAjusteAlto1DivicionInvertido(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoGeotricaInvertido2Division")
+                        {
+                            Metraje = CalclMetrajeFijoAjusteAlto2DivicionInvertido(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoEscaleno")
+                        {
+                            Metraje = CalclMetrajeFijoEscaleno(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoEscalenoDivision")
+                        {
+                            Metraje = CalclMetrajeFijoEscaleno1Divicion(Description);
+                        }
+                        else if (ClsWindows.Desing == "FijoEscaleno2Division")
+                        {
+                            Metraje = CalclMetrajeFijoEscaleno2Divicion(Description);
+                        }
+                        else
+                        {
+                            Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
+                    }
+                    else
+                    {
+                        Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, "");
+                    }
+
+
+                    decimal SalePrice = Convert.ToDecimal(item[1]);
+                   // decimal Price = CalcPrice(Metraje, SalePrice);
+
+                    // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
+                    item["Metraje"] = Metraje;
+                    //item["TotalPrice"] = Price;
+
+
+
+                }
+
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
 
 
 
@@ -373,6 +537,86 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
+
+
+
+
+        public DataTable loadAccesoriosDesglose(string System, string supplier)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                if (ClsWindows.System == "6030 2 Vias" || ClsWindows.System == "6030 3 Vias" || ClsWindows.System == "8040 2 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "CedazoAkari")
+                {
+                    System = "Akari";
+                }
+                if (ClsWindows.System == "8025 2 Vias" || ClsWindows.System == "8025 3 Vias")
+                {
+                    System = "8025";
+                }
+                if (ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias" || ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta")
+                {
+                    System = "EuCorredizo";
+                }
+                if (ClsWindows.System == "PuertaEuAbatible" || ClsWindows.System == "Ventila Euro")
+                {
+                    System = "EuAbatible";
+                }
+                if (ClsWindows.System == "5020 3 Vias" || ClsWindows.System == "Cedazo 1/2")
+                {
+                    System = "5020";
+                }
+                dt = loadProduct.loadAccesoriosDesglose(System, supplier);
+
+                // Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                if (!dt.Columns.Contains("Metraje"))
+                {
+                    dt.Columns.Add("Metraje", typeof(decimal));
+                }
+                /*if (!dt.Columns.Contains("TotalPrice"))
+                {
+                    dt.Columns.Add("TotalPrice", typeof(decimal));
+                }*/
+
+                if (ClsWindows.System == "EuAbatible")
+                {
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        string Description = item[0].ToString();
+                        decimal Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, "");
+                        decimal SalePrice = Convert.ToDecimal(item[1]);
+                        //decimal Price = CalcPrice(Metraje, SalePrice);
+
+                        // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
+                        item["Metraje"] = Metraje;
+                        //item["TotalPrice"] = Price;
+                    }
+                }
+                else
+                {
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        string Description = item[0].ToString();
+                        decimal Metraje = CalcMetraje(Description);
+                        decimal SalePrice = Convert.ToDecimal(item[1]);
+                       // decimal Price = CalcPrice(Metraje, SalePrice);
+
+                        // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
+                        item["Metraje"] = Metraje;
+                        //item["TotalPrice"] = Price;
+                    }
+                }
+
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
 
         //Load Accesorios Utilidad
         public DataTable loadAccesoriosUtilidad(string System, string supplier)
@@ -511,6 +755,56 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
+
+
+
+
+
+        public DataTable loadPricesGlassDesglose(string supplier, string Description)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = loadProduct.loadPricesGlassDesglose(supplier, Description);
+
+                // Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                if (!dt.Columns.Contains("Metraje"))
+                {
+                    dt.Columns.Add("Metraje", typeof(decimal));
+                }
+                /*if (!dt.Columns.Contains("TotalPrice"))
+                {
+                    dt.Columns.Add("TotalPrice", typeof(decimal));
+                }*/
+
+                foreach (DataRow item in dt.Rows)
+                {
+                    decimal Metraje = ClsWindows.Weight * ClsWindows.heigt;
+                    if (Metraje == 0)
+                    {
+                        Metraje = clsPuertaBaño.WeightTotal * clsPuertaBaño.heigt;
+                    }
+
+                    decimal SalePrice = Convert.ToDecimal(item[1]);// Asumiendo que la columna "Cost" existe y tiene valores
+                    //decimal Price = CalcPrice(Metraje, SalePrice);
+
+                    // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
+                    item["Metraje"] = Metraje;
+                    //item["TotalPrice"] = Price;
+                }
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+
+
+
 
         //Load PriceGlass para Utilidad
         public DataTable loadPricesGlassUtilidad(string supplier, string Description)
@@ -679,6 +973,39 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
+
+        public DataTable LoadPriceNewGlassDesglose(string supplier, string Description, decimal Weight, decimal Heigt)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = loadProduct.loadPricesGlassDesglose(supplier, Description);
+                if (!dt.Columns.Contains("Metraje")/* || !dt.Columns.Contains("TotalPrice")*/)
+                {
+                    dt.Columns.Add("Metraje", typeof(decimal));
+                    //dt.Columns.Add("TotalPrice", typeof(decimal));
+                }
+                foreach (DataRow item in dt.Rows)
+                {
+                    decimal Metraje = Weight * Heigt;
+                    decimal SalePrice = Convert.ToDecimal(item[1]);
+                    //decimal Price = CalcPrice(Metraje, SalePrice);
+
+                    // Modifica directamente el valor de la columna "Metraje" en la fila actual
+                    item["Metraje"] = Metraje;
+                    //item["TotalPrice"] = Price;
+                    //Console.WriteLine(item[0].ToString() + " " + Metraje.ToString() + " " + Price.ToString());
+                }
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+
         //Load PriceNweGlass Utilidad
         public DataTable LoadPriceNewGlassUtilidad(string supplier, string Description, decimal Weight, decimal Heigt)
         {
@@ -746,6 +1073,43 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
+
+
+
+        public DataTable LoadAluminioFijoDesglose(string Color, string System, string supplier, decimal Weight, decimal Heigt, string Material, int Diviciones)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = loadProduct.loadAluminioDesglose(Color, System, supplier);
+                if (!dt.Columns.Contains("Metraje")/* || !dt.Columns.Contains("TotalPrice")*/)
+                {
+                    dt.Columns.Add("Metraje", typeof(decimal));
+                    //dt.Columns.Add("TotalPrice", typeof(decimal));
+                }
+                foreach (DataRow item in dt.Rows)
+                {
+                    string Description = item[0].ToString();
+                    decimal Metraje = CalclMetrajeVidrioFijo(Description, Weight, Heigt, Material, Diviciones);
+                    decimal SalePrice = Convert.ToDecimal(item[1]);
+                    //decimal Price = CalcPrice(Metraje, SalePrice);
+
+                    // Modifica directamente el valor de la columna "Metraje" en la fila actual
+                    item["Metraje"] = Metraje;
+                    //item["TotalPrice"] = Price;
+                    //Console.WriteLine(item[0].ToString() + " " + Metraje.ToString() + " " + Price.ToString());
+                }
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+
         //Load Aluminio Fijo Utilidad
         public DataTable LoadAluminioFijoUtilidad(string Color, string System, string supplier, decimal Weight, decimal Heigt, string Material, int Diviciones)
         {

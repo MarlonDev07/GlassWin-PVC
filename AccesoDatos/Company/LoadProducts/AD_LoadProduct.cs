@@ -39,6 +39,42 @@ namespace AccesoDatos.Company.LoadProducts
 
 
 
+  
+
+
+
+        public DataTable loadAluminioDesglose(string Color, string System, string supplier)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                ClsConnection con = new ClsConnection();
+                string sql = "";
+
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "select P.Description,PP.SalePrice,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
+                }
+                else
+                {
+                    sql = "select P.Description,PP.Cost,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color ='" + Color + "' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Aluminio' and p.System = '" + System + "'";
+                }
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.Fill(dt);
+                con.CloseConnection();
+                return dt;
+
+            }
+            catch (Exception)
+            {
+
+                return null;
+
+            }
+        }
+
+
+
         public DataTable loadAluminioDesglose()
         {
             try
@@ -178,6 +214,44 @@ namespace AccesoDatos.Company.LoadProducts
 			}
 		}
 
+
+
+
+
+
+        public DataTable loadAccesoriosDesglose(string System, string supplier)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                ClsConnection con = new ClsConnection();
+                string sql = "";
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "select P.Description,PP.SalePrice,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color = 'Negro' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Accesorios' and p.System = '" + System + "'";
+                }
+                else
+                {
+                    sql = "select P.Description,PP.Cost,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Color = 'Negro' AND PP.Supplier = '" + supplier + "' AND P.Category = 'Accesorios' and p.System = '" + System + "'";
+                }
+
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.Fill(dt);
+                con.CloseConnection();
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+
+
+
+
+
+
         //Load Accesorios Utilidad
         public DataTable loadAccesoriosUtilidad(string System, string supplier)
         {
@@ -251,6 +325,37 @@ namespace AccesoDatos.Company.LoadProducts
 			}
 			
         }
+
+
+        public DataTable loadPricesGlassDesglose(string supplier, string Description)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                ClsConnection con = new ClsConnection();
+                string sql = "";
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "select P.Description,PP.SalePrice,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
+                }
+                else
+                {
+                    sql = "select P.Description,PP.Cost,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
+                }
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.Fill(dataTable);
+                con.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+        }
+
+
         //Load PriceGlass para la Utilidad
         public DataTable loadPricesGlassUtilidad(string supplier, string Description)
         {

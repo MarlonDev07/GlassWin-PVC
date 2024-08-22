@@ -237,7 +237,7 @@ namespace Precentacion.User.Bill
                             Material = "1 3/4x4";
                         }
                         //Obtener el Total del Aluminio del Vidrio Fijo                      
-                        dtAluminio = NLoadProduct.loadAluminioVentanaFija(Color, Sistema, "Extralum", Material);
+                        dtAluminio = NLoadProduct.loadAluminioVentanaFijaDesglose(Color, Sistema, "Extralum", Material);
 
                         //Obtener el Metraje del dt Aluminio y Multiplicarlo por la Cantidad de Ventanas
                         foreach (DataRow item in dtAluminio.Rows)
@@ -253,7 +253,7 @@ namespace Precentacion.User.Bill
                             string Descripcion = row.Cells[1].Value.ToString();
 
                             // Obtener el Total del Aluminio del Vidrio Fijo                      
-                            DataTable dtAluminioFijo = NLoadProduct.LoadAluminioFijo(Color, "Vidrio Fijo", "Extralum", anchoFijo, altoFijo, material, divisiones);
+                            DataTable dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", "Extralum", anchoFijo, altoFijo, material, divisiones);
 
                             // Obtener el Metraje del dtAluminioFijo y multiplicarlo por la Cantidad de Ventanas
                             foreach (DataRow item in dtAluminioFijo.Rows)
@@ -266,7 +266,7 @@ namespace Precentacion.User.Bill
                         }
 
                         // Obtener el Total del Aluminio                     
-                        DataTable dtAluminioSistema = NLoadProduct.loadAluminio(Color, Sistema, "Extralum");
+                        DataTable dtAluminioSistema = NLoadProduct.loadAluminioDesglose(Color, Sistema, "Extralum");
 
                         // Obtener el Metraje del dtAluminioSistema y multiplicarlo por la Cantidad de Ventanas                    
                         foreach (DataRow item in dtAluminioSistema.Rows)
@@ -316,7 +316,7 @@ namespace Precentacion.User.Bill
                     DataTable dtAccesorios = new DataTable();
 
                     //Obtener el Total de los Accesorios            
-                    dtAccesorios = NLoadProduct.loadAccesorios(Sistema, "Extralum");
+                    dtAccesorios = NLoadProduct.loadAccesoriosDesglose(Sistema, "Extralum");
 
                     //Obtener el Metraje del dt Accesorios y Multiplicarlo por la Cantidad de Ventanas
                     foreach (DataRow item in dtAccesorios.Rows)
@@ -358,7 +358,7 @@ namespace Precentacion.User.Bill
                         string Descripcion = row.Cells[1].Value.ToString();
 
                         // Obtener el Total del Vidrio Fijo
-                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlass("Extralum", vidrioFijo, anchoFijo, altoFijo);
+                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlassDesglose("Extralum", vidrioFijo, anchoFijo, altoFijo);
 
                         // Obtener el Metraje del dtVidriosFijo y multiplicarlo por la Cantidad de Ventanas
                         foreach (DataRow item in dtVidriosFijo.Rows)
@@ -371,7 +371,7 @@ namespace Precentacion.User.Bill
                     }
 
                     // Obtener el Total de los Vidrios (del sistema general)
-                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlass("Extralum", Vidrio);
+                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlassDesglose("Extralum", Vidrio);
 
                     // Obtener el Metraje del dtVidriosSistema y multiplicarlo por la Cantidad de Ventanas
                     foreach (DataRow item in dtVidriosSistema.Rows)
@@ -443,8 +443,8 @@ namespace Precentacion.User.Bill
             try
             {
                 //Ocultar las columnas que no se necesitan
-                dgvDesglose.Columns[1].Visible = false;
-                dgvDesglose.Columns[3].Visible = false;
+                //dgvDesglose.Columns[1].Visible = false;
+                //dgvDesglose.Columns[2].Visible = false;
                 //Agregar una Columna para el Tamaño
                 DataGridViewTextBoxColumn Columna = new DataGridViewTextBoxColumn();
                 Columna.HeaderText = "Tamaño";
@@ -938,10 +938,10 @@ namespace Precentacion.User.Bill
             {
                 if (e.ColumnIndex == 4)
                 {
-                    if (dgvDesglose.Rows[e.RowIndex].Cells[2].Value != null)
+                    if (dgvDesglose.Rows[e.RowIndex].Cells[3].Value != null)//2
                     {
                         // Limpieza del valor para eliminar espacios y caracteres no deseados
-                        string metrajeStr = dgvDesglose.Rows[e.RowIndex].Cells[2].Value.ToString().Trim();
+                        string metrajeStr = dgvDesglose.Rows[e.RowIndex].Cells[3].Value.ToString().Trim();//2
                         string tamañoStr = dgvDesglose.Rows[e.RowIndex].Cells[4].Value.ToString().Trim();
 
                         // Validar si Tamaño tiene punto en lugar de coma y reemplazarlo
@@ -1325,8 +1325,8 @@ namespace Precentacion.User.Bill
                         }
                         else
                         {
-                            row.Cells[4].Value = row.Cells[2].Value;
-                            row.Cells[5].Value = row.Cells[2].Value;
+                            row.Cells[4].Value = row.Cells[3].Value;//2
+                            row.Cells[5].Value = row.Cells[3].Value;//2
                         }
                     }
                     if (UserCache.Name == "InnovaGlass")
@@ -1371,6 +1371,66 @@ namespace Precentacion.User.Bill
 
                  
                 }
+                //Aqui el nuevo codigo
+                // Asegurarse de que las columnas 'Total Cost' y 'Total Price' existan en el DataGridView
+                if (!dgvDesglose.Columns.Contains("Total Cost"))
+                {
+                    dgvDesglose.Columns.Add("Total Cost", "Total Cost");
+                }
+                if (!dgvDesglose.Columns.Contains("Total Price"))
+                {
+                    dgvDesglose.Columns.Add("Total Price", "Total Price");
+                }
+
+                // Calcular los valores para 'Total Cost' y 'Total Price' para cada fila
+                foreach (DataGridViewRow row in dgvDesglose.Rows)
+                {
+                    if (row.Cells[4].Value != null && row.Cells[5].Value != null)
+                    {
+                        decimal tamaño = Convert.ToDecimal(row.Cells[4].Value);
+                        decimal cantidad = Convert.ToDecimal(row.Cells[5].Value);
+
+                        // Calcular Total Cost
+                        if (row.Cells["Cost"].Value != null)
+                        {
+                            decimal cost = Convert.ToDecimal(row.Cells["Cost"].Value);
+                            row.Cells["Total Cost"].Value = tamaño * cantidad * cost;
+                        }
+
+                        // Calcular Total Price
+                        if (row.Cells["SalePrice"].Value != null)
+                        {
+                            decimal salePrice = Convert.ToDecimal(row.Cells["SalePrice"].Value);
+                            row.Cells["Total Price"].Value = tamaño * cantidad * salePrice;
+                        }
+                    }
+                }
+
+                // Declarar variables para acumular las sumas de Total Cost y Total Price
+                decimal sumaTotalCost = 0;
+                decimal sumaTotalPrice = 0;
+
+                // Recorrer cada fila del DataGridView para acumular las sumas
+                foreach (DataGridViewRow row in dgvDesglose.Rows)
+                {
+                    // Sumar Total Cost
+                    if (row.Cells["Total Cost"].Value != null)
+                    {
+                        sumaTotalCost += Convert.ToDecimal(row.Cells["Total Cost"].Value);
+                    }
+
+                    // Sumar Total Price
+                    if (row.Cells["Total Price"].Value != null)
+                    {
+                        sumaTotalPrice += Convert.ToDecimal(row.Cells["Total Price"].Value);
+                    }
+                }
+
+                // Mostrar las sumas en los TextBox correspondientes
+                txtTotalC.Text = sumaTotalCost.ToString("N2"); // Formato con dos decimales
+                txtTotalSP.Text = sumaTotalPrice.ToString("N2"); // Formato con dos decimales
+
+
             }
             catch (Exception ex)
             {
@@ -3122,6 +3182,11 @@ namespace Precentacion.User.Bill
 
             // Indicar que el error ha sido manejado
             e.ThrowException = false;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
