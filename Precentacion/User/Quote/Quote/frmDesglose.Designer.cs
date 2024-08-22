@@ -37,7 +37,9 @@
             this.txtTotalSP = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.dgvGlass = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDesglose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGlass)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDesglose
@@ -83,6 +85,7 @@
             this.cbProveedorDesglose.Name = "cbProveedorDesglose";
             this.cbProveedorDesglose.Size = new System.Drawing.Size(183, 21);
             this.cbProveedorDesglose.TabIndex = 197;
+            this.cbProveedorDesglose.SelectedIndexChanged += new System.EventHandler(this.cbProveedorDesglose_SelectedIndexChanged);
             // 
             // txtTotalC
             // 
@@ -118,11 +121,21 @@
             this.label2.TabIndex = 201;
             this.label2.Text = "Total Costo ";
             // 
+            // dgvGlass
+            // 
+            this.dgvGlass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGlass.Location = new System.Drawing.Point(777, 206);
+            this.dgvGlass.Name = "dgvGlass";
+            this.dgvGlass.Size = new System.Drawing.Size(136, 132);
+            this.dgvGlass.TabIndex = 205;
+            this.dgvGlass.Visible = false;
+            // 
             // frmDesglose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 484);
+            this.Controls.Add(this.dgvGlass);
             this.Controls.Add(this.txtTotalC);
             this.Controls.Add(this.txtTotalSP);
             this.Controls.Add(this.label4);
@@ -134,6 +147,7 @@
             this.Name = "frmDesglose";
             this.Text = "frmDesglose";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDesglose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGlass)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,5 +163,6 @@
         private System.Windows.Forms.TextBox txtTotalSP;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dgvGlass;
     }
 }

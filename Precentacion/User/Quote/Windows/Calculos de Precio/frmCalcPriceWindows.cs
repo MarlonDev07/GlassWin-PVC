@@ -705,7 +705,7 @@ namespace Precentacion.User.Quote.Windows
                     description += "Ubicacion: " + txtUbicacion.Text + "\n";
                 }
                 //Añadir la cantidad 
-                description += "Cantidad: " + NumCantidad + "\n";
+                description += "Cantidad: " + NumCantidad + "\n"; //cbColor
                 if (txtAddWeigth.Text != "" && txtAddHeight.Text != "")
                 {
                     description += "\n";

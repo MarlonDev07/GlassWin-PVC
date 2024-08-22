@@ -41,6 +41,7 @@ namespace Precentacion.User.Bill
         N_CxC N_CxC = new N_CxC();
         N_Bill N_Bill = new N_Bill();
         N_AdmProyecto N_AdmProyecto = new N_AdmProyecto();
+        string color;
         #endregion
 
         #region Constructor
@@ -143,7 +144,14 @@ namespace Precentacion.User.Bill
             dgvGlass.Columns[3].HeaderText = "Ancho";
             dgvGlass.Columns[4].HeaderText = "Alto";
 
-            
+
+            foreach (DataGridViewColumn column in dgvGlass.Columns)
+            {
+                Console.WriteLine("DGV GLASS \n");
+                Console.WriteLine("Column Name: " + column.Name);
+            }
+
+
         }
         private void CargarDesglose()
         {
@@ -207,6 +215,14 @@ namespace Precentacion.User.Bill
                     System.Text.RegularExpressions.Match matchVidrio = System.Text.RegularExpressions.Regex.Match(DescripcionCantidad, patternVidrioF);
                     string vidrioFijo = matchVidrio.Success ? matchVidrio.Groups[1].Value : string.Empty;
 
+                    // Patrón para extraer "Color"
+                    string patternColor = @"Color:\s*(.+)";
+                    System.Text.RegularExpressions.Match matchColor = System.Text.RegularExpressions.Regex.Match(DescripcionCantidad, patternColor);
+                    string color = matchColor.Success ? matchColor.Groups[1].Value : string.Empty;
+                    this.color = color;
+
+
+
 
                     //Obtener el Sistema de la Ventana
                     string Sistema = row.Cells[10].Value.ToString();
@@ -237,7 +253,7 @@ namespace Precentacion.User.Bill
                             Material = "1 3/4x4";
                         }
                         //Obtener el Total del Aluminio del Vidrio Fijo                      
-                        dtAluminio = NLoadProduct.loadAluminioVentanaFijaDesglose(Color, Sistema, cbProveedorDesglose.Text, Material);
+                        dtAluminio = NLoadProduct.loadAluminioVentanaFijaDesglose(Color, Sistema, cbProveedorDesglose.SelectedValue.ToString(), Material);
 
                         //Obtener el Metraje del dt Aluminio y Multiplicarlo por la Cantidad de Ventanas
                         foreach (DataRow item in dtAluminio.Rows)
@@ -253,7 +269,7 @@ namespace Precentacion.User.Bill
                             string Descripcion = row.Cells[1].Value.ToString();
 
                             // Obtener el Total del Aluminio del Vidrio Fijo                      
-                            DataTable dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", cbProveedorDesglose.Text, anchoFijo, altoFijo, material, divisiones);
+                            DataTable dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", cbProveedorDesglose.SelectedValue.ToString(), anchoFijo, altoFijo, material, divisiones);
 
                             // Obtener el Metraje del dtAluminioFijo y multiplicarlo por la Cantidad de Ventanas
                             foreach (DataRow item in dtAluminioFijo.Rows)
@@ -266,7 +282,7 @@ namespace Precentacion.User.Bill
                         }
 
                         // Obtener el Total del Aluminio                     
-                        DataTable dtAluminioSistema = NLoadProduct.loadAluminioDesglose(Color, Sistema, cbProveedorDesglose.Text);
+                        DataTable dtAluminioSistema = NLoadProduct.loadAluminioDesglose(Color, Sistema, cbProveedorDesglose.SelectedValue.ToString());
 
                         // Obtener el Metraje del dtAluminioSistema y multiplicarlo por la Cantidad de Ventanas                    
                         foreach (DataRow item in dtAluminioSistema.Rows)
@@ -316,7 +332,7 @@ namespace Precentacion.User.Bill
                     DataTable dtAccesorios = new DataTable();
 
                     //Obtener el Total de los Accesorios            
-                    dtAccesorios = NLoadProduct.loadAccesoriosDesglose(Sistema, cbProveedorDesglose.Text);
+                    dtAccesorios = NLoadProduct.loadAccesoriosDesglose(Sistema, cbProveedorDesglose.SelectedValue.ToString());
 
                     //Obtener el Metraje del dt Accesorios y Multiplicarlo por la Cantidad de Ventanas
                     foreach (DataRow item in dtAccesorios.Rows)
@@ -358,7 +374,7 @@ namespace Precentacion.User.Bill
                         string Descripcion = row.Cells[1].Value.ToString();
 
                         // Obtener el Total del Vidrio Fijo
-                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlassDesglose(cbProveedorDesglose.Text, vidrioFijo, anchoFijo, altoFijo);
+                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlassDesglose(cbProveedorDesglose.SelectedValue.ToString(), vidrioFijo, anchoFijo, altoFijo);
 
                         // Obtener el Metraje del dtVidriosFijo y multiplicarlo por la Cantidad de Ventanas
                         foreach (DataRow item in dtVidriosFijo.Rows)
@@ -371,7 +387,7 @@ namespace Precentacion.User.Bill
                     }
 
                     // Obtener el Total de los Vidrios (del sistema general)
-                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlassDesglose(cbProveedorDesglose.Text, Vidrio);
+                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlassDesglose(cbProveedorDesglose.SelectedValue.ToString(), Vidrio);
 
                     // Obtener el Metraje del dtVidriosSistema y multiplicarlo por la Cantidad de Ventanas
                     foreach (DataRow item in dtVidriosSistema.Rows)
@@ -1005,7 +1021,7 @@ namespace Precentacion.User.Bill
                 try
                 {
                     #region Seleccion de Proveedor
-                    string Option = cbProveedorDesglose.Text;
+                    string Option = cbProveedorDesglose.SelectedValue.ToString();
                     string NombreProvedor = "";
                     string TelefonoProvedor = "";
                     string CorreoProvedor = "";
@@ -1328,6 +1344,7 @@ namespace Precentacion.User.Bill
                     }
                 }
 
+
                 // Asignar los tamaños correspondientes a las filas del DataGridView
                 foreach (DataGridViewRow row in dgvDesglose.Rows)
                 {
@@ -1469,8 +1486,8 @@ namespace Precentacion.User.Bill
                     {
                         PriceProductClass priceProduct = new PriceProductClass();
                         priceProduct.Nombre = item.Cells[0].Value.ToString();
-                        priceProduct.Supplier = cbProveedorDesglose.Text;
-                        priceProduct.Color = "Natural";
+                        priceProduct.Supplier = cbProveedorDesglose.SelectedValue.ToString();
+                        priceProduct.Color = color;
                         Lista.Add(priceProduct);
                     }
                 }
@@ -3087,15 +3104,18 @@ namespace Precentacion.User.Bill
 
         #endregion
 
-        private void CargarProveedor() 
+        private void CargarProveedor()
         {
             LN_Proveedor lN_Proveedor = new LN_Proveedor();
             DataTable dt = lN_Proveedor.CargarProveedor();
-            cbProveedor.DataSource = dt;
-            cbProveedor.DisplayMember = "Nombre";
 
+            // Asigna el DataTable como la fuente de datos del ComboBox
             cbProveedorDesglose.DataSource = dt;
-            cbProveedorDesglose.DisplayMember = "Nombre";
+            cbProveedorDesglose.DisplayMember = "Nombre"; // La columna que se muestra en el ComboBox
+            cbProveedorDesglose.ValueMember = "Nombre";   // La columna que se utiliza como valor
+
+            // Selecciona "Extralum" si está disponible en el ComboBox
+            cbProveedorDesglose.SelectedValue = "Extralum";
         }
         private void button1_Click(object sender, EventArgs e)
         {
