@@ -217,7 +217,10 @@
             "Ventila1Fijo",
             "FijoMovilMovilMovil",
             "2ViasMovilMovilMovil",
-            "PuertaBañoMovilMovil"});
+            "PuertaBañoMovilMovil",
+            "2 Hoja Vertical",
+            "1 Hoja 1 Fijo Vertical",
+            "3 Hoja Vertical"});
             this.cbDesing.Location = new System.Drawing.Point(275, 33);
             this.cbDesing.Name = "cbDesing";
             this.cbDesing.Size = new System.Drawing.Size(121, 28);

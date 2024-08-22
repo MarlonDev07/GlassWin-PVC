@@ -3506,6 +3506,38 @@ namespace Precentacion.User.Quote.Quote
 
 
         private Point startPoint = new Point(0, 0);
+
+        private void btnCargarDesglose_Click(object sender, EventArgs e)
+        {
+            // Clona el DataGridView
+            DataGridView dgvGlass = new DataGridView();
+
+            // Copiar las columnas
+            foreach (DataGridViewColumn column in dgCotizaciones.Columns)
+            {
+                dgvGlass.Columns.Add((DataGridViewColumn)column.Clone());
+            }
+
+            // Copiar las filas
+            foreach (DataGridViewRow row in dgCotizaciones.Rows)
+            {
+                DataGridViewRow newRow = (DataGridViewRow)row.Clone();
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    newRow.Cells[i].Value = row.Cells[i].Value;
+                }
+                dgvGlass.Rows.Add(newRow);
+            }
+
+            // Crear y mostrar el formulario frmDesglose con los datos copiados
+            frmDesglose desgloseForm = new frmDesglose(dgvGlass);
+            desgloseForm.ShowDialog();
+        }
+
+
+
+
+
         private void frmQuote_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDragging)
