@@ -237,7 +237,7 @@ namespace Precentacion.User.Bill
                             Material = "1 3/4x4";
                         }
                         //Obtener el Total del Aluminio del Vidrio Fijo                      
-                        dtAluminio = NLoadProduct.loadAluminioVentanaFijaDesglose(Color, Sistema, "Extralum", Material);
+                        dtAluminio = NLoadProduct.loadAluminioVentanaFijaDesglose(Color, Sistema, cbProveedorDesglose.Text, Material);
 
                         //Obtener el Metraje del dt Aluminio y Multiplicarlo por la Cantidad de Ventanas
                         foreach (DataRow item in dtAluminio.Rows)
@@ -253,7 +253,7 @@ namespace Precentacion.User.Bill
                             string Descripcion = row.Cells[1].Value.ToString();
 
                             // Obtener el Total del Aluminio del Vidrio Fijo                      
-                            DataTable dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", "Extralum", anchoFijo, altoFijo, material, divisiones);
+                            DataTable dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", cbProveedorDesglose.Text, anchoFijo, altoFijo, material, divisiones);
 
                             // Obtener el Metraje del dtAluminioFijo y multiplicarlo por la Cantidad de Ventanas
                             foreach (DataRow item in dtAluminioFijo.Rows)
@@ -266,7 +266,7 @@ namespace Precentacion.User.Bill
                         }
 
                         // Obtener el Total del Aluminio                     
-                        DataTable dtAluminioSistema = NLoadProduct.loadAluminioDesglose(Color, Sistema, "Extralum");
+                        DataTable dtAluminioSistema = NLoadProduct.loadAluminioDesglose(Color, Sistema, cbProveedorDesglose.Text);
 
                         // Obtener el Metraje del dtAluminioSistema y multiplicarlo por la Cantidad de Ventanas                    
                         foreach (DataRow item in dtAluminioSistema.Rows)
@@ -316,7 +316,7 @@ namespace Precentacion.User.Bill
                     DataTable dtAccesorios = new DataTable();
 
                     //Obtener el Total de los Accesorios            
-                    dtAccesorios = NLoadProduct.loadAccesoriosDesglose(Sistema, "Extralum");
+                    dtAccesorios = NLoadProduct.loadAccesoriosDesglose(Sistema, cbProveedorDesglose.Text);
 
                     //Obtener el Metraje del dt Accesorios y Multiplicarlo por la Cantidad de Ventanas
                     foreach (DataRow item in dtAccesorios.Rows)
@@ -358,7 +358,7 @@ namespace Precentacion.User.Bill
                         string Descripcion = row.Cells[1].Value.ToString();
 
                         // Obtener el Total del Vidrio Fijo
-                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlassDesglose("Extralum", vidrioFijo, anchoFijo, altoFijo);
+                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlassDesglose(cbProveedorDesglose.Text, vidrioFijo, anchoFijo, altoFijo);
 
                         // Obtener el Metraje del dtVidriosFijo y multiplicarlo por la Cantidad de Ventanas
                         foreach (DataRow item in dtVidriosFijo.Rows)
@@ -371,7 +371,7 @@ namespace Precentacion.User.Bill
                     }
 
                     // Obtener el Total de los Vidrios (del sistema general)
-                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlassDesglose("Extralum", Vidrio);
+                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlassDesglose(cbProveedorDesglose.Text, Vidrio);
 
                     // Obtener el Metraje del dtVidriosSistema y multiplicarlo por la Cantidad de Ventanas
                     foreach (DataRow item in dtVidriosSistema.Rows)
