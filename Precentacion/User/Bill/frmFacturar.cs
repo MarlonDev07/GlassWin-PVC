@@ -1170,12 +1170,27 @@ namespace Precentacion.User.Bill
                     .OrderBy(row => row.Cells["Categoría"].Value.ToString())
                     .ToList();
 
+
+
+
                 // 4. Agregar los datos del dgvDesglose a la tabla de PDF
                 PdfPTable tabla = new PdfPTable(dgvDesglose.Columns.Count);
                 tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
                 tabla.LockedWidth = true;
-                float[] tablaW = { 100, 0, 30f, 0, 32, 32, 32 }; // Ancho de las columnas, incluyendo la nueva columna "Categoría"
+                float[] tablaW = { 100, 0, 0, 30, 30, 33, 32, 32, 0 }; // Ancho de las columnas, incluyendo la nueva columna "Categoría"
+
+
+                for (int i = 0; i < dgvDesglose.Columns.Count; i++)
+                {
+                    string nombreColumna = dgvDesglose.Columns[i].HeaderText;
+                    float anchoColumna = tablaW[i];
+                    Console.WriteLine($"Columna: {nombreColumna}, Ancho asignado: {anchoColumna}");
+                }
+
+
                 tabla.SetWidths(tablaW);
+
+         
 
                 // Agregar encabezados de columna
                 /*for (int i = 0; i < dgvDesglose.Columns.Count; i++)
