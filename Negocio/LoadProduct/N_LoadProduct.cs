@@ -7664,7 +7664,7 @@ namespace Negocio.LoadProduct
                     metraje = 12;
                     break;
                 case "Empaque VT":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 18) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 24) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
                     break;
 
             }
