@@ -3512,19 +3512,26 @@ namespace Precentacion.User.Quote.Quote
             // Clona el DataGridView
             DataGridView dgvGlass = new DataGridView();
 
-            // Copiar las columnas
+            // Copiar las columnas, omitiendo la columna 'IdWindows'
             foreach (DataGridViewColumn column in dgCotizaciones.Columns)
             {
-                dgvGlass.Columns.Add((DataGridViewColumn)column.Clone());
+                if (column.Name != "IdWindows")
+                {
+                    dgvGlass.Columns.Add((DataGridViewColumn)column.Clone());
+                }
             }
 
-            // Copiar las filas
+            // Copiar las filas, omitiendo el valor de la columna 'IdWindows'
             foreach (DataGridViewRow row in dgCotizaciones.Rows)
             {
                 DataGridViewRow newRow = (DataGridViewRow)row.Clone();
                 for (int i = 0; i < row.Cells.Count; i++)
                 {
-                    newRow.Cells[i].Value = row.Cells[i].Value;
+                    // Verifica si la celda pertenece a la columna 'IdWindows'
+                    if (dgCotizaciones.Columns[i].Name != "IdWindows")
+                    {
+                        newRow.Cells[i].Value = row.Cells[i].Value;
+                    }
                 }
                 dgvGlass.Rows.Add(newRow);
             }
@@ -3533,6 +3540,7 @@ namespace Precentacion.User.Quote.Quote
             frmDesglose desgloseForm = new frmDesglose(dgvGlass);
             desgloseForm.ShowDialog();
         }
+
 
 
 

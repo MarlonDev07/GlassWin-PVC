@@ -875,7 +875,6 @@
             this.btnCargarDesglose.TabIndex = 190;
             this.toolTip1.SetToolTip(this.btnCargarDesglose, "Hojas para Fabricación en Excel");
             this.btnCargarDesglose.UseVisualStyleBackColor = false;
-            this.btnCargarDesglose.Visible = false;
             this.btnCargarDesglose.Click += new System.EventHandler(this.btnCargarDesglose_Click);
             // 
             // frmQuote
