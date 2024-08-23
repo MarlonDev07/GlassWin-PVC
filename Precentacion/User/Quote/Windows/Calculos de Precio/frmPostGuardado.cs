@@ -158,7 +158,9 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                     txtTotal.Text = TempTotal.ToString("c");
 
                     // Llamar a RecalcularDatos para actualizar la utilidad con el nuevo total
-                    RecalcularDatos(Convert.ToInt32(numCantidad.Value));
+                    //RecalcularDatos(Convert.ToInt32(numCantidad.Value));
+                    // Actualizar Total con descuento aplicado
+                    
                 }
                 else
                 {
