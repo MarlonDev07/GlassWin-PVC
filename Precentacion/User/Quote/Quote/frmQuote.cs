@@ -376,6 +376,22 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
+                    txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
+                    txtConditional3.Text = "3.Se cotizan productos marca Extralum";
+                    txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
+                    txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
+                    txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
+                    txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
+                    txtConditional8.Text = "8.Validez de cotización 8 días";
+                    txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
+                    txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
+
+                }
                 //Mercado del Vidrio
                 if (CompanyCache.IdCompany == 3102879949)
                 {
@@ -1445,6 +1461,15 @@ namespace Precentacion.User.Quote.Quote
                     rutaLogo = ruta + Url;
 
                 }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\albo.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //Mercado del vidrio
                 if (CompanyCache.IdCompany == 3102879949)
                 {
@@ -1607,29 +1632,26 @@ namespace Precentacion.User.Quote.Quote
 
                     paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Whatsapp: +(506) " + "6134 7128", textFont));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Correo: " + "info@prefalumcr.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Correo: " + "ventas@prefalumcr.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
-                else if (CompanyCache.IdCompany == 3102879949)
+                else if (CompanyCache.IdCompany == 3102154177)
                 {
-                    paragraph.Add(new Chunk("Alto la cima, San Isidro, San Ramón.", textFont2));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Alajuela, Frente a MTS Multiservicios de Costa Rica.\r\n", textFont2));
+                    paragraph.Add(new Chunk("75 Mts Este de Mas X Menos, Rincón de Arias.\r\n", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
 
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-879949", textFont));
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-154177", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "8855-2828", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "facturacion@mercadodelvidrio.com", textFont));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + "24940866 / 24944306", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
+
                 else if (CompanyCache.IdCompany == 222222222)
                 {
                     paragraph.Add(new Chunk("PALMARES, COSTA RICA.\r\n", textFont2));
@@ -2310,6 +2332,43 @@ namespace Precentacion.User.Quote.Quote
                     document.Add(table);
                 }
                 //Prefalum
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(NotasParagraph);
+
+                    Paragraph Nota1Paragraph = new Paragraph("•Precio mediante pago con efectivo, sinpe o transferencia.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota1Paragraph);
+
+                    Paragraph Nota2Paragraph = new Paragraph("•Adelanto del 50% al contratar el proyecto y el restante al concluir la instalación.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota2Paragraph);
+
+                    Paragraph Nota3Paragraph = new Paragraph("•Pago con tarjeta está sujeto a cambios.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota3Paragraph);
+
+                    Paragraph Nota4Paragraph = new Paragraph("•Validez de la oferta: 15 días hábiles.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota4Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
                 if (CompanyCache.IdCompany == 111111111)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
@@ -4334,6 +4393,9 @@ namespace Precentacion.User.Quote.Quote
                     Detalle2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Detalle2Paragraph);
                 }
+
+
+     
 
 
                 //J123
