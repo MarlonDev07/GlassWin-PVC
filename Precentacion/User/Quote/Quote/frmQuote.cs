@@ -1643,9 +1643,8 @@ namespace Precentacion.User.Quote.Quote
                 }
                 else if (CompanyCache.IdCompany == 3102154177)
                 {
-                    paragraph.Add(new Chunk("75 Mts Este de Mas X Menos, Rincón de Arias.\r\n", textFont2));
+                    paragraph.Add(new Chunk("75 Mts Este de Mas X Menos, Rincón de Arias.", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
-
                     paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-154177", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Teléfono: +(506) " + "24940866 / 24944306", textFont));
@@ -2540,6 +2539,15 @@ namespace Precentacion.User.Quote.Quote
                     rutaLogo = ruta + Url;
 
                 }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\albo.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //Mercado del vidrio
                 if (CompanyCache.IdCompany == 3102879949)
                 {
@@ -2654,7 +2662,7 @@ namespace Precentacion.User.Quote.Quote
                 // Crea un nuevo objeto Font para los textos
                 iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
                 iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-                iTextSharp.text.Font textFont2 = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 9, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
+                iTextSharp.text.Font textFont2 = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 10, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
                 // Crea una fuente Calibri con un tamaño de 11 puntos y en negrita
                 BaseFont calibriBaseFont = BaseFont.CreateFont(@"C:\Windows\Fonts\calibri.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                 iTextSharp.text.Font cotizacionFont = new iTextSharp.text.Font(calibriBaseFont, 13, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
@@ -2684,99 +2692,95 @@ namespace Precentacion.User.Quote.Quote
                 paragraph.Add(Chunk.NEWLINE);// Salto de línea
                 if (CompanyCache.IdCompany == 999999999)
                 {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 9-999-99999", calibrriFuente));
+                    paragraph.Add(new Chunk("Cédula Jurídica : 9-999-99999", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, calibrriFuente));
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(new Chunk("Teléfono: " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", calibrriFuente));
+                    paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
                 if (CompanyCache.IdCompany == 205150849)
                 {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-897998", calibrriFuente));
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-897998", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, calibrriFuente));
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
                 else if (CompanyCache.IdCompany == 31028013)
                 {
 
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-801388", calibrriFuente));
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-801388", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("650 METROS NORESTE Y 350 METROS NOROESTE DE KFC, BOSQUES DON JOSE, NICOYA.", calibrriFuente));
+                    paragraph.Add(new Chunk("650 METROS NORESTE Y 350 METROS NOROESTE DE KFC, BOSQUES DON JOSE, NICOYA.", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
                 else if (CompanyCache.IdCompany == 111111111)
                 {
-                    paragraph.Add(new Chunk("EL COYOL ALAJUELA.\r\n", calibrriFuente));
+                    paragraph.Add(new Chunk("EL COYOL ALAJUELA.\r\n", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
 
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", calibrriFuente));
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, calibrriFuente));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "6134 7128", calibrriFuente));
+                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "6134 7128", textFont));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "info@prefalumcr.com", calibrriFuente));
+                    paragraph.Add(new Chunk("Correo: " + "info@prefalumcr.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "ventas@prefalumcr.com", calibrriFuente));
+                    paragraph.Add(new Chunk("Correo: " + "ventas@prefalumcr.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
-                else if (CompanyCache.IdCompany == 3102879949)
+                else if (CompanyCache.IdCompany == 3102154177)
                 {
-                    paragraph.Add(new Chunk("Alto la cima, San Isidro, San Ramón.", calibrriFuente));
+                    paragraph.Add(new Chunk("75 Mts Este de Mas X Menos, Rincón de Arias.", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Alajuela, Frente a MTS Multiservicios de Costa Rica.\r\n", calibrriFuente));
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-154177", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-879949", calibrriFuente));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "8855-2828", calibrriFuente));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "facturacion@mercadodelvidrio.com", calibrriFuente));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + "24940866 / 24944306", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
+
                 else if (CompanyCache.IdCompany == 222222222)
                 {
-                    paragraph.Add(new Chunk("PALMARES, COSTA RICA.\r\n", calibrriFuente));
+                    paragraph.Add(new Chunk("PALMARES, COSTA RICA.\r\n", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
 
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "2-222-22222", calibrriFuente));
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-101-176270", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "info@vidrierapalmares.com", calibrriFuente));
+                    paragraph.Add(new Chunk("Correo: " + "info@vidrierapalmares.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Sitio Web: " + "http://www.vidrierapalmares.com/", calibrriFuente));
+                    paragraph.Add(new Chunk("Sitio Web: " + "http://www.vidrierapalmares.com/", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
                 else if (CompanyCache.IdCompany == 333333333)
                 {
-                    paragraph.Add(new Chunk("SAN RAMÓN, ALAJUELA.\r\n", calibrriFuente));
+                    paragraph.Add(new Chunk("SAN RAMÓN, ALAJUELA.\r\n", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
 
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-333-33333", calibrriFuente));
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-333-33333", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("WhatsApp: +(506) " + "8671 5008", calibrriFuente));
+                    paragraph.Add(new Chunk("WhatsApp: +(506) " + "8671 5008", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "crperfectglass@gmail.com", calibrriFuente));
+                    paragraph.Add(new Chunk("Correo: " + "crperfectglass@gmail.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
                 else
                 {
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, calibrriFuente));
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, calibrriFuente));
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, calibrriFuente));
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
                 textCell.AddElement(paragraph);
@@ -3744,6 +3748,15 @@ namespace Precentacion.User.Quote.Quote
                     rutaLogo = ruta + Url;
 
                 }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\albo.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //Mercado del vidrio
                 if (CompanyCache.IdCompany == 3102879949)
                 {
@@ -3907,29 +3920,25 @@ namespace Precentacion.User.Quote.Quote
 
                     paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Whatsapp: +(506) " + "6134 7128", textFont));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Correo: " + "info@prefalumcr.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Correo: " + "ventas@prefalumcr.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
-                else if (CompanyCache.IdCompany == 3102879949)
+                else if (CompanyCache.IdCompany == 3102154177)
                 {
-                    paragraph.Add(new Chunk("Alto la cima, San Isidro, San Ramón.", textFont2));
+                    paragraph.Add(new Chunk("75 Mts Este de Mas X Menos, Rincón de Arias.", textFont2));
                     paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Alajuela, Frente a MTS Multiservicios de Costa Rica.\r\n", textFont2));
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-154177", textFont));
                     paragraph.Add(Chunk.NEWLINE);
-
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-879949", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "8855-2828", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "facturacion@mercadodelvidrio.com", textFont));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + "24940866 / 24944306", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
+
                 else if (CompanyCache.IdCompany == 222222222)
                 {
                     paragraph.Add(new Chunk("PALMARES, COSTA RICA.\r\n", textFont2));
