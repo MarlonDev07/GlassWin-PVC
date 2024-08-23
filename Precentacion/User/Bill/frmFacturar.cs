@@ -459,8 +459,8 @@ namespace Precentacion.User.Bill
             try
             {
                 //Ocultar las columnas que no se necesitan
-                //dgvDesglose.Columns[1].Visible = false;
-                //dgvDesglose.Columns[2].Visible = false;
+                dgvDesglose.Columns[1].Visible = false;
+                dgvDesglose.Columns[2].Visible = false;
                 //Agregar una Columna para el Tamaño
                 DataGridViewTextBoxColumn Columna = new DataGridViewTextBoxColumn();
                 Columna.HeaderText = "Tamaño";
@@ -1193,7 +1193,7 @@ namespace Precentacion.User.Bill
                 PdfPTable tabla = new PdfPTable(dgvDesglose.Columns.Count);
                 tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
                 tabla.LockedWidth = true;
-                float[] tablaW = { 100, 0, 0, 30, 30, 33, 32, 32, 0 }; // Ancho de las columnas, incluyendo la nueva columna "Categoría"
+                float[] tablaW = { 85, 0, 0, 30, 30, 33, 32, 32, 0 }; // Ancho de las columnas, incluyendo la nueva columna "Categoría"
 
 
                 for (int i = 0; i < dgvDesglose.Columns.Count; i++)
@@ -3129,6 +3129,8 @@ namespace Precentacion.User.Bill
 
         private void cbProveedorDesglose_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //CargarDesglose();
+            //ConfigDataGridDesglose();
             CargarTamañoPieza();
         }
 
