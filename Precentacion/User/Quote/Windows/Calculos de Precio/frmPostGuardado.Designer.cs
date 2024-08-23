@@ -121,6 +121,7 @@
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(127, 23);
             this.txtSubTotal.TabIndex = 45;
+            this.txtSubTotal.TextChanged += new System.EventHandler(this.txtSubTotal_TextChanged);
             // 
             // txtTotal
             // 

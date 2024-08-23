@@ -112,20 +112,47 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             Costo = originalCosto * cantidad;
             txtPrecioCosto.Text = Costo.ToString("c");
 
-            // Calcular Utilidad
-            decimal utilidad1 = SubTotal - Costo;
-            decimal utilidadTotal = (SubTotal != 0) ? (utilidad1 / SubTotal) * 100 : 0; // Multiplica por 100 para obtener porcentaje
-
-            // Redondear a 2 Decimales
-            utilidadTotal = Math.Round(utilidadTotal, 2);
-
-            // Setear el Ajuste
-            txtUtilidad.Text = utilidadTotal.ToString() + "%";
-
-            // Actualizar Total
+            // Calcular Total antes de aplicar el descuento
             Total = SubTotal;
-            txtTotal.Text = Total.ToString("c");
+
+            // Aplicar descuento si existe
+            if (!string.IsNullOrEmpty(txtDescuento.Text))
+            {
+                // Validar que se haya ingresado un valor numérico
+                if (decimal.TryParse(txtDescuento.Text, out decimal descuento))
+                {
+                    // Calcular Total con descuento
+                    decimal descuentoDecimal = descuento / 100;
+                    TempTotal = Total - (Total * descuentoDecimal);
+                    txtTotal.Text = TempTotal.ToString("c");
+                    txtSubTotal.Text = TempTotal.ToString("c");
+                }
+                else
+                {
+                    MessageBox.Show("El Descuento debe ser un valor numérico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                txtDescuento.Text = "0";
+
+
+                // Actualizar Total con descuento aplicado
+                txtTotal.Text = Total.ToString("c");
+
+                // Calcular Utilidad
+                decimal utilidad1 = SubTotal - Costo;
+                decimal utilidadTotal = (SubTotal != 0) ? (utilidad1 / SubTotal) * 100 : 0; // Multiplica por 100 para obtener porcentaje
+
+                // Redondear a 2 Decimales
+                utilidadTotal = Math.Round(utilidadTotal, 2);
+
+                // Setear el Ajuste
+                txtUtilidad.Text = utilidadTotal.ToString() + "%";
+            }
+
         }
+
 
 
 
@@ -156,9 +183,11 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                     decimal descuentoDecimal = descuento / 100;
                     TempTotal = Total - (Total * descuentoDecimal);
                     txtTotal.Text = TempTotal.ToString("c");
+                    txtSubTotal.Text = TempTotal.ToString("c");
+
 
                     // Llamar a RecalcularDatos para actualizar la utilidad con el nuevo total
-                    //RecalcularDatos(Convert.ToInt32(numCantidad.Value));
+                    RecalcularDatos(Convert.ToInt32(numCantidad.Value));
                     // Actualizar Total con descuento aplicado
                     
                 }
@@ -178,6 +207,11 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             {
                 // Puedes manejar la tecla Enter aquí si es necesario
             }
+        }
+
+        private void txtSubTotal_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
