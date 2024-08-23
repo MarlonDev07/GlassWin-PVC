@@ -1690,15 +1690,6 @@ namespace Precentacion.User.Bill
                 // Agrega la imagen a la primera celda
                 string rutaLogo = "";
                 Console.WriteLine(CompanyCache.IdCompany);
-                //
-                if (CompanyCache.IdCompany == 205520679)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
-                    rutaLogo = ruta + Url;
-
-                }
                 //Usuario de Prueba
                 if (CompanyCache.IdCompany == 999999999)
                 {
@@ -1708,6 +1699,16 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Usuario de Nel
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel Fin
                 //Prefalum, cedula juridica de prueba
                 if (CompanyCache.IdCompany == 111111111)
                 {
@@ -1717,12 +1718,21 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\albo.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //Mercado del vidrio
                 if (CompanyCache.IdCompany == 3102879949)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\mercadoVidrio.jpeg";
+                    string Url = "\\Images\\Logos\\mercadoVidrio.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -1735,37 +1745,12 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Perfect Glass, cedula juridica de prueba
                 if (CompanyCache.IdCompany == 333333333)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\PerfectGlass.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                if (CompanyCache.IdCompany == 310171783)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                if (CompanyCache.IdCompany == 3101794685)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 111560456)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\DialexLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -1777,11 +1762,11 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
-                if (CompanyCache.IdCompany == 31028013)
+                if (CompanyCache.IdCompany == 3101794685)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\InnovaLogo.png";
+                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -1799,24 +1784,51 @@ namespace Precentacion.User.Bill
                     string Url = "\\Images\\Logos\\VidriosAlturaLogo.png";
                     rutaLogo = ruta + Url;
                 }
+                if (CompanyCache.IdCompany == 1230123)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\GlassWinLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 if (CompanyCache.IdCompany == 25550555)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\VitroLogo.png";
                     rutaLogo = ruta + Url;
+
                 }
-                if (CompanyCache.IdCompany == 1230123)
+                if (CompanyCache.IdCompany == 31028013)
                 {
+                    //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\GlassWinLogo.png";
+                    string Url = "\\Images\\Logos\\InnovaLogo.png";
                     rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 111560456)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\DialexLogo.png";
+                    rutaLogo = ruta + Url;
+
                 }
                 if (CompanyCache.IdCompany == 310108681)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310171783)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2222,14 +2234,6 @@ namespace Precentacion.User.Bill
 
                 // Agrega la imagen a la primera celda
                 string rutaLogo = "";
-                if (CompanyCache.IdCompany == 205520679)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
-                    rutaLogo = ruta + Url;
-
-                }
                 //Usuario de Prueba
                 if (CompanyCache.IdCompany == 999999999)
                 {
@@ -2239,6 +2243,16 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Usuario de Nel
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel Fin
                 //Prefalum, cedula juridica de prueba
                 if (CompanyCache.IdCompany == 111111111)
                 {
@@ -2248,12 +2262,21 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\albo.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //Mercado del vidrio
                 if (CompanyCache.IdCompany == 3102879949)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\mercadoVidrio.jpeg";
+                    string Url = "\\Images\\Logos\\mercadoVidrio.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2266,38 +2289,12 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
-
+                //Perfect Glass, cedula juridica de prueba
                 if (CompanyCache.IdCompany == 333333333)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\PerfectGlass.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                if (CompanyCache.IdCompany == 310171783)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                if (CompanyCache.IdCompany == 3101794685)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 111560456)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\DialexLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2309,11 +2306,11 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
-                if (CompanyCache.IdCompany == 31028013)
+                if (CompanyCache.IdCompany == 3101794685)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\InnovaLogo.png";
+                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2331,25 +2328,51 @@ namespace Precentacion.User.Bill
                     string Url = "\\Images\\Logos\\VidriosAlturaLogo.png";
                     rutaLogo = ruta + Url;
                 }
-                if (CompanyCache.IdCompany == 25550555)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VitroLogo.png";
-                    rutaLogo = ruta + Url;
-                }
                 if (CompanyCache.IdCompany == 1230123)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\GlassWinLogo.png";
                     rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 25550555)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VitroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31028013)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\InnovaLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 111560456)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\DialexLogo.png";
+                    rutaLogo = ruta + Url;
+
                 }
                 if (CompanyCache.IdCompany == 310108681)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310171783)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2681,14 +2704,6 @@ namespace Precentacion.User.Bill
 
                 // Agrega la imagen a la primera celda
                 string rutaLogo = "";
-                if (CompanyCache.IdCompany == 205520679)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
-                    rutaLogo = ruta + Url;
-
-                }
                 //Usuario de Prueba
                 if (CompanyCache.IdCompany == 999999999)
                 {
@@ -2698,7 +2713,16 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Usuario de Nel
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
 
+                }
+                //Usuario de Nel Fin
                 //Prefalum, cedula juridica de prueba
                 if (CompanyCache.IdCompany == 111111111)
                 {
@@ -2708,12 +2732,21 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\albo.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //Mercado del vidrio
                 if (CompanyCache.IdCompany == 3102879949)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\mercadoVidrio.jpeg";
+                    string Url = "\\Images\\Logos\\mercadoVidrio.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2726,36 +2759,12 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Perfect Glass, cedula juridica de prueba
                 if (CompanyCache.IdCompany == 333333333)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\PerfectGlass.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 310171783)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                if (CompanyCache.IdCompany == 3101794685)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 111560456)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\DialexLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2767,11 +2776,11 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
-                if (CompanyCache.IdCompany == 31028013)
+                if (CompanyCache.IdCompany == 3101794685)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\InnovaLogo.png";
+                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2789,25 +2798,51 @@ namespace Precentacion.User.Bill
                     string Url = "\\Images\\Logos\\VidriosAlturaLogo.png";
                     rutaLogo = ruta + Url;
                 }
-                if (CompanyCache.IdCompany == 25550555)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VitroLogo.png";
-                    rutaLogo = ruta + Url;
-                }
                 if (CompanyCache.IdCompany == 1230123)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\GlassWinLogo.png";
                     rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 25550555)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VitroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31028013)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\InnovaLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 111560456)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\DialexLogo.png";
+                    rutaLogo = ruta + Url;
+
                 }
                 if (CompanyCache.IdCompany == 310108681)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310171783)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
                     rutaLogo = ruta + Url;
 
                 }
