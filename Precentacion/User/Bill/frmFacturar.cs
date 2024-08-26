@@ -1513,8 +1513,6 @@ namespace Precentacion.User.Bill
                 txtTotalSP.Text = sumaTotalPrice.ToString("N2"); // Formato con dos decimales
 
 
-
-
             }
             catch (Exception ex)
             {
