@@ -76,6 +76,7 @@ namespace Precentacion.User.Accounts
                 dgvClient.Columns[2].HeaderText = "Telefono";
                 dgvClient.Columns[4].HeaderText = "Direccion";
                 dgvClient.Columns[5].HeaderText = "Correo";
+                dgvClient.Columns[9].HeaderText = "Ingreso";
 
                 //Ajustar las columnas al Ancho del formulario
                 dgvClient.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

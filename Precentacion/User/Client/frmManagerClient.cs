@@ -60,7 +60,7 @@ namespace Precentacion.User.Client
                 dgvClient.Columns[5].HeaderText = "Correo";
                 dgvClient.Columns[6].HeaderText = "Registro";
                 dgvClient.Columns[7].HeaderText = "Límite Crédito";
-                dgvClient.Columns[8].HeaderText = "Fecha Vencimiento";
+                dgvClient.Columns[8].HeaderText = "Fecha Ingreso";
                 dgvClient.Columns[9].HeaderText = "Días";
 
                 //Modificar todas las columnas al ancho del Form
@@ -469,6 +469,11 @@ namespace Precentacion.User.Client
                 total += Convert.ToDouble(r.Cells[14].Value);
             }
             txtTotalFacturado.Text = total.ToString("C");
+        }
+
+        private void frmManagerClient_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
