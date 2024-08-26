@@ -42,6 +42,7 @@ namespace Precentacion.User.Bill
         N_Bill N_Bill = new N_Bill();
         N_AdmProyecto N_AdmProyecto = new N_AdmProyecto();
         string color;
+        bool bandera = false;
         #endregion
 
         #region Constructor
@@ -49,6 +50,7 @@ namespace Precentacion.User.Bill
         {
             InitializeComponent();
             CargarProveedor();
+            tabControl.Selecting += new TabControlCancelEventHandler(tabControl_Selecting);
         }
         #endregion
 
@@ -966,6 +968,8 @@ namespace Precentacion.User.Bill
                 {
                
                 }
+
+
             }
 
         private void dgvDesglose_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -3292,6 +3296,95 @@ namespace Precentacion.User.Bill
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            bandera = true;
+            // Convertir el valor de txtTotalSP.Text a decimal
+            decimal totalPV = Convert.ToDecimal(txtTotalSP.Text);
+
+            // Preguntar al usuario el monto de fabricación
+            string inputFabricacion = Prompt.ShowDialog("Ingrese el monto de fabricación:", "Monto de Fabricación");
+            decimal montoFabricacion = 0;
+            if (!decimal.TryParse(inputFabricacion, out montoFabricacion))
+            {
+                MessageBox.Show("Por favor, ingrese un monto de fabricación válido.");
+                return;
+            }
+
+            // Preguntar al usuario el monto de instalación
+            string inputInstalacion = Prompt.ShowDialog("Ingrese el monto de instalación:", "Monto de Instalación");
+            decimal montoInstalacion = 0;
+            if (!decimal.TryParse(inputInstalacion, out montoInstalacion))
+            {
+                MessageBox.Show("Por favor, ingrese un monto de instalación válido.");
+                return;
+            }
+
+            // Calcular el total sumando totalPV, montoFabricacion y montoInstalacion
+            decimal total = totalPV + montoFabricacion + montoInstalacion;
+
+            // Asegurarse de que el DataGridView tenga las columnas necesarias
+            if (dgvTotal.Columns.Count == 0)
+            {
+                dgvTotal.Columns.Add("TotalPV", "Total PV");
+                dgvTotal.Columns.Add("MontoFabricacion", "Monto Fabricación");
+                dgvTotal.Columns.Add("MontoInstalacion", "Monto Instalación");
+                dgvTotal.Columns.Add("Total", "Total");
+            }
+
+            // Configurar el modo de ajuste automático de las columnas para que se llenen todo el ancho del DataGridView
+            dgvTotal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Agregar una nueva fila al DataGridView con los valores calculados
+            dgvTotal.Rows.Add(totalPV, montoFabricacion, montoInstalacion, total);
+
+            // Opcional: Mostrar un mensaje de éxito
+            MessageBox.Show("Datos añadidos correctamente al DataGridView.");
+
+            // Cambiar a la pestaña que contiene el DataGridView (tabPageTotal)
+            tabControl.SelectedTab = tabPageTotal;
+        }
+
+
+        // Clase para mostrar un cuadro de diálogo personalizado
+        public static class Prompt
+        {
+            public static string ShowDialog(string text, string caption)
+            {
+                Form prompt = new Form()
+                {
+                    Width = 500,
+                    Height = 200,
+                    FormBorderStyle = FormBorderStyle.FixedDialog,
+                    Text = caption,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
+                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+                Button confirmation = new Button() { Text = "Aceptar", Left = 350, Width = 100, Top = 100, DialogResult = DialogResult.OK };
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+                prompt.Controls.Add(textBox);
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(textLabel);
+                prompt.AcceptButton = confirmation;
+
+                return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
+            }
+        }
+
+        private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            // Verificar si se está intentando seleccionar la pestaña tabPageTotal y la bandera es false
+            if (!bandera && e.TabPage == tabPageTotal)
+            {
+                // Cancelar la selección
+                e.Cancel = true;
+
+                // Opcional: Mostrar un mensaje informando al usuario
+                MessageBox.Show("No puede acceder a esta pestaña en este momento.");
+            }
         }
     }
 }
