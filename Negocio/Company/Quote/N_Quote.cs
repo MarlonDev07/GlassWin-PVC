@@ -378,6 +378,11 @@ namespace Negocio.Company.Quote
                 return null;
             }
         }
-       
+
+        public bool updateQuoteTotal(int idQuote, decimal total) {
+            ADQuote.UpdateQuoteTotal(Convert.ToInt32(idQuote), Convert.ToDecimal(total));
+            return true;
+        }
+
     }
 }

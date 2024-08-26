@@ -1427,7 +1427,6 @@ namespace Precentacion.User.Bill
 
                  
                 }
-                //Aqui el nuevo codigo
                 // Asegurarse de que las columnas 'Total Cost' y 'Total Price' existan en el DataGridView
                 if (!dgvDesglose.Columns.Contains("Total Cost"))
                 {
@@ -1439,6 +1438,11 @@ namespace Precentacion.User.Bill
                     dgvDesglose.Columns.Add("Total Price", "Total Price");
                     dgvDesglose.Columns["Total Price"].DefaultCellStyle.Format = "N2"; // Formato con dos decimales
                 }
+                N_LoadProduct NLoadProduct = new N_LoadProduct();
+                DataTable dtAccesorio = new DataTable();
+                dtAccesorio = NLoadProduct.loadAccesorioDesglose();
+                // Obtener todos los nombres de artículos en dtAccesorio en una lista
+                List<string> accesorios = dtAccesorio.AsEnumerable().Select(row => row.Field<string>("Description")).ToList();
 
                 // Calcular los valores para 'Total Cost' y 'Total Price' para cada fila
                 foreach (DataGridViewRow row in dgvDesglose.Rows)
@@ -1447,19 +1451,37 @@ namespace Precentacion.User.Bill
                     {
                         decimal tamaño = Convert.ToDecimal(row.Cells[4].Value);
                         decimal cantidad = Convert.ToDecimal(row.Cells[5].Value);
+                        string articulo = row.Cells[0].Value.ToString();
 
-                        // Calcular Total Cost
-                        if (row.Cells["Cost"].Value != null)
+                        if (accesorios.Contains(articulo))
                         {
-                            decimal cost = Convert.ToDecimal(row.Cells["Cost"].Value);
-                            row.Cells["Total Cost"].Value = Math.Round(tamaño * cantidad * cost, 2);
+                            // Si es un accesorio, se calcula sin el 'tamaño'
+                            if (row.Cells["Cost"].Value != null)
+                            {
+                                decimal cost = Convert.ToDecimal(row.Cells["Cost"].Value);
+                                row.Cells["Total Cost"].Value = Math.Round(cantidad * cost, 2);
+                            }
+
+                            if (row.Cells["SalePrice"].Value != null)
+                            {
+                                decimal salePrice = Convert.ToDecimal(row.Cells["SalePrice"].Value);
+                                row.Cells["Total Price"].Value = Math.Round(cantidad * salePrice, 2);
+                            }
                         }
-
-                        // Calcular Total Price
-                        if (row.Cells["SalePrice"].Value != null)
+                        else
                         {
-                            decimal salePrice = Convert.ToDecimal(row.Cells["SalePrice"].Value);
-                            row.Cells["Total Price"].Value = Math.Round(tamaño * cantidad * salePrice, 2);
+                            // Si no es un accesorio, se calcula con el 'tamaño'
+                            if (row.Cells["Cost"].Value != null)
+                            {
+                                decimal cost = Convert.ToDecimal(row.Cells["Cost"].Value);
+                                row.Cells["Total Cost"].Value = Math.Round(tamaño * cantidad * cost, 2);
+                            }
+
+                            if (row.Cells["SalePrice"].Value != null)
+                            {
+                                decimal salePrice = Convert.ToDecimal(row.Cells["SalePrice"].Value);
+                                row.Cells["Total Price"].Value = Math.Round(tamaño * cantidad * salePrice, 2);
+                            }
                         }
                     }
                 }
@@ -1487,6 +1509,7 @@ namespace Precentacion.User.Bill
                 // Mostrar las sumas en los TextBox correspondientes
                 txtTotalC.Text = sumaTotalCost.ToString("N2"); // Formato con dos decimales
                 txtTotalSP.Text = sumaTotalPrice.ToString("N2"); // Formato con dos decimales
+
 
 
 
@@ -3325,6 +3348,10 @@ namespace Precentacion.User.Bill
             // Calcular el total sumando totalPV, montoFabricacion y montoInstalacion
             decimal total = totalPV + montoFabricacion + montoInstalacion;
 
+            int idQuote = Convert.ToInt32(txtidQuote.Text);
+
+            //bool resultado = NQuote.updateQuoteTotal(idQuote,total);
+
             // Asegurarse de que el DataGridView tenga las columnas necesarias
             if (dgvTotal.Columns.Count == 0)
             {
@@ -3340,8 +3367,16 @@ namespace Precentacion.User.Bill
             // Agregar una nueva fila al DataGridView con los valores calculados
             dgvTotal.Rows.Add(totalPV, montoFabricacion, montoInstalacion, total);
 
-            // Opcional: Mostrar un mensaje de éxito
-            MessageBox.Show("Datos añadidos correctamente al DataGridView.");
+            //if (resultado)
+            //{
+                // Opcional: Mostrar un mensaje de éxito
+                MessageBox.Show("Datos añadidos correctamente a la tabla y monto total de la proforma modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //else {
+            //    MessageBox.Show("Ha ocurrido un error.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+
+            
 
             // Cambiar a la pestaña que contiene el DataGridView (tabPageTotal)
             tabControl.SelectedTab = tabPageTotal;

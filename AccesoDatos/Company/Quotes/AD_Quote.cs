@@ -833,7 +833,27 @@ namespace AccesoDatos.Company.Quotes
                 return null;
             }
         }
-       
+
+        
+
+        public bool UpdateQuoteTotal(int idQuote, decimal Total)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = Cnn.OpenConecction();
+                cmd.CommandText = "UPDATE Quote SET Total = @Total WHERE idQuote = @idQuote;";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@idQuote", idQuote);
+                cmd.Parameters.AddWithValue("@Total", Total);
+                cmd.ExecuteNonQuery();
+                Cnn.CloseConnection();
+                return true;
+
+            }
+            catch { return false; }
+        }
+
 
     }
 }
