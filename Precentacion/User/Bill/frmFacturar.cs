@@ -482,7 +482,9 @@ namespace Precentacion.User.Bill
             {
                 //Ocultar las columnas que no se necesitan
                 dgvDesglose.Columns[1].Visible = true;
+                dgvDesglose.Columns[1].HeaderText = "Precio Venta";
                 dgvDesglose.Columns[2].Visible = true;
+                dgvDesglose.Columns[2].HeaderText = "Costo";
                 //Agregar una Columna para el Tamaño
                 DataGridViewTextBoxColumn Columna = new DataGridViewTextBoxColumn();
                 Columna.HeaderText = "Tamaño";
