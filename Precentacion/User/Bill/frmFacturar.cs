@@ -481,8 +481,8 @@ namespace Precentacion.User.Bill
             try
             {
                 //Ocultar las columnas que no se necesitan
-                dgvDesglose.Columns[1].Visible = false;
-                dgvDesglose.Columns[2].Visible = false;
+                dgvDesglose.Columns[1].Visible = true;
+                dgvDesglose.Columns[2].Visible = true;
                 //Agregar una Columna para el Tamaño
                 DataGridViewTextBoxColumn Columna = new DataGridViewTextBoxColumn();
                 Columna.HeaderText = "Tamaño";
