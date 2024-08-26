@@ -269,7 +269,7 @@ namespace Precentacion.User.Bill
                             string Descripcion = row.Cells[1].Value.ToString();
 
                             // Obtener el Total del Aluminio del Vidrio Fijo                      
-                            DataTable dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", cbProveedorDesglose.SelectedValue.ToString(), anchoFijo, altoFijo, material, divisiones);
+                            DataTable dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", "Extralum", anchoFijo, altoFijo, material, divisiones);
 
                             // Obtener el Metraje del dtAluminioFijo y multiplicarlo por la Cantidad de Ventanas
                             foreach (DataRow item in dtAluminioFijo.Rows)
@@ -434,8 +434,28 @@ namespace Precentacion.User.Bill
                     }
 
                 }
-                //Eliminar del DataTable la fila que el Metraje sea 0
-                dtTotalDesglose = dtTotalDesglose.Select("Metraje > 0").CopyToDataTable();
+                if (dtTotalDesglose.Columns.Contains("Metraje"))
+                {
+                    // Filtrar las filas con Metraje > 0
+                    DataRow[] filasFiltradas = dtTotalDesglose.Select("Metraje > 0");
+
+                    if (filasFiltradas.Length > 0)
+                    {
+                        // Si se encuentran filas, crear el nuevo DataTable
+                        dtTotalDesglose = filasFiltradas.CopyToDataTable();
+                    }
+                    else
+                    {
+                        // Si no se encuentran filas, manejarlo según sea necesario
+                        // dtTotalDesglose.Rows.Clear(); // Esta es una opción si deseas vaciar el DataTable.
+                    }
+                }
+                else
+                {
+                    // Manejar el caso en que la columna "Metraje" no exista
+                    // Podrías optar por ignorar el proceso o inicializar de alguna forma dtTotalDesglose
+                }
+
 
                 //Cargar el dtTotalAluminio en el dgv
                 dgvDesglose.DataSource = dtTotalDesglose;
@@ -1408,10 +1428,12 @@ namespace Precentacion.User.Bill
                 if (!dgvDesglose.Columns.Contains("Total Cost"))
                 {
                     dgvDesglose.Columns.Add("Total Cost", "Total Cost");
+                    dgvDesglose.Columns["Total Cost"].DefaultCellStyle.Format = "N2"; // Formato con dos decimales
                 }
                 if (!dgvDesglose.Columns.Contains("Total Price"))
                 {
                     dgvDesglose.Columns.Add("Total Price", "Total Price");
+                    dgvDesglose.Columns["Total Price"].DefaultCellStyle.Format = "N2"; // Formato con dos decimales
                 }
 
                 // Calcular los valores para 'Total Cost' y 'Total Price' para cada fila
@@ -1426,14 +1448,14 @@ namespace Precentacion.User.Bill
                         if (row.Cells["Cost"].Value != null)
                         {
                             decimal cost = Convert.ToDecimal(row.Cells["Cost"].Value);
-                            row.Cells["Total Cost"].Value = tamaño * cantidad * cost;
+                            row.Cells["Total Cost"].Value = Math.Round(tamaño * cantidad * cost, 2);
                         }
 
                         // Calcular Total Price
                         if (row.Cells["SalePrice"].Value != null)
                         {
                             decimal salePrice = Convert.ToDecimal(row.Cells["SalePrice"].Value);
-                            row.Cells["Total Price"].Value = tamaño * cantidad * salePrice;
+                            row.Cells["Total Price"].Value = Math.Round(tamaño * cantidad * salePrice, 2);
                         }
                     }
                 }
@@ -1461,6 +1483,7 @@ namespace Precentacion.User.Bill
                 // Mostrar las sumas en los TextBox correspondientes
                 txtTotalC.Text = sumaTotalCost.ToString("N2"); // Formato con dos decimales
                 txtTotalSP.Text = sumaTotalPrice.ToString("N2"); // Formato con dos decimales
+
 
 
             }
@@ -3164,10 +3187,20 @@ namespace Precentacion.User.Bill
 
         private void cbProveedorDesglose_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //CargarDesglose();
-            //ConfigDataGridDesglose();
+            // Limpia todas las filas y columnas del DataGridView
+            dgvDesglose.DataSource = null;
+            dgvDesglose.Rows.Clear();
+            dgvDesglose.Columns.Clear();
+
+            // Ahora llama a las funciones necesarias
+            CargarDesglose();
+            ConfigDataGridDesglose();
             CargarTamañoPieza();
         }
+
+
+
+
 
         private void frmFacturar_FormClosed(object sender, FormClosedEventArgs e)
         {
