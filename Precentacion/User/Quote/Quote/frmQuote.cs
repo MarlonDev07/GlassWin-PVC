@@ -2314,6 +2314,22 @@ namespace Precentacion.User.Quote.Quote
                     cellTextBAC.HorizontalAlignment = Element.ALIGN_LEFT;
                     table.AddCell(cellTextBAC);
 
+
+                    // Cuenta BN
+                    string rutaBN = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\bn.png";
+                    Image imgBN = Image.GetInstance(rutaBN);
+                    imgBN.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoBN = new PdfPCell(imgBN);
+                    cellLogoBN.Border = PdfPCell.NO_BORDER;
+                    cellLogoBN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoBN);
+
+                    PdfPCell cellTextBN = new PdfPCell(new Phrase("• Cuenta BN  CR37015112720010160574.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextBN.Border = PdfPCell.NO_BORDER;
+                    cellTextBN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextBN);
+
+
                     // SINPE Móvil
                     string rutaSinpe = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\sinpe-movil-2.png";
                     Image imgSINPE = Image.GetInstance(rutaSinpe);
@@ -4404,7 +4420,77 @@ namespace Precentacion.User.Quote.Quote
                 }
 
 
-     
+                if (CompanyCache.IdCompany == 112540885)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    // Crear tabla con 2 columnas para organizar texto e imágenes
+                    PdfPTable table = new PdfPTable(1);
+                    table.WidthPercentage = 100; // Ajustar el ancho de la tabla al 100% del documento
+
+                    // Agregar las cuentas y los logos en una tabla
+                    // Cuenta Banco Popular
+                    string rutaBP = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\logo_bancopopular.png";
+                    Image imgBancoPopular = Image.GetInstance(rutaBP);
+                    imgBancoPopular.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoBP = new PdfPCell(imgBancoPopular);
+                    cellLogoBP.Border = PdfPCell.NO_BORDER;
+                    cellLogoBP.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoBP);
+
+                    PdfPCell cellTextBP = new PdfPCell(new Phrase("• Cuenta Banco Popular colones CR32016111120141093142.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextBP.Border = PdfPCell.NO_BORDER;
+                    cellTextBP.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextBP);
+
+                    // Cuenta IBAN
+                    string rutaIBAN = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\Logos-PR-BCR.png";
+                    Image imgIBAN = Image.GetInstance(rutaIBAN);
+                    imgIBAN.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoIBAN = new PdfPCell(imgIBAN);
+                    cellLogoIBAN.Border = PdfPCell.NO_BORDER;
+                    cellLogoIBAN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoIBAN);
+
+                    PdfPCell cellTextIBAN = new PdfPCell(new Phrase("• Cuenta IBAN colones CR36010200009449083184.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextIBAN.Border = PdfPCell.NO_BORDER;
+                    cellTextIBAN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextIBAN);
+
+                    // Cuenta BAC
+                    string rutaBAC = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\logo_bacredomatic.png";
+                    Image imgBAC = Image.GetInstance(rutaBAC);
+                    imgBAC.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoBAC = new PdfPCell(imgBAC);
+                    cellLogoBAC.Border = PdfPCell.NO_BORDER;
+                    cellLogoBAC.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoBAC);
+
+                    PdfPCell cellTextBAC = new PdfPCell(new Phrase("• Cuenta BAC colones 944908318.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextBAC.Border = PdfPCell.NO_BORDER;
+                    cellTextBAC.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextBAC);
+
+                    // SINPE Móvil
+                    string rutaSinpe = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\sinpe-movil-2.png";
+                    Image imgSINPE = Image.GetInstance(rutaSinpe);
+                    imgSINPE.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoSINPE = new PdfPCell(imgSINPE);
+                    cellLogoSINPE.Border = PdfPCell.NO_BORDER;
+                    cellLogoSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoSINPE);
+
+                    PdfPCell cellTextSINPE = new PdfPCell(new Phrase("• Número SINPE Móvil 83984523.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextSINPE.Border = PdfPCell.NO_BORDER;
+                    cellTextSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextSINPE);
+
+                    document.Add(table);
+                }
+
+
 
 
                 //J123
@@ -4544,75 +4630,7 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-                if (CompanyCache.IdCompany == 112540885)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    // Crear tabla con 2 columnas para organizar texto e imágenes
-                    PdfPTable table = new PdfPTable(1);
-                    table.WidthPercentage = 100; // Ajustar el ancho de la tabla al 100% del documento
-
-                    // Agregar las cuentas y los logos en una tabla
-                    // Cuenta Banco Popular
-                    string rutaBP = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\logo_bancopopular.png";
-                    Image imgBancoPopular = Image.GetInstance(rutaBP);
-                    imgBancoPopular.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
-                    PdfPCell cellLogoBP = new PdfPCell(imgBancoPopular);
-                    cellLogoBP.Border = PdfPCell.NO_BORDER;
-                    cellLogoBP.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellLogoBP);
-
-                    PdfPCell cellTextBP = new PdfPCell(new Phrase("• Cuenta Banco Popular colones CR32016111120141093142.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
-                    cellTextBP.Border = PdfPCell.NO_BORDER;
-                    cellTextBP.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellTextBP);
-
-                    // Cuenta IBAN
-                    string rutaIBAN = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\Logos-PR-BCR.png";
-                    Image imgIBAN = Image.GetInstance(rutaIBAN);
-                    imgIBAN.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
-                    PdfPCell cellLogoIBAN = new PdfPCell(imgIBAN);
-                    cellLogoIBAN.Border = PdfPCell.NO_BORDER;
-                    cellLogoIBAN.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellLogoIBAN);
-
-                    PdfPCell cellTextIBAN = new PdfPCell(new Phrase("• Cuenta IBAN colones CR36010200009449083184.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
-                    cellTextIBAN.Border = PdfPCell.NO_BORDER;
-                    cellTextIBAN.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellTextIBAN);
-
-                    // Cuenta BAC
-                    string rutaBAC = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\logo_bacredomatic.png";
-                    Image imgBAC = Image.GetInstance(rutaBAC);
-                    imgBAC.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
-                    PdfPCell cellLogoBAC = new PdfPCell(imgBAC);
-                    cellLogoBAC.Border = PdfPCell.NO_BORDER;
-                    cellLogoBAC.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellLogoBAC);
-
-                    PdfPCell cellTextBAC = new PdfPCell(new Phrase("• Cuenta BAC colones 944908318.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
-                    cellTextBAC.Border = PdfPCell.NO_BORDER;
-                    cellTextBAC.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellTextBAC);
-
-                    // SINPE Móvil
-                    string rutaSinpe = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\sinpe-movil-2.png";
-                    Image imgSINPE = Image.GetInstance(rutaSinpe);
-                    imgSINPE.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
-                    PdfPCell cellLogoSINPE = new PdfPCell(imgSINPE);
-                    cellLogoSINPE.Border = PdfPCell.NO_BORDER;
-                    cellLogoSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellLogoSINPE);
-
-                    PdfPCell cellTextSINPE = new PdfPCell(new Phrase("• Número SINPE Móvil 83984523.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
-                    cellTextSINPE.Border = PdfPCell.NO_BORDER;
-                    cellTextSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellTextSINPE);
-
-                    document.Add(table);
-                }
+          
                 //Prefalum
                 if (CompanyCache.IdCompany == 111111111)
                 {
