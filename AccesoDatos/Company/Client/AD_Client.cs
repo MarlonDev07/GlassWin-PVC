@@ -18,7 +18,7 @@ namespace AccesoDatos.Client
                 SqlDataReader Read;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Cnn.OpenConecction();
-                cmd.CommandText = "Select * from Client WHERE IdCompany = @Id and Estado = 'ACTIVO'";
+                cmd.CommandText = "SELECT \r\n    c.IdClient,\r\n    c.Name,\r\n    c.Phone,\r\n    c.IdCompany,\r\n    c.Address,\r\n    c.Correo,\r\n    c.Estado,\r\n    c.Registro,\r\n    c.LimiteCredito,\r\n    c.FechaVencimiento,\r\n    c.Dias,\r\n    COALESCE(SUM(ar.OutstandingBalance), 0) AS TotalOutstandingBalance\r\nFROM \r\n    Client c\r\nLEFT JOIN \r\n    Bill b ON c.IdClient = b.IdClient\r\nLEFT JOIN \r\n    AccountReceivable ar ON b.IdBill = ar.IdBill\r\nWHERE \r\n    c.IdCompany = @Id \r\n    AND c.Estado = 'ACTIVO'\r\nGROUP BY \r\n    c.IdClient,\r\n    c.Name,\r\n    c.Phone,\r\n    c.IdCompany,\r\n    c.Address,\r\n    c.Correo,\r\n    c.Estado,\r\n    c.Registro,\r\n    c.LimiteCredito,\r\n    c.FechaVencimiento,\r\n    c.Dias\r\n";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@Id", CompanyCache.IdCompany);
                 Read = cmd.ExecuteReader();

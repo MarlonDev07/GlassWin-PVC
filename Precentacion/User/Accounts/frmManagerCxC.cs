@@ -70,6 +70,8 @@ namespace Precentacion.User.Accounts
                 //Hacer Invisbles la Columna [0]
                 dgvClient.Columns[0].Visible = false;
                 dgvClient.Columns[3].Visible = false;
+                dgvClient.Columns[6].Visible = false;
+
 
                 //Cambiar Nombre de las Columnas
                 dgvClient.Columns[1].HeaderText = "Nombre";
@@ -77,7 +79,7 @@ namespace Precentacion.User.Accounts
                 dgvClient.Columns[4].HeaderText = "Direccion";
                 dgvClient.Columns[5].HeaderText = "Correo";
                 dgvClient.Columns[9].HeaderText = "Ingreso";
-
+                dgvClient.Columns[11].HeaderText = "Saldo Pendiente";
                 //Ajustar las columnas al Ancho del formulario
                 dgvClient.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }

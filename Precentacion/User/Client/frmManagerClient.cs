@@ -62,6 +62,7 @@ namespace Precentacion.User.Client
                 dgvClient.Columns[7].HeaderText = "Límite Crédito";
                 dgvClient.Columns[8].HeaderText = "Fecha Ingreso";
                 dgvClient.Columns[9].HeaderText = "Días";
+                dgvClient.Columns[11].HeaderText = "Saldo Pendiente";
 
                 //Modificar todas las columnas al ancho del Form
                 dgvClient.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
