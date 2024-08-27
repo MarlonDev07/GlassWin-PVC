@@ -53,6 +53,7 @@ namespace Precentacion.User.Quote.Quote
         decimal tasaCambio;
         bool dolar = false;
         bool colon = false;
+        public decimal precioTotalEdit; 
         #endregion
 
         #region Constructor
