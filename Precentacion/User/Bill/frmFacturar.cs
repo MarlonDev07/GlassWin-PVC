@@ -42,7 +42,7 @@ namespace Precentacion.User.Bill
         N_Bill N_Bill = new N_Bill();
         N_AdmProyecto N_AdmProyecto = new N_AdmProyecto();
         string color;
-        bool bandera = false;
+        bool bandera = true;
         #endregion
 
         #region Constructor
@@ -51,6 +51,7 @@ namespace Precentacion.User.Bill
             InitializeComponent();
             CargarProveedor();
             tabControl.Selecting += new TabControlCancelEventHandler(tabControl_Selecting);
+          
         }
         #endregion
 
@@ -65,6 +66,7 @@ namespace Precentacion.User.Bill
             dgvRectificacionLoad();
             LoadAccount();
             MostrarPrecio();
+            cargarDatosTotalDesglose();
 
 
         }
@@ -3320,6 +3322,39 @@ namespace Precentacion.User.Bill
         {
 
         }
+        public void cargarDatosTotalDesglose()
+        {
+            try
+            {
+                DataTable dtTotalDesglose = new DataTable();
+                int idQuote = Convert.ToInt32(txtidQuote.Text);
+
+                // Llama al método que obtiene los datos y los asigna al DataTable
+                dtTotalDesglose = NQuote.GetTotalDesgloseByQuoteId(idQuote);
+
+                // Verifica si el DataTable está vacío
+                if (dtTotalDesglose.Rows.Count == 0)
+                {
+                    // Si está vacío, crea una fila con un mensaje por defecto
+                    DataRow row = dtTotalDesglose.NewRow();
+                    row["TotalPV"] = "No hay datos"; // Esto depende de las columnas que tengas
+                    dtTotalDesglose.Rows.Add(row);
+                    //tabControl.SelectedTab = tabPageDesglose;
+                }
+
+                // Asigna el DataTable como fuente de datos del DataGridView
+                dgvTotal.DataSource = dtTotalDesglose;
+
+                // Ajustar el ancho de las columnas al contenido
+                dgvTotal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                // MessageBox.Show("Error al cargar los datos: " + ex.Message);
+            }
+        }
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -3348,33 +3383,39 @@ namespace Precentacion.User.Bill
             // Calcular el total sumando totalPV, montoFabricacion y montoInstalacion
             decimal total = totalPV + montoFabricacion + montoInstalacion;
 
-            int idQuote = Convert.ToInt32(txtidQuote.Text);
+          
 
-            //bool resultado = NQuote.updateQuoteTotal(idQuote,total);
+            int idQuote = Convert.ToInt32(txtidQuote.Text);
+            //    public int InsertTotalDesglose(int IdQuote, decimal TotalPV, decimal MontoFacturacion, decimal MontoInstalacion, decimal Total)
+            int resul = NQuote.InsertTotalDesglose(idQuote, totalPV, montoFabricacion, montoInstalacion, total);
+
+            bool resultado = NQuote.updateQuoteTotal(idQuote,total);
+
+            cargarDatosTotalDesglose();
 
             // Asegurarse de que el DataGridView tenga las columnas necesarias
-            if (dgvTotal.Columns.Count == 0)
+            /*if (dgvTotal.Columns.Count == 0)
             {
                 dgvTotal.Columns.Add("TotalPV", "Total PV");
                 dgvTotal.Columns.Add("MontoFabricacion", "Monto Fabricación");
                 dgvTotal.Columns.Add("MontoInstalacion", "Monto Instalación");
                 dgvTotal.Columns.Add("Total", "Total");
-            }
+            }*/
 
             // Configurar el modo de ajuste automático de las columnas para que se llenen todo el ancho del DataGridView
             dgvTotal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             // Agregar una nueva fila al DataGridView con los valores calculados
-            dgvTotal.Rows.Add(totalPV, montoFabricacion, montoInstalacion, total);
+            //dgvTotal.Rows.Add(totalPV, montoFabricacion, montoInstalacion, total);
 
-            //if (resultado)
-            //{
+            if (resultado)
+            {
                 // Opcional: Mostrar un mensaje de éxito
                 MessageBox.Show("Datos añadidos correctamente a la tabla y monto total de la proforma modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-            //else {
-            //    MessageBox.Show("Ha ocurrido un error.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            else {
+                MessageBox.Show("Ha ocurrido un error.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             
 

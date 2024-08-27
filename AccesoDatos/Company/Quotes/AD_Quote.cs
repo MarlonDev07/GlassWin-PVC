@@ -855,5 +855,55 @@ namespace AccesoDatos.Company.Quotes
         }
 
 
+
+        public int InsertTotalDesglose(int IdQuote, decimal TotalPV, decimal MontoFacturacion, decimal MontoInstalacion, decimal Total)
+        {
+            using (SqlConnection connection = Cnn.OpenConecction()) // Supongo que 'Cnn.OpenConecction()' es tu método para abrir una conexión.
+            {
+                using (SqlCommand command = new SqlCommand("INSERT INTO dbo.TotalDesglose (IdQuote, TotalPV, MontoFacturacion, MontoInstalacion, Total) VALUES (@IdQuote, @TotalPV, @MontoFacturacion, @MontoInstalacion, @Total); SELECT SCOPE_IDENTITY();", connection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+
+                    // Configurar los parámetros explícitamente
+                    command.Parameters.Add("@IdQuote", SqlDbType.Int).Value = IdQuote;
+                    command.Parameters.Add("@TotalPV", SqlDbType.Decimal).Value = TotalPV;
+                    command.Parameters.Add("@MontoFacturacion", SqlDbType.Decimal).Value = MontoFacturacion;
+                    command.Parameters.Add("@MontoInstalacion", SqlDbType.Decimal).Value = MontoInstalacion;
+                    command.Parameters.Add("@Total", SqlDbType.Decimal).Value = Total;
+
+                    // Ejecuta el comando y obtiene el último ID insertado
+                    int ultimoIDInsertado = Convert.ToInt32(command.ExecuteScalar());
+
+                    return ultimoIDInsertado;
+                }
+            }
+        }
+
+        public DataTable GetTotalDesgloseByQuoteId(int idQuote)
+        {
+            DataTable dtTotalDesglose = new DataTable();
+
+            using (SqlConnection connection = Cnn.OpenConecction()) // Abre la conexión a la base de datos.
+            {
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.TotalDesglose WHERE IdQuote = @IdQuote", connection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+
+                    // Configurar el parámetro
+                    command.Parameters.Add("@IdQuote", SqlDbType.Int).Value = idQuote;
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        // Llenar el DataTable con los datos obtenidos
+                        adapter.Fill(dtTotalDesglose);
+                    }
+                }
+            }
+
+            return dtTotalDesglose;
+        }
+
+
+
     }
 }

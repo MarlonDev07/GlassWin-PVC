@@ -380,8 +380,36 @@ namespace Negocio.Company.Quote
         }
 
         public bool updateQuoteTotal(int idQuote, decimal total) {
-            ADQuote.UpdateQuoteTotal(Convert.ToInt32(idQuote), Convert.ToDecimal(total));
-            return true;
+            try {
+                ADQuote.UpdateQuoteTotal(Convert.ToInt32(idQuote), Convert.ToDecimal(total));
+                return true;
+            }
+            catch  { return false; }
+     
+        }
+
+        public int InsertTotalDesglose(int IdQuote, decimal TotalPV, decimal MontoFacturacion, decimal MontoInstalacion, decimal Total)
+        {
+            try
+            {
+                return ADQuote.InsertTotalDesglose(IdQuote, TotalPV, MontoFacturacion, MontoInstalacion, Total);
+            }
+            catch
+            { 
+                return 0;   
+            }
+            
+        }
+
+        public DataTable GetTotalDesgloseByQuoteId(int idQuote) {
+            try
+            {
+                return ADQuote.GetTotalDesgloseByQuoteId(idQuote);
+            }
+            catch
+            {
+                    return null ;
+            }
         }
 
     }
