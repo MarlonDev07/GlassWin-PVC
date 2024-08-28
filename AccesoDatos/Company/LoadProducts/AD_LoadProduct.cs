@@ -413,6 +413,38 @@ namespace AccesoDatos.Company.LoadProducts
                 return null;
             }
         }
+
+
+
+        public DataTable LoadPricesLockDesglose(string supplier, string Description)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                ClsConnection con = new ClsConnection();
+
+                string sql = "";
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "select P.Description,PP.SalePrice,PP.Cost from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
+                }
+                else
+                {
+                    sql = "select P.Description,PP.Cost,PP.SalePrice from Product P  INNER JOIN Price PP ON P.idProduct = PP.idProduct WHERE PP.Supplier = '" + supplier + "' AND P.Description = '" + Description + "'";
+                }
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.Fill(dataTable);
+                con.CloseConnection();
+                return dataTable;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+
+
         //Load PriceLock Utilidad
         public DataTable LoadPricesLockUtilidad(string supplier, string Description)
         {

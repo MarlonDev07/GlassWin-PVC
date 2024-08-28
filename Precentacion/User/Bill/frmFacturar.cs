@@ -225,6 +225,11 @@ namespace Precentacion.User.Bill
                     string color = matchColor.Success ? matchColor.Groups[1].Value : string.Empty;
                     this.color = color;
 
+                    // Patrón para extraer "Cerradura"
+                    string patternCerradura = @"Cerradura:\s*(.+)";
+                    System.Text.RegularExpressions.Match matchCerradura = System.Text.RegularExpressions.Regex.Match(DescripcionCantidad, patternCerradura);
+                    string cerradura = matchCerradura.Success ? matchCerradura.Groups[1].Value : string.Empty;
+
 
 
 
@@ -415,6 +420,7 @@ namespace Precentacion.User.Bill
                     dtVidrios.AcceptChanges();
 
 
+
                     // Validar todas las celdas del dtVidrios para agregarlas al dtTotalDesglose
                     if (dtTotalDesglose.Rows.Count == 0)
                     {
@@ -423,6 +429,48 @@ namespace Precentacion.User.Bill
                     else
                     {
                         foreach (DataRow item in dtVidrios.Rows)
+                        {
+                            // Validar si la celda Description tiene el mismo valor y, si es así, sumar el Metraje
+                            DataRow[] rows = dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'");
+                            if (rows.Length > 0)
+                            {
+                                rows[0]["Metraje"] = Convert.ToDecimal(rows[0]["Metraje"]) + Convert.ToDecimal(item["Metraje"]);
+                            }
+                            else
+                            {
+                                dtTotalDesglose.ImportRow(item);
+                            }
+                        }
+                    }
+
+
+                    // Declarar la variable dtVidrios antes de su uso
+                    DataTable dtCerradura = new DataTable();
+                    dtCerradura = NLoadProduct.LoadPricesLockDesglose(cbProveedorDesglose.SelectedValue.ToString(), cerradura);
+
+                    foreach (DataRow item in dtCerradura.Rows)
+                    {
+                        item["Metraje"] = Convert.ToDecimal(item["Metraje"]) * Convert.ToDecimal(Cantidad);
+                    }
+
+                    // Eliminar filas donde la columna Metraje tenga un valor de 0
+                    foreach (DataRow row2 in dtCerradura.Rows.Cast<DataRow>().ToList())
+                    {
+                        if (Convert.ToDecimal(row2["Metraje"]) == 0)
+                        {
+                            row2.Delete();
+                        }
+                    }
+                    dtCerradura.AcceptChanges();
+
+                    // Validar todas las celdas del dtVidrios para agregarlas al dtTotalDesglose
+                    if (dtTotalDesglose.Rows.Count == 0)
+                    {
+                        dtTotalDesglose = dtCerradura;
+                    }
+                    else
+                    {
+                        foreach (DataRow item in dtCerradura.Rows)
                         {
                             // Validar si la celda Description tiene el mismo valor y, si es así, sumar el Metraje
                             DataRow[] rows = dtTotalDesglose.Select("Description = '" + item["Description"].ToString() + "'");

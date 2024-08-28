@@ -894,6 +894,48 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
+
+        public DataTable LoadPricesLockDesglose(string supplier, string Description)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+
+                if (ClsWindows.System == "8025 2 Vias" || ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 2 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "Europa 2 Vias Puerta" || ClsWindows.System == "Europa 3 Vias Puerta" || ClsWindows.System == "Europa 2 Vias" || ClsWindows.System == "Europa 3 Vias")
+                {
+                    dt = loadProduct.LoadPricesLockDesglose(supplier, Description);
+
+                    // Agrega las columnas "Metraje", "TotalPrice" y "TotalCost" solo si no existen
+                    if (!dt.Columns.Contains("Metraje"))
+                    {
+                        dt.Columns.Add("Metraje", typeof(decimal));
+                    }
+                    if (!dt.Columns.Contains("TotalPrice"))
+                    {
+                        dt.Columns.Add("TotalPrice", typeof(decimal));
+                    }
+
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        decimal Metraje = CalcMetrajeLock(Description);
+                        decimal SalePrice = Convert.ToDecimal(item[1]);
+                        decimal Price = CalcPrice(Metraje, SalePrice);
+
+                        // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
+                        item["Metraje"] = Metraje;
+                        item["TotalPrice"] = Price;
+                    }
+                }
+
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
         //Load PriceLocks Utilidades
         public DataTable LoadPricesLockUtilidades(string supplier, string Description)
         {
