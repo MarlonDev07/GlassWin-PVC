@@ -264,9 +264,7 @@ namespace Precentacion.User.Quote.Quote
         {
             try
             {
-                //cbIva.SelectedIndex = 6;
-                DataTable dt = new DataTable();
-                dt = NQuote.LoadWindows(Convert.ToInt32(txtidQuote.Text));
+                DataTable dt = NQuote.LoadWindows(Convert.ToInt32(txtidQuote.Text));
                 dgCotizaciones.DataSource = dt;
                 dgCotizaciones.RowTemplate.Height = 250;
                 dgCotizaciones.Columns[0].Width = 90;
@@ -275,22 +273,21 @@ namespace Precentacion.User.Quote.Quote
                 dgCotizaciones.Columns[3].Width = 115;
                 if (UserCache.Name == "VitroTaller")
                 {
-                    //Ocultar la Columna Precio
+                    // Ocultar la columna de Precio
                     dgCotizaciones.Columns[3].Visible = false;
                 }
 
-                //Cambiar el nombre de las columnas
-                dgCotizaciones.Columns[2].HeaderText = "Descripcion";
+                // Cambiar el nombre de las columnas
+                dgCotizaciones.Columns[2].HeaderText = "Descripción";
                 dgCotizaciones.Columns[3].HeaderText = "Precio";
+
+                // Calcular precios
                 CalcPrices();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            
-
-
         }
         public void LoadConditionals()
         {
@@ -821,22 +818,17 @@ namespace Precentacion.User.Quote.Quote
         {
             try
             {
-                //Validar si txtManoObrea y txtDescuento son numeros
+                // Validar si txtManoObra y txtDescuento son números
                 if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
                 {
-
+                    // Reinicializar las variables de cálculo
                     SubTotal = 0;
                     IVA = 0;
-                    Discount = 0;
-                    Labour = 0;
+                    Discount = descuento / 100; // Convertir a porcentaje
+                    Labour = manoObra / 100;    // Convertir a porcentaje
                     Total = 0;
-                    Descuento = 0;
-                    ManoObra = 0;
 
-                    Discount = descuento / 100;
-                    Labour = manoObra / 100;
-
-
+                    // Recargar los datos de la ventana y calcular precios
                     loadWindows();
                 }
                 else
@@ -847,9 +839,7 @@ namespace Precentacion.User.Quote.Quote
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error. Por favor, verifique que haya ingresado bien todos los datos.\n" + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
-
         }
         #endregion
 
@@ -1181,12 +1171,11 @@ namespace Precentacion.User.Quote.Quote
             if (Edit)
             {
                 // Usar el valor editado
-               // precioTotalEdit = Convert.ToDecimal(dgCotizaciones.CurrentRow.Cells[8].Value);
                 total = precioTotalEdit;
 
                 // Aplicar mano de obra y descuento si existen
-                decimal priceWithLabour = total + (total * ManoObra);
-                decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Descuento);
+                decimal priceWithLabour = total + (total * Labour);
+                decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
                 total = priceWithDiscount;
 
                 // Actualizar la variable global
@@ -1202,10 +1191,13 @@ namespace Precentacion.User.Quote.Quote
                 foreach (DataGridViewRow row in dgCotizaciones.Rows)
                 {
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-                    decimal priceWithLabour = price + (price * ManoObra);
-                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Descuento);
+
+                    // Aplicar mano de obra y descuento
+                    decimal priceWithLabour = price + (price * Labour);
+                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
                     row.Cells["Price"].Value = priceWithDiscount;
-                    total += Convert.ToDecimal(row.Cells["Price"].Value);
+
+                    total += priceWithDiscount;
                 }
 
                 SubTotal = total;
@@ -1226,6 +1218,7 @@ namespace Precentacion.User.Quote.Quote
             // Asegurarse de que el IVA se calcule automáticamente con el subtotal actualizado
             cbIva_SelectedIndexChanged(this, EventArgs.Empty);
         }
+
 
 
         private bool ValidateFields()

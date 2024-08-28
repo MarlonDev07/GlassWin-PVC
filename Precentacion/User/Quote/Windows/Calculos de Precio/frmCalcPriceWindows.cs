@@ -1040,8 +1040,8 @@ namespace Precentacion.User.Quote.Windows
                 txtAddWeigth.Text = "";
                 txtAddHeight.Text = "";
                 txtTotalPrice.Text = "";
-                cbUbicacion.SelectedIndex = 0;
-                cbAluminio.SelectedIndex = 0;
+                //cbUbicacion.SelectedIndex = 0;
+               // cbAluminio.SelectedIndex = 0;
                 dgAluminioAdd.DataSource = null;
                 dgVidrioAdd.DataSource = null;
                 priceNewGlass = 0;
