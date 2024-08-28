@@ -385,7 +385,7 @@ namespace Negocio.Company.Quote
                 return true;
             }
             catch  { return false; }
-     
+
         }
 
         public int InsertTotalDesglose(int IdQuote, decimal TotalPV, decimal MontoFacturacion, decimal MontoInstalacion, decimal Total)
@@ -395,11 +395,24 @@ namespace Negocio.Company.Quote
                 return ADQuote.InsertTotalDesglose(IdQuote, TotalPV, MontoFacturacion, MontoInstalacion, Total);
             }
             catch
-            { 
-                return 0;   
+            {
+                return 0;
             }
-            
+
         }
+
+        public bool EliminarRegistro(int IdTotal)
+        {
+            try
+            {
+                return ADQuote.EliminarRegistro(IdTotal);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         public DataTable GetTotalDesgloseByQuoteId(int idQuote) {
             try

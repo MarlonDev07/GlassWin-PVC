@@ -879,6 +879,21 @@ namespace AccesoDatos.Company.Quotes
             }
         }
 
+        public bool EliminarRegistro(int IdTotal)
+        {
+            using (SqlConnection connection = Cnn.OpenConecction())
+            {
+                using (SqlCommand command = new SqlCommand("DELETE FROM dbo.TotalDesglose WHERE IdTotal = @IdTotal", connection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.Parameters.Add("@IdTotal", SqlDbType.Int).Value = IdTotal;
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+
         public DataTable GetTotalDesgloseByQuoteId(int idQuote)
         {
             DataTable dtTotalDesglose = new DataTable();

@@ -3332,21 +3332,19 @@ namespace Precentacion.User.Bill
                 // Llama al método que obtiene los datos y los asigna al DataTable
                 dtTotalDesglose = NQuote.GetTotalDesgloseByQuoteId(idQuote);
 
-                // Verifica si el DataTable está vacío
-                if (dtTotalDesglose.Rows.Count == 0)
-                {
-                    // Si está vacío, crea una fila con un mensaje por defecto
-                    DataRow row = dtTotalDesglose.NewRow();
-                    row["TotalPV"] = "No hay datos"; // Esto depende de las columnas que tengas
-                    dtTotalDesglose.Rows.Add(row);
-                    //tabControl.SelectedTab = tabPageDesglose;
-                }
-
                 // Asigna el DataTable como fuente de datos del DataGridView
                 dgvTotal.DataSource = dtTotalDesglose;
 
                 // Ajustar el ancho de las columnas al contenido
                 dgvTotal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                // Cambiar los encabezados de las columnas
+                dgvTotal.Columns[0].HeaderText = "ID";
+                dgvTotal.Columns[1].HeaderText = "Proforma";
+                dgvTotal.Columns[2].HeaderText = "Precio Venta";
+                dgvTotal.Columns[3].HeaderText = "Monto Fabricación";
+                dgvTotal.Columns[4].HeaderText = "Monto Instalación";
+                dgvTotal.Columns[5].HeaderText = "Total";
             }
             catch (Exception ex)
             {
@@ -3354,6 +3352,7 @@ namespace Precentacion.User.Bill
                 // MessageBox.Show("Error al cargar los datos: " + ex.Message);
             }
         }
+
 
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -3462,5 +3461,61 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("No puede acceder a esta pestaña en este momento.");
             }
         }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Verifica que haya una fila seleccionada
+            if (dgvTotal.SelectedRows.Count > 0)
+            {
+                // Pregunta de confirmación
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este registro?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                // Si el usuario confirma la eliminación
+                if (result == DialogResult.Yes)
+                {
+                    // Obtén el IdTotal de la fila seleccionada (suponiendo que está en la columna [0])
+                    int idTotal = Convert.ToInt32(dgvTotal.SelectedRows[0].Cells[0].Value);
+
+                    // Llama al método para eliminar el registro de la base de datos
+                    if (NQuote.EliminarRegistro(idTotal))
+                    {
+                        // Elimina la fila del DataGridView
+                        dgvTotal.Rows.RemoveAt(dgvTotal.SelectedRows[0].Index);
+                        MessageBox.Show("Registro eliminado exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo eliminar el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una fila para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void dgvTotal_MouseClick(object sender, MouseEventArgs e)
+        {
+            // Verifica si se ha hecho clic con el botón derecho del mouse
+            if (e.Button == MouseButtons.Right)
+            {
+                // Obtén la posición del mouse
+                var hit = dgvTotal.HitTest(e.X, e.Y);
+
+                // Verifica si se hizo clic en una fila válida
+                if (hit.RowIndex >= 0)
+                {
+                    // Selecciona la fila bajo el cursor
+                    dgvTotal.ClearSelection();
+                    dgvTotal.Rows[hit.RowIndex].Selected = true;
+
+                    // Muestra el menú contextual en la posición del mouse
+                    contextMenuStrip1.Show(dgvTotal, new System.Drawing.Point(e.X, e.Y));
+                }
+            }
+        }
+
     }
 }
