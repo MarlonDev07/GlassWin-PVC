@@ -53,7 +53,8 @@ namespace Precentacion.User.Quote.Quote
         decimal tasaCambio;
         bool dolar = false;
         bool colon = false;
-        public decimal precioTotalEdit; 
+        public decimal precioTotalEdit;
+        public int idQuoteVerificacion;
         #endregion
 
         #region Constructor
@@ -79,6 +80,7 @@ namespace Precentacion.User.Quote.Quote
 
             // Crear y configurar los botones personalizados
             InitializeCustomButtons();
+           // VerificarIdQuote();
 
             /*if (Edit)
             {
@@ -91,6 +93,25 @@ namespace Precentacion.User.Quote.Quote
 
         }
         #endregion
+        // Capa de presentación
+        private void VerificarIdQuote()
+        {
+            //int idQuote = Convert.ToInt32(txtidQuote.Text); // Asumiendo que el ID está en un TextBox
+
+            if (NQuote.ExisteIdQuote(idQuoteVerificacion)) // Llamada al método de la capa de lógica de negocio
+            {
+                MessageBox.Show("El ID de la cotización existe en la tabla TotalDesglose.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnSistemas.Enabled = false;
+                btnSanBlast.Enabled = false;
+                btnPrefabricado.Enabled = false;
+                btnExclusivo.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("El ID de la cotización no existe en la tabla TotalDesglose.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void InitializeCustomButtons()
         {
             try 

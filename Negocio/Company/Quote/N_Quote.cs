@@ -413,6 +413,21 @@ namespace Negocio.Company.Quote
             }
         }
 
+        // Lógica de negocio
+        public bool ExisteIdQuote(int idQuote)
+        {
+            try
+            {
+                return ADQuote.ExisteIdQuote(idQuote); // Asumiendo que ADQuote es tu clase de acceso a datos
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones (podrías agregar un log, por ejemplo)
+                return false;
+            }
+        }
+
+
 
         public DataTable GetTotalDesgloseByQuoteId(int idQuote) {
             try

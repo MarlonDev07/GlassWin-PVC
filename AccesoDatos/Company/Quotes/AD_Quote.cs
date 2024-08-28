@@ -879,6 +879,23 @@ namespace AccesoDatos.Company.Quotes
             }
         }
 
+        // Acceso a datos
+        public bool ExisteIdQuote(int idQuote)
+        {
+            using (SqlConnection connection = Cnn.OpenConecction()) // Asumiendo que tienes un método para abrir la conexión
+            {
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(1) FROM dbo.TotalDesglose WHERE IdQuote = @IdQuote", connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.Add("@IdQuote", SqlDbType.Int).Value = idQuote;
+
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count > 0; // Si el conteo es mayor a 0, significa que existe
+                }
+            }
+        }
+
+
         public bool EliminarRegistro(int IdTotal)
         {
             using (SqlConnection connection = Cnn.OpenConecction())
