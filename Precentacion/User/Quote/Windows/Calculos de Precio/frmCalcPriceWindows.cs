@@ -1036,6 +1036,17 @@ namespace Precentacion.User.Quote.Windows
                 dgAluminio.DataSource = null;
                 dgAccesorios.DataSource = null;
                 dgVidrio.DataSource = null;
+                txtPecioFijo.Text = "";
+                txtAddWeigth.Text = "";
+                txtAddHeight.Text = "";
+                txtTotalPrice.Text = "";
+                cbUbicacion.SelectedIndex = 0;
+                cbAluminio.SelectedIndex = 0;
+                dgAluminioAdd.DataSource = null;
+                dgVidrioAdd.DataSource = null;
+                priceNewGlass = 0;
+                cbColor.SelectedIndex = 0;
+
             }
             catch (Exception ex)
             {
@@ -1082,16 +1093,17 @@ namespace Precentacion.User.Quote.Windows
         #region KeyPress
         private void txtAncho_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Verificar Cuando se presiona la tecla Enter
-            if (e.KeyChar == (char)13)
+            // Verificar cuando se presiona la tecla Enter o Tab
+            if (e.KeyChar == (char)13 || e.KeyChar == (char)9)
             {
                 txtAlto.Focus();
             }
+
         }
         private void txtAlto_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Verificar Cuando se presiona la tecla Enter
-            if (e.KeyChar == (char)13)
+            if (e.KeyChar == (char)13 || e.KeyChar == (char)9)
             {
                 //Marcar el Boton del Campo que se esta llenando
                 if (txtAlto.Focus() == true)
@@ -1109,7 +1121,7 @@ namespace Precentacion.User.Quote.Windows
         private void cbColor_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Verificar Cuando se presiona la tecla Enter
-            if (e.KeyChar == (char)13)
+            if (e.KeyChar == (char)13 || e.KeyChar == (char)9)
             {
                 cbVidrio.Focus();
             }
@@ -1117,15 +1129,15 @@ namespace Precentacion.User.Quote.Windows
         private void cbVidrio_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Verificar Cuando se presiona la tecla Enter
-            if (e.KeyChar == (char)13)
+            if (e.KeyChar == (char)13 || e.KeyChar == (char)9)
             {
-                cbCedazo.Focus();
+                cbSupplier.Focus();
             }
         }
         private void cbSupplier_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Verificar Cuando se presiona la tecla Enter
-            if (e.KeyChar == (char)13)
+            if (e.KeyChar == (char)13 || e.KeyChar == (char)9)
             {
                 btnCargar_Click(sender, e);
                 btnInsertar_Click(sender, e);
@@ -2893,6 +2905,153 @@ namespace Precentacion.User.Quote.Windows
         {
             PanelDetalle.Visible = false;
             PanelMedidas.Visible = true;
+        }
+
+        private void txtAddWeigth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Verificar Cuando se presiona la tecla Enter
+            if (e.KeyChar == (char)13 || e.KeyChar == (char)9)
+            {
+                txtAddHeight.Focus();
+            }
+        }
+
+        private void txtAddHeight_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Verificar Cuando se presiona la tecla Enter
+            if (e.KeyChar == (char)13 || e.KeyChar == (char)9)
+            {
+                cbAluminio.Focus();
+            }
+        }
+
+        private void cbAluminio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            //Verificar Cuando se presiona la tecla Enter
+            if (e.KeyChar == (char)13 || e.KeyChar == (char)9)
+            {
+                cbGlass.Focus();
+            }
+        }
+
+        private void cbGlass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+
+            //Verificar Cuando se presiona la tecla Enter
+            if (e.KeyChar == (char)13 || e.KeyChar == (char)9)
+            {
+                cbUbicacion.Focus();
+            }
+        }
+
+        private void cbUbicacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            //Verificar Cuando se presiona la tecla Enter
+            if (e.KeyChar == (char)13 || e.KeyChar == (char)9)
+            {
+                txtDiviciones.Focus();
+            }
+        }
+
+        private void txtAddWeigth_Enter(object sender, EventArgs e)
+        {
+            txtAddWeigth.BackColor = Color.Black;
+            txtAddWeigth.ForeColor = Color.White;
+            //Cambiar el Tamaño de Letra del txtAddWeigth
+            txtAddWeigth.Font = new Font("Microsoft Sans Serif", 11);
+
+        }
+
+        private void txtAddWeigth_Leave(object sender, EventArgs e)
+        {
+            txtAddWeigth.BackColor = Color.White;
+            txtAddWeigth.ForeColor = Color.Black;
+            //Cambiar el Tamaño de Letra del txtAddWeigth
+            txtAddWeigth.Font = new Font("Microsoft Sans Serif", 8);
+
+        }
+
+        private void txtAddHeight_Enter(object sender, EventArgs e)
+        {
+            txtAddHeight.BackColor = Color.Black;
+            txtAddHeight.ForeColor = Color.White;
+            //Cambiar el Tamaño de Letra del txtAddHeight
+            txtAddHeight.Font = new Font("Microsoft Sans Serif", 11);
+        }
+
+        private void txtAddHeight_Leave(object sender, EventArgs e)
+        {
+            txtAddHeight.BackColor = Color.White;
+            txtAddHeight.ForeColor = Color.Black;
+            //Cambiar el Tamaño de Letra del  txtAddHeight
+            txtAddHeight.Font = new Font("Microsoft Sans Serif", 8);
+        }
+
+        private void cbAluminio_Enter(object sender, EventArgs e)
+        {
+            cbAluminio.BackColor = Color.Black;
+            cbAluminio.ForeColor = Color.White;
+            //Cambiar el Tamaño de Letra del cbAluminio
+            cbAluminio.Font = new Font("Microsoft Sans Serif", 11);
+        }
+
+        private void cbAluminio_Leave(object sender, EventArgs e)
+        {
+            cbAluminio.BackColor = Color.White;
+            cbAluminio.ForeColor = Color.Black;
+            //Cambiar el Tamaño de Letra del  cbAluminio
+            cbAluminio.Font = new Font("Microsoft Sans Serif", 8);
+        }
+
+        private void cbGlass_Enter(object sender, EventArgs e)
+        {
+            cbGlass.BackColor = Color.Black;
+            cbGlass.ForeColor = Color.White;
+            //Cambiar el Tamaño de Letra del cbGlass
+            cbGlass.Font = new Font("Microsoft Sans Serif", 11);
+        }
+
+        private void cbGlass_Leave(object sender, EventArgs e)
+        {
+            cbGlass.BackColor = Color.White;
+            cbGlass.ForeColor = Color.Black;
+            //Cambiar el Tamaño de Letra del  cbGlass
+            cbGlass.Font = new Font("Microsoft Sans Serif", 8);
+        }
+
+        private void cbUbicacion_Enter(object sender, EventArgs e)
+        {
+            cbUbicacion.BackColor = Color.Black;
+            cbUbicacion.ForeColor = Color.White;
+            //Cambiar el Tamaño de Letra del cbUbicacion
+            cbUbicacion.Font = new Font("Microsoft Sans Serif", 11);
+        }
+
+        private void cbUbicacion_Leave(object sender, EventArgs e)
+        {
+            cbUbicacion.BackColor = Color.White;
+            cbUbicacion.ForeColor = Color.Black;
+            //Cambiar el Tamaño de Letra del  cbUbicacion
+            cbUbicacion.Font = new Font("Microsoft Sans Serif", 8);
+        }
+
+        private void txtDiviciones_Enter(object sender, EventArgs e)
+        {
+            txtDiviciones.BackColor = Color.Black;
+            txtDiviciones.ForeColor = Color.White;
+            //Cambiar el Tamaño de Letra del txtDiviciones
+            txtDiviciones.Font = new Font("Microsoft Sans Serif", 11);
+        }
+
+        private void txtDiviciones_Leave(object sender, EventArgs e)
+        {
+            txtDiviciones.BackColor = Color.White;
+            txtDiviciones.ForeColor = Color.Black;
+            //Cambiar el Tamaño de Letra del  txtDiviciones
+            txtDiviciones.Font = new Font("Microsoft Sans Serif", 8);
         }
     }
 }
