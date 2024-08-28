@@ -68,8 +68,8 @@ namespace Precentacion.User.Quote.Quote
         private Button btnClose;
         public frmQuote()
         {
-          
-          
+
+
             InitializeComponent();
             loadFunction();
             this.FormBorderStyle = FormBorderStyle.None; // Eliminar el borde predeterminado
@@ -79,6 +79,15 @@ namespace Precentacion.User.Quote.Quote
 
             // Crear y configurar los botones personalizados
             InitializeCustomButtons();
+
+            /*if (Edit)
+            {
+                btnSistemas.Enabled = false;
+                btnSanBlast.Enabled = false;
+                btnPrefabricado.Enabled = false;
+                btnExclusivo.Enabled = false;
+
+            }*/
 
         }
         #endregion
