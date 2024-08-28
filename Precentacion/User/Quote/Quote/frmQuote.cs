@@ -1047,18 +1047,31 @@ namespace Precentacion.User.Quote.Quote
             }
 
         }
-
         private void cbIva_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Obtener el Numero Antes del % en El comboBox
             string Iva = cbIva.SelectedItem.ToString();
             string IvaNumber = Iva.Substring(0, Iva.Length - 1);
-            if (IvaNumber != "")
+
+            if (!string.IsNullOrEmpty(IvaNumber))
             {
                 decimal IvaDecimal = Convert.ToDecimal(IvaNumber);
-                IVA = SubTotal * (IvaDecimal / 100);
-                Total = SubTotal + IVA;
+                decimal subtotalParaCalcular;
 
+                // Si estamos en modo de edición, usamos el precio editado, sino el subtotal original
+                if (Edit)
+                {
+                    subtotalParaCalcular = precioTotalEdit;
+                }
+                else
+                {
+                    subtotalParaCalcular = SubTotal;
+                }
+
+                // Cálculo de IVA y Total basado en el subtotal elegido
+                IVA = subtotalParaCalcular * (IvaDecimal / 100);
+                Total = subtotalParaCalcular + IVA;
+
+                // Mostrar el resultado dependiendo del usuario
                 if (UserCache.Name == "VitroTaller")
                 {
                     txtTotal.Text = "Precio Restringido";
@@ -1069,8 +1082,17 @@ namespace Precentacion.User.Quote.Quote
                     txtTotal.Text = Total.ToString("c");
                     txtIVA.Text = IVA.ToString("c");
                 }
+
+                // Actualizamos precioTotalEdit si estamos en modo edición
+                if (Edit)
+                {
+                    // Guardamos el nuevo total como el valor editado
+                    precioTotalEdit = subtotalParaCalcular;
+                }
             }
         }
+
+
 
         private void btnPrefabricado_Click(object sender, EventArgs e)
         {
@@ -1125,73 +1147,40 @@ namespace Precentacion.User.Quote.Quote
         private void CalcPrices()
         {
             decimal total = 0;
-            if (Descuento != 0 || ManoObra != 0)
-            {
-                foreach (DataGridViewRow row in dgCotizaciones.Rows)
-                {
-                    // Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
-                    decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-                    decimal priceWithLabour = price + (price + ManoObra);
-                    decimal priceWithDiscount = priceWithLabour - (price * Descuento);
-                    decimal TotalPriceWindows = ((priceWithLabour + priceWithDiscount));
-                    row.Cells["Price"].Value = TotalPriceWindows;
-                    // Sumar el total de la columna Price
-                    total += Convert.ToDecimal(row.Cells["Price"].Value);
-                }
 
-                if (UserCache.Name == "VitroTaller")
-                {
-                    txtSubtotal.Text = "Precio Restringido";
-                    txtTotal.Text = "Precio Restringido";
-                }
-                else
-                {
-                    txtSubtotal.Text = total.ToString("c");
-                    txtTotal.Text = Total.ToString("c");
-                }
-                btnApply_Click(null, null);
+            if (Edit)
+            {
+                // Usar el valor editado
+               // precioTotalEdit = Convert.ToDecimal(dgCotizaciones.CurrentRow.Cells[8].Value);
+                total = precioTotalEdit;
+
+                // Aplicar mano de obra y descuento si existen
+                decimal priceWithLabour = total + (total * ManoObra);
+                decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Descuento);
+                total = priceWithDiscount;
+
+                // Actualizar la variable global
+                precioTotalEdit = total;
+
+                // Mostrar en el campo de texto
+                txtTotal.Text = total.ToString("c");
+                txtSubtotal.Text = total.ToString("c");
             }
             else
             {
+                // Lógica existente cuando no se está editando
                 foreach (DataGridViewRow row in dgCotizaciones.Rows)
                 {
-                    // Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-                    decimal priceWithLabour = price + (price * Labour);
-                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
+                    decimal priceWithLabour = price + (price * ManoObra);
+                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Descuento);
                     row.Cells["Price"].Value = priceWithDiscount;
-                    // Sumar el total de la columna Price
                     total += Convert.ToDecimal(row.Cells["Price"].Value);
                 }
-                if (LimiteCredito != 0)
-                {
-                    if (total > LimiteCredito)
-                    {
-                        // Preguntar Si desea Agregar los Precios
-                        DialogResult result = MessageBox.Show("El Total de la Cotizacion supera el Limite de Credito del Cliente, ¿Desea Continuar?", "Limite de Credito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (result == DialogResult.No)
-                        {
-                            txtSubtotal.Text = "";
-                            txtTotal.Text = "";
-                            return;
-                        }
-                        else
-                        {
-                            SubTotal = total;
-                            Total = total;
-                        }
-                    }
-                    else
-                    {
-                        SubTotal = total;
-                        Total = total;
-                    }
-                }
-                else
-                {
-                    SubTotal = total;
-                    Total = total;
-                }
+
+                SubTotal = total;
+                Total = total;
+
                 if (UserCache.Name == "VitroTaller")
                 {
                     txtSubtotal.Text = "Precio Restringido";
@@ -1207,6 +1196,7 @@ namespace Precentacion.User.Quote.Quote
             // Asegurarse de que el IVA se calcule automáticamente con el subtotal actualizado
             cbIva_SelectedIndexChanged(this, EventArgs.Empty);
         }
+
 
         private bool ValidateFields()
         {

@@ -970,7 +970,7 @@
         private System.Windows.Forms.Button btnSistemas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtTotal;
+        public System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label lblTotalPago;
         private System.Windows.Forms.Button btnRefrescar;
         private System.Windows.Forms.Button btnGuardar;
