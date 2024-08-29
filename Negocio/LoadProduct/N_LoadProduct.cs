@@ -1976,6 +1976,20 @@ namespace Negocio.LoadProduct
             decimal Metraje = 0;
             if (ClsWindows.System == "Vidrio Fijo")
             {
+                if (Material == "X12")
+                {
+                    switch (Description)
+                    {
+                        case "Canal x12":
+                            Metraje = Weigth * 2 + Heigth * 2;
+                            break;
+                        case "Venilla 1/2":
+                            Metraje = Weigth * 2 + Heigth * 2;
+                            break;
+                    }
+                }
+                if (ClsWindows.System == "Vidrio Fijo")
+            
                 if (Material == "1x2")
                 {
                     switch (Description)
