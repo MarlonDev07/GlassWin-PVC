@@ -55,6 +55,7 @@ namespace Precentacion.User.Quote.Quote
         bool colon = false;
         public decimal precioTotalEdit;
         public int idQuoteVerificacion;
+        int resultadoGlobal;
         #endregion
 
         #region Constructor
@@ -98,13 +99,9 @@ namespace Precentacion.User.Quote.Quote
         {
             //int idQuote = Convert.ToInt32(txtidQuote.Text); // Asumiendo que el ID está en un TextBox
 
-            if (NQuote.ExisteIdQuote(idQuoteVerificacion)) // Llamada al método de la capa de lógica de negocio
+            if (NQuote.ExisteIdQuote(Convert.ToInt32(txtidQuote.Text))) // Llamada al método de la capa de lógica de negocio
             {
                 MessageBox.Show("El ID de la cotización existe en la tabla TotalDesglose.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnSistemas.Enabled = false;
-                btnSanBlast.Enabled = false;
-                btnPrefabricado.Enabled = false;
-                btnExclusivo.Enabled = false;
             }
             else
             {
@@ -1067,50 +1064,7 @@ namespace Precentacion.User.Quote.Quote
             }
 
         }
-        private void cbIva_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string Iva = cbIva.SelectedItem.ToString();
-            string IvaNumber = Iva.Substring(0, Iva.Length - 1);
 
-            if (!string.IsNullOrEmpty(IvaNumber))
-            {
-                decimal IvaDecimal = Convert.ToDecimal(IvaNumber);
-                decimal subtotalParaCalcular;
-
-                // Si estamos en modo de edición, usamos el precio editado, sino el subtotal original
-                if (Edit)
-                {
-                    subtotalParaCalcular = precioTotalEdit;
-                }
-                else
-                {
-                    subtotalParaCalcular = SubTotal;
-                }
-
-                // Cálculo de IVA y Total basado en el subtotal elegido
-                IVA = subtotalParaCalcular * (IvaDecimal / 100);
-                Total = subtotalParaCalcular + IVA;
-
-                // Mostrar el resultado dependiendo del usuario
-                if (UserCache.Name == "VitroTaller")
-                {
-                    txtTotal.Text = "Precio Restringido";
-                    txtIVA.Text = "Precio Restringido";
-                }
-                else
-                {
-                    txtTotal.Text = Total.ToString("c");
-                    txtIVA.Text = IVA.ToString("c");
-                }
-
-                // Actualizamos precioTotalEdit si estamos en modo edición
-                if (Edit)
-                {
-                    // Guardamos el nuevo total como el valor editado
-                    precioTotalEdit = subtotalParaCalcular;
-                }
-            }
-        }
 
 
 
@@ -1166,9 +1120,16 @@ namespace Precentacion.User.Quote.Quote
         #region Metodos
         private void CalcPrices()
         {
+            int resultado = 0;
+            if (NQuote.ExisteIdQuote(Convert.ToInt32(idQuoteVerificacion))) // Llamada al método de la capa de lógica de negocio
+            {
+                resultado = 1;
+                resultadoGlobal = resultado;
+            }
+        
             decimal total = 0;
 
-            if (Edit)
+            if (resultado > 0)
             {
                 // Usar el valor editado
                 total = precioTotalEdit;
@@ -1180,6 +1141,7 @@ namespace Precentacion.User.Quote.Quote
 
                 // Actualizar la variable global
                 precioTotalEdit = total;
+                SubTotal = total;
 
                 // Mostrar en el campo de texto
                 txtTotal.Text = total.ToString("c");
@@ -1200,7 +1162,7 @@ namespace Precentacion.User.Quote.Quote
                     total += priceWithDiscount;
                 }
 
-                SubTotal = total;
+                /*SubTotal = total;
                 Total = total;
 
                 if (UserCache.Name == "VitroTaller")
@@ -1212,12 +1174,93 @@ namespace Precentacion.User.Quote.Quote
                 {
                     txtSubtotal.Text = total.ToString("c");
                     txtTotal.Text = Total.ToString("c");
+                }*/
+
+
+
+
+                if (LimiteCredito != 0)
+                {
+                    if (total > LimiteCredito)
+                    {
+                        // Preguntar Si desea Agregar los Precios
+                        DialogResult result = MessageBox.Show("El Total de la Cotizacion supera el Limite de Credito del Cliente, ¿Desea Continuar?", "Limite de Credito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.No)
+                        {
+                            txtSubtotal.Text = "";
+                            txtTotal.Text = "";
+                            return;
+                        }
+                        else
+                        {
+                            SubTotal = total;
+                            Total = total;
+                        }
+                    }
+                    else
+                    {
+                        SubTotal = total;
+                        Total = total;
+                    }
                 }
+                else
+                {
+                    SubTotal = total;
+                    Total = total;
+                }
+                if (UserCache.Name == "VitroTaller")
+                {
+                    txtSubtotal.Text = "Precio Restringido";
+                    txtTotal.Text = "Precio Restringido";
+                }
+                else
+                {
+                    txtSubtotal.Text = total.ToString("c");
+                    txtTotal.Text = Total.ToString("c");
+                }
+
+
+
+
+
+
+
             }
 
             // Asegurarse de que el IVA se calcule automáticamente con el subtotal actualizado
             cbIva_SelectedIndexChanged(this, EventArgs.Empty);
         }
+
+        private void cbIva_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Obtener el Numero Antes del % en El comboBox
+            string Iva = cbIva.SelectedItem.ToString();
+            string IvaNumber = Iva.Substring(0, Iva.Length - 1);
+            if (IvaNumber != "")
+            {
+                decimal IvaDecimal = Convert.ToDecimal(IvaNumber);
+                IVA = SubTotal * (IvaDecimal / 100);
+                Total = SubTotal + IVA;
+
+                if (UserCache.Name == "VitroTaller")
+                {
+                    txtTotal.Text = "Precio Restringido";
+                    txtIVA.Text = "Precio Restringido";
+                }
+                else if (resultadoGlobal > 0)
+                {
+                    txtTotal.Text = Total.ToString("c");
+                    txtIVA.Text = IVA.ToString("c");
+                }
+                else
+                {
+                    txtTotal.Text = Total.ToString("c");
+                    txtIVA.Text = IVA.ToString("c");
+                }
+             
+            }
+        }
+
 
 
 
