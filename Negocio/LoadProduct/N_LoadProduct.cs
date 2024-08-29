@@ -1927,13 +1927,45 @@ namespace Negocio.LoadProduct
                         break;
                 }
             }
-            if (Material == "Ventila")
+            if (Material == "Curva tapa")
             {
+                switch (Description)
+                {
+                    case "Tapa 1 aleta vidrio fijo x11":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = (Weigth * 2 + Heigth * 2) + (1 * Diviciones);
+                        break;
+                    case "Tubo 2 Aleta 1X2":
+                        if (Diviciones > 0)
+                        {
+                            Metraje = Heigth * Diviciones;
+                        }
+                        break;
+
+
+                }
             }
+            if (Material == "Curva x12")
+            {
+                switch (Description)
+                {
+                    case "Canal x12":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = (Weigth * 2 + Heigth * 2) + (1 * Diviciones);
+                        break;
+                    case "Tubo 2 Aleta 1X2":
+                        if (Diviciones > 0)
+                        {
+                            Metraje = Heigth * Diviciones;
+                        }
+                        break;
+                }
 
-
-
-
+            }
             return Metraje;
         }
         #endregion
