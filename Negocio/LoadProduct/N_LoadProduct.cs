@@ -1932,7 +1932,10 @@ namespace Negocio.LoadProduct
                 switch (Description)
                 {
                     case "Tapa 1 aleta vidrio fijo x11":
-                        Metraje = Weigth * 2 + Heigth * 2;
+                        Metraje = Weigth * 1 + Heigth * 2;
+                        break;
+                    case "Tubo 1 Aleta 1X2":
+                        Metraje = Weigth * 1;
                         break;
                     case "Venilla 1/2":
                         Metraje = (Weigth * 2 + Heigth * 2) + (1 * Diviciones);
@@ -1951,8 +1954,11 @@ namespace Negocio.LoadProduct
             {
                 switch (Description)
                 {
-                    case "Canal x12":
-                        Metraje = Weigth * 2 + Heigth * 2;
+                    case "Canal X12":
+                        Metraje = Weigth * 1 + Heigth * 2;
+                        break;
+                    case "Tubo 1 Aleta 1X2":
+                        Metraje = Weigth * 1;
                         break;
                     case "Venilla 1/2":
                         Metraje = (Weigth * 2 + Heigth * 2) + (1 * Diviciones);
