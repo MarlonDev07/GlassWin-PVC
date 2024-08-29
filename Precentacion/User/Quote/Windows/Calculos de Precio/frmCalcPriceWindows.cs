@@ -40,6 +40,7 @@ namespace Precentacion.User.Quote.Windows
         decimal AjustePrecio = 0;
         DataTable dtAluminio2 = new DataTable();
         DataTable dtGlass2 = new DataTable();
+        string pathVidrioFijo;
 
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
@@ -1331,9 +1332,20 @@ namespace Precentacion.User.Quote.Windows
                     Weigth = ancho;
                     // button2_Click(sender, e);
                 }
-
-                //Cargar el DataTable con los precios del vidrio
-                dtAluminio = loadProduct.LoadAluminioFijo(Color, "Vidrio Fijo", Supplier, Weigth, Height, cbAluminio.Text, Convert.ToInt16(txtDiviciones.Value));
+                if (pathVidrioFijo.Contains("Curva tapa"))
+                {
+                    dtAluminio = loadProduct.LoadAluminioFijo(Color, "Vidrio Fijo", Supplier, Weigth, Height, "Curva tapa", Convert.ToInt16(txtDiviciones.Value));
+                }
+                else if (pathVidrioFijo.Contains("Curva x12"))
+                {
+                    dtAluminio = loadProduct.LoadAluminioFijo(Color, "Vidrio Fijo", Supplier, Weigth, Height, "Curva x12", Convert.ToInt16(txtDiviciones.Value));
+                }
+                else
+                {
+                    //Cargar el DataTable con los precios del vidrio
+                    dtAluminio = loadProduct.LoadAluminioFijo(Color, "Vidrio Fijo", Supplier, Weigth, Height, cbAluminio.Text, Convert.ToInt16(txtDiviciones.Value));
+                }
+              
                 //Para la utilidad
                 dtAluminio2 = loadProduct.LoadAluminioFijoUtilidad(Color, "Vidrio Fijo", Supplier, Weigth, Height, cbAluminio.Text, Convert.ToInt16(txtDiviciones.Value));
 
@@ -1389,6 +1401,7 @@ namespace Precentacion.User.Quote.Windows
             try
             {
                 string path = System.Windows.Forms.Application.StartupPath + "\\Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + txtDiviciones.Value.ToString() + "fijo" + cbUbicacion.Text + ".jpeg";
+                pathVidrioFijo = path;
                 if (System.IO.File.Exists(path))
                 {
                     pbVentana.Image = System.Drawing.Image.FromFile(path);
