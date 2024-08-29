@@ -2551,6 +2551,9 @@ namespace Negocio.LoadProduct
                     case "Felpa Universal":
                         metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
                         break;
+                    case "Fibra Cedazo 5020":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 1;
+                        break;
                 }
             }
             else {
@@ -2589,12 +2592,6 @@ namespace Negocio.LoadProduct
                         break;
                     case "Guia 5020 ":
                         metraje = 4;
-                        break;
-                    case "Escuadra Cedazo 1/2":
-                        metraje = 4;
-                        break;
-                    case "Empaque Cedazo 1/2":
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2 * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                         break;
                     case "Empaque U 5020":
                         metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
