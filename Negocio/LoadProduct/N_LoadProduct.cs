@@ -2845,104 +2845,235 @@ namespace Negocio.LoadProduct
         private decimal Calc5020MovilFijoMovil(string Description)
         {
             decimal metraje = 0;
-            switch (Description)
+            if(Cedazo)
             {
-                case "Cargador 5020 ":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight);
-                    break;
-                case "Umbral 5020 ":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight);
-                    break;
-                case "Jamba 5020 ":
-                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
-                    break;
-                case "Vertical 5020 ":
-                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
-                    break;
-                case "Vertical Centro 5020 ":
-                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
-                    break;
-                case "Superior 5020 ":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 6;
-                    break;
-                case "Inferior 5020":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 2;
-                    break;
+                switch (Description)
+                {
+                    case "Cargador 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Umbral 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Jamba 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Vertical 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Vertical Centro 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
+                        break;
+                    case "Superior 5020 ":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 6;
+                        break;
+                    case "Inferior 5020":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 2;
+                        break;
+                    case "Marco Cedazo 1/2 Fijo":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4 * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                        break;
 
-                //*******************Accesorios********************//
-                case string s when s.Contains("Cerradura"):
-                    metraje = 2;
-                    break;
-                case "Rodin 5020 ":
-                    metraje = 4;
-                    break;
-                case "Guia 5020 ":
-                    metraje = 8;
-                    break;
-                case "Tornillo Ensamble ":
-                    metraje = 12;
-                    break;
-                case "Empaque U 5020":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
-                    break;
-                case "Felpa Universal":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
-                    break;
+                    //*******************Accesorios********************//
+                    case string s when s.Contains("Cerradura"):
+                        metraje = 2;
+                        break;
+                    case "Rodin 5020 ":
+                        metraje = 4;
+                        break;
+                    case "Guia 5020 ":
+                        metraje = 8;
+                        break;
+                    case "Escuadra Cedazo 1/2":
+                        metraje = 8;
+                        break;
+                    case "Empaque Cedazo 1/2":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4 * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                        break;
+                    case "Empaque U 5020":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                        break;
+                    case "Felpa Universal":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                        break;
+                    case "Fibra Cedazo 5020":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                }
+
 
             }
+            else
+            {
+                switch (Description)
+                {
+                    case "Cargador 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Umbral 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Jamba 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Vertical 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Vertical Centro 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
+                        break;
+                    case "Superior 5020 ":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 6;
+                        break;
+                    case "Inferior 5020":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 2;
+                        break;
+
+                    //*******************Accesorios********************//
+                    case string s when s.Contains("Cerradura"):
+                        metraje = 2;
+                        break;
+                    case "Rodin 5020 ":
+                        metraje = 4;
+                        break;
+                    case "Guia 5020 ":
+                        metraje = 8;
+                        break;
+                    case "Tornillo Ensamble ":
+                        metraje = 12;
+                        break;
+                    case "Empaque U 5020":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                        break;
+                    case "Felpa Universal":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                        break;
+                }
+
+            }
+
             return metraje;
         }
         private decimal Calc5020FijoMovilMovilFijo(string Description)
         {
             decimal metraje = 0;
-            switch (Description)
+            if(Cedazo)
             {
-                case "Cargador 5020 ":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight);
-                    break;
-                case "Umbral 5020 ":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight);
-                    break;
-                case "Jamba 5020 ":
-                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
-                    break;
-                case "Vertical 5020 ":
-                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
-                    break;
-                case "Vertical Centro 5020 ":
-                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
-                    break;
-                case "Superior 5020 ":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 6;
-                    break;
-                case "Inferior 5020":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 2;
-                    break;
-                case "Adaptador 5020 ":
-                    metraje = (Convert.ToDecimal(ClsWindows.heigt)) * 1;
-                    break;
+                switch (Description)
+                {
 
-                //*******************Accesorios********************//
-                case string s when s.Contains("Cerradura"):
-                    metraje = 2;
-                    break;
-                case "Rodin 5020 ":
-                    metraje = 4;
-                    break;
-                case "Guia 5020 ":
-                    metraje = 12;
-                    break;
-                case "Tornillo de Ensamble ":
-                    metraje = 16;
-                    break;
-                case "Empaque U 5020":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
-                    break;
-                case "Felpa Universal":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
-                    break;
+                    case "Cargador 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Umbral 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Jamba 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Vertical 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
+                        break;
+                    case "Vertical Centro 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
+                        break;
+                    case "Superior 5020 ":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 6;
+                        break;
+                    case "Inferior 5020":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 2;
+                        break;
+                    case "Adaptador 5020 ":
+                        metraje = (Convert.ToDecimal(ClsWindows.heigt)) * 1;
+                        break;
+                    case "Marco Cedazo 1/2 Fijo":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4 * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                        break;
+
+                    //*******************Accesorios********************//
+                    case string s when s.Contains("Cerradura"):
+                        metraje = 2;
+                        break;
+                    case "Rodin 5020 ":
+                        metraje = 4;
+                        break;
+                    case "Guia 5020 ":
+                        metraje = 12;
+                        break;
+                    case "Escuadra Cedazo 1/2":
+                        metraje = 8;
+                        break;
+                    case "Empaque Cedazo 1/2":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4 * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                        break;
+                    case "Empaque U 5020":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
+                        break;
+                    case "Felpa Universal":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                        break;
+                    case "Fibra Cedazo 5020":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+
+
+                }
+
 
             }
+            else
+            {
+
+                switch (Description)
+                {
+                    case "Cargador 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Umbral 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Jamba 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Vertical 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
+                        break;
+                    case "Vertical Centro 5020 ":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
+                        break;
+                    case "Superior 5020 ":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 6;
+                        break;
+                    case "Inferior 5020":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * 2;
+                        break;
+                    case "Adaptador 5020 ":
+                        metraje = (Convert.ToDecimal(ClsWindows.heigt)) * 1;
+                        break;
+
+                    //*******************Accesorios********************//
+                    case string s when s.Contains("Cerradura"):
+                        metraje = 2;
+                        break;
+                    case "Rodin 5020 ":
+                        metraje = 4;
+                        break;
+                    case "Guia 5020 ":
+                        metraje = 12;
+                        break;
+                    case "Tornillo de Ensamble ":
+                        metraje = 16;
+                        break;
+                    case "Empaque U 5020":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
+                        break;
+                    case "Felpa Universal":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                        break;
+                }
+            }
+
+
             return metraje;
         }
         #endregion
