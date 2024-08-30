@@ -3424,6 +3424,39 @@ namespace Precentacion.User.Bill
             }
         }
 
+        public static class Prompt
+        {
+            public static (string, string) ShowDialog(string text1, string text2, string caption)
+            {
+                Form prompt = new Form()
+                {
+                    Width = 500,
+                    Height = 200,
+                    Text = caption
+                };
+
+                // Aumentar la anchura de los Label
+                Label textLabel1 = new Label() { Left = 50, Top = 20, Width = 400, Text = text1 };
+                TextBox textBox1 = new TextBox() { Left = 50, Top = 50, Width = 400 };
+
+                Label textLabel2 = new Label() { Left = 50, Top = 80, Width = 400, Text = text2 };
+                TextBox textBox2 = new TextBox() { Left = 50, Top = 110, Width = 400 };
+
+                Button confirmation = new Button() { Text = "Aceptar", Left = 350, Width = 100, Top = 140 };
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+
+                prompt.Controls.Add(textLabel1);
+                prompt.Controls.Add(textBox1);
+                prompt.Controls.Add(textLabel2);
+                prompt.Controls.Add(textBox2);
+                prompt.Controls.Add(confirmation);
+
+                prompt.ShowDialog();
+
+                return (textBox1.Text, textBox2.Text);
+            }
+        }
+
 
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -3432,23 +3465,28 @@ namespace Precentacion.User.Bill
             // Convertir el valor de txtTotalSP.Text a decimal
             decimal totalPV = Convert.ToDecimal(txtTotalSP.Text);
 
-            // Preguntar al usuario el monto de fabricación
-            string inputFabricacion = Prompt.ShowDialog("Ingrese el monto de fabricación:", "Monto de Fabricación");
+            var (inputFabricacion, inputInstalacion) = Prompt.ShowDialog("Ingrese el monto de fabricación:", "Ingrese el monto de instalación:", "Montos");
+
             decimal montoFabricacion = 0;
+            decimal montoInstalacion = 0;
+
             if (!decimal.TryParse(inputFabricacion, out montoFabricacion))
             {
                 MessageBox.Show("Por favor, ingrese un monto de fabricación válido.");
                 return;
             }
 
-            // Preguntar al usuario el monto de instalación
-            string inputInstalacion = Prompt.ShowDialog("Ingrese el monto de instalación:", "Monto de Instalación");
-            decimal montoInstalacion = 0;
             if (!decimal.TryParse(inputInstalacion, out montoInstalacion))
             {
                 MessageBox.Show("Por favor, ingrese un monto de instalación válido.");
                 return;
             }
+
+            // Continuar con los montos obtenidos
+            Console.WriteLine($"Monto de Fabricación: {montoFabricacion}");
+            Console.WriteLine($"Monto de Instalación: {montoInstalacion}");
+
+
 
             // Calcular el total sumando totalPV, montoFabricacion y montoInstalacion
             decimal total = totalPV + montoFabricacion + montoInstalacion;
@@ -3494,31 +3532,7 @@ namespace Precentacion.User.Bill
         }
 
 
-        // Clase para mostrar un cuadro de diálogo personalizado
-        public static class Prompt
-        {
-            public static string ShowDialog(string text, string caption)
-            {
-                Form prompt = new Form()
-                {
-                    Width = 500,
-                    Height = 200,
-                    FormBorderStyle = FormBorderStyle.FixedDialog,
-                    Text = caption,
-                    StartPosition = FormStartPosition.CenterScreen
-                };
-                Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
-                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
-                Button confirmation = new Button() { Text = "Aceptar", Left = 350, Width = 100, Top = 100, DialogResult = DialogResult.OK };
-                confirmation.Click += (sender, e) => { prompt.Close(); };
-                prompt.Controls.Add(textBox);
-                prompt.Controls.Add(confirmation);
-                prompt.Controls.Add(textLabel);
-                prompt.AcceptButton = confirmation;
 
-                return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
-            }
-        }
 
         private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
