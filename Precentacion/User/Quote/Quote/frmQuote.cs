@@ -1146,30 +1146,26 @@ namespace Precentacion.User.Quote.Quote
                 total = priceWithDiscount;
 
                 // Actualizar la variable global
-                precioTotalEdit = total;
+                //precioTotalEdit = total;
                 SubTotal = total;
 
                 // Mostrar en el campo de texto
                 txtTotal.Text = total.ToString("c");
                 txtSubtotal.Text = total.ToString("c");
             }
-            else
+            else if (Descuento != 0 || ManoObra != 0)
             {
-                // Lógica existente cuando no se está editando
                 foreach (DataGridViewRow row in dgCotizaciones.Rows)
                 {
+                    // Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-
-                    // Aplicar mano de obra y descuento
-                    decimal priceWithLabour = price + (price * Labour);
-                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
-                    row.Cells["Price"].Value = priceWithDiscount;
-
-                    total += priceWithDiscount;
+                    decimal priceWithLabour = price + (price + ManoObra);
+                    decimal priceWithDiscount = priceWithLabour - (price * Descuento);
+                    decimal TotalPriceWindows = ((priceWithLabour + priceWithDiscount));
+                    row.Cells["Price"].Value = TotalPriceWindows;
+                    // Sumar el total de la columna Price
+                    total += Convert.ToDecimal(row.Cells["Price"].Value);
                 }
-
-                /*SubTotal = total;
-                Total = total;
 
                 if (UserCache.Name == "VitroTaller")
                 {
@@ -1180,8 +1176,21 @@ namespace Precentacion.User.Quote.Quote
                 {
                     txtSubtotal.Text = total.ToString("c");
                     txtTotal.Text = Total.ToString("c");
-                }*/
-
+                }
+                btnApply_Click(null, null);
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dgCotizaciones.Rows)
+                {
+                    // Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
+                    decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+                    decimal priceWithLabour = price + (price * Labour);
+                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
+                    row.Cells["Price"].Value = priceWithDiscount;
+                    // Sumar el total de la columna Price
+                    total += Convert.ToDecimal(row.Cells["Price"].Value);
+                }
 
 
 
