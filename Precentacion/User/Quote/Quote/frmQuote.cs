@@ -1131,6 +1131,12 @@ namespace Precentacion.User.Quote.Quote
 
             if (resultado > 0)
             {
+                btnSistemas.Enabled = false;
+                btnViaticos.Enabled = false;
+                btnSanBlast.Enabled = false;
+                btnPrefabricado.Enabled = false;
+                btnExclusivo.Enabled = false;
+
                 // Usar el valor editado
                 total = precioTotalEdit;
 
