@@ -43,6 +43,7 @@ namespace Precentacion.User.Bill
         N_AdmProyecto N_AdmProyecto = new N_AdmProyecto();
         string color;
         bool bandera = true;
+        DataTable dtAluminioFijo;
         #endregion
 
         #region Constructor
@@ -167,6 +168,10 @@ namespace Precentacion.User.Bill
 
                 foreach (DataGridViewRow row in dgvGlass.Rows)
                 {
+
+
+
+
                     DataTable dtAluminio = new DataTable();
 
                     //Validar que la celda no este vacia
@@ -183,6 +188,9 @@ namespace Precentacion.User.Bill
 
                     //Obtener el Color de la Ventana
                     string Color = row.Cells[6].Value.ToString();
+
+                    //Obtener url
+                    string urlImagen = row.Cells[2].Value.ToString();
 
                     //Obtener La cantidad de ventana el dato se encuentra en la descripcion
                     string DescripcionCantidad = row.Cells[1].Value.ToString();
@@ -277,8 +285,23 @@ namespace Precentacion.User.Bill
                         {
                             string Descripcion = row.Cells[1].Value.ToString();
 
-                            // Obtener el Total del Aluminio del Vidrio Fijo                      
-                            DataTable dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", "Extralum", anchoFijo, altoFijo, material, divisiones);
+                            if (urlImagen.Contains("Curva tapa"))
+                            {
+                                // Obtener el Total del Aluminio del Vidrio Fijo                      
+                                 dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", "Extralum", anchoFijo, altoFijo, "Curva tapa", divisiones);
+                            }
+                            else if (urlImagen.Contains("Curva x12"))
+                            {
+                                // Obtener el Total del Aluminio del Vidrio Fijo                      
+                                dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", "Extralum", anchoFijo, altoFijo, "Curva x12", divisiones);
+                            }
+                            else 
+                            {
+                                // Obtener el Total del Aluminio del Vidrio Fijo                      
+                                dtAluminioFijo = NLoadProduct.LoadAluminioFijoDesglose(Color, "Vidrio Fijo", "Extralum", anchoFijo, altoFijo, material, divisiones);
+                            }
+
+                     
 
                             // Obtener el Metraje del dtAluminioFijo y multiplicarlo por la Cantidad de Ventanas
                             foreach (DataRow item in dtAluminioFijo.Rows)
