@@ -2396,7 +2396,7 @@ namespace Precentacion.User.Quote.Quote
                     cellLogoSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
                     table.AddCell(cellLogoSINPE);
 
-                    PdfPCell cellTextSINPE = new PdfPCell(new Phrase("• Número SINPE Móvil 83984523.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    PdfPCell cellTextSINPE = new PdfPCell(new Phrase("• Número SINPE Móvil 89089444.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
                     cellTextSINPE.Border = PdfPCell.NO_BORDER;
                     cellTextSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
                     table.AddCell(cellTextSINPE);
@@ -4530,6 +4530,22 @@ namespace Precentacion.User.Quote.Quote
                     cellTextBAC.HorizontalAlignment = Element.ALIGN_LEFT;
                     table.AddCell(cellTextBAC);
 
+
+                    // Cuenta BN
+                    string rutaBN = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\bn.png";
+                    Image imgBN = Image.GetInstance(rutaBN);
+                    imgBN.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoBN = new PdfPCell(imgBN);
+                    cellLogoBN.Border = PdfPCell.NO_BORDER;
+                    cellLogoBN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoBN);
+
+                    PdfPCell cellTextBN = new PdfPCell(new Phrase("• Cuenta BN  CR37015112720010160574.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextBN.Border = PdfPCell.NO_BORDER;
+                    cellTextBN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextBN);
+
+
                     // SINPE Móvil
                     string rutaSinpe = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\sinpe-movil-2.png";
                     Image imgSINPE = Image.GetInstance(rutaSinpe);
@@ -4539,7 +4555,7 @@ namespace Precentacion.User.Quote.Quote
                     cellLogoSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
                     table.AddCell(cellLogoSINPE);
 
-                    PdfPCell cellTextSINPE = new PdfPCell(new Phrase("• Número SINPE Móvil 83984523.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    PdfPCell cellTextSINPE = new PdfPCell(new Phrase("• Número SINPE Móvil 89089444.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
                     cellTextSINPE.Border = PdfPCell.NO_BORDER;
                     cellTextSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
                     table.AddCell(cellTextSINPE);
