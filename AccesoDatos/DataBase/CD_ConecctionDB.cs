@@ -32,6 +32,11 @@ namespace AccesoDatos.DataBase
                     connectionString = ConfigurationManager.ConnectionStrings["MercadoVidrio"].ConnectionString;
                     Conexion = new SqlConnection(connectionString);
                 }
+                /*if (CompanyCache.IdCompany == 3102154177)
+                {
+                    connectionString = ConfigurationManager.ConnectionStrings["GWAlbo"].ConnectionString;
+                    Conexion = new SqlConnection(connectionString);
+                }*/
                 else
                 {
                     connectionString = ConfigurationManager.ConnectionStrings["GlassWinDB"].ConnectionString;

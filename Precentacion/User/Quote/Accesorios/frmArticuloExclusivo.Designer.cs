@@ -44,7 +44,7 @@
             this.pbAccesorioExclusivo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbAccesorioExclusivo.Location = new System.Drawing.Point(5, 104);
             this.pbAccesorioExclusivo.Name = "pbAccesorioExclusivo";
-            this.pbAccesorioExclusivo.Size = new System.Drawing.Size(274, 256);
+            this.pbAccesorioExclusivo.Size = new System.Drawing.Size(274, 289);
             this.pbAccesorioExclusivo.TabIndex = 2;
             this.pbAccesorioExclusivo.TabStop = false;
             // 
@@ -75,7 +75,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(348, 104);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(261, 256);
+            this.txtDescripcion.Size = new System.Drawing.Size(261, 289);
             this.txtDescripcion.TabIndex = 5;
             // 
             // label2
@@ -103,7 +103,7 @@
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(702, 305);
+            this.btnGuardar.Location = new System.Drawing.Point(723, 338);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(68, 55);
             this.btnGuardar.TabIndex = 21;

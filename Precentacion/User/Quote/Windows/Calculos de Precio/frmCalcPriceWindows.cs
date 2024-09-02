@@ -773,6 +773,14 @@ namespace Precentacion.User.Quote.Windows
                     {
                         ClsWindows.Lock = cbImpacto.Text;
                     }
+                    if (cbMultConLLave.Checked)
+                    {
+                        ClsWindows.Lock = cbMultConLLave.Text;
+                    }
+                    if (cbCilindro.Checked)
+                    {
+                        ClsWindows.Lock = cbCilindro.Text;
+                    }
                 }
                 else { ClsWindows.Lock = "Cerradura Impacto"; }
             }
