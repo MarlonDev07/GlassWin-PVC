@@ -6440,7 +6440,7 @@ namespace Negocio.LoadProduct
                 case "Tandem Roller Zink Men-1T EU":
                     metraje = 4;
                     break;
-                case "Desague Normal VA18 EU ":
+                case "Desague Normal VA18 EU":
                     metraje = 3;
                     break;
                 case "Felpa EU":
