@@ -1177,7 +1177,7 @@ namespace Precentacion.User.Quote.Quote
                     txtSubtotal.Text = total.ToString("c");
                     txtTotal.Text = Total.ToString("c");
                 }
-                btnApply_Click(null, null);
+                //btnApply_Click(null, null);
             }
             else
             {
