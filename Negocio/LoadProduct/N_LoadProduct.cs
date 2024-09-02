@@ -3,6 +3,7 @@ using Dominio.Model.ClassWindows;
 using Dominio.Model.PuertaBaño;
 using System;
 using System.Data;
+using Twilio.TwiML.Voice;
 
 namespace Negocio.LoadProduct
 {
@@ -1815,7 +1816,13 @@ namespace Negocio.LoadProduct
 
                     }
                     break;
+                
             }
+            if (ClsWindows.System != null) {
+                clsPuertaBaño.System = null;
+            }
+           
+
             switch (clsPuertaBaño.System)
             {
                 case "Puerta Baño":
@@ -2614,7 +2621,10 @@ namespace Negocio.LoadProduct
                     case "Cargador 5020 ":
                         metraje = Convert.ToDecimal(ClsWindows.Weight);
                         break;
-                    case "Umbral 5020 ":
+                    case "Umbral 5020 "://Umbral 5020
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Umbral 5020"://Umbral 5020
                         metraje = Convert.ToDecimal(ClsWindows.Weight);
                         break;
                     case "Jamba 5020 ":
@@ -8409,7 +8419,7 @@ namespace Negocio.LoadProduct
             switch (Description)
             {
                 //Aluminio
-                case "Tubo 1 Aleta 13/4x4 PL":
+                case "Tubo 1 Aleta 13/4x4 PL"://"Tubo 1 Aleta 13/4x4 PL"
                     Metraje = 6.4m;
                     break;
                 case "Envidriador PL D36":
