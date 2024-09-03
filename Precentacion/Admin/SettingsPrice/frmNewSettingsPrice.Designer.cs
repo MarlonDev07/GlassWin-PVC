@@ -253,7 +253,7 @@
             "6030 3 Vias",
             "EuAbatible",
             "Europa 2 Vias",
-            "Eurapa 3 Vias",
+            "Europa 3 Vias",
             "Europa 2 Vias Puerta",
             "Europa 3 Vias Puerta",
             "Ventila",
