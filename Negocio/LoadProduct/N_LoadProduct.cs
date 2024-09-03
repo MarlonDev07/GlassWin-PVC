@@ -6899,7 +6899,7 @@ namespace Negocio.LoadProduct
                 case "Fibra de Cedazo Europa":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2) * (Convert.ToDecimal(ClsWindows.heigt));
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 2;
                     break;
             }
@@ -6970,7 +6970,7 @@ namespace Negocio.LoadProduct
                 case "Fibra de Cedazo Europa":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) / 3) * (Convert.ToDecimal(ClsWindows.heigt));
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 2;
                     break;
             }
@@ -7035,7 +7035,7 @@ namespace Negocio.LoadProduct
                 case "Fibra de Cedazo Europa":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 4;
                     break;
             }
@@ -7107,7 +7107,7 @@ namespace Negocio.LoadProduct
                 case "Fibra de Cedazo Europa":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 4;
                     break;
             }
@@ -7178,7 +7178,7 @@ namespace Negocio.LoadProduct
                 case "Fibra de Cedazo Europa":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) / 3) * (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 2;
                     break;
             }
