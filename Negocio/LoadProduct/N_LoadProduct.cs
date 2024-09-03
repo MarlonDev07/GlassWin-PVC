@@ -6013,7 +6013,7 @@ namespace Negocio.LoadProduct
                     metraje = 1;
                     break;
                 case "Cierre Embutir C/tornillo SL8726-BK EU":
-                    metraje = 1;
+                    metraje = 0;
                     break;
                 case "Escuadra 23x14mm CJ0410F EU":
                     metraje = 20;
@@ -6025,7 +6025,7 @@ namespace Negocio.LoadProduct
                     metraje = 2;
                     break;
                 case "Tandem Roller Zink Men-1T EU":
-                    metraje = 2;
+                    metraje = 4;
                     break;
                 case "Desague Normal VA18 EU":
                     metraje = 3;
@@ -6043,9 +6043,9 @@ namespace Negocio.LoadProduct
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 2) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Fibra de Cedazo Europa":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2) * (Convert.ToDecimal(ClsWindows.heigt));
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt)) * 1;
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 2;
                     break;
 
@@ -6109,9 +6109,9 @@ namespace Negocio.LoadProduct
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 2) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Fibra de Cedazo Europa":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2) * (Convert.ToDecimal(ClsWindows.heigt));
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt)) * 1;
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 2;
                     break;
             }
@@ -6180,9 +6180,9 @@ namespace Negocio.LoadProduct
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 3) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Fibra de Cedazo Europa":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 3) * (Convert.ToDecimal(ClsWindows.heigt));
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt)) * 1;
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 2;
                     break;
             }
@@ -6245,9 +6245,9 @@ namespace Negocio.LoadProduct
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 4) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
                     break;
                 case "Fibra de Cedazo Europa":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 4;
                     break;
             }
@@ -6317,9 +6317,9 @@ namespace Negocio.LoadProduct
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 4) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
                     break;
                 case "Fibra de Cedazo Europa":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 4;
                     break;
             }
@@ -6390,7 +6390,7 @@ namespace Negocio.LoadProduct
                 case "Fibra de Cedazo Europa":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) / 3) * (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
-                case "Haladera Sencilla EU":
+                case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 2;
                     break;
             }
