@@ -6676,7 +6676,7 @@ namespace Negocio.LoadProduct
             decimal metraje = 0;
             switch (Description)
             {
-                case "Contramarco EU 2 Vias D112":
+                case "Contramarco EU 3 Vias D119":
                     metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Marco Hoja Corredizo EU D113":
@@ -6705,7 +6705,7 @@ namespace Negocio.LoadProduct
                     metraje = 3;
                     break;
                 case "Tandem Roller Zink Men-1T EU":
-                    metraje = 4;
+                    metraje = 6;
                     break;
                 case "Desague Normal VA18 EU":
                     metraje = 4;
