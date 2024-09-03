@@ -6950,7 +6950,7 @@ namespace Negocio.LoadProduct
                     metraje = 3;
                     break;
                 case "Tandem Roller Zink Men-1T EU":
-                    metraje = 2;
+                    metraje = 6;
                     break;
                 case "Desague Normal VA18 EU":
                     metraje = 3;
@@ -7012,7 +7012,7 @@ namespace Negocio.LoadProduct
                     metraje = 32;
                     break;
                 case "Kit perimetral KP70C EU":
-                    metraje = 4;
+                    metraje = 6;
                     break;
                 case "Tandem Roller Zink Men-1T EU":
                     metraje = 4;
