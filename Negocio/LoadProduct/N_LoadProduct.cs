@@ -6831,7 +6831,7 @@ namespace Negocio.LoadProduct
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 2) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Fibra de Cedazo Europa":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2) * (Convert.ToDecimal(ClsWindows.heigt));
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt)) * 1;
                     break;
                 case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 2;
@@ -6897,7 +6897,7 @@ namespace Negocio.LoadProduct
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 2) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Fibra de Cedazo Europa":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2) * (Convert.ToDecimal(ClsWindows.heigt));
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt)) * 1;
                     break;
                 case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 2;
@@ -6968,7 +6968,7 @@ namespace Negocio.LoadProduct
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 3) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Fibra de Cedazo Europa":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 3) * (Convert.ToDecimal(ClsWindows.heigt));
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt)) * 1;
                     break;
                 case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 2;
@@ -7009,13 +7009,13 @@ namespace Negocio.LoadProduct
                     metraje = 28;
                     break;
                 case "Escuadra Alineamiento 7x0,5 EAX-705 EU":
-                    metraje = 32;
+                    metraje = 40;
                     break;
                 case "Kit perimetral KP70C EU":
-                    metraje = 6;
+                    metraje = 5;
                     break;
                 case "Tandem Roller Zink Men-1T EU":
-                    metraje = 4;
+                    metraje = 6;
                     break;
                 case "Desague Normal VA18 EU":
                     metraje = 3;
@@ -7033,7 +7033,7 @@ namespace Negocio.LoadProduct
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 4) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
                     break;
                 case "Fibra de Cedazo Europa":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 4;
@@ -7105,7 +7105,7 @@ namespace Negocio.LoadProduct
                     metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 4) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
                     break;
                 case "Fibra de Cedazo Europa":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 4) * (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    metraje = (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Haladera Sencilla SL 135-1-BK EU":
                     metraje = 4;
