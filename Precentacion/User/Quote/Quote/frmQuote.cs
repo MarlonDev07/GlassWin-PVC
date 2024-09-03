@@ -827,7 +827,7 @@ namespace Precentacion.User.Quote.Quote
 
         }
 
-        public void btnApply_Click(object sender, EventArgs e)
+        /*public void btnApply_Click(object sender, EventArgs e)
         {
             try
             {
@@ -852,6 +852,32 @@ namespace Precentacion.User.Quote.Quote
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error. Por favor, verifique que haya ingresado bien todos los datos.\n" + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }*/
+        public void btnApply_Click(object sender, EventArgs e)
+        {
+
+            //Validar si txtManoObrea y txtDescuento son numeros
+            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
+            {
+
+                SubTotal = 0;
+                IVA = 0;
+                Discount = 0;
+                Labour = 0;
+                Total = 0;
+                Descuento = 0;
+                ManoObra = 0;
+
+                Discount = descuento / 100;
+                Labour = manoObra / 100;
+
+
+                loadWindows();
+            }
+            else
+            {
+                MessageBox.Show("El descuento y la mano de obra deben ser números");
             }
         }
         #endregion
@@ -1142,7 +1168,7 @@ namespace Precentacion.User.Quote.Quote
                 resultado = 1;
                 resultadoGlobal = resultado;
             }
-        
+
             decimal total = 0;
 
             if (resultado > 0)
@@ -1193,7 +1219,8 @@ namespace Precentacion.User.Quote.Quote
                     txtSubtotal.Text = total.ToString("c");
                     txtTotal.Text = Total.ToString("c");
                 }
-           
+                btnApply_Click(null, null);
+
             }
             else
             {
@@ -1262,6 +1289,9 @@ namespace Precentacion.User.Quote.Quote
             cbIva_SelectedIndexChanged(this, EventArgs.Empty);
         }
 
+
+
+
         private void cbIva_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Obtener el Numero Antes del % en El comboBox
@@ -1288,9 +1318,10 @@ namespace Precentacion.User.Quote.Quote
                     txtTotal.Text = Total.ToString("c");
                     txtIVA.Text = IVA.ToString("c");
                 }
-             
+
             }
         }
+
 
 
 
