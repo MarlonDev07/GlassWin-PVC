@@ -6079,7 +6079,7 @@ namespace Negocio.LoadProduct
                     metraje = 2;
                     break;
                 case "Cierre Embutir C/tornillo SL8726-BK EU":
-                    metraje = 2;
+                    metraje = 0;
                     break;
                 case "Escuadra 23x14mm CJ0410F EU":
                     metraje = 20;
@@ -6150,7 +6150,7 @@ namespace Negocio.LoadProduct
                     metraje = 1;
                     break;
                 case "Cierre Embutir C/tornillo SL8726-BK EU":
-                    metraje = 1;
+                    metraje = 0;
                     break;
                 case "Escuadra 23x14mm CJ0410F EU":
                     metraje = 24;
@@ -6215,7 +6215,7 @@ namespace Negocio.LoadProduct
                     metraje = 2;
                     break;
                 case "Cierre Embutir C/tornillo SL8726-BK EU":
-                    metraje = 2;
+                    metraje = 0;
                     break;
                 case "Escuadra 23x14mm CJ0410F EU":
                     metraje = 28;
@@ -6287,7 +6287,7 @@ namespace Negocio.LoadProduct
                     metraje = 1;
                     break;
                 case "Cierre Embutir C/tornillo SL8726-BK EU":
-                    metraje = 1;
+                    metraje = 0;
                     break;
                 case "Escuadra 23x14mm CJ0410F EU":
                     metraje = 32;
