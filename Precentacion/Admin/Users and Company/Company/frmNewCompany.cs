@@ -21,6 +21,7 @@ namespace Precentacion.Admin.Users_and_Company.Company
         private Color borderColor = Color.FromArgb(224, 224, 224);
         string IdUser;
         N_Company ObjNCompany = new N_Company();
+        DataTable dtCompanyVerification;
         public frmNewCompany(string id)
         {
             InitializeComponent();
@@ -128,11 +129,14 @@ namespace Precentacion.Admin.Users_and_Company.Company
                 bool resp = Validar();
                 if (resp) 
                 {
+                    /*if (dtCompanyVerification != null) { 
+                        
+                    }*/
                     resp = false;
                     resp = ObjNCompany.Create(txtId.Text, txtCedJuridica.Text, txtTelefono.Text, txtDireccionEmpresa.Text, "", txtEmpresa.Text);
                     if (resp)
                     {
-                        MessageBox.Show("Se ha creado la empresa correctamente", "Empresa creada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Se ha asignado la empresa correctamente", "Empresa Asignada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmViewsUsers frm = new frmViewsUsers();
                         frm.Show();
                         this.Close();
@@ -188,6 +192,7 @@ namespace Precentacion.Admin.Users_and_Company.Company
         {
             int idCompany = Convert.ToInt32(txtBC.Text);
             DataTable dtCompany = ObjNCompany.BuscarCompany(idCompany);
+            dtCompanyVerification = dtCompany;
 
             if (dtCompany.Rows.Count > 0) // Asegurarse de que haya resultados
             {
