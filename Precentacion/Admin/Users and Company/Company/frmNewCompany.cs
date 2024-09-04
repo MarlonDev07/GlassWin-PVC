@@ -183,5 +183,41 @@ namespace Precentacion.Admin.Users_and_Company.Company
             }
             return resp;
         }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            int idCompany = Convert.ToInt32(txtBC.Text);
+            DataTable dtCompany = ObjNCompany.BuscarCompany(idCompany);
+
+            if (dtCompany.Rows.Count > 0) // Asegurarse de que haya resultados
+            {
+                DataRow row = dtCompany.Rows[0]; // Obtener la primera fila del resultado
+
+                txtEmpresa.Text = row[5].ToString(); // Usa el nombre de la columna
+                txtCedJuridica.Text = row[1].ToString();
+                txtTelefono.Text = row[2].ToString();
+                txtDireccionEmpresa.Text = row[3].ToString();
+            }
+            else
+            {
+                // Manejar el caso en que no se encuentra la compañía
+                MessageBox.Show("No se encontró ninguna compañía con ese ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lblCorreo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelefono_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

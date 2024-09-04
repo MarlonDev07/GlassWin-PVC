@@ -54,6 +54,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtCedJuridica = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtBC = new System.Windows.Forms.TextBox();
+            this.txtBuscarCompany = new System.Windows.Forms.Label();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestore)).BeginInit();
@@ -67,11 +69,11 @@
             // 
             this.lblRoll.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRoll.AutoSize = true;
-            this.lblRoll.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRoll.ForeColor = System.Drawing.Color.Black;
-            this.lblRoll.Location = new System.Drawing.Point(161, 122);
+            this.lblRoll.Location = new System.Drawing.Point(8, 169);
             this.lblRoll.Name = "lblRoll";
-            this.lblRoll.Size = new System.Drawing.Size(70, 25);
+            this.lblRoll.Size = new System.Drawing.Size(62, 20);
             this.lblRoll.TabIndex = 51;
             this.lblRoll.Text = "Dueño";
             // 
@@ -85,85 +87,87 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(663, 59);
             this.lblTitulo.TabIndex = 49;
-            this.lblTitulo.Text = "Nueva Empresa";
+            this.lblTitulo.Text = "Asignar Empresa";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblNombreEmpresa
             // 
             this.lblNombreEmpresa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNombreEmpresa.AutoSize = true;
-            this.lblNombreEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreEmpresa.ForeColor = System.Drawing.Color.Black;
-            this.lblNombreEmpresa.Location = new System.Drawing.Point(162, 195);
+            this.lblNombreEmpresa.Location = new System.Drawing.Point(13, 243);
             this.lblNombreEmpresa.Name = "lblNombreEmpresa";
-            this.lblNombreEmpresa.Size = new System.Drawing.Size(81, 22);
+            this.lblNombreEmpresa.Size = new System.Drawing.Size(80, 20);
             this.lblNombreEmpresa.TabIndex = 43;
             this.lblNombreEmpresa.Text = "Empresa";
             // 
             // txtDireccionEmpresa
             // 
             this.txtDireccionEmpresa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDireccionEmpresa.Location = new System.Drawing.Point(324, 305);
+            this.txtDireccionEmpresa.Location = new System.Drawing.Point(486, 350);
             this.txtDireccionEmpresa.Name = "txtDireccionEmpresa";
-            this.txtDireccionEmpresa.Size = new System.Drawing.Size(155, 20);
+            this.txtDireccionEmpresa.Size = new System.Drawing.Size(163, 20);
             this.txtDireccionEmpresa.TabIndex = 41;
             // 
             // lblCorreo
             // 
             this.lblCorreo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCorreo.AutoSize = true;
-            this.lblCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCorreo.ForeColor = System.Drawing.Color.Black;
-            this.lblCorreo.Location = new System.Drawing.Point(161, 227);
+            this.lblCorreo.Location = new System.Drawing.Point(351, 258);
             this.lblCorreo.Name = "lblCorreo";
-            this.lblCorreo.Size = new System.Drawing.Size(72, 25);
+            this.lblCorreo.Size = new System.Drawing.Size(63, 20);
             this.lblCorreo.TabIndex = 42;
             this.lblCorreo.Text = "Correo";
+            this.lblCorreo.Click += new System.EventHandler(this.lblCorreo_Click);
             // 
             // txtTelefono
             // 
             this.txtTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTelefono.Location = new System.Drawing.Point(324, 269);
+            this.txtTelefono.Location = new System.Drawing.Point(104, 332);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(155, 20);
             this.txtTelefono.TabIndex = 40;
+            this.txtTelefono.TextChanged += new System.EventHandler(this.txtTelefono_TextChanged);
             // 
             // txtCorreo
             // 
             this.txtCorreo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCorreo.Location = new System.Drawing.Point(324, 233);
+            this.txtCorreo.Location = new System.Drawing.Point(486, 264);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(155, 20);
+            this.txtCorreo.Size = new System.Drawing.Size(163, 20);
             this.txtCorreo.TabIndex = 39;
             // 
             // lblTelEmpresa
             // 
             this.lblTelEmpresa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTelEmpresa.AutoSize = true;
-            this.lblTelEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelEmpresa.ForeColor = System.Drawing.Color.Black;
-            this.lblTelEmpresa.Location = new System.Drawing.Point(161, 266);
+            this.lblTelEmpresa.Location = new System.Drawing.Point(11, 332);
             this.lblTelEmpresa.Name = "lblTelEmpresa";
-            this.lblTelEmpresa.Size = new System.Drawing.Size(89, 25);
+            this.lblTelEmpresa.Size = new System.Drawing.Size(79, 20);
             this.lblTelEmpresa.TabIndex = 45;
-            this.lblTelEmpresa.Text = "Telefono";
+            this.lblTelEmpresa.Text = "Teléfono";
             // 
             // lblDireccionEmpresa
             // 
             this.lblDireccionEmpresa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDireccionEmpresa.AutoSize = true;
-            this.lblDireccionEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccionEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDireccionEmpresa.ForeColor = System.Drawing.Color.Black;
-            this.lblDireccionEmpresa.Location = new System.Drawing.Point(161, 301);
+            this.lblDireccionEmpresa.Location = new System.Drawing.Point(351, 345);
             this.lblDireccionEmpresa.Name = "lblDireccionEmpresa";
-            this.lblDireccionEmpresa.Size = new System.Drawing.Size(93, 25);
+            this.lblDireccionEmpresa.Size = new System.Drawing.Size(84, 20);
             this.lblDireccionEmpresa.TabIndex = 44;
-            this.lblDireccionEmpresa.Text = "Direccion";
+            this.lblDireccionEmpresa.Text = "Dirección";
             // 
             // txtEmpresa
             // 
             this.txtEmpresa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmpresa.Location = new System.Drawing.Point(324, 197);
+            this.txtEmpresa.Location = new System.Drawing.Point(104, 245);
             this.txtEmpresa.Name = "txtEmpresa";
             this.txtEmpresa.Size = new System.Drawing.Size(155, 20);
             this.txtEmpresa.TabIndex = 38;
@@ -174,7 +178,7 @@
             this.btnAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.btnAccept.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAccept.BackgroundImage")));
             this.btnAccept.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAccept.Location = new System.Drawing.Point(168, 356);
+            this.btnAccept.Location = new System.Drawing.Point(168, 391);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(63, 57);
             this.btnAccept.TabIndex = 47;
@@ -187,7 +191,7 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancel.Location = new System.Drawing.Point(389, 356);
+            this.btnCancel.Location = new System.Drawing.Point(389, 389);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(57, 57);
             this.btnCancel.TabIndex = 48;
@@ -284,9 +288,9 @@
             // txtId
             // 
             this.txtId.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtId.Location = new System.Drawing.Point(324, 122);
+            this.txtId.Location = new System.Drawing.Point(105, 169);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(113, 20);
+            this.txtId.Size = new System.Drawing.Size(154, 20);
             this.txtId.TabIndex = 53;
             // 
             // btnFind
@@ -296,41 +300,65 @@
             this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnFind.FlatAppearance.BorderSize = 0;
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind.Location = new System.Drawing.Point(443, 122);
+            this.btnFind.Location = new System.Drawing.Point(453, 102);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(37, 20);
             this.btnFind.TabIndex = 54;
             this.btnFind.UseVisualStyleBackColor = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(162, 164);
+            this.label1.Location = new System.Drawing.Point(352, 172);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 22);
+            this.label1.Size = new System.Drawing.Size(113, 20);
             this.label1.TabIndex = 56;
-            this.label1.Text = "Ced.Juridica";
+            this.label1.Text = "Ced. Jurídica";
             // 
             // txtCedJuridica
             // 
             this.txtCedJuridica.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCedJuridica.Location = new System.Drawing.Point(324, 166);
+            this.txtCedJuridica.Location = new System.Drawing.Point(486, 174);
             this.txtCedJuridica.Name = "txtCedJuridica";
-            this.txtCedJuridica.Size = new System.Drawing.Size(155, 20);
+            this.txtCedJuridica.Size = new System.Drawing.Size(163, 20);
             this.txtCedJuridica.TabIndex = 55;
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // txtBC
+            // 
+            this.txtBC.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtBC.Location = new System.Drawing.Point(273, 102);
+            this.txtBC.Name = "txtBC";
+            this.txtBC.Size = new System.Drawing.Size(149, 20);
+            this.txtBC.TabIndex = 58;
+            // 
+            // txtBuscarCompany
+            // 
+            this.txtBuscarCompany.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtBuscarCompany.AutoSize = true;
+            this.txtBuscarCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarCompany.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarCompany.Location = new System.Drawing.Point(85, 102);
+            this.txtBuscarCompany.Name = "txtBuscarCompany";
+            this.txtBuscarCompany.Size = new System.Drawing.Size(186, 20);
+            this.txtBuscarCompany.TabIndex = 57;
+            this.txtBuscarCompany.Text = "Buscar Compañia (ID)";
+            this.txtBuscarCompany.Click += new System.EventHandler(this.label2_Click);
+            // 
             // frmNewCompany
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 461);
+            this.Controls.Add(this.txtBC);
+            this.Controls.Add(this.txtBuscarCompany);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCedJuridica);
             this.Controls.Add(this.btnFind);
@@ -392,5 +420,7 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox txtCedJuridica;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        public System.Windows.Forms.TextBox txtBC;
+        private System.Windows.Forms.Label txtBuscarCompany;
     }
 }

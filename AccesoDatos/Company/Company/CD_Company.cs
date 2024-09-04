@@ -22,6 +22,30 @@ namespace AccesoDatos.Company
             return dataTable;
         }
 
+        public DataTable BuscarCompany(int idCompany)
+        {
+            DataBase.ClsConnection Cnn = new DataBase.ClsConnection();
+            DataTable dataTable = new DataTable();
+            SqlDataReader Read;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = Cnn.OpenConecction();
+
+            string query = "SELECT * FROM Company WHERE idCompany = @idCompany";
+            cmd.CommandText = query;
+            cmd.CommandType = CommandType.Text;
+
+            // Agregar el parámetro al comando
+            cmd.Parameters.AddWithValue("@idCompany", idCompany);
+
+            Read = cmd.ExecuteReader();
+            dataTable.Load(Read);
+
+            Cnn.CloseConnection();
+            return dataTable;
+        }
+
+
+
         public bool Create(Int64 ID, Int64 IDCompany, string phone, string Address, string Url, string Name)
         {
             try

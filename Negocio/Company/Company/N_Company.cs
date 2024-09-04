@@ -26,6 +26,21 @@ namespace Negocio.Company
             }
         }
 
+        public DataTable BuscarCompany(int idCompany)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable();
+                dataTable = ObjCDCompany.BuscarCompany(idCompany);
+                return dataTable;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public bool Create(string ID, string IDCompany, string phone, string Address, string Url, string Name)
         {
             try
