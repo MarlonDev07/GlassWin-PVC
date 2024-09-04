@@ -55,10 +55,14 @@
             this.panel = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnCargarImagen = new System.Windows.Forms.Button();
+            this.pbAccesorioExclusivo = new System.Windows.Forms.PictureBox();
             this.txtBodega = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtPEV = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnCrear = new System.Windows.Forms.Button();
             this.dtpFechaCompra = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -72,10 +76,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbProyecto = new System.Windows.Forms.ComboBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.pbAccesorioExclusivo = new System.Windows.Forms.PictureBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnCrear = new System.Windows.Forms.Button();
             this.tabControlPrincipal.SuspendLayout();
             this.tabPageLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
@@ -369,9 +369,19 @@
             this.btnCargarImagen.Name = "btnCargarImagen";
             this.btnCargarImagen.Size = new System.Drawing.Size(205, 31);
             this.btnCargarImagen.TabIndex = 22;
-            this.btnCargarImagen.Text = "Cargar la Imagen";
+            this.btnCargarImagen.Text = "Cargar Archivo";
             this.btnCargarImagen.UseVisualStyleBackColor = true;
             this.btnCargarImagen.Click += new System.EventHandler(this.btnCargarImagen_Click);
+            // 
+            // pbAccesorioExclusivo
+            // 
+            this.pbAccesorioExclusivo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbAccesorioExclusivo.Location = new System.Drawing.Point(268, 190);
+            this.pbAccesorioExclusivo.Name = "pbAccesorioExclusivo";
+            this.pbAccesorioExclusivo.Size = new System.Drawing.Size(323, 274);
+            this.pbAccesorioExclusivo.TabIndex = 21;
+            this.pbAccesorioExclusivo.TabStop = false;
+            this.pbAccesorioExclusivo.Click += new System.EventHandler(this.pbAccesorioExclusivo_Click);
             // 
             // txtBodega
             // 
@@ -408,6 +418,48 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "PEV:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminar.BackgroundImage")));
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Location = new System.Drawing.Point(143, 446);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(60, 52);
+            this.btnEliminar.TabIndex = 16;
+            this.toolTip.SetToolTip(this.btnEliminar, "Eliminar Factura");
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditar.BackgroundImage")));
+            this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Location = new System.Drawing.Point(74, 446);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(58, 52);
+            this.btnEditar.TabIndex = 15;
+            this.toolTip.SetToolTip(this.btnEditar, "Editar Factura");
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnCrear
+            // 
+            this.btnCrear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCrear.BackgroundImage")));
+            this.btnCrear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCrear.FlatAppearance.BorderSize = 0;
+            this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrear.Location = new System.Drawing.Point(4, 446);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.Size = new System.Drawing.Size(58, 52);
+            this.btnCrear.TabIndex = 14;
+            this.toolTip.SetToolTip(this.btnCrear, "Añadir Factura");
+            this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // dtpFechaCompra
             // 
@@ -521,58 +573,6 @@
             this.cbProyecto.Size = new System.Drawing.Size(200, 21);
             this.cbProyecto.TabIndex = 3;
             this.cbProyecto.SelectedIndexChanged += new System.EventHandler(this.cbProyecto_SelectedIndexChanged);
-            // 
-            // pbAccesorioExclusivo
-            // 
-            this.pbAccesorioExclusivo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbAccesorioExclusivo.Location = new System.Drawing.Point(268, 190);
-            this.pbAccesorioExclusivo.Name = "pbAccesorioExclusivo";
-            this.pbAccesorioExclusivo.Size = new System.Drawing.Size(323, 274);
-            this.pbAccesorioExclusivo.TabIndex = 21;
-            this.pbAccesorioExclusivo.TabStop = false;
-            this.pbAccesorioExclusivo.Click += new System.EventHandler(this.pbAccesorioExclusivo_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminar.BackgroundImage")));
-            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(143, 446);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(60, 52);
-            this.btnEliminar.TabIndex = 16;
-            this.toolTip.SetToolTip(this.btnEliminar, "Eliminar Factura");
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditar.BackgroundImage")));
-            this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEditar.FlatAppearance.BorderSize = 0;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Location = new System.Drawing.Point(74, 446);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(58, 52);
-            this.btnEditar.TabIndex = 15;
-            this.toolTip.SetToolTip(this.btnEditar, "Editar Factura");
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnCrear
-            // 
-            this.btnCrear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCrear.BackgroundImage")));
-            this.btnCrear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCrear.FlatAppearance.BorderSize = 0;
-            this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrear.Location = new System.Drawing.Point(4, 446);
-            this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(58, 52);
-            this.btnCrear.TabIndex = 14;
-            this.toolTip.SetToolTip(this.btnCrear, "Añadir Factura");
-            this.btnCrear.UseVisualStyleBackColor = true;
-            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // frmAgregarFacturaProveedor
             // 

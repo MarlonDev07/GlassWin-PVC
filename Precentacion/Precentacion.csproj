@@ -759,6 +759,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\Images\Logos\pdfIcon.png" />
     <Content Include="IconApp.ico" />
     <None Include="Resources\150-cogs.png" />
     <None Include="Resources\btnMini.Image.png" />

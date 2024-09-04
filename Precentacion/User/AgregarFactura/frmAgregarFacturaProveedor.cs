@@ -435,13 +435,26 @@ namespace Precentacion.User.AgregarFactura
             // Cargar la imagen en el PictureBox
             if (!string.IsNullOrEmpty(urlImagen) && File.Exists(urlImagen))
             {
-                pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
-                pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                string fileExtension = Path.GetExtension(urlImagen).ToLower();
+
+                if (fileExtension == ".pdf")
+                {
+                    // Cargar el ícono de PDF en lugar de una imagen
+                    pbAccesorioExclusivo.Image = Properties.Resources.pdf_icon; // Asegúrate de que 'pdf_icon' exista en tus recursos
+                    pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                else
+                {
+                    // Cargar la imagen si no es un PDF
+                    pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
+                    pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
             }
             else
             {
                 pbAccesorioExclusivo.Image = null; // O una imagen por defecto
             }
+
 
             lblTitulo.Text = "Editar Factura";
             habilitaciones();
@@ -552,8 +565,20 @@ namespace Precentacion.User.AgregarFactura
             // Cargar la imagen en el PictureBox
             if (!string.IsNullOrEmpty(urlImagen) && File.Exists(urlImagen))
             {
-                pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
-                pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                string fileExtension = Path.GetExtension(urlImagen).ToLower();
+
+                if (fileExtension == ".pdf")
+                {
+                    // Cargar el ícono de PDF en lugar de una imagen
+                    pbAccesorioExclusivo.Image = Properties.Resources.pdf_icon; // Asegúrate de que 'pdf_icon' exista en tus recursos
+                    pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                else
+                {
+                    // Cargar la imagen si no es un PDF
+                    pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
+                    pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
             }
             else
             {
@@ -1138,26 +1163,85 @@ namespace Precentacion.User.AgregarFactura
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.InitialDirectory = "c:\\";
-                    openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png, *.jfif) | *.jpg; *.jpeg; *.png; *.jfif";
-                    openFileDialog.FilterIndex = 2;
+                    openFileDialog.Filter = "Archivos de imagen y PDF (*.jpg, *.jpeg, *.png, *.jfif, *.pdf) | *.jpg; *.jpeg; *.png; *.jfif; *.pdf";
+                    openFileDialog.FilterIndex = 1;
                     openFileDialog.RestoreDirectory = true;
 
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         // Obtener la ruta del archivo seleccionada
                         string filePath = openFileDialog.FileName;
-                        // Mostrar la imagen en el PictureBox
-                        pbAccesorioExclusivo.Image = new Bitmap(filePath);
-                        pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
-                        GuardarImagen(openFileDialog.FileName);
+                        string fileExtension = Path.GetExtension(filePath).ToLower();
+
+                        if (fileExtension == ".pdf")
+                        {
+                            // Si es un archivo PDF, podrías mostrar un icono genérico o un mensaje, 
+                            // ya que no se puede mostrar directamente en un PictureBox.
+                            pbAccesorioExclusivo.Image = Properties.Resources.pdf_icon; // Asegúrate de tener un ícono de PDF en tus recursos.
+                            pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                        }
+                        else
+                        {
+                            // Si es una imagen, cargarla en el PictureBox.
+                            pbAccesorioExclusivo.Image = new Bitmap(filePath);
+                            pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                        }
+
+                        GuardarArchivo(filePath);
                     }
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Ocurrió un error al cargar la imagen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un error al cargar el archivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private string GuardarArchivo(string sourcePath)
+        {
+            try
+            {
+                // Obtener la ruta de la carpeta Documentos del usuario
+                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                // Crear la ruta para la carpeta "Facturas" dentro de Documentos
+                string directoryPath = Path.Combine(documentsPath, "Facturas");
+                Directory.CreateDirectory(directoryPath); // Crear el directorio si no existe
+
+                // Obtener el nombre del archivo de la ruta de origen
+                string fileName = Path.GetFileName(sourcePath);
+                // Crear la ruta de destino en la carpeta "Facturas"
+                string destinationPath = Path.Combine(directoryPath, fileName);
+
+                // Verificar si ya existe un archivo con el mismo nombre
+                if (File.Exists(destinationPath))
+                {
+                    // Si existe, agregar un número secuencial al nombre del archivo
+                    int count = 1;
+                    string fileNameOnly = Path.GetFileNameWithoutExtension(fileName);
+                    string extension = Path.GetExtension(fileName);
+
+                    while (File.Exists(destinationPath))
+                    {
+                        string tempFileName = $"{fileNameOnly}({count++})";
+                        destinationPath = Path.Combine(directoryPath, tempFileName + extension);
+                    }
+                }
+
+                // Copiar el archivo seleccionado al directorio de destino
+                File.Copy(sourcePath, destinationPath, true);
+
+                // Retornar la ruta donde se guardó el archivo
+                rutaImagen = destinationPath;
+                return destinationPath;
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción y devolver un mensaje de error o manejar el error según se necesite
+                MessageBox.Show($"Ocurrió un error al guardar el archivo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         private string GuardarImagen(string sourcePath)
         {
             // Obtener la ruta de la carpeta Documentos del usuario
@@ -1198,13 +1282,26 @@ namespace Precentacion.User.AgregarFactura
             // Cargar la imagen en el PictureBox
             if (!string.IsNullOrEmpty(urlImagen) && File.Exists(urlImagen))
             {
-                pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
-                pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                string fileExtension = Path.GetExtension(urlImagen).ToLower();
+
+                if (fileExtension == ".pdf")
+                {
+                    // Cargar el ícono de PDF en lugar de una imagen
+                    pbAccesorioExclusivo.Image = Properties.Resources.pdf_icon; // Asegúrate de que 'pdf_icon' exista en tus recursos
+                    pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                else
+                {
+                    // Cargar la imagen si no es un PDF
+                    pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
+                    pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
             }
             else
             {
                 pbAccesorioExclusivo.Image = null; // O una imagen por defecto
             }
+
 
             lblTitulo.Text = "Ver Factura";
 
@@ -1304,13 +1401,29 @@ namespace Precentacion.User.AgregarFactura
 
         private void pbAccesorioExclusivo_Click(object sender, EventArgs e)
         {
-            using (frmImageViewer viewer = new frmImageViewer())
+            if (rutaImagen != null && Path.GetExtension(rutaImagen).ToLower() == ".pdf")
             {
-                // Establece la imagen del PictureBox del formulario principal en el nuevo formulario
-                viewer.ImageToDisplay = pbAccesorioExclusivo.Image;
+                // El archivo es un PDF, se puede abrir con el visor predeterminado de PDF
+                try
+                {
+                    System.Diagnostics.Process.Start(rutaImagen);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo abrir el archivo PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                // Si no es un PDF, mostrar la imagen en el formulario de visor de imágenes
+                using (frmImageViewer viewer = new frmImageViewer())
+                {
+                    // Establece la imagen del PictureBox del formulario principal en el nuevo formulario
+                    viewer.ImageToDisplay = pbAccesorioExclusivo.Image;
 
-                // Muestra el nuevo formulario
-                viewer.ShowDialog();
+                    // Muestra el nuevo formulario
+                    viewer.ShowDialog();
+                }
             }
         }
 
