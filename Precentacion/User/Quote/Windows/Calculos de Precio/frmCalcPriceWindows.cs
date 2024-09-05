@@ -163,10 +163,10 @@ namespace Precentacion.User.Quote.Windows
             try
             {
                 string path = System.Windows.Forms.Application.StartupPath + "\\Images\\Windows\\" + ClsWindows.Desing + cbColor.Text + ".jpeg";
-                if (ClsWindows.System == "Puerta Liviana")
+                /*if (ClsWindows.System == "Puerta Liviana")
                 {
                     path = System.Windows.Forms.Application.StartupPath + "\\Images\\Windows\\Puerta Liviana" + ClsWindows.Desing + cbColor.Text + ".jpeg";
-                }
+                }*/
                 if (System.IO.File.Exists(path))
                 {
                     pbVentana.Image = System.Drawing.Image.FromFile(path);
@@ -3073,6 +3073,11 @@ namespace Precentacion.User.Quote.Windows
             txtDiviciones.ForeColor = Color.Black;
             //Cambiar el Tamaño de Letra del  txtDiviciones
             txtDiviciones.Font = new Font("Microsoft Sans Serif", 8);
+        }
+
+        private void pbVentana_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

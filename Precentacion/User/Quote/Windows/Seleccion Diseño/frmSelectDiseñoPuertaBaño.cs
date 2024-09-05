@@ -22,7 +22,8 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
 
         private void btnMovilMovil_Click(object sender, EventArgs e)
         {
-            clsPuertaBaño.Desing = "MovilMovil";
+            //PB MovilMovil
+            clsPuertaBaño.Desing = "PB MovilMovil";//MovilMovil
             frmCalcPuertaBaño frm = new frmCalcPuertaBaño();
             frm.design2 = clsPuertaBaño.Desing;
             frm.Show();
@@ -31,7 +32,8 @@ namespace Precentacion.User.Quote.Windows.Seleccion_Diseño
 
         private void FijoMovilMovil_Click(object sender, EventArgs e)
         {
-            clsPuertaBaño.Desing = "FijoMovilMovil";
+            //PB FijoMovilMoviL
+            clsPuertaBaño.Desing = "PB FijoMovilMovil";//FijoMovilMovil
             frmCalcPuertaBaño frm = new frmCalcPuertaBaño();
             frm.design2 = clsPuertaBaño.Desing;
             frm.Show();

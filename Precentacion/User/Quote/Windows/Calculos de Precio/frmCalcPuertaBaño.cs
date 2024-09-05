@@ -37,14 +37,23 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         #region Fn_Iniciales
         private void Fn_Inicializacion() 
         {
+          SeleccionarPrimerValor();
           Fn_CargarImagen();
           Fn_CargarVidrios();
           FN_SelectComboIndex();
         }
+        private void SeleccionarPrimerValor()
+        {
+            if (cbColor.Items.Count > 0)
+            {
+                cbColor.SelectedIndex = 0;
+            }
+        }
+
 
         private void Fn_CargarImagen ()
         {
-            try
+            /*try
             {
                 string path = Application.StartupPath + @"\Images\Windows\PB "+clsPuertaBaño.Desing+".jpg";
                 Url = path;
@@ -54,6 +63,33 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar la imagen: " + ex.Message);
+            }*/
+
+
+            try
+            {
+                string path = System.Windows.Forms.Application.StartupPath + "\\Images\\Windows\\" + clsPuertaBaño.Desing + cbColor.Text + ".jpeg";
+                /*if (ClsWindows.System == "Puerta Liviana")
+                {
+                    path = System.Windows.Forms.Application.StartupPath + "\\Images\\Windows\\Puerta Liviana" + ClsWindows.Desing + cbColor.Text + ".jpeg";
+                }*/
+                if (System.IO.File.Exists(path))
+                {
+                    picPuertaBaño.Image = System.Drawing.Image.FromFile(path);
+                    Url = path;
+                    picPuertaBaño.Image = Image.FromFile(path);
+                    picPuertaBaño.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                else
+                {
+                    MessageBox.Show("Color no disponible");
+                    Console.WriteLine(path);
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al cargar la imagen");
             }
         }
         private void Fn_CargarVidrios()

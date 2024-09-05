@@ -1765,13 +1765,31 @@ namespace Negocio.LoadProduct
                         case "1 Hoja PL":
                             metraje = CalcPuertaEuAbatible1Hoja(Description);
                             break;
+                        case "1 Hoja PE":
+                            metraje = CalcPuertaEuAbatible1Hoja(Description);
+                            break;
+                        case "1 Hoja PLv":
+                            metraje = CalcPuertaEuAbatible1Hoja(Description);
+                            break;
                         case "2 Hoja PL":
+                            metraje = CalcPuertaEuAbatible2Hojas(Description);
+                            break;
+                        case "2 Hoja PE":
                             metraje = CalcPuertaEuAbatible2Hojas(Description);
                             break;
                         case "1 Hoja Con Divicion PL":
                             metraje = CalcPuertaEuAbatible1HojasConDivicion(Description);
                             break;
+                        case "1 Hoja Con Divicion PE":
+                            metraje = CalcPuertaEuAbatible1HojasConDivicion(Description);
+                            break;
+                        case "1 Hoja Con Divicion PLv":
+                            metraje = CalcPuertaEuAbatible1HojasConDivicion(Description);
+                            break;
                         case "2 Hoja Con Divicion PL":
+                            metraje = CalcPuertaEuAbatible2HojasConDivicion(Description);
+                            break;
+                        case "2 Hoja Con Divicion PE":
                             metraje = CalcPuertaEuAbatible2HojasConDivicion(Description);
                             break;
                     }
@@ -1831,7 +1849,13 @@ namespace Negocio.LoadProduct
                         case "MovilMovil":
                             metraje = PuertaBañoMovilMovil(Description);
                             break;
+                        case "PB MovilMovil":
+                            metraje = PuertaBañoMovilMovil(Description);
+                            break;
                         case "FijoMovilMovil":
+                            metraje = PuertaBañoFijoMovilMovil(Description);
+                            break;
+                        case "PB FijoMovilMovil":
                             metraje = PuertaBañoFijoMovilMovil(Description);
                             break;
                     }
