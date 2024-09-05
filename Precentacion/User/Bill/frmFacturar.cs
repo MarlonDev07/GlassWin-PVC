@@ -1610,7 +1610,7 @@ namespace Precentacion.User.Bill
                         PriceProductClass priceProduct = new PriceProductClass();
                         priceProduct.Nombre = item.Cells[0].Value.ToString();
                         priceProduct.Supplier = cbProveedorDesglose.SelectedValue.ToString();
-                        priceProduct.Color = color;
+                        priceProduct.Color = "Natural";
                         Lista.Add(priceProduct);
                     }
                 }
