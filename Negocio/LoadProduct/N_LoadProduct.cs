@@ -8639,7 +8639,7 @@ namespace Negocio.LoadProduct
                 case "Barra de Empuje PL D42":
                     Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
                     break;
-                case "Divisor PL D43":
+                case "Divisor PL D93":
                     Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
                     break;
 
@@ -8727,7 +8727,7 @@ namespace Negocio.LoadProduct
                 case "Barra de Empuje PL D42":
                     Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
                     break;
-                case "Divisor PL D43":
+                case "Divisor PL D93":
                     Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
                     break;
 
