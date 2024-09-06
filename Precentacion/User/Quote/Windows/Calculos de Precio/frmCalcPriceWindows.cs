@@ -385,6 +385,8 @@ namespace Precentacion.User.Quote.Windows
                             break;
                         case "Puerta Liviana":
                             frmSelecDesingPuertLujo frmpu = new frmSelecDesingPuertLujo();
+                            frmpu.Text = "Seleccionar diseño puerta liviana";
+                            frmpu.system2 = "Puerta Liviana";
                             frmpu.Show();
                             this.Close();
                             break;
