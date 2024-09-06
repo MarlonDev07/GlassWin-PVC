@@ -8651,11 +8651,8 @@ namespace Negocio.LoadProduct
                 case "Juego Cerradura 31/32 AL DT1850":
                     Metraje = 1;
                     break;
-                case "Pasador Embutido 1/4 AL FB1204":
-                    Metraje = 2;
-                    break;
                 case "Juego Pivote AL OP2700":
-                    Metraje = 2;
+                    Metraje = 1;
                     break;
                 case "Cilindro Tipo RIM RC051 PL":
                     Metraje = 0;
