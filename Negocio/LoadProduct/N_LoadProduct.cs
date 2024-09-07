@@ -8800,10 +8800,10 @@ namespace Negocio.LoadProduct
                     Metraje = 2;
                     break;
                 case "Cilindro Tipo RIM RC051 PL":
-                    Metraje = 0;
+                    Metraje = 1;
                     break;
                 case "Barra Roscada":
-                    Metraje = 4;
+                    Metraje = 8;
                     break;
                 case "Tuerca 1/4":
                     Metraje = 8;
