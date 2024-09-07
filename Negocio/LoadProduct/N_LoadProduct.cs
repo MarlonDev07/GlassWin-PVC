@@ -2020,7 +2020,7 @@ namespace Negocio.LoadProduct
                 {
                     switch (Description)
                     {
-                        case "Canal x12":
+                        case "Tubo 1 Aleta 1X2":
                             Metraje = Weigth * 2 + Heigth * 2;
                             break;
                         case "Venilla 1/2":
