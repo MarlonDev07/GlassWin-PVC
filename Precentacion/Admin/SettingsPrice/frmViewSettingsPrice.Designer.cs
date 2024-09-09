@@ -338,7 +338,15 @@
             "2ViasMovilMovilMovil",
             "2 Hoja Vertical",
             "1 Hoja 1 Fijo Vertical",
-            "3 Hoja Vertical"});
+            "3 Hoja Vertical",
+            "1 Hoja PE",
+            "2 Hoja PE",
+            "1 Hoja Con Divicion PE",
+            "2 Hoja Con Divicion PE",
+            "1 Hoja Con Divicion PLv",
+            "1 Hoja PLv",
+            "PB FijoMovilMovil",
+            "PB MovilMovil"});
             this.cbDesing.Location = new System.Drawing.Point(651, 68);
             this.cbDesing.Name = "cbDesing";
             this.cbDesing.Size = new System.Drawing.Size(121, 28);
