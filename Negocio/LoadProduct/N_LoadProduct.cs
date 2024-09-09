@@ -1559,6 +1559,9 @@ namespace Negocio.LoadProduct
                         case "2ViasMovilMovilMovil":
                             metraje = Calc6030_2Vias_MovilMovilMovil(Description);
                             break;
+                        case "2ViasMovilMovilMovilMovilMovilMovil":
+                            metraje = Calc6030_2Vias_MovilMovilMovilMovilMovilMovil(Description);
+                            break;
                     }
                     break;
                 case "6030 3 Vias":
@@ -2017,7 +2020,7 @@ namespace Negocio.LoadProduct
                 {
                     switch (Description)
                     {
-                        case "Canal x12":
+                        case "Tubo 1 Aleta 1X2":
                             Metraje = Weigth * 2 + Heigth * 2;
                             break;
                         case "Venilla 1/2":
@@ -5315,10 +5318,64 @@ namespace Negocio.LoadProduct
             }
             return metraje;
         }
+        private decimal Calc6030_2Vias_MovilMovilMovilMovilMovilMovil(string Description)
+        {
+            decimal metraje = 0;
+            switch (Description)
+            {
+                case "Contramarco Superior-Lateral Akari 3 Vias":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    break;
+                case "Contramarco Inferior Akari 3 Vias":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    break;
+                case "Marco Hoja 6030":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                    break;
+                case "Marco Hoja Enganche 6030":
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 8;
+                    break;
+
+
+
+                //*******************Accesorios********************//
+                case "Rodin 6030":
+                    metraje = 12;
+                    break;
+                case "Escuadra Union Universal":
+                    metraje = 24;
+                    break;
+                case "Escuadra Contramarco 2 Vias Akari":
+                    metraje = 8;
+                    break;
+                case "Botaguas Akari":
+                    metraje = 6;
+                    break;
+                case "Corta Vientos":
+                    metraje = 16;
+                    break;
+                case "Tapa Rodin":
+                    metraje = 12;
+                    break;
+                case "Empaque Akari":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 12);
+                    break;
+                case "Felpa Akari ":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 12 + (Convert.ToDecimal(ClsWindows.heigt) * 20);
+                    break;
+                case "Cerradura Impacto Akari":
+                    metraje = 2;
+                    break;
+
+            }
+            return metraje;
+
+        }
+
 
             #endregion
 
-        #region 6030 3 Vias
+            #region 6030 3 Vias
             private decimal Calc6030_3Vias_FijoMovil(string Description)
             {
             decimal metraje = 0;
@@ -8639,7 +8696,7 @@ namespace Negocio.LoadProduct
                 case "Barra de Empuje PL D42":
                     Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
                     break;
-                case "Divisor PL D43":
+                case "Divisor PL D93":
                     Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
                     break;
 
@@ -8651,14 +8708,11 @@ namespace Negocio.LoadProduct
                 case "Juego Cerradura 31/32 AL DT1850":
                     Metraje = 1;
                     break;
-                case "Pasador Embutido 1/4 AL FB1204":
-                    Metraje = 2;
-                    break;
                 case "Juego Pivote AL OP2700":
-                    Metraje = 2;
+                    Metraje = 1;
                     break;
                 case "Cilindro Tipo RIM RC051 PL":
-                    Metraje = 0;
+                    Metraje = 1;
                     break;
                 case "Barra Roscada":
                     Metraje = 2;
@@ -8727,7 +8781,7 @@ namespace Negocio.LoadProduct
                 case "Barra de Empuje PL D42":
                     Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
                     break;
-                case "Divisor PL D43":
+                case "Divisor PL D93":
                     Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
                     break;
 
@@ -8746,10 +8800,10 @@ namespace Negocio.LoadProduct
                     Metraje = 2;
                     break;
                 case "Cilindro Tipo RIM RC051 PL":
-                    Metraje = 0;
+                    Metraje = 1;
                     break;
                 case "Barra Roscada":
-                    Metraje = 4;
+                    Metraje = 8;
                     break;
                 case "Tuerca 1/4":
                     Metraje = 8;
