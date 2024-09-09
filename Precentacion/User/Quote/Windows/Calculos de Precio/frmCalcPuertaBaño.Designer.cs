@@ -410,6 +410,7 @@
             this.cbColor.Name = "cbColor";
             this.cbColor.Size = new System.Drawing.Size(90, 21);
             this.cbColor.TabIndex = 11;
+            this.cbColor.SelectedIndexChanged += new System.EventHandler(this.cbColor_SelectedIndexChanged_1);
             this.cbColor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboBox_KeyPress);
             // 
             // lblVidrio

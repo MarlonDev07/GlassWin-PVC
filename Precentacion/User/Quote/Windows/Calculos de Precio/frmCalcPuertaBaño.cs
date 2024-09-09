@@ -626,6 +626,16 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 }
             }
         }
+
+        private void cbColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Fn_CargarImagen();
+        }
+
+        private void cbColor_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Fn_CargarImagen();
+        }
     }
 }
 
