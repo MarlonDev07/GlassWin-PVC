@@ -9002,7 +9002,7 @@ namespace Negocio.LoadProduct
                     Metraje = Weigth * 1;
                     break;
                 case "Envidriador Curvo 6-8mm D111":
-                    Metraje = Weigth * 2 + Heigth * 2;
+                    Metraje = Weigth * 2 + Heigth * 4;
                     break;
                 case "Marco Inversor EU":
                     Metraje = Heigth * 1;
@@ -9036,7 +9036,7 @@ namespace Negocio.LoadProduct
                     Metraje = 2;
                     break;
                 case "Empaque EU V-94":
-                    Metraje = Weigth * 2 + Heigth * 4;
+                    Metraje = Weigth * 4 + Heigth * 8;
                     break;
                 case "Empaque Alfin Lengueta":
                     Metraje = Weigth * 4 + Heigth * 8;
