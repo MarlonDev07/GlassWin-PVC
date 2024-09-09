@@ -91,7 +91,7 @@ namespace Precentacion.User.Quote.Windows
             }
             else
             {
-                OpenCalcPriceWindows("2 Hoja Con Divicion PE");
+                OpenCalcPriceWindows("2 Hoja Con Divicion PL");
             }
         }
 
