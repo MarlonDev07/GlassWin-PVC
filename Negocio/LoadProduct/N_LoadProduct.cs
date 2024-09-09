@@ -1757,7 +1757,13 @@ namespace Negocio.LoadProduct
                         case "1 Hoja PL":
                             metraje = CalcPuertaLiviana1Hoja(Description);
                             break;
+                        case "1 Hoja PLv":
+                            metraje = CalcPuertaLiviana1Hoja(Description);
+                            break;
                         case "1 Hoja Con Divicion PL":
+                            metraje = CalcPuertaLiviana1Hojacondivicion(Description);
+                            break;
+                        case "1 Hoja Con Divicion PLv":
                             metraje = CalcPuertaLiviana1Hojacondivicion(Description);
                             break;
                     }

@@ -81,7 +81,7 @@
             this.lblDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblDetalle.Font = new System.Drawing.Font("Impact", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetalle.ForeColor = System.Drawing.Color.White;
-            this.lblDetalle.Location = new System.Drawing.Point(123, -2);
+            this.lblDetalle.Location = new System.Drawing.Point(2, -2);
             this.lblDetalle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDetalle.Name = "lblDetalle";
             this.lblDetalle.Size = new System.Drawing.Size(1101, 41);
@@ -94,7 +94,7 @@
             this.lblDescripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblDescripcion.Font = new System.Drawing.Font("Impact", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcion.ForeColor = System.Drawing.Color.White;
-            this.lblDescripcion.Location = new System.Drawing.Point(243, 8);
+            this.lblDescripcion.Location = new System.Drawing.Point(122, 8);
             this.lblDescripcion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(213, 25);
@@ -107,7 +107,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label1.Font = new System.Drawing.Font("Impact", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(865, 8);
+            this.label1.Location = new System.Drawing.Point(765, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 23);
@@ -116,8 +116,8 @@
             // 
             // txtUbicacion
             // 
-            this.txtUbicacion.Location = new System.Drawing.Point(1077, 13);
-            this.txtUbicacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUbicacion.Location = new System.Drawing.Point(977, 13);
+            this.txtUbicacion.Margin = new System.Windows.Forms.Padding(2);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(121, 20);
             this.txtUbicacion.TabIndex = 3;
@@ -147,8 +147,8 @@
             this.PanelMedidas.Controls.Add(this.lblVidrio);
             this.PanelMedidas.Controls.Add(this.lblCantidad);
             this.PanelMedidas.Controls.Add(this.label2);
-            this.PanelMedidas.Location = new System.Drawing.Point(118, 51);
-            this.PanelMedidas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelMedidas.Location = new System.Drawing.Point(-3, 51);
+            this.PanelMedidas.Margin = new System.Windows.Forms.Padding(2);
             this.PanelMedidas.Name = "PanelMedidas";
             this.PanelMedidas.Size = new System.Drawing.Size(1106, 88);
             this.PanelMedidas.TabIndex = 5;
@@ -287,7 +287,7 @@
             this.txtAncho.BackColor = System.Drawing.Color.White;
             this.txtAncho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAncho.ForeColor = System.Drawing.Color.Black;
-            this.txtAncho.Location = new System.Drawing.Point(529, 476);
+            this.txtAncho.Location = new System.Drawing.Point(534, 476);
             this.txtAncho.Name = "txtAncho";
             this.txtAncho.Size = new System.Drawing.Size(54, 23);
             this.txtAncho.TabIndex = 55;
@@ -299,7 +299,7 @@
             this.txtAlto.BackColor = System.Drawing.Color.White;
             this.txtAlto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAlto.ForeColor = System.Drawing.Color.Black;
-            this.txtAlto.Location = new System.Drawing.Point(735, 292);
+            this.txtAlto.Location = new System.Drawing.Point(740, 292);
             this.txtAlto.Name = "txtAlto";
             this.txtAlto.Size = new System.Drawing.Size(54, 23);
             this.txtAlto.TabIndex = 53;
@@ -311,7 +311,7 @@
             this.txtAlto2.BackColor = System.Drawing.Color.White;
             this.txtAlto2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAlto2.ForeColor = System.Drawing.Color.Black;
-            this.txtAlto2.Location = new System.Drawing.Point(311, 292);
+            this.txtAlto2.Location = new System.Drawing.Point(316, 292);
             this.txtAlto2.Name = "txtAlto2";
             this.txtAlto2.Size = new System.Drawing.Size(54, 23);
             this.txtAlto2.TabIndex = 87;
@@ -329,7 +329,7 @@
             this.panelDetalle.Controls.Add(this.Aluminiodt);
             this.panelDetalle.Location = new System.Drawing.Point(-1, -2);
             this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1225, 625);
+            this.panelDetalle.Size = new System.Drawing.Size(1104, 625);
             this.panelDetalle.TabIndex = 89;
             this.panelDetalle.Visible = false;
             this.panelDetalle.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDetalle_Paint);
@@ -386,7 +386,7 @@
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(1225, 25);
+            this.label10.Size = new System.Drawing.Size(1104, 25);
             this.label10.TabIndex = 74;
             this.label10.Text = "Detalle";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -410,7 +410,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(573, 502);
+            this.button2.Location = new System.Drawing.Point(513, 502);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(129, 45);
             this.button2.TabIndex = 72;
@@ -433,7 +433,7 @@
             // 
             this.pbVentana.BackColor = System.Drawing.Color.Transparent;
             this.pbVentana.Image = ((System.Drawing.Image)(resources.GetObject("pbVentana.Image")));
-            this.pbVentana.Location = new System.Drawing.Point(371, 151);
+            this.pbVentana.Location = new System.Drawing.Point(376, 151);
             this.pbVentana.Name = "pbVentana";
             this.pbVentana.Size = new System.Drawing.Size(358, 300);
             this.pbVentana.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -555,8 +555,8 @@
             this.panel1.Controls.Add(this.lblTotal);
             this.panel1.Controls.Add(this.txtTotal);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(122, 512);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(1, 512);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1101, 103);
             this.panel1.TabIndex = 67;
@@ -566,7 +566,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1222, 618);
+            this.ClientSize = new System.Drawing.Size(1104, 618);
             this.Controls.Add(this.panelDetalle);
             this.Controls.Add(this.txtAlto2);
             this.Controls.Add(this.pbVentana);
@@ -578,7 +578,7 @@
             this.Controls.Add(this.txtAncho);
             this.Controls.Add(this.lblDetalle);
             this.Controls.Add(this.txtAlto);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmCaclPriceVentanasFijas2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
