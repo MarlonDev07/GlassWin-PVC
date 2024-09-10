@@ -789,7 +789,7 @@
             this.MinimumSize = new System.Drawing.Size(825, 483);
             this.Name = "frmManagerClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Vista de los Clientes";
+            this.Text = "Clientes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formclosing);
             this.Load += new System.EventHandler(this.frmManagerClient_Load);

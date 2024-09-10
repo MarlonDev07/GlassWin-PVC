@@ -4,6 +4,8 @@
 git add .
 git commit -m "$args"
 
-# Empujar a ambos repositorios
-git push origin main
+# Empujar a la rama master en el repositorio principal (origin)
+git push origin master
+
+# Empujar a la rama main en el repositorio secundario (secondary)
 git push secondary main
