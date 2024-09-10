@@ -2468,7 +2468,170 @@ namespace Negocio.LoadProduct
             }
 
             return Metraje;
+
         }
+
+            // VIDRIO FIJO (NOMBRE DE LA IMAGEN VIDRIO FIJO 1) // 
+        private decimal CalclMetrajeVidrioFijo1(string Description, decimal Weigth, decimal Heigth, string Material)
+        {
+            decimal Metraje = 0;
+
+            if (Material == "1x2")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 1X2":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 4 + Heigth * 2;
+                        break;
+                    case "Tubo 2 Aleta 1X2":
+                        Metraje = Weigth * 1;
+                        break;
+                }
+            }
+            if (Material == "1 3/4x3")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 13/4x3":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Tubo 2 Aleta 13/4x3":
+                        Metraje = Weigth * 1;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 4 + Heigth * 2;
+                        break;
+                }
+            }
+            if (Material == "1 3/4x4")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 13/4x4":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Tubo 2 Aleta 13/4x4":
+                        Metraje = Weigth * 1;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 4 + Heigth * 2;
+                        break;
+                }
+            }
+
+            return Metraje;
+        }
+            // VIDRIO FIJO (NOMBRE DE LA IMAGEN VIDRIO FIJO 2) // 
+        private decimal CalclMetrajeVidrioFijo2(string Description, decimal Weigth, decimal Heigth, string Material)
+        {
+            decimal Metraje = 0;
+
+            if (Material == "1x2")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 1X2":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 4 + Heigth * 8;
+                        break;
+                    case "Tubo 2 Aleta 1X2":
+                        Metraje = Weigth * 1 + Heigth * 3;
+                        break;
+                }
+            }
+            if (Material == "1 3/4x3")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 13/4x3":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Tubo 2 Aleta 13/4x3":
+                        Metraje = Weigth * 1 + Heigth * 3;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 4 + Heigth * 8;
+                        break;
+                }
+            }
+            if (Material == "1 3/4x4")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 13/4x4":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Tubo 2 Aleta 13/4x4":
+                        Metraje = Weigth * 1 + Heigth * 3;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 4 + Heigth * 8;
+                        break;
+                }
+            }
+
+            return Metraje;
+        }
+            // VIDRIO FIJO (NOMBRE DE LA IMAGEN VIDRIO FIJO 3) //
+        private decimal CalclMetrajeVidrioFijo3(string Description, decimal Weigth, decimal Heigth, string Material)
+        {
+            decimal Metraje = 0;
+
+            if (Material == "1x2")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 1X2":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 4 + Heigth * 4;
+                        break;
+                    case "Tubo 2 Aleta 1X2":
+                        Metraje = Weigth * 1 + Heigth * 1;
+                        break;
+                }
+            }
+            if (Material == "1 3/4x3")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 13/4x3":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Tubo 2 Aleta 13/4x3":
+                        Metraje = Weigth * 1 + Heigth * 1;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 4 + Heigth * 4;
+                        break;
+                }
+            }
+            if (Material == "1 3/4x4")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 13/4x4":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Tubo 2 Aleta 13/4x4":
+                        Metraje = Weigth * 1 + Heigth * 1;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 4 + Heigth * 4;
+                        break;
+                }
+            }
+
+            return Metraje;
+
+        }
+
         #endregion
 
         #region Calculos de Metrajes de Cedazo
@@ -8122,6 +8285,94 @@ namespace Negocio.LoadProduct
 
             }
             return metraje;
+        }
+        // Ventila Vertical (NOMBRE DE LA IMAGEN VENTILA VERTICAL FIJO MOVIL FIJO) //
+        private decimal CalcVentilaVerticalFijoMovilFijo(string Description)
+        {
+            decimal metraje = 0;
+
+            switch (Description)
+            {
+                case "Contramarco VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    break;
+                case "Jamba VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
+                    break;
+                case "Divicion VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
+                    break;
+                case "Marco Hoja VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) / 3 * 2;
+                    break;
+                case "Envidriador VT M338":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 6 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                    break;
+
+                //*******************Accesorios********************//
+                case "Cierre VT":
+                    metraje = 1;
+                    break;
+                case "Cremona 8":
+                    if (ClsWindows.heigt >= 0.50m && ClsWindows.heigt <= 0.80m)
+                    {
+                        metraje = 1;
+                    }
+                    else
+                    {
+                        metraje = 0;
+                    }
+                    break;
+                case "Cremona 10":
+                    if (ClsWindows.heigt >= 0.80m && ClsWindows.heigt <= 1.10m)
+                    {
+                        metraje = 1;
+                    }
+                    else
+                    {
+                        metraje = 0;
+                    }
+                    break;
+                case "Cremona 12":
+                    if (ClsWindows.heigt >= 1.11m && ClsWindows.heigt <= 1.30m)
+                    {
+                        metraje = 1;
+                    }
+                    else
+                    {
+                        metraje = 0;
+                    }
+                    break;
+                case "Cremona 14":
+                    if (ClsWindows.heigt >= 1.31m && ClsWindows.heigt <= 1.60m)
+                    {
+                        metraje = 1;
+                    }
+                    else
+                    {
+                        metraje = 0;
+                    }
+                    break;
+                case "Cremona 16":
+                    if (ClsWindows.heigt >= 1.60m)
+                    {
+                        metraje = 1;
+                    }
+                    else
+                    {
+                        metraje = 0;
+                    }
+                    break;
+                case "Angular 2X2X1/4":
+                    metraje = 4;
+                    break;
+                case "Empaque VT":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 16) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
+                    break;
+
+            }
+            return metraje;
+
         }
 
         // FIJO EN MARCO DE VENTILA// 
