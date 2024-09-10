@@ -240,7 +240,7 @@ namespace Precentacion.User.Quote.Windows
         {
             try
             {
-                if (ClsWindows.System != "Puerta Lujo" && ClsWindows.System != "8025 2 Vias" && ClsWindows.System != "8025 3 Vias" && ClsWindows.System != "8040 2 Vias" && ClsWindows.System != "8040 3 Vias" && ClsWindows.System != "Europa 2 Vias Puerta" && ClsWindows.System != "Europa 3 Vias Puerta" && ClsWindows.System != "Europa 2 Vias" && ClsWindows.System != "Europa 3 Vias")
+                if (ClsWindows.System != "Ventila" && ClsWindows.System != "Puerta Lujo" && ClsWindows.System != "8025 2 Vias" && ClsWindows.System != "8025 3 Vias" && ClsWindows.System != "8040 2 Vias" && ClsWindows.System != "8040 3 Vias" && ClsWindows.System != "Europa 2 Vias Puerta" && ClsWindows.System != "Europa 3 Vias Puerta" && ClsWindows.System != "Europa 2 Vias" && ClsWindows.System != "Europa 3 Vias")
                 {
                     //Mover la Imagen Hacia Arriba
                     Point pt = pbVentana.Location;
@@ -251,7 +251,7 @@ namespace Precentacion.User.Quote.Windows
                 }
                 else
                 {
-                    if (ClsWindows.System != "Puerta Lujo")
+                    if (ClsWindows.System != "Ventila" && ClsWindows.System != "Puerta Lujo")
                     {
                         //Mover la Imagen Hacia Arriba
                         Point pt = pbVentana.Location;
@@ -269,7 +269,7 @@ namespace Precentacion.User.Quote.Windows
                 if (ClsWindows.System == "Ventila" && ClsWindows.Desing != "1 Hoja Horizontal" && ClsWindows.Desing != "2 Hoja Horizontal")
                 {
                     pbVentana.Width = 400;
-                    pbVentana.Height = 100;
+                    pbVentana.Height = 250;//100;
                 }
                 if (ClsWindows.System == "Puerta Liviana")
                 {

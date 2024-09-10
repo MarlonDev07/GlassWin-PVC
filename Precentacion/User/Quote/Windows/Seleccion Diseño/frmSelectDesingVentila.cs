@@ -225,5 +225,14 @@ namespace Precentacion.User.Quote.Windows
         {
           
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "VerticalFijoMovilFijo";
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Design2 = ClsWindows.Desing;
+            frm.Show();
+            this.Close();
+        }
     }
 }
