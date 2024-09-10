@@ -346,7 +346,11 @@
             "1 Hoja Con Divicion PLv",
             "1 Hoja PLv",
             "PB FijoMovilMovil",
-            "PB MovilMovil"});
+            "PB MovilMovil",
+            "Fijo1",
+            "Fijo2",
+            "Fijo3",
+            "VerticalFijoMovilFijo"});
             this.cbDesing.Location = new System.Drawing.Point(651, 68);
             this.cbDesing.Name = "cbDesing";
             this.cbDesing.Size = new System.Drawing.Size(121, 28);
