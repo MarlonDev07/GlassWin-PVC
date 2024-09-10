@@ -435,6 +435,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
             // Mostrar el precio total ajustado en el TextBox
             txtTotalPrice.Text = PrecioTotalAjustado.ToString("C");
+            clsPuertaBaño.Price = PrecioTotalAjustado;
         }
 
         #endregion
@@ -544,7 +545,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             Description += "Color Aluminio: " + cbColor.Text + "\n";
             Description += "Ubicación: " + txtUbicacion.Text + "\n";
 
-            clsPuertaBaño.Price = TempPrice;
+          
             if (n_LoadProduct.insertWindows(Description,Url,clsPuertaBaño.WeightTotal,clsPuertaBaño.heigt,cbVidrio.Text,cbColor.Text,"",clsPuertaBaño.Price,ClsWindows.IDQuote,clsPuertaBaño.System,clsPuertaBaño.Desing))
             {
                 Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
