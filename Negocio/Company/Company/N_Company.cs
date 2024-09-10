@@ -26,7 +26,7 @@ namespace Negocio.Company
             }
         }
 
-        public DataTable BuscarCompany(int idCompany)
+        public DataTable BuscarCompany(long idCompany)
         {
             try
             {

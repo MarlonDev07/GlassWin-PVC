@@ -22,12 +22,13 @@ namespace Negocio.Users
             return Table;
         }
 
-        public List<clsUser> FindxID(string ID) 
+        public List<clsUser> FindxID(string ID)
         {
             List<clsUser> UserList = new List<clsUser>();
-            UserList = ObjCDUser.FindxID(Convert.ToInt32(ID));
+            UserList = ObjCDUser.FindxID(Convert.ToInt64(ID)); // Cambiar a Int64
             return UserList;
         }
+
         public bool Create(string ID,string Name, string phone, string Email, string UserName, string PassWord, string Roll)
         {
             DateTime Expiration = CalceExpiration();
@@ -48,7 +49,7 @@ namespace Negocio.Users
             }
         }
 
-        public bool Update(int ID, string Name, string phone, string Email, string UserName, string Roll, string State = "Active")
+        public bool Update(long ID, string Name, string phone, string Email, string UserName, string Roll, string State = "Active")
         {
             if (ObjCDUser.Update(ID,Name, phone, Email, UserName, Roll, "Active"))
             {

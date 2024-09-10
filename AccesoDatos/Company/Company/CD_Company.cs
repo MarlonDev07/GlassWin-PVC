@@ -22,7 +22,7 @@ namespace AccesoDatos.Company
             return dataTable;
         }
 
-        public DataTable BuscarCompany(int idCompany)
+        public DataTable BuscarCompany(long idCompany)
         {
             DataBase.ClsConnection Cnn = new DataBase.ClsConnection();
             DataTable dataTable = new DataTable();

@@ -386,7 +386,7 @@ namespace Precentacion.User.Quote.Quote
 
                 }
                 //Vitro Esparza
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     cbOpcion.Visible = false;
                     txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
@@ -1554,7 +1554,7 @@ namespace Precentacion.User.Quote.Quote
                 string rutaLogo = "";
 
                 //Vitro esparza
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
@@ -1726,7 +1726,7 @@ namespace Precentacion.User.Quote.Quote
                 Paragraph paragraph = new Paragraph();
                 paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
                 paragraph.Add(Chunk.NEWLINE);// Salto de línea
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     paragraph.Add(new Chunk("Cédula Jurídica : 3-101-623589", textFont));
                     paragraph.Add(Chunk.NEWLINE);
@@ -2555,7 +2555,7 @@ namespace Precentacion.User.Quote.Quote
                     document.Add(Cuenta2Paragraph);
                 }
                 //Vitro Esparza
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
@@ -2684,7 +2684,7 @@ namespace Precentacion.User.Quote.Quote
                 Encabezado.WidthPercentage = 120;
                 string rutaLogo = "";
                 //Vitro esparza
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
@@ -2871,7 +2871,7 @@ namespace Precentacion.User.Quote.Quote
                 Paragraph paragraph = new Paragraph();
                 paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
                 paragraph.Add(Chunk.NEWLINE);// Salto de línea
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     paragraph.Add(new Chunk("Cédula Jurídica : 3-101-623589", textFont));
                     paragraph.Add(Chunk.NEWLINE);
@@ -3924,7 +3924,7 @@ namespace Precentacion.User.Quote.Quote
                 }
 
                 //Vitro esparza
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
@@ -4097,7 +4097,7 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     paragraph.Add(new Chunk("Cédula Jurídica : 3-101-623589", textFont));
                     paragraph.Add(Chunk.NEWLINE);
@@ -4891,7 +4891,7 @@ namespace Precentacion.User.Quote.Quote
                     document.Add(Cuenta2Paragraph);
                 }
                 //Vitro Esparza
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;

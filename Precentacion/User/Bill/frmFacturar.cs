@@ -1823,7 +1823,7 @@ namespace Precentacion.User.Bill
 
                 }
                 //Vitro esparza
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
@@ -2376,7 +2376,7 @@ namespace Precentacion.User.Bill
 
                 }
                 //Vitro esparza
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
@@ -2855,7 +2855,7 @@ namespace Precentacion.User.Bill
 
                 }
                 //Vitro esparza
-                if (CompanyCache.IdCompany == 3101623589)
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
