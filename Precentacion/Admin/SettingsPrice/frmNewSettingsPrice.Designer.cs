@@ -76,7 +76,7 @@
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(864, 30);
+            this.panelTitleBar.Size = new System.Drawing.Size(912, 30);
             this.panelTitleBar.TabIndex = 3;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
@@ -107,7 +107,7 @@
             this.btnRestore.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnRestore.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRestore.BackgroundImage")));
             this.btnRestore.Image = ((System.Drawing.Image)(resources.GetObject("btnRestore.Image")));
-            this.btnRestore.Location = new System.Drawing.Point(792, 3);
+            this.btnRestore.Location = new System.Drawing.Point(840, 3);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(29, 25);
             this.btnRestore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -120,7 +120,7 @@
             // 
             this.btnMini.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnMini.Image = ((System.Drawing.Image)(resources.GetObject("btnMini.Image")));
-            this.btnMini.Location = new System.Drawing.Point(757, 2);
+            this.btnMini.Location = new System.Drawing.Point(805, 2);
             this.btnMini.Name = "btnMini";
             this.btnMini.Size = new System.Drawing.Size(29, 25);
             this.btnMini.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -132,7 +132,7 @@
             // 
             this.btnMaxi.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnMaxi.Image = ((System.Drawing.Image)(resources.GetObject("btnMaxi.Image")));
-            this.btnMaxi.Location = new System.Drawing.Point(793, 2);
+            this.btnMaxi.Location = new System.Drawing.Point(841, 2);
             this.btnMaxi.Name = "btnMaxi";
             this.btnMaxi.Size = new System.Drawing.Size(29, 25);
             this.btnMaxi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -144,7 +144,7 @@
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(829, 2);
+            this.btnClose.Location = new System.Drawing.Point(877, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(29, 25);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -166,7 +166,7 @@
             "Blanco",
             "Madera",
             "Inox"});
-            this.cbColor.Location = new System.Drawing.Point(466, 35);
+            this.cbColor.Location = new System.Drawing.Point(531, 35);
             this.cbColor.Name = "cbColor";
             this.cbColor.Size = new System.Drawing.Size(121, 28);
             this.cbColor.TabIndex = 31;
@@ -175,7 +175,7 @@
             // 
             this.lblColor.AutoSize = true;
             this.lblColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColor.Location = new System.Drawing.Point(414, 39);
+            this.lblColor.Location = new System.Drawing.Point(479, 39);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(45, 18);
             this.lblColor.TabIndex = 30;
@@ -233,16 +233,16 @@
             "Fijo2",
             "Fijo3",
             "VerticalFijoMovilFijo"});
-            this.cbDesing.Location = new System.Drawing.Point(275, 33);
+            this.cbDesing.Location = new System.Drawing.Point(256, 33);
             this.cbDesing.Name = "cbDesing";
-            this.cbDesing.Size = new System.Drawing.Size(121, 28);
+            this.cbDesing.Size = new System.Drawing.Size(217, 28);
             this.cbDesing.TabIndex = 29;
             // 
             // lblDesing
             // 
             this.lblDesing.AutoSize = true;
             this.lblDesing.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesing.Location = new System.Drawing.Point(214, 39);
+            this.lblDesing.Location = new System.Drawing.Point(195, 39);
             this.lblDesing.Name = "lblDesing";
             this.lblDesing.Size = new System.Drawing.Size(55, 18);
             this.lblDesing.TabIndex = 28;
@@ -309,7 +309,7 @@
             this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(238, 368);
+            this.btnSave.Location = new System.Drawing.Point(262, 368);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 65);
             this.btnSave.TabIndex = 34;
@@ -323,7 +323,7 @@
             this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
             this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Location = new System.Drawing.Point(498, 368);
+            this.btnBack.Location = new System.Drawing.Point(528, 368);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(89, 65);
             this.btnBack.TabIndex = 33;
@@ -343,14 +343,14 @@
             this.panel1.Controls.Add(this.lblColor);
             this.panel1.Location = new System.Drawing.Point(9, 78);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(846, 100);
+            this.panel1.Size = new System.Drawing.Size(891, 100);
             this.panel1.TabIndex = 35;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(611, 38);
+            this.label4.Location = new System.Drawing.Point(665, 38);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 18);
             this.label4.TabIndex = 32;
@@ -361,7 +361,7 @@
             this.cbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSupplier.FormattingEnabled = true;
-            this.cbSupplier.Location = new System.Drawing.Point(694, 33);
+            this.cbSupplier.Location = new System.Drawing.Point(748, 33);
             this.cbSupplier.Name = "cbSupplier";
             this.cbSupplier.Size = new System.Drawing.Size(130, 28);
             this.cbSupplier.TabIndex = 33;
@@ -403,7 +403,7 @@
             this.panel2.Controls.Add(this.txtValue);
             this.panel2.Location = new System.Drawing.Point(9, 236);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(846, 100);
+            this.panel2.Size = new System.Drawing.Size(891, 100);
             this.panel2.TabIndex = 36;
             // 
             // label3
@@ -429,7 +429,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(864, 468);
+            this.ClientSize = new System.Drawing.Size(912, 468);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
