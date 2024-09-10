@@ -1732,6 +1732,9 @@ namespace Negocio.LoadProduct
                         case "Ventila1Fijo":
                             metraje = CalcVentila1Fijo(Description);
                             break;
+                        case "VerticalFijoMovilFijo":
+                            metraje = CalcVentilaVerticalFijoMovilFijo(Description);
+                            break;
                     }
                     break;
                 case "Puerta Lujo":
