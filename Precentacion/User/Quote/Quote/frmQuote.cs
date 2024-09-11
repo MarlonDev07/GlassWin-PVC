@@ -2010,6 +2010,7 @@ namespace Precentacion.User.Quote.Quote
                                     rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
                                 }
 
+
                                 if (!string.IsNullOrEmpty(rutaAbsoluta) && File.Exists(rutaAbsoluta))
                                 {
                                     // Obtener dimensiones en metros y convertirlas a píxeles
@@ -2018,6 +2019,10 @@ namespace Precentacion.User.Quote.Quote
 
                                     int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
                                     int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
+                                    if (anchoVentana > 220)
+                                    {
+                                        anchoVentana = 200; // Reducir el ancho a 200 píxeles
+                                    }
 
                                     if (anchoVentana == 0) anchoVentana = 150;//e.CellBounds.Width;
                                     if (altoVentana == 0) altoVentana = 100;//e.CellBounds.Height;
@@ -2036,6 +2041,13 @@ namespace Precentacion.User.Quote.Quote
                                     celdaImagen.VerticalAlignment = Element.ALIGN_MIDDLE;
                                     celdaImagen.FixedHeight = altoVentana; // Ajustar la altura de la celda para coincidir con la imagen
                                     tabla.AddCell(celdaImagen);
+
+                                
+
+
+
+
+
                                 }
                                 else
                                 {
@@ -3544,6 +3556,12 @@ namespace Precentacion.User.Quote.Quote
                                 int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
                                 int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
 
+                                if (anchoVentana > 220)
+                                {
+                                    anchoVentana = 200; // Reducir el ancho a 200 píxeles
+                                }
+
+
                                 // Ajustar el ancho y la altura si son 0
                                 if (anchoVentana == 0) anchoVentana = 150; // Ancho por defecto
                                 if (altoVentana == 0) altoVentana = 100; // Alto por defecto
@@ -4462,6 +4480,12 @@ namespace Precentacion.User.Quote.Quote
 
                                         int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
                                         int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
+
+                                        if (anchoVentana > 220)
+                                        {
+                                            anchoVentana = 200; // Reducir el ancho a 200 píxeles
+                                        }
+
 
                                         if (anchoVentana == 0) anchoVentana = 150; // Ajuste por defecto
                                         if (altoVentana == 0) altoVentana = 100; // Ajuste por defecto
