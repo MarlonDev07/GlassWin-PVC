@@ -164,22 +164,28 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text != "")
+            try 
             {
-                decimal anchoV = Convert.ToDecimal(textBox1.Text);
+                if (textBox1.Text != "")
+                {
+                    decimal anchoV = Convert.ToDecimal(textBox1.Text);
 
-                // Convertir a metros si el valor es mayor o igual a 1000
-                anchoV /= 1000;
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    anchoV /= 1000;
 
-                // Detectar si el usuario ingresó un punto en vez de una coma
-                DetectarPunto();
-                ClsWindows.AnchoVentila = anchoV;
-                //button2_Click(sender, e);
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    ClsWindows.AnchoVentila = anchoV;
+                    //button2_Click(sender, e);
+                }
+                else
+                {
+                    ClsWindows.AnchoVentila = 0;
+                }
             }
-            else
-            {
-                ClsWindows.AnchoVentila = 0;
-            }
+            catch 
+            { }
+           
         }
 
         private void DetectarPunto()
