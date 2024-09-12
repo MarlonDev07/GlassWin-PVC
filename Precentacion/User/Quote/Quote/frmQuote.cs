@@ -1574,7 +1574,7 @@ namespace Precentacion.User.Quote.Quote
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\vitroEsparza.jpg";
+                    string Url = "\\Images\\Logos\\vitroEsparza.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2756,7 +2756,7 @@ namespace Precentacion.User.Quote.Quote
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\vitroEsparza.jpg";
+                    string Url = "\\Images\\Logos\\vitroEsparza.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -4030,7 +4030,7 @@ namespace Precentacion.User.Quote.Quote
                 {
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\vitroEsparza.jpg";
+                    string Url = "\\Images\\Logos\\vitroEsparza.png";
                     rutaLogo = ruta + Url;
 
                 }
