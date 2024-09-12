@@ -239,6 +239,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                     // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
                     ClsWindows.Weight = ancho;
+                    ClsWindows.AnchoVentila = ancho;
                     // redimension_Click(sender, e);
                 }
                 //Advertencias();
@@ -470,6 +471,11 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                         break;
                 }
             }
+        }
+
+        private void cbCedazo_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
