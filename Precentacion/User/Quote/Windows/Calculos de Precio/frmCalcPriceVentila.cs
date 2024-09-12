@@ -21,6 +21,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         string RutaImagen;
         decimal precioTotal;
         decimal TempPrecio;
+        public bool Cedazo = false;
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
         private const decimal CentimetrosAPixeles = 100.0m;
@@ -140,7 +141,8 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             }
 
             N_LoadProduct n_LoadProduct = new N_LoadProduct();
-            
+
+            n_LoadProduct.CedazoValor(Cedazo);
             DataTable dtAluminio = n_LoadProduct.loadAluminio(cbColor.Text,ClsWindows.System,cbSupplier.Text);
             DataTable dtVidrio = n_LoadProduct.loadPricesGlass(cbSupplier.Text,cbVidrio.Text);
             DataTable dtAccesorios = n_LoadProduct.loadAccesorios(ClsWindows.System, cbSupplier.Text);
@@ -475,7 +477,14 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
         private void cbCedazo_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (cbCedazo.Checked == true)
+            {
+                Cedazo = true;
+            }
+            else
+            {
+                Cedazo = false;
+            }
         }
     }
 }
