@@ -232,7 +232,8 @@
             "Fijo1",
             "Fijo2",
             "Fijo3",
-            "VerticalFijoMovilFijo"});
+            "VerticalFijoMovilFijo",
+            "FijoMovilMovilMovilMovilFijo"});
             this.cbDesing.Location = new System.Drawing.Point(256, 33);
             this.cbDesing.Name = "cbDesing";
             this.cbDesing.Size = new System.Drawing.Size(217, 28);
