@@ -1571,7 +1571,7 @@ namespace Negocio.LoadProduct
                         case "2ViasMovilMovilMovil":
                             metraje = Calc6030_2Vias_MovilMovilMovil(Description);
                             break;
-                        case "2ViasMovilMovilMovilMovilMovilMovil":
+                        case "FijoMovilMovilMovilMovilFijo":
                             metraje = Calc6030_2Vias_MovilMovilMovilMovilMovilMovil(Description);
                             break;
                     }

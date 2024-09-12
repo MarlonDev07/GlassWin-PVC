@@ -177,7 +177,7 @@ namespace Precentacion.User.Quote.Windows
                 FijoMovilMovil.Visible = false;
             }
             else if (system2 == "6030 2 Vias") {
-                FijoMovilMovilMovilMovilFijo.Visible = false;
+                FijoMovilMovilMovilMovilFijo.Visible = true;
                 FijoMovilMovil.Visible = true;
             }
             else if (system2 == "6030 3 Vias")
