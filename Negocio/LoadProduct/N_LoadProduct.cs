@@ -2131,7 +2131,7 @@ namespace Negocio.LoadProduct
                         case "Contramarco Recto EU D102":
                             Metraje = Weigth * 2 + Heigth * 2;
                             break;
-                        case "Marco Divicion EU 26mm D10":
+                        case "Marco Division EU 26mm D10":
                             Metraje = Heigth * 1;
                             break;
                         case "Envidriador Curvo 6-8mm D111":
@@ -2219,7 +2219,7 @@ namespace Negocio.LoadProduct
                         case "Contramarco Recto EU D102":
                             Metraje = Weigth * 2 + Heigth * 2;
                             break;
-                        case "Marco Divicion EU 26mm D10":
+                        case "Marco Division EU 26mm D10":
                             Metraje = Heigth * 2;
                             break;
                         case "Envidriador Curvo 6-8mm D111":
@@ -2305,7 +2305,7 @@ namespace Negocio.LoadProduct
                         case "Contramarco Recto EU D102":
                             Metraje = Weigth * 2 + Heigth * 2;
                             break;
-                        case "Marco Divicion EU 26mm D10":
+                        case "Marco Division EU 26mm D10":
                             Metraje = Heigth * 3;
                             break;
                         case "Envidriador Curvo 6-8mm D111":
