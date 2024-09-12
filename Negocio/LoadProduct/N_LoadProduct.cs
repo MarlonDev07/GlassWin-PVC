@@ -7463,84 +7463,183 @@ namespace Negocio.LoadProduct
         private decimal CalcVentila1HojaHorizontal(string Description)
         {
             decimal metraje = 0;
-            switch (Description)
+           if (Cedazo)
             {
-                case "Contramarco VT M338":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
-                    break;
-                case "Jamba VT M338":
-                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
-                    break;
-                case "Marco Hoja VT M338":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
-                    break;
-                case "Envidriador VT M338":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
-                    break;
+                switch (Description)
+                {
+                    case "Contramarco VT M338":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
+                        break;
+                    case "Jamba VT M338":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Marco Hoja VT M338":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Envidriador VT M338":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Marco Cedazo 1/2":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+
 
                 //*******************Accesorios********************//
-                case "Cierre VT":
-                    metraje = 1;
-                    break;
-                case "Cremona 8":
-                    if (ClsWindows.heigt >= 0.25m && ClsWindows.heigt <= 0.40m)
-                    {
+                    case "Barra Telescopica VT":
                         metraje = 1;
-                    }
-                    else
-                    {
-                        metraje = 0;
-                    }
-                    break;
-                case "Cremona 10":
-                    if (ClsWindows.heigt >= 0.41m && ClsWindows.heigt <= 0.55m)
-                    {
+                        break;
+                    case "Cremona 8":
+                        if (ClsWindows.heigt >= 0.25m && ClsWindows.heigt <= 0.40m)
+                        {
+                            metraje = 1;
+                        }
+                        else
+                        {
+                            metraje = 0;
+                        }
+                        break;
+                    case "Cremona 10":
+                        if (ClsWindows.heigt >= 0.41m && ClsWindows.heigt <= 0.55m)
+                        {
+                            metraje = 1;
+                        }
+                        else
+                        {
+                            metraje = 0;
+                        }
+                        break;
+                    case "Cremona 12":
+                        if (ClsWindows.heigt >= 0.56m && ClsWindows.heigt <= 0.65m)
+                        {
+                            metraje = 1;
+                        }
+                        else
+                        {
+                            metraje = 0;
+                        }
+                        break;
+                    case "Cremona 14":
+                        if (ClsWindows.heigt >= 0.66m && ClsWindows.heigt <= 0.80m)
+                        {
+                            metraje = 1;
+                        }
+                        else
+                        {
+                            metraje = 0;
+                        }
+                        break;
+                    case "Cremona 16":
+                        if (ClsWindows.heigt >= 0.81m)
+                        {
+                            metraje = 1;
+                        }
+                        else
+                        {
+                            metraje = 0;
+                        }
+                        break;
+                    case "Angular 2X2X1/4":
+                        metraje = 4;
+                        break;
+                    case "Empaque VT":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 8) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
+                        break;
+                    case "Escuadra Cedazo 1/2":
+                        metraje = 4;
+                        break;
+                    case "Empaque Cedazo 1/2":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        break;
+                    case "Fibra Cedazo VT":
+                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 1);
+                        break;
+
+                }
+
+
+           }
+           else {
+               switch (Description)
+               {
+                    case "Contramarco VT M338":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
+                        break;
+                    case "Jamba VT M338":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Marco Hoja VT M338":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Envidriador VT M338":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+
+                    //*******************Accesorios********************//
+                    case "Cierre VT":
                         metraje = 1;
-                    }
-                    else
-                    {
-                        metraje = 0;
-                    }
-                    break;
-                case "Cremona 12":
-                    if (ClsWindows.heigt >= 0.56m && ClsWindows.heigt <= 0.65m)
-                    {
-                        metraje = 1;
-                    }
-                    else
-                    {
-                        metraje = 0;
-                    }
-                    break;
-                case "Cremona 14":
-                    if (ClsWindows.heigt >= 0.66m && ClsWindows.heigt <= 0.80m)
-                    {
-                        metraje = 1;
-                    }
-                    else
-                    {
-                        metraje = 0;
-                    }
-                    break;
-                case "Cremona 16":
-                    if (ClsWindows.heigt >= 0.81m)
-                    {
-                        metraje = 1;
-                    }
-                    else
-                    {
-                        metraje = 0;
-                    }
-                    break;
-                case "Angular 2X2X1/4":
-                    metraje = 4;
-                    break;
-                case "Empaque VT":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 8) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
-                    break;
+                        break;
+                    case "Cremona 8":
+                        if (ClsWindows.heigt >= 0.25m && ClsWindows.heigt <= 0.40m)
+                        {
+                            metraje = 1;
+                        }
+                        else
+                        {
+                            metraje = 0;
+                        }
+                        break;
+                    case "Cremona 10":
+                        if (ClsWindows.heigt >= 0.41m && ClsWindows.heigt <= 0.55m)
+                        {
+                            metraje = 1;
+                        }
+                        else
+                        {
+                            metraje = 0;
+                        }
+                        break;
+                    case "Cremona 12":
+                        if (ClsWindows.heigt >= 0.56m && ClsWindows.heigt <= 0.65m)
+                        {
+                            metraje = 1;
+                        }
+                        else
+                        {
+                            metraje = 0;
+                        }
+                        break;
+                    case "Cremona 14":
+                        if (ClsWindows.heigt >= 0.66m && ClsWindows.heigt <= 0.80m)
+                        {
+                            metraje = 1;
+                        }
+                        else
+                        {
+                            metraje = 0;
+                        }
+                        break;
+                    case "Cremona 16":
+                        if (ClsWindows.heigt >= 0.81m)
+                        {
+                            metraje = 1;
+                        }
+                        else
+                        {
+                            metraje = 0;
+                        }
+                        break;
+                    case "Angular 2X2X1/4":
+                        metraje = 4;
+                        break;
+                    case "Empaque VT":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 8) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
+                        break;
+                }
+
             }
             return metraje;
         }
+
         private decimal CalcVentila2HojasHorizontal(string Description)
         {
             decimal metraje = 0;
