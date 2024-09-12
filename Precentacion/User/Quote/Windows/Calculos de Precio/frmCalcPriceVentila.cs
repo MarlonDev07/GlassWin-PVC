@@ -164,14 +164,28 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            try 
             {
-                
+                if (textBox1.Text != "")
+                {
+                    decimal anchoV = Convert.ToDecimal(textBox1.Text);
+
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    anchoV /= 1000;
+
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    ClsWindows.AnchoVentila = anchoV;
+                    //button2_Click(sender, e);
+                }
+                else
+                {
+                    ClsWindows.AnchoVentila = 0;
+                }
             }
-            else
-            {
-                ClsWindows.AnchoVentila = Convert.ToDecimal(textBox1.Text);
-            }
+            catch 
+            { }
+           
         }
 
         private void DetectarPunto()
@@ -373,7 +387,6 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             description += "Alto: " + ClsWindows.heigt + "\n";
             description += "Cantidad: " + txtCantidad.Value + "\n";
             description += "Ubicación: " + txtUbicacion.Text + "\n";
-            precioTotal = TempPrecio;
             if(n_LoadProduct.insertWindows(description,RutaImagen, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", precioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing)) 
             {
                 LimpiarCampos();

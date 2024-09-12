@@ -190,7 +190,7 @@ namespace Precentacion.Admin.Users_and_Company.Company
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            int idCompany = Convert.ToInt32(txtBC.Text);
+            long idCompany = Convert.ToInt64(txtBC.Text);
             DataTable dtCompany = ObjNCompany.BuscarCompany(idCompany);
             dtCompanyVerification = dtCompany;
 

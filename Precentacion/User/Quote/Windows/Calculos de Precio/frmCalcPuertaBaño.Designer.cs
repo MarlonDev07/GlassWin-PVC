@@ -274,7 +274,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(629, 25);
+            this.label2.Location = new System.Drawing.Point(649, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 20);
             this.label2.TabIndex = 45;
@@ -336,7 +336,7 @@
             "Cañaberal",
             "Florentino",
             "Delfin"});
-            this.cbLaminaPlastica.Location = new System.Drawing.Point(629, 50);
+            this.cbLaminaPlastica.Location = new System.Drawing.Point(649, 50);
             this.cbLaminaPlastica.Name = "cbLaminaPlastica";
             this.cbLaminaPlastica.Size = new System.Drawing.Size(90, 21);
             this.cbLaminaPlastica.TabIndex = 44;
@@ -375,7 +375,7 @@
             this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblColor.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblColor.ForeColor = System.Drawing.Color.Black;
-            this.lblColor.Location = new System.Drawing.Point(365, 25);
+            this.lblColor.Location = new System.Drawing.Point(352, 25);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(90, 20);
             this.lblColor.TabIndex = 12;
@@ -387,9 +387,9 @@
             this.cbVidrio.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.cbVidrio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVidrio.FormattingEnabled = true;
-            this.cbVidrio.Location = new System.Drawing.Point(474, 50);
+            this.cbVidrio.Location = new System.Drawing.Point(448, 50);
             this.cbVidrio.Name = "cbVidrio";
-            this.cbVidrio.Size = new System.Drawing.Size(138, 21);
+            this.cbVidrio.Size = new System.Drawing.Size(195, 21);
             this.cbVidrio.TabIndex = 24;
             this.cbVidrio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboBox_KeyPress);
             // 
@@ -406,7 +406,7 @@
             "Blanco",
             "Madera",
             "Inox"});
-            this.cbColor.Location = new System.Drawing.Point(365, 50);
+            this.cbColor.Location = new System.Drawing.Point(352, 50);
             this.cbColor.Name = "cbColor";
             this.cbColor.Size = new System.Drawing.Size(90, 21);
             this.cbColor.TabIndex = 11;
@@ -418,9 +418,9 @@
             this.lblVidrio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblVidrio.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVidrio.ForeColor = System.Drawing.Color.Black;
-            this.lblVidrio.Location = new System.Drawing.Point(474, 25);
+            this.lblVidrio.Location = new System.Drawing.Point(448, 25);
             this.lblVidrio.Name = "lblVidrio";
-            this.lblVidrio.Size = new System.Drawing.Size(138, 20);
+            this.lblVidrio.Size = new System.Drawing.Size(195, 20);
             this.lblVidrio.TabIndex = 17;
             this.lblVidrio.Text = "Vidrio";
             this.lblVidrio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

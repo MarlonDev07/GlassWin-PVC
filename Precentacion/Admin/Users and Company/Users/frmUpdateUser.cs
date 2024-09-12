@@ -167,7 +167,7 @@ namespace Precentacion.Admin.Users_and_Company.Users
         {
             if (TextValidate())
             {
-                if (_Users.Update(Convert.ToInt32(txtID.Text), txtName.Text, txtTel.Text, txtEmail.Text, txtUserName.Text, cbRoll.Text))
+                if (_Users.Update(Convert.ToInt64(txtID.Text), txtName.Text, txtTel.Text, txtEmail.Text, txtUserName.Text, cbRoll.Text))
                 {
                     MessageBox.Show("El cliente se Modifico Correctamente", "Exito al Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CleanScreen();

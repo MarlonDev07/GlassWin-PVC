@@ -186,5 +186,32 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "Fijo1";
+            //frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
+            frm.Show();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "Fijo2";
+            //frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
+            frm.Show();
+            this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "Fijo3";
+            //frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
+            frm.Show();
+            this.Close();
+        }
     }
 }

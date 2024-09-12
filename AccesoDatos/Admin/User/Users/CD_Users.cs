@@ -34,7 +34,7 @@ namespace AccesoDatos.User
             }
         }
 
-        public List<clsUser> FindxID(int ID) 
+        public List<clsUser> FindxID(long ID) 
         {
             SqlCommand cmd = new SqlCommand();
             List<clsUser> UserList = new List<clsUser>();
@@ -91,7 +91,7 @@ namespace AccesoDatos.User
             }
         }
 
-        public bool Update(int ID, string Name, string phone, string Email, string UserName, string Roll, string State)
+        public bool Update(long ID, string Name, string phone, string Email, string UserName, string Roll, string State)
         {
             try
             {

@@ -60,6 +60,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -401,6 +402,7 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.button3);
             this.panel8.Controls.Add(this.btn3HojasVertical);
             this.panel8.Controls.Add(this.btn1Hoja);
             this.panel8.Controls.Add(this.button1);
@@ -463,7 +465,7 @@
             this.panel9.Controls.Add(this.lblVentilaHF);
             this.panel9.Controls.Add(this.panel1);
             this.panel9.Location = new System.Drawing.Point(4, 87);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(849, 386);
             this.panel9.TabIndex = 47;
@@ -478,12 +480,26 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(507, 16);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(120, 199);
+            this.button3.TabIndex = 54;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // frmSelectDesingVentila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(859, 561);
+            this.ClientSize = new System.Drawing.Size(875, 600);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -539,5 +555,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnFijoVentila1;
+        private System.Windows.Forms.Button button3;
     }
 }
