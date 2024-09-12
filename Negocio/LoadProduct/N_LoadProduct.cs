@@ -5058,6 +5058,12 @@ namespace Negocio.LoadProduct
                 case "Contramarco Inferior Akari 3 Vias":
                     metraje = Convert.ToDecimal(ClsWindows.Weight);
                     break;
+                case "Contramarco Superior-Lateral Akari":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight)) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    break;
+                case "Contramarco Inferior Akari":
+                    metraje = Convert.ToDecimal(ClsWindows.Weight);
+                    break;
                 case "Marco Hoja 8040":
                     metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
                     break;
@@ -5067,19 +5073,20 @@ namespace Negocio.LoadProduct
                 case "Adaptador Enganche-Porta Felpa":
                     metraje = (Convert.ToDecimal(ClsWindows.heigt) * 6);
                     break;
-                case "Contramarco Superior-Lateral Akari 2 Vias":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight)) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                case "Marco Cedazo Akari":
+                    metraje = (Convert.ToDecimal(ClsWindows.Weight) / 3 * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
                     break;
-                case "Contramarco Inferior Akari 2 Vias":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight);
-                    break;
+
 
                 //*******************Accesorios********************//
                 case "Rodin 8040":
                     metraje = 4;
                     break;
+                case "Rodin 6030":
+                    metraje = 4;
+                    break;
                 case "Escuadra Union Universal":
-                    metraje = 12;
+                    metraje = 20;
                     break;
                 case "Escuadra Contramarco 3 Vias Akari":
                     metraje = 8;
@@ -5091,13 +5098,13 @@ namespace Negocio.LoadProduct
                     metraje = 4;
                     break;
                 case "Corta Vientos":
-                    metraje = 8;
+                    metraje = 12;
                     break;
                 case "Tapa Rodin":
-                    metraje = 4;
+                    metraje = 8;
                     break;
                 case "Jaladera Sencilla":
-                    metraje = 4;
+                    metraje = 2;
                     break;
                 case "Tornillo Ensamble":
                     metraje = 8;
@@ -5112,7 +5119,7 @@ namespace Negocio.LoadProduct
                     metraje = (Convert.ToDecimal(ClsWindows.heigt) * 2);
                     break;
                 case "Empaque Cedazo Akari":
-                    metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 4) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                    metraje = ((Convert.ToDecimal(ClsWindows.Weight) / 3) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
                     break;
 
 
