@@ -120,6 +120,7 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "Ancho Ventila";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Visible = false;
             // 
             // textBox1
             // 
@@ -129,6 +130,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(151, 23);
             this.textBox1.TabIndex = 43;
+            this.textBox1.Visible = false;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label9
@@ -164,7 +166,7 @@
             this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblColor.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblColor.ForeColor = System.Drawing.Color.Black;
-            this.lblColor.Location = new System.Drawing.Point(585, 28);
+            this.lblColor.Location = new System.Drawing.Point(501, 28);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(151, 29);
             this.lblColor.TabIndex = 12;
@@ -176,7 +178,7 @@
             this.lblAncho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAncho.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAncho.ForeColor = System.Drawing.Color.Black;
-            this.lblAncho.Location = new System.Drawing.Point(207, 28);
+            this.lblAncho.Location = new System.Drawing.Point(47, 28);
             this.lblAncho.Name = "lblAncho";
             this.lblAncho.Size = new System.Drawing.Size(150, 29);
             this.lblAncho.TabIndex = 39;
@@ -187,7 +189,7 @@
             // 
             this.txtAncho.BackColor = System.Drawing.Color.White;
             this.txtAncho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAncho.Location = new System.Drawing.Point(206, 60);
+            this.txtAncho.Location = new System.Drawing.Point(46, 60);
             this.txtAncho.Name = "txtAncho";
             this.txtAncho.Size = new System.Drawing.Size(151, 23);
             this.txtAncho.TabIndex = 40;
@@ -198,9 +200,9 @@
             this.cbVidrio.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.cbVidrio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVidrio.FormattingEnabled = true;
-            this.cbVidrio.Location = new System.Drawing.Point(774, 62);
+            this.cbVidrio.Location = new System.Drawing.Point(720, 62);
             this.cbVidrio.Name = "cbVidrio";
-            this.cbVidrio.Size = new System.Drawing.Size(151, 21);
+            this.cbVidrio.Size = new System.Drawing.Size(205, 21);
             this.cbVidrio.TabIndex = 24;
             // 
             // cbColor
@@ -216,7 +218,7 @@
             "Blanco",
             "Madera",
             "Inox"});
-            this.cbColor.Location = new System.Drawing.Point(585, 62);
+            this.cbColor.Location = new System.Drawing.Point(501, 62);
             this.cbColor.Name = "cbColor";
             this.cbColor.Size = new System.Drawing.Size(151, 21);
             this.cbColor.TabIndex = 11;
@@ -227,9 +229,9 @@
             this.lblVidrio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblVidrio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVidrio.ForeColor = System.Drawing.Color.Black;
-            this.lblVidrio.Location = new System.Drawing.Point(774, 28);
+            this.lblVidrio.Location = new System.Drawing.Point(720, 28);
             this.lblVidrio.Name = "lblVidrio";
-            this.lblVidrio.Size = new System.Drawing.Size(149, 29);
+            this.lblVidrio.Size = new System.Drawing.Size(203, 29);
             this.lblVidrio.TabIndex = 17;
             this.lblVidrio.Text = "Vidrio";
             this.lblVidrio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -239,7 +241,7 @@
             this.lblAlto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAlto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAlto.ForeColor = System.Drawing.Color.Black;
-            this.lblAlto.Location = new System.Drawing.Point(398, 28);
+            this.lblAlto.Location = new System.Drawing.Point(272, 28);
             this.lblAlto.Name = "lblAlto";
             this.lblAlto.Size = new System.Drawing.Size(151, 29);
             this.lblAlto.TabIndex = 37;
@@ -250,7 +252,7 @@
             // 
             this.txtAlto.BackColor = System.Drawing.Color.White;
             this.txtAlto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAlto.Location = new System.Drawing.Point(398, 60);
+            this.txtAlto.Location = new System.Drawing.Point(272, 60);
             this.txtAlto.Name = "txtAlto";
             this.txtAlto.Size = new System.Drawing.Size(151, 23);
             this.txtAlto.TabIndex = 38;
@@ -306,6 +308,7 @@
             this.cbCedazo.TabIndex = 15;
             this.cbCedazo.Text = "Cedazo";
             this.cbCedazo.UseVisualStyleBackColor = true;
+            this.cbCedazo.CheckedChanged += new System.EventHandler(this.cbCedazo_CheckedChanged);
             // 
             // lblCantidad
             // 
