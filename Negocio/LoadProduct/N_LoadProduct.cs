@@ -7664,11 +7664,11 @@ namespace Negocio.LoadProduct
                         metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 4;
                         break;
                     case "Marco Cedazo 1/2": //Cedazo
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 4;
                         break;
 
                     //*******************Accesorios********************//
-                    case "Cierre VT":
+                    case "Barra Telescopica VT":
                         metraje = 2;
                         break;
                     case "Cremona 8":
@@ -7728,13 +7728,13 @@ namespace Negocio.LoadProduct
                         metraje = (Convert.ToDecimal(ClsWindows.Weight) * 8) + (Convert.ToDecimal(ClsWindows.heigt) * 16);
                         break;
                     case "Escuadra Cedazo 1/2"://Cedazo
-                        metraje = 4;
+                        metraje = 8;
                         break;
                     case "Empaque Cedazo 1/2"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
                         break;
                     case "Fibra Cedazo VT"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 1);
+                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 2);
                         break;
                 }
                 return metraje;
@@ -7849,11 +7849,11 @@ namespace Negocio.LoadProduct
                         metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 6;
                         break;
                     case "Marco Cedazo 1/2": //Cedazo
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 6;
                         break;
 
                     //*******************Accesorios********************//
-                    case "Cierre VT":
+                    case "Barra Telescopica VT":
                         metraje = 3;
                         break;
                     case "Cremona 8":
@@ -7913,13 +7913,13 @@ namespace Negocio.LoadProduct
                         metraje = (Convert.ToDecimal(ClsWindows.Weight) * 8) + (Convert.ToDecimal(ClsWindows.heigt) * 24);
                         break;
                     case "Escuadra Cedazo 1/2"://Cedazo
-                        metraje = 4;
+                        metraje = 12;
                         break;
                     case "Empaque Cedazo 1/2"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
                         break;
                     case "Fibra Cedazo VT"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 1);
+                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 3);
                         break;
                 }
                 return metraje;
@@ -8032,11 +8032,11 @@ namespace Negocio.LoadProduct
                         metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 8;
                         break;
                     case "Marco Cedazo 1/2": //Cedazo
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 8;
                         break;
 
                     //*******************Accesorios********************//
-                    case "Cierre VT":
+                    case "Barra Telescopica VT":
                         metraje = 4;
                         break;
                     case "Cremona 8":
@@ -8096,13 +8096,13 @@ namespace Negocio.LoadProduct
                         metraje = (Convert.ToDecimal(ClsWindows.Weight) * 8) + (Convert.ToDecimal(ClsWindows.heigt) * 32);
                         break;
                     case "Escuadra Cedazo 1/2"://Cedazo
-                        metraje = 4;
+                        metraje = 16;
                         break;
                     case "Empaque Cedazo 1/2"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
                         break;
                     case "Fibra Cedazo VT"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 1);
+                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 4);
                         break;
                 }
                 return metraje;
@@ -8215,11 +8215,11 @@ namespace Negocio.LoadProduct
                         metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 10;
                         break;
                     case "Marco Cedazo 1/2": //Cedazo
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 10;
                         break;
 
                     //*******************Accesorios********************//
-                    case "Cierre VT":
+                    case "Barra Telescopica VT":
                         metraje = 5;
                         break;
                     case "Cremona 8":
@@ -8279,13 +8279,13 @@ namespace Negocio.LoadProduct
                         metraje = (Convert.ToDecimal(ClsWindows.Weight) * 8) + (Convert.ToDecimal(ClsWindows.heigt) * 40);
                         break;
                     case "Escuadra Cedazo 1/2"://Cedazo
-                        metraje = 4;
+                        metraje = 20;
                         break;
                     case "Empaque Cedazo 1/2"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 10);
                         break;
                     case "Fibra Cedazo VT"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 1);
+                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 5);
                         break;
                 }
                 return metraje;
@@ -8398,11 +8398,11 @@ namespace Negocio.LoadProduct
                         metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 12;
                         break;
                     case "Marco Cedazo 1/2": //Cedazo
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 12;
                         break;
 
                     //*******************Accesorios********************//
-                    case "Cierre VT":
+                    case "Barra Telescopica VT":
                         metraje = 6;
                         break;
                     case "Cremona 8":
@@ -8462,13 +8462,13 @@ namespace Negocio.LoadProduct
                         metraje = (Convert.ToDecimal(ClsWindows.Weight) * 8) + (Convert.ToDecimal(ClsWindows.heigt) * 48);
                         break;
                     case "Escuadra Cedazo 1/2"://Cedazo
-                        metraje = 4;
+                        metraje = 24;
                         break;
                     case "Empaque Cedazo 1/2"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 12);
                         break;
                     case "Fibra Cedazo VT"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 1);
+                        metraje = (Convert.ToDecimal(ClsWindows.heigt) * 6);
                         break;
                 }
                 return metraje;
@@ -8669,11 +8669,11 @@ namespace Negocio.LoadProduct
                         metraje = Convert.ToDecimal(ClsWindows.Weight) * 4 + Convert.ToDecimal(ClsWindows.heigt) * 2;
                         break;
                     case "Marco Cedazo 1/2": //Cedazo
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 4 + Convert.ToDecimal(ClsWindows.heigt) * 2;
                         break;
 
                     //*******************Accesorios********************//
-                    case "Cierre VT":
+                    case "Barra Telescopica VT":
                         metraje = 2;
                         break;
                     case "Cremona 8":
@@ -8733,10 +8733,10 @@ namespace Negocio.LoadProduct
                         metraje = (Convert.ToDecimal(ClsWindows.Weight) * 16) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
                         break;
                     case "Escuadra Cedazo 1/2"://Cedazo
-                        metraje = 4;
+                        metraje = 8;
                         break;
                     case "Empaque Cedazo 1/2"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                         break;
                     case "Fibra Cedazo VT"://Cedazo
                         metraje = (Convert.ToDecimal(ClsWindows.heigt) * 1);
@@ -8941,7 +8941,7 @@ namespace Negocio.LoadProduct
                         metraje = Convert.ToDecimal(ClsWindows.Weight) * 6 + Convert.ToDecimal(ClsWindows.heigt) * 2;
                         break;
                     case "Marco Cedazo 1/2": //Cedazo
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 6 + Convert.ToDecimal(ClsWindows.heigt) * 2;
                         break;
 
                     //*******************Accesorios********************//
@@ -9005,10 +9005,10 @@ namespace Negocio.LoadProduct
                         metraje = (Convert.ToDecimal(ClsWindows.Weight) * 24) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
                         break;
                     case "Escuadra Cedazo 1/2"://Cedazo
-                        metraje = 4;
+                        metraje = 12;
                         break;
                     case "Empaque Cedazo 1/2"://Cedazo
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 6) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                         break;
                     case "Fibra Cedazo VT"://Cedazo
                         metraje = (Convert.ToDecimal(ClsWindows.heigt) * 1);
