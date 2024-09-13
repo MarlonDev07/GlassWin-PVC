@@ -2684,7 +2684,7 @@ namespace Negocio.LoadProduct
                         Metraje = Weigth * 2 + Heigth * 2;
                         break;
                     case "Venilla 1/2":
-                        Metraje = Weigth * 4 + Heigth / 2 * 4;
+                        Metraje = Weigth * 2 + Heigth / 2 * 4;
                         break;
                     case "Tubo 2 Aleta 1X2":
                         Metraje = Weigth * 1 + Heigth * 1;
@@ -2921,10 +2921,10 @@ namespace Negocio.LoadProduct
                             Metraje = Weigth * 2 + Heigth * 2;
                             break;
                         case "Venilla 1/2":
-                            Metraje = Weigth * 4 + Heigth / 2 * 4;
+                            Metraje = Weigth * 2 + Heigth / 2 * 2;
                             break;
                         case "Tubo 2 Aleta 1X2":
-                            Metraje = Weigth * 1 + Heigth * 1;
+                            Metraje = Weigth * 1 + Heigth / 2 * 1;
                             break;
                         case "Paleta 5mm claro":
                             Metraje = Math.Ceiling((Heigth / 2 / 9 * 100)) * Math.Ceiling((Weigth / Convert.ToDecimal(2.54) * 100));
@@ -3157,18 +3157,18 @@ namespace Negocio.LoadProduct
                             Metraje = Weigth * 2 + Heigth * 2;
                             break;
                         case "Venilla 1/2":
-                            Metraje = Weigth * 4 + Heigth / 2 * 4;
+                            Metraje = Weigth / 2 * 2 + Heigth * 2;
                             break;
                         case "Tubo 2 Aleta 1X2":
-                            Metraje = Weigth * 1 + Heigth * 1;
+                            Metraje = Heigth * 1;
                             break;
                         case "Paleta 5mm claro":
-                            Metraje = Math.Ceiling((Heigth / 2 / 9 * 100)) * Math.Ceiling((Weigth / Convert.ToDecimal(2.54) * 100));
+                            Metraje = Math.Ceiling((Heigth / 9 * 100)) * Math.Ceiling((Weigth / Convert.ToDecimal(2.54) * 100));
                             break;
                         case "Herraje L Natural 3":
                             if (ClsWindows.heigt / 2 >= 0.00m && ClsWindows.heigt / 2 <= 0.27m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3178,7 +3178,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 4":
                             if (ClsWindows.heigt / 2 >= 0.28m && ClsWindows.heigt / 2 <= 0.36m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3188,7 +3188,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 5":
                             if (ClsWindows.heigt / 2 >= 0.37m && ClsWindows.heigt / 2 <= 0.45m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3198,7 +3198,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 6":
                             if (ClsWindows.heigt / 2 >= 0.46m && ClsWindows.heigt / 2 <= 0.54m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3208,7 +3208,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 7":
                             if (ClsWindows.heigt / 2 >= 0.55m && ClsWindows.heigt / 2 <= 0.63m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3218,7 +3218,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 8":
                             if (ClsWindows.heigt / 2 >= 0.64m && ClsWindows.heigt / 2 <= 0.72m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3228,7 +3228,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 9":
                             if (ClsWindows.heigt / 2 >= 0.73m && ClsWindows.heigt / 2 <= 0.81m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3238,7 +3238,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 10":
                             if (ClsWindows.heigt / 2 >= 0.82m && ClsWindows.heigt / 2 <= 0.90m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3248,7 +3248,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 11":
                             if (ClsWindows.heigt / 2 >= 0.91m && ClsWindows.heigt / 2 <= 0.99m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3258,7 +3258,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 12":
                             if (ClsWindows.heigt / 2 >= 1.00m && ClsWindows.heigt / 2 <= 1.08m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3268,7 +3268,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 13":
                             if (ClsWindows.heigt / 2 >= 1.08m && ClsWindows.heigt / 2 <= 1.17m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3278,7 +3278,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 14":
                             if (ClsWindows.heigt / 2 >= 1.18m && ClsWindows.heigt / 2 <= 1.26m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3288,7 +3288,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 15":
                             if (ClsWindows.heigt / 2 >= 1.27m && ClsWindows.heigt / 2 <= 1.35m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3298,7 +3298,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 16":
                             if (ClsWindows.heigt / 2 >= 1.36m && ClsWindows.heigt / 2 <= 1.44m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3308,7 +3308,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 17":
                             if (ClsWindows.heigt / 2 >= 1.45m && ClsWindows.heigt / 2 <= 1.53m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3318,7 +3318,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 18":
                             if (ClsWindows.heigt / 2 >= 1.54m && ClsWindows.heigt / 2 <= 1.62m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3328,7 +3328,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 19":
                             if (ClsWindows.heigt / 2 >= 1.63m && ClsWindows.heigt / 2 <= 1.71m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
@@ -3338,7 +3338,7 @@ namespace Negocio.LoadProduct
                         case "Herraje L Natural 20":
                             if (ClsWindows.heigt / 2 >= 1.72m && ClsWindows.heigt / 2 <= 1.80m)
                             {
-                                Metraje = 2;
+                                Metraje = 1;
                             }
                             else
                             {
