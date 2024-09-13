@@ -2678,7 +2678,7 @@ namespace Negocio.LoadProduct
                         Metraje = Weigth * 1 + Heigth * 1;
                         break;
                     case "Paleta 5mm claro":
-                        Metraje = (Heigth / 2 / 9 * 100) * (Weigth / Convert.ToDecimal(2.54)*100);
+                        Metraje = Math.Ceiling((Heigth / 2 / 9 * 100)) * Math.Ceiling((Weigth / Convert.ToDecimal(2.54)*100));
                         break;
                     case "Herraje L Natural 3":
                         if (ClsWindows.heigt/2 >= 0.00m && ClsWindows.heigt/2 <= 0.27m)
