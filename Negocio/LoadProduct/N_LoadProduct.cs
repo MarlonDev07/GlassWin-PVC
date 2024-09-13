@@ -2668,6 +2668,189 @@ namespace Negocio.LoadProduct
                     case "Tubo 2 Aleta 1X2":
                         Metraje = Weigth * 1 + Heigth * 1;
                         break;
+                    case "Paleta 5mm claro":
+                        Metraje = (Weigth / 2) / 2;
+                        break;
+                    case "Herraje L Natural 3":
+                        if (ClsWindows.heigt >= 0.00m && ClsWindows.heigt <= 0.27m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 4":
+                        if (ClsWindows.heigt >= 0.28m && ClsWindows.heigt <= 0.36m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 5":
+                        if (ClsWindows.heigt >= 0.37m && ClsWindows.heigt <= 0.45m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 6":
+                        if (ClsWindows.heigt >= 0.46m && ClsWindows.heigt <= 0.54m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 7":
+                        if (ClsWindows.heigt >= 0.55m && ClsWindows.heigt <= 0.63m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 8":
+                        if (ClsWindows.heigt >= 0.64m && ClsWindows.heigt <= 0.72m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 9":
+                        if (ClsWindows.heigt >= 0.73m && ClsWindows.heigt <= 0.81m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 10":
+                        if (ClsWindows.heigt >= 0.82m && ClsWindows.heigt <= 0.90m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 11":
+                        if (ClsWindows.heigt >= 0.91m && ClsWindows.heigt <= 0.99m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 12":
+                        if (ClsWindows.heigt >= 1.00m && ClsWindows.heigt <= 1.08m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 13":
+                        if (ClsWindows.heigt >= 1.08m && ClsWindows.heigt <= 1.17m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 14":
+                        if (ClsWindows.heigt >= 1.18m && ClsWindows.heigt <= 1.26m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 15":
+                        if (ClsWindows.heigt >= 1.27m && ClsWindows.heigt <= 1.35m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 16":
+                        if (ClsWindows.heigt >= 1.36m && ClsWindows.heigt <= 1.44m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 17":
+                        if (ClsWindows.heigt >= 1.45m && ClsWindows.heigt <= 1.53m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 18":
+                        if (ClsWindows.heigt >= 1.54m && ClsWindows.heigt <= 1.62m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 19":
+                        if (ClsWindows.heigt >= 1.63m && ClsWindows.heigt <= 1.71m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
+                    case "Herraje L Natural 20":
+                        if (ClsWindows.heigt >= 1.72m && ClsWindows.heigt <= 1.80m)
+                        {
+                            Metraje = 1;
+                        }
+                        else
+                        {
+                            Metraje = 0;
+                        }
+                        break;
                 }
             }
             if (Material == "1 3/4x3")
