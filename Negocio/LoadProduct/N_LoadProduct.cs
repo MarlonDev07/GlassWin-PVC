@@ -3166,7 +3166,7 @@ namespace Negocio.LoadProduct
                             Metraje = Math.Ceiling((Heigth / 9 * 100)) * Math.Ceiling((Weigth / Convert.ToDecimal(2.54) * 100));
                             break;
                         case "Herraje L Natural 3":
-                            if (ClsWindows.heigt / 2 >= 0.00m && ClsWindows.heigt / 2 <= 0.27m)
+                            if (ClsWindows.heigt  >= 0.00m && ClsWindows.heigt  <= 0.27m)
                             {
                                 Metraje = 1;
                             }
@@ -3176,7 +3176,7 @@ namespace Negocio.LoadProduct
                             }
                             break;
                         case "Herraje L Natural 4":
-                            if (ClsWindows.heigt  >= 0.28m && ClsWindows.heigt / 2 <= 0.36m)
+                            if (ClsWindows.heigt  >= 0.28m && ClsWindows.heigt  <= 0.36m)
                             {
                                 Metraje = 1;
                             }
@@ -3186,7 +3186,7 @@ namespace Negocio.LoadProduct
                             }
                             break;
                         case "Herraje L Natural 5":
-                            if (ClsWindows.heigt  >= 0.37m && ClsWindows.heigt / 2 <= 0.45m)
+                            if (ClsWindows.heigt  >= 0.37m && ClsWindows.heigt  <= 0.45m)
                             {
                                 Metraje = 1;
                             }
