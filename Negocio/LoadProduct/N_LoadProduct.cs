@@ -763,7 +763,7 @@ namespace Negocio.LoadProduct
                     decimal Metraje;
                     if (ClsWindows.Desing == "FijoCelocia1" || ClsWindows.Desing == "FijoCelocia2" )
                     {
-                        Metraje = ClsWindows.Weight * ClsWindows.heigt / 2;
+                        Metraje = (ClsWindows.Weight * ClsWindows.heigt) / 2;
 
                     } else if (ClsWindows.Desing == "FijoCelocia3") 
                     {
