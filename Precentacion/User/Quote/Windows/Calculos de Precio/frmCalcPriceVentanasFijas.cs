@@ -21,7 +21,11 @@ namespace Precentacion.User.Quote.Windows
         string URL;
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
-        private const decimal CentimetrosAPixeles = 100.0m;
+        private const decimal CentimetrosAPixeles = 1500.0m;
+
+        // Tamaño máximo permitido para el PictureBox
+        private const int MaxWidth = 450;
+        private const int MaxHeight = 350;
         N_LoadProduct n_LoadProduct = new N_LoadProduct();
         #endregion
 
@@ -345,15 +349,14 @@ namespace Precentacion.User.Quote.Windows
         #region Función para redimensionar la imagen
         private Bitmap ResizeImage(Image image, int width, int height)
         {
-            // Rectángulo de destino para la imagen redimensionada
-            var destRect = new Rectangle(0, 0, width, height);
-            // Crear un nuevo objeto Bitmap para la imagen redimensionada
+            // try {
+            // Crear un nuevo Bitmap con el tamaño deseado
             var destImage = new Bitmap(width, height);
 
             // Establecer la resolución del nuevo Bitmap igual a la resolución de la imagen original
             destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
-            // Crear un objeto Graphics para la imagen redimensionada
+            // Usar Graphics para dibujar la imagen redimensionada
             using (var graphics = Graphics.FromImage(destImage))
             {
                 // Configurar la calidad de composición, interpolación, suavizado y compensación de píxeles para el objeto Graphics
@@ -367,13 +370,22 @@ namespace Precentacion.User.Quote.Windows
                 using (var wrapMode = new ImageAttributes())
                 {
                     wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+
                     // Dibujar la imagen original redimensionada en el rectángulo de destino utilizando el objeto Graphics
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                    graphics.DrawImage(image, new Rectangle(0, 0, width, height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
             }
-
             // Devolver la imagen redimensionada
             return destImage;
+
+            // }
+            // catch (Exception ex) {
+            // MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //return destImage;
+            // }
+
+
+
         }
         #endregion
         private void txtAncho_textChanged(object sender, EventArgs e)

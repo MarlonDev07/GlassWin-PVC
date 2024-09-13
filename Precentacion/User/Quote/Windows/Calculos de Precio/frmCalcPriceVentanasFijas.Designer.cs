@@ -513,6 +513,7 @@
             this.label4.TabIndex = 78;
             this.label4.Text = "Accesorios";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Visible = false;
             // 
             // dgvAccesorios
             // 
@@ -523,6 +524,7 @@
             this.dgvAccesorios.Name = "dgvAccesorios";
             this.dgvAccesorios.Size = new System.Drawing.Size(675, 117);
             this.dgvAccesorios.TabIndex = 77;
+            this.dgvAccesorios.Visible = false;
             // 
             // label7
             // 
@@ -539,7 +541,7 @@
             // 
             this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(185, 83);
+            this.label8.Location = new System.Drawing.Point(185, 121);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 20);
             this.label8.TabIndex = 75;
@@ -592,7 +594,7 @@
             this.Aluminiodt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Aluminiodt.Location = new System.Drawing.Point(259, 39);
             this.Aluminiodt.Name = "Aluminiodt";
-            this.Aluminiodt.Size = new System.Drawing.Size(675, 117);
+            this.Aluminiodt.Size = new System.Drawing.Size(675, 219);
             this.Aluminiodt.TabIndex = 0;
             // 
             // frmCalcPriceVentanasFijas
