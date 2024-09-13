@@ -213,5 +213,14 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoCelocia1";
+            //frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
+            frm.Show();
+            this.Close();
+        }
     }
 }

@@ -221,9 +221,9 @@
             this.cbVidrio.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.cbVidrio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVidrio.FormattingEnabled = true;
-            this.cbVidrio.Location = new System.Drawing.Point(666, 56);
+            this.cbVidrio.Location = new System.Drawing.Point(644, 56);
             this.cbVidrio.Name = "cbVidrio";
-            this.cbVidrio.Size = new System.Drawing.Size(108, 23);
+            this.cbVidrio.Size = new System.Drawing.Size(146, 23);
             this.cbVidrio.TabIndex = 24;
             this.cbVidrio.Enter += new System.EventHandler(this.cbVidrio_Enter);
             this.cbVidrio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbVidrio_KeyPress);
@@ -256,9 +256,9 @@
             this.lblVidrio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblVidrio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVidrio.ForeColor = System.Drawing.Color.Black;
-            this.lblVidrio.Location = new System.Drawing.Point(666, 29);
+            this.lblVidrio.Location = new System.Drawing.Point(644, 29);
             this.lblVidrio.Name = "lblVidrio";
-            this.lblVidrio.Size = new System.Drawing.Size(108, 24);
+            this.lblVidrio.Size = new System.Drawing.Size(146, 24);
             this.lblVidrio.TabIndex = 17;
             this.lblVidrio.Text = "Vidrio";
             this.lblVidrio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

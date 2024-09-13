@@ -291,6 +291,10 @@ namespace Negocio.LoadProduct
                         {
                             Metraje = CalclMetrajeVidrioFijo3(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
                         }
+                        else if (ClsWindows.Desing == "FijoCelocia1")
+                        {
+                            Metraje = CalclMetrajeVidrioFijoCelocia1(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
                         else
                         {
                             Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
@@ -2645,6 +2649,59 @@ namespace Negocio.LoadProduct
 
             return Metraje;
 
+        }
+        // VENTANA CON CELOCIA (NOMBRE DE LA IMAGEN VIDRIO FIJO CELOCIA 1) //
+        private decimal CalclMetrajeVidrioFijoCelocia1(string Description, decimal Weigth, decimal Heigth, string Material)
+        {
+            decimal Metraje = 0;
+
+            if (Material == "1x2")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 1X2":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 4 + Heigth / 2 * 4;
+                        break;
+                    case "Tubo 2 Aleta 1X2":
+                        Metraje = Weigth * 1 + Heigth * 1;
+                        break;
+                }
+            }
+            if (Material == "1 3/4x3")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 13/4x3":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Tubo 2 Aleta 13/4x3":
+                        Metraje = Weigth * 1 + Heigth * 1;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 2 + Heigth / 2 * 4;
+                        break;
+                }
+            }
+            if (Material == "1 3/4x4")
+            {
+                switch (Description)
+                {
+                    case "Tubo 1 Aleta 13/4x4":
+                        Metraje = Weigth * 2 + Heigth * 2;
+                        break;
+                    case "Tubo 2 Aleta 13/4x4":
+                        Metraje = Weigth * 1 + Heigth * 1;
+                        break;
+                    case "Venilla 1/2":
+                        Metraje = Weigth * 2 + Heigth / 2 * 4;
+                        break;
+                }
+            }
+
+            return Metraje;
         }
 
         #endregion
