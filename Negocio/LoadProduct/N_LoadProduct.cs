@@ -761,13 +761,17 @@ namespace Negocio.LoadProduct
                 foreach (DataRow item in dt.Rows)
                 {
                     decimal Metraje;
-                    if (ClsWindows.Desing == "FijoCelocia1" || ClsWindows.Desing == "FijoCelocia2" || ClsWindows.Desing == "FijoCelocia3")
+                    if (ClsWindows.Desing == "FijoCelocia1" || ClsWindows.Desing == "FijoCelocia2" )
                     {
-                         Metraje = ClsWindows.Weight * ClsWindows.heigt/2;
+                        Metraje = ClsWindows.Weight * ClsWindows.heigt / 2;
+
+                    } else if (ClsWindows.Desing == "FijoCelocia3") 
+                    {
+                        Metraje = (ClsWindows.Weight / 2) * ClsWindows.heigt;
                     }
-                    else 
+                    else
                     {
-                         Metraje = ClsWindows.Weight * ClsWindows.heigt;
+                        Metraje = ClsWindows.Weight * ClsWindows.heigt;
                     }
                     
                     if (Metraje == 0)

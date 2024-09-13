@@ -2092,6 +2092,10 @@ namespace Precentacion.User.Quote.Quote
                                     {
                                         anchoVentana = 200; // Reducir el ancho a 200 píxeles
                                     }
+                                    if (altoVentana >= 200)
+                                    {
+                                        altoVentana = 140; // Reducir el ancho a 200 píxeles
+                                    }
 
                                     if (anchoVentana == 0) anchoVentana = 150;//e.CellBounds.Width;
                                     if (altoVentana == 0) altoVentana = 100;//e.CellBounds.Height;
@@ -3703,6 +3707,10 @@ namespace Precentacion.User.Quote.Quote
                                 {
                                     anchoVentana = 200; // Reducir el ancho a 200 píxeles
                                 }
+                                if (altoVentana >= 200)
+                                {
+                                    altoVentana = 140; // Reducir el ancho a 200 píxeles
+                                }
 
 
                                 // Ajustar el ancho y la altura si son 0
@@ -4700,6 +4708,11 @@ namespace Precentacion.User.Quote.Quote
                                         if (anchoVentana > 220)
                                         {
                                             anchoVentana = 200; // Reducir el ancho a 200 píxeles
+                                        }
+
+                                        if (altoVentana >= 200)
+                                        {
+                                            altoVentana = 140; // Reducir el ancho a 200 píxeles
                                         }
 
 
@@ -5882,6 +5895,11 @@ namespace Precentacion.User.Quote.Quote
                                     if (anchoVentana > 220)
                                     {
                                         anchoVentana = 200; // Reducir el ancho a 200 píxeles
+                                    }
+
+                                    if (altoVentana >= 200)
+                                    {
+                                        altoVentana = 140; // Reducir el ancho a 200 píxeles
                                     }
 
                                     if (anchoVentana == 0) anchoVentana = 150;//e.CellBounds.Width;
