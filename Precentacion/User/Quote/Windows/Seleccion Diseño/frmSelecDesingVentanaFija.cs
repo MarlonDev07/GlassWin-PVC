@@ -222,5 +222,23 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();
         }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoCelocia2";
+            //frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
+            frm.Show();
+            this.Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "FijoCelocia3";
+            //frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+            frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
+            frm.Show();
+            this.Close();
+        }
     }
 }

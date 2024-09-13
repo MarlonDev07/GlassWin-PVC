@@ -295,6 +295,14 @@ namespace Negocio.LoadProduct
                         {
                             Metraje = CalclMetrajeVidrioFijoCelocia1(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
                         }
+                        else if (ClsWindows.Desing == "FijoCelocia2")
+                        {
+                            Metraje = CalclMetrajeVidrioFijoCelocia2(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
+                        else if (ClsWindows.Desing == "FijoCelocia3")
+                        {
+                            Metraje = CalclMetrajeVidrioFijoCelocia3(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
                         else
                         {
                             Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
@@ -753,7 +761,7 @@ namespace Negocio.LoadProduct
                 foreach (DataRow item in dt.Rows)
                 {
                     decimal Metraje;
-                    if (ClsWindows.Desing == "FijoCelocia1")
+                    if (ClsWindows.Desing == "FijoCelocia1" || ClsWindows.Desing == "FijoCelocia2" || ClsWindows.Desing == "FijoCelocia3")
                     {
                          Metraje = ClsWindows.Weight * ClsWindows.heigt/2;
                     }
