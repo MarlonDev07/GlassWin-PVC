@@ -83,18 +83,18 @@
             this.cbIva = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnDolarCambio = new System.Windows.Forms.Button();
-            this.btnCambioDolar2 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnPrefabricado = new System.Windows.Forms.Button();
             this.btnSanBlast = new System.Windows.Forms.Button();
             this.btnViaticos = new System.Windows.Forms.Button();
             this.btnExclusivo = new System.Windows.Forms.Button();
+            this.btnCargarDesglose = new System.Windows.Forms.Button();
+            this.btnDolarCambio = new System.Windows.Forms.Button();
+            this.btnCambioDolar2 = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnSistemas = new System.Windows.Forms.Button();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCargarDesglose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgCotizaciones)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -349,7 +349,9 @@
             // txtTelefono
             // 
             this.txtTelefono.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtTelefono.BackColor = System.Drawing.SystemColors.Info;
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTelefono.Enabled = false;
             this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.Location = new System.Drawing.Point(633, 44);
             this.txtTelefono.Name = "txtTelefono";
@@ -359,7 +361,9 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtEmail.BackColor = System.Drawing.SystemColors.Info;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(633, 72);
             this.txtEmail.Name = "txtEmail";
@@ -512,7 +516,9 @@
             // txtidClient
             // 
             this.txtidClient.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtidClient.BackColor = System.Drawing.SystemColors.Info;
             this.txtidClient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtidClient.Enabled = false;
             this.txtidClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtidClient.Location = new System.Drawing.Point(633, 17);
             this.txtidClient.Name = "txtidClient";
@@ -523,7 +529,9 @@
             // txtAdreesClient
             // 
             this.txtAdreesClient.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtAdreesClient.BackColor = System.Drawing.SystemColors.Info;
             this.txtAdreesClient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAdreesClient.Enabled = false;
             this.txtAdreesClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAdreesClient.Location = new System.Drawing.Point(633, 99);
             this.txtAdreesClient.Name = "txtAdreesClient";
@@ -707,28 +715,6 @@
             // 
             this.toolTip1.Tag = "";
             // 
-            // btnDolarCambio
-            // 
-            this.btnDolarCambio.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnDolarCambio.Location = new System.Drawing.Point(719, 632);
-            this.btnDolarCambio.Name = "btnDolarCambio";
-            this.btnDolarCambio.Size = new System.Drawing.Size(25, 26);
-            this.btnDolarCambio.TabIndex = 188;
-            this.btnDolarCambio.Text = "$";
-            this.btnDolarCambio.UseVisualStyleBackColor = true;
-            this.btnDolarCambio.Click += new System.EventHandler(this.btnDolarCambio_Click);
-            // 
-            // btnCambioDolar2
-            // 
-            this.btnCambioDolar2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCambioDolar2.Location = new System.Drawing.Point(750, 632);
-            this.btnCambioDolar2.Name = "btnCambioDolar2";
-            this.btnCambioDolar2.Size = new System.Drawing.Size(25, 26);
-            this.btnCambioDolar2.TabIndex = 189;
-            this.btnCambioDolar2.Text = "₡";
-            this.btnCambioDolar2.UseVisualStyleBackColor = true;
-            this.btnCambioDolar2.Click += new System.EventHandler(this.btnCambioDolar2_Click);
-            // 
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -804,6 +790,44 @@
             this.btnExclusivo.UseVisualStyleBackColor = false;
             this.btnExclusivo.Click += new System.EventHandler(this.btnExclusivo_Click);
             // 
+            // btnCargarDesglose
+            // 
+            this.btnCargarDesglose.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCargarDesglose.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarDesglose.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargarDesglose.ForeColor = System.Drawing.Color.Black;
+            this.btnCargarDesglose.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarDesglose.Image")));
+            this.btnCargarDesglose.Location = new System.Drawing.Point(558, 347);
+            this.btnCargarDesglose.Name = "btnCargarDesglose";
+            this.btnCargarDesglose.Size = new System.Drawing.Size(65, 30);
+            this.btnCargarDesglose.TabIndex = 190;
+            this.toolTip1.SetToolTip(this.btnCargarDesglose, "Hojas para Fabricación en Excel");
+            this.btnCargarDesglose.UseVisualStyleBackColor = false;
+            this.btnCargarDesglose.Visible = false;
+            this.btnCargarDesglose.Click += new System.EventHandler(this.btnCargarDesglose_Click);
+            // 
+            // btnDolarCambio
+            // 
+            this.btnDolarCambio.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnDolarCambio.Location = new System.Drawing.Point(719, 632);
+            this.btnDolarCambio.Name = "btnDolarCambio";
+            this.btnDolarCambio.Size = new System.Drawing.Size(25, 26);
+            this.btnDolarCambio.TabIndex = 188;
+            this.btnDolarCambio.Text = "$";
+            this.btnDolarCambio.UseVisualStyleBackColor = true;
+            this.btnDolarCambio.Click += new System.EventHandler(this.btnDolarCambio_Click);
+            // 
+            // btnCambioDolar2
+            // 
+            this.btnCambioDolar2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCambioDolar2.Location = new System.Drawing.Point(750, 632);
+            this.btnCambioDolar2.Name = "btnCambioDolar2";
+            this.btnCambioDolar2.Size = new System.Drawing.Size(25, 26);
+            this.btnCambioDolar2.TabIndex = 189;
+            this.btnCambioDolar2.Text = "₡";
+            this.btnCambioDolar2.UseVisualStyleBackColor = true;
+            this.btnCambioDolar2.Click += new System.EventHandler(this.btnCambioDolar2_Click);
+            // 
             // btnBuscar
             // 
             this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -861,22 +885,6 @@
             this.btnGuardar.TabIndex = 20;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnCargarDesglose
-            // 
-            this.btnCargarDesglose.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCargarDesglose.BackColor = System.Drawing.Color.Transparent;
-            this.btnCargarDesglose.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargarDesglose.ForeColor = System.Drawing.Color.Black;
-            this.btnCargarDesglose.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarDesglose.Image")));
-            this.btnCargarDesglose.Location = new System.Drawing.Point(558, 347);
-            this.btnCargarDesglose.Name = "btnCargarDesglose";
-            this.btnCargarDesglose.Size = new System.Drawing.Size(65, 30);
-            this.btnCargarDesglose.TabIndex = 190;
-            this.toolTip1.SetToolTip(this.btnCargarDesglose, "Hojas para Fabricación en Excel");
-            this.btnCargarDesglose.UseVisualStyleBackColor = false;
-            this.btnCargarDesglose.Visible = false;
-            this.btnCargarDesglose.Click += new System.EventHandler(this.btnCargarDesglose_Click);
             // 
             // frmQuote
             // 
