@@ -398,6 +398,30 @@ namespace Negocio.LoadProduct
                         {
                             Metraje = CalclMetrajeFijoEscaleno2Divicion(Description);
                         }
+                        else if (ClsWindows.Desing == "Fijo1")
+                        {
+                            Metraje = CalclMetrajeVidrioFijo1(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
+                        else if (ClsWindows.Desing == "Fijo2")
+                        {
+                            Metraje = CalclMetrajeVidrioFijo2(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
+                        else if (ClsWindows.Desing == "Fijo3")
+                        {
+                            Metraje = CalclMetrajeVidrioFijo3(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
+                        else if (ClsWindows.Desing == "FijoCelocia1")
+                        {
+                            Metraje = CalclMetrajeVidrioFijoCelocia1(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
+                        else if (ClsWindows.Desing == "FijoCelocia2")
+                        {
+                            Metraje = CalclMetrajeVidrioFijoCelocia2(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
+                        else if (ClsWindows.Desing == "FijoCelocia3")
+                        {
+                            Metraje = CalclMetrajeVidrioFijoCelocia3(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
+                        }
                         else
                         {
                             Metraje = CalculoMetrajesVentanasFijas(Description, ClsWindows.Weight, ClsWindows.heigt, Material);
@@ -414,7 +438,7 @@ namespace Negocio.LoadProduct
 
                     // Modifica directamente el valor de las columnas "Metraje", "TotalPrice" y "TotalCost" en la fila actual
                     item["Metraje"] = Metraje;
-                    //item["TotalPrice"] = Price;
+                   // item["TotalPrice"] = Price;
 
 
 
