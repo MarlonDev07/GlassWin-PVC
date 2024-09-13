@@ -11033,7 +11033,16 @@ namespace Negocio.LoadProduct
         private decimal CalcPrice(decimal Metraje, decimal SalePrice)
         {
             decimal Price = 0;
-            Price = Metraje * SalePrice;
+            if (ClsWindows.Desing == "FijoCelocia1")
+            {
+                Price = ClsWindows.Weight * ClsWindows.heigt / 2;
+            }
+            else 
+            {
+                Price = Metraje * SalePrice;
+            }
+            
+          
 
             return Price;
         }
