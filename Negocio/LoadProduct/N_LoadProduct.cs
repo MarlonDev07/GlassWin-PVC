@@ -2680,7 +2680,7 @@ namespace Negocio.LoadProduct
             {
                 switch (Description)
                 {
-                    case "Tubo 1 Aleta 1X2":
+                    case "Canal X12":
                         Metraje = Weigth * 2 + Heigth * 2;
                         break;
                     case "Venilla 1/2":
@@ -2917,7 +2917,7 @@ namespace Negocio.LoadProduct
                 {
                     switch (Description)
                     {
-                        case "Tubo 1 Aleta 1X2":
+                        case "Canal X12":
                             Metraje = Weigth * 2 + Heigth * 2;
                             break;
                         case "Venilla 1/2":
@@ -3153,7 +3153,7 @@ namespace Negocio.LoadProduct
                 {
                     switch (Description)
                     {
-                        case "Tubo 1 Aleta 1X2":
+                        case "Canal X12":
                             Metraje = Weigth * 2 + Heigth * 2;
                             break;
                         case "Venilla 1/2":
