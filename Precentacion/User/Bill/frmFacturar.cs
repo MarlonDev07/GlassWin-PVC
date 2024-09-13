@@ -1822,6 +1822,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\constru.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //MS
                 if (CompanyCache.IdCompany == 204260627)
                 {
@@ -2393,6 +2402,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\constru.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //MS
                 if (CompanyCache.IdCompany == 204260627)
                 {
@@ -2887,6 +2905,15 @@ namespace Precentacion.User.Bill
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\UsuarioPrueba.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\constru.png";
                     rutaLogo = ruta + Url;
 
                 }

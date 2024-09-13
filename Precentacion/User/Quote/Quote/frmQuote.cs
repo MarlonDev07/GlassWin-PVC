@@ -465,6 +465,18 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.PRECIO SUJETO A CAMBIO SIN PRECIO AVISO.";
+                    txtConditional2.Text = "2.FORMA DE PAGO: 70 % adelantado 30% contra entrega.";
+                    txtConditional3.Text = "3.GARANTIA: 1 año.";
+                    txtConditional4.Text = "4.TIEMPO DE ENTREGA: 17 días hábiles.";
+                    txtConditional5.Text = "5.VALIDEZ DE OFERTA: 15 días natural.";
+                   
+
+                }
                 //Usuario Prueba
                 if (CompanyCache.IdCompany == 999999999)
                 {
@@ -1612,6 +1624,15 @@ namespace Precentacion.User.Quote.Quote
                     rutaLogo = ruta + Url;
 
                 }
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\constru.png";
+                    rutaLogo = ruta + Url;
+
+                }
 
                 //Usuario de Prueba
                 if (CompanyCache.IdCompany == 999999999)
@@ -1787,7 +1808,17 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(new Chunk("Correo: " + "Vitroesparzafacturadigital@outlook.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
-
+                else if (CompanyCache.IdCompany == 3101704274)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-704274", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Naranjo, San Miguel", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + " 7010-5184 ", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "construserviciosdelnorte@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
 
 
                 else if (CompanyCache.IdCompany == 999999999)
@@ -2692,6 +2723,21 @@ namespace Precentacion.User.Quote.Quote
                     document.Add(Cuenta2Paragraph);
                 }
                 //Usuario Prueba
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //Usuario Prueba
                 if (CompanyCache.IdCompany == 999999999)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
@@ -2820,6 +2866,16 @@ namespace Precentacion.User.Quote.Quote
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\UsuarioPrueba.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\constru.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -3036,6 +3092,17 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(Chunk.NEWLINE);
                 }
 
+                else if (CompanyCache.IdCompany == 3101704274)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-704274", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Naranjo, San Miguel", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + " 7010-5184 ", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "construserviciosdelnorte@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
 
                 else if (CompanyCache.IdCompany == 503320196)
                 {
@@ -3741,6 +3808,21 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
+                //Usuario Prueba
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
                 #endregion
 
 
@@ -4107,6 +4189,16 @@ namespace Precentacion.User.Quote.Quote
                     rutaLogo = ruta + Url;
 
                 }
+
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\constru.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //MS
                 if (CompanyCache.IdCompany == 204260627)
                 {
@@ -4310,6 +4402,17 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(new Chunk("Teléfono: " + "+(506) 8751-7492/ 6337-2024", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Correo: " + "Vitecosr@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 3101704274)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-704274", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Naranjo, San Miguel", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + " 7010-5184 ", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "construserviciosdelnorte@gmail.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
                 else if(CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
@@ -5124,6 +5227,21 @@ namespace Precentacion.User.Quote.Quote
                 }
                 //MS
                 if (CompanyCache.IdCompany == 204260627)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //Usuario Prueba
+                if (CompanyCache.IdCompany == 3101704274)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
