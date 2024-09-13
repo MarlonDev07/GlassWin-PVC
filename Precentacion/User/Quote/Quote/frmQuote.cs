@@ -469,11 +469,11 @@ namespace Precentacion.User.Quote.Quote
                 if (CompanyCache.IdCompany == 3101704274)
                 {
                     cbOpcion.Visible = false;
-                    txtConditional1.Text = "1.PRECIO SUJETO A CAMBIO SIN PRECIO AVISO.";
-                    txtConditional2.Text = "2.FORMA DE PAGO: 70 % adelantado 30% contra entrega.";
-                    txtConditional3.Text = "3.GARANTIA: 1 año.";
-                    txtConditional4.Text = "4.TIEMPO DE ENTREGA: 17 días hábiles.";
-                    txtConditional5.Text = "5.VALIDEZ DE OFERTA: 15 días natural.";
+                    txtConditional1.Text = "1.1 año garantía .";
+                    txtConditional2.Text = "2.50% adelanto .";
+                    txtConditional3.Text = "3.50 %contraentrega.";
+                    txtConditional4.Text = "4.Vigencia oferta 10 días naturales.";
+                    txtConditional5.Text = "5.Tiempo entrega 8 dias.";
                    
 
                 }
