@@ -752,7 +752,16 @@ namespace Negocio.LoadProduct
 
                 foreach (DataRow item in dt.Rows)
                 {
-                    decimal Metraje = ClsWindows.Weight * ClsWindows.heigt;
+                    decimal Metraje;
+                    if (ClsWindows.Desing == "FijoCelocia1")
+                    {
+                         Metraje = ClsWindows.Weight * ClsWindows.heigt/2;
+                    }
+                    else 
+                    {
+                         Metraje = ClsWindows.Weight * ClsWindows.heigt;
+                    }
+                    
                     if (Metraje == 0)
                     {
                         Metraje = clsPuertaBaño.WeightTotal * clsPuertaBaño.heigt;
@@ -11033,16 +11042,9 @@ namespace Negocio.LoadProduct
         private decimal CalcPrice(decimal Metraje, decimal SalePrice)
         {
             decimal Price = 0;
-            if (ClsWindows.Desing == "FijoCelocia1")
-            {
-                Price = ClsWindows.Weight * ClsWindows.heigt / 2;
-            }
-            else 
-            {
-                Price = Metraje * SalePrice;
-            }
+           
+            Price = Metraje * SalePrice;
             
-          
 
             return Price;
         }
