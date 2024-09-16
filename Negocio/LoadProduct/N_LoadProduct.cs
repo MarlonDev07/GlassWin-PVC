@@ -5960,53 +5960,109 @@ namespace Negocio.LoadProduct
         private decimal Calc6030_2Vias_FijoMovil(string Description)
         {
             decimal metraje = 0;
-            switch (Description)
+
+            if (Cedazo)
             {
-                case "Contramarco Superior-Lateral Akari":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
-                    break;
-                case "Contramarco Inferior Akari":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight);
-                    break;
-                case "Marco Hoja 6030":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
-                    break;
-                case "Marco Hoja Enganche 6030":
-                    metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
-                    break;
+                switch (Description)
+                {
+                    case "Contramarco Superior-Lateral Akari":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        break;
+                    case "Contramarco Inferior Akari":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Marco Hoja 6030":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        break;
+                    case "Marco Hoja Enganche 6030":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
 
 
-                //*******************Accesorios********************//
-                case "Rodin 6030":
-                    metraje = 2;
-                    break;
-                case "Escuadra Union Universal":
-                    metraje = 8;
-                    break;
-                case "Escuadra Contramarco 2 Vias Akari":
-                    metraje = 4;
-                    break;
-                case "Botaguas Akari":
-                    metraje = 3;
-                    break;
-                case "Corta Vientos":
-                    metraje = 4;
-                    break;
-                case "Tapa Rodin":
-                    metraje = 2;
-                    break;
-                case "Empaque Akari":
-                    metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
-                    break;
-                case "Felpa Akari ":
-                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 8 + (Convert.ToDecimal(ClsWindows.heigt) * 10);
-                    break;
-                case "Cerradura Impacto Akari":
-                    metraje = 1;
-                    break;
+                    //*******************Accesorios********************//
+                    case "Rodin 6030":
+                        metraje = 2;
+                        break;
+                    case "Escuadra Union Universal":
+                        metraje = 8;
+                        break;
+                    case "Escuadra Contramarco 2 Vias Akari":
+                        metraje = 4;
+                        break;
+                    case "Botaguas Akari":
+                        metraje = 3;
+                        break;
+                    case "Corta Vientos":
+                        metraje = 4;
+                        break;
+                    case "Tapa Rodin":
+                        metraje = 2;
+                        break;
+                    case "Empaque Akari":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                        break;
+                    case "Felpa Akari ":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 8 + (Convert.ToDecimal(ClsWindows.heigt) * 10);
+                        break;
+                    case "Cerradura Impacto Akari":
+                        metraje = 1;
+                        break;
 
+                }
+                return metraje;
             }
-            return metraje;
+            else 
+            {
+                switch (Description)
+                {
+                    case "Contramarco Superior-Lateral Akari":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        break;
+                    case "Contramarco Inferior Akari":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Marco Hoja 6030":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        break;
+                    case "Marco Hoja Enganche 6030":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+
+
+                    //*******************Accesorios********************//
+                    case "Rodin 6030":
+                        metraje = 2;
+                        break;
+                    case "Escuadra Union Universal":
+                        metraje = 8;
+                        break;
+                    case "Escuadra Contramarco 2 Vias Akari":
+                        metraje = 4;
+                        break;
+                    case "Botaguas Akari":
+                        metraje = 3;
+                        break;
+                    case "Corta Vientos":
+                        metraje = 4;
+                        break;
+                    case "Tapa Rodin":
+                        metraje = 2;
+                        break;
+                    case "Empaque Akari":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                        break;
+                    case "Felpa Akari ":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 8 + (Convert.ToDecimal(ClsWindows.heigt) * 10);
+                        break;
+                    case "Cerradura Impacto Akari":
+                        metraje = 1;
+                        break;
+
+                }
+                return metraje;
+            }
+
+            
         }
         private decimal Calc6030_2Vias_MovilMovil(string Description)
         {
