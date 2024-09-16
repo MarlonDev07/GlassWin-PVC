@@ -358,6 +358,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(318, 26);
             this.txtTelefono.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.txtTelefono, "Se debe de buscar el cliente pulsando el botón de la lupa.");
             // 
             // txtEmail
             // 
@@ -370,6 +371,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(318, 26);
             this.txtEmail.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.txtEmail, "Se debe de buscar el cliente pulsando el botón de la lupa.");
             // 
             // lblEmail
             // 
@@ -384,6 +386,7 @@
             this.lblEmail.TabIndex = 130;
             this.lblEmail.Text = "Email";
             this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.lblEmail, "Se debe de buscar el cliente pulsando el botón de la lupa.");
             // 
             // lblTelefono
             // 
@@ -398,6 +401,7 @@
             this.lblTelefono.TabIndex = 129;
             this.lblTelefono.Text = "Teléfono";
             this.lblTelefono.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.lblTelefono, "Se debe de buscar el cliente pulsando el botón de la lupa.");
             // 
             // lblCliente
             // 
@@ -412,6 +416,7 @@
             this.lblCliente.TabIndex = 128;
             this.lblCliente.Text = "Cliente";
             this.lblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.lblCliente, "Se debe de buscar el cliente pulsando el botón de la lupa.");
             // 
             // txtProjetName
             // 
@@ -525,6 +530,7 @@
             this.txtidClient.Name = "txtidClient";
             this.txtidClient.Size = new System.Drawing.Size(318, 26);
             this.txtidClient.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtidClient, "Se debe de buscar el cliente pulsando el botón de la lupa.");
             this.txtidClient.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtidClient_KeyPress);
             // 
             // txtAdreesClient
@@ -538,6 +544,7 @@
             this.txtAdreesClient.Name = "txtAdreesClient";
             this.txtAdreesClient.Size = new System.Drawing.Size(318, 26);
             this.txtAdreesClient.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.txtAdreesClient, "Se debe de buscar el cliente pulsando el botón de la lupa.");
             // 
             // label11
             // 
@@ -552,6 +559,7 @@
             this.label11.TabIndex = 168;
             this.label11.Text = "Dirección";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.label11, "Se debe de buscar el cliente pulsando el botón de la lupa.");
             // 
             // errorProvider1
             // 
@@ -606,6 +614,7 @@
             this.btnApply.Size = new System.Drawing.Size(95, 46);
             this.btnApply.TabIndex = 16;
             this.btnApply.Text = "Aplicar Valores";
+            this.toolTip1.SetToolTip(this.btnApply, "Aplica la Mano de Obra o Descuento al Total a Pagar, con impuesto incluido.\r\n\r\n");
             this.btnApply.UseVisualStyleBackColor = false;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
@@ -841,6 +850,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(28, 26);
             this.btnBuscar.TabIndex = 147;
             this.btnBuscar.Text = " ";
+            this.toolTip1.SetToolTip(this.btnBuscar, "Se debe buscar al cliente utilizando este botón.");
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -898,6 +908,7 @@
             this.btnApplyLabour.Size = new System.Drawing.Size(95, 46);
             this.btnApplyLabour.TabIndex = 191;
             this.btnApplyLabour.Text = "Aplicar M. Obra";
+            this.toolTip1.SetToolTip(this.btnApplyLabour, "Aplica solo la Mano de Obra, al Subtotal, sin impuesto incluido.\r\n");
             this.btnApplyLabour.UseVisualStyleBackColor = false;
             this.btnApplyLabour.Click += new System.EventHandler(this.btnApplyLabour_Click);
             // 
