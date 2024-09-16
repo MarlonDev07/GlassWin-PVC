@@ -4060,6 +4060,56 @@ namespace Precentacion.User.Quote.Quote
                 Location = new Point(p.X - startPoint.X, p.Y - startPoint.Y);
             }
         }
+
+        public void btnApplyLabour_Click(object sender, EventArgs e)
+        {
+            // Validar si txtManoObra es un número
+            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra))
+            {
+                // Limpiar variables
+                SubTotal = 0;
+                Labour = 0;
+                Total = 0;
+
+                // Aplicar la mano de obra como un porcentaje
+                Labour = manoObra / 100;
+
+                // Calcular el subtotal sin impuestos
+                CalcPricesWithoutTax();
+
+                // Aplicar la mano de obra al subtotal
+                SubTotal += SubTotal * Labour;
+
+                // Mostrar el subtotal con la mano de obra aplicada
+                txtSubtotal.Text = SubTotal.ToString("c");
+                txtTotal.Text = SubTotal.ToString("c");
+
+                // Dejar que el usuario decida aplicar el impuesto después con el ComboBox cbIva
+            }
+            else
+            {
+                MessageBox.Show("La mano de obra debe ser un número válido.");
+            }
+        }
+
+        private void CalcPricesWithoutTax()
+        {
+            decimal total = 0;
+
+            // Calcular el precio con la mano de obra aplicada, sin impuestos
+            foreach (DataGridViewRow row in dgCotizaciones.Rows)
+            {
+                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+                total += price;
+            }
+
+            // Asignar el total al SubTotal
+            SubTotal = total;
+        }
+
+
+
+
         private void frmQuote_MouseUp(object sender, MouseEventArgs e)
         {
             // Cuando el botón del mouse es soltado
