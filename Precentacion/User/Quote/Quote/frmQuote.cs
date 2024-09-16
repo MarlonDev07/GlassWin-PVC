@@ -4063,32 +4063,37 @@ namespace Precentacion.User.Quote.Quote
 
         public void btnApplyLabour_Click(object sender, EventArgs e)
         {
-            // Validar si txtManoObra es un número
-            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra))
+            // Validar si txtManoObra y txtDescuento son números
+            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
             {
                 // Limpiar variables
                 SubTotal = 0;
                 Labour = 0;
+                Discount = 0;
                 Total = 0;
 
-                // Aplicar la mano de obra como un porcentaje
+                // Calcular porcentaje de mano de obra y descuento
                 Labour = manoObra / 100;
+                Discount = descuento / 100;
 
-                // Calcular el subtotal sin impuestos
+                // Calcular el subtotal sin impuestos ni ajustes
                 CalcPricesWithoutTax();
 
-                // Aplicar la mano de obra al subtotal
+                // Aplicar el descuento primero
+                SubTotal -= SubTotal * Discount;
+
+                // Aplicar la mano de obra al subtotal ya descontado
                 SubTotal += SubTotal * Labour;
 
-                // Mostrar el subtotal con la mano de obra aplicada
+                // Mostrar el subtotal con descuento y mano de obra aplicados
                 txtSubtotal.Text = SubTotal.ToString("c");
                 txtTotal.Text = SubTotal.ToString("c");
 
-                // Dejar que el usuario decida aplicar el impuesto después con el ComboBox cbIva
+                // El impuesto se aplicará después con el ComboBox cbIva
             }
             else
             {
-                MessageBox.Show("La mano de obra debe ser un número válido.");
+                MessageBox.Show("Los campos de mano de obra y descuento deben ser números válidos.");
             }
         }
 
@@ -4096,7 +4101,7 @@ namespace Precentacion.User.Quote.Quote
         {
             decimal total = 0;
 
-            // Calcular el precio con la mano de obra aplicada, sin impuestos
+            // Calcular el precio base sumando los valores de la columna 'Price' del DataGridView
             foreach (DataGridViewRow row in dgCotizaciones.Rows)
             {
                 decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
