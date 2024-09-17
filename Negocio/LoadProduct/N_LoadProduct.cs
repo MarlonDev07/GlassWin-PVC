@@ -4663,6 +4663,66 @@ namespace Negocio.LoadProduct
             }
             return metraje;
         }
+        private decimal Calc8025_3ViasMovilMoviMovil(string Description)
+        {
+                decimal metraje = 0;
+                switch (Description)
+                {
+                    case "Cargador 8025 3 Vias":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Umbral 8025 3 Vias":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Jamba 8025 3 Vias":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Vertical 8025":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                    case "Vertical Centro 8025":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
+                        break;
+                    case "Superior 8025":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Inferior 8025":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+                    case "Pisalfombra 8025":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        break;
+
+                    //*******************Accesorios********************//
+                    case "Rodin 8025":
+                        metraje = 6;
+                        break;
+                    case "Guia Inferior 8025":
+                        metraje = 6;
+                        break;
+                    case "Guia Superior 8025":
+                        metraje = 6;
+                        break;
+                    case "Jaladera Doble 8025":
+                        metraje = 1;
+                        break;
+                    case "Tornillo Ensamble":
+                        metraje = 16;
+                        break;
+                    case "Empaque U 8025":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                        break;
+                    case "Felpa Delgada 8025":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 6);
+                        break;
+
+                }
+            return metraje;
+
+            }
+
+        }
+
         #endregion
 
         #region 8025 3 Vias
