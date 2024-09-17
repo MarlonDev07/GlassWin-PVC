@@ -32,6 +32,7 @@ using System.Text;
 using System.Xml;
 using System.Threading.Tasks;
 using System.Globalization;
+using Dominio.Model.ClassArticuloExclusivo;
 
 
 namespace Precentacion.User.Quote.Quote
@@ -813,6 +814,42 @@ namespace Precentacion.User.Quote.Quote
                             }
                             frm.ListarArticulos(list);
                             frm.ConfigEditar();
+                            frm.Show();
+                        }
+                        catch (Exception EX)
+                        {
+                        }
+                    }
+                    else if (Description.Contains("Exclusivo"))
+                    {
+                        //Recorrer el DataGrid y Guardar los Datos de las Ventanas que en la Descricion Contengan cmbArticulo
+                        try
+                        {
+                            ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
+                            List<Cls_ArticuloExclusivo> list = new List<Cls_ArticuloExclusivo>();
+
+                            frmArticuloExclusivo frm = new frmArticuloExclusivo();
+                            foreach (DataGridViewRow row in dgCotizaciones.Rows)
+                            {
+                                if (row.Cells[0].Value != null)
+                                {
+                                    if (row.Cells[0].Value.ToString() != "")
+                                    {
+                                        if (row.Cells[2].Value.ToString().Contains("Exclusivo"))
+                                        {
+                                            //Guardar en una Lista los Datos
+                                            Cls_ArticuloExclusivo cls_exclusivo = new Cls_ArticuloExclusivo();
+                                            cls_exclusivo.IdVentana = Convert.ToInt32(row.Cells[0].Value);
+                                            cls_exclusivo.UrlImagen = row.Cells[1].Value.ToString();
+                                            cls_exclusivo.Descripcion = row.Cells[2].Value.ToString();
+                                            cls_exclusivo.Precio = row.Cells[3].Value.ToString();
+                                            list.Add(cls_exclusivo);
+                                        }
+                                    }
+                                }
+                            }
+                            frm.ListarArticulos(list);
+                            //frm.ConfigEditar();
                             frm.Show();
                         }
                         catch (Exception EX)
