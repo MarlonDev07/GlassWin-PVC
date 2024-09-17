@@ -89,13 +89,13 @@
             this.btnViaticos = new System.Windows.Forms.Button();
             this.btnExclusivo = new System.Windows.Forms.Button();
             this.btnCargarDesglose = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnApplyLabour = new System.Windows.Forms.Button();
             this.btnDolarCambio = new System.Windows.Forms.Button();
             this.btnCambioDolar2 = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnSistemas = new System.Windows.Forms.Button();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnApplyLabour = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgCotizaciones)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -613,7 +613,7 @@
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(95, 46);
             this.btnApply.TabIndex = 16;
-            this.btnApply.Text = "Aplicar Valores";
+            this.btnApply.Text = "Aplicar con IVA";
             this.toolTip1.SetToolTip(this.btnApply, "Aplica la Mano de Obra o Descuento al Total a Pagar, con impuesto incluido.\r\n\r\n");
             this.btnApply.UseVisualStyleBackColor = false;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
@@ -816,6 +816,37 @@
             this.btnCargarDesglose.Visible = false;
             this.btnCargarDesglose.Click += new System.EventHandler(this.btnCargarDesglose_Click);
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnBuscar.BackColor = System.Drawing.Color.SeaShell;
+            this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBuscar.Location = new System.Drawing.Point(957, 17);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(28, 26);
+            this.btnBuscar.TabIndex = 147;
+            this.btnBuscar.Text = " ";
+            this.toolTip1.SetToolTip(this.btnBuscar, "Se debe buscar al cliente utilizando este botón.");
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnApplyLabour
+            // 
+            this.btnApplyLabour.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnApplyLabour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnApplyLabour.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApplyLabour.ForeColor = System.Drawing.Color.White;
+            this.btnApplyLabour.Location = new System.Drawing.Point(814, 450);
+            this.btnApplyLabour.Name = "btnApplyLabour";
+            this.btnApplyLabour.Size = new System.Drawing.Size(95, 46);
+            this.btnApplyLabour.TabIndex = 191;
+            this.btnApplyLabour.Text = "Aplicar sin IVA";
+            this.toolTip1.SetToolTip(this.btnApplyLabour, "Aplica  la Mano de Obra y Descuento, al Subtotal, sin impuesto incluido.\r\n");
+            this.btnApplyLabour.UseVisualStyleBackColor = false;
+            this.btnApplyLabour.Click += new System.EventHandler(this.btnApplyLabour_Click);
+            // 
             // btnDolarCambio
             // 
             this.btnDolarCambio.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -837,22 +868,6 @@
             this.btnCambioDolar2.Text = "₡";
             this.btnCambioDolar2.UseVisualStyleBackColor = true;
             this.btnCambioDolar2.Click += new System.EventHandler(this.btnCambioDolar2_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnBuscar.BackColor = System.Drawing.Color.SeaShell;
-            this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnBuscar.Location = new System.Drawing.Point(957, 17);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(28, 26);
-            this.btnBuscar.TabIndex = 147;
-            this.btnBuscar.Text = " ";
-            this.toolTip1.SetToolTip(this.btnBuscar, "Se debe buscar al cliente utilizando este botón.");
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnSistemas
             // 
@@ -896,21 +911,6 @@
             this.btnGuardar.TabIndex = 20;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnApplyLabour
-            // 
-            this.btnApplyLabour.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnApplyLabour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnApplyLabour.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApplyLabour.ForeColor = System.Drawing.Color.White;
-            this.btnApplyLabour.Location = new System.Drawing.Point(814, 450);
-            this.btnApplyLabour.Name = "btnApplyLabour";
-            this.btnApplyLabour.Size = new System.Drawing.Size(95, 46);
-            this.btnApplyLabour.TabIndex = 191;
-            this.btnApplyLabour.Text = "Aplicar M. Obra";
-            this.toolTip1.SetToolTip(this.btnApplyLabour, "Aplica solo la Mano de Obra, al Subtotal, sin impuesto incluido.\r\n");
-            this.btnApplyLabour.UseVisualStyleBackColor = false;
-            this.btnApplyLabour.Click += new System.EventHandler(this.btnApplyLabour_Click);
             // 
             // frmQuote
             // 
