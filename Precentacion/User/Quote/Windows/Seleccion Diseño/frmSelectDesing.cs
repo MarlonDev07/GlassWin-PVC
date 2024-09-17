@@ -216,7 +216,15 @@ namespace Precentacion.User.Quote.Windows
 
         private void btn2ViasMMM_Click(object sender, EventArgs e)
         {
-            ClsWindows.Desing = "2ViasMovilMovilMovil";
+            if (ClsWindows.System == "8025 3 Vias")
+            {
+                ClsWindows.Desing = "3ViasMovilMovilMovil";
+            }
+            else 
+            {
+                ClsWindows.Desing = "2ViasMovilMovilMovil";
+            }
+          
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
             frm.Show();
             this.Close();
