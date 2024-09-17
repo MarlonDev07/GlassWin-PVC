@@ -633,6 +633,7 @@ namespace Precentacion.User.Quote.Windows
                 {
                     description += "Cedazo Interno" + "\n";
                 }
+             
                 if (ckExterno.Checked)
                 {
                     description += "Cedazo Externo" + "\n";
@@ -709,6 +710,10 @@ namespace Precentacion.User.Quote.Windows
                 }
                 //Añadir la cantidad 
                 description += "Cantidad: " + NumCantidad + "\n"; //cbColor
+                if (cbCedazo.Checked)
+                {
+                    description += "Con Cedazo" + "\n";
+                }
                 if (txtAddWeigth.Text != "" && txtAddHeight.Text != "")
                 {
                     description += "\n";
