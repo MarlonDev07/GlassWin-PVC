@@ -6043,6 +6043,9 @@ namespace Negocio.LoadProduct
                     case "Marco Hoja Enganche 6030":
                         metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
                         break;
+                    case "Marco Cedazo 1/2":
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) / 2 * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        break;
 
 
                     //*******************Accesorios********************//
@@ -6073,6 +6076,16 @@ namespace Negocio.LoadProduct
                     case "Cerradura Impacto Akari":
                         metraje = 1;
                         break;
+                    case "Escuadra Cedazo 1/2":
+                        metraje = 4;
+                         break;
+                    case "Empaque Cedazo 1/2":
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) /2 * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        break;
+                    case "Fibra Cedazo 180":
+                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 1;
+                        break;
+
 
                 }
                 return metraje;
@@ -6093,6 +6106,7 @@ namespace Negocio.LoadProduct
                     case "Marco Hoja Enganche 6030":
                         metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
                         break;
+                    
 
 
                     //*******************Accesorios********************//
