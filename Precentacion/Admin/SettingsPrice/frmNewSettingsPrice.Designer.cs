@@ -217,6 +217,7 @@
             "Ventila1Fijo",
             "FijoMovilMovilMovil",
             "2ViasMovilMovilMovil",
+            "3ViasMovilMovilMovil",
             "PuertaBañoMovilMovil",
             "2 Hoja Vertical",
             "1 Hoja 1 Fijo Vertical",
