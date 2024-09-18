@@ -947,7 +947,17 @@ namespace Precentacion.User.Quote.Quote
                 ManoObra = 0;
 
                 Discount = descuento / 100;
-                Labour = manoObra / 100;
+                // Verificar si manoObra es mayor que 100, lo tomamos como un monto absoluto
+                if (manoObra > 100)
+                {
+                    // Es un monto fijo
+                    Labour = manoObra;
+                }
+                else
+                {
+                    // Es un porcentaje
+                    Labour = manoObra / 100;
+                }
 
 
                 loadWindows();
@@ -1278,12 +1288,22 @@ namespace Precentacion.User.Quote.Quote
                 {
                     // Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-                    decimal priceWithLabour = price + (price + ManoObra);
-                    decimal priceWithDiscount = priceWithLabour - (price * Descuento);
-                    decimal TotalPriceWindows = ((priceWithLabour + priceWithDiscount));
-                    row.Cells["Price"].Value = TotalPriceWindows;
-                    // Sumar el total de la columna Price
-                    total += Convert.ToDecimal(row.Cells["Price"].Value);
+                    if (price > 0)
+                    {
+                        //decimal priceWithLabour = price + (price + ManoObra);
+                        decimal priceWithLabour = ManoObra > 1 ? total + ManoObra : total + (total * ManoObra); // Si Labour es mayor que 1, es un monto fijo
+                        decimal priceWithDiscount = priceWithLabour - (price * Descuento);
+                        decimal TotalPriceWindows = ((priceWithLabour + priceWithDiscount));
+                        row.Cells["Price"].Value = TotalPriceWindows;
+                        // Sumar el total de la columna Price
+                        total += Convert.ToDecimal(row.Cells["Price"].Value);
+                    }
+                    else 
+                    {
+                        // Si el precio es 0, no se aplica mano de obra ni descuento
+                        row.Cells["Price"].Value = price;  // O mantener el valor de 0
+                    }
+                 
                 }
 
                 if (UserCache.Name == "VitroTaller")
@@ -1305,11 +1325,21 @@ namespace Precentacion.User.Quote.Quote
                 {
                     // Calcular el Precio con la mano de obra y Descuento Luego asignarlo a la columna Price
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-                    decimal priceWithLabour = price + (price * Labour);
-                    decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
-                    row.Cells["Price"].Value = priceWithDiscount;
-                    // Sumar el total de la columna Price
-                    total += Convert.ToDecimal(row.Cells["Price"].Value);
+                    if (price > 0)
+                    {
+                        //decimal priceWithLabour = price + (price * Labour);
+                        decimal priceWithLabour = Labour > 1 ? price + Labour : price + (price * Labour); // Aplicar monto fijo o porcentaje
+                        decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
+                        row.Cells["Price"].Value = priceWithDiscount;
+                        // Sumar el total de la columna Price
+                        total += Convert.ToDecimal(row.Cells["Price"].Value);
+                    }
+                    else 
+                    {
+                        // Si el precio es 0, no se aplica mano de obra ni descuento
+                        row.Cells["Price"].Value = price;  // O mantener el valor de 0
+                    }
+               
                 }
 
 
