@@ -4135,8 +4135,6 @@ namespace Precentacion.User.Quote.Quote
                 Discount = 0;
                 Total = 0;
 
-                // Calcular porcentaje de mano de obra y descuento
-                Labour = manoObra / 100;
                 Discount = descuento / 100;
 
                 // Calcular el subtotal sin impuestos ni ajustes
@@ -4145,8 +4143,20 @@ namespace Precentacion.User.Quote.Quote
                 // Aplicar el descuento primero
                 SubTotal -= SubTotal * Discount;
 
-                // Aplicar la mano de obra al subtotal ya descontado
-                SubTotal += SubTotal * Labour;
+                // Calcular porcentaje de mano de obra y descuento
+                if (manoObra > 100)
+                {
+                    // Si manoObra es mayor a 100, es un monto fijo
+                    Labour = manoObra;
+                    SubTotal += Labour; // Solo sumar el valor de Labour
+                }
+                else
+                {
+                    // Si manoObra es menor o igual a 100, es un porcentaje
+                    Labour = manoObra / 100;
+                    // Aplicar la mano de obra como porcentaje al subtotal ya descontado
+                    SubTotal += SubTotal * Labour;
+                }
 
                 // Mostrar el subtotal con descuento y mano de obra aplicados
                 txtSubtotal.Text = SubTotal.ToString("c");
@@ -4159,6 +4169,7 @@ namespace Precentacion.User.Quote.Quote
                 MessageBox.Show("Los campos de mano de obra y descuento deben ser números válidos.");
             }
         }
+
 
         private void CalcPricesWithoutTax()
         {
