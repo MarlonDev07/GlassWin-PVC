@@ -97,6 +97,7 @@
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgCotizaciones)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -199,7 +200,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(875, 383);
+            this.label1.Location = new System.Drawing.Point(875, 349);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 26);
             this.label1.TabIndex = 137;
@@ -211,7 +212,7 @@
             this.txtManoObra.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtManoObra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtManoObra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtManoObra.Location = new System.Drawing.Point(814, 383);
+            this.txtManoObra.Location = new System.Drawing.Point(814, 349);
             this.txtManoObra.Name = "txtManoObra";
             this.txtManoObra.Size = new System.Drawing.Size(62, 26);
             this.txtManoObra.TabIndex = 14;
@@ -223,7 +224,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(719, 383);
+            this.label2.Location = new System.Drawing.Point(719, 349);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 26);
             this.label2.TabIndex = 136;
@@ -573,7 +574,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(875, 421);
+            this.label3.Location = new System.Drawing.Point(875, 387);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 26);
             this.label3.TabIndex = 171;
@@ -585,7 +586,7 @@
             this.txtDescuento.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDescuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescuento.Location = new System.Drawing.Point(814, 421);
+            this.txtDescuento.Location = new System.Drawing.Point(814, 387);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(62, 26);
             this.txtDescuento.TabIndex = 15;
@@ -597,7 +598,7 @@
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(719, 422);
+            this.label12.Location = new System.Drawing.Point(719, 388);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(86, 25);
             this.label12.TabIndex = 170;
@@ -610,7 +611,7 @@
             this.btnApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnApply.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(720, 450);
+            this.btnApply.Location = new System.Drawing.Point(720, 416);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(95, 46);
             this.btnApply.TabIndex = 16;
@@ -839,7 +840,7 @@
             this.btnApplyLabour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnApplyLabour.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApplyLabour.ForeColor = System.Drawing.Color.White;
-            this.btnApplyLabour.Location = new System.Drawing.Point(814, 450);
+            this.btnApplyLabour.Location = new System.Drawing.Point(814, 416);
             this.btnApplyLabour.Name = "btnApplyLabour";
             this.btnApplyLabour.Size = new System.Drawing.Size(95, 46);
             this.btnApplyLabour.TabIndex = 191;
@@ -920,12 +921,27 @@
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(909, 383);
+            this.label6.Location = new System.Drawing.Point(909, 349);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 26);
             this.label6.TabIndex = 192;
             this.label6.Text = "₡";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(720, 468);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(186, 36);
+            this.button1.TabIndex = 193;
+            this.button1.Text = "Aplicar M. Obra (Ajuste Precio)";
+            this.toolTip1.SetToolTip(this.button1, "Aplica  la Mano de Obra y Descuento, al Subtotal, sin impuesto incluido.\r\n");
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // frmQuote
             // 
@@ -933,6 +949,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1036, 682);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnApplyLabour);
             this.Controls.Add(this.btnCargarDesglose);
@@ -1073,5 +1090,6 @@
         private System.Windows.Forms.Button btnCargarDesglose;
         private System.Windows.Forms.Button btnApplyLabour;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }

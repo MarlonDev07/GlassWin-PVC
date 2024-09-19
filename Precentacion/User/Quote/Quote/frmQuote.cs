@@ -4186,8 +4186,51 @@ namespace Precentacion.User.Quote.Quote
             SubTotal = total;
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            // Validar si txtManoObra y txtDescuento son números
+            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
+            {
+                // Limpiar variables
+                SubTotal = 0;
+                Labour = 0;
+                Discount = 0;
+                Total = 0;
 
+                Discount = descuento / 100;
 
+                // Calcular el subtotal sin impuestos ni ajustes
+                CalcPricesWithoutTax();
+
+                // Aplicar el descuento primero
+                SubTotal -= SubTotal * Discount;
+
+                // Calcular porcentaje de mano de obra y descuento
+                if (manoObra > 100)
+                {
+                    // Si manoObra es mayor a 100, es un monto fijo
+                    Labour = manoObra;
+                    SubTotal += Labour; // Solo sumar el valor de Labour
+                }
+                else
+                {
+                    // Si manoObra es menor o igual a 100, es un porcentaje
+                    Labour = manoObra / 100;
+                    // Aplicar la mano de obra como porcentaje al subtotal ya descontado
+                    SubTotal += SubTotal * Labour;
+                }
+
+                // Mostrar el subtotal con descuento y mano de obra aplicados
+                txtSubtotal.Text = SubTotal.ToString("c");
+                txtTotal.Text = SubTotal.ToString("c");
+
+                // El impuesto se aplicará después con el ComboBox cbIva
+            }
+            else
+            {
+                MessageBox.Show("Los campos de mano de obra y descuento deben ser números válidos.");
+            }
+        }
 
         private void frmQuote_MouseUp(object sender, MouseEventArgs e)
         {
