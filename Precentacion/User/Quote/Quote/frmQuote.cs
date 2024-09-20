@@ -774,9 +774,18 @@ namespace Precentacion.User.Quote.Quote
                         {
                             if (ClsWindows.System == "Ventila") 
                             {
-                                frmCalcPriceVentila frm = new frmCalcPriceVentila();
-                                frm.Update = true;
-                                frm.Show();
+                                if (ClsWindows.Desing == "1 Hoja Horizontal 1Fijo" || ClsWindows.Desing == "Ventila1Fijo")
+                                {
+                                    frmCalcPriceVentila frm = new frmCalcPriceVentila();
+                                    frm.Update = true;
+                                    frm.Show();
+                                }
+                                else 
+                                {
+                                    frmCalcPriceWindows frm = new frmCalcPriceWindows();
+                                    frm.Show();
+                                }
+                             
                             }
                             else if (ClsWindows.System == "Vidrio Fijo")
                             {
