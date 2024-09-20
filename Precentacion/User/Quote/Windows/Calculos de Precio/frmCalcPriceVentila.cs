@@ -22,6 +22,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         decimal precioTotal;
         decimal TempPrecio;
         public bool Cedazo = false;
+        public bool Update = false;
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
         private const decimal CentimetrosAPixeles = 100.0m;
@@ -390,16 +391,34 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             description += "Alto: " + ClsWindows.heigt + "\n";
             description += "Cantidad: " + txtCantidad.Value + "\n";
             description += "Ubicación: " + txtUbicacion.Text + "\n";
-            if(n_LoadProduct.insertWindows(description,RutaImagen, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", precioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing)) 
+            if (this.Update == false)
             {
-                LimpiarCampos();
-                MessageBox.Show("Ventana guardada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
-                if (frm != null)
+                if (n_LoadProduct.insertWindows(description, RutaImagen, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", precioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing))
                 {
-                    ((frmQuote)frm).loadWindows();
+                    LimpiarCampos();
+                    MessageBox.Show("Ventana guardada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
+                    if (frm != null)
+                    {
+                        ((frmQuote)frm).loadWindows();
+                    }
                 }
             }
+            else 
+            {
+                if (n_LoadProduct.EditWindows(ClsWindows.IdWindows.ToString(), description, RutaImagen, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, ClsWindows.Lock, precioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing))
+                {
+                    LimpiarCampos();
+                    MessageBox.Show("Ventana editada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
+                    if (frm != null)
+                    {
+                        ((frmQuote)frm).loadWindows();
+                    }
+                }
+            }
+      
+      
         }
 
         private void LimpiarCampos() 

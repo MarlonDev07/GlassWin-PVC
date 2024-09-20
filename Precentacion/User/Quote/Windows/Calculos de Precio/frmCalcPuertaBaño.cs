@@ -26,6 +26,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
         private const decimal CentimetrosAPixeles = 100.0m;
+        public bool update = false;
         decimal anchoT;
         public frmCalcPuertaBaño()
         {
@@ -545,20 +546,39 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             Description += "Color Aluminio: " + cbColor.Text + "\n";
             Description += "Ubicación: " + txtUbicacion.Text + "\n";
 
-          
-            if (n_LoadProduct.insertWindows(Description,Url,clsPuertaBaño.WeightTotal,clsPuertaBaño.heigt,cbVidrio.Text,cbColor.Text,"",clsPuertaBaño.Price,ClsWindows.IDQuote,clsPuertaBaño.System,clsPuertaBaño.Desing))
+            if (this.update == false)
             {
-                Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
-                if (frm != null)
+                if (n_LoadProduct.insertWindows(Description, Url, clsPuertaBaño.WeightTotal, clsPuertaBaño.heigt, cbVidrio.Text, cbColor.Text, "", clsPuertaBaño.Price, ClsWindows.IDQuote, clsPuertaBaño.System, clsPuertaBaño.Desing))
                 {
-                    ((frmQuote)frm).loadWindows();
+                    Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
+                    if (frm != null)
+                    {
+                        ((frmQuote)frm).loadWindows();
+                    }
+                    MessageBox.Show("Puerta de Baño Guardada", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                MessageBox.Show("Puerta de Baño Guardada", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                {
+                    MessageBox.Show("Error al guardar la puerta de baño", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            else 
             {
-                MessageBox.Show("Error al guardar la puerta de baño", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (n_LoadProduct.EditWindows(ClsWindows.IdWindows.ToString(), Description, Url, clsPuertaBaño.WeightTotal, clsPuertaBaño.heigt, cbVidrio.Text, cbColor.Text, "", clsPuertaBaño.Price, clsPuertaBaño.IDQuote, clsPuertaBaño.System, clsPuertaBaño.Desing))
+                {
+                    Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
+                    if (frm != null)
+                    {
+                        ((frmQuote)frm).loadWindows();
+                    }
+                    MessageBox.Show("Puerta de Baño Guardada", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al guardar la puerta de baño", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+     
             
         }
 

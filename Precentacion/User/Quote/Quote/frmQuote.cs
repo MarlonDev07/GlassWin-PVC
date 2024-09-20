@@ -33,6 +33,8 @@ using System.Xml;
 using System.Threading.Tasks;
 using System.Globalization;
 using Dominio.Model.ClassArticuloExclusivo;
+using Precentacion.User.Quote.Windows.Calculos_de_Precio;
+using Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceVentanasFijas;
 
 
 namespace Precentacion.User.Quote.Quote
@@ -764,13 +766,45 @@ namespace Precentacion.User.Quote.Quote
 
                     //preguntar si desea editar la ventana
                     DialogResult result = MessageBox.Show("¿Desea editar la ventana n° " + dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString() + "?", "Editar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    string systema = ClsWindows.System;
                     if (result == DialogResult.Yes)
                     {
                         bool res = NQuote.FindWindows(idWindows);
                         if (res)
                         {
-                            frmCalcPriceWindows frm = new frmCalcPriceWindows();
-                            frm.Show();
+                            if (ClsWindows.System == "Ventila") 
+                            {
+                                frmCalcPriceVentila frm = new frmCalcPriceVentila();
+                                frm.Update = true;
+                                frm.Show();
+                            }
+                            else if (ClsWindows.System == "Vidrio Fijo")
+                            {
+                                if (ClsWindows.Desing == "FijoEscaleno2Division" || ClsWindows.Desing == "FijoEscalenoDivision" || ClsWindows.Desing == "FijoEscaleno" || ClsWindows.Desing == "FijoGeotricaInvertido2Division" || ClsWindows.Desing == "FijoGeotricaInvertidoDivision" || ClsWindows.Desing == "FijoGeotricaInvertido" || ClsWindows.Desing == "FijoGeotrica2Division")
+                                {
+                                    frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+                                    frm.update = true;
+                                    frm.Show();
+                                }
+                                else 
+                                {
+                                    frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
+                                    frm.update = true;
+                                    frm.Show();
+                                }
+                             
+                            }
+                            else if (ClsWindows.System == "Puerta Baño")
+                            {
+                                frmCalcPuertaBaño frm = new frmCalcPuertaBaño();
+                                frm.update = true;
+                                frm.Show();
+                            }
+                            else 
+                            { 
+                                frmCalcPriceWindows frm = new frmCalcPriceWindows();
+                                frm.Show();
+                            }
                         }
                         else
                         {

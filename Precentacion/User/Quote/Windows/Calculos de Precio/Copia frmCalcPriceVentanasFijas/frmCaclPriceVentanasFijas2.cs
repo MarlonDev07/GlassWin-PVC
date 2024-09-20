@@ -19,6 +19,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         decimal PrecioTotal;
         decimal TempPrecio;
         string URL;
+        public bool update = false;
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
         private const decimal CentimetrosAPixeles = 100.0m;
@@ -237,22 +238,43 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                     PrecioTotal = TempPrecio;
                 }
 
-
-                //Guardar Ventana
-                bool result = n_LoadProduct.insertWindows(Description, URL, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", PrecioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing);
-                if (result)
+                if (this.update == false)
                 {
-                    MessageBox.Show("Ventana Guardada Correctamente", "Guardado Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ActualizarCotizacion();
-                    LimpiarCampos();
+                    //Guardar Ventana
+                    bool result = n_LoadProduct.insertWindows(Description, URL, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", PrecioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing);
+                    if (result)
+                    {
+                        MessageBox.Show("Ventana Guardada Correctamente", "Guardado Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ActualizarCotizacion();
+                        LimpiarCampos();
 
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se Pudo Guardar la Ventana", "Guardado Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                 }
-                else
+                else 
                 {
-                    MessageBox.Show("No se Pudo Guardar la Ventana", "Guardado Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Guardar Ventana
+                    bool result = n_LoadProduct.EditWindows(ClsWindows.IdWindows.ToString(), Description, URL, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, ClsWindows.Lock, PrecioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing);
+                    if (result)
+                    {
+                        MessageBox.Show("Ventana Guardada Correctamente", "Guardado Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ActualizarCotizacion();
+                        LimpiarCampos();
 
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se Pudo Guardar la Ventana", "Guardado Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                 }
+               
             }
             catch (Exception)
             {
