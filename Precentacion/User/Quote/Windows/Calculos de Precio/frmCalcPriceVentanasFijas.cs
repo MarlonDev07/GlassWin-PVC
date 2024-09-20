@@ -708,7 +708,7 @@ namespace Precentacion.User.Quote.Windows
         }
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbSupplier.SelectedIndex == 3) 
+            if(cbSupplier.Text == "Default") 
             {
                 txtTotal.Enabled = true;
             }

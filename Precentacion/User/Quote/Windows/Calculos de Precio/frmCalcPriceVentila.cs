@@ -435,7 +435,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbSupplier.SelectedIndex == 2)
+            if (cbSupplier.Text == "Default")
             {
                 txtTotal.Enabled = true;
             }
