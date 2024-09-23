@@ -11576,7 +11576,7 @@ namespace Negocio.LoadProduct
 
         }
 
-        // POrton de lujo corredizo (PortonCorredizoLujo1Hoja) nombre a utilizar en las imagenes. 
+        // Porton de lujo corredizo (PortonCorredizoLujo2Hoja) nombre a utilizar en las imagenes. 
         private decimal CalcPortonCorredizoLujo2Hoja(string Description)
         {
         decimal Metraje = 0;
