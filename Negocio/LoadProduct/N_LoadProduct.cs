@@ -11497,7 +11497,7 @@ namespace Negocio.LoadProduct
             return Metraje;
         }
 
-        // POrton de lujo corredizo (PortonCorredizoLujo1Hoja) nombre a utilizar en las imagenes. 
+          // POrton de lujo corredizo (PortonCorredizoLujo1Hoja) nombre a utilizar en las imagenes. 
         private decimal CalcPortonCorredizoLujo1Hoja(string Description)
         {
                 decimal Metraje = 0;
@@ -11572,9 +11572,87 @@ namespace Negocio.LoadProduct
 
                 }
 
+            return Metraje;
+
+        }
+
+        // POrton de lujo corredizo (PortonCorredizoLujo1Hoja) nombre a utilizar en las imagenes. 
+        private decimal CalcPortonCorredizoLujo2Hoja(string Description)
+        {
+        decimal Metraje = 0;
+
+                switch (Description)
+                {
+                    //Aluminio
+                    case "Tubo 1 Aleta 13/4x4 PL":
+                        Metraje = 6.4m;
+                        break;
+                    case "Riel Porton Pesado":
+                        Metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
+                        break;
+                    case "Angular 1x4 (cenefa)":
+                        Metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
+                        break;
+                    case "Envidriador PL D36":
+                        Metraje = Convert.ToDecimal(ClsWindows.Weight) * 4 + Convert.ToDecimal(ClsWindows.heigt) * 4;
+                        break;
+                    case "Inferior Hoja PL D37":
+                        Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
+                        break;
+                    case "Lateral Hoja PL D38":
+                        Metraje = 4.60m;
+                        break;
+                    case "Superior Hoja PL D39":
+                        Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
+                        break;
+
+
+                    //Accesorios 	
+
+                    case "Haladera Sencilla p/ PL":
+                        Metraje = 2;
+                        break;
+                    case "Rodin Porton Pesado":
+                        Metraje = 2;
+                        break;
+
+                    case "Juego Cerradura 31/32 AL DT1850":
+                        Metraje = 1;
+                        break;
+                    case "Tope Media Luna":
+                        Metraje = 1;
+                        break;
+
+                    case "Barra Roscada":
+                        Metraje = 2;
+                        break;
+
+                    case "Tuerca 1/4":
+                        Metraje = 4;
+                        break;
+
+                    case "Arandela Precion":
+                        Metraje = 4;
+                        break;
+
+                    case "Arandela Plana":
+                        Metraje = 4;
+                        break;
+
+                    case "Empaque PL":
+                        Metraje = (Convert.ToDecimal(ClsWindows.Weight) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                        break;
+
+                    case "Felpa Gruesa PL":
+                        Metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        break;
+                }
+
                 return Metraje;
             }
         }
+    
+        
         #endregion
 
         #region Puerta Liviana
