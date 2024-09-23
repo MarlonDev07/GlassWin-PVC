@@ -111,12 +111,12 @@ namespace Negocio.Products
             
         }
 
-        public bool CreateProduct(string Id, string Description, string System, string Category) 
+        public bool CreateProduct(string Id, string Description, string System, string Category, string user) 
         {
             try
             {
                 CD_Products Products = new CD_Products();
-                return Products.CreateProduct(Convert.ToInt32(Id),Description, System, Category);
+                return Products.CreateProduct(Convert.ToInt32(Id),Description, System, Category, user);
             }
             catch (Exception)
             {
@@ -177,12 +177,12 @@ namespace Negocio.Products
 
         }
 
-        public bool UpdateProduct(string code, string Description, string System, string Category) 
+        public bool UpdateProduct(string code, string Description, string System, string Category, string user) 
         {
             try
             {
                 CD_Products _Products = new CD_Products();
-                return _Products.UpdateProduct(Convert.ToInt32(code), Description, System, Category);
+                return _Products.UpdateProduct(Convert.ToInt32(code), Description, System, Category, user);
             }
             catch (Exception)
             {

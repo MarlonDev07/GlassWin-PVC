@@ -16,7 +16,7 @@ namespace AccesoDatos.Products
 
 
         #region Create
-        public bool CreateProduct(int IdProduct, string Description, string System, string Category)
+        public bool CreateProduct(int IdProduct, string Description, string System, string Category, string user)
         {
             try
             {
@@ -28,6 +28,7 @@ namespace AccesoDatos.Products
                 cmd.Parameters.AddWithValue("@Description", Description);
                 cmd.Parameters.AddWithValue("@System", System);
                 cmd.Parameters.AddWithValue("@Category", Category);
+                cmd.Parameters.AddWithValue("@Usuario", user);
                 cmd.ExecuteNonQuery();
                 Cnn.CloseConnection();
                 return true;
@@ -268,7 +269,7 @@ namespace AccesoDatos.Products
 
         }
 
-        public bool UpdateProduct(int code, string Description, string System, string Category)
+        public bool UpdateProduct(int code, string Description, string System, string Category, string user)
         {
             try
             {
@@ -280,6 +281,7 @@ namespace AccesoDatos.Products
                 cmd.Parameters.AddWithValue("@Description", Description);
                 cmd.Parameters.AddWithValue("@System", System);
                 cmd.Parameters.AddWithValue("@Category", Category);
+                cmd.Parameters.AddWithValue("@Usuario", user);
                 cmd.ExecuteNonQuery();
                 Cnn.CloseConnection();
                 return true;

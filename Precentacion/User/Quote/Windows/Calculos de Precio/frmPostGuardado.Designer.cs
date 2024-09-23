@@ -87,6 +87,7 @@
             this.txtUtilidad.Name = "txtUtilidad";
             this.txtUtilidad.Size = new System.Drawing.Size(127, 23);
             this.txtUtilidad.TabIndex = 42;
+            this.txtUtilidad.TextChanged += new System.EventHandler(this.txtUtilidad_TextChanged);
             // 
             // label2
             // 
@@ -225,6 +226,7 @@
             this.Name = "frmPostGuardado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Informe";
+            this.Load += new System.EventHandler(this.frmPostGuardado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

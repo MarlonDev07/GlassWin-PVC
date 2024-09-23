@@ -317,8 +317,8 @@ namespace Precentacion.Admin.Product_Manager
                     N_Products Products = new N_Products();
 
 
-
-                    bool ResProduct = Products.CreateProduct(txtCode.Text, txtDescription.Text.Trim(), cbSystem.Text, cbCategory.Text);
+                    string user = UserCache.Name;
+                    bool ResProduct = Products.CreateProduct(txtCode.Text, txtDescription.Text.Trim(), cbSystem.Text, cbCategory.Text, user);
 
                     if (ResProduct == true)
                     {

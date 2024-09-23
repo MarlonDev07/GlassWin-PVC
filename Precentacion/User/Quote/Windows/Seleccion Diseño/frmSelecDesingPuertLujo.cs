@@ -25,6 +25,11 @@ namespace Precentacion.User.Quote.Windows
             {
                 btn2Hoja.Visible = false;
                 btnHojaDivicion.Visible = false;
+                btnPCorredizo.Visible = false;
+            }
+            else if (ClsWindows.System == "PuertaEuAbatible") 
+            {
+                btnPCorredizo.Visible = false;
             }
         }
 
@@ -163,6 +168,11 @@ namespace Precentacion.User.Quote.Windows
         private void frmSelecDesingPuertLujo_FormClosing_1(object sender, FormClosingEventArgs e)
         {
           
+        }
+
+        private void btnPCorredizo_Click(object sender, EventArgs e)
+        {
+            OpenCalcPriceWindows("PCorredizo 1Hoja");
         }
     }
 }

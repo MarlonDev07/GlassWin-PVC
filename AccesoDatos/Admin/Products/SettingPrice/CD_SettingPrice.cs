@@ -56,7 +56,7 @@ namespace AccesoDatos.SettingPrice
         #endregion
 
         #region Create
-        public bool CreateSettingPrice(string Name, decimal Percentage, string Supplier)
+        public bool CreateSettingPrice(string Name, decimal Percentage, string Supplier, string user)
         {
             try
             {
@@ -67,6 +67,7 @@ namespace AccesoDatos.SettingPrice
                 cmd.Parameters.AddWithValue("@Name", Name);
                 cmd.Parameters.AddWithValue("@Percentage", Percentage);
                 cmd.Parameters.AddWithValue("@Supplier", Supplier);
+                cmd.Parameters.AddWithValue("@Usuario", user);
                 cmd.ExecuteNonQuery();
                 Cnn.CloseConnection();
                 return true;
@@ -116,7 +117,7 @@ namespace AccesoDatos.SettingPrice
             }
            
         }
-        public bool UpdateSettingPrice(int ID,string Name, decimal Percentage, string Supplier)
+        public bool UpdateSettingPrice(int ID,string Name, decimal Percentage, string Supplier, string user)
         {
             try
             {
@@ -128,6 +129,7 @@ namespace AccesoDatos.SettingPrice
                 cmd.Parameters.AddWithValue("@Name", Name);
                 cmd.Parameters.AddWithValue("@Percentage", Percentage);
                 cmd.Parameters.AddWithValue("@Supplier", Supplier);
+                cmd.Parameters.AddWithValue("@Usuario", user);
                 cmd.ExecuteNonQuery();
                 Cnn.CloseConnection();
                 return true;

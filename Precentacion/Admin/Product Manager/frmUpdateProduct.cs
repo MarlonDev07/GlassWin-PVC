@@ -166,7 +166,8 @@ namespace Precentacion.Admin.Product_Manager
                 {
                     N_Products products = new N_Products();
                     bool Res;
-                    Res = products.UpdateProduct(txtCode.Text, txtDescription.Text, cbSystem.Text, cbCategory.Text);
+                    string user = UserCache.Name;
+                    Res = products.UpdateProduct(txtCode.Text, txtDescription.Text, cbSystem.Text, cbCategory.Text, user);
                     if (Res)
                     {
                         LoadListPrice();

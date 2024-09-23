@@ -46,12 +46,12 @@ namespace Negocio.SettingPrice
         #endregion
 
         #region Create
-        public bool CreateSettingPrice(string Name, string Percentage, string Supplier)
+        public bool CreateSettingPrice(string Name, string Percentage, string Supplier, string user)
         {
             try
             {
                 bool Res = false;
-                Res = SettingPrice.CreateSettingPrice(Name, Convert.ToDecimal(Percentage), Supplier);
+                Res = SettingPrice.CreateSettingPrice(Name, Convert.ToDecimal(Percentage), Supplier, user);
                 return Res;
             }
             catch (Exception)
@@ -76,12 +76,12 @@ namespace Negocio.SettingPrice
             }
         }
 
-        public bool UpdateSettingPrice(string id, string Name, string Percentage, string Supplier)
+        public bool UpdateSettingPrice(string id, string Name, string Percentage, string Supplier, string user)
         {
             try
             {
                 bool Res = false;
-                Res = SettingPrice.UpdateSettingPrice(Convert.ToInt32(id), Name, Convert.ToDecimal(Percentage), Supplier);
+                Res = SettingPrice.UpdateSettingPrice(Convert.ToInt32(id), Name, Convert.ToDecimal(Percentage), Supplier, user);
                 return Res;
             }
             catch (Exception)

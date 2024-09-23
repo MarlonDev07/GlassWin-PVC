@@ -119,13 +119,15 @@ namespace Precentacion.Admin.SettingsPrice
 
         private void CreateSettingPrice()
         {
+
+            string user = UserCache.Name;
             if (cbSystem.Text != "" && cbDesing.Text != "" && cbColor.Text != "")
             {
                 if (txtPorsentaje.Text != "0")
                 {
                     string Name = cbSystem.Text + cbDesing.Text + cbColor.Text;
 
-                    bool Res = settingPrice.CreateSettingPrice(Name, txtPorsentaje.Text, cbSupplier.Text);
+                    bool Res = settingPrice.CreateSettingPrice(Name, txtPorsentaje.Text, cbSupplier.Text, user);
                     if (Res)
                     {
                         MessageBox.Show("El Ajuste de Precio se Inserto Correctamente", "Exito al insertar", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -152,6 +154,7 @@ namespace Precentacion.Admin.SettingsPrice
             LN_Proveedor proveedor = new LN_Proveedor();
             cbSupplier.DataSource = proveedor.CargarProveedor();
             cbSupplier.DisplayMember = "Nombre";
+           
         }
         private void txtValue_TextChanged(object sender, EventArgs e)
         {

@@ -180,7 +180,8 @@ namespace Precentacion.Admin.SettingsPrice
             {
                 if (txtPorsentaje.Text != "0")
                 {
-                    bool Res = settingPrice.UpdateSettingPrice(txtId.Text,txtName.Text, txtPorsentaje.Text, cbSupplier.Text);
+                    string user = UserCache.Name;
+                    bool Res = settingPrice.UpdateSettingPrice(txtId.Text,txtName.Text, txtPorsentaje.Text, cbSupplier.Text, user);
                     if (Res)
                     {
                         MessageBox.Show("El Ajuste de Precio se Modifico Correctamente", "Exito al insertar", MessageBoxButtons.OK, MessageBoxIcon.Information);
