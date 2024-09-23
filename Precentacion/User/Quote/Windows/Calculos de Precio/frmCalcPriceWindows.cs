@@ -345,6 +345,14 @@ namespace Precentacion.User.Quote.Windows
                     label10.Visible = false;
                     PanelVidrioFijo.Visible = false;
                 }
+                else if (ClsWindows.System == "Puerta Lujo") 
+                {
+                    if (ClsWindows.Desing == "PCorredizo 1Hoja" || ClsWindows.Desing == "PCorredizo 2Hoja") 
+                    {
+                        PanelHaladera.Visible = false;
+                    }
+
+                }
             }
             catch (Exception ex)
             {
