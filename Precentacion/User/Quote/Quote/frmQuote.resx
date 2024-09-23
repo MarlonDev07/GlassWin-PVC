@@ -129,11 +129,14 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>67</value>
   </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>301, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCargarDesglose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAABVRJREFUaEPtWd1PHFUUx88/QF9KfffjybbxQQ2QGN9aVCzFACZqLAkfBS0fKf1I
+        DQAACw0B7QfALAAABVRJREFUaEPtWd1PHFUUx88/QF9KfffjybbxQQ2QGN9aVCzFACZqLAkfBS0fKf1I
         ikETKksxxi8olDKzKW3RB9PENu2u0vpQq4WY1FYLkc6uiTFqWboJGtkZejy/4c5mZvbKzs7OEh/2l/wy
         cGfuOec359w7994tKaKIIor4X2AxWrolGdnQsRjZuFk0rQ+Ieu4m7dijujb+ohFTW4242m2S/0Yb7uEZ
         8fh/4nak9AuI4KuejJYSX1OL5zZuErcLA5oevk+/qbxgaOqkrqm3OGhai3hG15RTejz8PPoKMxlIRjd0
@@ -159,9 +162,6 @@
         pBPhWMbIAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>301, 17</value>
-  </metadata>
   <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL

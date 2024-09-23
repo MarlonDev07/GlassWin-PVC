@@ -516,6 +516,10 @@ namespace Precentacion.User.Quote.Windows
                     {
                         proveedorVidrio = "Macopa";
                     }
+                    else if (cbVidrio.Text.EndsWith("Carbone"))
+                    {
+                        proveedorVidrio = "Carbone";
+                    }
 
                     dtVidrio = loadProduct.loadPricesGlass(proveedorVidrio, cbVidrio.Text);
                     dgVidrio.AutoGenerateColumns = true;

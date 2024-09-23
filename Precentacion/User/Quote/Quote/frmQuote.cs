@@ -33,6 +33,8 @@ using System.Xml;
 using System.Threading.Tasks;
 using System.Globalization;
 using Dominio.Model.ClassArticuloExclusivo;
+using Precentacion.User.Quote.Windows.Calculos_de_Precio;
+using Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceVentanasFijas;
 
 
 namespace Precentacion.User.Quote.Quote
@@ -764,13 +766,54 @@ namespace Precentacion.User.Quote.Quote
 
                     //preguntar si desea editar la ventana
                     DialogResult result = MessageBox.Show("¿Desea editar la ventana n° " + dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString() + "?", "Editar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    string systema = ClsWindows.System;
                     if (result == DialogResult.Yes)
                     {
                         bool res = NQuote.FindWindows(idWindows);
                         if (res)
                         {
-                            frmCalcPriceWindows frm = new frmCalcPriceWindows();
-                            frm.Show();
+                            if (ClsWindows.System == "Ventila") 
+                            {
+                                if (ClsWindows.Desing == "1 Hoja Horizontal 1Fijo" || ClsWindows.Desing == "Ventila1Fijo")
+                                {
+                                    frmCalcPriceVentila frm = new frmCalcPriceVentila();
+                                    frm.Update = true;
+                                    frm.Show();
+                                }
+                                else 
+                                {
+                                    frmCalcPriceWindows frm = new frmCalcPriceWindows();
+                                    frm.Show();
+                                }
+                             
+                            }
+                            else if (ClsWindows.System == "Vidrio Fijo")
+                            {
+                                if (ClsWindows.Desing == "FijoEscaleno2Division" || ClsWindows.Desing == "FijoEscalenoDivision" || ClsWindows.Desing == "FijoEscaleno" || ClsWindows.Desing == "FijoGeotricaInvertido2Division" || ClsWindows.Desing == "FijoGeotricaInvertidoDivision" || ClsWindows.Desing == "FijoGeotricaInvertido" || ClsWindows.Desing == "FijoGeotrica2Division")
+                                {
+                                    frmCaclPriceVentanasFijas2 frm = new frmCaclPriceVentanasFijas2();
+                                    frm.update = true;
+                                    frm.Show();
+                                }
+                                else 
+                                {
+                                    frmCalcPriceVentanasFijas frm = new frmCalcPriceVentanasFijas();
+                                    frm.update = true;
+                                    frm.Show();
+                                }
+                             
+                            }
+                            else if (ClsWindows.System == "Puerta Baño")
+                            {
+                                frmCalcPuertaBaño frm = new frmCalcPuertaBaño();
+                                frm.update = true;
+                                frm.Show();
+                            }
+                            else 
+                            { 
+                                frmCalcPriceWindows frm = new frmCalcPriceWindows();
+                                frm.Show();
+                            }
                         }
                         else
                         {
@@ -4135,8 +4178,6 @@ namespace Precentacion.User.Quote.Quote
                 Discount = 0;
                 Total = 0;
 
-                // Calcular porcentaje de mano de obra y descuento
-                Labour = manoObra / 100;
                 Discount = descuento / 100;
 
                 // Calcular el subtotal sin impuestos ni ajustes
@@ -4145,8 +4186,20 @@ namespace Precentacion.User.Quote.Quote
                 // Aplicar el descuento primero
                 SubTotal -= SubTotal * Discount;
 
-                // Aplicar la mano de obra al subtotal ya descontado
-                SubTotal += SubTotal * Labour;
+                // Calcular porcentaje de mano de obra y descuento
+                if (manoObra > 100)
+                {
+                    // Si manoObra es mayor a 100, es un monto fijo
+                    Labour = manoObra;
+                    SubTotal += Labour; // Solo sumar el valor de Labour
+                }
+                else
+                {
+                    // Si manoObra es menor o igual a 100, es un porcentaje
+                    Labour = manoObra / 100;
+                    // Aplicar la mano de obra como porcentaje al subtotal ya descontado
+                    SubTotal += SubTotal * Labour;
+                }
 
                 // Mostrar el subtotal con descuento y mano de obra aplicados
                 txtSubtotal.Text = SubTotal.ToString("c");
@@ -4159,6 +4212,7 @@ namespace Precentacion.User.Quote.Quote
                 MessageBox.Show("Los campos de mano de obra y descuento deben ser números válidos.");
             }
         }
+
 
         private void CalcPricesWithoutTax()
         {
@@ -4175,8 +4229,51 @@ namespace Precentacion.User.Quote.Quote
             SubTotal = total;
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            // Validar si txtManoObra y txtDescuento son números
+            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
+            {
+                // Limpiar variables
+                SubTotal = 0;
+                Labour = 0;
+                Discount = 0;
+                Total = 0;
 
+                Discount = descuento / 100;
 
+                // Calcular el subtotal sin impuestos ni ajustes
+                CalcPricesWithoutTax();
+
+                // Aplicar el descuento primero
+                SubTotal -= SubTotal * Discount;
+
+                // Calcular porcentaje de mano de obra y descuento
+                if (manoObra > 100)
+                {
+                    // Si manoObra es mayor a 100, es un monto fijo
+                    Labour = manoObra;
+                    SubTotal += Labour; // Solo sumar el valor de Labour
+                }
+                else
+                {
+                    // Si manoObra es menor o igual a 100, es un porcentaje
+                    Labour = manoObra / 100;
+                    // Aplicar la mano de obra como porcentaje al subtotal ya descontado
+                    SubTotal += SubTotal * Labour;
+                }
+
+                // Mostrar el subtotal con descuento y mano de obra aplicados
+                txtSubtotal.Text = SubTotal.ToString("c");
+                txtTotal.Text = SubTotal.ToString("c");
+
+                // El impuesto se aplicará después con el ComboBox cbIva
+            }
+            else
+            {
+                MessageBox.Show("Los campos de mano de obra y descuento deben ser números válidos.");
+            }
+        }
 
         private void frmQuote_MouseUp(object sender, MouseEventArgs e)
         {
