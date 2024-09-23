@@ -1807,6 +1807,12 @@ namespace Negocio.LoadProduct
                         case "2 Hoja Con Divicion PL":
                             metraje = CalcPuertaLujo2HojasDivicion(Description);
                             break;
+                        case "PCorredizo 1Hoja":
+                            metraje = CalcPortonCorredizoLujo1Hoja(Description);
+                            break;
+                        case "PCorredizo 2Hoja":
+                            metraje = CalcPortonCorredizoLujo2Hoja(Description);
+                            break;
 
                     }
                     break;
