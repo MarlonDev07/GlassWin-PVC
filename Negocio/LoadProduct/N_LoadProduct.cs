@@ -6836,7 +6836,7 @@ namespace Negocio.LoadProduct
 
 
                     //*******************Accesorios********************//
-                    case "Rodin 6030":
+                    case "Balansin":
                         metraje = 12;
                         break;
                     case "Escuadra Union Universal":
@@ -6879,25 +6879,23 @@ namespace Negocio.LoadProduct
             {
                 switch (Description)
                 {
-                    case "Contramarco Superior-Lateral Akari":
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
-                        break;
+                    
                     case "Contramarco Inferior Akari":
-                        metraje = Convert.ToDecimal(ClsWindows.Weight);
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                         break;
                     case "Marco Hoja 6030":
                         metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                         break;
                     case "Marco Hoja Enganche 6030":
-                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
                         break;
                     case "Marco Cedazo 1/2":
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) / 2 * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) / 2 * 2);
                         break;
 
 
                     //*******************Accesorios********************//
-                    case "Rodin 6030":
+                    case "Balansin":
                         metraje = 2;
                         break;
                     case "Escuadra Union Universal":
@@ -6907,19 +6905,16 @@ namespace Negocio.LoadProduct
                         metraje = 4;
                         break;
                     case "Botaguas Akari":
-                        metraje = 3;
+                        metraje = 2;
                         break;
                     case "Corta Vientos":
                         metraje = 4;
                         break;
-                    case "Tapa Rodin":
-                        metraje = 2;
-                        break;
                     case "Empaque Akari":
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                         break;
                     case "Felpa Akari ":
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 8 + (Convert.ToDecimal(ClsWindows.heigt) * 10);
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 10 + (Convert.ToDecimal(ClsWindows.heigt) * 8);
                         break;
                     case "Cerradura Impacto Akari":
                         metraje = 1;
@@ -6928,7 +6923,7 @@ namespace Negocio.LoadProduct
                         metraje = 4;
                         break;
                     case "Empaque Cedazo 1/2":
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) / 2 * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) /2 * 2);
                         break;
                     case "Fibra Cedazo 180":
                         metraje = Convert.ToDecimal(ClsWindows.heigt) * 1;
@@ -6942,23 +6937,21 @@ namespace Negocio.LoadProduct
             {
                 switch (Description)
                 {
-                    case "Contramarco Superior-Lateral Akari":
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
-                        break;
+                    
                     case "Contramarco Inferior Akari":
-                        metraje = Convert.ToDecimal(ClsWindows.Weight);
-                        break;
+                    metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
+                    break;
                     case "Marco Hoja 6030":
                         metraje = Convert.ToDecimal(ClsWindows.Weight) * 2 + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                         break;
                     case "Marco Hoja Enganche 6030":
-                        metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
                         break;
 
 
 
                     //*******************Accesorios********************//
-                    case "Rodin 6030":
+                    case "Balansin":
                         metraje = 2;
                         break;
                     case "Escuadra Union Universal":
@@ -6968,19 +6961,16 @@ namespace Negocio.LoadProduct
                         metraje = 4;
                         break;
                     case "Botaguas Akari":
-                        metraje = 3;
+                        metraje = 2;
                         break;
                     case "Corta Vientos":
                         metraje = 4;
                         break;
-                    case "Tapa Rodin":
-                        metraje = 2;
-                        break;
                     case "Empaque Akari":
-                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 2) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                        metraje = (Convert.ToDecimal(ClsWindows.Weight) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 2);
                         break;
                     case "Felpa Akari ":
-                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 8 + (Convert.ToDecimal(ClsWindows.heigt) * 10);
+                        metraje = Convert.ToDecimal(ClsWindows.Weight) * 10 + (Convert.ToDecimal(ClsWindows.heigt) * 8);
                         break;
                     case "Cerradura Impacto Akari":
                         metraje = 1;
