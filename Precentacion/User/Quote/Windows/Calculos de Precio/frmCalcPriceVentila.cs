@@ -25,7 +25,11 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         public bool Update = false;
         // Relación de escala (1 metro = 1000 píxeles, 1 centímetro = 100 píxeles)
         private const decimal MetrosAPixeles = 1000.0m;
-        private const decimal CentimetrosAPixeles = 100.0m;
+        private const decimal CentimetrosAPixeles = 1500.0m;
+
+        // Tamaño máximo permitido para el PictureBox
+        private const int MaxWidth = 450;
+        private const int MaxHeight = 350;
         public frmCalcPriceVentila()
         {
             InitializeComponent();
@@ -128,6 +132,8 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
                 // Asignar la imagen redimensionada al PictureBox
                 pbVentila.Image = resizedImage;
+                pbVentila.SizeMode = PictureBoxSizeMode.Zoom;  // Ajusta según sea necesario
+                pbVentila.Refresh();
 
 
 

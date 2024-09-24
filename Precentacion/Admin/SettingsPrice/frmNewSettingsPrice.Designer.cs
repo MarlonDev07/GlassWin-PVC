@@ -239,7 +239,8 @@
             "FijoCelocia2",
             "FijoCelocia3",
             "PCorredizo 1Hoja",
-            "PCorredizo 2Hoja"});
+            "PCorredizo 2Hoja",
+            "VentilaEuroEspecialV1"});
             this.cbDesing.Location = new System.Drawing.Point(256, 33);
             this.cbDesing.Name = "cbDesing";
             this.cbDesing.Size = new System.Drawing.Size(217, 28);
