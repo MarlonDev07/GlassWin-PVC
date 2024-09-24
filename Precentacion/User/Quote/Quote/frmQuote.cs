@@ -691,7 +691,10 @@ namespace Precentacion.User.Quote.Quote
                             {
                                 case "Diseño 1 (con desglose de precios)":
                                     res = Generate(); // Usar el diseño habitual
-                                   // GeneratePlanos();
+                                    if (GeneratePlanos()) 
+                                    {
+                                        MessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
                                     break;
                                 case "Diseño 2 (precio total con portada de inicio)":
                                     // Mostrar el formulario para ingresar la descripción
@@ -703,6 +706,10 @@ namespace Precentacion.User.Quote.Quote
 
                                         // Llamar a GeneratePDF2 con la descripción ingresada
                                         res = GeneratePDF2(descripcionTrabajo);
+                                        if (GeneratePlanos())
+                                        {
+                                            MessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
                                     }
                                     else
                                     {
@@ -712,6 +719,10 @@ namespace Precentacion.User.Quote.Quote
                                     break;
                                 case "Diseño 3 (precio total)":
                                     res = GeneratePDF3(); // Llamar a la función para el tercer diseño de PDF
+                                    if (GeneratePlanos())
+                                    {
+                                        MessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
                                     break;
                             }
                         }
@@ -7188,7 +7199,7 @@ namespace Precentacion.User.Quote.Quote
                 PdfPTable tabla = new PdfPTable(dgCotizaciones.Columns.Count);
                 tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades     
                 tabla.LockedWidth = true;
-                float[] tablaW = { 0, 150, 160f, 30, 32, 0, 0, 0, 0, 0, 0, 0, 0 }; // Ancho de las columnas
+                float[] tablaW = { 0, 160, 120f, 70 }; // Ancho de las columnas
                 tabla.SetWidths(tablaW);
 
                 // Agregar encabezados de columna
@@ -7208,7 +7219,7 @@ namespace Precentacion.User.Quote.Quote
                         {
                             PdfPCell cell = null;
 
-                            if (dgCotizaciones.Columns[j].HeaderText == "URL")
+                            if (dgCotizaciones.Columns[j].HeaderText == "Diseño")
                             {
                                 string rutaImagen = dgCotizaciones[j, i].Value.ToString();
                                 System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
