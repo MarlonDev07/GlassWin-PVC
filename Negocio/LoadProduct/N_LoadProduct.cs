@@ -11628,19 +11628,19 @@ namespace Negocio.LoadProduct
                         break;
 
                     case "Barra Roscada":
-                        Metraje = 2;
+                        Metraje = 4;
                         break;
 
                     case "Tuerca 1/4":
-                        Metraje = 4;
+                        Metraje = 8;
                         break;
 
                     case "Arandela Precion":
-                        Metraje = 4;
+                        Metraje = 8;
                         break;
 
                     case "Arandela Plana":
-                        Metraje = 4;
+                        Metraje = 8;
                         break;
 
                     case "Empaque PL":
