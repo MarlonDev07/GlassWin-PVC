@@ -55,12 +55,13 @@
             this.lblVentilaV = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.btn3HojasVertical = new System.Windows.Forms.Button();
             this.btn1Hoja = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -281,15 +282,16 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.button4);
             this.panel6.Controls.Add(this.btnVT5Euro);
             this.panel6.Controls.Add(this.btnVT6Euro);
             this.panel6.Controls.Add(this.btnVT4Euro);
             this.panel6.Controls.Add(this.btnVT2Euro);
             this.panel6.Controls.Add(this.btnVT3Euro);
             this.panel6.Controls.Add(this.btnVT1Euro);
-            this.panel6.Location = new System.Drawing.Point(6, 14);
+            this.panel6.Location = new System.Drawing.Point(4, 14);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(2459, 222);
+            this.panel6.Size = new System.Drawing.Size(3182, 222);
             this.panel6.TabIndex = 0;
             // 
             // btnVT5Euro
@@ -299,9 +301,9 @@
             this.btnVT5Euro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVT5Euro.BackgroundImage")));
             this.btnVT5Euro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnVT5Euro.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVT5Euro.Location = new System.Drawing.Point(1356, 51);
+            this.btnVT5Euro.Location = new System.Drawing.Point(1355, 51);
             this.btnVT5Euro.Name = "btnVT5Euro";
-            this.btnVT5Euro.Size = new System.Drawing.Size(478, 121);
+            this.btnVT5Euro.Size = new System.Drawing.Size(478, 141);
             this.btnVT5Euro.TabIndex = 55;
             this.btnVT5Euro.UseVisualStyleBackColor = false;
             this.btnVT5Euro.Click += new System.EventHandler(this.btnVT5Euro_Click);
@@ -313,9 +315,9 @@
             this.btnVT6Euro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVT6Euro.BackgroundImage")));
             this.btnVT6Euro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnVT6Euro.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVT6Euro.Location = new System.Drawing.Point(1880, 52);
+            this.btnVT6Euro.Location = new System.Drawing.Point(1879, 52);
             this.btnVT6Euro.Name = "btnVT6Euro";
-            this.btnVT6Euro.Size = new System.Drawing.Size(540, 121);
+            this.btnVT6Euro.Size = new System.Drawing.Size(540, 141);
             this.btnVT6Euro.TabIndex = 54;
             this.btnVT6Euro.UseVisualStyleBackColor = false;
             this.btnVT6Euro.Click += new System.EventHandler(this.btnVT6Euro_Click);
@@ -327,9 +329,9 @@
             this.btnVT4Euro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVT4Euro.BackgroundImage")));
             this.btnVT4Euro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnVT4Euro.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVT4Euro.Location = new System.Drawing.Point(843, 49);
+            this.btnVT4Euro.Location = new System.Drawing.Point(842, 49);
             this.btnVT4Euro.Name = "btnVT4Euro";
-            this.btnVT4Euro.Size = new System.Drawing.Size(467, 121);
+            this.btnVT4Euro.Size = new System.Drawing.Size(467, 141);
             this.btnVT4Euro.TabIndex = 53;
             this.btnVT4Euro.UseVisualStyleBackColor = false;
             this.btnVT4Euro.Click += new System.EventHandler(this.btnVT4Euro_Click);
@@ -341,9 +343,9 @@
             this.btnVT2Euro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVT2Euro.BackgroundImage")));
             this.btnVT2Euro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnVT2Euro.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVT2Euro.Location = new System.Drawing.Point(204, 50);
+            this.btnVT2Euro.Location = new System.Drawing.Point(203, 50);
             this.btnVT2Euro.Name = "btnVT2Euro";
-            this.btnVT2Euro.Size = new System.Drawing.Size(257, 121);
+            this.btnVT2Euro.Size = new System.Drawing.Size(257, 141);
             this.btnVT2Euro.TabIndex = 51;
             this.btnVT2Euro.UseVisualStyleBackColor = false;
             this.btnVT2Euro.Click += new System.EventHandler(this.btnVT2Euro_Click);
@@ -355,9 +357,9 @@
             this.btnVT3Euro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVT3Euro.BackgroundImage")));
             this.btnVT3Euro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnVT3Euro.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVT3Euro.Location = new System.Drawing.Point(507, 51);
+            this.btnVT3Euro.Location = new System.Drawing.Point(506, 51);
             this.btnVT3Euro.Name = "btnVT3Euro";
-            this.btnVT3Euro.Size = new System.Drawing.Size(290, 121);
+            this.btnVT3Euro.Size = new System.Drawing.Size(290, 141);
             this.btnVT3Euro.TabIndex = 52;
             this.btnVT3Euro.UseVisualStyleBackColor = false;
             this.btnVT3Euro.Click += new System.EventHandler(this.btnVT3Euro_Click);
@@ -369,9 +371,9 @@
             this.btnVT1Euro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVT1Euro.BackgroundImage")));
             this.btnVT1Euro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnVT1Euro.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVT1Euro.Location = new System.Drawing.Point(38, 49);
+            this.btnVT1Euro.Location = new System.Drawing.Point(37, 49);
             this.btnVT1Euro.Name = "btnVT1Euro";
-            this.btnVT1Euro.Size = new System.Drawing.Size(120, 121);
+            this.btnVT1Euro.Size = new System.Drawing.Size(120, 141);
             this.btnVT1Euro.TabIndex = 50;
             this.btnVT1Euro.UseVisualStyleBackColor = false;
             this.btnVT1Euro.Click += new System.EventHandler(this.btnVT1Euro_Click);
@@ -410,6 +412,20 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(2397, 222);
             this.panel8.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(507, 16);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(120, 199);
+            this.button3.TabIndex = 54;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btn3HojasVertical
             // 
@@ -480,26 +496,26 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // button4
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(507, 16);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 199);
-            this.button3.TabIndex = 54;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(2460, 49);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(429, 141);
+            this.button4.TabIndex = 56;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // frmSelectDesingVentila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(875, 600);
+            this.ClientSize = new System.Drawing.Size(891, 639);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -556,5 +572,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnFijoVentila1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }

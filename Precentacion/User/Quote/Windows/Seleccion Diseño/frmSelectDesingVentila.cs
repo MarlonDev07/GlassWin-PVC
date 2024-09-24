@@ -234,5 +234,13 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "VentilaEuroEspecialV1";
+            frmCalcPriceVentila frm = new frmCalcPriceVentila();
+            frm.Show();
+            this.Close();
+        }
     }
 }
