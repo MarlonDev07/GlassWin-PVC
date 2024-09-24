@@ -229,5 +229,13 @@ namespace Precentacion.User.Quote.Windows
             frm.Show();
             this.Close();
         }
+
+        private void bntguillotina_Click(object sender, EventArgs e)
+        {
+            ClsWindows.Desing = "Guillotina";
+            frmCalcPriceWindows frm = new frmCalcPriceWindows();
+            frm.Show();
+            this.Close();
+        }
     }
 }
