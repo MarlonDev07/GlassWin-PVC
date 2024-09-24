@@ -19,6 +19,9 @@ namespace Dominio.Model.ClassWindows
         public static decimal Weight { get; set; }
 
         public static decimal heigt { get; set;}
+        public static decimal WeightV { get; set; }
+
+        public static decimal heigtV { get; set; }
 
         public static decimal heigt2 { get; set; }
 

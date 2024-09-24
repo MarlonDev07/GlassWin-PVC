@@ -178,12 +178,14 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
                     // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
+                    ClsWindows.WeightV = anchoV;
                     ClsWindows.AnchoVentila = anchoV;
                     //button2_Click(sender, e);
                 }
                 else
                 {
                     ClsWindows.AnchoVentila = 0;
+                    ClsWindows.WeightV = 0;
                 }
             }
             catch 
@@ -305,15 +307,14 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         #region Función para redimensionar la imagen
         private Bitmap ResizeImage(Image image, int width, int height)
         {
-            // Rectángulo de destino para la imagen redimensionada
-            var destRect = new Rectangle(0, 0, width, height);
-            // Crear un nuevo objeto Bitmap para la imagen redimensionada
+            // try {
+            // Crear un nuevo Bitmap con el tamaño deseado
             var destImage = new Bitmap(width, height);
 
             // Establecer la resolución del nuevo Bitmap igual a la resolución de la imagen original
             destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
-            // Crear un objeto Graphics para la imagen redimensionada
+            // Usar Graphics para dibujar la imagen redimensionada
             using (var graphics = Graphics.FromImage(destImage))
             {
                 // Configurar la calidad de composición, interpolación, suavizado y compensación de píxeles para el objeto Graphics
@@ -327,13 +328,22 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 using (var wrapMode = new ImageAttributes())
                 {
                     wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+
                     // Dibujar la imagen original redimensionada en el rectángulo de destino utilizando el objeto Graphics
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                    graphics.DrawImage(image, new Rectangle(0, 0, width, height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
             }
-
             // Devolver la imagen redimensionada
             return destImage;
+
+            // }
+            // catch (Exception ex) {
+            // MessageBox.Show("Error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //return destImage;
+            // }
+
+
+
         }
         #endregion
         private void redimension_Click(object sender, EventArgs e)
@@ -389,6 +399,8 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             description += "Vidrio: " + cbVidrio.Text + "\n";
             description += "Ancho: " + ClsWindows.Weight + "\n";
             description += "Alto: " + ClsWindows.heigt + "\n";
+            description += "Ancho Ventila: " + ClsWindows.WeightV + "\n";
+            description += "Alto Ventila: " + ClsWindows.heigtV + "\n";
             description += "Cantidad: " + txtCantidad.Value + "\n";
             description += "Ubicación: " + txtUbicacion.Text + "\n";
             if (this.Update == false)
@@ -504,6 +516,31 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             {
                 Cedazo = false;
             }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox2.Text != "")
+                {
+                    decimal altoV = Convert.ToDecimal(textBox2.Text);
+
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    altoV /= 1000;
+
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    ClsWindows.heigtV = altoV;
+                    //button2_Click(sender, e);
+                }
+                else
+                {
+                    ClsWindows.heigtV = 0;
+                }
+            }
+            catch
+            { }
         }
     }
 }
