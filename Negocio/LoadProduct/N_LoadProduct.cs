@@ -11512,8 +11512,8 @@ namespace Negocio.LoadProduct
                 {
                     //Aluminio
                 case "Tubo 1 Aleta 13/4x4 PL":
-                        Metraje = 6.4m;
-                        break;
+                    Metraje = Convert.ToDecimal(ClsWindows.heigt) * 1;
+                    break;
                 case "Riel Porton Pesado":
                     Metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
                     break;
@@ -11543,10 +11543,10 @@ namespace Negocio.LoadProduct
                         Metraje = 2;
                         break;
 
-                    case "Juego Cerradura 31/32 AL DT1850":
+                    case "Cerradura Pico Lora Grande":
                         Metraje = 1;
                         break;
-                    case "Tope Media Luna":
+                    case "Tope Fijo de Piso Prefabricado Multiuso":
                         Metraje = 1;
                         break;
 
@@ -11590,9 +11590,7 @@ namespace Negocio.LoadProduct
                 switch (Description)
                 {
                     //Aluminio
-                    case "Tubo 1 Aleta 13/4x4 PL":
-                        Metraje = 6.4m;
-                        break;
+
                     case "Riel Porton Pesado":
                         Metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
                         break;
@@ -11600,13 +11598,13 @@ namespace Negocio.LoadProduct
                         Metraje = Convert.ToDecimal(ClsWindows.Weight) * 2;
                         break;
                     case "Envidriador PL D36":
-                        Metraje = Convert.ToDecimal(ClsWindows.Weight) * 4 + Convert.ToDecimal(ClsWindows.heigt) * 4;
+                        Metraje = Convert.ToDecimal(ClsWindows.Weight) * 4 + Convert.ToDecimal(ClsWindows.heigt) * 8;
                         break;
                     case "Inferior Hoja PL D37":
                         Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
                         break;
                     case "Lateral Hoja PL D38":
-                        Metraje = 4.60m;
+                        Metraje = 9.20m;
                         break;
                     case "Superior Hoja PL D39":
                         Metraje = Convert.ToDecimal(ClsWindows.Weight) * 1;
@@ -11616,17 +11614,17 @@ namespace Negocio.LoadProduct
                     //Accesorios 	
 
                     case "Haladera Sencilla p/ PL":
-                        Metraje = 2;
+                        Metraje = 4;
                         break;
                     case "Rodin Porton Pesado":
-                        Metraje = 2;
+                        Metraje = 4;
                         break;
 
-                    case "Juego Cerradura 31/32 AL DT1850":
+                    case "Cerradura Pico Lora Grande":
                         Metraje = 1;
                         break;
-                    case "Tope Media Luna":
-                        Metraje = 1;
+                    case "Tope Fijo de Piso Prefabricado Multiuso":
+                        Metraje = 2;
                         break;
 
                     case "Barra Roscada":
@@ -11646,11 +11644,11 @@ namespace Negocio.LoadProduct
                         break;
 
                     case "Empaque PL":
-                        Metraje = (Convert.ToDecimal(ClsWindows.Weight) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 4);
+                        Metraje = (Convert.ToDecimal(ClsWindows.Weight) * 4) + (Convert.ToDecimal(ClsWindows.heigt) * 8);
                         break;
 
                     case "Felpa Gruesa PL":
-                        Metraje = Convert.ToDecimal(ClsWindows.heigt) * 2;
+                        Metraje = Convert.ToDecimal(ClsWindows.heigt) * 4;
                         break;
                 }
 
