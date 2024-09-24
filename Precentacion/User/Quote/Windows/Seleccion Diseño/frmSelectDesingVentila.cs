@@ -237,6 +237,7 @@ namespace Precentacion.User.Quote.Windows
 
         private void button4_Click(object sender, EventArgs e)
         {
+            ClsWindows.System = "Ventila Euro";
             ClsWindows.Desing = "VentilaEuroEspecialV1";
             frmCalcPriceVentila frm = new frmCalcPriceVentila();
             frm.Show();

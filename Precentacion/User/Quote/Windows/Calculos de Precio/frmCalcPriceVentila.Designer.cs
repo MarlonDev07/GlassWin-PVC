@@ -84,9 +84,9 @@
             // pbVentila
             // 
             this.pbVentila.Image = ((System.Drawing.Image)(resources.GetObject("pbVentila.Image")));
-            this.pbVentila.Location = new System.Drawing.Point(219, 190);
+            this.pbVentila.Location = new System.Drawing.Point(332, 190);
             this.pbVentila.Name = "pbVentila";
-            this.pbVentila.Size = new System.Drawing.Size(680, 338);
+            this.pbVentila.Size = new System.Drawing.Size(522, 338);
             this.pbVentila.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbVentila.TabIndex = 0;
             this.pbVentila.TabStop = false;
