@@ -40,8 +40,14 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vertical":
                             Rebajo = H-0.03M;
                             break;
+                        case "Vertical fijo":
+                            Rebajo = H - 0.02M;
+                            break;
                         case "Vertical Centro":
                             Rebajo = H-0.03M;
+                            break;
+                        case "Vertical Centro fijo":
+                            Rebajo = H - 0.02M;
                             break;
                     }
                     break;
