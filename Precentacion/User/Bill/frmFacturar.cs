@@ -1822,6 +1822,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //V Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //Constru
                 if (CompanyCache.IdCompany == 3101704274)
                 {
@@ -2402,6 +2411,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //V Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //Constru
                 if (CompanyCache.IdCompany == 3101704274)
                 {
@@ -2914,6 +2932,15 @@ namespace Precentacion.User.Bill
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\constru.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //V Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
                     rutaLogo = ruta + Url;
 
                 }

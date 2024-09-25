@@ -492,6 +492,22 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+                //Vidrios Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "GARANTIA: 1 año.";
+                    txtConditional2.Text = "VALIDEZ DE LA OFERTA: 15 días.";
+                    txtConditional3.Text = "TIEMPO DE ENTREGA DE 4 a 6 DIAS HABILES.";
+                    txtConditional4.Text = "1.Requisitos para el tramite: Adelanto, firma o aprobación del contrato.";
+                    txtConditional5.Text = "2.Se garantiza una excelente Mano de Obra, Certificada por el Instituto Extralum y el INA.";
+                    txtConditional6.Text = "3.Todo trabajo se instalará en su totalidad de una sola vez, no se harán instalaciones parciales ya que esto implica costos adicionales, los cuales no se contemplan en esta\r\ncotización.";
+                    txtConditional7.Text = "4.La instalación cuentan con garantía de 12 meses por funcionamiento en mano de obra o filtraciones.";
+                    txtConditional8.Text = "5.Precio en efectivo, Simpe o transferencia.";
+                    txtConditional9.Text = "6.Forma de pago 60% de adelanto, 20% cuando sale el material de extralum y 20% al finalizar. (sujeto a cambios según se convenga).";
+                    txtConditional10.Text = "7.Todo esta contemplado según medidas tomadas en sitio,nuestra oferta no contempla andamios.";
+                   
+                }
                 //Viteco
                 if (CompanyCache.IdCompany == 503320196)
                 {
@@ -1761,6 +1777,15 @@ namespace Precentacion.User.Quote.Quote
                     rutaLogo = ruta + Url;
 
                 }
+                //V Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //Usuario de Nel
                 if (CompanyCache.IdCompany == 205520679)
                 {
@@ -1948,6 +1973,17 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(new Chunk("Teléfono: " + CompanyCache.Phone, textFont));
                     paragraph.Add(Chunk.NEWLINE);
                     paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 9699999999)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-785963", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "San Pablo de Heredia, C.R.", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2101-4081 / 8462-8462", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidriosdayra.com / solucionesdayra@gmail.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
                 else if (CompanyCache.IdCompany == 205150849)
@@ -2874,6 +2910,21 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
+                //V Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
                 //Vidriera Palmares
                 if (CompanyCache.IdCompany == 222222222)
                 {
@@ -2991,6 +3042,17 @@ namespace Precentacion.User.Quote.Quote
                     rutaLogo = ruta + Url;
 
                 }
+
+                //V Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
 
                 //Constru
                 if (CompanyCache.IdCompany == 3101704274)
@@ -3213,7 +3275,17 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
-
+                else if (CompanyCache.IdCompany == 9699999999)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-785963", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "San Pablo de Heredia, C.R.", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2101-4081 / 8462-8462", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidriosdayra.com / solucionesdayra@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
                 else if (CompanyCache.IdCompany == 3101704274)
                 {
                     paragraph.Add(new Chunk("Cédula Jurídica : 3-101-704274", textFont));
@@ -4424,6 +4496,14 @@ namespace Precentacion.User.Quote.Quote
                     rutaLogo = ruta + Url;
 
                 }
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
+                    rutaLogo = ruta + Url;
+
+                }
 
                 //Constru
                 if (CompanyCache.IdCompany == 3101704274)
@@ -4627,7 +4707,17 @@ namespace Precentacion.User.Quote.Quote
                     paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
-
+                else if (CompanyCache.IdCompany == 9699999999)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-785963", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "San Pablo de Heredia, C.R.", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2101-4081 / 8462-8462", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidriosdayra.com / solucionesdayra@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
                 else if (CompanyCache.IdCompany == 503320196)
                 {
                     paragraph.Add(new Chunk("Cédula Jurídica : 5-0332-0196", textFont));
@@ -5452,6 +5542,20 @@ namespace Precentacion.User.Quote.Quote
                 }
                 //Usuario Prueba
                 if (CompanyCache.IdCompany == 999999999)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                if (CompanyCache.IdCompany == 9699999999)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
@@ -6894,6 +6998,16 @@ namespace Precentacion.User.Quote.Quote
                     rutaLogo = ruta + Url;
 
                 }
+                //V Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
                 //Constru
                 if (CompanyCache.IdCompany == 3101704274)
                 {
