@@ -23,6 +23,10 @@ namespace Dominio.Model.PuertaBaño
 
         public static decimal WeightPanel { get; set; }
 
+        public static decimal WP { get; set; }
+
+        public static decimal HP { get; set; }
+
         public static string Lock { get; set; }
 
         public static int IDQuote { get; set; }
