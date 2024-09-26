@@ -33,6 +33,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.PanelSeleccionDiseño = new System.Windows.Forms.Panel();
+            this.bntguillotina = new System.Windows.Forms.Button();
             this.btn2ViasMMM = new System.Windows.Forms.Button();
             this.btnFijoMMM = new System.Windows.Forms.Button();
             this.FijoMovilMovil = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.btnFijoMovilFijo = new System.Windows.Forms.Button();
             this.MovilFijoMovil = new System.Windows.Forms.Button();
             this.btnBackSistema = new System.Windows.Forms.Button();
-            this.bntguillotina = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.PanelSeleccionDiseño.SuspendLayout();
@@ -98,8 +98,24 @@
             this.PanelSeleccionDiseño.Controls.Add(this.MovilFijoMovil);
             this.PanelSeleccionDiseño.Location = new System.Drawing.Point(0, 3);
             this.PanelSeleccionDiseño.Name = "PanelSeleccionDiseño";
-            this.PanelSeleccionDiseño.Size = new System.Drawing.Size(3921, 206);
+            this.PanelSeleccionDiseño.Size = new System.Drawing.Size(3279, 206);
             this.PanelSeleccionDiseño.TabIndex = 42;
+            // 
+            // bntguillotina
+            // 
+            this.bntguillotina.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bntguillotina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.bntguillotina.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntguillotina.BackgroundImage")));
+            this.bntguillotina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bntguillotina.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bntguillotina.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntguillotina.Location = new System.Drawing.Point(3166, 32);
+            this.bntguillotina.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bntguillotina.Name = "bntguillotina";
+            this.bntguillotina.Size = new System.Drawing.Size(106, 172);
+            this.bntguillotina.TabIndex = 45;
+            this.bntguillotina.UseVisualStyleBackColor = false;
+            this.bntguillotina.Click += new System.EventHandler(this.bntguillotina_Click);
             // 
             // btn2ViasMMM
             // 
@@ -252,29 +268,13 @@
             this.btnBackSistema.UseVisualStyleBackColor = false;
             this.btnBackSistema.Click += new System.EventHandler(this.btnBackSistema_Click_1);
             // 
-            // bntguillotina
-            // 
-            this.bntguillotina.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.bntguillotina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.bntguillotina.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntguillotina.BackgroundImage")));
-            this.bntguillotina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bntguillotina.Cursor = System.Windows.Forms.Cursors.Default;
-            this.bntguillotina.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntguillotina.Location = new System.Drawing.Point(3166, 32);
-            this.bntguillotina.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bntguillotina.Name = "bntguillotina";
-            this.bntguillotina.Size = new System.Drawing.Size(106, 172);
-            this.bntguillotina.TabIndex = 45;
-            this.bntguillotina.UseVisualStyleBackColor = false;
-            this.bntguillotina.Click += new System.EventHandler(this.bntguillotina_Click);
-            // 
             // frmSelectDesing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(877, 597);
+            this.ClientSize = new System.Drawing.Size(893, 636);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

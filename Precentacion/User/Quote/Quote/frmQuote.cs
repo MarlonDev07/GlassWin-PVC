@@ -2176,7 +2176,7 @@ namespace Precentacion.User.Quote.Quote
                 PdfPTable tabla = new PdfPTable(dgCotizaciones.Columns.Count);
                 tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades     
                 tabla.LockedWidth = true;
-                float[] tablaW = { 0f, 190f, 140f, 50f }; // Ancho de las columnas
+                float[] tablaW = { 0f, 190f, 140f, 60f }; // Ancho de las columnas
                 tabla.SetWidths(tablaW);
 
                 // Agregar encabezados de columna
