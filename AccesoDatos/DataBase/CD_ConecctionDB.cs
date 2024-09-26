@@ -27,22 +27,22 @@ namespace AccesoDatos.DataBase
                     connectionString = ConfigurationManager.ConnectionStrings["GWAluvi"].ConnectionString;
                     Conexion = new SqlConnection(connectionString);
                 }
-                if (CompanyCache.IdCompany == 3102879949)
+                else if (CompanyCache.IdCompany == 3102879949)
                 {
                     connectionString = ConfigurationManager.ConnectionStrings["MercadoVidrio"].ConnectionString;
                     Conexion = new SqlConnection(connectionString);
                 }
-                if (CompanyCache.IdCompany == 3102154177)
+                else if(CompanyCache.IdCompany == 3102154177)
                 {
                     connectionString = ConfigurationManager.ConnectionStrings["GWAlbo"].ConnectionString;
                     Conexion = new SqlConnection(connectionString);
                 }//
-                if (CompanyCache.IdCompany == 3101623581)
+                else if(CompanyCache.IdCompany == 3101623581)
                 {
                     connectionString = ConfigurationManager.ConnectionStrings["GWVitroEsparza"].ConnectionString;
                     Conexion = new SqlConnection(connectionString);
                 }//
-                if (CompanyCache.IdCompany == 31028013) 
+                else if(CompanyCache.IdCompany == 31028013) 
                 {
                     connectionString = ConfigurationManager.ConnectionStrings["GWInnovaGlass"].ConnectionString;
                     Conexion = new SqlConnection(connectionString);
