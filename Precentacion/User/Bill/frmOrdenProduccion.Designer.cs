@@ -650,21 +650,25 @@
             // 
             this.verticalFijo.HeaderText = "Vertical Fijo";
             this.verticalFijo.Name = "verticalFijo";
+            this.verticalFijo.Visible = false;
             // 
             // cantVerticalCFijo
             // 
             this.cantVerticalCFijo.HeaderText = "Cant";
             this.cantVerticalCFijo.Name = "cantVerticalCFijo";
+            this.cantVerticalCFijo.Visible = false;
             // 
             // verticalCFijo
             // 
             this.verticalCFijo.HeaderText = "Vertical C Fijo";
             this.verticalCFijo.Name = "verticalCFijo";
+            this.verticalCFijo.Visible = false;
             // 
             // verticalFijoCant
             // 
             this.verticalFijoCant.HeaderText = "Cant";
             this.verticalFijoCant.Name = "verticalFijoCant";
+            this.verticalFijoCant.Visible = false;
             // 
             // frmOrdenProduccion
             // 
