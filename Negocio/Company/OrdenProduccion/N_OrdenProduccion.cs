@@ -49,6 +49,18 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vertical fijo":
                             Rebajo = H - 0.02M;
                             break;
+                        case "Vidrio M ancho":
+                            Rebajo = W - 0.108M / 2;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = W - 0.108M / 2;
+                            break;
+                        case "Vidrio M alto":
+                            Rebajo = H - 0.10M /2;
+                            break;
+                        case "Vidrio F alto":
+                            Rebajo = W - 0.09M;
+                            break;
                     }
                     break;
 
@@ -187,17 +199,30 @@ namespace Negocio.Company.OrdenProduccion
                             Cantidad = 1;
                             break;
                         case "Vertical":
-                            Cantidad = 2;
+                            Cantidad = 1;
                             break;
                         case "Vertical Centro":
-                            Cantidad = 2;
+                            Cantidad = 1;
                             break;
                         case "Vertical Centro fijo":
-                            Cantidad = 4;
+                            Cantidad = 1;
                             break;
                         case "Vertical fijo":
-                            Cantidad = 3;
+                            Cantidad = 1;
                             break;
+                        case "Vidrio M ancho":
+                            Cantidad = 1;
+                            break;
+                        case "Vidrio F ancho":
+                            Cantidad = 1;
+                            break;
+                        case "Vidrio M alto":
+                            Cantidad = 1;
+                            break;
+                        case "Vidrio F alto":
+                            Cantidad = 1;
+                            break;
+
                     }
                     break;
                 case "MovilFijo":
