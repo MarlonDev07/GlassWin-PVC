@@ -12453,8 +12453,7 @@ namespace Negocio.LoadProduct
             decimal WeigthPanel = clsPuertaBaño.WeightPanel;
             switch (Descripcion)
             {
-                //Aluminio
-                //Aluminio
+                //Aluminio de puerta // 
                 case "Cargador PB Liso":
                     Metraje = Weigth;
                     break;
@@ -12479,11 +12478,23 @@ namespace Negocio.LoadProduct
                 case "Escuadra Pañera PB Liso":
                     Metraje = 0.4m;
                     break;
-                //Lamina
+                //Lamina panel //
                 case "Lamina Plastica 122":
-                    if (Weigth <= 1.22m)
+                    if (Weigth <= 1.22m) 
                     {
                         Metraje = 1;
+                    }
+                    else
+                    {
+                        if (Weigth <= 1.83m && Weigth >= 2.44m)
+                        {
+                            Metraje = 2;
+                        }
+                    }
+                    
+                    if (WeigthPanel <= 1.22m)
+                    {
+                        Metraje = Weigth + WeigthPanel;
                     }
                     else
                     {
@@ -12497,6 +12508,11 @@ namespace Negocio.LoadProduct
                     if (Weigth <= 1.23m && Weigth >= 1.30m)
                     {
                         Metraje = 2;
+                    }
+                    
+                    if (WeigthPanel <= 1.23m && WeigthPanel >= 1.30m)
+                    {
+                        Metraje = (Weigth) + WeigthPanel *2;
                     }
                     break;
                 case "Lamina Plastica 75":
@@ -12514,6 +12530,7 @@ namespace Negocio.LoadProduct
 
                     }
                     break;
+
                 //Accesorios
                 case "Empaque U PB":
                     Metraje = (Weigth * 2) + (Heigth * 6);
