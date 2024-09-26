@@ -1019,7 +1019,7 @@ namespace Precentacion.User.Quote.Quote
 
                 Discount = descuento / 100;
                 // Verificar si manoObra es mayor que 100, lo tomamos como un monto absoluto
-                if (manoObra > 100)
+                if (manoObra > 500)
                 {
                     // Es un monto fijo
                     Labour = manoObra;
@@ -1362,7 +1362,7 @@ namespace Precentacion.User.Quote.Quote
                     if (price > 0)
                     {
                         //decimal priceWithLabour = price + (price + ManoObra);
-                        decimal priceWithLabour = ManoObra > 1 ? total + ManoObra : total + (total * ManoObra); // Si Labour es mayor que 1, es un monto fijo
+                        decimal priceWithLabour = ManoObra > 5 ? total + ManoObra : total + (total * ManoObra); // Si Labour es mayor que 1, es un monto fijo
                         decimal priceWithDiscount = priceWithLabour - (price * Descuento);
                         decimal TotalPriceWindows = ((priceWithLabour + priceWithDiscount));
                         row.Cells["Price"].Value = TotalPriceWindows;
@@ -1399,7 +1399,7 @@ namespace Precentacion.User.Quote.Quote
                     if (price > 0)
                     {
                         //decimal priceWithLabour = price + (price * Labour);
-                        decimal priceWithLabour = Labour > 1 ? price + Labour : price + (price * Labour); // Aplicar monto fijo o porcentaje
+                        decimal priceWithLabour = Labour > 5 ? price + Labour : price + (price * Labour); // Aplicar monto fijo o porcentaje
                         decimal priceWithDiscount = priceWithLabour - (priceWithLabour * Discount);
                         row.Cells["Price"].Value = priceWithDiscount;
                         // Sumar el total de la columna Price
@@ -4271,7 +4271,7 @@ namespace Precentacion.User.Quote.Quote
                 SubTotal -= SubTotal * Discount;
 
                 // Calcular porcentaje de mano de obra y descuento
-                if (manoObra > 100)
+                if (manoObra > 500)
                 {
                     // Si manoObra es mayor a 100, es un monto fijo
                     Labour = manoObra;
