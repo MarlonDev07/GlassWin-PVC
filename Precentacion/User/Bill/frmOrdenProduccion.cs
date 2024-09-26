@@ -29,7 +29,7 @@ namespace Precentacion.User.Bill
         N_Quote NQuote = new N_Quote();
         N_OrdenProduccion NOrden = new N_OrdenProduccion();
         bool CargaCompleta = false;
-        List<string> Piezas5020 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro"/*, "Vertical fijo", "Vertical Centro fijo" */};
+        List<string> Piezas5020 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio F ancho", "Vidrio M alto", "Vidrio F alto" };
         List<string> Piezas8025 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "PisaAlfombra" };
         List<decimal> ResultadosRebajo = new List<decimal>();
         List<decimal> ResultadosCantidad = new List<decimal>();
@@ -151,10 +151,14 @@ namespace Precentacion.User.Bill
                                     ResultadosRebajo[4], ResultadosCantidad[4],
                                     ResultadosRebajo[5], ResultadosCantidad[5],
                                     ResultadosRebajo[6], ResultadosCantidad[6],
-                                    contadorVentana5020/*,
+                                    contadorVentana5020,
                                     ResultadosRebajo[7], ResultadosCantidad[7],
-                                    ResultadosRebajo[8], ResultadosCantidad[8]
-                                    */);
+                                    ResultadosRebajo[8], ResultadosCantidad[8],
+                                    ResultadosRebajo[9], ResultadosCantidad[9],
+                                    ResultadosRebajo[10], ResultadosCantidad[10],
+                                    ResultadosRebajo[11], ResultadosCantidad[11],
+                                    ResultadosRebajo[12], ResultadosCantidad[12]
+                                    );
 
                                 // Incrementar el contador para la próxima fila
                                 contadorVentana5020++;

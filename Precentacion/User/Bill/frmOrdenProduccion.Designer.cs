@@ -96,6 +96,14 @@
             this.cantVerticalCFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.verticalCFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.verticalFijoCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vidrioMAncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantVidrioMAncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vidrioFAncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantVidrioFAncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vidrioMAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantVidrioMAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vidrioFAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantVidrioFAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -336,7 +344,15 @@
             this.verticalFijo,
             this.cantVerticalCFijo,
             this.verticalCFijo,
-            this.verticalFijoCant});
+            this.verticalFijoCant,
+            this.vidrioMAncho,
+            this.cantVidrioMAncho,
+            this.vidrioFAncho,
+            this.cantVidrioFAncho,
+            this.vidrioMAlto,
+            this.cantVidrioMAlto,
+            this.vidrioFAlto,
+            this.cantVidrioFAlto});
             this.dgvOrdenProduccion.Location = new System.Drawing.Point(2, 36);
             this.dgvOrdenProduccion.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrdenProduccion.Name = "dgvOrdenProduccion";
@@ -650,25 +666,61 @@
             // 
             this.verticalFijo.HeaderText = "Vertical Fijo";
             this.verticalFijo.Name = "verticalFijo";
-            this.verticalFijo.Visible = false;
             // 
             // cantVerticalCFijo
             // 
             this.cantVerticalCFijo.HeaderText = "Cant";
             this.cantVerticalCFijo.Name = "cantVerticalCFijo";
-            this.cantVerticalCFijo.Visible = false;
             // 
             // verticalCFijo
             // 
             this.verticalCFijo.HeaderText = "Vertical C Fijo";
             this.verticalCFijo.Name = "verticalCFijo";
-            this.verticalCFijo.Visible = false;
             // 
             // verticalFijoCant
             // 
             this.verticalFijoCant.HeaderText = "Cant";
             this.verticalFijoCant.Name = "verticalFijoCant";
-            this.verticalFijoCant.Visible = false;
+            // 
+            // vidrioMAncho
+            // 
+            this.vidrioMAncho.HeaderText = "Vidrio M Ancho";
+            this.vidrioMAncho.Name = "vidrioMAncho";
+            // 
+            // cantVidrioMAncho
+            // 
+            this.cantVidrioMAncho.HeaderText = "Cant";
+            this.cantVidrioMAncho.Name = "cantVidrioMAncho";
+            // 
+            // vidrioFAncho
+            // 
+            this.vidrioFAncho.HeaderText = "Vidrio F Ancho";
+            this.vidrioFAncho.Name = "vidrioFAncho";
+            // 
+            // cantVidrioFAncho
+            // 
+            this.cantVidrioFAncho.HeaderText = "Cant";
+            this.cantVidrioFAncho.Name = "cantVidrioFAncho";
+            // 
+            // vidrioMAlto
+            // 
+            this.vidrioMAlto.HeaderText = "Vidrio M Alto";
+            this.vidrioMAlto.Name = "vidrioMAlto";
+            // 
+            // cantVidrioMAlto
+            // 
+            this.cantVidrioMAlto.HeaderText = "Cant";
+            this.cantVidrioMAlto.Name = "cantVidrioMAlto";
+            // 
+            // vidrioFAlto
+            // 
+            this.vidrioFAlto.HeaderText = "Vidrio F Alto";
+            this.vidrioFAlto.Name = "vidrioFAlto";
+            // 
+            // cantVidrioFAlto
+            // 
+            this.cantVidrioFAlto.HeaderText = "Cant";
+            this.cantVidrioFAlto.Name = "cantVidrioFAlto";
             // 
             // frmOrdenProduccion
             // 
@@ -765,5 +817,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cantVerticalCFijo;
         private System.Windows.Forms.DataGridViewTextBoxColumn verticalCFijo;
         private System.Windows.Forms.DataGridViewTextBoxColumn verticalFijoCant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vidrioMAncho;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioMAncho;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vidrioFAncho;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioFAncho;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vidrioMAlto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioMAlto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vidrioFAlto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioFAlto;
     }
 }
