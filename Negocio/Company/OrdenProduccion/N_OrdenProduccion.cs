@@ -40,13 +40,13 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vertical":
                             Rebajo = H-0.03M;
                             break;
-                        case "Vertical fijo":
-                            Rebajo = H - 0.02M;
-                            break;
                         case "Vertical Centro":
                             Rebajo = H-0.03M;
                             break;
                         case "Vertical Centro fijo":
+                            Rebajo = H - 0.02M;
+                            break;
+                        case "Vertical fijo":
                             Rebajo = H - 0.02M;
                             break;
                     }
@@ -191,6 +191,12 @@ namespace Negocio.Company.OrdenProduccion
                             break;
                         case "Vertical Centro":
                             Cantidad = 2;
+                            break;
+                        case "Vertical Centro fijo":
+                            Cantidad = 4;
+                            break;
+                        case "Vertical fijo":
+                            Cantidad = 3;
                             break;
                     }
                     break;
