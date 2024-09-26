@@ -47,6 +47,9 @@
             this.btnOptimizar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvOrdenProduccion8025 = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dgvOrdenProduccion = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,8 +72,6 @@
             this.PisaAlfombra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantPisaAlfombra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ventana8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dgvOrdenProduccion = new System.Windows.Forms.DataGridView();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Diseno = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,7 +92,10 @@
             this.VerticalCentro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantVerticalC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ventana = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.verticalFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantVerticalCFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.verticalCFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.verticalFijoCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -116,7 +120,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1106, 177);
+            this.groupBox1.Size = new System.Drawing.Size(1122, 177);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -294,6 +298,60 @@
             this.dgvOrdenProduccion8025.Size = new System.Drawing.Size(974, 230);
             this.dgvOrdenProduccion8025.TabIndex = 11;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(2, 8);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(222, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Orden de Producción 5020";
+            // 
+            // dgvOrdenProduccion
+            // 
+            this.dgvOrdenProduccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrdenProduccion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Tipo,
+            this.Ubicacion,
+            this.Diseno,
+            this.Column4,
+            this.Column5,
+            this.Cargador,
+            this.cantCargador,
+            this.Umbral,
+            this.cantUmbral,
+            this.Jamba,
+            this.cantJamba,
+            this.Superior,
+            this.cantSuperior,
+            this.Inferior,
+            this.cantInferior,
+            this.Vertical,
+            this.cantVertical,
+            this.VerticalCentro,
+            this.cantVerticalC,
+            this.Ventana,
+            this.verticalFijo,
+            this.cantVerticalCFijo,
+            this.verticalCFijo,
+            this.verticalFijoCant});
+            this.dgvOrdenProduccion.Location = new System.Drawing.Point(2, 36);
+            this.dgvOrdenProduccion.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvOrdenProduccion.Name = "dgvOrdenProduccion";
+            this.dgvOrdenProduccion.RowHeadersWidth = 62;
+            this.dgvOrdenProduccion.RowTemplate.Height = 28;
+            this.dgvOrdenProduccion.Size = new System.Drawing.Size(974, 230);
+            this.dgvOrdenProduccion.TabIndex = 1;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Tipo";
@@ -445,49 +503,7 @@
             // 
             this.Ventana8025.HeaderText = "Ventana";
             this.Ventana8025.Name = "Ventana8025";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(2, 8);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(222, 20);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Orden de Producción 5020";
-            // 
-            // dgvOrdenProduccion
-            // 
-            this.dgvOrdenProduccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrdenProduccion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Tipo,
-            this.Ubicacion,
-            this.Diseno,
-            this.Column4,
-            this.Column5,
-            this.Cargador,
-            this.cantCargador,
-            this.Umbral,
-            this.cantUmbral,
-            this.Jamba,
-            this.cantJamba,
-            this.Superior,
-            this.cantSuperior,
-            this.Inferior,
-            this.cantInferior,
-            this.Vertical,
-            this.cantVertical,
-            this.VerticalCentro,
-            this.cantVerticalC,
-            this.Ventana});
-            this.dgvOrdenProduccion.Location = new System.Drawing.Point(2, 36);
-            this.dgvOrdenProduccion.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvOrdenProduccion.Name = "dgvOrdenProduccion";
-            this.dgvOrdenProduccion.RowHeadersWidth = 62;
-            this.dgvOrdenProduccion.RowTemplate.Height = 28;
-            this.dgvOrdenProduccion.Size = new System.Drawing.Size(974, 230);
-            this.dgvOrdenProduccion.TabIndex = 1;
+            this.Ventana8025.Visible = false;
             // 
             // Tipo
             // 
@@ -627,14 +643,28 @@
             this.Ventana.HeaderText = "Ventana";
             this.Ventana.MinimumWidth = 8;
             this.Ventana.Name = "Ventana";
+            this.Ventana.Visible = false;
             this.Ventana.Width = 150;
             // 
-            // contextMenuStrip1
+            // verticalFijo
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
+            this.verticalFijo.HeaderText = "Vertical Fijo";
+            this.verticalFijo.Name = "verticalFijo";
+            // 
+            // cantVerticalCFijo
+            // 
+            this.cantVerticalCFijo.HeaderText = "Cant";
+            this.cantVerticalCFijo.Name = "cantVerticalCFijo";
+            // 
+            // verticalCFijo
+            // 
+            this.verticalCFijo.HeaderText = "Vertical C Fijo";
+            this.verticalCFijo.Name = "verticalCFijo";
+            // 
+            // verticalFijoCant
+            // 
+            this.verticalFijoCant.HeaderText = "Cant";
+            this.verticalFijoCant.Name = "verticalFijoCant";
             // 
             // frmOrdenProduccion
             // 
@@ -642,7 +672,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1112, 768);
+            this.ClientSize = new System.Drawing.Size(1128, 807);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -683,27 +713,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         public System.Windows.Forms.DataGridView dgvOrdenProduccion;
         public System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Diseno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cargador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantCargador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Umbral;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantUmbral;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Jamba;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantJamba;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Superior;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantSuperior;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inferior;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantInferior;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vertical;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantVertical;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VerticalCentro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantVerticalC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ventana;
         private System.Windows.Forms.Button btnOptimizar;
+        private System.Windows.Forms.Button btnOptimizar8025;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -726,6 +737,29 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PisaAlfombra;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantPisaAlfombra;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ventana8025;
-        private System.Windows.Forms.Button btnOptimizar8025;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Diseno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cargador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantCargador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Umbral;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantUmbral;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Jamba;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantJamba;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Superior;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantSuperior;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inferior;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantInferior;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vertical;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantVertical;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VerticalCentro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantVerticalC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ventana;
+        private System.Windows.Forms.DataGridViewTextBoxColumn verticalFijo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantVerticalCFijo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn verticalCFijo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn verticalFijoCant;
     }
 }
