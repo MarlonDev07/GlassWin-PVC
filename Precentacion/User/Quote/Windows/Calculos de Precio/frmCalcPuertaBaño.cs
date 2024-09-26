@@ -176,11 +176,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
 
                     decimal ancho = Convert.ToDecimal(txtAncho.Text);
-                    if (ancho >= 1000)
-                    {
+                  
                         // Convertir a metros si el valor es mayor o igual a 1000
                         ancho /= 1000;
-                    }
+                    
                     // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
                     clsPuertaBaño.WeightTotal = ancho;
@@ -192,11 +191,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
 
                     decimal ancho = Convert.ToDecimal(txtAnchoPanel.Text);
-                    if (ancho >= 1000)
-                    {
+                 
                         // Convertir a metros si el valor es mayor o igual a 1000
                         ancho /= 1000;
-                    }
+                    
                     // Detectar si el usuario ingresó un punto en vez de una coma
                     DetectarPunto();
                     clsPuertaBaño.WeightPanel = ancho;
@@ -214,6 +212,37 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                         ClsWindows.Weight = Convert.ToDecimal(txtAncho.Text);
                     }
                    // redimension_Click(sender, e);
+                }
+                if (txtAnchoP.Text != "")
+                {
+
+
+                    decimal anchoP = Convert.ToDecimal(txtAnchoP.Text);
+
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    anchoP /= 1000;
+
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    clsPuertaBaño.WP = anchoP;
+                    //redimension_Click(sender, e);
+
+
+                }
+                // Procesar txtAncho
+                if (txtAltoP.Text != "")
+                {
+
+
+                    decimal altoP = Convert.ToDecimal(txtAltoP.Text);
+
+                    // Convertir a metros si el valor es mayor o igual a 1000
+                    altoP /= 1000;
+
+                    // Detectar si el usuario ingresó un punto en vez de una coma
+                    DetectarPunto();
+                    clsPuertaBaño.HP = altoP;
+                    // redimension_Click(sender, e);
                 }
                 //Advertencias();
             }
@@ -479,6 +508,8 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
                 // Asignar la imagen redimensionada al PictureBox
                 picPuertaBaño.Image = resizedImage;
+                picPuertaBaño.SizeMode = PictureBoxSizeMode.Zoom;  // Ajusta según sea necesario
+                picPuertaBaño.Refresh();
 
 
 
@@ -539,7 +570,13 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             Description = "Puerta de Baño " + clsPuertaBaño.Desing+"\n";
             Description += "Ancho: " + clsPuertaBaño.WeightTotal + "\n";
             Description += "Alto: " + clsPuertaBaño.heigt + "\n";
-            Description += "Ancho Panel: " + clsPuertaBaño.WeightPanel + "\n";
+            Description += "Ancho Total: " + clsPuertaBaño.WeightPanel + "\n";
+            if (clsPuertaBaño.HP != 0 && clsPuertaBaño.WP != 0) 
+            {
+                Description += "Ancho Panel: " + clsPuertaBaño.WP + "\n";
+                Description += "Alto Panel: " + clsPuertaBaño.HP + "\n";
+            }
+          
             Description += "Vidrio: " + cbVidrio.Text + "\n";
             Description += "Lamina Plastica: " + cbLaminaPlastica.Text + "\n";
             Description += "Color Lamina: " + cbColorLamina.Text + "\n";
@@ -656,6 +693,76 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         private void cbColor_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             Fn_CargarImagen();
+        }
+
+        private void txtAnchoP_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAnchoP.Text != "")
+            {
+
+
+                decimal anchoP = Convert.ToDecimal(txtAnchoP.Text);
+
+                // Convertir a metros si el valor es mayor o igual a 1000
+                anchoP /= 1000;
+
+                // Detectar si el usuario ingresó un punto en vez de una coma
+                DetectarPunto();
+                clsPuertaBaño.WP = anchoP;
+                //redimension_Click(sender, e);
+
+
+            }
+            // Procesar txtAncho
+            if (txtAltoP.Text != "")
+            {
+
+
+                decimal altoP = Convert.ToDecimal(txtAltoP.Text);
+             
+                // Convertir a metros si el valor es mayor o igual a 1000
+                altoP /= 1000;
+                
+                // Detectar si el usuario ingresó un punto en vez de una coma
+                DetectarPunto();
+                clsPuertaBaño.HP = altoP;
+                // redimension_Click(sender, e);
+            }
+        }
+
+        private void txtAltoP_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAnchoP.Text != "")
+            {
+
+
+                decimal anchoP = Convert.ToDecimal(txtAnchoP.Text);
+
+                // Convertir a metros si el valor es mayor o igual a 1000
+                anchoP /= 1000;
+
+                // Detectar si el usuario ingresó un punto en vez de una coma
+                DetectarPunto();
+                clsPuertaBaño.WP = anchoP;
+                //redimension_Click(sender, e);
+
+
+            }
+            // Procesar txtAncho
+            if (txtAltoP.Text != "")
+            {
+
+
+                decimal altoP = Convert.ToDecimal(txtAltoP.Text);
+
+                // Convertir a metros si el valor es mayor o igual a 1000
+                altoP /= 1000;
+
+                // Detectar si el usuario ingresó un punto en vez de una coma
+                DetectarPunto();
+                clsPuertaBaño.HP = altoP;
+                // redimension_Click(sender, e);
+            }
         }
     }
 }
