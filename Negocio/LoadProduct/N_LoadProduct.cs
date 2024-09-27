@@ -12404,7 +12404,7 @@ namespace Negocio.LoadProduct
                     }
                     else
                     {
-                        if (Weigth >= 1.83m || WeigthPanel <= 2.44m)//&&
+                        if (Weigth >= 1.83m && Weigth <= 2.44m)//&&
                         {
                             Metraje = 2;
                         }
@@ -12486,48 +12486,30 @@ namespace Negocio.LoadProduct
                     }
                     else
                     {
-                        if (Weigth <= 1.83m && Weigth >= 2.44m || WeigthPanel <= 1.83m && WeigthPanel >= 2.44m)
+                        if (Weigth >= 1.83m && Weigth <= 2.44m)//&&
                         {
                             Metraje = 2;
                         }
                     }
-                    
-                    if (WeigthPanel <= 1.22m)
-                    {
-                        Metraje = Weigth + WeigthPanel;
-                    }
-                    else
-                    {
-                        if (Weigth <= 1.83m && Weigth >= 2.44m)
-                        {
-                            Metraje = 2;
-                        }
-                    }
+                     
                     break;
+
                 case "Lamina Plastica 65":
-                    if (Weigth <= 1.23m && Weigth >= 1.30m)
+                    if (Weigth >= 1.23m && Weigth <= 1.30m)
                     {
                         Metraje = 2;
-                    }
-                    
-                    if (WeigthPanel <= 1.23m && WeigthPanel >= 1.30m)
-                    {
-                        Metraje = (Weigth) + WeigthPanel *2;
-                    }
+                    }             
                     break;
                 case "Lamina Plastica 75":
-                    if (Weigth <= 1.31m && Weigth >= 1.50m)
+                    if (Weigth >= 1.31m && Weigth <= 1.50m)
                     {
                         Metraje = 2;
                     }
                     break;
                 case "Lamina Plastica 91":
-                    if (Weigth <= 1.51m && Weigth >= 1.82m)
+                    if (Weigth >= 1.51m && Weigth <= 1.82m)
                     {
                         Metraje = 2;
-
-
-
                     }
                     break;
 
