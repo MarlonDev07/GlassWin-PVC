@@ -171,10 +171,21 @@ namespace Precentacion.User.Quote.Windows
 
         private void frmSelectDesing_Load(object sender, EventArgs e)
         {
-            if (system2 == "5020" || system2 == "5020 3 Vias" || system2 == "8025 2 Vias"  || system2 == "Europa 2 Vias" || system2 == "8040 2 Vias")
+            if (system2 == "5020")
             {
                 FijoMovilMovilMovilMovilFijo.Visible = false;
                 FijoMovilMovil.Visible = false;
+                btnFijoMMM.Visible = false;
+                btn2ViasMMM.Visible=false;
+                bntguillotina.Visible = false;
+            }
+            else if (system2 == "5020 3 Vias")
+            {
+                FijoMovilMovilMovilMovilFijo.Visible = false;
+                FijoMovilMovil.Visible = false;
+                btnFijoMMM.Visible = false;
+                btn2ViasMMM.Visible = false;
+                bntguillotina.Visible = false;
             }
             else if (system2 == "6030 2 Vias") {
                 FijoMovilMovilMovilMovilFijo.Visible = true;
