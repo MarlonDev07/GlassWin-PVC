@@ -12373,65 +12373,65 @@ namespace Negocio.LoadProduct
             {
                 //Aluminio
                 case "Cargador PB Liso":
-                    Metraje = WeigthPanel;//Weigth;
+                    Metraje = Weigth;//ancho de puerta movil-movil//
                     break;
                 case "Umbral PB Liso":
-                    Metraje = WeigthPanel;//Weigth;
+                    Metraje = Weigth;//ancho de puerta movil-movil//
                     break;
                 case "Jamba PB Liso":
-                    Metraje = 3.6m;
+                    Metraje = 3.6m; // alto de puerta movil-movil//
                     break;
-                case "Lateral PB Liso":
+                case "Lateral PB Liso": // alto de puerta movil-movil//
                     Metraje = 7.2m;
                     break;
                 case "Superior PB Liso":
-                    Metraje = WeigthPanel;//Weigth;
+                    Metraje = Weigth;//ancho de puerta movil-movil//
                     break;
                 case "Inferior PB Liso":
-                    Metraje = WeigthPanel;//Weigth;
+                    Metraje = Weigth;//ancho de puerta movil-movil//
                     break;
                 case "Pañera PB Liso":
-                    Metraje = WeigthPanel * 2; //Weigth * 2;
+                    Metraje = Weigth * 2; //ancho de puerta movil-movil//
                     break;
                 case "Escuadra Pañera PB Liso":
                     Metraje = 0.4m;
                     break;
                 //Lamina
                 case "Lamina Plastica 122":
-                    if (WeigthPanel <= 1.22m)//Weigth
+                    if (Weigth <= 1.22m)
                     {
                         Metraje = 1;
                     }
                     else
                     {
-                        if (WeigthPanel >= 1.83m && WeigthPanel <= 2.44m)//Weigth 
+                        if (Weigth >= 1.83m && WeigthPanel <= 2.44m)
                         {
                             Metraje = 2;
                         }
                     }
                     break;
-                    //TODOS LOS WeightPanel eran Weight antes
+                    
                 case "Lamina Plastica 65":
-                    if (WeigthPanel >= 1.23m && WeigthPanel <= 1.30m)
+                    if (Weigth >= 1.23m && Weigth <= 1.30m)
                     {
                         Metraje = 2;
                     }
                     break;
                 case "Lamina Plastica 75":
-                    if (WeigthPanel >= 1.31m && WeigthPanel <= 1.50m)
+                    if (Weigth >= 1.31m && Weigth <= 1.50m)
                     {
                         Metraje = 2;
                     }
                     break;
                 case "Lamina Plastica 91":
-                    if (WeigthPanel >= 1.51m && WeigthPanel <= 1.82m)
+                    if (Weigth >= 1.51m && Weigth <= 1.82m)
                     {
                         Metraje = 2;
                     }
                     break;
                 //Accesorios
                 case "Empaque U PB":
-                    Metraje = (WeigthPanel / 2) + (Heigth * 4);
+                    Metraje = (Weigth * 2) + (Heigth * 4);
                     break;
                 case "Rodin PB":
                     Metraje = 4;
@@ -12455,10 +12455,10 @@ namespace Negocio.LoadProduct
             {
                 //Aluminio de puerta // 
                 case "Cargador PB Liso":
-                    Metraje = Weigth;
+                    Metraje = Weigth + WeigthPanel;
                     break;
                 case "Umbral PB Liso":
-                    Metraje = Weigth;
+                    Metraje = Weigth + WeigthPanel;
                     break;
                 case "Jamba PB Liso":
                     Metraje = 7.20m;
@@ -12467,26 +12467,26 @@ namespace Negocio.LoadProduct
                     Metraje = 10.8m;
                     break;
                 case "Superior PB Liso":
-                    Metraje = Weigth - WeigthPanel;
+                    Metraje = Weigth ;
                     break;
                 case "Inferior PB Liso":
-                    Metraje = (Weigth - WeigthPanel) + (WeigthPanel * 2);
+                    Metraje = Weigth + WeigthPanel * 2;
                     break;
                 case "Pañera PB Liso":
-                    Metraje = (Weigth - WeigthPanel) * 2;
+                    Metraje = Weigth * 2;
                     break;
                 case "Escuadra Pañera PB Liso":
                     Metraje = 0.4m;
                     break;
                 //Lamina panel //
                 case "Lamina Plastica 122":
-                    if (Weigth <= 1.22m) 
+                    if (Weigth <= 1.22m || WeigthPanel <= 1.22m)
                     {
                         Metraje = 1;
                     }
                     else
                     {
-                        if (Weigth <= 1.83m && Weigth >= 2.44m)
+                        if (Weigth <= 1.83m && Weigth >= 2.44m || WeigthPanel <= 1.83m && WeigthPanel >= 2.44m)
                         {
                             Metraje = 2;
                         }
