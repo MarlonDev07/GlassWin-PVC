@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSelecDesingPuertLujo));
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.pSeleccionarPL = new System.Windows.Forms.Panel();
+            this.btnPCorredizo2 = new System.Windows.Forms.Button();
+            this.btnPCorredizo = new System.Windows.Forms.Button();
             this.btnHojaDivicion = new System.Windows.Forms.Button();
             this.btn1HojaDivicion = new System.Windows.Forms.Button();
             this.btn2Hoja = new System.Windows.Forms.Button();
             this.btn1Hoja = new System.Windows.Forms.Button();
             this.btnBackSistema = new System.Windows.Forms.Button();
-            this.btnPCorredizo = new System.Windows.Forms.Button();
-            this.btnPCorredizo2 = new System.Windows.Forms.Button();
             this.panelContenedor.SuspendLayout();
             this.pSeleccionarPL.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,36 @@
             this.pSeleccionarPL.Name = "pSeleccionarPL";
             this.pSeleccionarPL.Size = new System.Drawing.Size(1701, 233);
             this.pSeleccionarPL.TabIndex = 0;
+            // 
+            // btnPCorredizo2
+            // 
+            this.btnPCorredizo2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnPCorredizo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnPCorredizo2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPCorredizo2.BackgroundImage")));
+            this.btnPCorredizo2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPCorredizo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPCorredizo2.Location = new System.Drawing.Point(1390, 14);
+            this.btnPCorredizo2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnPCorredizo2.Name = "btnPCorredizo2";
+            this.btnPCorredizo2.Size = new System.Drawing.Size(244, 201);
+            this.btnPCorredizo2.TabIndex = 40;
+            this.btnPCorredizo2.UseVisualStyleBackColor = false;
+            this.btnPCorredizo2.Click += new System.EventHandler(this.btnPCorredizo2_Click);
+            // 
+            // btnPCorredizo
+            // 
+            this.btnPCorredizo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnPCorredizo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnPCorredizo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPCorredizo.BackgroundImage")));
+            this.btnPCorredizo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPCorredizo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPCorredizo.Location = new System.Drawing.Point(1077, 14);
+            this.btnPCorredizo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnPCorredizo.Name = "btnPCorredizo";
+            this.btnPCorredizo.Size = new System.Drawing.Size(208, 201);
+            this.btnPCorredizo.TabIndex = 39;
+            this.btnPCorredizo.UseVisualStyleBackColor = false;
+            this.btnPCorredizo.Click += new System.EventHandler(this.btnPCorredizo_Click);
             // 
             // btnHojaDivicion
             // 
@@ -142,36 +172,6 @@
             this.btnBackSistema.TabIndex = 43;
             this.btnBackSistema.UseVisualStyleBackColor = false;
             this.btnBackSistema.Click += new System.EventHandler(this.btnBackSistema_Click);
-            // 
-            // btnPCorredizo
-            // 
-            this.btnPCorredizo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnPCorredizo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnPCorredizo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPCorredizo.BackgroundImage")));
-            this.btnPCorredizo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPCorredizo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPCorredizo.Location = new System.Drawing.Point(1077, 14);
-            this.btnPCorredizo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnPCorredizo.Name = "btnPCorredizo";
-            this.btnPCorredizo.Size = new System.Drawing.Size(208, 201);
-            this.btnPCorredizo.TabIndex = 39;
-            this.btnPCorredizo.UseVisualStyleBackColor = false;
-            this.btnPCorredizo.Click += new System.EventHandler(this.btnPCorredizo_Click);
-            // 
-            // btnPCorredizo2
-            // 
-            this.btnPCorredizo2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnPCorredizo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnPCorredizo2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPCorredizo2.BackgroundImage")));
-            this.btnPCorredizo2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPCorredizo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPCorredizo2.Location = new System.Drawing.Point(1390, 14);
-            this.btnPCorredizo2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnPCorredizo2.Name = "btnPCorredizo2";
-            this.btnPCorredizo2.Size = new System.Drawing.Size(244, 201);
-            this.btnPCorredizo2.TabIndex = 40;
-            this.btnPCorredizo2.UseVisualStyleBackColor = false;
-            this.btnPCorredizo2.Click += new System.EventHandler(this.btnPCorredizo2_Click);
             // 
             // frmSelecDesingPuertLujo
             // 
