@@ -411,18 +411,18 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         #region Metodos
         private bool ValidarCampos() 
         {
-            /*if (txtAncho.Text == string.Empty)
+            if (txtAncho.Text == string.Empty)
             {
                MessageBox.Show("Debe ingresar el ancho de la puerta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtAncho.Focus();
                 return false;
-            }*/
-            if (txtAnchoPanel.Text == string.Empty)
+            }
+           /* if (txtAnchoPanel.Text == string.Empty)
             {
                 MessageBox.Show("Debe ingresar el ancho del panel", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtAnchoPanel.Focus();
                 return false;
-            }
+            }*/
             if (txtAlto.Text == string.Empty)
             {
                 MessageBox.Show("Debe ingresar el alto de la puerta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -498,7 +498,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             {
 
                     // Obtener las dimensiones desde ClsWindows
-                decimal anchoEnPixeles = ConvertirDimensionAPixeles(clsPuertaBaño.WeightPanel.ToString());
+                decimal anchoEnPixeles = ConvertirDimensionAPixeles(clsPuertaBaño.WeightTotal.ToString());
                 decimal alturaEnPixeles = ConvertirDimensionAPixeles(clsPuertaBaño.heigt.ToString());
 
                 int newWidth = (int)anchoEnPixeles;

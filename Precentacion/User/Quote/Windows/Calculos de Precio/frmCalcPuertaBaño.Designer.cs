@@ -207,9 +207,7 @@
             // 
             this.PanelMedidas.BackColor = System.Drawing.Color.White;
             this.PanelMedidas.Controls.Add(this.btnGuardar);
-            this.PanelMedidas.Controls.Add(this.label13);
             this.PanelMedidas.Controls.Add(this.label4);
-            this.PanelMedidas.Controls.Add(this.txtAltoP);
             this.PanelMedidas.Controls.Add(this.cbColorLamina);
             this.PanelMedidas.Controls.Add(this.label2);
             this.PanelMedidas.Controls.Add(this.txtAnchoPanel);
@@ -250,12 +248,13 @@
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(387, 25);
+            this.label13.Location = new System.Drawing.Point(798, 205);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(90, 20);
             this.label13.TabIndex = 69;
             this.label13.Text = "Alto Panel";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label13.Visible = false;
             // 
             // label4
             // 
@@ -273,10 +272,11 @@
             // 
             this.txtAltoP.BackColor = System.Drawing.Color.White;
             this.txtAltoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAltoP.Location = new System.Drawing.Point(387, 48);
+            this.txtAltoP.Location = new System.Drawing.Point(798, 228);
             this.txtAltoP.Name = "txtAltoP";
             this.txtAltoP.Size = new System.Drawing.Size(90, 23);
             this.txtAltoP.TabIndex = 70;
+            this.txtAltoP.Visible = false;
             this.txtAltoP.TextChanged += new System.EventHandler(this.txtAltoP_TextChanged);
             // 
             // cbColorLamina
@@ -300,7 +300,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(824, 25);
+            this.label2.Location = new System.Drawing.Point(808, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 20);
             this.label2.TabIndex = 45;
@@ -323,7 +323,7 @@
             // 
             this.txtAnchoPanel.BackColor = System.Drawing.Color.White;
             this.txtAnchoPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnchoPanel.Location = new System.Drawing.Point(9, 50);
+            this.txtAnchoPanel.Location = new System.Drawing.Point(294, 50);
             this.txtAnchoPanel.Name = "txtAnchoPanel";
             this.txtAnchoPanel.Size = new System.Drawing.Size(90, 23);
             this.txtAnchoPanel.TabIndex = 43;
@@ -335,7 +335,7 @@
             this.lblAncho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAncho.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAncho.ForeColor = System.Drawing.Color.Black;
-            this.lblAncho.Location = new System.Drawing.Point(261, 25);
+            this.lblAncho.Location = new System.Drawing.Point(294, 25);
             this.lblAncho.Name = "lblAncho";
             this.lblAncho.Size = new System.Drawing.Size(90, 20);
             this.lblAncho.TabIndex = 39;
@@ -346,7 +346,7 @@
             // 
             this.txtAncho.BackColor = System.Drawing.Color.White;
             this.txtAncho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAncho.Location = new System.Drawing.Point(261, 50);
+            this.txtAncho.Location = new System.Drawing.Point(9, 50);
             this.txtAncho.Name = "txtAncho";
             this.txtAncho.Size = new System.Drawing.Size(90, 23);
             this.txtAncho.TabIndex = 40;
@@ -362,7 +362,7 @@
             "Cañaberal",
             "Florentino",
             "Delfin"});
-            this.cbLaminaPlastica.Location = new System.Drawing.Point(824, 50);
+            this.cbLaminaPlastica.Location = new System.Drawing.Point(808, 50);
             this.cbLaminaPlastica.Name = "cbLaminaPlastica";
             this.cbLaminaPlastica.Size = new System.Drawing.Size(90, 21);
             this.cbLaminaPlastica.TabIndex = 44;
@@ -401,9 +401,9 @@
             this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblColor.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblColor.ForeColor = System.Drawing.Color.Black;
-            this.lblColor.Location = new System.Drawing.Point(513, 25);
+            this.lblColor.Location = new System.Drawing.Point(431, 25);
             this.lblColor.Name = "lblColor";
-            this.lblColor.Size = new System.Drawing.Size(90, 20);
+            this.lblColor.Size = new System.Drawing.Size(107, 20);
             this.lblColor.TabIndex = 12;
             this.lblColor.Text = "Color Aluminio";
             this.lblColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -413,7 +413,7 @@
             this.cbVidrio.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.cbVidrio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVidrio.FormattingEnabled = true;
-            this.cbVidrio.Location = new System.Drawing.Point(617, 50);
+            this.cbVidrio.Location = new System.Drawing.Point(579, 50);
             this.cbVidrio.Name = "cbVidrio";
             this.cbVidrio.Size = new System.Drawing.Size(195, 21);
             this.cbVidrio.TabIndex = 24;
@@ -432,9 +432,9 @@
             "Blanco",
             "Madera",
             "Inox"});
-            this.cbColor.Location = new System.Drawing.Point(513, 50);
+            this.cbColor.Location = new System.Drawing.Point(431, 50);
             this.cbColor.Name = "cbColor";
-            this.cbColor.Size = new System.Drawing.Size(90, 21);
+            this.cbColor.Size = new System.Drawing.Size(107, 21);
             this.cbColor.TabIndex = 11;
             this.cbColor.SelectedIndexChanged += new System.EventHandler(this.cbColor_SelectedIndexChanged_1);
             this.cbColor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboBox_KeyPress);
@@ -444,7 +444,7 @@
             this.lblVidrio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblVidrio.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVidrio.ForeColor = System.Drawing.Color.Black;
-            this.lblVidrio.Location = new System.Drawing.Point(617, 25);
+            this.lblVidrio.Location = new System.Drawing.Point(579, 25);
             this.lblVidrio.Name = "lblVidrio";
             this.lblVidrio.Size = new System.Drawing.Size(195, 20);
             this.lblVidrio.TabIndex = 17;
@@ -456,7 +456,7 @@
             this.lblAlto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAlto.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAlto.ForeColor = System.Drawing.Color.Black;
-            this.lblAlto.Location = new System.Drawing.Point(129, 25);
+            this.lblAlto.Location = new System.Drawing.Point(148, 25);
             this.lblAlto.Name = "lblAlto";
             this.lblAlto.Size = new System.Drawing.Size(90, 20);
             this.lblAlto.TabIndex = 37;
@@ -467,7 +467,7 @@
             // 
             this.txtAlto.BackColor = System.Drawing.Color.White;
             this.txtAlto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAlto.Location = new System.Drawing.Point(130, 48);
+            this.txtAlto.Location = new System.Drawing.Point(149, 48);
             this.txtAlto.Name = "txtAlto";
             this.txtAlto.Size = new System.Drawing.Size(90, 23);
             this.txtAlto.TabIndex = 38;
@@ -629,7 +629,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1209, 715);
             this.Controls.Add(this.panelDesglose);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.txtUbicacion);
+            this.Controls.Add(this.txtAltoP);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.PanelMedidas);

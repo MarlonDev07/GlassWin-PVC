@@ -12404,7 +12404,7 @@ namespace Negocio.LoadProduct
                     }
                     else
                     {
-                        if (Weigth >= 1.83m && WeigthPanel <= 2.44m)
+                        if (Weigth >= 1.83m || WeigthPanel <= 2.44m)//&&
                         {
                             Metraje = 2;
                         }
