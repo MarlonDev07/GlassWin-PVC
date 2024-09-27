@@ -213,7 +213,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                     }
                    // redimension_Click(sender, e);
                 }
-                if (txtAnchoP.Text != "")
+                /*if (txtAnchoP.Text != "")
                 {
 
 
@@ -228,7 +228,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                     //redimension_Click(sender, e);
 
 
-                }
+                }*/
                 // Procesar txtAncho
                 if (txtAltoP.Text != "")
                 {
@@ -570,10 +570,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             Description = "Puerta de Baño " + clsPuertaBaño.Desing+"\n";
             Description += "Ancho: " + clsPuertaBaño.WeightTotal + "\n";
             Description += "Alto: " + clsPuertaBaño.heigt + "\n";
-            Description += "Ancho Total: " + clsPuertaBaño.WeightPanel + "\n";
+           // Description += "Ancho Total: " + clsPuertaBaño.WeightPanel + "\n";
             if (clsPuertaBaño.HP != 0 && clsPuertaBaño.WP != 0) 
             {
-                Description += "Ancho Panel: " + clsPuertaBaño.WP + "\n";
+                Description += "Ancho Panel: " + clsPuertaBaño.WeightPanel + "\n";
                 Description += "Alto Panel: " + clsPuertaBaño.HP + "\n";
             }
           
@@ -697,7 +697,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
         private void txtAnchoP_TextChanged(object sender, EventArgs e)
         {
-            if (txtAnchoP.Text != "")
+            /*if (txtAnchoP.Text != "")
             {
 
 
@@ -712,7 +712,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 //redimension_Click(sender, e);
 
 
-            }
+            }*/
             // Procesar txtAncho
             if (txtAltoP.Text != "")
             {
@@ -732,7 +732,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
         private void txtAltoP_TextChanged(object sender, EventArgs e)
         {
-            if (txtAnchoP.Text != "")
+            /*if (txtAnchoP.Text != "")
             {
 
 
@@ -747,7 +747,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 //redimension_Click(sender, e);
 
 
-            }
+            }*/
             // Procesar txtAncho
             if (txtAltoP.Text != "")
             {
