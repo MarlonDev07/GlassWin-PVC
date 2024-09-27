@@ -39,8 +39,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnDesglose = new System.Windows.Forms.Button();
             this.PanelMedidas = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtAnchoP = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtAltoP = new System.Windows.Forms.TextBox();
             this.cbColorLamina = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -69,10 +73,6 @@
             this.btnOcultar = new System.Windows.Forms.Button();
             this.dgvAluminio = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtAnchoP = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtAltoP = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             this.PanelMedidas.SuspendLayout();
@@ -234,6 +234,28 @@
             this.PanelMedidas.Size = new System.Drawing.Size(1211, 88);
             this.PanelMedidas.TabIndex = 63;
             // 
+            // label11
+            // 
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(316, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 20);
+            this.label11.TabIndex = 71;
+            this.label11.Text = "Ancho Panel";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtAnchoP
+            // 
+            this.txtAnchoP.BackColor = System.Drawing.Color.White;
+            this.txtAnchoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnchoP.Location = new System.Drawing.Point(316, 48);
+            this.txtAnchoP.Name = "txtAnchoP";
+            this.txtAnchoP.Size = new System.Drawing.Size(90, 23);
+            this.txtAnchoP.TabIndex = 72;
+            this.txtAnchoP.TextChanged += new System.EventHandler(this.txtAnchoP_TextChanged);
+            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -249,6 +271,18 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // label13
+            // 
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(421, 25);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 20);
+            this.label13.TabIndex = 69;
+            this.label13.Text = "Alto Panel";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label4
             // 
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -260,6 +294,16 @@
             this.label4.TabIndex = 47;
             this.label4.Text = "Color Lamina Plastica";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtAltoP
+            // 
+            this.txtAltoP.BackColor = System.Drawing.Color.White;
+            this.txtAltoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAltoP.Location = new System.Drawing.Point(421, 48);
+            this.txtAltoP.Name = "txtAltoP";
+            this.txtAltoP.Size = new System.Drawing.Size(90, 23);
+            this.txtAltoP.TabIndex = 70;
+            this.txtAltoP.TextChanged += new System.EventHandler(this.txtAltoP_TextChanged);
             // 
             // cbColorLamina
             // 
@@ -500,9 +544,9 @@
             this.panelDesglose.Controls.Add(this.btnOcultar);
             this.panelDesglose.Controls.Add(this.dgvAluminio);
             this.panelDesglose.Controls.Add(this.label5);
-            this.panelDesglose.Location = new System.Drawing.Point(1, 318);
+            this.panelDesglose.Location = new System.Drawing.Point(1, 57);
             this.panelDesglose.Name = "panelDesglose";
-            this.panelDesglose.Size = new System.Drawing.Size(1210, 405);
+            this.panelDesglose.Size = new System.Drawing.Size(1210, 666);
             this.panelDesglose.TabIndex = 68;
             this.panelDesglose.Visible = false;
             // 
@@ -603,50 +647,6 @@
             this.label5.TabIndex = 42;
             this.label5.Text = "Desglose";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(316, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 20);
-            this.label11.TabIndex = 71;
-            this.label11.Text = "Ancho Panel";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtAnchoP
-            // 
-            this.txtAnchoP.BackColor = System.Drawing.Color.White;
-            this.txtAnchoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnchoP.Location = new System.Drawing.Point(316, 48);
-            this.txtAnchoP.Name = "txtAnchoP";
-            this.txtAnchoP.Size = new System.Drawing.Size(90, 23);
-            this.txtAnchoP.TabIndex = 72;
-            this.txtAnchoP.TextChanged += new System.EventHandler(this.txtAnchoP_TextChanged);
-            // 
-            // label13
-            // 
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(421, 25);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 20);
-            this.label13.TabIndex = 69;
-            this.label13.Text = "Alto Panel";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtAltoP
-            // 
-            this.txtAltoP.BackColor = System.Drawing.Color.White;
-            this.txtAltoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAltoP.Location = new System.Drawing.Point(421, 48);
-            this.txtAltoP.Name = "txtAltoP";
-            this.txtAltoP.Size = new System.Drawing.Size(90, 23);
-            this.txtAltoP.TabIndex = 70;
-            this.txtAltoP.TextChanged += new System.EventHandler(this.txtAltoP_TextChanged);
             // 
             // frmCalcPuertaBaño
             // 
