@@ -98,9 +98,9 @@
             this.verticalFijoCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vidrioMAncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantVidrioMAncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vidrioFAncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantVidrioFAncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vidrioMAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantVidrioFAncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vidrioFAncho = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantVidrioMAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vidrioFAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantVidrioFAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -500,9 +500,9 @@
             this.verticalFijoCant,
             this.vidrioMAncho,
             this.cantVidrioMAncho,
-            this.vidrioFAncho,
-            this.cantVidrioFAncho,
             this.vidrioMAlto,
+            this.cantVidrioFAncho,
+            this.vidrioFAncho,
             this.cantVidrioMAlto,
             this.vidrioFAlto,
             this.cantVidrioFAlto});
@@ -693,20 +693,20 @@
             this.cantVidrioMAncho.Name = "cantVidrioMAncho";
             this.cantVidrioMAncho.Visible = false;
             // 
-            // vidrioFAncho
+            // vidrioMAlto
             // 
-            this.vidrioFAncho.HeaderText = "Vidrio F Ancho";
-            this.vidrioFAncho.Name = "vidrioFAncho";
+            this.vidrioMAlto.HeaderText = "Vidrio M Alto";
+            this.vidrioMAlto.Name = "vidrioMAlto";
             // 
             // cantVidrioFAncho
             // 
             this.cantVidrioFAncho.HeaderText = "Cant";
             this.cantVidrioFAncho.Name = "cantVidrioFAncho";
             // 
-            // vidrioMAlto
+            // vidrioFAncho
             // 
-            this.vidrioMAlto.HeaderText = "Vidrio M Alto";
-            this.vidrioMAlto.Name = "vidrioMAlto";
+            this.vidrioFAncho.HeaderText = "Vidrio F Ancho";
+            this.vidrioFAncho.Name = "vidrioFAncho";
             // 
             // cantVidrioMAlto
             // 
@@ -821,9 +821,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn verticalFijoCant;
         private System.Windows.Forms.DataGridViewTextBoxColumn vidrioMAncho;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioMAncho;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vidrioFAncho;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioFAncho;
         private System.Windows.Forms.DataGridViewTextBoxColumn vidrioMAlto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioFAncho;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vidrioFAncho;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioMAlto;
         private System.Windows.Forms.DataGridViewTextBoxColumn vidrioFAlto;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioFAlto;

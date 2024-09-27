@@ -28,8 +28,8 @@ namespace Precentacion.User.Bill
     {
         N_Quote NQuote = new N_Quote();
         N_OrdenProduccion NOrden = new N_OrdenProduccion();
-        bool CargaCompleta = false;
-        List<string> Piezas5020 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio F ancho", "Vidrio M alto", "Vidrio F alto" };
+        bool CargaCompleta = false;                                                                                                                                               
+        List<string> Piezas5020 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio M alto", "Vidrio F ancho", "Vidrio F alto" };
         List<string> Piezas8025 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "PisaAlfombra" };
         List<decimal> ResultadosRebajo = new List<decimal>();
         List<decimal> ResultadosCantidad = new List<decimal>();
