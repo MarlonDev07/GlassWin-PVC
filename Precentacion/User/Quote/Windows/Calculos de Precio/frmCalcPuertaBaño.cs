@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using Negocio.Proveedor;
 using Precentacion.User.Quote.Windows.Seleccion_Diseño;
 using iText.Kernel.Colors;
+using System.Reflection.Emit;
 
 namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 {
@@ -628,10 +629,16 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
         private void frmCalcPuertaBaño_Load(object sender, EventArgs e)
         {
-            if (design2 == "MovilMovil") 
+            if (design2 == "PB MovilMovil") 
             {
-                lblAncho.Visible = false;
+               /* lblAncho.Visible = false;
                 txtAncho.Visible = false;
+                label13.Visible = false;
+                txtAltoP.Visible = false;
+                lblAlto.Location = new Point(173,25);
+                txtAlto.Location = new Point(174, 48);
+                lblColor.Location = new Point(403, 25);
+                cbColor.Location = new Point(403,50);*/
             }
         }
         private void CargarProveedor() 
