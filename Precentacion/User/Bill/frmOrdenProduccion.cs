@@ -28,8 +28,8 @@ namespace Precentacion.User.Bill
     {
         N_Quote NQuote = new N_Quote();
         N_OrdenProduccion NOrden = new N_OrdenProduccion();
-        bool CargaCompleta = false;
-        List<string> Piezas5020 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio F ancho", "Vidrio M alto", "Vidrio F alto" };
+        bool CargaCompleta = false;                                                                                                                                               
+        List<string> Piezas5020 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio M alto", "Vidrio F ancho", "Vidrio F alto" };
         List<string> Piezas8025 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "PisaAlfombra" };
         List<decimal> ResultadosRebajo = new List<decimal>();
         List<decimal> ResultadosCantidad = new List<decimal>();
@@ -444,7 +444,7 @@ namespace Precentacion.User.Bill
                 };
 
                 // Ancho personalizado para cada una de las 19 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f };
+                float[] anchosColumnas = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 50f, 0f, 50f, 25f };
                 table.SetWidths(anchosColumnas);
 
                 // Celda 1: Encabezados de las columnas
