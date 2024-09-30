@@ -720,8 +720,16 @@ namespace Precentacion.User.Quote.Windows
                 {
                     description += "Ubicacion: " + txtUbicacion.Text + "\n";
                 }
-                //Añadir la cantidad 
-                description += "Cantidad: " + NumCantidad + "\n"; //cbColor
+        
+                if (txtCantDefault.Text != "")
+                {
+                    description += "Cantidad: " + txtCantDefault.Text + "\n";
+                }
+                else 
+                {
+                    //Añadir la cantidad 
+                    description += "Cantidad: " + NumCantidad + "\n"; //cbColor
+                }
                 if (cbCedazo.Checked)
                 {
                     description += "Con Cedazo" + "\n";
@@ -888,39 +896,75 @@ namespace Precentacion.User.Quote.Windows
         {
             try
             {
-                // Procesar txtAlto
-                if (txtAlto.Text != "")
+                if (CompanyCache.IdCompany == 3101623581)
                 {
+                    // Procesar txtAlto
+                    if (txtAlto.Text != "")
+                    {
 
 
-                    decimal alto = Convert.ToDecimal(txtAlto.Text);
-                   
+                        decimal alto = Convert.ToDecimal(txtAlto.Text);
+
+                     
+                        // Detectar si el usuario ingresó un punto en vez de una coma
+                        DetectarPunto();
+                        ClsWindows.heigt = alto;
+                        //button2_Click(sender, e);
+                    }
+
+                    // Procesar txtAncho
+                    if (txtAncho.Text != "")
+                    {
+
+
+                        decimal ancho = Convert.ToDecimal(txtAncho.Text);
+
+                 
+
+                        // Detectar si el usuario ingresó un punto en vez de una coma
+                        DetectarPunto();
+                        ClsWindows.Weight = ancho;
+                        // button2_Click(sender, e);
+                    }
+                }
+                else 
+                {
+                    // Procesar txtAlto
+                    if (txtAlto.Text != "")
+                    {
+
+
+                        decimal alto = Convert.ToDecimal(txtAlto.Text);
+
                         // Convertir a metros si el valor es mayor o igual a 1000
                         alto /= 1000;
-                    
-                    // Detectar si el usuario ingresó un punto en vez de una coma
-                    DetectarPunto();
-                    ClsWindows.heigt = alto;
-                    //button2_Click(sender, e);
-                }
 
-                // Procesar txtAncho
-                if (txtAncho.Text != "")
-                {
+                        // Detectar si el usuario ingresó un punto en vez de una coma
+                        DetectarPunto();
+                        ClsWindows.heigt = alto;
+                        //button2_Click(sender, e);
+                    }
+
+                    // Procesar txtAncho
+                    if (txtAncho.Text != "")
+                    {
 
 
-                    decimal ancho = Convert.ToDecimal(txtAncho.Text);
-                   
+                        decimal ancho = Convert.ToDecimal(txtAncho.Text);
+
                         // Convertir a metros si el valor es mayor o igual a 1000
                         ancho /= 1000;
-                    
-                    // Detectar si el usuario ingresó un punto en vez de una coma
-                    DetectarPunto();
-                    ClsWindows.Weight = ancho;
-                   // button2_Click(sender, e);
+
+                        // Detectar si el usuario ingresó un punto en vez de una coma
+                        DetectarPunto();
+                        ClsWindows.Weight = ancho;
+                        // button2_Click(sender, e);
+                    }
+
+                    //Advertencias();
+             
                 }
 
-                //Advertencias();
             }
             catch (Exception)
             {
@@ -2848,6 +2892,10 @@ namespace Precentacion.User.Quote.Windows
                 txtTotal.Text = "0";
                 txtPecioFijo.Enabled = true;
                 txtPecioFijo.Text = "0";
+                txtCantDefault.Visible = true;
+                label16.Visible = true;
+                txtCantDefault.Enabled = true;
+                label16.Enabled = true;
             }
             else
             {

@@ -394,7 +394,7 @@ namespace Precentacion.User.Quote.Quote
                     cbOpcion.Visible = false;
                     txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
                     txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
-                    txtConditional3.Text = "3.Se cotizan productos marca Extralum";
+                    txtConditional3.Text = "3.Se cotizan productos de la más alta calidad.";
                     txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
                     txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
                     txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
