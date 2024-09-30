@@ -1320,6 +1320,7 @@ namespace Precentacion.User.Quote.Quote
         #region Metodos
         private void CalcPrices()
         {
+            CultureInfo cultureCR = new CultureInfo("es-CR");
             int resultado = 0;
             if (NQuote.ExisteIdQuote(Convert.ToInt32(idQuoteVerificacion))) // Llamada al método de la capa de lógica de negocio
             {
@@ -1350,8 +1351,8 @@ namespace Precentacion.User.Quote.Quote
                 SubTotal = total;
 
                 // Mostrar en el campo de texto
-                txtTotal.Text = total.ToString("c");
-                txtSubtotal.Text = total.ToString("c");
+                txtTotal.Text = total.ToString("c", cultureCR);
+                txtSubtotal.Text = total.ToString("c", cultureCR);
             }
             else if (Descuento != 0 || ManoObra != 0)
             {
@@ -1384,8 +1385,8 @@ namespace Precentacion.User.Quote.Quote
                 }
                 else
                 {
-                    txtSubtotal.Text = total.ToString("c");
-                    txtTotal.Text = Total.ToString("c");
+                    txtSubtotal.Text = total.ToString("c", cultureCR);
+                    txtTotal.Text = Total.ToString("c", cultureCR);
                 }
                 btnApply_Click(null, null);
 
@@ -1451,8 +1452,8 @@ namespace Precentacion.User.Quote.Quote
                 }
                 else
                 {
-                    txtSubtotal.Text = total.ToString("c");
-                    txtTotal.Text = Total.ToString("c");
+                    txtSubtotal.Text = total.ToString("c", cultureCR);
+                    txtTotal.Text = Total.ToString("c", cultureCR);
                 }
 
 
@@ -1472,6 +1473,7 @@ namespace Precentacion.User.Quote.Quote
 
         private void cbIva_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CultureInfo cultureCR = new CultureInfo("es-CR");
             // Obtener el Numero Antes del % en El comboBox
             string Iva = cbIva.SelectedItem.ToString();
             string IvaNumber = Iva.Substring(0, Iva.Length - 1);
@@ -1488,13 +1490,13 @@ namespace Precentacion.User.Quote.Quote
                 }
                 else if (resultadoGlobal > 0)
                 {
-                    txtTotal.Text = Total.ToString("c");
-                    txtIVA.Text = IVA.ToString("c");
+                    txtTotal.Text = Total.ToString("c", cultureCR);
+                    txtIVA.Text = IVA.ToString("c", cultureCR);
                 }
                 else
                 {
-                    txtTotal.Text = Total.ToString("c");
-                    txtIVA.Text = IVA.ToString("c");
+                    txtTotal.Text = Total.ToString("c", cultureCR);
+                    txtIVA.Text = IVA.ToString("c", cultureCR);
                 }
 
             }
