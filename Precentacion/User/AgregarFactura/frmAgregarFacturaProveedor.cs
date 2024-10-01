@@ -433,10 +433,13 @@ namespace Precentacion.User.AgregarFactura
             string urlImagen = n_FactProveedor.obtenerURLFactura(IdFactura);
             rutaImagen = urlImagen;
 
-            // Cargar la imagen en el PictureBox
-            if (!string.IsNullOrEmpty(urlImagen) && File.Exists(urlImagen))
+            // Descargar el archivo desde el servidor FTP
+            string localPath = DescargarArchivoDesdeFTP(urlImagen);
+
+            // Cargar la imagen o el ícono de PDF en el PictureBox
+            if (!string.IsNullOrEmpty(localPath) && File.Exists(localPath))
             {
-                string fileExtension = Path.GetExtension(urlImagen).ToLower();
+                string fileExtension = Path.GetExtension(localPath).ToLower();
 
                 if (fileExtension == ".pdf")
                 {
@@ -447,7 +450,7 @@ namespace Precentacion.User.AgregarFactura
                 else
                 {
                     // Cargar la imagen si no es un PDF
-                    pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
+                    pbAccesorioExclusivo.Image = new Bitmap(localPath);
                     pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
             }
@@ -563,10 +566,13 @@ namespace Precentacion.User.AgregarFactura
             string urlImagen = n_FactProveedor.obtenerURLFactura(IdFactura);
             rutaImagen = urlImagen;
 
-            // Cargar la imagen en el PictureBox
-            if (!string.IsNullOrEmpty(urlImagen) && File.Exists(urlImagen))
+            // Descargar el archivo desde el servidor FTP
+            string localPath = DescargarArchivoDesdeFTP(urlImagen);
+
+            // Cargar la imagen o el ícono de PDF en el PictureBox
+            if (!string.IsNullOrEmpty(localPath) && File.Exists(localPath))
             {
-                string fileExtension = Path.GetExtension(urlImagen).ToLower();
+                string fileExtension = Path.GetExtension(localPath).ToLower();
 
                 if (fileExtension == ".pdf")
                 {
@@ -577,7 +583,7 @@ namespace Precentacion.User.AgregarFactura
                 else
                 {
                     // Cargar la imagen si no es un PDF
-                    pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
+                    pbAccesorioExclusivo.Image = new Bitmap(localPath);
                     pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
             }
@@ -1326,6 +1332,7 @@ namespace Precentacion.User.AgregarFactura
 
             N_FactProveedor n_FactProveedor = new N_FactProveedor();
             string urlImagen = n_FactProveedor.obtenerURLFactura(IdFactura);
+            rutaImagen = urlImagen;
 
             // Descargar el archivo desde el servidor FTP
             string localPath = DescargarArchivoDesdeFTP(urlImagen);
