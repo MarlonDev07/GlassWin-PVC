@@ -1229,6 +1229,8 @@ namespace Precentacion.User.AgregarFactura
 
                     // URL completa donde se subirá la imagen o archivo
                     string ftpFullUrl = ftpUrl + nombreArchivo;
+                    rutaImagen = ftpFullUrl;
+
 
                     try
                     {
@@ -1278,7 +1280,7 @@ namespace Precentacion.User.AgregarFactura
                 File.Copy(sourcePath, destinationPath, true);
 
                 // Retornar la ruta donde se guardó el archivo
-                rutaImagen = destinationPath;
+                //rutaImagen = destinationPath;
                 return destinationPath;
             }
             catch (Exception ex)
