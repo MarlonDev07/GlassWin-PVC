@@ -21,6 +21,7 @@ using Negocio.Company.Account;
 using Precentacion.User.DashBoard;
 using System.Threading;
 using System.Globalization;
+using System.Net;
 
 
 namespace Precentacion.User.AgregarFactura
@@ -1175,8 +1176,7 @@ namespace Precentacion.User.AgregarFactura
 
                         if (fileExtension == ".pdf")
                         {
-                            // Si es un archivo PDF, podrías mostrar un icono genérico o un mensaje, 
-                            // ya que no se puede mostrar directamente en un PictureBox.
+                            // Si es un archivo PDF, podrías mostrar un icono genérico
                             pbAccesorioExclusivo.Image = Properties.Resources.pdf_icon; // Asegúrate de tener un ícono de PDF en tus recursos.
                             pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
                         }
@@ -1187,13 +1187,60 @@ namespace Precentacion.User.AgregarFactura
                             pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
                         }
 
-                        GuardarArchivo(filePath);
+                        // Guardar el archivo localmente en la carpeta "Facturas"
+                        string rutaGuardada = GuardarArchivo(filePath);
+
+                        // Subir el archivo guardado al servidor FTP
+                        if (rutaGuardada != null)
+                        {
+                            List<string> nombres = new List<string> { Path.GetFileName(rutaGuardada) };
+                            List<string> rutas = new List<string> { rutaGuardada };
+
+                            SubirImagenesAFtp(nombres, rutas);
+                        }
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error al cargar el archivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ocurrió un error al cargar el archivo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void SubirImagenesAFtp(List<string> nombres, List<string> rutas)
+        {
+            //string ftpUrl = "ftp://138.59.135.48:2121//Imagenes/";
+            //string ftpUsuario = "FtpUserMakyDG";
+            //string ftpPassword = "MakyDG0192";
+
+            // URL del servidor FTP y nombre de usuario/contraseña
+            string ftpUrl = "ftp://138.59.135.48//Archivos/";
+            string ftpUsuario = "ftpUser";
+            string ftpPassword = "GlassWinFTP0192";
+
+            using (WebClient client = new WebClient())
+            {
+                // Autenticación en el servidor FTP
+                client.Credentials = new NetworkCredential(ftpUsuario, ftpPassword);
+
+                for (int i = 0; i < nombres.Count; i++)
+                {
+                    string nombreArchivo = nombres[i];
+                    string rutaArchivo = rutas[i];
+
+                    // URL completa donde se subirá la imagen o archivo
+                    string ftpFullUrl = ftpUrl + nombreArchivo;
+
+                    try
+                    {
+                        // Subir el archivo al servidor FTP
+                        client.UploadFile(ftpFullUrl, WebRequestMethods.Ftp.UploadFile, rutaArchivo);
+                        Console.WriteLine("Archivo subido correctamente: " + nombreArchivo);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al subir el archivo " + nombreArchivo + ": " + ex.Message);
+                    }
+                }
             }
         }
 
@@ -1277,12 +1324,14 @@ namespace Precentacion.User.AgregarFactura
 
             N_FactProveedor n_FactProveedor = new N_FactProveedor();
             string urlImagen = n_FactProveedor.obtenerURLFactura(IdFactura);
-            rutaImagen = urlImagen;
 
-            // Cargar la imagen en el PictureBox
-            if (!string.IsNullOrEmpty(urlImagen) && File.Exists(urlImagen))
+            // Descargar el archivo desde el servidor FTP
+            string localPath = DescargarArchivoDesdeFTP(urlImagen);
+
+            // Cargar la imagen o el ícono de PDF en el PictureBox
+            if (!string.IsNullOrEmpty(localPath) && File.Exists(localPath))
             {
-                string fileExtension = Path.GetExtension(urlImagen).ToLower();
+                string fileExtension = Path.GetExtension(localPath).ToLower();
 
                 if (fileExtension == ".pdf")
                 {
@@ -1293,7 +1342,7 @@ namespace Precentacion.User.AgregarFactura
                 else
                 {
                     // Cargar la imagen si no es un PDF
-                    pbAccesorioExclusivo.Image = new Bitmap(urlImagen);
+                    pbAccesorioExclusivo.Image = new Bitmap(localPath);
                     pbAccesorioExclusivo.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
             }
@@ -1301,7 +1350,6 @@ namespace Precentacion.User.AgregarFactura
             {
                 pbAccesorioExclusivo.Image = null; // O una imagen por defecto
             }
-
 
             lblTitulo.Text = "Ver Factura";
 
@@ -1320,9 +1368,38 @@ namespace Precentacion.User.AgregarFactura
             txtBodega.Enabled = false;
             btnBack.Visible = true;
 
-
             tabControlPrincipal.SelectedTab = tabPageConsulta;
             CargarDataGridPendiente();
+        }
+
+        private string DescargarArchivoDesdeFTP(string remoteUrl)
+        {
+            try
+            {
+                string ftpUrl = "ftp://138.59.135.48//Archivos/";
+                string ftpUsuario = "ftpUser";
+                string ftpPassword = "GlassWinFTP0192";
+
+                // Crear el WebClient para la descarga
+                using (WebClient request = new WebClient())
+                {
+                    // Establecer las credenciales
+                    request.Credentials = new NetworkCredential(ftpUsuario, ftpPassword);
+
+                    // Generar una ruta temporal para almacenar el archivo descargado
+                    string localPath = Path.Combine(Path.GetTempPath(), Path.GetFileName(remoteUrl));
+
+                    // Descargar el archivo desde el servidor FTP
+                    request.DownloadFile(remoteUrl, localPath);
+
+                    return localPath; // Retornar la ruta local donde se descargó el archivo
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al descargar el archivo desde FTP: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         private void nuevaToolStripMenuItem_Click(object sender, EventArgs e)

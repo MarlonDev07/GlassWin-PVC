@@ -1,5 +1,6 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -233,6 +234,8 @@ namespace Precentacion.Login
             shortcut.IconLocation = targetPath;
             shortcut.Save();
         }
+
+        
 
 
 
