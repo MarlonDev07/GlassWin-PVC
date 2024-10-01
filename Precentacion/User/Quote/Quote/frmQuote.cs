@@ -2839,11 +2839,15 @@ namespace Precentacion.User.Quote.Quote
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
                     document.Add(CuentasParagraph);
 
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN Banco Nacional CR77015102720010316718", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
                     Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta1Paragraph);
 
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Banco Nacional 200-01-027-031671-9", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Sinpe Móvil 8828-6440 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
