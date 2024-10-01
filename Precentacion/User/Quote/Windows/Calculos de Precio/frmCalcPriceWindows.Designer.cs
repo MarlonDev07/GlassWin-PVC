@@ -86,6 +86,8 @@
             this.cbSupplier = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtCantDefault = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtTotalPrice = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -138,8 +140,6 @@
             this.lblDetalleCotizacion = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtCantDefault = new System.Windows.Forms.TextBox();
             this.panelCerradura.SuspendLayout();
             this.contextMenuStripOpciones.SuspendLayout();
             this.PanelMedidas.SuspendLayout();
@@ -182,7 +182,7 @@
             this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUbicacion.BackColor = System.Drawing.Color.Orange;
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(748, 8);
+            this.txtUbicacion.Location = new System.Drawing.Point(744, 8);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(162, 23);
             this.txtUbicacion.TabIndex = 46;
@@ -583,6 +583,28 @@
             this.panel2.Size = new System.Drawing.Size(1164, 57);
             this.panel2.TabIndex = 51;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(288, 7);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(147, 18);
+            this.label16.TabIndex = 32;
+            this.label16.Text = "Cantidad";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label16.Visible = false;
+            // 
+            // txtCantDefault
+            // 
+            this.txtCantDefault.BackColor = System.Drawing.Color.White;
+            this.txtCantDefault.Enabled = false;
+            this.txtCantDefault.Location = new System.Drawing.Point(305, 27);
+            this.txtCantDefault.Name = "txtCantDefault";
+            this.txtCantDefault.Size = new System.Drawing.Size(121, 20);
+            this.txtCantDefault.TabIndex = 33;
+            this.txtCantDefault.Visible = false;
             // 
             // label14
             // 
@@ -996,7 +1018,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(272, 7);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(321, 24);
+            this.lblDescripcion.Size = new System.Drawing.Size(317, 24);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripción";
             // 
@@ -1006,7 +1028,7 @@
             this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(599, 7);
+            this.label1.Location = new System.Drawing.Point(595, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(130, 24);
             this.label1.TabIndex = 63;
@@ -1431,7 +1453,7 @@
             // 
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(1117, 3);
+            this.btnCerrar.Location = new System.Drawing.Point(1113, 3);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(36, 29);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1443,35 +1465,13 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1045, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(1041, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(51, 29);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 132;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // label16
-            // 
-            this.label16.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(288, 7);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(147, 18);
-            this.label16.TabIndex = 32;
-            this.label16.Text = "Cantidad";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label16.Visible = false;
-            // 
-            // txtCantDefault
-            // 
-            this.txtCantDefault.BackColor = System.Drawing.Color.White;
-            this.txtCantDefault.Enabled = false;
-            this.txtCantDefault.Location = new System.Drawing.Point(305, 27);
-            this.txtCantDefault.Name = "txtCantDefault";
-            this.txtCantDefault.Size = new System.Drawing.Size(121, 20);
-            this.txtCantDefault.TabIndex = 33;
-            this.txtCantDefault.Visible = false;
             // 
             // frmCalcPriceWindows
             // 
