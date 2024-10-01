@@ -1489,10 +1489,20 @@ namespace Precentacion.User.AgregarFactura
         {
             if (rutaImagen != null && Path.GetExtension(rutaImagen).ToLower() == ".pdf")
             {
-                // El archivo es un PDF, se puede abrir con el visor predeterminado de PDF
+                // El archivo es un PDF, descargarlo si es necesario y luego abrirlo
                 try
                 {
-                    System.Diagnostics.Process.Start(rutaImagen);
+                    string localFilePath = DescargarArchivoDesdeFTP2(rutaImagen); // Descarga si es necesario
+
+                    if (!string.IsNullOrEmpty(localFilePath) && File.Exists(localFilePath))
+                    {
+                        // Abrir el archivo PDF con el visor predeterminado
+                        System.Diagnostics.Process.Start(localFilePath);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo encontrar o descargar el archivo PDF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -1512,6 +1522,41 @@ namespace Precentacion.User.AgregarFactura
                 }
             }
         }
+
+        // Método para descargar el archivo desde el servidor FTP si no está disponible localmente
+        private string DescargarArchivoDesdeFTP2(string remoteUrl)
+        {
+            try
+            {
+                string ftpUrl = "ftp://138.59.135.48//Archivos/";
+                string ftpUsuario = "ftpUser";
+                string ftpPassword = "GlassWinFTP0192";
+
+                // Ruta local donde se descargará el archivo
+                string localPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Facturas", Path.GetFileName(remoteUrl));
+
+                // Verificar si el archivo ya existe localmente
+                if (File.Exists(localPath))
+                {
+                    return localPath; // Ya existe, no es necesario descargar
+                }
+
+                // Descargar el archivo desde el servidor FTP
+                using (WebClient client = new WebClient())
+                {
+                    client.Credentials = new NetworkCredential(ftpUsuario, ftpPassword);
+                    client.DownloadFile(remoteUrl, localPath);
+                }
+
+                return localPath; // Devolver la ruta local del archivo descargado
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al descargar el archivo desde el servidor FTP: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
 
         private void dgvFacturas_RowsAdded_1(object sender, DataGridViewRowsAddedEventArgs e)
         {
