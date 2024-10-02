@@ -50,16 +50,16 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.02M;
                             break;
                         case "Vidrio M ancho":
-                            Rebajo = W - 0.108M / 2;
+                            Rebajo = (W - 0.108M) / 2;
                             break;
                         case "Vidrio F ancho":
-                            Rebajo = W - 0.108M / 2;
+                            Rebajo = (W - 0.108M) / 2;
                             break;
                         case "Vidrio M alto":
-                            Rebajo = H - 0.10M /2;
+                            Rebajo = H - 0.10M;
                             break;
                         case "Vidrio F alto":
-                            Rebajo = W - 0.09M;
+                            Rebajo = H - 0.09M;
                             break;
                     }
                     break;
