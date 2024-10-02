@@ -1822,6 +1822,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                if (CompanyCache.IdCompany == 3105806704)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\glassmar.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
                 //laCosta
                 if (CompanyCache.IdCompany == 109650325)
                 {
@@ -2421,6 +2430,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                if (CompanyCache.IdCompany == 3105806704)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\glassmar.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
                 //laCosta
                 if (CompanyCache.IdCompany == 109650325)
                 {
@@ -2946,6 +2964,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                if (CompanyCache.IdCompany == 3105806704)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\glassmar.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
                 //laCosta
                 if (CompanyCache.IdCompany == 109650325)
                 {
