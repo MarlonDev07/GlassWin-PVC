@@ -473,7 +473,10 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional3.Text = "3.50 %contraentrega.";
                     txtConditional4.Text = "4.Vigencia oferta 10 días naturales.";
                     txtConditional5.Text = "5.Tiempo entrega 8 dias.";
-                   
+                    txtConditional6.Text = "6.Se cotizan productos marca Extralum, Macopa y Mercado del Vidrio.";
+                    txtConditional7.Text = "7.Manejamos descuentos del 35%, 15% y 10%.";
+                    txtConditional8.Text = "8.Forma de pago 50% adelanto 50% contra entrega, depende del cliente.";
+
 
                 }
                 //Usuario Prueba
