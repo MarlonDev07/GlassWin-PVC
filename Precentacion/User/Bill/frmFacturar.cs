@@ -1822,6 +1822,16 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //La familia
+                if (CompanyCache.IdCompany == 114420180)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\familia.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
                 if (CompanyCache.IdCompany == 3105806704)
                 {
                     //Obtener la Ruta de la Carpeta bin
@@ -2439,6 +2449,17 @@ namespace Precentacion.User.Bill
 
                 }
 
+                //La familia
+                if (CompanyCache.IdCompany == 114420180)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\familia.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+
                 //laCosta
                 if (CompanyCache.IdCompany == 109650325)
                 {
@@ -2964,6 +2985,16 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //La familia
+                if (CompanyCache.IdCompany == 114420180)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\familia.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
                 if (CompanyCache.IdCompany == 3105806704)
                 {
                     //Obtener la Ruta de la Carpeta bin
