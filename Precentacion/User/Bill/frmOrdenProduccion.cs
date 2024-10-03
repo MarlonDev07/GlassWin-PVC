@@ -30,7 +30,7 @@ namespace Precentacion.User.Bill
         N_OrdenProduccion NOrden = new N_OrdenProduccion();
         bool CargaCompleta = false;                                                                                                                                               
         List<string> Piezas5020 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio M alto", "Vidrio F ancho", "Vidrio F alto" };
-        List<string> Piezas8025 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "PisaAlfombra" };
+        List<string> Piezas8025 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "PisaAlfombra",  "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio M alto", "Vidrio F ancho", "Vidrio F alto" };
         List<decimal> ResultadosRebajo = new List<decimal>();
         List<decimal> ResultadosCantidad = new List<decimal>();
         //public DataGridView dgvOrdenProduccion;
@@ -212,7 +212,14 @@ namespace Precentacion.User.Bill
                                     ResultadosRebajo[5], ResultadosCantidad[5],
                                     ResultadosRebajo[6], ResultadosCantidad[6],
                                     ResultadosRebajo[7], ResultadosCantidad[7],
-                                    contadorVentana8025);
+                                    contadorVentana8025,
+                                    ResultadosRebajo[8], ResultadosCantidad[8],
+                                    ResultadosRebajo[9], ResultadosCantidad[9],
+                                    ResultadosRebajo[10], ResultadosCantidad[10],
+                                    ResultadosRebajo[11], ResultadosCantidad[11],
+                                    ResultadosRebajo[12], ResultadosCantidad[12],
+                                    ResultadosRebajo[13], ResultadosCantidad[13]
+                                    );
 
                                 // Incrementar el contador para la próxima fila
                                 contadorVentana8025++;
@@ -512,7 +519,7 @@ namespace Precentacion.User.Bill
                 };
 
                 // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas2 = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f };
+                float[] anchosColumnas2 = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 50f, 0f, 50f, 25f };
                 table8025.SetWidths(anchosColumnas2);
 
                 // Celda 1: Encabezados de las columnas
