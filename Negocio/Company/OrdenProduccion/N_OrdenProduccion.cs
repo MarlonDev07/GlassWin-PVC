@@ -563,22 +563,40 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = W;
                             break;
                         case "Jamba":
-                            Rebajo = H - 0.016M;
-                            break;
-                        case "Superior":
-                            Rebajo = (W / 2) - 0.015M;
-                            break;
-                        case "Inferior":
-                            Rebajo = (W / 2) - 0.013M;
-                            break;
-                        case "Vertical":
-                            Rebajo = H - 0.03M;
-                            break;
-                        case "Vertical Centro":
-                            Rebajo = H - 0.03M;
+                            Rebajo = H - 0.011M;
                             break;
                         case "PisaAlfombra":
-                            Rebajo = H - 0.03M;
+                            Rebajo = W;
+                            break;
+                        case "Superior":
+                            Rebajo = (W / 2) - 0.008M;
+                            break;
+                        case "Inferior":
+                            Rebajo = (W / 2) - 0.088M;
+                            break;
+                        case "Vertical":
+                            Rebajo = H - 0.028M;
+                            break;
+                        case "Vertical Centro":
+                            Rebajo = H - 0.028M;
+                            break;
+                        case "Vertical Centro fijo":
+                            Rebajo = H - 0.023M;
+                            break;
+                        case "Vertical fijo":
+                            Rebajo = H - 0.023M;
+                            break;
+                        case "Vidrio M ancho":
+                            Rebajo = W / 2 - 0.064M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = W / 2 - 0.064M;
+                            break;
+                        case "Vidrio M alto":
+                            Rebajo = H - 0.108M;
+                            break;
+                        case "Vidrio F alto":
+                            Rebajo = H - 0.103M;
                             break;
                     }
                     break;
