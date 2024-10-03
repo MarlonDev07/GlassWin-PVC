@@ -368,7 +368,7 @@ namespace Precentacion.User.Quote.Prefabricado
         }
 
 
-        public void BuscarProducto(int Id, int Seleccion) 
+        /*public void BuscarProducto(int Id, int Seleccion) 
         {
             DataTable dataTable = new DataTable();
             N_LoadProduct n_LoadProduct = new N_LoadProduct();
@@ -382,9 +382,11 @@ namespace Precentacion.User.Quote.Prefabricado
                     if (UserCache.Name == "InnovaGlass")
                     {
                         dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["Cost"].ToString();
+                       
                     }
                     else {
                         dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                       
                     }
                     
 
@@ -394,9 +396,11 @@ namespace Precentacion.User.Quote.Prefabricado
                     if (UserCache.Name == "InnovaGlass")
                     {
                         dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["Cost"].ToString();
+                        
                     }
                     else {
                         dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                        
                     }
                         
                 }
@@ -410,7 +414,55 @@ namespace Precentacion.User.Quote.Prefabricado
                     frm.Show();
                 }
             }
+        }*/
+
+        public void BuscarProducto(int Id, int Seleccion)
+        {
+            DataTable dataTable = new DataTable();
+            N_LoadProduct n_LoadProduct = new N_LoadProduct();
+            dataTable = n_LoadProduct.ListaArticulosxID(Id);
+            if (dataTable.Rows.Count > 0)
+            {
+                if (Seleccion == 0)
+                {
+                    dgvPrefabricado.CurrentRow.Cells[0].Value = dataTable.Rows[0]["IdPrice"].ToString();
+                    dgvPrefabricado.CurrentRow.Cells[1].Value = dataTable.Rows[0]["Description"].ToString();
+                    if (UserCache.Name == "InnovaGlass")
+                    {
+                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["Cost"].ToString();
+                    }
+                    else
+                    {
+                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                    }
+
+                    // Después de cargar los datos, llamamos a AgregarFila
+                    AgregarFila();
+                }
+
+                if (Seleccion == 1)
+                {
+                    if (UserCache.Name == "InnovaGlass")
+                    {
+                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["Cost"].ToString();
+                    }
+                    else
+                    {
+                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                    }
+                }
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("El Articulo no Existe, Desea Abrir la Lista?", "Articulo no Encontrado", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    frmListArticulos frm = new frmListArticulos();
+                    frm.Show();
+                }
+            }
         }
+
         public void ConfigEditar() 
         { 
             btnGuardar.Text = "Editar Combo";

@@ -40,13 +40,13 @@
             // 
             // dgvPrefabricado
             // 
+            this.dgvPrefabricado.AllowUserToAddRows = false;
             this.dgvPrefabricado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrefabricado.ContextMenuStrip = this.contextMenuStrip1;
-            this.dgvPrefabricado.Location = new System.Drawing.Point(9, 103);
-            this.dgvPrefabricado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvPrefabricado.Location = new System.Drawing.Point(6, 67);
             this.dgvPrefabricado.Name = "dgvPrefabricado";
             this.dgvPrefabricado.RowHeadersWidth = 62;
-            this.dgvPrefabricado.Size = new System.Drawing.Size(1271, 462);
+            this.dgvPrefabricado.Size = new System.Drawing.Size(847, 300);
             this.dgvPrefabricado.TabIndex = 2;
             this.dgvPrefabricado.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrefabricado_CellValueChanged);
             this.dgvPrefabricado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvPrefabricado_KeyDown);
@@ -57,22 +57,21 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eliminarToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 36);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 26);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(146, 32);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // btnCargar
             // 
             this.btnCargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargar.Location = new System.Drawing.Point(9, 574);
-            this.btnCargar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCargar.Location = new System.Drawing.Point(6, 373);
             this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(174, 78);
+            this.btnCargar.Size = new System.Drawing.Size(116, 51);
             this.btnCargar.TabIndex = 9;
             this.btnCargar.Text = "Lista de Articulos";
             this.btnCargar.UseVisualStyleBackColor = true;
@@ -81,10 +80,9 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(1123, 574);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnGuardar.Location = new System.Drawing.Point(749, 373);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(157, 78);
+            this.btnGuardar.Size = new System.Drawing.Size(105, 51);
             this.btnGuardar.TabIndex = 10;
             this.btnGuardar.Text = "Guardar Combo";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -92,16 +90,14 @@
             // 
             // frmPrefabricado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1320, 692);
+            this.ClientSize = new System.Drawing.Size(880, 450);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.dgvPrefabricado);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "frmPrefabricado";
-            this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CMB Artículos";
             this.Load += new System.EventHandler(this.frmPrefabricado_Load);

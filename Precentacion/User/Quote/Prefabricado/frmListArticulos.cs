@@ -31,7 +31,17 @@ namespace Precentacion.User.Quote.Prefabricado
         {
             this.BeginInvoke((Action)delegate
             {
-                txtBuscar.Focus();
+                //txtBuscar.Focus();
+                // Asegúrate de que dgvArticulos tenga al menos una fila
+                if (dgvArticulos.Rows.Count > 0)
+                {
+                    // Seleccionar la primera fila
+                    dgvArticulos.CurrentCell = dgvArticulos.Rows[0].Cells[0];
+                    dgvArticulos.Rows[0].Selected = true;
+
+                    // Establecer el enfoque en el DataGridView
+                    dgvArticulos.Focus();
+                }
             });
         }
 
@@ -94,7 +104,7 @@ namespace Precentacion.User.Quote.Prefabricado
                         filaSeleccionada.Cells[4].Value = "1";
 
                         //Agregar Fila
-                        ((frmPrefabricado)frm).AgregarFila();
+                        //((frmPrefabricado)frm).AgregarFila();
 
                         // Cerrar este formulario
                         this.Close();
@@ -124,7 +134,7 @@ namespace Precentacion.User.Quote.Prefabricado
                 descripcion = descripcion.Replace('.', ',');
                 int cursorPosition = txtBuscar.SelectionStart;
                 txtBuscar.Text = descripcion;
-                txtBuscar.SelectionStart = cursorPosition;
+               // txtBuscar.SelectionStart = cursorPosition;
             }
 
             DataTable dt = objN.BuscarArticulosPorDescripcion(descripcion);
