@@ -55,6 +55,11 @@ namespace Negocio.Company
             }
         }
 
+        public long InsertCompany2(long idUser, long idCompany, string phone, string address, string url, string name)
+        {
+            return ObjCDCompany.InsertCompany2(idUser,idCompany,phone,address,url,name);
+        }
+
         public bool Update(string ID, string IDCompany, string phone, string Address, string Url, string Name)
         {
             try

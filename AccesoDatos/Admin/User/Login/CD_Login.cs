@@ -43,10 +43,21 @@ namespace AccesoDatos.Login
                                 {
                                     resp = true;
                                 }
+                                //NUEVO
                                 else
                                 {
-                                    resp = false;
+                                    bool res2 = LoadDataCompany2(UserCache.IdUser);
+                                    if (res2)
+                                    {
+                                        res = true;
+                                    }
+                                    else 
+                                    {
+                                        resp = false;
+                                    }
+                                    
                                 }
+                                //FIN NUEVO
                             }
 
                             UserCache.State = reader.GetString(8);
@@ -93,6 +104,48 @@ namespace AccesoDatos.Login
                             CompanyCache.Phone = reader.GetString(2);
                             CompanyCache.Address = reader.GetString(3);
                             CompanyCache.Name = reader.GetString(5);
+                        }
+                        return true;
+                    }
+
+                    else
+                        return false;
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+        //NUEVO
+        public bool LoadDataCompany2(Int64 IDUser)
+        {
+            try
+            {
+                if (IDUser == 255505555)
+                {
+                    IDUser = 25550555;
+                }
+                ClsConnection Conn = new ClsConnection();
+
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = Conn.OpenConecction();
+                    command.CommandText = "select * from Company2 where idUser = @ID";
+                    command.Parameters.AddWithValue("@ID", IDUser);
+                    command.CommandType = CommandType.Text;
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            CompanyCache.IdUser = reader.GetInt64(0);
+                            CompanyCache.IdCompany = reader.GetInt64(2);
+                            CompanyCache.Phone = reader.GetString(3);
+                            CompanyCache.Address = reader.GetString(4);
+                            CompanyCache.Name = reader.GetString(6);
                         }
                         return true;
                     }
