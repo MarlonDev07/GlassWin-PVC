@@ -649,10 +649,16 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.016M;
                             break;
                         case "Superior":
-                            Rebajo = (W / 2) - 0.015M;
+                            Rebajo = (W / 4) - 0.003M;
                             break;
                         case "Inferior":
-                            Rebajo = (W / 2) - 0.013M;
+                            Rebajo = (W / 4) - 0.003M;
+                            break;
+                        case "Superior f":
+                            Rebajo = (W / 2) + 0.02M;
+                            break;
+                        case "Inferior f":
+                            Rebajo = (W / 2) + 0.02M;
                             break;
                         case "Vertical":
                             Rebajo = H - 0.03M;
@@ -662,6 +668,24 @@ namespace Negocio.Company.OrdenProduccion
                             break;
                         case "PisaAlfombra":
                             Rebajo = H - 0.03M;
+                            break;
+                        case "Vertical Centro fijo":
+                            Rebajo = H - 0.023M;
+                            break;
+                        case "Vertical fijo":
+                            Rebajo = H - 0.023M;
+                            break;
+                        case "Vidrio M ancho":
+                            Rebajo = W / 2 - 0.064M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = W / 2 - 0.064M;
+                            break;
+                        case "Vidrio M alto":
+                            Rebajo = H - 0.108M;
+                            break;
+                        case "Vidrio F alto":
+                            Rebajo = H - 0.103M;
                             break;
                     }
                     break;
