@@ -119,14 +119,16 @@ namespace Precentacion.User.Quote.Prefabricado
             {
                 if (Inicializado)
                 {
-                    if (dgvPrefabricado.CurrentRow.Cells[0].Value != "" && dgvPrefabricado.CurrentRow.Cells[0].Value.ToString() != IdCombo)
+                    if (dgvPrefabricado.CurrentRow.Cells[0].Value != null && !string.IsNullOrEmpty(dgvPrefabricado.CurrentRow.Cells[0].Value.ToString()) &&
+                        dgvPrefabricado.CurrentRow.Cells[0].Value.ToString() != IdCombo)
                     {
                         IdCombo = dgvPrefabricado.CurrentRow.Cells[0].Value.ToString();
                         if (ValidarCampos(IdCombo))
                         {
-                            BuscarProducto(Convert.ToInt32(dgvPrefabricado.CurrentRow.Cells[0].Value), 0);
-                        }                      
+                            BuscarProducto(/*Convert.ToInt32(dgvPrefabricado.CurrentRow.Cells[0].Value)*/Convert.ToInt32(IdCombo), 0);
+                        }
                     }
+
                     //Validar las Celdas Alto Ancho y Cantidad
                     if (dgvPrefabricado.CurrentRow.Cells[2].Value != null && dgvPrefabricado.CurrentRow.Cells[3].Value != null && dgvPrefabricado.CurrentRow.Cells[4].Value != null)
                     {
@@ -299,36 +301,47 @@ namespace Precentacion.User.Quote.Prefabricado
         }
         public void ListarArticulos(List<Cls_CmbArticulo> List)
         {
-            //Agregar una Columna nueva al dgvPrefabricado con el IdVentana
-            dgvPrefabricado.Columns.Add("IdVentana", "IdVentana");
-            //Recorrer la Lista de Articulos
+            if (!dgvPrefabricado.Columns.Contains("IdVentana"))
+            {
+                dgvPrefabricado.Columns.Add("IdVentana", "IdVentana");
+            }
+
+            // Desactivar temporalmente los eventos para evitar problemas
+            dgvPrefabricado.CellValueChanged -= dgvPrefabricado_CellValueChanged;
+
+            // Recorrer la Lista de Articulos
             foreach (Cls_CmbArticulo item in List)
             {
-                //Agregar una fila nueva
-                dgvPrefabricado.Rows.Add();
+                // Agregar una nueva fila
+                int newRowIndex = dgvPrefabricado.Rows.Add();
 
-                // Obtener el índice de la última fila agregada
-                int indiceUltimaFila = dgvPrefabricado.Rows.Count - 2;
+                // Seleccionar la nueva fila
+                DataGridViewRow newRow = dgvPrefabricado.Rows[newRowIndex];
 
-                //Seleccionar la última fila agregada
-                dgvPrefabricado.CurrentCell = dgvPrefabricado.Rows[indiceUltimaFila].Cells[0];
-
-                //Obtener los Datos de la Descripcion
+                // Obtener los Datos de la Descripción
                 string[] Datos = ObtenerDatosDescripcion(item.Descripcion);
 
-                //Asignar los Datos a la Fila
-                dgvPrefabricado.CurrentRow.Cells[0].Value = Datos[0];
-                dgvPrefabricado.CurrentRow.Cells[1].Value = Datos[1];
-                dgvPrefabricado.CurrentRow.Cells[2].Value = Datos[2];
-                dgvPrefabricado.CurrentRow.Cells[3].Value = Datos[3];
-                dgvPrefabricado.CurrentRow.Cells[4].Value = Datos[4];
-                BuscarProducto(Convert.ToInt32(Datos[0]),1);
-                dgvPrefabricado.CurrentRow.Cells[7].Value = item.Precio;
-                dgvPrefabricado.CurrentRow.Cells[8].Value = item.IdVentana;
+                // Asignar los Datos a la fila
+                newRow.Cells[0].Value = Convert.ToInt32(Datos[0]); // Id
+                newRow.Cells[1].Value = Datos[1]; // Descripción
+                newRow.Cells[2].Value = Datos[2]; // Alto
+                newRow.Cells[3].Value = Datos[3]; // Ancho
+                newRow.Cells[4].Value = Datos[4]; // Cantidad
+                BuscarProducto(Convert.ToInt32(Datos[0]), 1); // Llamada a BuscarProducto
+                newRow.Cells[7].Value = item.Precio; // Precio
+                newRow.Cells[8].Value = item.IdVentana; // IdVentana
             }
-            //Borrar el Index 0
-            dgvPrefabricado.Rows.RemoveAt(0);
+
+            // Si necesitas eliminar la primera fila:
+            if (dgvPrefabricado.Rows.Count > 1)
+            {
+                dgvPrefabricado.Rows.RemoveAt(0);
+            }
+
+            // Reactivar el evento después de agregar todas las filas
+            dgvPrefabricado.CellValueChanged += dgvPrefabricado_CellValueChanged;
         }
+
         public string[] ObtenerDatosDescripcion(string Descripcion)
         {
             string[] Datos = new string[5]; // Crear un array de 5 elementos para ID, Nombre, Ancho, Alto y Cantidad
@@ -421,47 +434,60 @@ namespace Precentacion.User.Quote.Prefabricado
             DataTable dataTable = new DataTable();
             N_LoadProduct n_LoadProduct = new N_LoadProduct();
             dataTable = n_LoadProduct.ListaArticulosxID(Id);
-            if (dataTable.Rows.Count > 0)
+
+            // Asegúrate de que hay una fila seleccionada o actual
+            if (dgvPrefabricado.CurrentRow != null)
             {
-                if (Seleccion == 0)
+                if (dataTable.Rows.Count > 0)
                 {
-                    dgvPrefabricado.CurrentRow.Cells[0].Value = dataTable.Rows[0]["IdPrice"].ToString();
-                    dgvPrefabricado.CurrentRow.Cells[1].Value = dataTable.Rows[0]["Description"].ToString();
-                    if (UserCache.Name == "InnovaGlass")
+                    if (Seleccion == 0)
                     {
-                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["Cost"].ToString();
-                    }
-                    else
-                    {
-                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
-                    }
+                        // Asignar valores desde la DataTable
+                        dgvPrefabricado.CurrentRow.Cells[0].Value = dataTable.Rows[0]["IdPrice"].ToString();
+                        dgvPrefabricado.CurrentRow.Cells[1].Value = dataTable.Rows[0]["Description"].ToString();
 
-                    // Después de cargar los datos, llamamos a AgregarFila
-                    AgregarFila();
+                        // Asignar precio dependiendo del usuario
+                        if (UserCache.Name == "InnovaGlass")
+                        {
+                            dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["Cost"].ToString();
+                        }
+                        else
+                        {
+                            dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                        }
+
+                        // Después de cargar los datos, llamamos a AgregarFila si es necesario
+                        AgregarFila();
+                    }
+                    else if (Seleccion == 1)
+                    {
+                        if (UserCache.Name == "InnovaGlass")
+                        {
+                            dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["Cost"].ToString();
+                        }
+                        else
+                        {
+                            dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                        }
+                    }
                 }
-
-                if (Seleccion == 1)
+                else
                 {
-                    if (UserCache.Name == "InnovaGlass")
+                    DialogResult result = MessageBox.Show("El Articulo no Existe, Desea Abrir la Lista?", "Articulo no Encontrado", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["Cost"].ToString();
-                    }
-                    else
-                    {
-                        dgvPrefabricado.CurrentRow.Cells[6].Value = dataTable.Rows[0]["SalePrice"].ToString();
+                        frmListArticulos frm = new frmListArticulos();
+                        frm.Show();
                     }
                 }
             }
             else
             {
-                DialogResult result = MessageBox.Show("El Articulo no Existe, Desea Abrir la Lista?", "Articulo no Encontrado", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    frmListArticulos frm = new frmListArticulos();
-                    frm.Show();
-                }
+                // Manejar el caso en que CurrentRow es null
+                MessageBox.Show("No hay ninguna fila seleccionada en el DataGridView.");
             }
         }
+
 
         public void ConfigEditar() 
         { 
