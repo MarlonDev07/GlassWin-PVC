@@ -572,7 +572,7 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = (W / 2) - 0.008M;
                             break;
                         case "Inferior":
-                            Rebajo = (W / 2) - 0.088M;
+                            Rebajo = (W / 2) - 0.008M;
                             break;
                         case "Vertical":
                             Rebajo = H - 0.028M;
@@ -600,8 +600,7 @@ namespace Negocio.Company.OrdenProduccion
                             break;
                     }
                     break;
-
-                case "MovilFijo":
+                case "MovilMovil":
                     switch (Pieza)
                     {
                         case "Cargador":
@@ -611,26 +610,32 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = W;
                             break;
                         case "Jamba":
-                            Rebajo = H - 0.016M;
-                            break;
-                        case "Superior":
-                            Rebajo = (W / 2) - 0.015M;
-                            break;
-                        case "Inferior":
-                            Rebajo = (W / 2) - 0.013M;
-                            break;
-                        case "Vertical":
-                            Rebajo = H - 0.03M;
-                            break;
-                        case "Vertical Centro":
-                            Rebajo = H - 0.03M;
+                            Rebajo = H - 0.011M;
                             break;
                         case "PisaAlfombra":
-                            Rebajo = H - 0.03M;
+                            Rebajo = W;
                             break;
+                        case "Superior":
+                            Rebajo = (W / 2) - 0.008M;
+                            break;
+                        case "Inferior":
+                            Rebajo = (W / 2) - 0.008M;
+                            break;
+                        case "Vertical":
+                            Rebajo = H - 0.028M;
+                            break;
+                        case "Vertical Centro":
+                            Rebajo = H - 0.028M;
+                            break;
+                        case "Vidrio M ancho":
+                            Rebajo = W / 2 - 0.064M;
+                            break;
+                        case "Vidrio M alto":
+                            Rebajo = H - 0.108M;
+                            break;
+
                     }
                     break;
-
                 case "MovilFijoMovil":
                     switch (Pieza)
                     {
@@ -741,24 +746,42 @@ namespace Negocio.Company.OrdenProduccion
                         case "Jamba":
                             Cantidad = 2;
                             break;
-                        case "Superior":
-                            Cantidad = 3;
-                            break;
-                        case "Inferior":
+                        case "PisaAlfombra":
                             Cantidad = 1;
                             break;
-                        case "Vertical":
+                        case "Superior":
                             Cantidad = 2;
+                            break;
+                        case "Inferior":
+                            Cantidad = 2;
+                            break;
+                        case "Vertical":
+                            Cantidad = 1;
                             break;
                         case "Vertical Centro":
-                            Cantidad = 2;
+                            Cantidad = 1;
                             break;
-                        case "PisaAlfombra":
-                            Cantidad = 2;
+                        case "Vertical Centro fijo":
+                            Cantidad = 1;
+                            break;
+                        case "Vertical fijo":
+                            Cantidad = 1;
+                            break;
+                        case "Vidrio M ancho":
+                            Cantidad = 1;
+                            break;
+                        case "Vidrio F ancho":
+                            Cantidad = 1;
+                            break;
+                        case "Vidrio M alto":
+                            Cantidad = 1;
+                            break;
+                        case "Vidrio F alto":
+                            Cantidad = 1;
                             break;
                     }
                     break;
-                case "MovilFijo":
+                case "MovilMovil":
                     switch (Pieza)
                     {
                         case "Cargador":
@@ -770,11 +793,14 @@ namespace Negocio.Company.OrdenProduccion
                         case "Jamba":
                             Cantidad = 2;
                             break;
+                        case "PisaAlfombra":
+                            Cantidad = 1;
+                            break;
                         case "Superior":
-                            Cantidad = 3;
+                            Cantidad = 2;
                             break;
                         case "Inferior":
-                            Cantidad = 1;
+                            Cantidad = 2;
                             break;
                         case "Vertical":
                             Cantidad = 2;
@@ -782,9 +808,14 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vertical Centro":
                             Cantidad = 2;
                             break;
-                        case "PisaAlfombra":
+                        case "Vidrio M ancho":
                             Cantidad = 2;
                             break;
+                        case "Vidrio M alto":
+                            Cantidad = 2;
+                            break;
+                        
+
                     }
                     break;
                 case "MovilFijoMovil":
@@ -799,10 +830,19 @@ namespace Negocio.Company.OrdenProduccion
                         case "Jamba":
                             Cantidad = 2;
                             break;
+                        case "PisaAlfombra":
+                            Cantidad = 1;
+                            break;
                         case "Superior":
-                            Cantidad = 3;
+                            Cantidad = 2;
                             break;
                         case "Inferior":
+                            Cantidad = 2;
+                            break;
+                        case "Superior f":
+                            Cantidad = 1;
+                            break;
+                        case "Inferior f":
                             Cantidad = 1;
                             break;
                         case "Vertical":
@@ -811,9 +851,22 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vertical Centro":
                             Cantidad = 2;
                             break;
-                        case "PisaAlfombra":
+                        case "Vertical Centro fijo":
                             Cantidad = 2;
                             break;
+                        case "Vidrio M ancho":
+                            Cantidad = 2;
+                            break;
+                        case "Vidrio F ancho":
+                            Cantidad = 1;
+                            break;
+                        case "Vidrio M alto":
+                            Cantidad = 2;
+                            break;
+                        case "Vidrio F alto":
+                            Cantidad = 1;
+                            break;
+
                     }
                     break;
                 case "FijoMovilFijo":
@@ -832,15 +885,33 @@ namespace Negocio.Company.OrdenProduccion
                             Cantidad = 3;
                             break;
                         case "Inferior":
-                            Cantidad = 1;
+                            Cantidad = 3;
                             break;
                         case "Vertical":
-                            Cantidad = 2;
+                            Cantidad = 1;
                             break;
                         case "Vertical Centro":
-                            Cantidad = 2;
+                            Cantidad = 1;
                             break;
                         case "PisaAlfombra":
+                            Cantidad = 2;
+                            break;
+                        case "Vertical Centro fijo":
+                            Cantidad = 2;
+                            break;
+                        case "Vertical fijo":
+                            Cantidad = 2;
+                            break;
+                        case "Vidrio M ancho":
+                            Cantidad = 1;
+                            break;
+                        case "Vidrio F ancho":
+                            Cantidad = 2;
+                            break;
+                        case "Vidrio M alto":
+                            Cantidad = 1;
+                            break;
+                        case "Vidrio F alto":
                             Cantidad = 2;
                             break;
                     }
@@ -858,10 +929,10 @@ namespace Negocio.Company.OrdenProduccion
                             Cantidad = 2;
                             break;
                         case "Superior":
-                            Cantidad = 3;
+                            Cantidad = 4;
                             break;
                         case "Inferior":
-                            Cantidad = 1;
+                            Cantidad = 4;
                             break;
                         case "Vertical":
                             Cantidad = 2;
@@ -870,6 +941,24 @@ namespace Negocio.Company.OrdenProduccion
                             Cantidad = 2;
                             break;
                         case "PisaAlfombra":
+                            Cantidad = 2;
+                            break;
+                        case "Vertical Centro fijo":
+                            Cantidad = 2;
+                            break;
+                        case "Vertical fijo":
+                            Cantidad = 2;
+                            break;
+                        case "Vidrio M ancho":
+                            Cantidad = 2;
+                            break;
+                        case "Vidrio F ancho":
+                            Cantidad = 2;
+                            break;
+                        case "Vidrio M alto":
+                            Cantidad = 2;
+                            break;
+                        case "Vidrio F alto":
                             Cantidad = 2;
                             break;
                     }
