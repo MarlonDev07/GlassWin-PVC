@@ -129,22 +129,52 @@ namespace Precentacion.Admin.Users_and_Company.Company
                 bool resp = Validar();
                 if (resp) 
                 {
-                    /*if (dtCompanyVerification != null) { 
-                        
-                    }*/
-                    resp = false;
-                    resp = ObjNCompany.Create(txtId.Text, txtCedJuridica.Text, txtTelefono.Text, txtDireccionEmpresa.Text, "", txtEmpresa.Text);
-                    if (resp)
+                    long idCompany;
+                    if (long.TryParse(txtCedJuridica.Text, out idCompany))
                     {
-                        MessageBox.Show("Se ha asignado la empresa correctamente", "Empresa Asignada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        frmViewsUsers frm = new frmViewsUsers();
-                        frm.Show();
-                        this.Close();
+
+                        DataTable dtCompany = ObjNCompany.BuscarCompany(idCompany);
+                        dtCompanyVerification = dtCompany;
+
+                        // Asegurarse de que la tabla no sea nula y que contenga filas
+                        if (dtCompanyVerification == null || dtCompanyVerification.Rows.Count <= 0)
+                        {
+                             resp = ObjNCompany.Create(txtId.Text, txtCedJuridica.Text, txtTelefono.Text, txtDireccionEmpresa.Text, "", txtEmpresa.Text);
+
+                            if (resp)
+                            {
+                                MessageBox.Show("Se ha asignado la empresa correctamente", "Empresa Asignada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                frmViewsUsers frm = new frmViewsUsers();
+                                frm.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+
+                                MessageBox.Show("Error al crear la empresa", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
+                        }
+                        else
+                        {
+                            //Esto es una segunda tabla, hace lo mismo que la primera, solo que esta permite crear una misma empresa varias veces pero con distintos usuarios
+                            long res = ObjNCompany.InsertCompany2(Convert.ToInt64(txtId.Text), Convert.ToInt64(txtCedJuridica.Text), txtTelefono.Text, txtDireccionEmpresa.Text, "", txtEmpresa.Text);
+                            if (res > 0)
+                            {
+                                MessageBox.Show("Empresa asignada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se ha podido crear la empresa", "Error al crear", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("No se ha podido crear la empresa", "Error al crear", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Por favor, ingrese un ID de empresa válido.", "Error de entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+
+
                 }
             }
             catch (Exception)
