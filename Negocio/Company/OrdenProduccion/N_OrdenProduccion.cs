@@ -32,10 +32,10 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H-0.016M;
                             break;
                         case "Superior":
-                            Rebajo = (W/2)-0.015M;
+                            Rebajo = Math.Round((W / 2) - 0.015M, 3);
                             break;
                         case "Inferior":
-                            Rebajo = (W/2)-0.013M;
+                            Rebajo = Math.Round((W / 2) - 0.013M, 3);
                             break;
                         case "Vertical":
                             Rebajo = H-0.03M;

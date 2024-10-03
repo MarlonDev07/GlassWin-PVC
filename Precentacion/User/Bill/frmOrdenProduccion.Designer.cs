@@ -71,7 +71,6 @@
             this.Ventana8025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvOrdenProduccion = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Diseno = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,6 +103,7 @@
             this.cantVidrioMAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vidrioFAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantVidrioFAlto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox1.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -128,7 +128,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1138, 177);
+            this.groupBox1.Size = new System.Drawing.Size(1154, 177);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -514,13 +514,6 @@
             this.dgvOrdenProduccion.Size = new System.Drawing.Size(974, 230);
             this.dgvOrdenProduccion.TabIndex = 1;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
-            // 
             // Tipo
             // 
             this.Tipo.HeaderText = "Tipo";
@@ -724,13 +717,20 @@
             this.cantVidrioFAlto.HeaderText = "Cant";
             this.cantVidrioFAlto.Name = "cantVidrioFAlto";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
+            // 
             // frmOrdenProduccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1144, 846);
+            this.ClientSize = new System.Drawing.Size(1160, 885);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
