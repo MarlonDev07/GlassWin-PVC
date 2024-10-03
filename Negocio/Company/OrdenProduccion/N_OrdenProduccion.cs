@@ -50,10 +50,10 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.02M;
                             break;
                         case "Vidrio M ancho":
-                            Rebajo = (W - 0.108M) / 2;
+                            Rebajo = W / 2 - 0.054M;
                             break;
                         case "Vidrio F ancho":
-                            Rebajo = (W - 0.108M) / 2;
+                            Rebajo = W / 2 - 0.054M;
                             break;
                         case "Vidrio M alto":
                             Rebajo = H - 0.10M;
@@ -88,10 +88,74 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vertical Centro":
                             Rebajo = H - 0.03M;
                             break;
+                        case "Vertical Centro fijo":
+                            Rebajo = H - 0.02M;
+                            break;
+                        case "Vertical fijo":
+                            Rebajo = H - 0.02M;
+                            break;
+                        case "Vidrio M ancho":
+                            Rebajo = W / 2 - 0.054M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = W / 2 - 0.054M;
+                            break;
+                        case "Vidrio M alto":
+                            Rebajo = H - 0.10M;
+                            break;
+                        case "Vidrio F alto":
+                            Rebajo = H - 0.09M;
+                            break;
+
+                    }
+                    break;
+                case "MovilMovil":
+                    switch (Pieza)
+                    {
+                        case "Cargador":
+                            Rebajo = W;
+                            break;
+                        case "Umbral":
+                            Rebajo = W;
+                            break;
+                        case "Jamba":
+                            Rebajo = H - 0.016M;
+                            break;
+                        case "Superior":
+                            Rebajo = (W / 2) - 0.015M;
+                            break;
+                        case "Inferior":
+                            Rebajo = (W / 2) - 0.013M;
+                            break;
+                        case "Vertical":
+                            Rebajo = H - 0.03M;
+                            break;
+                        case "Vertical Centro":
+                            Rebajo = H - 0.03M;
+                            break;
+                        case "Vertical Centro fijo":
+                            Rebajo = H - 0.02M;
+                            break;
+                        case "Vertical fijo":
+                            Rebajo = H - 0.02M;
+                            break;
+                        case "Vidrio M ancho":
+                            Rebajo = W / 2 - 0.054M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = W / 2 - 0.054M;
+                            break;
+                        case "Vidrio M alto":
+                            Rebajo = H - 0.10M;
+                            break;
+                        case "Vidrio F alto":
+                            Rebajo = H - 0.09M;
+                            break;
                     }
                     break;
 
-                case "MovilFijoMovil":
+
+                        case "MovilFijoMovil":
                     switch (Pieza)
                     {
                         case "Cargador":
