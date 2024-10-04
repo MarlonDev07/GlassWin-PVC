@@ -126,9 +126,9 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dgvResults1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(2, 65);
+            this.panel1.Location = new System.Drawing.Point(2, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1279, 626);
+            this.panel1.Size = new System.Drawing.Size(1279, 645);
             this.panel1.TabIndex = 14;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -344,7 +344,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(1283, 747);
+            this.ClientSize = new System.Drawing.Size(1283, 749);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.panel1);
