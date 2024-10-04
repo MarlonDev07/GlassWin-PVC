@@ -661,13 +661,13 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = (W / 2) + 0.02M;
                             break;
                         case "Vertical":
-                            Rebajo = H - 0.03M;
+                            Rebajo = H - 0.028M;
                             break;
                         case "Vertical Centro":
-                            Rebajo = H - 0.03M;
+                            Rebajo = H - 0.028M;
                             break;
                         case "PisaAlfombra":
-                            Rebajo = H - 0.03M;
+                            Rebajo = W;
                             break;
                         case "Vertical Centro fijo":
                             Rebajo = H - 0.023M;
@@ -676,10 +676,10 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.023M;
                             break;
                         case "Vidrio M ancho":
-                            Rebajo = W / 2 - 0.064M;
+                            Rebajo = W / 4 - 0.054M;
                             break;
                         case "Vidrio F ancho":
-                            Rebajo = W / 2 - 0.064M;
+                            Rebajo = W / 2 - 0.024M;
                             break;
                         case "Vidrio M alto":
                             Rebajo = H - 0.108M;
@@ -770,10 +770,10 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.023M;
                             break;
                         case "Vidrio M ancho":
-                            Rebajo = W / 4 - 0.189M;
+                            Rebajo = W / 4 - 0.061M;
                             break;
                         case "Vidrio F ancho":
-                            Rebajo = W / 4 - 0.189M;
+                            Rebajo = W / 4 - 0.061M;
                             break;
                         case "Vidrio M alto":
                             Rebajo = H - 0.108M;
