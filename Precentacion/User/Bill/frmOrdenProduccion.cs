@@ -892,6 +892,75 @@ namespace Precentacion.User.Bill
 
 
 
+                #region Tabla 6030 3 Vias
+                // Título para la Tabla 8025
+                PdfPTable tituloTable6030_3Vias = new PdfPTable(1);
+                tituloTable6030_3Vias.TotalWidth = 1200f;
+                tituloTable6030_3Vias.LockedWidth = true;
+
+                PdfPCell tituloCell6030_3Vias = new PdfPCell(new Phrase("Orden de Producción 6030 3 Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                {
+                    BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_MIDDLE,
+                    Border = Rectangle.NO_BORDER,
+                    Padding = 10f
+                };
+
+                tituloTable6030_3Vias.AddCell(tituloCell6030_3Vias);
+                document.Add(tituloTable6030_3Vias);
+
+                // Espacio después del título
+                document.Add(new Paragraph(" "));
+
+                // Agregar al Documento los Datos del dgvOrdenProduccion8025
+                PdfPTable table6030_3Vias = new PdfPTable(dgvOrdenProduccion6030_3vias.Columns.Count)
+                {
+                    TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
+                    LockedWidth = true
+                };
+
+                // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
+                float[] anchosColumnas5 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 0f };
+                table6030_3Vias.SetWidths(anchosColumnas5);
+
+                // Celda 1: Encabezados de las columnas
+                foreach (DataGridViewColumn column6030_3Vias in dgvOrdenProduccion6030_3vias.Columns)
+                {
+                    PdfPCell cell6030_3Vias = new PdfPCell(new Phrase(column6030_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                    {
+                        BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
+                        BorderWidth = .5f,
+                        HorizontalAlignment = Element.ALIGN_CENTER,
+                        VerticalAlignment = Element.ALIGN_CENTER
+                    };
+                    table6030_3Vias.AddCell(cell6030_3Vias);
+                }
+
+                // Celda 2: Datos de las filas
+                foreach (DataGridViewRow row6030_3Vias in dgvOrdenProduccion6030_3vias.Rows)
+                {
+                    foreach (DataGridViewCell cell6030_3Vias in row6030_3Vias.Cells)
+                    {
+                        // Validar si la celda es nula
+                        if (cell6030_3Vias.Value == null)
+                        {
+                            cell6030_3Vias.Value = " ";
+                        }
+                        PdfPCell celda6030_3Vias = new PdfPCell(new Phrase(cell6030_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                        {
+                            BorderWidth = .5f,
+                            HorizontalAlignment = Element.ALIGN_CENTER,
+                            VerticalAlignment = Element.ALIGN_CENTER
+                        };
+                        table6030_3Vias.AddCell(celda6030_3Vias);
+                    }
+                }
+                document.Add(table6030_3Vias);
+                document.Add(new Paragraph(" "));
+                #endregion
+
+
 
 
 
