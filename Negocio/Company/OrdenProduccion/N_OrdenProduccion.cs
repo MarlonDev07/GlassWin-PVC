@@ -1850,7 +1850,7 @@ namespace Negocio.Company.OrdenProduccion
         }
         #endregion
 
-        #region 6030 3vias
+      #region 6030 3vias
         public decimal CalculoRebajos60303Vias(string Diseño, string Ancho, string Alto, string Pieza)
         {
             decimal Rebajo = 0;
