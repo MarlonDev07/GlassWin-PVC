@@ -64,12 +64,13 @@ namespace Precentacion.User.Bill
 
                     pan.BackColor = Color.White;
                 }
-                if (control is Label label && label.Name != "label2" && label.Name != "label3" && label.Name != "label4" && label.Name != "label5" && label.Name != "label6" && label.Name != "label7" && label.Name != "label1") //label1
+                if (control is Label label && label.Name != "label2" && label.Name != "label3" && label.Name != "label4" && label.Name != "label5" && label.Name != "label6" && label.Name != "label7" && label.Name != "label1" && label.Name != "label8") //
                 {
                     label.Font = new Font("Arial", 14, FontStyle.Regular);
                     label.ForeColor = Color.Black;
                 }
-                else if (control is Label label2 && label2.Name == "label2") {
+                else if (control is Label label2 && label2.Name == "label2")
+                {
                     label2.Font = new Font("Arial", 11, FontStyle.Regular);
                     label2.ForeColor = Color.Black;
                 }
@@ -102,6 +103,11 @@ namespace Precentacion.User.Bill
                 {
                     label1.Font = new Font("Arial", 14, FontStyle.Bold);
                     label1.ForeColor = Color.Orange;
+                }
+                else if (control is Label label8 && label8.Name == "label8")
+                {
+                    label8.Font = new Font("Arial", 14, FontStyle.Bold);
+                    label8.ForeColor = Color.Orange;
                 }
                 // Llama recursivamente si el control tiene controles hijos
                 if (control.Controls.Count > 0)

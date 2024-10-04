@@ -156,12 +156,37 @@
             this.cantVidrioFA8025_3vias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vidrioFAl8025_3vias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantVidrioFAl8025_3vias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dgvOrdenProduccion6030 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contramarcoAncho6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantcontramarcoAncho6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contramarcoAlto6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantcontramarcoAlto6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contramarcoInf6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantcontramarcoInf6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcoHAlto6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantmarcoHAlto6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcoHAncho6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantmarcoHAncho6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marchoHEng6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantmarchoHEng6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vidrioMAncho6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantvidrioMAncho6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vidrioMAlto6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantvidrioMAlto6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ventana6030 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenProduccion8025)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenProduccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenProduccion8025_3vias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenProduccion6030)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -284,6 +309,8 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.dgvOrdenProduccion6030);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dgvOrdenProduccion8025_3vias);
             this.panel1.Controls.Add(this.btnOptimizar8025);
@@ -1146,6 +1173,193 @@
             this.cantVidrioFAl8025_3vias.HeaderText = "Cant";
             this.cantVidrioFAl8025_3vias.Name = "cantVidrioFAl8025_3vias";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(1, 870);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(222, 20);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Orden de Producción 6030";
+            // 
+            // dgvOrdenProduccion6030
+            // 
+            this.dgvOrdenProduccion6030.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrdenProduccion6030.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.contramarcoAncho6030,
+            this.cantcontramarcoAncho6030,
+            this.contramarcoAlto6030,
+            this.cantcontramarcoAlto6030,
+            this.contramarcoInf6030,
+            this.cantcontramarcoInf6030,
+            this.marcoHAlto6030,
+            this.cantmarcoHAlto6030,
+            this.marcoHAncho6030,
+            this.cantmarcoHAncho6030,
+            this.marchoHEng6030,
+            this.cantmarchoHEng6030,
+            this.vidrioMAncho6030,
+            this.cantvidrioMAncho6030,
+            this.vidrioMAlto6030,
+            this.cantvidrioMAlto6030,
+            this.Ventana6030});
+            this.dgvOrdenProduccion6030.Location = new System.Drawing.Point(1, 898);
+            this.dgvOrdenProduccion6030.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvOrdenProduccion6030.Name = "dgvOrdenProduccion6030";
+            this.dgvOrdenProduccion6030.RowHeadersWidth = 62;
+            this.dgvOrdenProduccion6030.RowTemplate.Height = 28;
+            this.dgvOrdenProduccion6030.Size = new System.Drawing.Size(974, 230);
+            this.dgvOrdenProduccion6030.TabIndex = 15;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "Tipo";
+            this.dataGridViewTextBoxColumn11.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "Ubicación";
+            this.dataGridViewTextBoxColumn12.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "Diseño";
+            this.dataGridViewTextBoxColumn13.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "Ancho";
+            this.dataGridViewTextBoxColumn14.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.HeaderText = "Alto";
+            this.dataGridViewTextBoxColumn15.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.Width = 150;
+            // 
+            // contramarcoAncho6030
+            // 
+            this.contramarcoAncho6030.HeaderText = "Contramarco (ancho)";
+            this.contramarcoAncho6030.MinimumWidth = 8;
+            this.contramarcoAncho6030.Name = "contramarcoAncho6030";
+            this.contramarcoAncho6030.Width = 150;
+            // 
+            // cantcontramarcoAncho6030
+            // 
+            this.cantcontramarcoAncho6030.HeaderText = "Cant";
+            this.cantcontramarcoAncho6030.MinimumWidth = 8;
+            this.cantcontramarcoAncho6030.Name = "cantcontramarcoAncho6030";
+            this.cantcontramarcoAncho6030.Width = 90;
+            // 
+            // contramarcoAlto6030
+            // 
+            this.contramarcoAlto6030.HeaderText = "Contramarco (alto)";
+            this.contramarcoAlto6030.MinimumWidth = 8;
+            this.contramarcoAlto6030.Name = "contramarcoAlto6030";
+            this.contramarcoAlto6030.Width = 150;
+            // 
+            // cantcontramarcoAlto6030
+            // 
+            this.cantcontramarcoAlto6030.HeaderText = "Cant";
+            this.cantcontramarcoAlto6030.MinimumWidth = 8;
+            this.cantcontramarcoAlto6030.Name = "cantcontramarcoAlto6030";
+            this.cantcontramarcoAlto6030.Width = 90;
+            // 
+            // contramarcoInf6030
+            // 
+            this.contramarcoInf6030.HeaderText = "Contramarco Inf";
+            this.contramarcoInf6030.MinimumWidth = 8;
+            this.contramarcoInf6030.Name = "contramarcoInf6030";
+            this.contramarcoInf6030.Width = 150;
+            // 
+            // cantcontramarcoInf6030
+            // 
+            this.cantcontramarcoInf6030.HeaderText = "Cant";
+            this.cantcontramarcoInf6030.MinimumWidth = 8;
+            this.cantcontramarcoInf6030.Name = "cantcontramarcoInf6030";
+            this.cantcontramarcoInf6030.Width = 90;
+            // 
+            // marcoHAlto6030
+            // 
+            this.marcoHAlto6030.HeaderText = "Marco H (alto)";
+            this.marcoHAlto6030.Name = "marcoHAlto6030";
+            // 
+            // cantmarcoHAlto6030
+            // 
+            this.cantmarcoHAlto6030.HeaderText = "Cant";
+            this.cantmarcoHAlto6030.Name = "cantmarcoHAlto6030";
+            // 
+            // marcoHAncho6030
+            // 
+            this.marcoHAncho6030.HeaderText = "Marco H (ancho)";
+            this.marcoHAncho6030.MinimumWidth = 8;
+            this.marcoHAncho6030.Name = "marcoHAncho6030";
+            this.marcoHAncho6030.Width = 150;
+            // 
+            // cantmarcoHAncho6030
+            // 
+            this.cantmarcoHAncho6030.HeaderText = "Cant";
+            this.cantmarcoHAncho6030.MinimumWidth = 8;
+            this.cantmarcoHAncho6030.Name = "cantmarcoHAncho6030";
+            this.cantmarcoHAncho6030.Width = 90;
+            // 
+            // marchoHEng6030
+            // 
+            this.marchoHEng6030.HeaderText = "Marco H Eng";
+            this.marchoHEng6030.MinimumWidth = 8;
+            this.marchoHEng6030.Name = "marchoHEng6030";
+            this.marchoHEng6030.Width = 150;
+            // 
+            // cantmarchoHEng6030
+            // 
+            this.cantmarchoHEng6030.HeaderText = "Cant";
+            this.cantmarchoHEng6030.MinimumWidth = 8;
+            this.cantmarchoHEng6030.Name = "cantmarchoHEng6030";
+            this.cantmarchoHEng6030.Width = 90;
+            // 
+            // vidrioMAncho6030
+            // 
+            this.vidrioMAncho6030.HeaderText = "Vidrio M Ancho";
+            this.vidrioMAncho6030.Name = "vidrioMAncho6030";
+            // 
+            // cantvidrioMAncho6030
+            // 
+            this.cantvidrioMAncho6030.HeaderText = "Cant";
+            this.cantvidrioMAncho6030.Name = "cantvidrioMAncho6030";
+            this.cantvidrioMAncho6030.Visible = false;
+            // 
+            // vidrioMAlto6030
+            // 
+            this.vidrioMAlto6030.HeaderText = "Vidrio M Alto";
+            this.vidrioMAlto6030.Name = "vidrioMAlto6030";
+            // 
+            // cantvidrioMAlto6030
+            // 
+            this.cantvidrioMAlto6030.HeaderText = "Cant";
+            this.cantvidrioMAlto6030.Name = "cantvidrioMAlto6030";
+            // 
+            // Ventana6030
+            // 
+            this.Ventana6030.HeaderText = "Ventana";
+            this.Ventana6030.Name = "Ventana6030";
+            this.Ventana6030.Visible = false;
+            // 
             // frmOrdenProduccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1171,6 +1385,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenProduccion8025)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenProduccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenProduccion8025_3vias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenProduccion6030)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1302,5 +1517,29 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioFA8025_3vias;
         private System.Windows.Forms.DataGridViewTextBoxColumn vidrioFAl8025_3vias;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantVidrioFAl8025_3vias;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView dgvOrdenProduccion6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contramarcoAncho6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantcontramarcoAncho6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contramarcoAlto6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantcontramarcoAlto6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contramarcoInf6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantcontramarcoInf6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marcoHAlto6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantmarcoHAlto6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marcoHAncho6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantmarcoHAncho6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marchoHEng6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantmarchoHEng6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vidrioMAncho6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantvidrioMAncho6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vidrioMAlto6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantvidrioMAlto6030;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ventana6030;
     }
 }

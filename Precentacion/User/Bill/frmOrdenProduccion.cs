@@ -32,6 +32,7 @@ namespace Precentacion.User.Bill
         List<string> Piezas5020 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio M alto", "Vidrio F ancho", "Vidrio F alto" };
         List<string> Piezas8025 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "PisaAlfombra", "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio M alto", "Vidrio F ancho", "Vidrio F alto" };
         List<string> Piezas8025_3vias = new List<string> { "Cargador 3 Vias", "Umbral 3 Vias", "Jamba 3 Vias", "PisaAlfombra", "Superior", "Inferior", "Superior f", "Inferior f", "Vertical", "Vertical Centro", "Vertical Centro fijo", "Vertical fijo", "Vidrio M ancho", "Vidrio M alto", "Vidrio F ancho", "Vidrio F alto" };
+        List<string> Piezas6030 = new List<string> { "Contramarco Sup-Lat Akari(ancho)", "Contramarco Sup-Lat Akari(alto)", "Contramarco Inferior Akari", "Marco Hoja 6030(alto)", "Marco Hoja 6030 (ancho)", "Marco Hoja Enganche 6030", "Vidrio M ancho", "Vidrio M alto" }; 
         List<decimal> ResultadosRebajo = new List<decimal>();
         List<decimal> ResultadosCantidad = new List<decimal>();
         //public DataGridView dgvOrdenProduccion;
@@ -108,6 +109,7 @@ namespace Precentacion.User.Bill
                     int contadorVentana5020 = 1;
                     int contadorVentana8025 = 1;
                     int contadorVentana8025_3Vias = 1;
+                    int contadorVentana6030 = 1;
 
                     // Recorrer las ventanas
                     foreach (DataRow row in windows.Rows)
@@ -289,6 +291,61 @@ namespace Precentacion.User.Bill
 
                                 // Incrementar el contador para la próxima fila
                                 contadorVentana8025_3Vias++;
+
+                                // Limpiar las Listas de Resultados
+                                ResultadosRebajo.Clear();
+                                ResultadosCantidad.Clear();
+                            }
+                        }
+                        #endregion
+
+                        #region 6030
+                        if (row["System"].ToString() == "6030 2 Vias")
+                        {
+                            // Obtener la ubicación de la ventana, el dato se encuentra en la descripción
+                            string DescripcionUbicacion = row["Description"].ToString();
+                            string pattern = @"\nUbicacion:\s*(.*)";
+                            System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(DescripcionUbicacion, pattern);
+                            string Ubicacion = match.Groups[1].Value;
+
+                            // Obtener el valor de Cantidad
+                            pattern = @"Cantidad:\s*(\d+)";
+                            match = System.Text.RegularExpressions.Regex.Match(DescripcionUbicacion, pattern);
+                            int Cantidad = int.Parse(match.Groups[1].Value);
+
+                            // Agregar los Valores a Variables
+                            string Sistema = row["System"].ToString();
+                            string Diseño = row["Design"].ToString();
+                            string Ancho = row["Width"].ToString();
+                            string Alto = row["Height"].ToString();
+
+                            // Recorrer la cantidad de ventanas
+                            for (int i = 0; i < Cantidad; i++)
+                            {
+                                // Recorrer las piezas del sistema 5020
+                                foreach (string pieza in Piezas6030)
+                                {
+                                    // Calcular los rebajos y Agregarlos A la Lista de Resultados
+                                    ResultadosRebajo.Add(NOrden.CalculoRebajos6030(Diseño, Ancho, Alto, pieza));
+                                    // Calcular la Cantidad de Piezas y Agregarlos A la Lista de Resultados
+                                    ResultadosCantidad.Add(NOrden.CalculoCantidadPiezas6030(Diseño, pieza));
+                                }
+
+                                // Agregar los Resultados al DataGridView
+                                dgvOrdenProduccion6030.Rows.Add(Sistema, Ubicacion, Diseño, Ancho, Alto,
+                                    ResultadosRebajo[0], ResultadosCantidad[0],
+                                    ResultadosRebajo[1], ResultadosCantidad[1],
+                                    ResultadosRebajo[2], ResultadosCantidad[2],
+                                    ResultadosRebajo[3], ResultadosCantidad[3],
+                                    ResultadosRebajo[4], ResultadosCantidad[4],
+                                    ResultadosRebajo[5], ResultadosCantidad[5],
+                                    ResultadosRebajo[6], ResultadosCantidad[6],
+                                    ResultadosRebajo[7], ResultadosCantidad[7],
+                                    contadorVentana6030
+                                    );
+
+                                // Incrementar el contador para la próxima fila
+                                contadorVentana6030++;
 
                                 // Limpiar las Listas de Resultados
                                 ResultadosRebajo.Clear();
