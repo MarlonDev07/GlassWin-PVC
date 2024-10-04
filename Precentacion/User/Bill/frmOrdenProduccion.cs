@@ -753,7 +753,7 @@ namespace Precentacion.User.Bill
                 tituloTable8025_3Vias.TotalWidth = 1200f;
                 tituloTable8025_3Vias.LockedWidth = true;
 
-                PdfPCell tituloCell8025_3Vias = new PdfPCell(new Phrase("Orden de Producción 8025 3Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                PdfPCell tituloCell8025_3Vias = new PdfPCell(new Phrase("Orden de Producción 8025 3 Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
                 {
                     BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
                     HorizontalAlignment = Element.ALIGN_CENTER,
@@ -812,6 +812,80 @@ namespace Precentacion.User.Bill
                     }
                 }
                 document.Add(table8025_3Vias);
+                document.Add(new Paragraph(" "));
+                #endregion
+
+
+
+
+
+
+
+                #region Tabla 6030 2 Vias
+                // Título para la Tabla 8025
+                PdfPTable tituloTable6030_2Vias = new PdfPTable(1);
+                tituloTable6030_2Vias.TotalWidth = 1200f;
+                tituloTable6030_2Vias.LockedWidth = true;
+
+                PdfPCell tituloCell6030_2Vias = new PdfPCell(new Phrase("Orden de Producción 6030 2 Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                {
+                    BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_MIDDLE,
+                    Border = Rectangle.NO_BORDER,
+                    Padding = 10f
+                };
+
+                tituloTable6030_2Vias.AddCell(tituloCell6030_2Vias);
+                document.Add(tituloTable6030_2Vias);
+
+                // Espacio después del título
+                document.Add(new Paragraph(" "));
+
+                // Agregar al Documento los Datos del dgvOrdenProduccion8025
+                PdfPTable table6030_2Vias = new PdfPTable(dgvOrdenProduccion6030.Columns.Count)
+                {
+                    TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
+                    LockedWidth = true
+                };
+
+                // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
+                float[] anchosColumnas4 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 0f};
+                table6030_2Vias.SetWidths(anchosColumnas4);
+
+                // Celda 1: Encabezados de las columnas
+                foreach (DataGridViewColumn column6030_2Vias in dgvOrdenProduccion6030.Columns)
+                {
+                    PdfPCell cell6030_2Vias = new PdfPCell(new Phrase(column6030_2Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                    {
+                        BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
+                        BorderWidth = .5f,
+                        HorizontalAlignment = Element.ALIGN_CENTER,
+                        VerticalAlignment = Element.ALIGN_CENTER
+                    };
+                    table6030_2Vias.AddCell(cell6030_2Vias);
+                }
+
+                // Celda 2: Datos de las filas
+                foreach (DataGridViewRow row6030_2Vias in dgvOrdenProduccion6030.Rows)
+                {
+                    foreach (DataGridViewCell cell6030_2Vias in row6030_2Vias.Cells)
+                    {
+                        // Validar si la celda es nula
+                        if (cell6030_2Vias.Value == null)
+                        {
+                            cell6030_2Vias.Value = " ";
+                        }
+                        PdfPCell celda6030_2Vias = new PdfPCell(new Phrase(cell6030_2Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                        {
+                            BorderWidth = .5f,
+                            HorizontalAlignment = Element.ALIGN_CENTER,
+                            VerticalAlignment = Element.ALIGN_CENTER
+                        };
+                        table6030_2Vias.AddCell(celda6030_2Vias);
+                    }
+                }
+                document.Add(table6030_2Vias);
                 document.Add(new Paragraph(" "));
                 #endregion
 
