@@ -1076,11 +1076,11 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vidrio M ancho":
                             Rebajo = W / 2 - 0.064M;
                             break;
-                        case "Vidrio F ancho":
-                            Rebajo = W / 2 - 0.064M;
-                            break;
                         case "Vidrio M alto":
                             Rebajo = H - 0.108M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = W / 2 - 0.064M;
                             break;
                         case "Vidrio F alto":
                             Rebajo = H - 0.103M;
@@ -1135,6 +1135,9 @@ namespace Negocio.Company.OrdenProduccion
                         case "Jamba 3 Vias":
                             Rebajo = H - 0.016M;
                             break;
+                        case "PisaAlfombra":
+                            Rebajo = W;
+                            break;
                         case "Superior":
                             Rebajo = (W / 4) - 0.003M;
                             break;
@@ -1153,9 +1156,6 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vertical Centro":
                             Rebajo = H - 0.028M;
                             break;
-                        case "PisaAlfombra":
-                            Rebajo = W;
-                            break;
                         case "Vertical Centro fijo":
                             Rebajo = H - 0.023M;
                             break;
@@ -1165,11 +1165,11 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vidrio M ancho":
                             Rebajo = W / 4 - 0.054M;
                             break;
-                        case "Vidrio F ancho":
-                            Rebajo = W / 2 - 0.024M;
-                            break;
                         case "Vidrio M alto":
                             Rebajo = H - 0.108M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = W / 2 - 0.024M;
                             break;
                         case "Vidrio F alto":
                             Rebajo = H - 0.103M;
@@ -1188,20 +1188,20 @@ namespace Negocio.Company.OrdenProduccion
                         case "Jamba 3 Vias":
                             Rebajo = H - 0.016M;
                             break;
+                        case "PisaAlfombra":
+                            Rebajo = W;
+                            break;
                         case "Superior":
-                            Rebajo = (W / 3) - 0.008M;
+                            Rebajo = Math.Round((W / 3) - 0.008M, 3);
                             break;
                         case "Inferior":
-                            Rebajo = (W / 3) - 0.008M;
+                            Rebajo = Math.Round((W / 3) - 0.008M, 3);
                             break;
                         case "Vertical":
                             Rebajo = H - 0.028M;
                             break;
                         case "Vertical Centro":
                             Rebajo = H - 0.028M;
-                            break;
-                        case "PisaAlfombra":
-                            Rebajo = W;
                             break;
                         case "Vertical Centro fijo":
                             Rebajo = H - 0.023M;
@@ -1210,13 +1210,13 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.023M;
                             break;
                         case "Vidrio M ancho":
-                            Rebajo = W / 3 - 0.069M;
-                            break;
-                        case "Vidrio F ancho":
-                            Rebajo = W / 3 - 0.069M;
+                            Rebajo = Math.Round(W / 3 - 0.069M, 3);
                             break;
                         case "Vidrio M alto":
                             Rebajo = H - 0.108M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = Math.Round(W / 3 - 0.069M);
                             break;
                         case "Vidrio F alto":
                             Rebajo = H - 0.103M;
@@ -1235,6 +1235,9 @@ namespace Negocio.Company.OrdenProduccion
                         case "Jamba 3 Vias":
                             Rebajo = H - 0.016M;
                             break;
+                        case "PisaAlfombra":
+                            Rebajo = W;
+                            break;
                         case "Superior":
                             Rebajo = (W / 4);
                             break;
@@ -1247,9 +1250,6 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vertical Centro":
                             Rebajo = H - 0.028M;
                             break;
-                        case "PisaAlfombra":
-                            Rebajo = W;
-                            break;
                         case "Vertical Centro fijo":
                             Rebajo = H - 0.023M;
                             break;
@@ -1259,11 +1259,11 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vidrio M ancho":
                             Rebajo = W / 4 - 0.061M;
                             break;
-                        case "Vidrio F ancho":
-                            Rebajo = W / 4 - 0.061M;
-                            break;
                         case "Vidrio M alto":
                             Rebajo = H - 0.108M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = W / 4 - 0.061M;
                             break;
                         case "Vidrio F alto":
                             Rebajo = H - 0.103M;
@@ -1317,10 +1317,10 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vidrio M ancho":
                             Cantidad = 1;
                             break;
-                        case "Vidrio F ancho":
+                        case "Vidrio M alto":
                             Cantidad = 1;
                             break;
-                        case "Vidrio M alto":
+                        case "Vidrio F ancho":
                             Cantidad = 1;
                             break;
                         case "Vidrio F alto":
@@ -1404,11 +1404,11 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vidrio M ancho":
                             Cantidad = 2;
                             break;
-                        case "Vidrio F ancho":
-                            Cantidad = 1;
-                            break;
                         case "Vidrio M alto":
                             Cantidad = 2;
+                            break;
+                        case "Vidrio F ancho":
+                            Cantidad = 1;
                             break;
                         case "Vidrio F alto":
                             Cantidad = 1;
@@ -1428,6 +1428,9 @@ namespace Negocio.Company.OrdenProduccion
                         case "Jamba 3 Vias":
                             Cantidad = 2;
                             break;
+                        case "PisaAlfombra":
+                            Cantidad = 2;
+                            break;
                         case "Superior":
                             Cantidad = 4;
                             break;
@@ -1440,9 +1443,6 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vertical Centro":
                             Cantidad = 2;
                             break;
-                        case "PisaAlfombra":
-                            Cantidad = 2;
-                            break;
                         case "Vertical Centro fijo":
                             Cantidad = 2;
                             break;
@@ -1452,11 +1452,11 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vidrio M ancho":
                             Cantidad = 1;
                             break;
-                        case "Vidrio F ancho":
-                            Cantidad = 2;
-                            break;
                         case "Vidrio M alto":
                             Cantidad = 1;
+                            break;
+                        case "Vidrio F ancho":
+                            Cantidad = 2;
                             break;
                         case "Vidrio F alto":
                             Cantidad = 2;
@@ -1475,6 +1475,9 @@ namespace Negocio.Company.OrdenProduccion
                         case "Jamba 3 Vias":
                             Cantidad = 2;
                             break;
+                        case "PisaAlfombra":
+                            Cantidad = 2;
+                            break;
                         case "Superior":
                             Cantidad = 6;
                             break;
@@ -1487,9 +1490,6 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vertical Centro":
                             Cantidad = 4;
                             break;
-                        case "PisaAlfombra":
-                            Cantidad = 2;
-                            break;
                         case "Vertical Centro fijo":
                             Cantidad = 2;
                             break;
@@ -1499,10 +1499,10 @@ namespace Negocio.Company.OrdenProduccion
                         case "Vidrio M ancho":
                             Cantidad = 2;
                             break;
-                        case "Vidrio F ancho":
+                        case "Vidrio M alto":
                             Cantidad = 2;
                             break;
-                        case "Vidrio M alto":
+                        case "Vidrio F ancho":
                             Cantidad = 2;
                             break;
                         case "Vidrio F alto":
