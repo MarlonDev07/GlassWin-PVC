@@ -526,8 +526,13 @@ namespace Precentacion.User.Bill
                 // Crear la ruta completa del archivo PDF
                 string rutaArchivoPDF = Path.Combine(carpetaNombre, NameFile);
 
-                // Crear el documento en modo horizontal (landscape)
-                Document document = new Document(PageSize.A4.Rotate());
+                // Define el ancho que deseas para la página, por ejemplo, 1000 puntos
+                float anchoPersonalizado = 1200f; // ancho en puntos
+                float alto = PageSize.A4.Height; // altura estándar de una página A4
+
+                // Crear un documento con un tamaño personalizado
+                Document document = new Document(new Rectangle(anchoPersonalizado, alto));
+
                 // Crear un nuevo objeto PdfWriter para escribir el documento en un archivo
                 PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
 
@@ -552,45 +557,45 @@ namespace Precentacion.User.Bill
                 infoTable2.SpacingAfter = 10f;
 
                 // Celda: Orden (Referencia FA)
-                PdfPCell cellOrdenTitulo = new PdfPCell(new Phrase("Orden (Referencia FA):", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.BLACK)));
+                PdfPCell cellOrdenTitulo = new PdfPCell(new Phrase("Orden (Referencia FA):", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, iTextSharp.text.BaseColor.BLACK)));
                 cellOrdenTitulo.Border = iTextSharp.text.Rectangle.NO_BORDER;
                 cellOrdenTitulo.HorizontalAlignment = Element.ALIGN_LEFT;
                 infoTable2.AddCell(cellOrdenTitulo);
 
-                PdfPCell cellOrdenValor = new PdfPCell(new Phrase(txtOrden.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12, iTextSharp.text.BaseColor.BLACK)));
+                PdfPCell cellOrdenValor = new PdfPCell(new Phrase(txtOrden.Text, FontFactory.GetFont(FontFactory.HELVETICA, 11, iTextSharp.text.BaseColor.BLACK)));
                 cellOrdenValor.Border = iTextSharp.text.Rectangle.NO_BORDER;
                 cellOrdenValor.HorizontalAlignment = Element.ALIGN_LEFT;
                 infoTable2.AddCell(cellOrdenValor);
 
                 // Celda: Proyecto
-                PdfPCell cellProyectoTitulo = new PdfPCell(new Phrase("Proyecto:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.BLACK)));
+                PdfPCell cellProyectoTitulo = new PdfPCell(new Phrase("Proyecto:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, iTextSharp.text.BaseColor.BLACK)));
                 cellProyectoTitulo.Border = iTextSharp.text.Rectangle.NO_BORDER;
                 cellProyectoTitulo.HorizontalAlignment = Element.ALIGN_LEFT;
                 infoTable2.AddCell(cellProyectoTitulo);
 
-                PdfPCell cellProyectoValor = new PdfPCell(new Phrase(cbProyecto.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12, iTextSharp.text.BaseColor.BLACK)));
+                PdfPCell cellProyectoValor = new PdfPCell(new Phrase(cbProyecto.Text, FontFactory.GetFont(FontFactory.HELVETICA, 11, iTextSharp.text.BaseColor.BLACK)));
                 cellProyectoValor.Border = iTextSharp.text.Rectangle.NO_BORDER;
                 cellProyectoValor.HorizontalAlignment = Element.ALIGN_LEFT;
                 infoTable2.AddCell(cellProyectoValor);
 
                 // Celda: Fecha Inicial
-                PdfPCell cellFechaInicialTitulo = new PdfPCell(new Phrase("Fecha Inicial:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.BLACK)));
+                PdfPCell cellFechaInicialTitulo = new PdfPCell(new Phrase("Fecha Inicial:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, iTextSharp.text.BaseColor.BLACK)));
                 cellFechaInicialTitulo.Border = iTextSharp.text.Rectangle.NO_BORDER;
                 cellFechaInicialTitulo.HorizontalAlignment = Element.ALIGN_LEFT;
                 infoTable2.AddCell(cellFechaInicialTitulo);
 
-                PdfPCell cellFechaInicialValor = new PdfPCell(new Phrase(dtpFechaInicio.Value.ToString("dd/MM/yyyy"), FontFactory.GetFont(FontFactory.HELVETICA, 12, iTextSharp.text.BaseColor.BLACK)));
+                PdfPCell cellFechaInicialValor = new PdfPCell(new Phrase(dtpFechaInicio.Value.ToString("dd/MM/yyyy"), FontFactory.GetFont(FontFactory.HELVETICA, 11, iTextSharp.text.BaseColor.BLACK)));
                 cellFechaInicialValor.Border = iTextSharp.text.Rectangle.NO_BORDER;
                 cellFechaInicialValor.HorizontalAlignment = Element.ALIGN_LEFT;
                 infoTable2.AddCell(cellFechaInicialValor);
 
                 // Celda: Fecha Salida
-                PdfPCell cellFechaSalidaTitulo = new PdfPCell(new Phrase("Fecha Salida:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.BLACK)));
+                PdfPCell cellFechaSalidaTitulo = new PdfPCell(new Phrase("Fecha Salida:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, iTextSharp.text.BaseColor.BLACK)));
                 cellFechaSalidaTitulo.Border = iTextSharp.text.Rectangle.NO_BORDER;
                 cellFechaSalidaTitulo.HorizontalAlignment = Element.ALIGN_LEFT;
                 infoTable2.AddCell(cellFechaSalidaTitulo);
 
-                PdfPCell cellFechaSalidaValor = new PdfPCell(new Phrase(dtpFechaSalida.Value.ToString("dd/MM/yyyy"), FontFactory.GetFont(FontFactory.HELVETICA, 12, iTextSharp.text.BaseColor.BLACK)));
+                PdfPCell cellFechaSalidaValor = new PdfPCell(new Phrase(dtpFechaSalida.Value.ToString("dd/MM/yyyy"), FontFactory.GetFont(FontFactory.HELVETICA, 11, iTextSharp.text.BaseColor.BLACK)));
                 cellFechaSalidaValor.Border = iTextSharp.text.Rectangle.NO_BORDER;
                 cellFechaSalidaValor.HorizontalAlignment = Element.ALIGN_LEFT;
                 infoTable2.AddCell(cellFechaSalidaValor);
@@ -604,7 +609,7 @@ namespace Precentacion.User.Bill
                 #region Tabla 5020
                 // Título para la Tabla 5020
                 PdfPTable tituloTable5020 = new PdfPTable(1);
-                tituloTable5020.TotalWidth = 840f;
+                tituloTable5020.TotalWidth = 1200f;
                 tituloTable5020.LockedWidth = true;
 
                 PdfPCell tituloCell5020 = new PdfPCell(new Phrase("Orden de Producción 5020", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
@@ -625,7 +630,7 @@ namespace Precentacion.User.Bill
                 // Agregar al Documento los Datos del dgvOrdenProduccion
                 PdfPTable table = new PdfPTable(dgvOrdenProduccion.Columns.Count)
                 {
-                    TotalWidth = 840f, // Ajusta el ancho total según tus necesidades
+                    TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
                     LockedWidth = true
                 };
 
@@ -636,7 +641,7 @@ namespace Precentacion.User.Bill
                 // Celda 1: Encabezados de las columnas
                 foreach (DataGridViewColumn column in dgvOrdenProduccion.Columns)
                 {
-                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 7, iTextSharp.text.BaseColor.BLACK)))
+                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
                     {
                         BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                         BorderWidth = .5f,
@@ -656,7 +661,7 @@ namespace Precentacion.User.Bill
                         {
                             cell.Value = " ";
                         }
-                        PdfPCell celda = new PdfPCell(new Phrase(cell.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 7, iTextSharp.text.BaseColor.BLACK)))
+                        PdfPCell celda = new PdfPCell(new Phrase(cell.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
                         {
                             BorderWidth = .5f,
                             HorizontalAlignment = Element.ALIGN_CENTER,
@@ -672,7 +677,7 @@ namespace Precentacion.User.Bill
                 #region Tabla 8025
                 // Título para la Tabla 8025
                 PdfPTable tituloTable8025 = new PdfPTable(1);
-                tituloTable8025.TotalWidth = 840f;
+                tituloTable8025.TotalWidth = 1200f;
                 tituloTable8025.LockedWidth = true;
 
                 PdfPCell tituloCell8025 = new PdfPCell(new Phrase("Orden de Producción 8025", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
@@ -693,7 +698,7 @@ namespace Precentacion.User.Bill
                 // Agregar al Documento los Datos del dgvOrdenProduccion8025
                 PdfPTable table8025 = new PdfPTable(dgvOrdenProduccion8025.Columns.Count)
                 {
-                    TotalWidth = 840f, // Ajusta el ancho total según tus necesidades
+                    TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
                     LockedWidth = true
                 };
 
@@ -704,7 +709,7 @@ namespace Precentacion.User.Bill
                 // Celda 1: Encabezados de las columnas
                 foreach (DataGridViewColumn column8025 in dgvOrdenProduccion8025.Columns)
                 {
-                    PdfPCell cell8025 = new PdfPCell(new Phrase(column8025.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 7, iTextSharp.text.BaseColor.BLACK)))
+                    PdfPCell cell8025 = new PdfPCell(new Phrase(column8025.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
                     {
                         BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                         BorderWidth = .5f,
@@ -724,7 +729,7 @@ namespace Precentacion.User.Bill
                         {
                             cell8025.Value = " ";
                         }
-                        PdfPCell celda8025 = new PdfPCell(new Phrase(cell8025.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 7, iTextSharp.text.BaseColor.BLACK)))
+                        PdfPCell celda8025 = new PdfPCell(new Phrase(cell8025.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
                         {
                             BorderWidth = .5f,
                             HorizontalAlignment = Element.ALIGN_CENTER,
@@ -745,7 +750,7 @@ namespace Precentacion.User.Bill
                 #region Tabla 8025 3 Vias
                 // Título para la Tabla 8025
                 PdfPTable tituloTable8025_3Vias = new PdfPTable(1);
-                tituloTable8025_3Vias.TotalWidth = 840f;
+                tituloTable8025_3Vias.TotalWidth = 1200f;
                 tituloTable8025_3Vias.LockedWidth = true;
 
                 PdfPCell tituloCell8025_3Vias = new PdfPCell(new Phrase("Orden de Producción 8025 3Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
@@ -766,7 +771,7 @@ namespace Precentacion.User.Bill
                 // Agregar al Documento los Datos del dgvOrdenProduccion8025
                 PdfPTable table8025_3Vias = new PdfPTable(dgvOrdenProduccion8025_3vias.Columns.Count)
                 {
-                    TotalWidth = 840f, // Ajusta el ancho total según tus necesidades
+                    TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
                     LockedWidth = true
                 };
 
@@ -777,7 +782,7 @@ namespace Precentacion.User.Bill
                 // Celda 1: Encabezados de las columnas
                 foreach (DataGridViewColumn column8025_3Vias in dgvOrdenProduccion8025_3vias.Columns)
                 {
-                    PdfPCell cell8025_3Vias = new PdfPCell(new Phrase(column8025_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 7, iTextSharp.text.BaseColor.BLACK)))
+                    PdfPCell cell8025_3Vias = new PdfPCell(new Phrase(column8025_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
                     {
                         BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                         BorderWidth = .5f,
@@ -797,7 +802,7 @@ namespace Precentacion.User.Bill
                         {
                             cell8025_3Vias.Value = " ";
                         }
-                        PdfPCell celda8025_3Vias = new PdfPCell(new Phrase(cell8025_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 7, iTextSharp.text.BaseColor.BLACK)))
+                        PdfPCell celda8025_3Vias = new PdfPCell(new Phrase(cell8025_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
                         {
                             BorderWidth = .5f,
                             HorizontalAlignment = Element.ALIGN_CENTER,
