@@ -449,6 +449,9 @@ namespace Precentacion.User.Bill
 
                     dgvOrdenProduccion.Rows.Clear();
                     dgvOrdenProduccion8025.Rows.Clear();
+                    dgvOrdenProduccion6030_3vias.Rows.Clear();
+                    dgvOrdenProduccion6030.Rows.Clear();
+                    dgvOrdenProduccion8025_3vias.Rows.Clear();
                     ResultadosRebajo.Clear();
                     ResultadosCantidad.Clear();
                     LoadWindowsData();
@@ -959,19 +962,6 @@ namespace Precentacion.User.Bill
                 document.Add(table6030_3Vias);
                 document.Add(new Paragraph(" "));
                 #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
