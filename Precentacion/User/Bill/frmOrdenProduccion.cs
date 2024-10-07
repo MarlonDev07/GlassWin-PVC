@@ -857,7 +857,7 @@ namespace Precentacion.User.Bill
                 };
 
                 // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas4 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 0f};
+                float[] anchosColumnas4 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 0f, 40f, 20f, };
                 table6030_2Vias.SetWidths(anchosColumnas4);
 
                 // Celda 1: Encabezados de las columnas
@@ -928,7 +928,7 @@ namespace Precentacion.User.Bill
                 };
 
                 // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas5 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 0f };
+                float[] anchosColumnas5 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 0f, 40f, 20f, };
                 table6030_3Vias.SetWidths(anchosColumnas5);
 
                 // Celda 1: Encabezados de las columnas
