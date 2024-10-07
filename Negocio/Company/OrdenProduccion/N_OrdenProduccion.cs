@@ -1603,15 +1603,24 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.043M;
                             break;
                         case "Marco Hoja 6030 (ancho)":
-                            Rebajo = W / 2;
+                            Rebajo = (W + 4) / 4;
+                            break;
+                        case "Marco Hoja 6030 f (ancho)":
+                            Rebajo = W + 4 / 2;
                             break;
                         case "Marco Hoja Enganche 6030":
                             Rebajo = H - 0.043M;
                             break;
                         case "Vidrio M ancho":
-                            Rebajo = W / 2 - 0.064M;
+                            Rebajo = W + 4 / 4 - 0.064M;
                             break;
                         case "Vidrio M alto":
+                            Rebajo = H - 0.108M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = W + 4 / 2 - 0.064M;
+                            break;
+                        case "Vidrio F alto":
                             Rebajo = H - 0.108M;
                             break;
                     }
@@ -1632,13 +1641,16 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.043M;
                             break;
                         case "Marco Hoja 6030 (ancho)":
-                            Rebajo = W / 2;
+                            Rebajo = W / 3;
                             break;
                         case "Marco Hoja Enganche 6030":
                             Rebajo = H - 0.043M;
                             break;
+                        case "Adaptador Marco Akari":
+                            Rebajo = H;
+                            break;
                         case "Vidrio M ancho":
-                            Rebajo = W / 2 - 0.064M;
+                            Rebajo = W / 3 - 0.064M;
                             break;
                         case "Vidrio M alto":
                             Rebajo = H - 0.108M;
@@ -1661,15 +1673,24 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.043M;
                             break;
                         case "Marco Hoja 6030 (ancho)":
-                            Rebajo = W / 2;
+                            Rebajo = W + 4.5M / 4;
                             break;
                         case "Marco Hoja Enganche 6030":
                             Rebajo = H - 0.043M;
+                            break;
+                        case "Adaptador Marco Akari":
+                            Rebajo = H;
                             break;
                         case "Vidrio M ancho":
                             Rebajo = W / 2 - 0.064M;
                             break;
                         case "Vidrio M alto":
+                            Rebajo = H - 0.108M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = (W + 4.5M / 4) - 0.064M;
+                            break;
+                        case "Vidrio F alto":
                             Rebajo = H - 0.108M;
                             break;
                     }
@@ -1806,6 +1827,9 @@ namespace Negocio.Company.OrdenProduccion
                         case "Marco Hoja Enganche 6030":
                             Cantidad = 2;
                             break;
+                        case "Adaptador Marco Akari":
+                            Cantidad = 1;
+                            break;
                         case "Vidrio M ancho":
                             Cantidad = 3;
                             break;
@@ -1834,6 +1858,9 @@ namespace Negocio.Company.OrdenProduccion
                             break;
                         case "Marco Hoja Enganche 6030":
                             Cantidad = 4;
+                            break;
+                        case "Adaptador Marco Akari":
+                            Cantidad = 1;
                             break;
                         case "Vidrio M ancho":
                             Cantidad = 4;
@@ -1936,15 +1963,24 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.043M;
                             break;
                         case "Marco Hoja 6030 (ancho)":
-                            Rebajo = W / 2;
+                            Rebajo = (W +4) / 4;
+                            break;
+                        case "Marco Hoja 6030 f (ancho)":
+                            Rebajo = (W + 4) / 2;
                             break;
                         case "Marco Hoja Enganche 6030":
                             Rebajo = H - 0.043M;
                             break;
                         case "Vidrio M ancho":
-                            Rebajo = W / 2 - 0.064M;
+                            Rebajo = (W + 4 /4) - 0.065M;
                             break;
                         case "Vidrio M alto":
+                            Rebajo = H - 0.108M;
+                            break;
+                        case "Vidrio F ancho":
+                            Rebajo = (W + 4 /2) - 0.065M;
+                            break;
+                        case "Vidrio F alto":
                             Rebajo = H - 0.108M;
                             break;
                     }
