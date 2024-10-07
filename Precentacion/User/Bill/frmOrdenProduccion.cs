@@ -34,8 +34,8 @@ namespace Precentacion.User.Bill
         List<string> Piezas5020 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio M alto", "Vidrio F ancho", "Vidrio F alto" };
         List<string> Piezas8025 = new List<string> { "Cargador", "Umbral", "Jamba", "Superior", "Inferior", "Vertical", "Vertical Centro", "PisaAlfombra", "Vertical fijo", "Vertical Centro fijo", "Vidrio M ancho", "Vidrio M alto", "Vidrio F ancho", "Vidrio F alto" };
         List<string> Piezas8025_3vias = new List<string> { "Cargador 3 Vias", "Umbral 3 Vias", "Jamba 3 Vias", "PisaAlfombra", "Superior", "Inferior", "Superior f", "Inferior f", "Vertical", "Vertical Centro", "Vertical Centro fijo", "Vertical fijo", "Vidrio M ancho", "Vidrio M alto", "Vidrio F ancho", "Vidrio F alto" };
-        List<string> Piezas6030 = new List<string> { "Contramarco Sup-Lat Akari(ancho)", "Contramarco Sup-Lat Akari(alto)", "Contramarco Inferior Akari", "Marco Hoja 6030(alto)", "Marco Hoja 6030 (ancho)", "Marco Hoja Enganche 6030", "Vidrio M ancho", "Vidrio M alto", "Marco Hoja 6030 f (ancho)" };
-        List<string> Piezas6030_3Vias = new List<string> { "Contramarco Sup-Lat Akari(ancho)3Vias", "Contramarco Sup-Lat Akari(alto)3Vias", "Contramarco Inferior Akari3Vias", "Marco Hoja 6030(alto)", "Marco Hoja 6030 (ancho)", "Marco Hoja Enganche 6030", "Vidrio M ancho", "Vidrio M alto", "Marco Hoja 6030 f (ancho)" };
+        List<string> Piezas6030 = new List<string> { "Contramarco Sup-Lat Akari(ancho)", "Contramarco Sup-Lat Akari(alto)", "Contramarco Inferior Akari", "Marco Hoja 6030(alto)", "Marco Hoja 6030 (ancho)", "Marco Hoja Enganche 6030", "Vidrio M ancho", "Vidrio M alto", "Marco Hoja 6030 f (ancho)", "Vidrio F ancho", "Vidrio F alto", "Adaptador Marco Akari" };
+        List<string> Piezas6030_3Vias = new List<string> { "Contramarco Sup-Lat Akari(ancho)3Vias", "Contramarco Sup-Lat Akari(alto)3Vias", "Contramarco Inferior Akari3Vias", "Marco Hoja 6030(alto)", "Marco Hoja 6030 (ancho)", "Marco Hoja Enganche 6030", "Vidrio M ancho", "Vidrio M alto", "Marco Hoja 6030 f (ancho)", "Vidrio F ancho", "Vidrio F alto" };
         List<decimal> ResultadosRebajo = new List<decimal>();
         List<decimal> ResultadosCantidad = new List<decimal>();
         //public DataGridView dgvOrdenProduccion;
@@ -346,6 +346,9 @@ namespace Precentacion.User.Bill
                                     ResultadosRebajo[6], ResultadosCantidad[6],
                                     ResultadosRebajo[7], ResultadosCantidad[7],
                                     ResultadosRebajo[8], ResultadosCantidad[8],
+                                    ResultadosRebajo[9], ResultadosCantidad[9],
+                                    ResultadosRebajo[10], ResultadosCantidad[10],
+                                    ResultadosRebajo[11], ResultadosCantidad[11],
                                     contadorVentana6030
                                     );
 
@@ -401,6 +404,8 @@ namespace Precentacion.User.Bill
                                     ResultadosRebajo[6], ResultadosCantidad[6],
                                     ResultadosRebajo[7], ResultadosCantidad[7],
                                     ResultadosRebajo[8], ResultadosCantidad[8],
+                                    ResultadosRebajo[9], ResultadosCantidad[9],
+                                    ResultadosRebajo[10], ResultadosCantidad[10],
                                     contadorVentana6030_3Vias
                                     );
 
@@ -857,7 +862,7 @@ namespace Precentacion.User.Bill
                 };
 
                 // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas4 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 40f, 20f, 0f };
+                float[] anchosColumnas4 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 40f, 20f, 40f, 0f, 40f, 20f, 40f, 20f, 0f };
                 table6030_2Vias.SetWidths(anchosColumnas4);
 
                 // Celda 1: Encabezados de las columnas
@@ -928,7 +933,7 @@ namespace Precentacion.User.Bill
                 };
 
                 // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas5 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 40f, 20f, 0f };
+                float[] anchosColumnas5 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 40f, 20f, 40f, 0f, 40f, 20f, 0f };
                 table6030_3Vias.SetWidths(anchosColumnas5);
 
                 // Celda 1: Encabezados de las columnas
