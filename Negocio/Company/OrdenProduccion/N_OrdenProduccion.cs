@@ -1543,7 +1543,7 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.043M;
                             break;
                         case "Marco Hoja 6030 (ancho)":
-                            Rebajo = W + 0.05M / 2;
+                            Rebajo = (W + 0.005M) / 2;
                             break;
                         case "Marco Hoja Enganche 6030":
                             Rebajo = H - 0.043M;
