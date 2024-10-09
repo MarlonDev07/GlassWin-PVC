@@ -926,6 +926,7 @@ namespace Precentacion.User.Quote.Quote
                             }
                             frm.ListarArticulos(list);
                             frm.ConfigEditar();
+                            frm.ActualizarTotalPrecio();
                             frm.Show();
                         }
                         catch (Exception EX)

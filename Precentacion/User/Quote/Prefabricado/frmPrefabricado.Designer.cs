@@ -34,6 +34,8 @@
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCargar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.txtTotalCMB = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrefabricado)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +71,7 @@
             // btnCargar
             // 
             this.btnCargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargar.Location = new System.Drawing.Point(6, 373);
+            this.btnCargar.Location = new System.Drawing.Point(6, 431);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(116, 51);
             this.btnCargar.TabIndex = 9;
@@ -80,7 +82,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(749, 373);
+            this.btnGuardar.Location = new System.Drawing.Point(749, 431);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(105, 51);
             this.btnGuardar.TabIndex = 10;
@@ -88,11 +90,29 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // txtTotalCMB
+            // 
+            this.txtTotalCMB.Location = new System.Drawing.Point(708, 382);
+            this.txtTotalCMB.Name = "txtTotalCMB";
+            this.txtTotalCMB.Size = new System.Drawing.Size(145, 20);
+            this.txtTotalCMB.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(662, 389);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Total";
+            // 
             // frmPrefabricado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 450);
+            this.ClientSize = new System.Drawing.Size(861, 496);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtTotalCMB);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.dgvPrefabricado);
@@ -105,6 +125,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrefabricado)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -114,5 +135,7 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtTotalCMB;
+        private System.Windows.Forms.Label label1;
     }
 }
