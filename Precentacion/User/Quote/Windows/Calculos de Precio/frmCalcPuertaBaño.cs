@@ -531,10 +531,34 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 DataTable dtAluminio = n_LoadProduct.loadAluminio(cbColor.Text, clsPuertaBaño.System, cbSupplier.Text);
                 dgvAluminio.DataSource = dtAluminio;
                 dgvAluminio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-             
+
+
+                string proveedorVidrio = cbSupplier.Text;
+
+                if (cbVidrio.Text == "Vid 4 mm claro Alu")
+                {
+                    proveedorVidrio = "Aluma";
+                }
+                else if (cbVidrio.Text.EndsWith("Ex"))
+                {
+                    proveedorVidrio = "Extralum";
+                }
+                else if (cbVidrio.Text.EndsWith("Alu"))
+                {
+                    proveedorVidrio = "Alumas";
+                }
+                else if (cbVidrio.Text.EndsWith("Ma"))
+                {
+                    proveedorVidrio = "Macopa";
+                }
+                else if (cbVidrio.Text.EndsWith("Carbone"))
+                {
+                    proveedorVidrio = "Carbone";
+                }
+
 
                 //Vidrio
-                DataTable dtVidrio = n_LoadProduct.loadPricesGlass(cbSupplier.Text, cbVidrio.Text);
+                DataTable dtVidrio = n_LoadProduct.loadPricesGlass(proveedorVidrio, cbVidrio.Text);
                 dgvVidrio.DataSource = dtVidrio;
                 dgvVidrio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 

@@ -40,13 +40,11 @@
             this.btnDesglose = new System.Windows.Forms.Button();
             this.PanelMedidas = new System.Windows.Forms.Panel();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtAltoP = new System.Windows.Forms.TextBox();
             this.cbColorLamina = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtAnchoPanel = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblAncho = new System.Windows.Forms.Label();
             this.txtAncho = new System.Windows.Forms.TextBox();
             this.cbLaminaPlastica = new System.Windows.Forms.ComboBox();
@@ -58,6 +56,8 @@
             this.lblVidrio = new System.Windows.Forms.Label();
             this.lblAlto = new System.Windows.Forms.Label();
             this.txtAlto = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtAltoP = new System.Windows.Forms.TextBox();
             this.picPuertaBaño = new System.Windows.Forms.PictureBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.label6 = new System.Windows.Forms.Label();
@@ -243,19 +243,6 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // label13
-            // 
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(798, 205);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 20);
-            this.label13.TabIndex = 69;
-            this.label13.Text = "Alto Panel";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label13.Visible = false;
-            // 
             // label4
             // 
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -267,17 +254,6 @@
             this.label4.TabIndex = 47;
             this.label4.Text = "Color Lamina Plastica";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtAltoP
-            // 
-            this.txtAltoP.BackColor = System.Drawing.Color.White;
-            this.txtAltoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAltoP.Location = new System.Drawing.Point(798, 228);
-            this.txtAltoP.Name = "txtAltoP";
-            this.txtAltoP.Size = new System.Drawing.Size(90, 23);
-            this.txtAltoP.TabIndex = 70;
-            this.txtAltoP.Visible = false;
-            this.txtAltoP.TextChanged += new System.EventHandler(this.txtAltoP_TextChanged);
             // 
             // cbColorLamina
             // 
@@ -307,6 +283,17 @@
             this.label2.Text = "Lamina Plastica";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtAnchoPanel
+            // 
+            this.txtAnchoPanel.BackColor = System.Drawing.Color.White;
+            this.txtAnchoPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnchoPanel.Location = new System.Drawing.Point(294, 50);
+            this.txtAnchoPanel.Name = "txtAnchoPanel";
+            this.txtAnchoPanel.Size = new System.Drawing.Size(90, 23);
+            this.txtAnchoPanel.TabIndex = 43;
+            this.txtAnchoPanel.TextChanged += new System.EventHandler(this.PuntoDecimal_TextChanged);
+            this.txtAnchoPanel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox_KeyPress);
+            // 
             // label1
             // 
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -318,17 +305,6 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "Ancho Panel";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtAnchoPanel
-            // 
-            this.txtAnchoPanel.BackColor = System.Drawing.Color.White;
-            this.txtAnchoPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnchoPanel.Location = new System.Drawing.Point(294, 50);
-            this.txtAnchoPanel.Name = "txtAnchoPanel";
-            this.txtAnchoPanel.Size = new System.Drawing.Size(90, 23);
-            this.txtAnchoPanel.TabIndex = 43;
-            this.txtAnchoPanel.TextChanged += new System.EventHandler(this.PuntoDecimal_TextChanged);
-            this.txtAnchoPanel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox_KeyPress);
             // 
             // lblAncho
             // 
@@ -473,6 +449,30 @@
             this.txtAlto.TabIndex = 38;
             this.txtAlto.TextChanged += new System.EventHandler(this.PuntoDecimal_TextChanged);
             this.txtAlto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressTextBox_KeyPress);
+            // 
+            // label13
+            // 
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(798, 205);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 20);
+            this.label13.TabIndex = 69;
+            this.label13.Text = "Alto Panel";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label13.Visible = false;
+            // 
+            // txtAltoP
+            // 
+            this.txtAltoP.BackColor = System.Drawing.Color.White;
+            this.txtAltoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAltoP.Location = new System.Drawing.Point(798, 228);
+            this.txtAltoP.Name = "txtAltoP";
+            this.txtAltoP.Size = new System.Drawing.Size(90, 23);
+            this.txtAltoP.TabIndex = 70;
+            this.txtAltoP.Visible = false;
+            this.txtAltoP.TextChanged += new System.EventHandler(this.txtAltoP_TextChanged);
             // 
             // picPuertaBaño
             // 

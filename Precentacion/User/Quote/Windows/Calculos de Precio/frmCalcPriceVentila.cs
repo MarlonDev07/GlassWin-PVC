@@ -150,8 +150,32 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             N_LoadProduct n_LoadProduct = new N_LoadProduct();
 
             n_LoadProduct.CedazoValor(Cedazo);
-            DataTable dtAluminio = n_LoadProduct.loadAluminio(cbColor.Text,ClsWindows.System,cbSupplier.Text);
-            DataTable dtVidrio = n_LoadProduct.loadPricesGlass(cbSupplier.Text,cbVidrio.Text);
+            DataTable dtAluminio = n_LoadProduct.loadAluminio(cbColor.Text, ClsWindows.System, cbSupplier.Text);
+
+            string proveedorVidrio = cbSupplier.Text;
+
+            if (cbVidrio.Text == "Vid 4 mm claro Alu")
+            {
+                proveedorVidrio = "Aluma";
+            }
+            else if (cbVidrio.Text.EndsWith("Ex"))
+            {
+                proveedorVidrio = "Extralum";
+            }
+            else if (cbVidrio.Text.EndsWith("Alu"))
+            {
+                proveedorVidrio = "Alumas";
+            }
+            else if (cbVidrio.Text.EndsWith("Ma"))
+            {
+                proveedorVidrio = "Macopa";
+            }
+            else if (cbVidrio.Text.EndsWith("Carbone"))
+            {
+                proveedorVidrio = "Carbone";
+            }
+
+            DataTable dtVidrio = n_LoadProduct.loadPricesGlass(proveedorVidrio, cbVidrio.Text);
             DataTable dtAccesorios = n_LoadProduct.loadAccesorios(ClsWindows.System, cbSupplier.Text);
             dgvAccesorios.DataSource = dtAccesorios;
             Aluminiodt.DataSource = dtAluminio;
