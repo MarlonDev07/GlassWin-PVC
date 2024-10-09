@@ -620,138 +620,146 @@ namespace Precentacion.User.Bill
                 #region Tabla de Ventanas
                 #region Tabla 5020
                 // Título para la Tabla 5020
-                PdfPTable tituloTable5020 = new PdfPTable(1);
-                tituloTable5020.TotalWidth = 1200f;
-                tituloTable5020.LockedWidth = true;
-
-                PdfPCell tituloCell5020 = new PdfPCell(new Phrase("Orden de Producción 5020", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                if (DataGridViewTieneDatos(dgvOrdenProduccion))
                 {
-                    BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_MIDDLE,
-                    Border = iTextSharp.text.Rectangle.NO_BORDER,
-                    Padding = 10f
-                };
+                    PdfPTable tituloTable5020 = new PdfPTable(1);
+                    tituloTable5020.TotalWidth = 1200f;
+                    tituloTable5020.LockedWidth = true;
 
-                tituloTable5020.AddCell(tituloCell5020);
-                document.Add(tituloTable5020);
-
-                // Espacio después del título
-                document.Add(new Paragraph(" "));
-
-                // Agregar al Documento los Datos del dgvOrdenProduccion
-                PdfPTable table = new PdfPTable(dgvOrdenProduccion.Columns.Count)
-                {
-                    TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
-                    LockedWidth = true
-                };
-
-                // Ancho personalizado para cada una de las 19 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 50f, 0f, 50f, 25f };
-                table.SetWidths(anchosColumnas);
-
-                // Celda 1: Encabezados de las columnas
-                foreach (DataGridViewColumn column in dgvOrdenProduccion.Columns)
-                {
-                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                    PdfPCell tituloCell5020 = new PdfPCell(new Phrase("Orden de Producción 5020", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
                     {
-                        BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
-                        BorderWidth = .5f,
+                        BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
                         HorizontalAlignment = Element.ALIGN_CENTER,
-                        VerticalAlignment = Element.ALIGN_CENTER
+                        VerticalAlignment = Element.ALIGN_MIDDLE,
+                        Border = iTextSharp.text.Rectangle.NO_BORDER,
+                        Padding = 10f
                     };
-                    table.AddCell(cell);
-                }
 
-                // Celda 2: Datos de las filas
-                foreach (DataGridViewRow row in dgvOrdenProduccion.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
+                    tituloTable5020.AddCell(tituloCell5020);
+                    document.Add(tituloTable5020);
+
+                    // Espacio después del título
+                    document.Add(new Paragraph(" "));
+
+                    // Agregar al Documento los Datos del dgvOrdenProduccion
+                    PdfPTable table = new PdfPTable(dgvOrdenProduccion.Columns.Count)
                     {
-                        // Validar si la celda es nula
-                        if (cell.Value == null)
+                        TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
+                        LockedWidth = true
+                    };
+
+                    // Ancho personalizado para cada una de las 19 columnas (ajusta los valores según tus necesidades)
+                    float[] anchosColumnas = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 50f, 0f, 50f, 25f };
+                    table.SetWidths(anchosColumnas);
+
+                    // Celda 1: Encabezados de las columnas
+                    foreach (DataGridViewColumn column in dgvOrdenProduccion.Columns)
+                    {
+                        PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
                         {
-                            cell.Value = " ";
-                        }
-                        PdfPCell celda = new PdfPCell(new Phrase(cell.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
-                        {
+                            BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                             BorderWidth = .5f,
                             HorizontalAlignment = Element.ALIGN_CENTER,
                             VerticalAlignment = Element.ALIGN_CENTER
                         };
-                        table.AddCell(celda);
+                        table.AddCell(cell);
                     }
+
+                    // Celda 2: Datos de las filas
+                    foreach (DataGridViewRow row in dgvOrdenProduccion.Rows)
+                    {
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            // Validar si la celda es nula
+                            if (cell.Value == null)
+                            {
+                                cell.Value = " ";
+                            }
+                            PdfPCell celda = new PdfPCell(new Phrase(cell.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                            {
+                                BorderWidth = .5f,
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                VerticalAlignment = Element.ALIGN_CENTER
+                            };
+                            table.AddCell(celda);
+                        }
+                    }
+                    document.Add(table);
+                    document.Add(new Paragraph(" "));
                 }
-                document.Add(table);
-                document.Add(new Paragraph(" "));
+
                 #endregion
 
                 #region Tabla 8025
                 // Título para la Tabla 8025
-                PdfPTable tituloTable8025 = new PdfPTable(1);
-                tituloTable8025.TotalWidth = 1200f;
-                tituloTable8025.LockedWidth = true;
-
-                PdfPCell tituloCell8025 = new PdfPCell(new Phrase("Orden de Producción 8025", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                if (DataGridViewTieneDatos(dgvOrdenProduccion8025))
                 {
-                    BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_MIDDLE,
-                    Border = Rectangle.NO_BORDER,
-                    Padding = 10f
-                };
+                    PdfPTable tituloTable8025 = new PdfPTable(1);
+                    tituloTable8025.TotalWidth = 1200f;
+                    tituloTable8025.LockedWidth = true;
 
-                tituloTable8025.AddCell(tituloCell8025);
-                document.Add(tituloTable8025);
-
-                // Espacio después del título
-                document.Add(new Paragraph(" "));
-
-                // Agregar al Documento los Datos del dgvOrdenProduccion8025
-                PdfPTable table8025 = new PdfPTable(dgvOrdenProduccion8025.Columns.Count)
-                {
-                    TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
-                    LockedWidth = true
-                };
-
-                // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas2 = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 50f, 0f, 50f, 25f };
-                table8025.SetWidths(anchosColumnas2);
-
-                // Celda 1: Encabezados de las columnas
-                foreach (DataGridViewColumn column8025 in dgvOrdenProduccion8025.Columns)
-                {
-                    PdfPCell cell8025 = new PdfPCell(new Phrase(column8025.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                    PdfPCell tituloCell8025 = new PdfPCell(new Phrase("Orden de Producción 8025", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
                     {
-                        BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
-                        BorderWidth = .5f,
+                        BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
                         HorizontalAlignment = Element.ALIGN_CENTER,
-                        VerticalAlignment = Element.ALIGN_CENTER
+                        VerticalAlignment = Element.ALIGN_MIDDLE,
+                        Border = Rectangle.NO_BORDER,
+                        Padding = 10f
                     };
-                    table8025.AddCell(cell8025);
-                }
 
-                // Celda 2: Datos de las filas
-                foreach (DataGridViewRow row8025 in dgvOrdenProduccion8025.Rows)
-                {
-                    foreach (DataGridViewCell cell8025 in row8025.Cells)
+                    tituloTable8025.AddCell(tituloCell8025);
+                    document.Add(tituloTable8025);
+
+                    // Espacio después del título
+                    document.Add(new Paragraph(" "));
+
+                    // Agregar al Documento los Datos del dgvOrdenProduccion8025
+                    PdfPTable table8025 = new PdfPTable(dgvOrdenProduccion8025.Columns.Count)
                     {
-                        // Validar si la celda es nula
-                        if (cell8025.Value == null)
+                        TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
+                        LockedWidth = true
+                    };
+
+                    // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
+                    float[] anchosColumnas2 = new float[] { 50f, 50f, 50f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 50f, 0f, 50f, 25f };
+                    table8025.SetWidths(anchosColumnas2);
+
+                    // Celda 1: Encabezados de las columnas
+                    foreach (DataGridViewColumn column8025 in dgvOrdenProduccion8025.Columns)
+                    {
+                        PdfPCell cell8025 = new PdfPCell(new Phrase(column8025.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
                         {
-                            cell8025.Value = " ";
-                        }
-                        PdfPCell celda8025 = new PdfPCell(new Phrase(cell8025.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
-                        {
+                            BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                             BorderWidth = .5f,
                             HorizontalAlignment = Element.ALIGN_CENTER,
                             VerticalAlignment = Element.ALIGN_CENTER
                         };
-                        table8025.AddCell(celda8025);
+                        table8025.AddCell(cell8025);
                     }
+
+                    // Celda 2: Datos de las filas
+                    foreach (DataGridViewRow row8025 in dgvOrdenProduccion8025.Rows)
+                    {
+                        foreach (DataGridViewCell cell8025 in row8025.Cells)
+                        {
+                            // Validar si la celda es nula
+                            if (cell8025.Value == null)
+                            {
+                                cell8025.Value = " ";
+                            }
+                            PdfPCell celda8025 = new PdfPCell(new Phrase(cell8025.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                            {
+                                BorderWidth = .5f,
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                VerticalAlignment = Element.ALIGN_CENTER
+                            };
+                            table8025.AddCell(celda8025);
+                        }
+                    }
+                    document.Add(table8025);
+                    document.Add(new Paragraph(" "));
                 }
-                document.Add(table8025);
-                document.Add(new Paragraph(" "));
+
                 #endregion
 
 
@@ -760,71 +768,75 @@ namespace Precentacion.User.Bill
 
 
                 #region Tabla 8025 3 Vias
-                // Título para la Tabla 8025
-                PdfPTable tituloTable8025_3Vias = new PdfPTable(1);
-                tituloTable8025_3Vias.TotalWidth = 1200f;
-                tituloTable8025_3Vias.LockedWidth = true;
-
-                PdfPCell tituloCell8025_3Vias = new PdfPCell(new Phrase("Orden de Producción 8025 3 Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                // Título para la Tabla 8025 3 Vias
+                if (DataGridViewTieneDatos(dgvOrdenProduccion8025_3vias))
                 {
-                    BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_MIDDLE,
-                    Border = Rectangle.NO_BORDER,
-                    Padding = 10f
-                };
+                    PdfPTable tituloTable8025_3Vias = new PdfPTable(1);
+                    tituloTable8025_3Vias.TotalWidth = 1200f;
+                    tituloTable8025_3Vias.LockedWidth = true;
 
-                tituloTable8025_3Vias.AddCell(tituloCell8025_3Vias);
-                document.Add(tituloTable8025_3Vias);
-
-                // Espacio después del título
-                document.Add(new Paragraph(" "));
-
-                // Agregar al Documento los Datos del dgvOrdenProduccion8025
-                PdfPTable table8025_3Vias = new PdfPTable(dgvOrdenProduccion8025_3vias.Columns.Count)
-                {
-                    TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
-                    LockedWidth = true
-                };
-
-                // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas3 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 50f, 0f, 50f, 25f };
-                table8025_3Vias.SetWidths(anchosColumnas3);
-
-                // Celda 1: Encabezados de las columnas
-                foreach (DataGridViewColumn column8025_3Vias in dgvOrdenProduccion8025_3vias.Columns)
-                {
-                    PdfPCell cell8025_3Vias = new PdfPCell(new Phrase(column8025_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                    PdfPCell tituloCell8025_3Vias = new PdfPCell(new Phrase("Orden de Producción 8025 3 Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
                     {
-                        BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
-                        BorderWidth = .5f,
+                        BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
                         HorizontalAlignment = Element.ALIGN_CENTER,
-                        VerticalAlignment = Element.ALIGN_CENTER
+                        VerticalAlignment = Element.ALIGN_MIDDLE,
+                        Border = Rectangle.NO_BORDER,
+                        Padding = 10f
                     };
-                    table8025_3Vias.AddCell(cell8025_3Vias);
-                }
 
-                // Celda 2: Datos de las filas
-                foreach (DataGridViewRow row8025_3Vias in dgvOrdenProduccion8025_3vias.Rows)
-                {
-                    foreach (DataGridViewCell cell8025_3Vias in row8025_3Vias.Cells)
+                    tituloTable8025_3Vias.AddCell(tituloCell8025_3Vias);
+                    document.Add(tituloTable8025_3Vias);
+
+                    // Espacio después del título
+                    document.Add(new Paragraph(" "));
+
+                    // Agregar al Documento los Datos del dgvOrdenProduccion8025
+                    PdfPTable table8025_3Vias = new PdfPTable(dgvOrdenProduccion8025_3vias.Columns.Count)
                     {
-                        // Validar si la celda es nula
-                        if (cell8025_3Vias.Value == null)
+                        TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
+                        LockedWidth = true
+                    };
+
+                    // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
+                    float[] anchosColumnas3 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 0f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 50f, 0f, 50f, 25f };
+                    table8025_3Vias.SetWidths(anchosColumnas3);
+
+                    // Celda 1: Encabezados de las columnas
+                    foreach (DataGridViewColumn column8025_3Vias in dgvOrdenProduccion8025_3vias.Columns)
+                    {
+                        PdfPCell cell8025_3Vias = new PdfPCell(new Phrase(column8025_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
                         {
-                            cell8025_3Vias.Value = " ";
-                        }
-                        PdfPCell celda8025_3Vias = new PdfPCell(new Phrase(cell8025_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
-                        {
+                            BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                             BorderWidth = .5f,
                             HorizontalAlignment = Element.ALIGN_CENTER,
                             VerticalAlignment = Element.ALIGN_CENTER
                         };
-                        table8025_3Vias.AddCell(celda8025_3Vias);
+                        table8025_3Vias.AddCell(cell8025_3Vias);
                     }
+
+                    // Celda 2: Datos de las filas
+                    foreach (DataGridViewRow row8025_3Vias in dgvOrdenProduccion8025_3vias.Rows)
+                    {
+                        foreach (DataGridViewCell cell8025_3Vias in row8025_3Vias.Cells)
+                        {
+                            // Validar si la celda es nula
+                            if (cell8025_3Vias.Value == null)
+                            {
+                                cell8025_3Vias.Value = " ";
+                            }
+                            PdfPCell celda8025_3Vias = new PdfPCell(new Phrase(cell8025_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                            {
+                                BorderWidth = .5f,
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                VerticalAlignment = Element.ALIGN_CENTER
+                            };
+                            table8025_3Vias.AddCell(celda8025_3Vias);
+                        }
+                    }
+                    document.Add(table8025_3Vias);
+                    document.Add(new Paragraph(" "));
                 }
-                document.Add(table8025_3Vias);
-                document.Add(new Paragraph(" "));
+
                 #endregion
 
 
@@ -834,142 +846,150 @@ namespace Precentacion.User.Bill
 
 
                 #region Tabla 6030 2 Vias
-                // Título para la Tabla 8025
-                PdfPTable tituloTable6030_2Vias = new PdfPTable(1);
-                tituloTable6030_2Vias.TotalWidth = 1200f;
-                tituloTable6030_2Vias.LockedWidth = true;
-
-                PdfPCell tituloCell6030_2Vias = new PdfPCell(new Phrase("Orden de Producción 6030 2 Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                // Título para la Tabla 6030 2 Vias
+                if (DataGridViewTieneDatos(dgvOrdenProduccion6030))
                 {
-                    BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_MIDDLE,
-                    Border = Rectangle.NO_BORDER,
-                    Padding = 10f
-                };
+                    PdfPTable tituloTable6030_2Vias = new PdfPTable(1);
+                    tituloTable6030_2Vias.TotalWidth = 1200f;
+                    tituloTable6030_2Vias.LockedWidth = true;
 
-                tituloTable6030_2Vias.AddCell(tituloCell6030_2Vias);
-                document.Add(tituloTable6030_2Vias);
-
-                // Espacio después del título
-                document.Add(new Paragraph(" "));
-
-                // Agregar al Documento los Datos del dgvOrdenProduccion8025
-                PdfPTable table6030_2Vias = new PdfPTable(dgvOrdenProduccion6030.Columns.Count)
-                {
-                    TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
-                    LockedWidth = true
-                };
-
-                // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas4 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 40f, 20f, 40f, 0f, 40f, 20f, 40f, 20f, 0f };
-                table6030_2Vias.SetWidths(anchosColumnas4);
-
-                // Celda 1: Encabezados de las columnas
-                foreach (DataGridViewColumn column6030_2Vias in dgvOrdenProduccion6030.Columns)
-                {
-                    PdfPCell cell6030_2Vias = new PdfPCell(new Phrase(column6030_2Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                    PdfPCell tituloCell6030_2Vias = new PdfPCell(new Phrase("Orden de Producción 6030 2 Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
                     {
-                        BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
-                        BorderWidth = .5f,
+                        BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
                         HorizontalAlignment = Element.ALIGN_CENTER,
-                        VerticalAlignment = Element.ALIGN_CENTER
+                        VerticalAlignment = Element.ALIGN_MIDDLE,
+                        Border = Rectangle.NO_BORDER,
+                        Padding = 10f
                     };
-                    table6030_2Vias.AddCell(cell6030_2Vias);
-                }
 
-                // Celda 2: Datos de las filas
-                foreach (DataGridViewRow row6030_2Vias in dgvOrdenProduccion6030.Rows)
-                {
-                    foreach (DataGridViewCell cell6030_2Vias in row6030_2Vias.Cells)
+                    tituloTable6030_2Vias.AddCell(tituloCell6030_2Vias);
+                    document.Add(tituloTable6030_2Vias);
+
+                    // Espacio después del título
+                    document.Add(new Paragraph(" "));
+
+                    // Agregar al Documento los Datos del dgvOrdenProduccion8025
+                    PdfPTable table6030_2Vias = new PdfPTable(dgvOrdenProduccion6030.Columns.Count)
                     {
-                        // Validar si la celda es nula
-                        if (cell6030_2Vias.Value == null)
+                        TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
+                        LockedWidth = true
+                    };
+
+                    // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
+                    float[] anchosColumnas4 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 40f, 20f, 40f, 0f, 40f, 20f, 40f, 20f, 0f };
+                    table6030_2Vias.SetWidths(anchosColumnas4);
+
+                    // Celda 1: Encabezados de las columnas
+                    foreach (DataGridViewColumn column6030_2Vias in dgvOrdenProduccion6030.Columns)
+                    {
+                        PdfPCell cell6030_2Vias = new PdfPCell(new Phrase(column6030_2Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
                         {
-                            cell6030_2Vias.Value = " ";
-                        }
-                        PdfPCell celda6030_2Vias = new PdfPCell(new Phrase(cell6030_2Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
-                        {
+                            BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                             BorderWidth = .5f,
                             HorizontalAlignment = Element.ALIGN_CENTER,
                             VerticalAlignment = Element.ALIGN_CENTER
                         };
-                        table6030_2Vias.AddCell(celda6030_2Vias);
+                        table6030_2Vias.AddCell(cell6030_2Vias);
                     }
+
+                    // Celda 2: Datos de las filas
+                    foreach (DataGridViewRow row6030_2Vias in dgvOrdenProduccion6030.Rows)
+                    {
+                        foreach (DataGridViewCell cell6030_2Vias in row6030_2Vias.Cells)
+                        {
+                            // Validar si la celda es nula
+                            if (cell6030_2Vias.Value == null)
+                            {
+                                cell6030_2Vias.Value = " ";
+                            }
+                            PdfPCell celda6030_2Vias = new PdfPCell(new Phrase(cell6030_2Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                            {
+                                BorderWidth = .5f,
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                VerticalAlignment = Element.ALIGN_CENTER
+                            };
+                            table6030_2Vias.AddCell(celda6030_2Vias);
+                        }
+                    }
+                    document.Add(table6030_2Vias);
+                    document.Add(new Paragraph(" "));
                 }
-                document.Add(table6030_2Vias);
-                document.Add(new Paragraph(" "));
+
                 #endregion
 
 
 
 
                 #region Tabla 6030 3 Vias
-                // Título para la Tabla 8025
-                PdfPTable tituloTable6030_3Vias = new PdfPTable(1);
-                tituloTable6030_3Vias.TotalWidth = 1200f;
-                tituloTable6030_3Vias.LockedWidth = true;
-
-                PdfPCell tituloCell6030_3Vias = new PdfPCell(new Phrase("Orden de Producción 6030 3 Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
+                if (DataGridViewTieneDatos(dgvOrdenProduccion6030_3vias))
                 {
-                    BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_MIDDLE,
-                    Border = Rectangle.NO_BORDER,
-                    Padding = 10f
-                };
+                    // Título para la Tabla 6030 3 Vias
+                    PdfPTable tituloTable6030_3Vias = new PdfPTable(1);
+                    tituloTable6030_3Vias.TotalWidth = 1200f;
+                    tituloTable6030_3Vias.LockedWidth = true;
 
-                tituloTable6030_3Vias.AddCell(tituloCell6030_3Vias);
-                document.Add(tituloTable6030_3Vias);
-
-                // Espacio después del título
-                document.Add(new Paragraph(" "));
-
-                // Agregar al Documento los Datos del dgvOrdenProduccion8025
-                PdfPTable table6030_3Vias = new PdfPTable(dgvOrdenProduccion6030_3vias.Columns.Count)
-                {
-                    TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
-                    LockedWidth = true
-                };
-
-                // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
-                float[] anchosColumnas5 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 40f, 20f, 40f, 0f, 40f, 20f, 0f };
-                table6030_3Vias.SetWidths(anchosColumnas5);
-
-                // Celda 1: Encabezados de las columnas
-                foreach (DataGridViewColumn column6030_3Vias in dgvOrdenProduccion6030_3vias.Columns)
-                {
-                    PdfPCell cell6030_3Vias = new PdfPCell(new Phrase(column6030_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                    PdfPCell tituloCell6030_3Vias = new PdfPCell(new Phrase("Orden de Producción 6030 3 Vias", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, iTextSharp.text.BaseColor.WHITE)))
                     {
-                        BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
-                        BorderWidth = .5f,
+                        BackgroundColor = new iTextSharp.text.BaseColor(255, 165, 0),
                         HorizontalAlignment = Element.ALIGN_CENTER,
-                        VerticalAlignment = Element.ALIGN_CENTER
+                        VerticalAlignment = Element.ALIGN_MIDDLE,
+                        Border = Rectangle.NO_BORDER,
+                        Padding = 10f
                     };
-                    table6030_3Vias.AddCell(cell6030_3Vias);
-                }
 
-                // Celda 2: Datos de las filas
-                foreach (DataGridViewRow row6030_3Vias in dgvOrdenProduccion6030_3vias.Rows)
-                {
-                    foreach (DataGridViewCell cell6030_3Vias in row6030_3Vias.Cells)
+                    tituloTable6030_3Vias.AddCell(tituloCell6030_3Vias);
+                    document.Add(tituloTable6030_3Vias);
+
+                    // Espacio después del título
+                    document.Add(new Paragraph(" "));
+
+                    // Agregar al Documento los Datos del dgvOrdenProduccion8025
+                    PdfPTable table6030_3Vias = new PdfPTable(dgvOrdenProduccion6030_3vias.Columns.Count)
                     {
-                        // Validar si la celda es nula
-                        if (cell6030_3Vias.Value == null)
+                        TotalWidth = 1200f, // Ajusta el ancho total según tus necesidades
+                        LockedWidth = true
+                    };
+
+                    // Ancho personalizado para cada una de las 21 columnas (ajusta los valores según tus necesidades)
+                    float[] anchosColumnas5 = new float[] { 40f, 40f, 40f, 40f, 40f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 25f, 50f, 0f, 50f, 25f, 40f, 20f, 40f, 0f, 40f, 20f, 0f };
+                    table6030_3Vias.SetWidths(anchosColumnas5);
+
+                    // Celda 1: Encabezados de las columnas
+                    foreach (DataGridViewColumn column6030_3Vias in dgvOrdenProduccion6030_3vias.Columns)
+                    {
+                        PdfPCell cell6030_3Vias = new PdfPCell(new Phrase(column6030_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
                         {
-                            cell6030_3Vias.Value = " ";
-                        }
-                        PdfPCell celda6030_3Vias = new PdfPCell(new Phrase(cell6030_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
-                        {
+                            BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                             BorderWidth = .5f,
                             HorizontalAlignment = Element.ALIGN_CENTER,
                             VerticalAlignment = Element.ALIGN_CENTER
                         };
-                        table6030_3Vias.AddCell(celda6030_3Vias);
+                        table6030_3Vias.AddCell(cell6030_3Vias);
                     }
+
+                    // Celda 2: Datos de las filas
+                    foreach (DataGridViewRow row6030_3Vias in dgvOrdenProduccion6030_3vias.Rows)
+                    {
+                        foreach (DataGridViewCell cell6030_3Vias in row6030_3Vias.Cells)
+                        {
+                            // Validar si la celda es nula
+                            if (cell6030_3Vias.Value == null)
+                            {
+                                cell6030_3Vias.Value = " ";
+                            }
+                            PdfPCell celda6030_3Vias = new PdfPCell(new Phrase(cell6030_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                            {
+                                BorderWidth = .5f,
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                VerticalAlignment = Element.ALIGN_CENTER
+                            };
+                            table6030_3Vias.AddCell(celda6030_3Vias);
+                        }
+                    }
+                    document.Add(table6030_3Vias);
+                    document.Add(new Paragraph(" "));
                 }
-                document.Add(table6030_3Vias);
-                document.Add(new Paragraph(" "));
+
                 #endregion
 
 
@@ -985,6 +1005,31 @@ namespace Precentacion.User.Bill
             {
                 MessageBox.Show("Ocurrió un error al generar la hoja de producción: " + ex.Message);
             }
+        }
+        // Método para verificar si el DataGridView tiene contenido
+        private bool DataGridViewTieneDatos(DataGridView dgv)
+        {
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                bool filaConDatos = false;
+
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    // Verificar si la celda no es nula y tiene un valor no vacío
+                    if (cell.Value != null && !string.IsNullOrWhiteSpace(cell.Value.ToString()))
+                    {
+                        filaConDatos = true;
+                        break;
+                    }
+                }
+
+                if (filaConDatos)
+                {
+                    return true; // Si se encuentra una fila con datos, el DataGridView tiene contenido
+                }
+            }
+
+            return false; // Si ninguna fila tiene contenido, devolver false
         }
 
 
