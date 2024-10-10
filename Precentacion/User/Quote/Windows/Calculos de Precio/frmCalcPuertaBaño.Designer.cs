@@ -150,6 +150,7 @@
             this.txtTotalPrice.Name = "txtTotalPrice";
             this.txtTotalPrice.Size = new System.Drawing.Size(167, 20);
             this.txtTotalPrice.TabIndex = 31;
+            this.txtTotalPrice.TextChanged += new System.EventHandler(this.txtTotalPrice_TextChanged);
             // 
             // label12
             // 

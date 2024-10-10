@@ -329,7 +329,7 @@
             this.panelDetalle.Controls.Add(this.Aluminiodt);
             this.panelDetalle.Location = new System.Drawing.Point(-1, -2);
             this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1104, 364);
+            this.panelDetalle.Size = new System.Drawing.Size(1104, 628);
             this.panelDetalle.TabIndex = 89;
             this.panelDetalle.Visible = false;
             this.panelDetalle.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDetalle_Paint);
@@ -410,7 +410,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(513, 372);
+            this.button2.Location = new System.Drawing.Point(513, 504);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(129, 45);
             this.button2.TabIndex = 72;

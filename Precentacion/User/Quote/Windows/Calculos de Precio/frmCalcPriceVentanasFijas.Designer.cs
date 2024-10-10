@@ -499,7 +499,7 @@
             this.panelDetalle.Controls.Add(this.Aluminiodt);
             this.panelDetalle.Location = new System.Drawing.Point(-3, 64);
             this.panelDetalle.Name = "panelDetalle";
-            this.panelDetalle.Size = new System.Drawing.Size(1162, 652);
+            this.panelDetalle.Size = new System.Drawing.Size(1162, 653);
             this.panelDetalle.TabIndex = 73;
             this.panelDetalle.Visible = false;
             // 

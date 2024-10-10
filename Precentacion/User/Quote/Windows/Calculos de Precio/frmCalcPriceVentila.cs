@@ -572,5 +572,39 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             catch
             { }
         }
+
+        private void txtTotalPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (cbSupplier.Text == "Default")
+            {
+                try
+                {
+
+                    precioTotal = Convert.ToDecimal(txtTotalPrice.Text);
+
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+            if (cbSupplier.Text == "Default")
+            {
+                try
+                {
+
+                    precioTotal = Convert.ToDecimal(txtTotalPrice.Text);
+
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
     }
 }

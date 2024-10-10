@@ -805,6 +805,18 @@ namespace Precentacion.User.Quote.Windows
                     {
                         txtTotal.Text = "₡ " + TempPrecio.ToString("N2");
                     }
+                } else if (cbSupplier.Text == "Default")
+                {
+                    try
+                    {
+
+                        PrecioTotal = Convert.ToDecimal(txtTotal.Text);
+
+                    }
+                    catch (Exception)
+                    {
+
+                    }
                 }
             }
             catch (Exception ex)

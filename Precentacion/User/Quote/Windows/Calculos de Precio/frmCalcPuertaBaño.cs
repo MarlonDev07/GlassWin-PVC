@@ -795,6 +795,23 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 // redimension_Click(sender, e);
             }
         }
+
+        private void txtTotalPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (cbSupplier.Text == "Default")
+            {
+                try
+                {
+
+                    clsPuertaBaño.Price = Convert.ToDecimal(txtTotalPrice.Text);
+
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
     }
 }
 
