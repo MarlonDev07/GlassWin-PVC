@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 // Puede especificar todos los valores o usar los valores predeterminados de número de compilación y de revisión
 // utilizando el carácter "*", como se muestra a continuación:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.174")]
-[assembly: AssemblyFileVersion("1.0.0.174")]
+[assembly: AssemblyVersion("1.0.0.175")]
+[assembly: AssemblyFileVersion("1.0.0.175")]
 
 //zqpSc74%N2oPfwR4$5TyU! 
