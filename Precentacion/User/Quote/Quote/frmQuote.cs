@@ -831,7 +831,7 @@ namespace Precentacion.User.Quote.Quote
             try
             { //Obtener La Descripccion de la Ventana
                 string Description = dgCotizaciones.CurrentRow.Cells["Description"].Value.ToString();
-                if (Description.Contains("Sistema"))
+                if (Description.Contains("Sistema") && !Description.Contains("Exclusivo"))
                 {
                     //Obtener el id de la ventana seleccionada
                     int idWindows = Convert.ToInt32(dgCotizaciones.CurrentRow.Cells["IdWindows"].Value);
