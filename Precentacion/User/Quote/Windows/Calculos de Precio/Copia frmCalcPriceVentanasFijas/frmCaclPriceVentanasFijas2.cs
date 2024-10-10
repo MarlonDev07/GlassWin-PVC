@@ -9,6 +9,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceVentanasFijas
@@ -761,14 +762,20 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbSupplier.SelectedIndex == 3)
+           
+
+            if (cbSupplier.Text == "Default")
             {
                 txtTotal.Enabled = true;
+                txtTotal.Text = "0";
+             
             }
             else
             {
                 txtTotal.Enabled = false;
+           
             }
+
         }
 
         private bool isUpdatingText = false;
