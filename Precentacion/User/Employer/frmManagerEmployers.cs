@@ -72,9 +72,9 @@ namespace Precentacion.User.Employer
             dgvEmployers.Columns[1].HeaderText = "Nombre";
             dgvEmployers.Columns[2].HeaderText = "Apellido";
             dgvEmployers.Columns[3].HeaderText = "Salario Base";
-            dgvEmployers.Columns[7].HeaderText = "Telefono";
+            dgvEmployers.Columns[7].HeaderText = "Teléfono";
             dgvEmployers.Columns[8].HeaderText = "Correo";
-            dgvEmployers.Columns[10].HeaderText = "Posicion";
+            dgvEmployers.Columns[10].HeaderText = "Posición";
             dgvEmployers.Columns[11].HeaderText = "Pago";
             dgvEmployers.Columns[12].HeaderText = "Pago por Hora";
 
@@ -1742,6 +1742,11 @@ namespace Precentacion.User.Employer
                 //Mostrar el Salario Neto
                 txtSalaryNeto.Text = SalaryPay.ToString("c");
             }
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
