@@ -88,16 +88,15 @@
             this.btnSanBlast = new System.Windows.Forms.Button();
             this.btnViaticos = new System.Windows.Forms.Button();
             this.btnExclusivo = new System.Windows.Forms.Button();
-            this.btnCargarDesglose = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnApplyLabour = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnDolarCambio = new System.Windows.Forms.Button();
             this.btnCambioDolar2 = new System.Windows.Forms.Button();
             this.btnSistemas = new System.Windows.Forms.Button();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgCotizaciones)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -163,7 +162,7 @@
             this.txtSubtotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubtotal.Location = new System.Drawing.Point(811, 507);
+            this.txtSubtotal.Location = new System.Drawing.Point(811, 512);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.ReadOnly = true;
             this.txtSubtotal.Size = new System.Drawing.Size(95, 26);
@@ -176,7 +175,7 @@
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(719, 507);
+            this.label5.Location = new System.Drawing.Point(719, 512);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 25);
             this.label5.TabIndex = 146;
@@ -187,7 +186,7 @@
             this.txtIVA.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIVA.Location = new System.Drawing.Point(811, 542);
+            this.txtIVA.Location = new System.Drawing.Point(811, 547);
             this.txtIVA.Name = "txtIVA";
             this.txtIVA.ReadOnly = true;
             this.txtIVA.Size = new System.Drawing.Size(95, 26);
@@ -200,7 +199,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(875, 349);
+            this.label1.Location = new System.Drawing.Point(875, 354);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 26);
             this.label1.TabIndex = 137;
@@ -212,7 +211,7 @@
             this.txtManoObra.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtManoObra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtManoObra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtManoObra.Location = new System.Drawing.Point(814, 349);
+            this.txtManoObra.Location = new System.Drawing.Point(814, 354);
             this.txtManoObra.Name = "txtManoObra";
             this.txtManoObra.Size = new System.Drawing.Size(62, 26);
             this.txtManoObra.TabIndex = 14;
@@ -224,7 +223,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(719, 349);
+            this.label2.Location = new System.Drawing.Point(719, 354);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 26);
             this.label2.TabIndex = 136;
@@ -236,7 +235,7 @@
             this.txtTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(811, 578);
+            this.txtTotal.Location = new System.Drawing.Point(811, 583);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(95, 26);
@@ -249,7 +248,7 @@
             this.lblTotalPago.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTotalPago.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPago.ForeColor = System.Drawing.Color.Black;
-            this.lblTotalPago.Location = new System.Drawing.Point(719, 579);
+            this.lblTotalPago.Location = new System.Drawing.Point(719, 584);
             this.lblTotalPago.Name = "lblTotalPago";
             this.lblTotalPago.Size = new System.Drawing.Size(86, 25);
             this.lblTotalPago.TabIndex = 134;
@@ -281,7 +280,7 @@
             this.dgCotizaciones.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgCotizaciones.EnableHeadersVisualStyles = false;
             this.dgCotizaciones.GridColor = System.Drawing.Color.Silver;
-            this.dgCotizaciones.Location = new System.Drawing.Point(39, 383);
+            this.dgCotizaciones.Location = new System.Drawing.Point(39, 389);
             this.dgCotizaciones.Name = "dgCotizaciones";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.SteelBlue;
@@ -574,7 +573,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(875, 387);
+            this.label3.Location = new System.Drawing.Point(875, 392);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 26);
             this.label3.TabIndex = 171;
@@ -586,7 +585,7 @@
             this.txtDescuento.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDescuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescuento.Location = new System.Drawing.Point(814, 387);
+            this.txtDescuento.Location = new System.Drawing.Point(814, 392);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(62, 26);
             this.txtDescuento.TabIndex = 15;
@@ -598,7 +597,7 @@
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(719, 388);
+            this.label12.Location = new System.Drawing.Point(719, 393);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(86, 25);
             this.label12.TabIndex = 170;
@@ -611,7 +610,7 @@
             this.btnApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnApply.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(720, 416);
+            this.btnApply.Location = new System.Drawing.Point(720, 421);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(95, 46);
             this.btnApply.TabIndex = 16;
@@ -703,7 +702,7 @@
             "8%",
             "10%",
             "13%"});
-            this.cbIva.Location = new System.Drawing.Point(720, 546);
+            this.cbIva.Location = new System.Drawing.Point(720, 551);
             this.cbIva.Name = "cbIva";
             this.cbIva.Size = new System.Drawing.Size(85, 21);
             this.cbIva.TabIndex = 181;
@@ -736,7 +735,7 @@
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.Location = new System.Drawing.Point(472, 347);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 30);
+            this.button2.Size = new System.Drawing.Size(65, 41);
             this.button2.TabIndex = 186;
             this.toolTip1.SetToolTip(this.button2, "Hojas para Fabricación en Excel");
             this.button2.UseVisualStyleBackColor = false;
@@ -751,7 +750,7 @@
             this.btnPrefabricado.Image = ((System.Drawing.Image)(resources.GetObject("btnPrefabricado.Image")));
             this.btnPrefabricado.Location = new System.Drawing.Point(302, 347);
             this.btnPrefabricado.Name = "btnPrefabricado";
-            this.btnPrefabricado.Size = new System.Drawing.Size(65, 30);
+            this.btnPrefabricado.Size = new System.Drawing.Size(65, 41);
             this.btnPrefabricado.TabIndex = 182;
             this.toolTip1.SetToolTip(this.btnPrefabricado, "Carga de Artículos Unitarios");
             this.btnPrefabricado.UseVisualStyleBackColor = false;
@@ -766,7 +765,7 @@
             this.btnSanBlast.Image = ((System.Drawing.Image)(resources.GetObject("btnSanBlast.Image")));
             this.btnSanBlast.Location = new System.Drawing.Point(218, 347);
             this.btnSanBlast.Name = "btnSanBlast";
-            this.btnSanBlast.Size = new System.Drawing.Size(65, 30);
+            this.btnSanBlast.Size = new System.Drawing.Size(65, 41);
             this.btnSanBlast.TabIndex = 180;
             this.toolTip1.SetToolTip(this.btnSanBlast, "Diseños Arenados");
             this.btnSanBlast.UseVisualStyleBackColor = false;
@@ -781,7 +780,7 @@
             this.btnViaticos.Image = ((System.Drawing.Image)(resources.GetObject("btnViaticos.Image")));
             this.btnViaticos.Location = new System.Drawing.Point(133, 347);
             this.btnViaticos.Name = "btnViaticos";
-            this.btnViaticos.Size = new System.Drawing.Size(65, 30);
+            this.btnViaticos.Size = new System.Drawing.Size(67, 41);
             this.btnViaticos.TabIndex = 179;
             this.toolTip1.SetToolTip(this.btnViaticos, "Cargar Viáticos\r\n");
             this.btnViaticos.UseVisualStyleBackColor = false;
@@ -796,27 +795,11 @@
             this.btnExclusivo.Image = ((System.Drawing.Image)(resources.GetObject("btnExclusivo.Image")));
             this.btnExclusivo.Location = new System.Drawing.Point(387, 347);
             this.btnExclusivo.Name = "btnExclusivo";
-            this.btnExclusivo.Size = new System.Drawing.Size(65, 30);
+            this.btnExclusivo.Size = new System.Drawing.Size(65, 40);
             this.btnExclusivo.TabIndex = 178;
             this.toolTip1.SetToolTip(this.btnExclusivo, "Carga de Sistemas Manuales");
             this.btnExclusivo.UseVisualStyleBackColor = false;
             this.btnExclusivo.Click += new System.EventHandler(this.btnExclusivo_Click);
-            // 
-            // btnCargarDesglose
-            // 
-            this.btnCargarDesglose.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCargarDesglose.BackColor = System.Drawing.Color.Transparent;
-            this.btnCargarDesglose.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargarDesglose.ForeColor = System.Drawing.Color.Black;
-            this.btnCargarDesglose.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarDesglose.Image")));
-            this.btnCargarDesglose.Location = new System.Drawing.Point(558, 347);
-            this.btnCargarDesglose.Name = "btnCargarDesglose";
-            this.btnCargarDesglose.Size = new System.Drawing.Size(65, 30);
-            this.btnCargarDesglose.TabIndex = 190;
-            this.toolTip1.SetToolTip(this.btnCargarDesglose, "Hojas para Fabricación en Excel");
-            this.btnCargarDesglose.UseVisualStyleBackColor = false;
-            this.btnCargarDesglose.Visible = false;
-            this.btnCargarDesglose.Click += new System.EventHandler(this.btnCargarDesglose_Click);
             // 
             // btnBuscar
             // 
@@ -840,7 +823,7 @@
             this.btnApplyLabour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnApplyLabour.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApplyLabour.ForeColor = System.Drawing.Color.White;
-            this.btnApplyLabour.Location = new System.Drawing.Point(814, 416);
+            this.btnApplyLabour.Location = new System.Drawing.Point(814, 421);
             this.btnApplyLabour.Name = "btnApplyLabour";
             this.btnApplyLabour.Size = new System.Drawing.Size(95, 46);
             this.btnApplyLabour.TabIndex = 191;
@@ -849,10 +832,25 @@
             this.btnApplyLabour.UseVisualStyleBackColor = false;
             this.btnApplyLabour.Click += new System.EventHandler(this.btnApplyLabour_Click);
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(720, 473);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(186, 36);
+            this.button1.TabIndex = 193;
+            this.button1.Text = "Aplicar M. Obra (Ajuste Precio)";
+            this.toolTip1.SetToolTip(this.button1, "Aplica  la Mano de Obra y Descuento, al Subtotal, sin impuesto incluido.\r\n");
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // btnDolarCambio
             // 
             this.btnDolarCambio.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnDolarCambio.Location = new System.Drawing.Point(719, 632);
+            this.btnDolarCambio.Location = new System.Drawing.Point(719, 637);
             this.btnDolarCambio.Name = "btnDolarCambio";
             this.btnDolarCambio.Size = new System.Drawing.Size(25, 26);
             this.btnDolarCambio.TabIndex = 188;
@@ -863,7 +861,7 @@
             // btnCambioDolar2
             // 
             this.btnCambioDolar2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCambioDolar2.Location = new System.Drawing.Point(750, 632);
+            this.btnCambioDolar2.Location = new System.Drawing.Point(750, 637);
             this.btnCambioDolar2.Name = "btnCambioDolar2";
             this.btnCambioDolar2.Size = new System.Drawing.Size(25, 26);
             this.btnCambioDolar2.TabIndex = 189;
@@ -881,7 +879,7 @@
             this.btnSistemas.Image = ((System.Drawing.Image)(resources.GetObject("btnSistemas.Image")));
             this.btnSistemas.Location = new System.Drawing.Point(39, 347);
             this.btnSistemas.Name = "btnSistemas";
-            this.btnSistemas.Size = new System.Drawing.Size(34, 30);
+            this.btnSistemas.Size = new System.Drawing.Size(34, 41);
             this.btnSistemas.TabIndex = 17;
             this.btnSistemas.UseVisualStyleBackColor = true;
             this.btnSistemas.Click += new System.EventHandler(this.btnSistemas_Click);
@@ -895,7 +893,7 @@
             this.btnRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefrescar.Location = new System.Drawing.Point(87, 347);
             this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(36, 30);
+            this.btnRefrescar.Size = new System.Drawing.Size(36, 41);
             this.btnRefrescar.TabIndex = 18;
             this.btnRefrescar.UseVisualStyleBackColor = true;
             this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
@@ -907,7 +905,7 @@
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(830, 611);
+            this.btnGuardar.Location = new System.Drawing.Point(830, 616);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(73, 67);
             this.btnGuardar.TabIndex = 20;
@@ -921,27 +919,12 @@
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(909, 349);
+            this.label6.Location = new System.Drawing.Point(909, 354);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 26);
             this.label6.TabIndex = 192;
             this.label6.Text = "₡";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(720, 468);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(186, 36);
-            this.button1.TabIndex = 193;
-            this.button1.Text = "Aplicar M. Obra (Ajuste Precio)";
-            this.toolTip1.SetToolTip(this.button1, "Aplica  la Mano de Obra y Descuento, al Subtotal, sin impuesto incluido.\r\n");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // frmQuote
             // 
@@ -952,7 +935,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnApplyLabour);
-            this.Controls.Add(this.btnCargarDesglose);
             this.Controls.Add(this.btnCambioDolar2);
             this.Controls.Add(this.btnDolarCambio);
             this.Controls.Add(this.button2);
@@ -1087,7 +1069,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnDolarCambio;
         private System.Windows.Forms.Button btnCambioDolar2;
-        private System.Windows.Forms.Button btnCargarDesglose;
         private System.Windows.Forms.Button btnApplyLabour;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;

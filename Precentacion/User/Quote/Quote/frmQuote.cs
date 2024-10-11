@@ -4471,9 +4471,7 @@ namespace Precentacion.User.Quote.Quote
         {
 
 
-            // Crear y mostrar el formulario frmDesglose con los datos copiados
-            frmDesglose desgloseForm = new frmDesglose(Convert.ToInt32(txtidQuote.Text));
-            desgloseForm.ShowDialog();
+          
         }
 
 
