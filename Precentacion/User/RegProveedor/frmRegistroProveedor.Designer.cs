@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistroProveedor));
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
             this.tabPageLista = new System.Windows.Forms.TabPage();
@@ -153,27 +153,27 @@
             // 
             // dgvProveedor
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dgvProveedor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.dgvProveedor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProveedor.ContextMenuStrip = this.contextMenuStrip;
             this.dgvProveedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProveedor.Location = new System.Drawing.Point(3, 3);
             this.dgvProveedor.Name = "dgvProveedor";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.MenuBar;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Salmon;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProveedor.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Salmon;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvProveedor.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.MenuBar;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Salmon;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProveedor.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Salmon;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvProveedor.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProveedor.Size = new System.Drawing.Size(897, 381);
             this.dgvProveedor.TabIndex = 0;
             // 
@@ -394,7 +394,7 @@
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(111, 22);
             this.label22.TabIndex = 14;
-            this.label22.Text = "Limite Credito:";
+            this.label22.Text = "Límite Crédito:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label14
@@ -444,7 +444,7 @@
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(95, 22);
             this.label23.TabIndex = 12;
-            this.label23.Text = "Dias Credito:";
+            this.label23.Text = "Días Crédito:";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label18
@@ -585,7 +585,7 @@
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(66, 22);
             this.label25.TabIndex = 8;
-            this.label25.Text = "Telefono:";
+            this.label25.Text = "Teléfono:";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtConsCorreo
@@ -629,7 +629,7 @@
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(74, 27);
             this.label27.TabIndex = 4;
-            this.label27.Text = "Direccion:";
+            this.label27.Text = "Dirección:";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtConsNombre
@@ -673,7 +673,7 @@
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(94, 20);
             this.label29.TabIndex = 0;
-            this.label29.Text = "Ced.Juridica:";
+            this.label29.Text = "Ced.Jurídica:";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPageRegistrar
@@ -725,7 +725,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(107, 27);
             this.label12.TabIndex = 16;
-            this.label12.Text = "Limite Credito:";
+            this.label12.Text = "Límite Crédito:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button1
@@ -765,7 +765,7 @@
             this.lblRegCedula.Name = "lblRegCedula";
             this.lblRegCedula.Size = new System.Drawing.Size(94, 24);
             this.lblRegCedula.TabIndex = 0;
-            this.lblRegCedula.Text = "Ced.Juridica :";
+            this.lblRegCedula.Text = "Ced.Jurídica :";
             this.lblRegCedula.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtRegDiasCredito
@@ -796,7 +796,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 26);
             this.label4.TabIndex = 12;
-            this.label4.Text = "Dias Credito:";
+            this.label4.Text = "Días Crédito:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRegNombre
@@ -853,7 +853,7 @@
             this.lblRegDireccion.Name = "lblRegDireccion";
             this.lblRegDireccion.Size = new System.Drawing.Size(69, 23);
             this.lblRegDireccion.TabIndex = 4;
-            this.lblRegDireccion.Text = "Direccion:";
+            this.lblRegDireccion.Text = "Dirección:";
             this.lblRegDireccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtRegTelefono
@@ -885,7 +885,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 27);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Telefono:";
+            this.label2.Text = "Teléfono:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
@@ -955,7 +955,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(180, 25);
             this.label13.TabIndex = 32;
-            this.label13.Text = "Limite Credito:";
+            this.label13.Text = "Límite Crédito:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button2
@@ -995,7 +995,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(314, 25);
             this.label5.TabIndex = 16;
-            this.label5.Text = "Ced.Juridica:";
+            this.label5.Text = "Ced.Jurídica:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtxEditDiasCredito
@@ -1026,7 +1026,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(180, 25);
             this.label6.TabIndex = 28;
-            this.label6.Text = "Dias Credito:";
+            this.label6.Text = "Días Crédito:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label7
@@ -1083,7 +1083,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(315, 25);
             this.label9.TabIndex = 20;
-            this.label9.Text = "Direccion:";
+            this.label9.Text = "Dirección:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtEditTelefono
@@ -1114,7 +1114,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(180, 25);
             this.label10.TabIndex = 24;
-            this.label10.Text = "Telefono:";
+            this.label10.Text = "Teléfono:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label11
