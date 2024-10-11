@@ -591,7 +591,9 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         {
             N_LoadProduct n_LoadProduct = new N_LoadProduct();
             //Crear Descripcion
-            string Description= "";
+            string Description = "";
+       
+                       
             Description = "Puerta de Baño " + clsPuertaBaño.Desing+"\n";
             Description += "Ancho: " + clsPuertaBaño.WeightTotal + "\n";
             Description += "Alto: " + clsPuertaBaño.heigt + "\n";

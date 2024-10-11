@@ -200,6 +200,14 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         {
             //crear descripcion de la ventana que incluya el sistema, diseño, color, vidrio separado por saltos de linea
             string description = "";
+            if (ClsWindows.System == "Puerta Lujo" || ClsWindows.System == "Puerta Baño" || ClsWindows.System == "Puerta Liviana" || ClsWindows.System == "PuertaEuAbatible")
+            {
+                description += "Puerta" + "\n";
+            }
+            else
+            {
+                description += "Ventana" + "\n";
+            }
             description += "Sistema: " + ClsWindows.System + "\n";
             description += "Diseño: " + ClsWindows.Desing + "\n";
             description += "Color: " + cbColor.Text + "\n";
