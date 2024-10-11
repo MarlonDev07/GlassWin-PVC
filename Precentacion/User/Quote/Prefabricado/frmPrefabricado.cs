@@ -39,7 +39,7 @@ namespace Precentacion.User.Quote.Prefabricado
                 // Ajustar el ancho de las columnas al ancho del DataGrid
                 dgvPrefabricado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvPrefabricado.AutoGenerateColumns = false;
-                dgvPrefabricado.ColumnCount = 9; // Cambiar a 9 para agregar la columna de Descuento
+                dgvPrefabricado.ColumnCount = 10; // Cambiar a 9 para agregar la columna de Descuento
 
                 dgvPrefabricado.Columns[0].HeaderText = "ID";
                 dgvPrefabricado.Columns[0].DataPropertyName = "IdPrefabricado";
@@ -68,6 +68,12 @@ namespace Precentacion.User.Quote.Prefabricado
                 dgvPrefabricado.Columns[8].HeaderText = "PrecioTotal";
                 dgvPrefabricado.Columns[8].DataPropertyName = "PrecioTotal";
 
+                dgvPrefabricado.Columns[9].HeaderText = "Color";
+                dgvPrefabricado.Columns[9].DataPropertyName = "Color";
+
+                // Cambiar el DisplayIndex de la columna "Color" para que aparezca después de "Nombre"
+                dgvPrefabricado.Columns[9].DisplayIndex = 2;
+
                 // Agregar una línea en blanco
                 dgvPrefabricado.Rows.Add();
                 dgvPrefabricado.Rows[0].Cells[0].Value = "";
@@ -79,9 +85,10 @@ namespace Precentacion.User.Quote.Prefabricado
                 dgvPrefabricado.Rows[0].Cells[6].Value = "0";
                 dgvPrefabricado.Rows[0].Cells[7].Value = "0"; // Nueva celda para Descuento
                 dgvPrefabricado.Rows[0].Cells[8].Value = "0";
+                dgvPrefabricado.Rows[0].Cells[9].Value = "";
+
                 // Inicializar el total a 0
                 txtTotalCMB.Text = "0.00"; // Inicializar con cero
-
 
                 // Ocultar la columna de ID si es necesario
                 // dgvPrefabricado.Columns[0].Visible = false;
@@ -93,6 +100,7 @@ namespace Precentacion.User.Quote.Prefabricado
                 MessageBox.Show(EX.Message);
             }
         }
+
 
         public void ActualizarTotalPrecio()
         {
@@ -339,6 +347,7 @@ namespace Precentacion.User.Quote.Prefabricado
                             string description = "";
                             description += "ID: " + row.Cells[0].Value.ToString() + "\n";
                             description += "Nombre: " + row.Cells[1].Value.ToString() + "\n";
+                            description += "Color: " + row.Cells[9].Value.ToString() + "\n";
                             description += "Ancho: " + row.Cells[2].Value.ToString() + "\n";
                             description += "Alto: " + row.Cells[3].Value.ToString() + "\n";
                             description += "Cantidad: " + row.Cells[4].Value.ToString() + "\n";
@@ -348,7 +357,7 @@ namespace Precentacion.User.Quote.Prefabricado
 
                             if (Editar)
                             {
-                                n_LoadProduct.EditWindows(row.Cells[9].Value.ToString(), description, "", Convert.ToDecimal(row.Cells[2].Value), Convert.ToDecimal(row.Cells[3].Value), "", "", "", Convert.ToDecimal(row.Cells[8].Value), ClsWindows.IDQuote, "cmbArticulos", "");
+                                n_LoadProduct.EditWindows(row.Cells[10].Value.ToString(), description, "", Convert.ToDecimal(row.Cells[2].Value), Convert.ToDecimal(row.Cells[3].Value), "", "", "", Convert.ToDecimal(row.Cells[8].Value), ClsWindows.IDQuote, "cmbArticulos", "");
                             }
                             else
                             {
@@ -410,7 +419,8 @@ namespace Precentacion.User.Quote.Prefabricado
         newRow.Cells[7].Value = Datos[5]; // Descuento
         BuscarProducto(Convert.ToInt32(Datos[0]), 1); // Llamada a BuscarProducto
         newRow.Cells[8].Value = item.Precio; // Precio
-        newRow.Cells[9].Value = item.IdVentana; // IdVentana
+        newRow.Cells[9].Value = Datos[6]; // Descuento
+        newRow.Cells[10].Value = item.IdVentana; // IdVentana
     }
 
     // Si necesitas eliminar la primera fila:
@@ -432,7 +442,7 @@ namespace Precentacion.User.Quote.Prefabricado
 
         public string[] ObtenerDatosDescripcion(string Descripcion)
         {
-            string[] Datos = new string[6]; // Crear un array de 5 elementos para ID, Nombre, Ancho, Alto y Cantidad
+            string[] Datos = new string[7]; // Crear un array de 5 elementos para ID, Nombre, Ancho, Alto y Cantidad
 
             // Expresión regular para capturar ID
             string pattern = @"ID:\s*(\d+)";
@@ -464,12 +474,18 @@ namespace Precentacion.User.Quote.Prefabricado
             System.Text.RegularExpressions.Match match5 = System.Text.RegularExpressions.Regex.Match(Descripcion, pattern5);
             int Descuento = Convert.ToInt32(match5.Groups[1].Value);
 
+            // Expresión regular para capturar Nombre
+            string pattern6 = @"\nColor:\s*(.*)";
+            System.Text.RegularExpressions.Match match6= System.Text.RegularExpressions.Regex.Match(Descripcion, pattern6);
+            string Color = match6.Groups[1].Value;
+
             Datos[0] = Id.ToString();
             Datos[1] = Nombre;
             Datos[2] = Ancho; // Reemplazar comas por puntos si es necesario
             Datos[3] = Alto;  // Reemplazar comas por puntos si es necesario
             Datos[4] = Cantidad.ToString();
             Datos[5] = Descuento.ToString();
+            Datos[6] = Color;
 
             return Datos;
         }

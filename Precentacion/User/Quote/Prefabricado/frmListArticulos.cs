@@ -80,6 +80,7 @@ namespace Precentacion.User.Quote.Prefabricado
                 string Id = dgvArticulos.CurrentRow.Cells[0].Value?.ToString();
                 string Nombre = dgvArticulos.CurrentRow.Cells[1].Value?.ToString();
                 string Precio = dgvArticulos.CurrentRow.Cells[3].Value?.ToString();
+                string Color = dgvArticulos.CurrentRow.Cells[2].Value?.ToString();
 
                 if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(Nombre) || string.IsNullOrEmpty(Precio))
                 {
@@ -102,6 +103,7 @@ namespace Precentacion.User.Quote.Prefabricado
                         filaSeleccionada.Cells[2].Value = "1";
                         filaSeleccionada.Cells[3].Value = "1";
                         filaSeleccionada.Cells[4].Value = "1";
+                        filaSeleccionada.Cells[9].Value = Color;
 
                         //Agregar Fila
                         //((frmPrefabricado)frm).AgregarFila();
