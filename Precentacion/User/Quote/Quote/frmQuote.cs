@@ -724,7 +724,7 @@ namespace Precentacion.User.Quote.Quote
                 {
                     bool res = false;
                     // Mostrar un cuadro de diálogo personalizado para seleccionar el diseño de PDF
-                    string[] options = { "Diseño 1 (con desglose de precios)", "Diseño 2 (precio total con portada de inicio)", "Diseño 3 (precio total)" };
+                    string[] options = { "Diseño 1 (con desglose de precios)", "Diseño 2 (precio total con portada de inicio)", "Diseño 3 (precio total)", "Diseño 4 (Descripción)" };
                     using (Form form = new Form())
                     {
                         ComboBox cbOptions = new ComboBox();
@@ -778,6 +778,13 @@ namespace Precentacion.User.Quote.Quote
                                     break;
                                 case "Diseño 3 (precio total)":
                                     res = GeneratePDF3(); // Llamar a la función para el tercer diseño de PDF
+                                    if (GeneratePlanos())
+                                    {
+                                        MessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    break;
+                                case "Diseño 4 (Descripción)":
+                                    res = GeneratePDF3_2(); // Llamar a la función para el tercer diseño de PDF
                                     if (GeneratePlanos())
                                     {
                                         MessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -8520,18 +8527,25 @@ namespace Precentacion.User.Quote.Quote
 
 
                 #region Tabla de Productos
-                // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "Precio" y "ID Ventana"
-                int numeroDeColumnas = dgCotizaciones.Columns.Count - 2; // Reducir el conteo de columnas por la columna "Precio" y "ID Ventana"
+                // Cambiar el nombre de las columnas en el DataGridView
+                dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
+                dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
+                dgCotizaciones.Columns["Description"].HeaderText = "Descripción";
+
+                // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "Precio", "ID Ventana" y "Diseño"
+                int numeroDeColumnas = dgCotizaciones.Columns.Count - 3; // Reducir el conteo de columnas por la columna "Precio", "ID Ventana" y "Diseño"
                 PdfPTable tabla = new PdfPTable(numeroDeColumnas);
-                tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades     
+                tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
                 tabla.LockedWidth = true;
                 float[] tablaW = new float[numeroDeColumnas]; // Crear un array de anchos de columna con el nuevo número de columnas
 
-                // Copia los anchos de columnas existentes, excepto la columna "Precio" y "ID Ventana"
+                // Copia los anchos de columnas existentes, excepto la columna "Precio", "ID Ventana" y "Diseño"
                 int k = 0;
                 for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
                 {
-                    if (dgCotizaciones.Columns[i].HeaderText != "Precio" && dgCotizaciones.Columns[i].HeaderText != "ID Ventana")
+                    if (dgCotizaciones.Columns[i].HeaderText != "Precio" &&
+                        dgCotizaciones.Columns[i].HeaderText != "ID Ventana" &&
+                        dgCotizaciones.Columns[i].HeaderText != "Diseño") // Omitir también la columna "Diseño"
                     {
                         tablaW[k] = 190f; // Ajusta estos valores según los anchos de columna que desees
                         k++;
@@ -8539,10 +8553,12 @@ namespace Precentacion.User.Quote.Quote
                 }
                 tabla.SetWidths(tablaW);
 
-                // Agregar encabezados de columna, omitiendo "Precio" y "ID Ventana"
+                // Agregar encabezados de columna, omitiendo "Precio", "ID Ventana" y "Diseño"
                 for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
                 {
-                    if (dgCotizaciones.Columns[i].HeaderText != "Precio" && dgCotizaciones.Columns[i].HeaderText != "ID Ventana")
+                    if (dgCotizaciones.Columns[i].HeaderText != "Precio" &&
+                        dgCotizaciones.Columns[i].HeaderText != "ID Ventana" &&
+                        dgCotizaciones.Columns[i].HeaderText != "Diseño") // Omitir también la columna "Diseño"
                     {
                         PdfPCell celda = new PdfPCell(new Phrase(dgCotizaciones.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
                         celda.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -8551,108 +8567,36 @@ namespace Precentacion.User.Quote.Quote
                     }
                 }
 
-                // Agregar filas de datos, omitiendo la columna "Precio" y "ID Ventana"
+                // Agregar filas de datos, omitiendo la columna "Precio", "ID Ventana" y "Diseño"
                 for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
                 {
                     for (int j = 0; j < dgCotizaciones.Columns.Count; j++)
                     {
-                        if (dgCotizaciones.Columns[j].HeaderText != "Precio" && dgCotizaciones.Columns[j].HeaderText != "ID Ventana")
+                        if (dgCotizaciones.Columns[j].HeaderText != "Precio" &&
+                            dgCotizaciones.Columns[j].HeaderText != "ID Ventana" &&
+                            dgCotizaciones.Columns[j].HeaderText != "Diseño") // Omitir también la columna "Diseño"
                         {
                             PdfPCell cell = new PdfPCell(); // Inicializar la celda por defecto
 
                             if (dgCotizaciones[j, i].Value != null)
                             {
-                                if (dgCotizaciones.Columns[j].HeaderText == "Diseño")
+                                if (dgCotizaciones.Columns[j].HeaderText == "Descripción")
                                 {
-                                    string rutaImagen = dgCotizaciones[j, i].Value.ToString();
-                                    System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                                    string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
-
-                                    // Reemplazar la versión en la ruta con la versión actual
-                                    string rutaCorregida = ReemplazarVersionEnRuta(rutaImagen, versionActualString);
-
-                                    // Obtener el directorio de trabajo actual
-                                    string directorioDeTrabajo = Directory.GetCurrentDirectory();
-                                    Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
-
-                                    string rutaAbsoluta;
-                                    bool esExclusivo = rutaCorregida.StartsWith("EXCLUSIVO:");
-                                    if (esExclusivo)
-                                    {
-                                        rutaCorregida = rutaCorregida.Replace("EXCLUSIVO:", "");
-                                    }
-
-                                    if (Path.IsPathRooted(rutaCorregida))
-                                    {
-                                        if (File.Exists(rutaCorregida))
-                                        {
-                                            rutaAbsoluta = rutaCorregida;
-                                        }
-                                        else
-                                        {
-                                            string fileName = Path.GetFileName(rutaCorregida);
-                                            rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaCorregida);
-                                        rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
-                                    }
-
-                                    if (!string.IsNullOrEmpty(rutaAbsoluta) && File.Exists(rutaAbsoluta))
-                                    {
-                                        // Obtener dimensiones en metros y convertirlas a píxeles
-                                        decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
-                                        decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
-
-                                        int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
-                                        int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
-
-                                        if (anchoVentana > 220)
-                                        {
-                                            anchoVentana = 200; // Reducir el ancho a 200 píxeles
-                                        }
-
-                                        if (altoVentana >= 200)
-                                        {
-                                            altoVentana = 140; // Reducir el ancho a 200 píxeles
-                                        }
-
-
-                                        if (anchoVentana == 0) anchoVentana = 150; // Ajuste por defecto
-                                        if (altoVentana == 0) altoVentana = 100; // Ajuste por defecto
-
-                                        // Mostrar dimensiones calculadas para depuración
-                                        Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
-
-                                        // Cargar la imagen y ajustar su tamaño
-                                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
-
-                                        // Ajustar el tamaño de la imagen con ScaleAbsolute
-                                        img.ScaleAbsolute(anchoVentana, altoVentana);
-
-                                        cell = new PdfPCell(img);
-                                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                                        cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                        cell.FixedHeight = altoVentana; // Ajustar la altura de la celda para coincidir con la imagen
-                                    }
-                                    else
-                                    {
-                                        cell = new PdfPCell(new Phrase("Sin Imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
-                                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                                        cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                        cell.FixedHeight = 50f; // Ajusta la altura según sea necesario
-                                    }
-                                }
-                                else if (dgCotizaciones.Columns[j].HeaderText == "Descripción") // Cambio aquí
-                                {
-                                    // Obtener el texto de la celda y agregar viñetas
+                                    // Obtener el texto de la celda y formatearlo
                                     string textoConViñetas = AgregarViñetas(dgCotizaciones[j, i].Value.ToString());
 
-                                    // Crear la celda con el texto modificado
-                                    cell = new PdfPCell(new Phrase(textoConViñetas, FontFactory.GetFont(FontFactory.HELVETICA)));
-                                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                                    // Crear un párrafo para controlar mejor la alineación
+                                    Paragraph paragraph2 = new Paragraph(textoConViñetas, FontFactory.GetFont(FontFactory.HELVETICA, 10));
+                                    paragraph2.Alignment = Element.ALIGN_LEFT;  // Alineación del texto a la izquierda (viñetas)
+                                    paragraph2.SetLeading(0, 1.2f); // Controlar el espacio entre líneas
+
+                                    // Crear la celda con el párrafo
+                                    cell = new PdfPCell(paragraph2);
+                                    cell.PaddingLeft = 10f; // Ajusta el margen interno izquierdo
+                                    cell.PaddingRight = 10f; // Ajusta el margen interno derecho
+                                    cell.FixedHeight = 150f; // Ajusta la altura si es necesario
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER; // Centrar el contenido horizontalmente
+                                    cell.VerticalAlignment = Element.ALIGN_MIDDLE; // Centrar el contenido verticalmente
                                 }
                                 else
                                 {
