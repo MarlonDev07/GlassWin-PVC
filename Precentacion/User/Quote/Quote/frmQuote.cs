@@ -528,9 +528,10 @@ namespace Precentacion.User.Quote.Quote
                 if (CompanyCache.IdCompany == 109650325)
                 {
                     cbOpcion.Visible = false;
-                    txtConditional1.Text = "1.Todos los sistemas corredizos tienen una garantía de 6 meses en el sistema de rodamientos.";
-                    txtConditional2.Text = "2.Los vidrios NO tiene ngarantía.";
-                    txtConditional3.Text = "3.Se cotizan productos de la más alta calidad.";
+                    txtConditional1.Text = "1.Todos los sistemas corredizos tienen garantía de 6 meses en el sistema de rodamiento.";
+                    txtConditional2.Text = "2.Los vidrios no tienen garantía una vez instalados y aprobados por el cliente.";
+                    txtConditional3.Text = "3.Trabajamos con un adelanto del 60% para compra de materiales y fabricación.";
+                    txtConditional4.Text = "4.Contra entrega se cobra el otro 40% cuando el trabajo esté realizado.";
 
 
                 }
