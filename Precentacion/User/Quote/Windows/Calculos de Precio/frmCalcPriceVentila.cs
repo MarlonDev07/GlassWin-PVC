@@ -424,14 +424,14 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             //Crear Descripcion
             string description = "";
             description += "Sistema: " + ClsWindows.System + "\n";
-            /*if (ClsWindows.System == "Puerta Lujo" || ClsWindows.System == "Puerta Baño" || ClsWindows.System == "Puerta Liviana" || ClsWindows.System == "PuertaEuAbatible")
+            if (ClsWindows.System == "Puerta Lujo" || ClsWindows.System == "Puerta Baño" || ClsWindows.System == "Puerta Liviana" || ClsWindows.System == "PuertaEuAbatible" || ClsWindows.System.Contains("8025") || ClsWindows.System.Contains("8040"))
             {
                 description += "Puerta" + "\n";
             }
             else
             {
                 description += "Ventana" + "\n";
-            }*/
+            }
             description += "Diseño: " + ClsWindows.Desing + "\n";
             description += "Color: " + cbColor.Text + "\n";
             description += "Vidrio: " + cbVidrio.Text + "\n";

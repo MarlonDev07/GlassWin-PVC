@@ -566,14 +566,14 @@ namespace Precentacion.User.Quote.Windows
         {
             //crear descripcion de la ventana que incluya el sistema, diseño, color, vidrio separado por saltos de linea
             string description = "";
-            /*if (ClsWindows.System == "Puerta Lujo" || ClsWindows.System == "Puerta Baño" || ClsWindows.System == "Puerta Liviana" || ClsWindows.System == "PuertaEuAbatible")
+            if (ClsWindows.System == "Puerta Lujo" || ClsWindows.System == "Puerta Baño" || ClsWindows.System == "Puerta Liviana" || ClsWindows.System == "PuertaEuAbatible" || ClsWindows.System.Contains("8025") || ClsWindows.System.Contains("8040"))
             {
                 description += "Puerta" + "\n";
             }
             else
             {
                 description += "Ventana" + "\n";
-            }*/
+            }
             description += "Sistema: " + ClsWindows.System + "\n";
             description += "Diseño: " + ClsWindows.Desing + "\n";
             description += "Color: " + cbColor.Text + "\n";
