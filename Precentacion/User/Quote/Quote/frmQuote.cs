@@ -567,6 +567,17 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+                //Martinez
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    cbOpcion.Visible = false;
+                    txtConditional1.Text = "1.Forma de Pago: 60% de adelanto / 40% contra entrega.";
+                    txtConditional2.Text = "2.Garantía: 1 año contra defectos de fabrica / Filtraciones de agua en sellos de ventaneria / instalaciones/ general / cierres y rodamientos.";
+                    txtConditional3.Text = "3.Sellos con silicon pintable.";
+                    txtConditional4.Text = "4.Validez de la oferta: 8 días.";
+                  
+
+                }
                 //Vidriera Palmares
                 if (CompanyCache.IdCompany == 222222222)
                 {
