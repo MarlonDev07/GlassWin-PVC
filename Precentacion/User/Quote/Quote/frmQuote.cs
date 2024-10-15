@@ -8550,32 +8550,39 @@ namespace Precentacion.User.Quote.Quote
                 dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
                 dgCotizaciones.Columns["Description"].HeaderText = "Descripción";
 
-                // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "Precio", "ID Ventana" y "Diseño"
-                int numeroDeColumnas = dgCotizaciones.Columns.Count - 3; // Reducir el conteo de columnas por la columna "Precio", "ID Ventana" y "Diseño"
+                // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "ID Ventana" y "Diseño"
+                int numeroDeColumnas = dgCotizaciones.Columns.Count - 2; // Reducir el conteo de columnas solo por la columna "ID Ventana" y "Diseño"
                 PdfPTable tabla = new PdfPTable(numeroDeColumnas);
                 tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
                 tabla.LockedWidth = true;
                 float[] tablaW = new float[numeroDeColumnas]; // Crear un array de anchos de columna con el nuevo número de columnas
 
-                // Copia los anchos de columnas existentes, excepto la columna "Precio", "ID Ventana" y "Diseño"
+                // Copia los anchos de columnas existentes, excepto la columna "ID Ventana" y "Diseño"
                 int k = 0;
                 for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
                 {
-                    if (dgCotizaciones.Columns[i].HeaderText != "Precio" &&
-                        dgCotizaciones.Columns[i].HeaderText != "ID Ventana" &&
-                        dgCotizaciones.Columns[i].HeaderText != "Diseño") // Omitir también la columna "Diseño"
+                    if (dgCotizaciones.Columns[i].HeaderText != "ID Ventana" &&
+                        dgCotizaciones.Columns[i].HeaderText != "Diseño") // Omitir las columnas "ID Ventana" y "Diseño"
                     {
-                        tablaW[k] = 190f; // Ajusta estos valores según los anchos de columna que desees
+                        // Asignar un ancho menor a la columna "Precio"
+                        if (dgCotizaciones.Columns[i].HeaderText == "Precio")
+                        {
+                            tablaW[k] = 70f; // Ancho menor para la columna "Precio"
+                        }
+                        else
+                        {
+                            tablaW[k] = 190f; // Anchos más grandes para las otras columnas
+                        }
                         k++;
                     }
                 }
+
                 tabla.SetWidths(tablaW);
 
-                // Agregar encabezados de columna, omitiendo "Precio", "ID Ventana" y "Diseño"
+                // Agregar encabezados de columna, omitiendo "ID Ventana" y "Diseño"
                 for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
                 {
-                    if (dgCotizaciones.Columns[i].HeaderText != "Precio" &&
-                        dgCotizaciones.Columns[i].HeaderText != "ID Ventana" &&
+                    if (dgCotizaciones.Columns[i].HeaderText != "ID Ventana" &&
                         dgCotizaciones.Columns[i].HeaderText != "Diseño") // Omitir también la columna "Diseño"
                     {
                         PdfPCell celda = new PdfPCell(new Phrase(dgCotizaciones.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
@@ -8585,13 +8592,12 @@ namespace Precentacion.User.Quote.Quote
                     }
                 }
 
-                // Agregar filas de datos, omitiendo la columna "Precio", "ID Ventana" y "Diseño"
+                // Agregar filas de datos, omitiendo la columna "ID Ventana" y "Diseño"
                 for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
                 {
                     for (int j = 0; j < dgCotizaciones.Columns.Count; j++)
                     {
-                        if (dgCotizaciones.Columns[j].HeaderText != "Precio" &&
-                            dgCotizaciones.Columns[j].HeaderText != "ID Ventana" &&
+                        if (dgCotizaciones.Columns[j].HeaderText != "ID Ventana" &&
                             dgCotizaciones.Columns[j].HeaderText != "Diseño") // Omitir también la columna "Diseño"
                         {
                             PdfPCell cell = new PdfPCell(); // Inicializar la celda por defecto
@@ -8613,8 +8619,20 @@ namespace Precentacion.User.Quote.Quote
                                     cell.PaddingLeft = 10f; // Ajusta el margen interno izquierdo
                                     cell.PaddingRight = 10f; // Ajusta el margen interno derecho
                                     cell.FixedHeight = 150f; // Ajusta la altura si es necesario
-                                    cell.HorizontalAlignment = Element.ALIGN_CENTER; // Centrar el contenido horizontalmente
+                                    cell.HorizontalAlignment = Element.ALIGN_LEFT; // Justificar el contenido a la izquierda
                                     cell.VerticalAlignment = Element.ALIGN_MIDDLE; // Centrar el contenido verticalmente
+                                }
+                                else if (dgCotizaciones.Columns[j].HeaderText == "Precio")
+                                {
+                                    // Obtener el valor de la celda y convertirlo a decimal
+                                    decimal precioColones = Convert.ToDecimal(dgCotizaciones[j, i].Value);
+
+                                    // Mantener el precio en colones
+                                    precioColones = Math.Round(precioColones, 2);
+                                    cell = new PdfPCell(new Phrase("¢" + precioColones.ToString("F2"), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+
+                                    // Alinear el texto a la izquierda
+                                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                 }
                                 else
                                 {
