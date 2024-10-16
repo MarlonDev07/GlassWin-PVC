@@ -8,6 +8,7 @@ using Negocio.Company.AdmProyecto;
 using Negocio.Company.Bill;
 using Precentacion.User.DashBoard;
 using System;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -59,29 +60,39 @@ namespace Precentacion.User.Accounts
         #region Load Functions Client
         private void LoadClient()
         {
-            //Cargar Clientes en un DataTable
-            DataTable dataTable = N_Client.LoadClient();
+             try
+             {
+                dgvClient.DataSource = N_Client.LoadClient();
 
-            //Pasar los datos del DataTable a un dAtaGridView
-            if (dataTable != null)
-            {
-                dgvClient.DataSource = dataTable;
+                //Modificar titulo de las columnas
+                dgvClient.Columns[0].HeaderText = "ID";
+                dgvClient.Columns[1].HeaderText = "Nombre";
+                dgvClient.Columns[2].HeaderText = "Teléfono";
+                dgvClient.Columns[3].HeaderText = "Compañia";
+                dgvClient.Columns[4].HeaderText = "Dirección";
+                dgvClient.Columns[5].HeaderText = "Correo";
+                dgvClient.Columns[6].HeaderText = "Estado";
+                dgvClient.Columns[7].HeaderText = "Fecha de creación";
+                dgvClient.Columns[8].HeaderText = "Límite de crédito";
+                dgvClient.Columns[9].HeaderText = "Fecha de vencimiento";
+                dgvClient.Columns[10].HeaderText = "Días";
+                dgvClient.Columns[11].HeaderText = "Saldo Pendiente";
 
-                //Hacer Invisbles la Columna [0]
-                dgvClient.Columns[0].Visible = false;
+                //Ocultar columnas
                 dgvClient.Columns[3].Visible = false;
                 dgvClient.Columns[6].Visible = false;
 
 
-                //Cambiar Nombre de las Columnas
-                dgvClient.Columns[1].HeaderText = "Nombre";
-                dgvClient.Columns[2].HeaderText = "Telefono";
-                dgvClient.Columns[4].HeaderText = "Direccion";
-                dgvClient.Columns[5].HeaderText = "Correo";
-                dgvClient.Columns[9].HeaderText = "Ingreso";
-                dgvClient.Columns[11].HeaderText = "Saldo Pendiente";
-                //Ajustar las columnas al Ancho del formulario
+                //Modificar todas las columnas al ancho del Form
                 dgvClient.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                //Ordenar Alfabeticamente
+                dgvClient.Sort(dgvClient.Columns[1], ListSortDirection.Ascending);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al cargar los datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 

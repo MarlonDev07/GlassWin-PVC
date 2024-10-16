@@ -9,6 +9,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceVentanasFijas
@@ -199,6 +200,14 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
         {
             //crear descripcion de la ventana que incluya el sistema, diseño, color, vidrio separado por saltos de linea
             string description = "";
+            if (ClsWindows.System == "Puerta Lujo" || ClsWindows.System == "Puerta Baño" || ClsWindows.System == "Puerta Liviana" || ClsWindows.System == "PuertaEuAbatible" || ClsWindows.System.Contains("8025") || ClsWindows.System.Contains("8040"))
+            {
+                description += "Puerta" + "\n";
+            }
+            else
+            {
+                description += "Ventana" + "\n";
+            }
             description += "Sistema: " + ClsWindows.System + "\n";
             description += "Diseño: " + ClsWindows.Desing + "\n";
             description += "Color: " + cbColor.Text + "\n";
@@ -528,8 +537,32 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
             if (ValidarCampos())
             {
+
+                string proveedorVidrio = cbSupplier.Text;
+
+                if (cbVidrio.Text == "Vid 4 mm claro Alu")
+                {
+                    proveedorVidrio = "Aluma";
+                }
+                else if (cbVidrio.Text.EndsWith("Ex"))
+                {
+                    proveedorVidrio = "Extralum";
+                }
+                else if (cbVidrio.Text.EndsWith("Alu"))
+                {
+                    proveedorVidrio = "Alumas";
+                }
+                else if (cbVidrio.Text.EndsWith("Ma"))
+                {
+                    proveedorVidrio = "Macopa";
+                }
+                else if (cbVidrio.Text.EndsWith("Carbone"))
+                {
+                    proveedorVidrio = "Carbone";
+                }
+
                 DataTable dtAluminio = n_LoadProduct.loadAluminioVentanaFija(cbColor.Text, ClsWindows.System, cbSupplier.Text, cbAluminio.Text);
-                DataTable dtVidrio = n_LoadProduct.loadPricesGlass(cbSupplier.Text, cbVidrio.Text);
+                DataTable dtVidrio = n_LoadProduct.loadPricesGlass(proveedorVidrio, cbVidrio.Text);
                 Console.WriteLine(ClsWindows.System);
                 if (ClsWindows.System == "EuAbatible" || ClsWindows.System == "PuertaEuAbatible")
                 {
@@ -737,14 +770,20 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbSupplier.SelectedIndex == 3)
+           
+
+            if (cbSupplier.Text == "Default")
             {
                 txtTotal.Enabled = true;
+                txtTotal.Text = "0";
+             
             }
             else
             {
                 txtTotal.Enabled = false;
+           
             }
+
         }
 
         private bool isUpdatingText = false;
@@ -789,6 +828,18 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
                     else
                     {
                         txtTotal.Text = "₡ " + TempPrecio.ToString("N2");
+                    }
+                } else if (cbSupplier.Text == "Default")
+                {
+                    try
+                    {
+                      
+                        PrecioTotal = Convert.ToDecimal(txtTotal.Text);
+                       
+                    }
+                    catch (Exception)
+                    {
+
                     }
                 }
             }

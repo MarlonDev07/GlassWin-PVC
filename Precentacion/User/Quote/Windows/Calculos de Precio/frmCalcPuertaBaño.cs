@@ -531,10 +531,34 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 DataTable dtAluminio = n_LoadProduct.loadAluminio(cbColor.Text, clsPuertaBaño.System, cbSupplier.Text);
                 dgvAluminio.DataSource = dtAluminio;
                 dgvAluminio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-             
+
+
+                string proveedorVidrio = cbSupplier.Text;
+
+                if (cbVidrio.Text == "Vid 4 mm claro Alu")
+                {
+                    proveedorVidrio = "Aluma";
+                }
+                else if (cbVidrio.Text.EndsWith("Ex"))
+                {
+                    proveedorVidrio = "Extralum";
+                }
+                else if (cbVidrio.Text.EndsWith("Alu"))
+                {
+                    proveedorVidrio = "Alumas";
+                }
+                else if (cbVidrio.Text.EndsWith("Ma"))
+                {
+                    proveedorVidrio = "Macopa";
+                }
+                else if (cbVidrio.Text.EndsWith("Carbone"))
+                {
+                    proveedorVidrio = "Carbone";
+                }
+
 
                 //Vidrio
-                DataTable dtVidrio = n_LoadProduct.loadPricesGlass(cbSupplier.Text, cbVidrio.Text);
+                DataTable dtVidrio = n_LoadProduct.loadPricesGlass(proveedorVidrio, cbVidrio.Text);
                 dgvVidrio.DataSource = dtVidrio;
                 dgvVidrio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -567,7 +591,9 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         {
             N_LoadProduct n_LoadProduct = new N_LoadProduct();
             //Crear Descripcion
-            string Description= "";
+            string Description = "";
+       
+                       
             Description = "Puerta de Baño " + clsPuertaBaño.Desing+"\n";
             Description += "Ancho: " + clsPuertaBaño.WeightTotal + "\n";
             Description += "Alto: " + clsPuertaBaño.heigt + "\n";
@@ -769,6 +795,23 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 DetectarPunto();
                 clsPuertaBaño.HP = altoP;
                 // redimension_Click(sender, e);
+            }
+        }
+
+        private void txtTotalPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (cbSupplier.Text == "Default")
+            {
+                try
+                {
+
+                    clsPuertaBaño.Price = Convert.ToDecimal(txtTotalPrice.Text);
+
+                }
+                catch (Exception)
+                {
+
+                }
             }
         }
     }

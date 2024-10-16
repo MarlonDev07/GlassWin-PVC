@@ -145,7 +145,7 @@
             this.btnCancelBuscar.Name = "btnCancelBuscar";
             this.btnCancelBuscar.Size = new System.Drawing.Size(119, 23);
             this.btnCancelBuscar.TabIndex = 12;
-            this.btnCancelBuscar.Text = "Cancelar Busqueda";
+            this.btnCancelBuscar.Text = "Cancelar Búsqueda";
             this.btnCancelBuscar.UseVisualStyleBackColor = true;
             this.btnCancelBuscar.Click += new System.EventHandler(this.btnCancelBuscar_Click);
             // 
@@ -558,9 +558,9 @@
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 145);
+            this.label2.Location = new System.Drawing.Point(6, 145);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 23);
+            this.label2.Size = new System.Drawing.Size(75, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Proyecto:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

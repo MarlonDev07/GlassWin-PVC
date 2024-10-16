@@ -153,7 +153,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(113, 13);
             this.label11.TabIndex = 182;
-            this.label11.Text = "Busqueda por Nombre";
+            this.label11.Text = "Búsqueda por Nombre";
             // 
             // txtBusquedaNombre
             // 
@@ -457,7 +457,7 @@
             this.tabEstadistica.ImageKey = "credit.png";
             this.tabEstadistica.Location = new System.Drawing.Point(4, 39);
             this.tabEstadistica.Name = "tabEstadistica";
-            this.tabEstadistica.Size = new System.Drawing.Size(981, 476);
+            this.tabEstadistica.Size = new System.Drawing.Size(981, 531);
             this.tabEstadistica.TabIndex = 2;
             this.tabEstadistica.Text = "Recibos";
             this.tabEstadistica.UseVisualStyleBackColor = true;

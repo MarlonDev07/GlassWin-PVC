@@ -129,7 +129,7 @@ namespace Precentacion.User.AgregarFactura
 
                 //Cambiar el nombre de las columnas
                 dgvFacturas.Columns[1].HeaderText = "Proveedor";
-                dgvFacturas.Columns[3].HeaderText = "Numero Fact";
+                dgvFacturas.Columns[3].HeaderText = "Número Fact";
                 dgvFacturas.Columns[4].HeaderText = "Fecha Compra";
                 dgvFacturas.Columns[5].HeaderText = "Fecha Vencimiento";
                 dgvFacturas.Columns[6].HeaderText = "Monto";

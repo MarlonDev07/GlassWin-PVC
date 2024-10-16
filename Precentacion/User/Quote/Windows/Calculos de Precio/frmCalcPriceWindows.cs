@@ -634,6 +634,14 @@ namespace Precentacion.User.Quote.Windows
             {
                 //crear descripcion de la ventana que incluya el sistema, diseño, color, vidrio separado por saltos de linea
                 string description = "";
+                if (ClsWindows.System == "Puerta Lujo" || ClsWindows.System == "Puerta Baño" || ClsWindows.System == "Puerta Liviana" || ClsWindows.System == "PuertaEuAbatible" || ClsWindows.System.Contains("8025") || ClsWindows.System.Contains("8040"))
+                {
+                    description += "Puerta" + "\n";
+                }
+                else 
+                {
+                    description += "Ventana" + "\n";
+                }
                 description += "Sistema: " + ClsWindows.System + "\n";
                 description += "Diseño: " + ClsWindows.Desing + "\n";
                 if (ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "6030 3 Vias")
@@ -1289,37 +1297,77 @@ namespace Precentacion.User.Quote.Windows
                     decimal Weigth = Convert.ToDecimal(txtAddWeigth.Text);
                     decimal Height = Convert.ToDecimal(txtAddHeight.Text);
 
-                    // Procesar txtAlto
-                    if (txtAddHeight.Text != "")
+
+
+                    if (CompanyCache.IdCompany == 3101623581)
                     {
+                        // Procesar txtAlto
+                        if (txtAddHeight.Text != "")
+                        {
 
 
-                        decimal alto = Convert.ToDecimal(txtAddHeight.Text);
+                            decimal alto = Convert.ToDecimal(txtAddHeight.Text);
 
-                        // Convertir a metros si el valor es mayor o igual a 1000
-                        alto /= 1000;
 
-                        // Detectar si el usuario ingresó un punto en vez de una coma
-                        DetectarPunto();
-                        Height = alto;
-                        //button2_Click(sender, e);
+                            // Detectar si el usuario ingresó un punto en vez de una coma
+                            DetectarPunto();
+                            Height = alto;
+                            //button2_Click(sender, e);
+                        }
+
+                        // Procesar txtAncho
+                        if (txtAddWeigth.Text != "")
+                        {
+
+
+                            decimal ancho = Convert.ToDecimal(txtAddWeigth.Text);
+
+
+
+                            // Detectar si el usuario ingresó un punto en vez de una coma
+                            DetectarPunto();
+                            Weigth = ancho;
+                            // button2_Click(sender, e);
+                        }
+                    }
+                    else 
+                    {
+                        // Procesar txtAlto
+                        if (txtAddHeight.Text != "")
+                        {
+
+
+                            decimal alto = Convert.ToDecimal(txtAddHeight.Text);
+
+                            // Convertir a metros si el valor es mayor o igual a 1000
+                            alto /= 1000;
+
+                            // Detectar si el usuario ingresó un punto en vez de una coma
+                            DetectarPunto();
+                            Height = alto;
+                            //button2_Click(sender, e);
+                        }
+
+                        // Procesar txtAncho
+                        if (txtAddWeigth.Text != "")
+                        {
+
+
+                            decimal ancho = Convert.ToDecimal(txtAddWeigth.Text);
+
+                            // Convertir a metros si el valor es mayor o igual a 1000
+                            ancho /= 1000;
+
+                            // Detectar si el usuario ingresó un punto en vez de una coma
+                            DetectarPunto();
+                            Weigth = ancho;
+                            // button2_Click(sender, e);
+                        }
                     }
 
-                    // Procesar txtAncho
-                    if (txtAddWeigth.Text != "")
-                    {
 
 
-                        decimal ancho = Convert.ToDecimal(txtAddWeigth.Text);
-
-                        // Convertir a metros si el valor es mayor o igual a 1000
-                        ancho /= 1000;
-
-                        // Detectar si el usuario ingresó un punto en vez de una coma
-                        DetectarPunto();
-                        Weigth = ancho;
-                        // button2_Click(sender, e);
-                    }
+                   
 
 
                     //Cargar el DataTable con los precios del vidrio
@@ -1372,36 +1420,70 @@ namespace Precentacion.User.Quote.Windows
                 string Color = cbColor.Text;
                 string Supplier = cbSupplier.Text;
 
-                // Procesar txtAlto
-                if (txtAddHeight.Text != "")
+                if (CompanyCache.IdCompany == 3101623581)
                 {
+                    // Procesar txtAlto
+                    if (txtAddHeight.Text != "")
+                    {
 
 
-                    decimal alto = Convert.ToDecimal(txtAddHeight.Text);
+                        decimal alto = Convert.ToDecimal(txtAddHeight.Text);
 
-                    // Convertir a metros si el valor es mayor o igual a 1000
-                    alto /= 1000;
 
-                    // Detectar si el usuario ingresó un punto en vez de una coma
-                    DetectarPunto();
-                    Height = alto;
-                    //button2_Click(sender, e);
+                        // Detectar si el usuario ingresó un punto en vez de una coma
+                        DetectarPunto();
+                        Height = alto;
+                        //button2_Click(sender, e);
+                    }
+
+                    // Procesar txtAncho
+                    if (txtAddWeigth.Text != "")
+                    {
+
+
+                        decimal ancho = Convert.ToDecimal(txtAddWeigth.Text);
+
+
+
+                        // Detectar si el usuario ingresó un punto en vez de una coma
+                        DetectarPunto();
+                        Weigth = ancho;
+                        // button2_Click(sender, e);
+                    }
                 }
-
-                // Procesar txtAncho
-                if (txtAddWeigth.Text != "")
+                else
                 {
+                    // Procesar txtAlto
+                    if (txtAddHeight.Text != "")
+                    {
 
 
-                    decimal ancho = Convert.ToDecimal(txtAddWeigth.Text);
+                        decimal alto = Convert.ToDecimal(txtAddHeight.Text);
 
-                    // Convertir a metros si el valor es mayor o igual a 1000
-                    ancho /= 1000;
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        alto /= 1000;
 
-                    // Detectar si el usuario ingresó un punto en vez de una coma
-                    DetectarPunto();
-                    Weigth = ancho;
-                    // button2_Click(sender, e);
+                        // Detectar si el usuario ingresó un punto en vez de una coma
+                        DetectarPunto();
+                        Height = alto;
+                        //button2_Click(sender, e);
+                    }
+
+                    // Procesar txtAncho
+                    if (txtAddWeigth.Text != "")
+                    {
+
+
+                        decimal ancho = Convert.ToDecimal(txtAddWeigth.Text);
+
+                        // Convertir a metros si el valor es mayor o igual a 1000
+                        ancho /= 1000;
+
+                        // Detectar si el usuario ingresó un punto en vez de una coma
+                        DetectarPunto();
+                        Weigth = ancho;
+                        // button2_Click(sender, e);
+                    }
                 }
                 if (pathVidrioFijo.Contains("Curva tapa"))
                 {

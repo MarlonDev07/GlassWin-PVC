@@ -72,17 +72,17 @@ namespace Precentacion.Login
                     }
                     else
                     {
-                        MessageBox.Show("Su cuenta esta Desabilitada, Porfavor pongase en contacto con Soporte", "Cuenta Expirada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Su cuenta esta deshabilitada, porfavor pongase en contacto con soporte", "Cuenta Expirada", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }                   
                 }
                 else
                 {
-                    MessageBox.Show("Los Datos Ingresados no coinciden, Verifique eh intente de nuevo", "Datos Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Los datos ingresados no coinciden, verifique e intente de nuevo", "Datos Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Todos los campos deben ser Rellenados","Campos Incompletos",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Todos los campos deben ser rellenados","Campos Incompletos",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
             }
             
         }

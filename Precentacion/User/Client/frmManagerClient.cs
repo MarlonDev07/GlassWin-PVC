@@ -48,21 +48,25 @@ namespace Precentacion.User.Client
         {
             try
             {
-                //Ocultar columnas
-                dgvClient.Columns[3].Visible = false;
-                dgvClient.Columns[6].Visible = false;
-
+               
                 //Modificar titulo de las columnas
                 dgvClient.Columns[0].HeaderText = "ID";
                 dgvClient.Columns[1].HeaderText = "Nombre";
                 dgvClient.Columns[2].HeaderText = "Teléfono";
+                dgvClient.Columns[3].HeaderText = "Compañia";
                 dgvClient.Columns[4].HeaderText = "Dirección";
                 dgvClient.Columns[5].HeaderText = "Correo";
-                dgvClient.Columns[6].HeaderText = "Registro";
-                dgvClient.Columns[7].HeaderText = "Límite Crédito";
-                dgvClient.Columns[8].HeaderText = "Fecha Ingreso";
-                dgvClient.Columns[9].HeaderText = "Días";
+                dgvClient.Columns[6].HeaderText = "Estado";
+                dgvClient.Columns[7].HeaderText = "Fecha de creación";
+                dgvClient.Columns[8].HeaderText = "Límite de crédito";
+                dgvClient.Columns[9].HeaderText = "Fecha de vencimiento";
+                dgvClient.Columns[10].HeaderText = "Días";
                 dgvClient.Columns[11].HeaderText = "Saldo Pendiente";
+
+                //Ocultar columnas
+                dgvClient.Columns[3].Visible = false;
+                dgvClient.Columns[6].Visible = false;
+
 
                 //Modificar todas las columnas al ancho del Form
                 dgvClient.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
