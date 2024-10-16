@@ -32,7 +32,7 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H-0.016M;
                             break;
                         case "Superior":
-                            Rebajo = Math.Round((W / 2) - 0.015M, 3);
+                            Rebajo = Math.Round((W / 2) - 0.018M, 3);
                             break;
                         case "Inferior":
                             Rebajo = Math.Round((W / 2) - 0.013M, 3);
@@ -50,16 +50,16 @@ namespace Negocio.Company.OrdenProduccion
                             Rebajo = H - 0.02M;
                             break;
                         case "Vidrio M ancho":
-                            Rebajo = W / 2 - 0.054M;
+                            Rebajo = W / 2 - 0.048M;
                             break;
                         case "Vidrio F ancho":
-                            Rebajo = W / 2 - 0.054M;
+                            Rebajo = W / 2 - 0.048M;
                             break;
                         case "Vidrio M alto":
-                            Rebajo = H - 0.10M;
+                            Rebajo = H - 0.125M;
                             break;
                         case "Vidrio F alto":
-                            Rebajo = H - 0.09M;
+                            Rebajo = H - 0.105M;
                             break;
                     }
                     break;
