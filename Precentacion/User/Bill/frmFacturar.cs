@@ -1200,6 +1200,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
+                    rutaLogo = ruta + Url;
+
+                }
 
                 //La familia
                 if (CompanyCache.IdCompany == 114420180)
@@ -1427,7 +1436,17 @@ namespace Precentacion.User.Bill
                     paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
-
+                else if (CompanyCache.IdCompany == 110640721)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-106-40721", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Barrio Cuba, San José, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "8580-0953", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "vidriourbano@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
                 else if (CompanyCache.IdCompany == 114420180)
                 {
                     paragraph.Add(new Chunk("Cédula Jurídica : 1-144-20180", textFont));
@@ -1954,6 +1973,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
+                    rutaLogo = ruta + Url;
+
+                }
 
                 //La familia
                 if (CompanyCache.IdCompany == 114420180)
@@ -2168,7 +2196,17 @@ namespace Precentacion.User.Bill
                     paragraph.Add(new Chunk("Correo: " + "construserviciosdelnorte@gmail.com", textFont));
                     paragraph.Add(Chunk.NEWLINE);
                 }
-
+                else if (CompanyCache.IdCompany == 110640721)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-106-40721", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Barrio Cuba, San José, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "8580-0953", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "vidriourbano@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
 
                 else if (CompanyCache.IdCompany == 999999999)
                 {
@@ -3021,6 +3059,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //La familia
                 if (CompanyCache.IdCompany == 114420180)
                 {
@@ -3639,6 +3686,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 if (CompanyCache.IdCompany == 3105806704)
                 {
                     //Obtener la Ruta de la Carpeta bin
@@ -4181,6 +4237,15 @@ namespace Precentacion.User.Bill
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\UsuarioPrueba.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
                     rutaLogo = ruta + Url;
 
                 }
