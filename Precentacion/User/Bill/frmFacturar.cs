@@ -402,13 +402,42 @@ namespace Precentacion.User.Bill
                     // Declarar la variable dtVidrios antes de su uso
                     DataTable dtVidrios = new DataTable();
 
+                    string proveedorVidrio = cbProveedorDesglose.Text;
+
+                    if (vidrioFijo == "Vid 4 mm claro Alu")
+                    {
+                        proveedorVidrio = "Aluma";
+                    }
+                    else if (vidrioFijo.EndsWith("Ex"))
+                    {
+                        proveedorVidrio = "Extralum";
+                    }
+                    else if (vidrioFijo.EndsWith("ExT"))
+                    {
+                        proveedorVidrio = "Extralum";
+                    }
+                    else if (vidrioFijo.EndsWith("Alu"))
+                    {
+                        proveedorVidrio = "Alumas";
+                    }
+                    else if (vidrioFijo.EndsWith("Ma"))
+                    {
+                        proveedorVidrio = "Macopa";
+                    }
+                    else if (vidrioFijo.EndsWith("Carbone"))
+                    {
+                        proveedorVidrio = "Carbone";
+                    }
+
+
+
                     // Verificar si el sistema es "Ventila"
                     if (anchoFijo > 0)
                     {
                         string Descripcion = row.Cells[1].Value.ToString();
 
                         // Obtener el Total del Vidrio Fijo
-                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlassDesglose(cbProveedorDesglose.SelectedValue.ToString(), vidrioFijo, anchoFijo, altoFijo);
+                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlassDesglose(proveedorVidrio, vidrioFijo, anchoFijo, altoFijo);
 
                         // Obtener el Metraje del dtVidriosFijo y multiplicarlo por la Cantidad de Ventanas
                         foreach (DataRow item in dtVidriosFijo.Rows)
@@ -420,8 +449,36 @@ namespace Precentacion.User.Bill
                         dtVidrios.Merge(dtVidriosFijo);
                     }
 
+                  
+
+                    if (Vidrio == "Vid 4 mm claro Alu")
+                    {
+                        proveedorVidrio = "Aluma";
+                    }
+                    else if (Vidrio.EndsWith("Ex"))
+                    {
+                        proveedorVidrio = "Extralum";
+                    }
+                    else if (Vidrio.EndsWith("ExT"))
+                    {
+                        proveedorVidrio = "Extralum";
+                    }
+                    else if (Vidrio.EndsWith("Alu"))
+                    {
+                        proveedorVidrio = "Alumas";
+                    }
+                    else if (Vidrio.EndsWith("Ma"))
+                    {
+                        proveedorVidrio = "Macopa";
+                    }
+                    else if (Vidrio.EndsWith("Carbone"))
+                    {
+                        proveedorVidrio = "Carbone";
+                    }
+
+
                     // Obtener el Total de los Vidrios (del sistema general)
-                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlassDesglose(cbProveedorDesglose.SelectedValue.ToString(), Vidrio);
+                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlassDesglose(proveedorVidrio, Vidrio);
 
                     // Obtener el Metraje del dtVidriosSistema y multiplicarlo por la Cantidad de Ventanas
                     foreach (DataRow item in dtVidriosSistema.Rows)
