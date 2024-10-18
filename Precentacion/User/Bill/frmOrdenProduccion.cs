@@ -655,7 +655,7 @@ namespace Precentacion.User.Bill
                     // Celda 1: Encabezados de las columnas
                     foreach (DataGridViewColumn column in dgvOrdenProduccion.Columns)
                     {
-                        PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                        PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8.5f , iTextSharp.text.BaseColor.BLACK)))
                         {
                             BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                             BorderWidth = .5f,
@@ -675,7 +675,7 @@ namespace Precentacion.User.Bill
                             {
                                 cell.Value = " ";
                             }
-                            PdfPCell celda = new PdfPCell(new Phrase(cell.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                            PdfPCell celda = new PdfPCell(new Phrase(cell.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10, iTextSharp.text.BaseColor.BLACK)))
                             {
                                 BorderWidth = .5f,
                                 HorizontalAlignment = Element.ALIGN_CENTER,
@@ -727,7 +727,7 @@ namespace Precentacion.User.Bill
                     // Celda 1: Encabezados de las columnas
                     foreach (DataGridViewColumn column8025 in dgvOrdenProduccion8025.Columns)
                     {
-                        PdfPCell cell8025 = new PdfPCell(new Phrase(column8025.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                        PdfPCell cell8025 = new PdfPCell(new Phrase(column8025.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8.5f, iTextSharp.text.BaseColor.BLACK)))
                         {
                             BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                             BorderWidth = .5f,
@@ -747,7 +747,7 @@ namespace Precentacion.User.Bill
                             {
                                 cell8025.Value = " ";
                             }
-                            PdfPCell celda8025 = new PdfPCell(new Phrase(cell8025.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                            PdfPCell celda8025 = new PdfPCell(new Phrase(cell8025.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10, iTextSharp.text.BaseColor.BLACK)))
                             {
                                 BorderWidth = .5f,
                                 HorizontalAlignment = Element.ALIGN_CENTER,
@@ -804,7 +804,7 @@ namespace Precentacion.User.Bill
                     // Celda 1: Encabezados de las columnas
                     foreach (DataGridViewColumn column8025_3Vias in dgvOrdenProduccion8025_3vias.Columns)
                     {
-                        PdfPCell cell8025_3Vias = new PdfPCell(new Phrase(column8025_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                        PdfPCell cell8025_3Vias = new PdfPCell(new Phrase(column8025_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8.5f, iTextSharp.text.BaseColor.BLACK)))
                         {
                             BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                             BorderWidth = .5f,
@@ -824,7 +824,7 @@ namespace Precentacion.User.Bill
                             {
                                 cell8025_3Vias.Value = " ";
                             }
-                            PdfPCell celda8025_3Vias = new PdfPCell(new Phrase(cell8025_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                            PdfPCell celda8025_3Vias = new PdfPCell(new Phrase(cell8025_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10, iTextSharp.text.BaseColor.BLACK)))
                             {
                                 BorderWidth = .5f,
                                 HorizontalAlignment = Element.ALIGN_CENTER,
@@ -882,7 +882,7 @@ namespace Precentacion.User.Bill
                     // Celda 1: Encabezados de las columnas
                     foreach (DataGridViewColumn column6030_2Vias in dgvOrdenProduccion6030.Columns)
                     {
-                        PdfPCell cell6030_2Vias = new PdfPCell(new Phrase(column6030_2Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                        PdfPCell cell6030_2Vias = new PdfPCell(new Phrase(column6030_2Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8.5f, iTextSharp.text.BaseColor.BLACK)))
                         {
                             BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                             BorderWidth = .5f,
@@ -902,7 +902,7 @@ namespace Precentacion.User.Bill
                             {
                                 cell6030_2Vias.Value = " ";
                             }
-                            PdfPCell celda6030_2Vias = new PdfPCell(new Phrase(cell6030_2Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                            PdfPCell celda6030_2Vias = new PdfPCell(new Phrase(cell6030_2Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10, iTextSharp.text.BaseColor.BLACK)))
                             {
                                 BorderWidth = .5f,
                                 HorizontalAlignment = Element.ALIGN_CENTER,
@@ -957,7 +957,7 @@ namespace Precentacion.User.Bill
                     // Celda 1: Encabezados de las columnas
                     foreach (DataGridViewColumn column6030_3Vias in dgvOrdenProduccion6030_3vias.Columns)
                     {
-                        PdfPCell cell6030_3Vias = new PdfPCell(new Phrase(column6030_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8, iTextSharp.text.BaseColor.BLACK)))
+                        PdfPCell cell6030_3Vias = new PdfPCell(new Phrase(column6030_3Vias.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8.5f, iTextSharp.text.BaseColor.BLACK)))
                         {
                             BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255),
                             BorderWidth = .5f,
@@ -977,7 +977,7 @@ namespace Precentacion.User.Bill
                             {
                                 cell6030_3Vias.Value = " ";
                             }
-                            PdfPCell celda6030_3Vias = new PdfPCell(new Phrase(cell6030_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 8, iTextSharp.text.BaseColor.BLACK)))
+                            PdfPCell celda6030_3Vias = new PdfPCell(new Phrase(cell6030_3Vias.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10, iTextSharp.text.BaseColor.BLACK)))
                             {
                                 BorderWidth = .5f,
                                 HorizontalAlignment = Element.ALIGN_CENTER,
