@@ -1,4 +1,5 @@
 ﻿using Dominio.Model.ClassWindows;
+using Negocio.Company.Quote;
 using Negocio.LoadProduct;
 using Negocio.Proveedor;
 using Precentacion.User.Quote.Quote;
@@ -20,6 +21,8 @@ namespace Precentacion.User.Quote.Windows
     {
         #region Variables
         N_LoadProduct loadProduct = new N_LoadProduct();
+        N_Quote Nquote = new N_Quote();
+        String Update;
         public decimal totalPrice = 0;
         decimal priceNewGlass = 0;
         decimal AuxpriceNewGlass = 0;
@@ -111,7 +114,7 @@ namespace Precentacion.User.Quote.Windows
             try
             {
                 cbColor.SelectedIndex = 0;
-
+                Update = ClsWindows.Lock;
                 lblDescripcion.Text = "Sistema " + ClsWindows.System + " Con Diseño " + ClsWindows.Desing;
                 if (ClsWindows.System == "8025 3 Vias" || ClsWindows.System == "8040 3 Vias" || ClsWindows.System == "6030 3 Vias")
                 {
@@ -127,6 +130,10 @@ namespace Precentacion.User.Quote.Windows
                 ConfigPantalla();
                 ConfPictureBox();
                 CargarProveedor();
+                if (ClsWindows.Lock == "Update")
+                {
+                    CargarDatosUpdate();
+                }
             }
             catch (Exception ex)
             {
@@ -361,6 +368,47 @@ namespace Precentacion.User.Quote.Windows
 
         }
 
+        private void CargarDatosUpdate() 
+        {
+            try
+            {
+                N_Quote Nquote = new N_Quote();
+
+                if (Nquote.GetDataWindows())
+                {
+                    txtAncho.Text = (ClsWindows.Weight * 1000).ToString();
+                    txtAlto.Text = (ClsWindows.heigt * 1000).ToString();
+                    cbVidrio.Text = ClsWindows.Vidrio;
+                    cbColor.Text = ClsWindows.Color;
+                    //Verificar si la ventana tiene cedazo
+                    if (ClsWindows.Cedazo)
+                    {
+                        cbCedazo.Checked = true;
+                    }
+                    //Verificar si en la Cls.Descripcion se encuentra la palabra "Vidrio Fijo"
+                    if (ClsWindows.Detalle.Contains("Vidrio Fijo"))
+                    {
+                        txtAddWeigth.Text = ClsWindows.AnchoFijo.ToString();
+                        txtAddHeight.Text = ClsWindows.AltoFijo.ToString();
+                        cbAluminio.Text = ClsWindows.Aluminio;
+                        cbUbicacion.Text = ClsWindows.Ubicacion;
+                        txtDiviciones.Value = ClsWindows.Diviciones;
+                        cbGlass.Text = ClsWindows.VidrioFijo.ToString();
+                    }
+                    
+
+                    //Llamar la Funcion de Cotizacion
+                    btnCargar_Click(null, null);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+        }
+
         #endregion
 
         #region Buttons
@@ -374,8 +422,10 @@ namespace Precentacion.User.Quote.Windows
                 }
                 else
                 {
+                    ClsWindows.Lock = "";
                     switch (ClsWindows.System)
                     {
+                        
                         case "Ventila":
                             frmSelectDesingVentila frm = new frmSelectDesingVentila();
                             frm.Show();
@@ -802,7 +852,14 @@ namespace Precentacion.User.Quote.Windows
                     }
                     if (cbSPuesta.Checked)
                     {
-                        ClsWindows.Lock = cbSPuesta.Text;
+                        if (ClsWindows.Desing == "FijoMovilMovilFijo")
+                        {
+                            ClsWindows.Lock = cbSPuesta.Text+"FMMF";
+                        }
+                        else
+                        {
+                            ClsWindows.Lock = cbSPuesta.Text+" para FM";
+                        }
                     }
                     if (cbImpacto.Checked)
                     {
@@ -834,7 +891,7 @@ namespace Precentacion.User.Quote.Windows
                 {
                     if (MessageBox.Show("¿Desea agregar esta ventana?", "Agregar Ventana", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        string Update = ClsWindows.Lock;
+                        
                         SelectLock();
                         string description = CreateDescription();
                         string url = CreateURL();
@@ -855,7 +912,9 @@ namespace Precentacion.User.Quote.Windows
                                     ((frmQuote)frm).loadWindows();
                                 }
                                 MessageBox.Show("Ventana Editada correctamente");
-                                CleanController();
+                                ClsWindows.Lock = "";
+                                //Cerrar la ventana
+                                this.Close();
                             }
                             else
                             {
@@ -875,6 +934,7 @@ namespace Precentacion.User.Quote.Windows
                                     ((frmQuote)frm).loadWindows();
                                 }
                                 MessageBox.Show("Ventana agregada correctamente");
+                                ClsWindows.Lock = "";
                                 CleanController();
 
                             }
@@ -1853,7 +1913,6 @@ namespace Precentacion.User.Quote.Windows
             }
         }
 
-
         private void Advertencias()
         {
             try
@@ -2001,9 +2060,6 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
-
             #region Ancho
             if (txtAncho.Text != "")
             {
@@ -2952,7 +3008,6 @@ namespace Precentacion.User.Quote.Windows
 
             return dataTable; // Devuelve el DataTable lleno
         }
-
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {

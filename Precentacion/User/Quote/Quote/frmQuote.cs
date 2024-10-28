@@ -850,9 +850,6 @@ namespace Precentacion.User.Quote.Quote
             }
         }
 
-
-
-
         private void txtidQuote_TextChanged(object sender, EventArgs e)
         {
             loadWindows();
@@ -917,7 +914,7 @@ namespace Precentacion.User.Quote.Quote
                             }
                             else
                             {
-                                frmCalcPriceWindows frm = new frmCalcPriceWindows();
+                                 frmCalcPriceWindows frm = new frmCalcPriceWindows();
                                 frm.Show();
                             }
                         }
@@ -1240,10 +1237,6 @@ namespace Precentacion.User.Quote.Quote
             return System.Text.RegularExpressions.Regex.Replace(ruta, patron, versionActual);
         }
 
-
-
-
-
         private void cbOpcion_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -1550,10 +1543,6 @@ namespace Precentacion.User.Quote.Quote
             // Asegurarse de que el IVA se calcule automáticamente con el subtotal actualizado
             cbIva_SelectedIndexChanged(this, EventArgs.Empty);
         }
-
-
-
-
         private void cbIva_SelectedIndexChanged(object sender, EventArgs e)
         {
             CultureInfo cultureCR = new CultureInfo("es-CR");
@@ -1584,11 +1573,6 @@ namespace Precentacion.User.Quote.Quote
 
             }
         }
-
-
-
-
-
         private bool ValidateFields()
         {
             if (txtidClient.Text == "")
@@ -1634,11 +1618,6 @@ namespace Precentacion.User.Quote.Quote
             return true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             try
@@ -1656,7 +1635,6 @@ namespace Precentacion.User.Quote.Quote
 
             }
         }
-
         private void dgCotizaciones_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             // Muestra el mensaje de error en la consola o en un MessageBox
@@ -1666,7 +1644,6 @@ namespace Precentacion.User.Quote.Quote
             // Opcionalmente, puedes evitar que el error se propague
             e.ThrowException = false;
         }
-
         private void SendQuoteforWhathsaap()
         {
             //Preguntar si desea enviar la cotizacion por whatsapp
@@ -1679,7 +1656,6 @@ namespace Precentacion.User.Quote.Quote
             }
 
         }
-
         private void LimpiarCampos()
         {
             dgCotizaciones.DataSource = null;
@@ -1724,8 +1700,6 @@ namespace Precentacion.User.Quote.Quote
                 return 1.5m;
             }
         }
-
-
         private decimal ObtenerAlto(string Descripcion)
         {
             if (!Descripcion.Contains("Exclusivo"))
@@ -1752,6 +1726,14 @@ namespace Precentacion.User.Quote.Quote
             {
                 return 1.5m;
             }
+        }
+        public void LimpiarDatosCliente() 
+        {
+            txtidClient.Text = "";
+            txtAdreesClient.Text = "";
+            txtTelefono.Text = "";
+            txtEmail.Text = "";
+            
         }
 
 
@@ -1926,6 +1908,15 @@ namespace Precentacion.User.Quote.Quote
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\Prefalum2.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //vidrios Dayra, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 3101685963)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Vidrios DayraLogo.jpg";
                     rutaLogo = ruta + Url;
 
                 }
@@ -3080,17 +3071,86 @@ namespace Precentacion.User.Quote.Quote
                 //Urbano
                 if (CompanyCache.IdCompany == 110640721)
                 {
+                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(NotasParagraph);
+
+                    Paragraph Nota1Paragraph = new Paragraph("•1 Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota1Paragraph);
+
+                    Paragraph Nota2Paragraph = new Paragraph("•2.Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota2Paragraph);
+
+                    Paragraph Nota3Paragraph = new Paragraph("•3.No contempla desinstalación, ni desechos, ni acarreo de materiales existente en el sitio.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota3Paragraph);
+
+                    Paragraph Nota4Paragraph = new Paragraph("•4.La garantía es de 3 meses y queda sujeta desde el momento de la entrega y la revisión por parte del cliente y no a la mala instalación tales como: daños o mala manipulación de terceros ajenos a VIDROURBANO tales como golpes rupturas y rayones.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota4Paragraph);
+
+                    Paragraph Nota5Paragraph = new Paragraph("•5.La limpieza de los vidrios queda exclusivamente a cargo del CLIENTE.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota5Paragraph);
+ 
+                    Paragraph Nota6Paragraph = new Paragraph("•6.La Validez de la oferta es de 15 días naturales.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota6Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota6Paragraph);
+
+                    Paragraph Nota7Paragraph = new Paragraph("•7.El tiempo de Fabricación de 8 a 15 días hábiles laborables (ese tiempo puede variar dependiendo de la demanda de material y sistema requerido).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota7Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota7Paragraph);
+
+                    Paragraph Nota8Paragraph = new Paragraph("•8.El tiempo de entrega será de acuerdo con el vendedor.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota8Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota8Paragraph);
+
+                    Paragraph Nota9Paragraph = new Paragraph("•9.VIDROURBANO trabaja con materiales de estándar nacional.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota9Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota9Paragraph);
+
+                    Paragraph Nota10Paragraph = new Paragraph("•10.Esta oferta NO contempla el I.V.A.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota10Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota10Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph FormasPago = new Paragraph("Formas Generales de Pago", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    FormasPago.Alignment = Element.ALIGN_CENTER;
+                    document.Add(FormasPago);
+
+                    Paragraph Forma1 = new Paragraph("•1 Una vez puesto en firme la oferta se debe suministrar el 60% por adelantado.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Forma1.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Forma1);
+
+                    Paragraph Forma2 = new Paragraph("•2 El 40% restante al final a contra entrega y satisfacción del cliente.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Forma2.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Forma2);
+
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
                     document.Add(CuentasParagraph);
 
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Paragraph Cuenta1Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n •Numero de Cuenta BAC: 931518518 \n•Numero de Cuenta IBAN: CR56010200009315185188", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
                     Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta1Paragraph);
 
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n•Numero de Cuenta IBAN: CR27015202001038479771", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil a nombre de Julio Cesar Bonilla Rodriguez 85800953 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
                 }
                 //la familia
                 if (CompanyCache.IdCompany == 114420180)
@@ -3254,7 +3314,6 @@ namespace Precentacion.User.Quote.Quote
             // Asigna el objeto PdfWriter al documento
             document.Open();
             #endregion
-
 
             try
             {
@@ -3783,7 +3842,6 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" "));
                 #endregion
 
-
                 #region Tabla de Información
                 iTextSharp.text.Font infoFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 11, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
                 // Crear una tabla para los datos del proyecto y la información del cliente
@@ -3899,6 +3957,7 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" "));
 
                 #endregion
+
                 #region Condiciones, Notas y Cuentas
 
                 // Agregar las Condiciones desde el txtConditional1 hasta el txtConditional10 en una tabla
@@ -3979,7 +4038,6 @@ namespace Precentacion.User.Quote.Quote
 
 
                 #endregion
-
 
                 #region Tabla de Productos
 
@@ -4316,6 +4374,29 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta3Paragraph);
                 }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n •Numero de Cuenta BAC: 931518518 \n•Numero de Cuenta IBAN: CR56010200009315185188", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n•Numero de Cuenta IBAN: CR27015202001038479771", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil a nombre de Julio Cesar Bonilla Rodriguez 85800953 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
+                }
                 //MS
                 if (CompanyCache.IdCompany == 204260627)
                 {
@@ -4347,23 +4428,6 @@ namespace Precentacion.User.Quote.Quote
                     document.Add(Cuenta2Paragraph);
                 }
                 #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 #region Cerrar el documento
                 // Cerrar el documento
@@ -4696,6 +4760,7 @@ namespace Precentacion.User.Quote.Quote
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
         #endregion
+
         #region Tasa Cambio
         public class TipoCambioService
         {
@@ -4768,6 +4833,7 @@ namespace Precentacion.User.Quote.Quote
             }
         }
         #endregion Tasa Cambio
+
         public bool GeneratePDF3()
         {
             #region Crear el documento
@@ -4801,8 +4867,6 @@ namespace Precentacion.User.Quote.Quote
             // Asigna el objeto PdfWriter al documento
             document.Open();
             #endregion
-
-
             try
             {
                 #region Encabezado
@@ -5289,7 +5353,6 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" "));
                 #endregion
 
-
                 #region Tabla de Informacion 
                 // Crear una tabla para los datos del proyecto y la información del cliente
                 PdfPTable datosTable = new PdfPTable(2);
@@ -5332,14 +5395,10 @@ namespace Precentacion.User.Quote.Quote
 
                 #endregion
 
-
                 // Cambiar el nombre de las columnas en el DataGridView
                 dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
                 dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
-
                 dgCotizaciones.Columns["Description"].HeaderText = "Descripción"; // Cambio aquí
-
-
 
                 #region Tabla de Productos
                 // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "Precio" y "ID Ventana"
@@ -5517,13 +5576,6 @@ namespace Precentacion.User.Quote.Quote
 
                 #endregion
 
-
-
-
-
-
-
-
                 #region Precios
                 /*
                 // Crear un párrafo para mostrar el monto total
@@ -5554,8 +5606,6 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" ")); // Esto agrega un espacio en blanco en el documento
                 */
                 #endregion
-
-
 
                 #region Condiciones, Notas y Cuentas
 
@@ -5690,8 +5740,6 @@ namespace Precentacion.User.Quote.Quote
                     Detalle2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Detalle2Paragraph);
                 }
-
-
                 if (CompanyCache.IdCompany == 112540885)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
@@ -5777,10 +5825,6 @@ namespace Precentacion.User.Quote.Quote
 
                     document.Add(table);
                 }
-
-
-
-
                 //J123
                 if (CompanyCache.IdCompany == 1230123)
                 {
@@ -5822,8 +5866,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
-
                 if (CompanyCache.IdCompany == 31025820)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
@@ -5918,7 +5960,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
                 //Prefalum
                 if (CompanyCache.IdCompany == 111111111)
                 {
@@ -5967,17 +6008,86 @@ namespace Precentacion.User.Quote.Quote
                 //Urbano
                 if (CompanyCache.IdCompany == 110640721)
                 {
+                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(NotasParagraph);
+
+                    Paragraph Nota1Paragraph = new Paragraph("•1 Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota1Paragraph);
+
+                    Paragraph Nota2Paragraph = new Paragraph("•2.Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota2Paragraph);
+
+                    Paragraph Nota3Paragraph = new Paragraph("•3.No contempla desinstalación, ni desechos, ni acarreo de materiales existente en el sitio.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota3Paragraph);
+
+                    Paragraph Nota4Paragraph = new Paragraph("•4.La garantía es de 3 meses y queda sujeta desde el momento de la entrega y la revisión por parte del cliente y no a la mala instalación tales como: daños o mala manipulación de terceros ajenos a VIDROURBANO tales como golpes rupturas y rayones.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota4Paragraph);
+
+                    Paragraph Nota5Paragraph = new Paragraph("•5.La limpieza de los vidrios queda exclusivamente a cargo del CLIENTE.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota5Paragraph);
+
+                    Paragraph Nota6Paragraph = new Paragraph("•6.La Validez de la oferta es de 15 días naturales.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota6Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota6Paragraph);
+
+                    Paragraph Nota7Paragraph = new Paragraph("•7.El tiempo de Fabricación de 8 a 15 días hábiles laborables (ese tiempo puede variar dependiendo de la demanda de material y sistema requerido).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota7Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota7Paragraph);
+
+                    Paragraph Nota8Paragraph = new Paragraph("•8.El tiempo de entrega será de acuerdo con el vendedor.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota8Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota8Paragraph);
+
+                    Paragraph Nota9Paragraph = new Paragraph("•9.VIDROURBANO trabaja con materiales de estándar nacional.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota9Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota9Paragraph);
+
+                    Paragraph Nota10Paragraph = new Paragraph("•10.Esta oferta NO contempla el I.V.A.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota10Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota10Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph FormasPago = new Paragraph("Formas Generales de Pago", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    FormasPago.Alignment = Element.ALIGN_CENTER;
+                    document.Add(FormasPago);
+
+                    Paragraph Forma1 = new Paragraph("•1 Una vez puesto en firme la oferta se debe suministrar el 60% por adelantado.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Forma1.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Forma1);
+
+                    Paragraph Forma2 = new Paragraph("•2 El 40% restante al final a contra entrega y satisfacción del cliente.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Forma2.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Forma2);
+
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
                     document.Add(CuentasParagraph);
 
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Paragraph Cuenta1Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n •Numero de Cuenta BAC: 931518518 \n•Numero de Cuenta IBAN: CR56010200009315185188", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
                     Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta1Paragraph);
 
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n•Numero de Cuenta IBAN: CR27015202001038479771", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil a nombre de Julio Cesar Bonilla Rodriguez 85800953 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
                 }
                 //la familia
                 if (CompanyCache.IdCompany == 114420180)
@@ -5994,7 +6104,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
                 //glassmar
                 if (CompanyCache.IdCompany == 3105806704)
                 {
@@ -6155,7 +6264,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
                 #endregion
 
                 #region Cerrar el documento
@@ -6673,7 +6781,6 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" "));
                 #endregion
 
-
                 #region Tabla de Informacion 
                 // Crear una tabla para los datos del proyecto y la información del cliente
                 PdfPTable datosTable = new PdfPTable(2);
@@ -6716,8 +6823,6 @@ namespace Precentacion.User.Quote.Quote
                 //dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
                 dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
                 dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
-
-
 
                 #region Tabla de Productos
                 // Crear una tabla con el número de columnas de tu DataGridView
@@ -7089,8 +7194,6 @@ namespace Precentacion.User.Quote.Quote
                     Detalle2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Detalle2Paragraph);
                 }
-
-
                 //J123
                 if (CompanyCache.IdCompany == 1230123)
                 {
@@ -7132,8 +7235,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
-
                 if (CompanyCache.IdCompany == 31025820)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
@@ -7418,7 +7519,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta3Paragraph);
                 }
-
                 //MS
                 if (CompanyCache.IdCompany == 204260627)
                 {
@@ -7467,17 +7567,86 @@ namespace Precentacion.User.Quote.Quote
                 //Urbano
                 if (CompanyCache.IdCompany == 110640721)
                 {
+                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(NotasParagraph);
+
+                    Paragraph Nota1Paragraph = new Paragraph("•1 Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota1Paragraph);
+
+                    Paragraph Nota2Paragraph = new Paragraph("•2.Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota2Paragraph);
+
+                    Paragraph Nota3Paragraph = new Paragraph("•3.No contempla desinstalación, ni desechos, ni acarreo de materiales existente en el sitio.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota3Paragraph);
+
+                    Paragraph Nota4Paragraph = new Paragraph("•4.La garantía es de 3 meses y queda sujeta desde el momento de la entrega y la revisión por parte del cliente y no a la mala instalación tales como: daños o mala manipulación de terceros ajenos a VIDROURBANO tales como golpes rupturas y rayones.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota4Paragraph);
+
+                    Paragraph Nota5Paragraph = new Paragraph("•5.La limpieza de los vidrios queda exclusivamente a cargo del CLIENTE.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota5Paragraph);
+
+                    Paragraph Nota6Paragraph = new Paragraph("•6.La Validez de la oferta es de 15 días naturales.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota6Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota6Paragraph);
+
+                    Paragraph Nota7Paragraph = new Paragraph("•7.El tiempo de Fabricación de 8 a 15 días hábiles laborables (ese tiempo puede variar dependiendo de la demanda de material y sistema requerido).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota7Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota7Paragraph);
+
+                    Paragraph Nota8Paragraph = new Paragraph("•8.El tiempo de entrega será de acuerdo con el vendedor.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota8Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota8Paragraph);
+
+                    Paragraph Nota9Paragraph = new Paragraph("•9.VIDROURBANO trabaja con materiales de estándar nacional.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota9Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota9Paragraph);
+
+                    Paragraph Nota10Paragraph = new Paragraph("•10.Esta oferta NO contempla el I.V.A.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota10Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota10Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph FormasPago = new Paragraph("Formas Generales de Pago", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    FormasPago.Alignment = Element.ALIGN_CENTER;
+                    document.Add(FormasPago);
+
+                    Paragraph Forma1 = new Paragraph("•1 Una vez puesto en firme la oferta se debe suministrar el 60% por adelantado.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Forma1.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Forma1);
+
+                    Paragraph Forma2 = new Paragraph("•2 El 40% restante al final a contra entrega y satisfacción del cliente.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Forma2.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Forma2);
+
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
                     document.Add(CuentasParagraph);
 
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Paragraph Cuenta1Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n •Numero de Cuenta BAC: 931518518 \n•Numero de Cuenta IBAN: CR56010200009315185188", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
                     Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta1Paragraph);
 
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n•Numero de Cuenta IBAN: CR27015202001038479771", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil a nombre de Julio Cesar Bonilla Rodriguez 85800953 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
                 }
                 //la familia
                 if (CompanyCache.IdCompany == 114420180)
@@ -7494,7 +7663,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
                 //glassmar
                 if (CompanyCache.IdCompany == 3105806704)
                 {
@@ -7573,7 +7741,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
                 #endregion
 
                 #region Cerrar el documento
@@ -7591,10 +7758,11 @@ namespace Precentacion.User.Quote.Quote
             #endregion
         }
         #endregion
+
         #region Planos pdf
         public bool GeneratePlanos()
         {
-            #region Crear el documento
+                #region Crear el documento
             try
             {
                 // Obtener el directorio del escritorio y las carpetas necesarias
@@ -8709,14 +8877,10 @@ namespace Precentacion.User.Quote.Quote
 
                 #endregion
 
-
                 // Cambiar el nombre de las columnas en el DataGridView
                 dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
                 dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
-
                 dgCotizaciones.Columns["Description"].HeaderText = "Descripción"; // Cambio aquí
-
-
 
                 #region Tabla de Productos
                 // Cambiar el nombre de las columnas en el DataGridView
@@ -8849,13 +9013,6 @@ namespace Precentacion.User.Quote.Quote
 
                 #endregion
 
-
-
-
-
-
-
-
                 #region Precios
                 /*
                 // Crear un párrafo para mostrar el monto total
@@ -8886,8 +9043,6 @@ namespace Precentacion.User.Quote.Quote
                 document.Add(new Paragraph(" ")); // Esto agrega un espacio en blanco en el documento
                 */
                 #endregion
-
-
 
                 #region Condiciones, Notas y Cuentas
 
@@ -9022,8 +9177,6 @@ namespace Precentacion.User.Quote.Quote
                     Detalle2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Detalle2Paragraph);
                 }
-
-
                 if (CompanyCache.IdCompany == 112540885)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
@@ -9109,10 +9262,6 @@ namespace Precentacion.User.Quote.Quote
 
                     document.Add(table);
                 }
-
-
-
-
                 //J123
                 if (CompanyCache.IdCompany == 1230123)
                 {
@@ -9154,8 +9303,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
-
                 if (CompanyCache.IdCompany == 31025820)
                 {
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
@@ -9250,7 +9397,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
                 //Prefalum
                 if (CompanyCache.IdCompany == 111111111)
                 {
@@ -9299,17 +9445,86 @@ namespace Precentacion.User.Quote.Quote
                 //Urbano
                 if (CompanyCache.IdCompany == 110640721)
                 {
+                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(NotasParagraph);
+
+                    Paragraph Nota1Paragraph = new Paragraph("•1 Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota1Paragraph);
+
+                    Paragraph Nota2Paragraph = new Paragraph("•2.Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota2Paragraph);
+
+                    Paragraph Nota3Paragraph = new Paragraph("•3.No contempla desinstalación, ni desechos, ni acarreo de materiales existente en el sitio.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota3Paragraph);
+
+                    Paragraph Nota4Paragraph = new Paragraph("•4.La garantía es de 3 meses y queda sujeta desde el momento de la entrega y la revisión por parte del cliente y no a la mala instalación tales como: daños o mala manipulación de terceros ajenos a VIDROURBANO tales como golpes rupturas y rayones.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota4Paragraph);
+
+                    Paragraph Nota5Paragraph = new Paragraph("•5.La limpieza de los vidrios queda exclusivamente a cargo del CLIENTE.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota5Paragraph);
+
+                    Paragraph Nota6Paragraph = new Paragraph("•6.La Validez de la oferta es de 15 días naturales.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota6Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota6Paragraph);
+
+                    Paragraph Nota7Paragraph = new Paragraph("•7.El tiempo de Fabricación de 8 a 15 días hábiles laborables (ese tiempo puede variar dependiendo de la demanda de material y sistema requerido).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota7Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota7Paragraph);
+
+                    Paragraph Nota8Paragraph = new Paragraph("•8.El tiempo de entrega será de acuerdo con el vendedor.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota8Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota8Paragraph);
+
+                    Paragraph Nota9Paragraph = new Paragraph("•9.VIDROURBANO trabaja con materiales de estándar nacional.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota9Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota9Paragraph);
+
+                    Paragraph Nota10Paragraph = new Paragraph("•10.Esta oferta NO contempla el I.V.A.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota10Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota10Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph FormasPago = new Paragraph("Formas Generales de Pago", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    FormasPago.Alignment = Element.ALIGN_CENTER;
+                    document.Add(FormasPago);
+
+                    Paragraph Forma1 = new Paragraph("•1 Una vez puesto en firme la oferta se debe suministrar el 60% por adelantado.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Forma1.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Forma1);
+
+                    Paragraph Forma2 = new Paragraph("•2 El 40% restante al final a contra entrega y satisfacción del cliente.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Forma2.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Forma2);
+
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
                     Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
                     CuentasParagraph.Alignment = Element.ALIGN_CENTER;
                     document.Add(CuentasParagraph);
 
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Paragraph Cuenta1Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n •Numero de Cuenta BAC: 931518518 \n•Numero de Cuenta IBAN: CR56010200009315185188", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
                     Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta1Paragraph);
 
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n•Numero de Cuenta IBAN: CR27015202001038479771", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil a nombre de Julio Cesar Bonilla Rodriguez 85800953 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
                 }
                 //la familia
                 if (CompanyCache.IdCompany == 114420180)
@@ -9326,7 +9541,6 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
                 //glassmar
                 if (CompanyCache.IdCompany == 3105806704)
                 {
@@ -9487,9 +9701,7 @@ namespace Precentacion.User.Quote.Quote
                     Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
                     document.Add(Cuenta2Paragraph);
                 }
-
                 #endregion
-
                 #region Cerrar el documento
                 // Cerrar el documento
                 document.Close();

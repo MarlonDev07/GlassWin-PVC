@@ -325,6 +325,7 @@ namespace Precentacion.User.Client
             if (frm != null)
             {
                 //Si esta abierto, Pasar el ID del cliente seleccionado
+                ((frmQuote)frm).LimpiarDatosCliente();
                 frm.txtidClient.Text = dgvClient.CurrentRow.Cells[0].Value.ToString();
                 ((frmQuote)frm).btnBuscar_Click(null, null);
                 

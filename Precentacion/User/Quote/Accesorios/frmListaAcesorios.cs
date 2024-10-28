@@ -125,7 +125,7 @@ namespace Precentacion.User.Quote.Accesorios
             {
                 //Obtener del DataGrid el nombre del Accesorio
                 string name = dgvAccesorios.CurrentRow.Cells[1].Value.ToString();
-                string Color = dgvAccesorios.CurrentRow.Cells[7].Value.ToString();
+                string Color = dgvAccesorios.CurrentRow.Cells[9].Value.ToString();
 
                 description += "Nombre: " + name + "\n";
                 description += "Color: " + Color + "\n";

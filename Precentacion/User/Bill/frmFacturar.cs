@@ -170,10 +170,6 @@ namespace Precentacion.User.Bill
 
                 foreach (DataGridViewRow row in dgvGlass.Rows)
                 {
-
-
-
-
                     DataTable dtAluminio = new DataTable();
 
                     //Validar que la celda no este vacia
@@ -412,7 +408,7 @@ namespace Precentacion.User.Bill
                     {
                         proveedorVidrio = "Extralum";
                     }
-                    else if (vidrioFijo.EndsWith("ExT"))
+                    else if (vidrioFijo.EndsWith("Ext"))
                     {
                         proveedorVidrio = "Extralum";
                     }
@@ -459,7 +455,7 @@ namespace Precentacion.User.Bill
                     {
                         proveedorVidrio = "Extralum";
                     }
-                    else if (Vidrio.EndsWith("ExT"))
+                    else if (Vidrio.EndsWith("Ext"))
                     {
                         proveedorVidrio = "Extralum";
                     }
@@ -1146,7 +1142,7 @@ namespace Precentacion.User.Bill
 
         public void pdf1()
         {
-            #region Crear el documento
+                #region Crear el documento
             // Obtener el directorio del escritorio y las carpetas necesarias
             string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string CarpetaFactura = Path.Combine(escritorio, "Desglose Material");
@@ -1203,7 +1199,6 @@ namespace Precentacion.User.Bill
                         break;
                 }
                 #endregion
-
 
                 #region Encabezado
                 // Crea una tabla con dos columnas
@@ -2934,7 +2929,7 @@ namespace Precentacion.User.Bill
         {
             try
             {
-                #region Crear el documento
+                    #region Crear el documento
                 //Recorrer Todo el DataTable
                 foreach (DataRow item in dt.Rows)
                 {
@@ -2977,8 +2972,7 @@ namespace Precentacion.User.Bill
                     document.Open();
                     #endregion
 
-                    
-
+                   
                     #region Tabla de Informacion 
                     //Agregar un Titulo con el el Sistema , Color y Diseño de la Vnetana
                     PdfPTable datosTable = new PdfPTable(1);
@@ -4841,10 +4835,6 @@ namespace Precentacion.User.Bill
             ConfigDataGridDesglose();
             CargarTamañoPieza();
         }
-
-
-
-
 
         private void frmFacturar_FormClosed(object sender, FormClosedEventArgs e)
         {

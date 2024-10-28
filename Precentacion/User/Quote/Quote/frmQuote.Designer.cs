@@ -353,7 +353,6 @@
             this.txtTelefono.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTelefono.BackColor = System.Drawing.SystemColors.Info;
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefono.Enabled = false;
             this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.Location = new System.Drawing.Point(633, 44);
             this.txtTelefono.Name = "txtTelefono";
@@ -366,7 +365,6 @@
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtEmail.BackColor = System.Drawing.SystemColors.Info;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(633, 72);
             this.txtEmail.Name = "txtEmail";
@@ -525,7 +523,6 @@
             this.txtidClient.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtidClient.BackColor = System.Drawing.SystemColors.Info;
             this.txtidClient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtidClient.Enabled = false;
             this.txtidClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtidClient.Location = new System.Drawing.Point(633, 17);
             this.txtidClient.Name = "txtidClient";
@@ -539,7 +536,6 @@
             this.txtAdreesClient.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAdreesClient.BackColor = System.Drawing.SystemColors.Info;
             this.txtAdreesClient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAdreesClient.Enabled = false;
             this.txtAdreesClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAdreesClient.Location = new System.Drawing.Point(633, 99);
             this.txtAdreesClient.Name = "txtAdreesClient";
@@ -1063,7 +1059,6 @@
         private System.Windows.Forms.Button btnSanBlast;
         private System.Windows.Forms.ComboBox cbIva;
         private System.Windows.Forms.Button btnPrefabricado;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.TextBox txtManoObra;
         private System.Windows.Forms.Button button2;
@@ -1072,5 +1067,6 @@
         private System.Windows.Forms.Button btnApplyLabour;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Label label4;
     }
 }
