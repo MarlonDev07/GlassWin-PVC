@@ -126,6 +126,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
                     // Aplicar el descuento al SubTotal
                     TempTotal = SubTotal - (SubTotal * descuentoDecimal);
+                    //txtSubTotal.Text = TempTotal.ToString("c");
                     txtTotal.Text = TempTotal.ToString("c");
                 }
                 else
@@ -177,24 +178,15 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
         {
             if (txtDescuento.Text != "")
             {
-                // Validar que se haya ingresado un valor numerico
+                // Validar que se haya ingresado un valor numérico
                 if (decimal.TryParse(txtDescuento.Text, out decimal descuento))
                 {
-                    // Calcular Total con descuento
-                    decimal descuentoDecimal = descuento / 100;
-                    TempTotal = Total - (Total * descuentoDecimal);
-                    txtTotal.Text = TempTotal.ToString("c");
-                    txtSubTotal.Text = TempTotal.ToString("c");
-
-
-                    // Llamar a RecalcularDatos para actualizar la utilidad con el nuevo total
+                    // Solo llamamos a RecalcularDatos para aplicar el descuento correctamente
                     RecalcularDatos(Convert.ToInt32(numCantidad.Value));
-                    // Actualizar Total con descuento aplicado
-                    
                 }
                 else
                 {
-                    MessageBox.Show("El Descuento debe ser un valor numerico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El Descuento debe ser un valor numérico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -202,6 +194,7 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 txtDescuento.Text = "0";
             }
         }
+
         private void txtDescuento_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)

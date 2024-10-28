@@ -935,7 +935,27 @@ namespace AccesoDatos.Company.Quotes
             return dtTotalDesglose;
         }
 
+        public DataTable GetDataWindows() 
+        {
+            
+            try
+            {
+                DataTable dt = new DataTable();
 
+                SqlCommand cmd = new SqlCommand("Select * from Windows where idWindows = @Id", Cnn.OpenConecction());
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Id", ClsWindows.IdWindows);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                //Llenar el DataTable con los datos obtenidos
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+        }
 
     }
 }

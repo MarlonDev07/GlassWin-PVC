@@ -18,10 +18,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
+using Image = iTextSharp.text.Image;
 
 namespace Precentacion.User.Bill
 {
@@ -168,10 +170,6 @@ namespace Precentacion.User.Bill
 
                 foreach (DataGridViewRow row in dgvGlass.Rows)
                 {
-
-
-
-
                     DataTable dtAluminio = new DataTable();
 
                     //Validar que la celda no este vacia
@@ -400,13 +398,42 @@ namespace Precentacion.User.Bill
                     // Declarar la variable dtVidrios antes de su uso
                     DataTable dtVidrios = new DataTable();
 
+                    string proveedorVidrio = cbProveedorDesglose.Text;
+
+                    if (vidrioFijo == "Vid 4 mm claro Alu")
+                    {
+                        proveedorVidrio = "Aluma";
+                    }
+                    else if (vidrioFijo.EndsWith("Ex"))
+                    {
+                        proveedorVidrio = "Extralum";
+                    }
+                    else if (vidrioFijo.EndsWith("Ext"))
+                    {
+                        proveedorVidrio = "Extralum";
+                    }
+                    else if (vidrioFijo.EndsWith("Alu"))
+                    {
+                        proveedorVidrio = "Alumas";
+                    }
+                    else if (vidrioFijo.EndsWith("Ma"))
+                    {
+                        proveedorVidrio = "Macopa";
+                    }
+                    else if (vidrioFijo.EndsWith("Carbone"))
+                    {
+                        proveedorVidrio = "Carbone";
+                    }
+
+
+
                     // Verificar si el sistema es "Ventila"
                     if (anchoFijo > 0)
                     {
                         string Descripcion = row.Cells[1].Value.ToString();
 
                         // Obtener el Total del Vidrio Fijo
-                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlassDesglose(cbProveedorDesglose.SelectedValue.ToString(), vidrioFijo, anchoFijo, altoFijo);
+                        DataTable dtVidriosFijo = NLoadProduct.LoadPriceNewGlassDesglose(proveedorVidrio, vidrioFijo, anchoFijo, altoFijo);
 
                         // Obtener el Metraje del dtVidriosFijo y multiplicarlo por la Cantidad de Ventanas
                         foreach (DataRow item in dtVidriosFijo.Rows)
@@ -418,8 +445,36 @@ namespace Precentacion.User.Bill
                         dtVidrios.Merge(dtVidriosFijo);
                     }
 
+                  
+
+                    if (Vidrio == "Vid 4 mm claro Alu")
+                    {
+                        proveedorVidrio = "Aluma";
+                    }
+                    else if (Vidrio.EndsWith("Ex"))
+                    {
+                        proveedorVidrio = "Extralum";
+                    }
+                    else if (Vidrio.EndsWith("Ext"))
+                    {
+                        proveedorVidrio = "Extralum";
+                    }
+                    else if (Vidrio.EndsWith("Alu"))
+                    {
+                        proveedorVidrio = "Alumas";
+                    }
+                    else if (Vidrio.EndsWith("Ma"))
+                    {
+                        proveedorVidrio = "Macopa";
+                    }
+                    else if (Vidrio.EndsWith("Carbone"))
+                    {
+                        proveedorVidrio = "Carbone";
+                    }
+
+
                     // Obtener el Total de los Vidrios (del sistema general)
-                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlassDesglose(cbProveedorDesglose.SelectedValue.ToString(), Vidrio);
+                    DataTable dtVidriosSistema = NLoadProduct.loadPricesGlassDesglose(proveedorVidrio, Vidrio);
 
                     // Obtener el Metraje del dtVidriosSistema y multiplicarlo por la Cantidad de Ventanas
                     foreach (DataRow item in dtVidriosSistema.Rows)
@@ -1085,150 +1140,600 @@ namespace Precentacion.User.Bill
             }
         }
 
-
-        private void btnGenerarDesglose_Click(object sender, EventArgs e)
-            {
+        public void pdf1()
+        {
                 #region Crear el documento
-                // Obtener el directorio del escritorio y las carpetas necesarias
-                string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string CarpetaFactura = Path.Combine(escritorio, "Desglose Material");
-                string carpetaNombre = Path.Combine(CarpetaFactura, txtidClient.Text.Trim());
-                string NameFile = "Desglose de Material n° " + txtidQuote.Text + ".pdf";
+            // Obtener el directorio del escritorio y las carpetas necesarias
+            string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string CarpetaFactura = Path.Combine(escritorio, "Desglose Material");
+            string carpetaNombre = Path.Combine(CarpetaFactura, txtidClient.Text.Trim());
+            string NameFile = "Desglose de Material n° " + txtidQuote.Text + ".pdf";
 
-                // Verificar si la carpeta "Proformas" existe, si no, crearla
-                if (!Directory.Exists(CarpetaFactura))
+            // Verificar si la carpeta "Proformas" existe, si no, crearla
+            if (!Directory.Exists(CarpetaFactura))
+            {
+                Directory.CreateDirectory(CarpetaFactura);
+            }
+
+            // Verificar si la carpeta con el nombre existe, si no, crearla
+            if (!Directory.Exists(carpetaNombre))
+            {
+                Directory.CreateDirectory(carpetaNombre);
+            }
+
+            // Crear la ruta completa del archivo PDF
+            string rutaArchivoPDF = Path.Combine(carpetaNombre, NameFile);
+
+            Document document = new Document();
+            // Crea un nuevo objeto PdfWriter para escribir el documento en un archivo
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
+
+            // Asigna el objeto PdfWriter al documento
+            document.Open();
+            #endregion
+            try
+            {
+                #region Seleccion de Proveedor
+                string Option = cbProveedorDesglose.SelectedValue.ToString();
+                string NombreProvedor = "";
+                string TelefonoProvedor = "";
+                string CorreoProvedor = "";
+                switch (Option)
                 {
-                    Directory.CreateDirectory(CarpetaFactura);
+                    case "Extralum":
+                        NombreProvedor = "Extralum";
+                        TelefonoProvedor = "2277-1900";
+                        CorreoProvedor = "aavila@extralum.co.cr";
+                        break;
+                    case "Macopa":
+                        NombreProvedor = "Macopa";
+                        TelefonoProvedor = "2010-7310";
+                        CorreoProvedor = "proyectosvidrios@macopa.com";
+                        break;
+                    case "Espejos el Mundo":
+                        NombreProvedor = "Espejos el Mundo";
+                        TelefonoProvedor = "2293-4961";
+                        CorreoProvedor = "N/A";
+                        break;
+                    default:
+                        break;
                 }
-
-                // Verificar si la carpeta con el nombre existe, si no, crearla
-                if (!Directory.Exists(carpetaNombre))
-                {
-                    Directory.CreateDirectory(carpetaNombre);
-                }
-
-                // Crear la ruta completa del archivo PDF
-                string rutaArchivoPDF = Path.Combine(carpetaNombre, NameFile);
-
-                Document document = new Document();
-                // Crea un nuevo objeto PdfWriter para escribir el documento en un archivo
-                PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
-
-                // Asigna el objeto PdfWriter al documento
-                document.Open();
                 #endregion
-                try
+
+                #region Encabezado
+                // Crea una tabla con dos columnas
+                PdfPTable Encabezado = new PdfPTable(2);
+                Encabezado.WidthPercentage = 120;
+                string rutaLogo = "";
+
+                //Vitro esparza
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
-                    #region Seleccion de Proveedor
-                    string Option = cbProveedorDesglose.SelectedValue.ToString();
-                    string NombreProvedor = "";
-                    string TelefonoProvedor = "";
-                    string CorreoProvedor = "";
-                    switch (Option)
-                    {
-                        case "Extralum":
-                            NombreProvedor = "Extralum";
-                            TelefonoProvedor = "2277-1900";
-                            CorreoProvedor = "aavila@extralum.co.cr";
-                            break;
-                        case "Macopa":
-                            NombreProvedor = "Macopa";
-                            TelefonoProvedor = "2010-7310";
-                            CorreoProvedor = "proyectosvidrios@macopa.com";
-                            break;
-                        case "Espejos el Mundo":
-                            NombreProvedor = "Espejos el Mundo";
-                            TelefonoProvedor = "2293-4961";
-                            CorreoProvedor = "N/A";
-                            break;
-                        default:
-                            break;
-                    }
-                    #endregion
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vitroEsparza.png";
+                    rutaLogo = ruta + Url;
 
-                    #region Tabla de Informacion 
-                    // Crear una tabla para los datos del proyecto y la información del cliente
-                    PdfPTable datosTable = new PdfPTable(2);
-                    datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
-                    datosTable.LockedWidth = true;
+                }
+                //Viteco
+                if (CompanyCache.IdCompany == 503320196)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Viteco.png";
+                    rutaLogo = ruta + Url;
 
-                    // Celda 1: Datos del Proyecto
-                    PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
-                    {
-                        BackgroundColor = new BaseColor(70, 130, 180),
-                        BorderWidth = 1f,
-                        //Colspan = 1, // Fusionar una columna para "Datos del Proyecto"
-                        HorizontalAlignment = Element.ALIGN_CENTER,
-                        VerticalAlignment = Element.ALIGN_CENTER
-                    };
-                    datosTable.AddCell(cellDatosProyecto);
+                }
+                //MS
+                if (CompanyCache.IdCompany == 204260627)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\ms.png";
+                    rutaLogo = ruta + Url;
 
-                    // Celda 2: Información del Cliente
-                    PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Provedor", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
-                    {
-                        BackgroundColor = new BaseColor(70, 130, 180),
-                        BorderWidth = 1f,
-                        Colspan = 1, // Fusionar una columna para "Información del Cliente"
-                        HorizontalAlignment = Element.ALIGN_CENTER,
-                        VerticalAlignment = Element.ALIGN_MIDDLE
-                    };
-                    datosTable.AddCell(cellDatosCliente);
+                }
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\constru.png";
+                    rutaLogo = ruta + Url;
 
-                    // Celda 3: Etiqueta "Cotización"
-                    PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                    {
-                        BorderWidth = 1,
-                        HorizontalAlignment = Element.ALIGN_LEFT,
-                        VerticalAlignment = Element.ALIGN_MIDDLE
-                    };
-                    datosTable.AddCell(cellEtiquetaCotizacion);
+                }
 
-                    // Celda 4: Etiqueta "Cliente"
-                    PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Provedor: " + NombreProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                    {
-                        BorderWidth = 1,
-                        HorizontalAlignment = Element.ALIGN_LEFT,
-                        VerticalAlignment = Element.ALIGN_MIDDLE
-                    };
-                    datosTable.AddCell(cellEtiquetaCliente);
+                //Usuario de Prueba
+                if (CompanyCache.IdCompany == 999999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\UsuarioPrueba.png";
+                    rutaLogo = ruta + Url;
 
-                    // Celda 5: Etiqueta "Forma Pago"
-                    PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                    {
-                        BorderWidth = 1,
-                        HorizontalAlignment = Element.ALIGN_LEFT,
-                        VerticalAlignment = Element.ALIGN_MIDDLE
-                    };
-                    datosTable.AddCell(cellEtiquetaFormaPago);
+                }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
+                    rutaLogo = ruta + Url;
 
-                    // Celda 6: Etiqueta "Teléfono"
-                    PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + TelefonoProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                    {
-                        BorderWidth = 1,
-                        HorizontalAlignment = Element.ALIGN_LEFT,
-                        VerticalAlignment = Element.ALIGN_MIDDLE
-                    };
-                    datosTable.AddCell(cellEtiquetaTelefono);
+                }
 
-                    // Celda 6: Etiqueta "Dirección"
-                    PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                    {
-                        BorderWidth = 1,
-                        HorizontalAlignment = Element.ALIGN_LEFT,
-                        VerticalAlignment = Element.ALIGN_MIDDLE
-                    };
-                    datosTable.AddCell(cellEtiquetaDireccion);
+                //La familia
+                if (CompanyCache.IdCompany == 114420180)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\familia.png";
+                    rutaLogo = ruta + Url;
 
-                    // Celda 7: Etiqueta "Correo"
-                    PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + CorreoProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                    {
-                        BorderWidth = 1,
-                        HorizontalAlignment = Element.ALIGN_LEFT,
-                        VerticalAlignment = Element.ALIGN_MIDDLE
-                    };
-                    datosTable.AddCell(cellEtiquetaCorreo);
-                    document.Add(datosTable);
-                    document.Add(new Paragraph(" "));
+                }
+
+                //glassmar
+                if (CompanyCache.IdCompany == 3105806704)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\glassmar.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //laCosta
+                if (CompanyCache.IdCompany == 109650325)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\laCosta.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //V Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel Fin
+                //Prefalum, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Prefalum2.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\albo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Mercado del vidrio
+                if (CompanyCache.IdCompany == 3102879949)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\mercadoVidrio.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidriera Palmares, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrieraPalmares.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Perfect Glass, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 333333333)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\PerfectGlass.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31025820)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\AluviLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 3101794685)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 205150849)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\MakyLogo.png";
+                    rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 112540885)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosAlturaLogo.png";
+                    rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 1230123)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\GlassWinLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 25550555)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VitroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31028013)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\InnovaLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 111560456)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\DialexLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310108681)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310171783)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                PdfPCell imageCell = new PdfPCell(iTextSharp.text.Image.GetInstance(rutaLogo));
+                imageCell.Border = PdfPCell.NO_BORDER;
+                imageCell.FixedHeight = 120f; // Ajusta la altura de la imagen
+                imageCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                Encabezado.AddCell(imageCell);
+
+                // Crea un nuevo objeto Font para los textos
+                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
+                iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                iTextSharp.text.Font textFont2 = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 9, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
+                // Agrega los textos a la segunda celda
+                PdfPCell textCell = new PdfPCell();
+                textCell.Border = PdfPCell.NO_BORDER;
+
+                // Alinea el contenido de la celda al centro
+                textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+                // Agrega el párrafo y los chunks al documento
+                Paragraph paragraph = new Paragraph();
+                paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-623589", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2635-5510", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "Vitroesparzafacturadigital@outlook.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 3101704274)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-704274", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Naranjo, San Miguel", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + " 7010-5184 ", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "construserviciosdelnorte@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+
+                else if (CompanyCache.IdCompany == 999999999)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 9-999-99999", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 110640721)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-106-40721", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Barrio Cuba, San José, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "8580-0953", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "vidriourbano@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 114420180)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-144-20180", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "DECOPLAZA local 3, La Unión, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "8385-4893", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "gajosue@hotmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+                else if (CompanyCache.IdCompany == 109650325)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-096-50325", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Las Huacas, Guanacaste, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "6163 6730", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "lacosta@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 9699999999)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-785963", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "San Pablo de Heredia, C.R.", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2101-4081 / 8462-8462", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidriosdayra.com / solucionesdayra@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 205150849)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-897998", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 31028013)
+                {
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-801388", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("650 METROS NORESTE Y 350 METROS NOROESTE DE KFC, BOSQUES DON JOSE, NICOYA.", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 204260627)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 2-042-60627", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2042-60627", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "marvinsalazar@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 111111111)
+                {
+                    paragraph.Add(new Chunk("EL COYOL ALAJUELA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "6134 7128", textFont));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@prefalumcr.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "ventas@prefalumcr.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 3102154177)
+                {
+                    paragraph.Add(new Chunk("75 Mts Este de Mas X Menos, Rincón de Arias.", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-154177", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + "24940866 / 24944306", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+                else if (CompanyCache.IdCompany == 222222222)
+                {
+                    paragraph.Add(new Chunk("PALMARES, COSTA RICA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-101-176270", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidrierapalmares.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Sitio Web: " + "http://www.vidrierapalmares.com/", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 333333333)
+                {
+                    paragraph.Add(new Chunk("SAN RAMÓN, ALAJUELA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-333-33333", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("WhatsApp: +(506) " + "8671 5008", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "crperfectglass@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 503320196)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 5-0332-0196", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Frente escual de Los Llanos.", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "+(506) 8751-7492/ 6337-2024", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "Vitecosr@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                textCell.AddElement(paragraph);
+                Encabezado.AddCell(textCell);
+
+                // Establece el ancho de la celda de la tabla (ajusta según tus necesidades)
+                Encabezado.SetWidths(new float[] { 3f, 4f }); // Primer valor es el ancho de la celda de la imagen
+
+                // Agrega la tabla al documento
+                document.Add(Encabezado);
+
+                
+
+                document.Add(new Paragraph(" "));
+                #endregion
+
+                #region Tabla de Informacion 
+                // Crear una tabla para los datos del proyecto y la información del cliente
+                PdfPTable datosTable = new PdfPTable(2);
+                datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
+                datosTable.LockedWidth = true;
+
+                // Celda 1: Datos del Proyecto
+                PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                {
+                    BackgroundColor = new BaseColor(70, 130, 180),
+                    BorderWidth = 1f,
+                    //Colspan = 1, // Fusionar una columna para "Datos del Proyecto"
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_CENTER
+                };
+                datosTable.AddCell(cellDatosProyecto);
+
+                // Celda 2: Información del Cliente
+                PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Provedor", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                {
+                    BackgroundColor = new BaseColor(70, 130, 180),
+                    BorderWidth = 1f,
+                    Colspan = 1, // Fusionar una columna para "Información del Cliente"
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellDatosCliente);
+
+                // Celda 3: Etiqueta "Cotización"
+                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCotizacion);
+
+                // Celda 4: Etiqueta "Cliente"
+                PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Provedor: " + NombreProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCliente);
+
+                // Celda 5: Etiqueta "Forma Pago"
+                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaFormaPago);
+
+                // Celda 6: Etiqueta "Teléfono"
+                PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + TelefonoProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaTelefono);
+
+                // Celda 6: Etiqueta "Dirección"
+                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaDireccion);
+
+                // Celda 7: Etiqueta "Correo"
+                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + CorreoProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCorreo);
+                document.Add(datosTable);
+                document.Add(new Paragraph(" "));
 
                 #endregion
 
@@ -1305,7 +1810,7 @@ namespace Precentacion.User.Bill
 
                 tabla.SetWidths(tablaW);
 
-         
+
 
                 // Agregar encabezados de columna
                 /*for (int i = 0; i < dgvDesglose.Columns.Count; i++)
@@ -1378,7 +1883,7 @@ namespace Precentacion.User.Bill
 
                     // Agregar un espacio entre tablas
                     PdfPCell emptyCell = new PdfPCell(new Phrase(" "));
-                    emptyCell.Border = Rectangle.NO_BORDER;
+                    emptyCell.Border = iTextSharp.text.Rectangle.NO_BORDER;
                     emptyCell.Colspan = dgvDesglose.Columns.Count;
                     emptyCell.FixedHeight = 10f;
                     tabla.AddCell(emptyCell);
@@ -1397,16 +1902,800 @@ namespace Precentacion.User.Bill
 
                 //Cerrar el documento
                 document.Close();
-                    MessageBox.Show("Desglose de Material Generado Correctamente", "Desglose de Material", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    GenerarPdfHojaProduccion();
+                MessageBox.Show("Desglose de Material Generado Correctamente", "Desglose de Material", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GenerarPdfHojaProduccion();
+
+            }
+            catch (Exception)
+            {
+                document.Close();
+
+            }
+        }
+
+        public void pdf2()
+        {
+            #region Crear el documento
+            // Obtener el directorio del escritorio y las carpetas necesarias
+            string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string CarpetaFactura = Path.Combine(escritorio, "Desglose Material");
+            string carpetaNombre = Path.Combine(CarpetaFactura, txtidClient.Text.Trim());
+            string NameFile = "Desglose de Material n° " + txtidQuote.Text + ".pdf";
+
+            // Verificar si la carpeta "Proformas" existe, si no, crearla
+            if (!Directory.Exists(CarpetaFactura))
+            {
+                Directory.CreateDirectory(CarpetaFactura);
+            }
+
+            // Verificar si la carpeta con el nombre existe, si no, crearla
+            if (!Directory.Exists(carpetaNombre))
+            {
+                Directory.CreateDirectory(carpetaNombre);
+            }
+
+            // Crear la ruta completa del archivo PDF
+            string rutaArchivoPDF = Path.Combine(carpetaNombre, NameFile);
+
+            Document document = new Document();
+            // Crea un nuevo objeto PdfWriter para escribir el documento en un archivo
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
+
+            // Asigna el objeto PdfWriter al documento
+            document.Open();
+            #endregion
+            try
+            {
+                #region Seleccion de Proveedor
+                string Option = cbProveedorDesglose.SelectedValue.ToString();
+                string NombreProvedor = "";
+                string TelefonoProvedor = "";
+                string CorreoProvedor = "";
+                switch (Option)
+                {
+                    case "Extralum":
+                        NombreProvedor = "Extralum";
+                        TelefonoProvedor = "2277-1900";
+                        CorreoProvedor = "aavila@extralum.co.cr";
+                        break;
+                    case "Macopa":
+                        NombreProvedor = "Macopa";
+                        TelefonoProvedor = "2010-7310";
+                        CorreoProvedor = "proyectosvidrios@macopa.com";
+                        break;
+                    case "Espejos el Mundo":
+                        NombreProvedor = "Espejos el Mundo";
+                        TelefonoProvedor = "2293-4961";
+                        CorreoProvedor = "N/A";
+                        break;
+                    default:
+                        break;
+                }
+                #endregion
+
+                #region Encabezado
+                // Crea una tabla con dos columnas
+                PdfPTable Encabezado = new PdfPTable(2);
+                Encabezado.WidthPercentage = 120;
+                string rutaLogo = "";
+
+                //Vitro esparza
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vitroEsparza.png";
+                    rutaLogo = ruta + Url;
 
                 }
-                catch (Exception)
+                //Viteco
+                if (CompanyCache.IdCompany == 503320196)
                 {
-                    document.Close();
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Viteco.png";
+                    rutaLogo = ruta + Url;
 
+                }
+                //MS
+                if (CompanyCache.IdCompany == 204260627)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\ms.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\constru.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                //Usuario de Prueba
+                if (CompanyCache.IdCompany == 999999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\UsuarioPrueba.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                //La familia
+                if (CompanyCache.IdCompany == 114420180)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\familia.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                //glassmar
+                if (CompanyCache.IdCompany == 3105806704)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\glassmar.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //laCosta
+                if (CompanyCache.IdCompany == 109650325)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\laCosta.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //V Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel Fin
+                //Prefalum, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Prefalum2.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\albo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Mercado del vidrio
+                if (CompanyCache.IdCompany == 3102879949)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\mercadoVidrio.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidriera Palmares, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrieraPalmares.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Perfect Glass, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 333333333)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\PerfectGlass.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31025820)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\AluviLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 3101794685)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 205150849)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\MakyLogo.png";
+                    rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 112540885)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosAlturaLogo.png";
+                    rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 1230123)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\GlassWinLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 25550555)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VitroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31028013)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\InnovaLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 111560456)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\DialexLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310108681)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310171783)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                PdfPCell imageCell = new PdfPCell(iTextSharp.text.Image.GetInstance(rutaLogo));
+                imageCell.Border = PdfPCell.NO_BORDER;
+                imageCell.FixedHeight = 120f; // Ajusta la altura de la imagen
+                imageCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                Encabezado.AddCell(imageCell);
+
+                // Crea un nuevo objeto Font para los textos
+                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
+                iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                iTextSharp.text.Font textFont2 = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 9, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
+                // Agrega los textos a la segunda celda
+                PdfPCell textCell = new PdfPCell();
+                textCell.Border = PdfPCell.NO_BORDER;
+
+                // Alinea el contenido de la celda al centro
+                textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+                // Agrega el párrafo y los chunks al documento
+                Paragraph paragraph = new Paragraph();
+                paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-623589", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2635-5510", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "Vitroesparzafacturadigital@outlook.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 3101704274)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-704274", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Naranjo, San Miguel", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + " 7010-5184 ", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "construserviciosdelnorte@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 110640721)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-106-40721", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Barrio Cuba, San José, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "8580-0953", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "vidriourbano@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+                else if (CompanyCache.IdCompany == 999999999)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 9-999-99999", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+                else if (CompanyCache.IdCompany == 114420180)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-144-20180", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "DECOPLAZA local 3, La Unión, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "8385-4893", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "gajosue@hotmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+                else if (CompanyCache.IdCompany == 109650325)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-096-50325", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Las Huacas, Guanacaste, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "6163 6730", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "lacosta@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 9699999999)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-785963", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "San Pablo de Heredia, C.R.", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2101-4081 / 8462-8462", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidriosdayra.com / solucionesdayra@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 205150849)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-897998", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 31028013)
+                {
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-801388", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("650 METROS NORESTE Y 350 METROS NOROESTE DE KFC, BOSQUES DON JOSE, NICOYA.", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 204260627)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 2-042-60627", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2042-60627", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "marvinsalazar@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 111111111)
+                {
+                    paragraph.Add(new Chunk("EL COYOL ALAJUELA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "6134 7128", textFont));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@prefalumcr.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "ventas@prefalumcr.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 3102154177)
+                {
+                    paragraph.Add(new Chunk("75 Mts Este de Mas X Menos, Rincón de Arias.", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-154177", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + "24940866 / 24944306", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+                else if (CompanyCache.IdCompany == 222222222)
+                {
+                    paragraph.Add(new Chunk("PALMARES, COSTA RICA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-101-176270", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidrierapalmares.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Sitio Web: " + "http://www.vidrierapalmares.com/", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 333333333)
+                {
+                    paragraph.Add(new Chunk("SAN RAMÓN, ALAJUELA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-333-33333", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("WhatsApp: +(506) " + "8671 5008", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "crperfectglass@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 503320196)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 5-0332-0196", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Frente escual de Los Llanos.", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "+(506) 8751-7492/ 6337-2024", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "Vitecosr@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                textCell.AddElement(paragraph);
+                Encabezado.AddCell(textCell);
+
+                // Establece el ancho de la celda de la tabla (ajusta según tus necesidades)
+                Encabezado.SetWidths(new float[] { 3f, 4f }); // Primer valor es el ancho de la celda de la imagen
+
+                // Agrega la tabla al documento
+                document.Add(Encabezado);
+
+
+
+                document.Add(new Paragraph(" "));
+                #endregion
+
+                #region Tabla de Informacion 
+                // Crear una tabla para los datos del proyecto y la información del cliente
+                PdfPTable datosTable = new PdfPTable(2);
+                datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
+                datosTable.LockedWidth = true;
+
+                // Celda 1: Datos del Proyecto
+                PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                {
+                    BackgroundColor = new BaseColor(70, 130, 180),
+                    BorderWidth = 1f,
+                    //Colspan = 1, // Fusionar una columna para "Datos del Proyecto"
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_CENTER
+                };
+                datosTable.AddCell(cellDatosProyecto);
+
+                // Celda 2: Información del Cliente
+                PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Provedor", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                {
+                    BackgroundColor = new BaseColor(70, 130, 180),
+                    BorderWidth = 1f,
+                    Colspan = 1, // Fusionar una columna para "Información del Cliente"
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellDatosCliente);
+
+                // Celda 3: Etiqueta "Cotización"
+                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCotizacion);
+
+                // Celda 4: Etiqueta "Cliente"
+                PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Provedor: " + NombreProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCliente);
+
+                // Celda 5: Etiqueta "Forma Pago"
+                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaFormaPago);
+
+                // Celda 6: Etiqueta "Teléfono"
+                PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + TelefonoProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaTelefono);
+
+                // Celda 6: Etiqueta "Dirección"
+                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaDireccion);
+
+                // Celda 7: Etiqueta "Correo"
+                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + CorreoProvedor, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCorreo);
+                document.Add(datosTable);
+                document.Add(new Paragraph(" "));
+
+                #endregion
+
+                #region Tabla de Productos
+                #region Nombres con diferentes categorias
+                N_LoadProduct NLoadProduct = new N_LoadProduct();
+                DataTable dtAluminio = new DataTable();
+                DataTable dtAccesorio = new DataTable();
+                DataTable dtVidrio = new DataTable();
+
+                dtAluminio = NLoadProduct.loadAluminioDesglose();
+                dtAccesorio = NLoadProduct.loadAccesorioDesglose();
+                dtVidrio = NLoadProduct.loadVidrioDesglose();
+                #endregion
+
+                // 1. Agregar la columna "Categoría" a dgvDesglose si aún no existe
+                if (!dgvDesglose.Columns.Contains("Categoría"))
+                {
+                    dgvDesglose.Columns.Add("Categoría", "Categoría");
+                }
+
+                // 2. Asignar la categoría basada en la descripción
+                foreach (DataGridViewRow row in dgvDesglose.Rows)
+                {
+                    if (row.Cells["Description"].Value != null)
+                    {
+                        string description = row.Cells["Description"].Value.ToString();
+                        string categoria = "";
+
+                        // Verificar si la descripción existe en dtAluminio
+                        if (dtAluminio.AsEnumerable().Any(r => r.Field<string>("Description") == description))
+                        {
+                            categoria = "Aluminio";
+                        }
+                        // Verificar si la descripción existe en dtAccesorio
+                        else if (dtAccesorio.AsEnumerable().Any(r => r.Field<string>("Description") == description))
+                        {
+                            categoria = "Accesorios";
+                        }
+                        // Verificar si la descripción existe en dtVidrio
+                        else if (dtVidrio.AsEnumerable().Any(r => r.Field<string>("Description") == description))
+                        {
+                            categoria = "Vidrio";
+                        }
+
+                        // Asignar la categoría en la columna "Categoría"
+                        row.Cells["Categoría"].Value = categoria;
+                    }
+                }
+
+                // 3. Crear una lista ordenada según la categoría
+                var orderedRows = dgvDesglose.Rows.Cast<DataGridViewRow>()
+                    .Where(row => row.Cells["Categoría"].Value != null)
+                    .OrderBy(row => row.Cells["Categoría"].Value.ToString())
+                    .ToList();
+
+                // 4. Agregar los datos del dgvDesglose a la tabla de PDF
+                PdfPTable tabla = new PdfPTable(2); // Cambia a 2 columnas para "Description" y "Cantidad Piezas"
+                tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
+                tabla.LockedWidth = true;
+                float[] tablaW = { 250, 250 }; // Ancho de las columnas
+
+                tabla.SetWidths(tablaW);
+
+                // Agrupar las filas por categoría
+                var groupedRows = orderedRows.GroupBy(row => row.Cells["Categoría"].Value.ToString());
+
+                // Crear una tabla separada para cada categoría
+                foreach (var group in groupedRows)
+                {
+                    // Agregar un título para la categoría con fondo azul y letra blanca
+                    PdfPCell categoryTitleCell = new PdfPCell(new Phrase(group.Key, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.WHITE)));
+                    categoryTitleCell.Colspan = 2; // Hacer que la celda ocupe todas las columnas
+                    categoryTitleCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    categoryTitleCell.PaddingTop = 10f; // Agregar un espacio superior
+                    categoryTitleCell.PaddingBottom = 10f; // Agregar un espacio inferior
+                    categoryTitleCell.BackgroundColor = new BaseColor(70, 130, 180); // Azul (RGB: 0, 102, 204)
+                    categoryTitleCell.BorderColor = BaseColor.WHITE;
+
+                    tabla.AddCell(categoryTitleCell);
+
+                    // Agregar los encabezados de las columnas solo para las columnas que quieres imprimir
+                    PdfPCell headerDescriptionCell = new PdfPCell(new Phrase("Description", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                    headerDescriptionCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    tabla.AddCell(headerDescriptionCell);
+
+                    PdfPCell headerCantidadCell = new PdfPCell(new Phrase("Cantidad Piezas", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                    headerCantidadCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    tabla.AddCell(headerCantidadCell);
+
+                    // Agregar las filas de datos para esta categoría
+                    foreach (var row in group)
+                    {
+                        // Solo imprime "Description" y "Cantidad Piezas"
+                        if (row.Cells["Description"].Value != null)
+                        {
+                            tabla.AddCell(new Phrase(row.Cells["Description"].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
+                        }
+                        else
+                        {
+                            tabla.AddCell(string.Empty); // Si no hay valor, agrega una celda vacía
+                        }
+
+                        if (row.Cells["Cantidad Piezas"].Value != null)
+                        {
+                            tabla.AddCell(new Phrase(row.Cells["Cantidad Piezas"].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
+                        }
+                        else
+                        {
+                            tabla.AddCell(string.Empty); // Si no hay valor, agrega una celda vacía
+                        }
+                    }
+
+                    // Agregar un espacio entre tablas
+                    PdfPCell emptyCell = new PdfPCell(new Phrase(" "));
+                    emptyCell.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                    emptyCell.Colspan = 2; // Cambiado a 2 columnas
+                    emptyCell.FixedHeight = 10f;
+                    tabla.AddCell(emptyCell);
+                }
+
+                // Agregar la tabla al documento
+                document.Add(tabla);
+
+                #endregion
+
+
+                //Cerrar el documento
+                document.Close();
+                MessageBox.Show("Desglose de Material Generado Correctamente", "Desglose de Material", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GenerarPdfHojaProduccion();
+
+            }
+            catch (Exception)
+            {
+                document.Close();
+
+            }
+        }
+
+
+        private void btnGenerarDesglose_Click(object sender, EventArgs e)
+        {
+
+           
+            // Mostrar un cuadro de diálogo personalizado para seleccionar el diseño de PDF
+            string[] options = { "Diseño 1 (con metraje)", "Diseño 2 (solo descripción y cantidad)" };
+            using (Form form = new Form())
+            {
+                ComboBox cbOptions = new ComboBox();
+                Button btnOK = new Button();
+
+                cbOptions.DataSource = options;
+                cbOptions.Dock = DockStyle.Fill;
+
+                btnOK.Text = "Aceptar";
+                btnOK.Dock = DockStyle.Bottom;
+                btnOK.DialogResult = DialogResult.OK;
+
+                form.Controls.Add(cbOptions);
+                form.Controls.Add(btnOK);
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.Size = new Size(350, 120);
+                form.Text = "Seleccionar diseño de PDF";
+
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedOption = cbOptions.SelectedItem.ToString();
+                    switch (selectedOption)
+                    {
+                        case "Diseño 1 (con metraje)":
+                            pdf1(); 
+                         
+                            break;
+                        case "Diseño 2 (solo descripción y cantidad)":
+                            pdf2();
+
+                            break;
+                        
+                    }
+                }
+                else
+                {
+                   
                 }
             }
+
+
+        }
 
         private void CargarTamañoPieza()
         {
@@ -1640,7 +2929,7 @@ namespace Precentacion.User.Bill
         {
             try
             {
-                #region Crear el documento
+                    #region Crear el documento
                 //Recorrer Todo el DataTable
                 foreach (DataRow item in dt.Rows)
                 {
@@ -1683,8 +2972,7 @@ namespace Precentacion.User.Bill
                     document.Open();
                     #endregion
 
-                    
-
+                   
                     #region Tabla de Informacion 
                     //Agregar un Titulo con el el Sistema , Color y Diseño de la Vnetana
                     PdfPTable datosTable = new PdfPTable(1);
@@ -1819,6 +3107,15 @@ namespace Precentacion.User.Bill
                     //Obtener la Ruta de la Carpeta bin
                     string ruta = Path.GetDirectoryName(Application.ExecutablePath);
                     string Url = "\\Images\\Logos\\UsuarioPrueba.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
                     rutaLogo = ruta + Url;
 
                 }
@@ -2440,6 +3737,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 if (CompanyCache.IdCompany == 3105806704)
                 {
                     //Obtener la Ruta de la Carpeta bin
@@ -2985,6 +4291,15 @@ namespace Precentacion.User.Bill
                     rutaLogo = ruta + Url;
 
                 }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
+                    rutaLogo = ruta + Url;
+
+                }
                 //La familia
                 if (CompanyCache.IdCompany == 114420180)
                 {
@@ -3520,10 +4835,6 @@ namespace Precentacion.User.Bill
             ConfigDataGridDesglose();
             CargarTamañoPieza();
         }
-
-
-
-
 
         private void frmFacturar_FormClosed(object sender, FormClosedEventArgs e)
         {

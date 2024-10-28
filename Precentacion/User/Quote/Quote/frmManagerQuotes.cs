@@ -117,9 +117,9 @@ namespace Precentacion.User.Quote.Quote
                     frmQuote.txtTotal.Text = frmQuote.precioTotalEdit.ToString("c");
 
                     frmQuote.txtidQuote.Text = dgvQuotes.CurrentRow.Cells[1].Value.ToString();
-                 
+                    frmQuote.label4.Text = "Edicion de Proforma";
 
-                    
+
 
                     frmQuote.Edit = true;
                     frmQuote.EventClose = false;
@@ -533,6 +533,11 @@ namespace Precentacion.User.Quote.Quote
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnRefrescar_Click(object sender, EventArgs e)
+        {
+            frmManagerQuotes_Load(null, null);
         }
     }
 

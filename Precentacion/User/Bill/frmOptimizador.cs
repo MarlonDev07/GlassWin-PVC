@@ -225,44 +225,58 @@ namespace Precentacion.User.Bill
             }
         }
 
+        // Este método optimiza los cortes de barras disponibles según las longitudes requeridas
+        // y retorna una lista de listas que contiene las longitudes cortadas para cada barra.
         private List<List<(decimal length, int window, int number)>> OptimizeCuts(decimal[] availableBars, List<(decimal length, int window, int number)> requiredLengthsWithNumbers)
         {
-            // Ordenar las longitudes requeridas de mayor a menor
+            // Ordenar las longitudes requeridas de mayor a menor para facilitar el ajuste en las barras disponibles.
             requiredLengthsWithNumbers = requiredLengthsWithNumbers
-                .OrderByDescending(x => x.length)
-                .ToList();
+                .OrderByDescending(x => x.length) // Ordena de mayor a menor por la longitud requerida.
+                .ToList(); // Convierte el resultado en una lista.
 
-            // Lista para almacenar los cortes óptimos para cada barra
+            // Lista que almacenará los cortes óptimos de longitudes para cada barra disponible.
             List<List<(decimal length, int window, int number)>> optimizedCuts = new List<List<(decimal length, int window, int number)>>();
 
+            // Iterar sobre cada barra disponible para realizar los cortes.
             foreach (decimal bar in availableBars)
             {
+                // Lista temporal para almacenar los cortes realizados en la barra actual.
                 List<(decimal length, int window, int number)> cuts = new List<(decimal length, int window, int number)>();
+                // Mantener la longitud restante de la barra mientras se hacen los cortes.
                 decimal remainingLength = bar;
 
-                foreach (var lengthWithNumber in requiredLengthsWithNumbers.ToList())
+                // Revisar cada longitud requerida, intentando ajustar la mayor cantidad de cortes en la barra actual.
+                foreach (var lengthWithNumber in requiredLengthsWithNumbers.ToList()) // Convertimos a lista para evitar modificar la colección mientras iteramos.
                 {
+                    // Si la longitud requerida cabe en la longitud restante de la barra.
                     if (remainingLength >= lengthWithNumber.length)
                     {
+                        // Añadir el corte a la lista de cortes realizados para esta barra.
                         cuts.Add(lengthWithNumber);
+                        // Restar la longitud cortada de la longitud restante de la barra.
                         remainingLength -= lengthWithNumber.length;
+                        // Remover la longitud que ya ha sido cortada de la lista de longitudes requeridas.
                         requiredLengthsWithNumbers = requiredLengthsWithNumbers
-                            .Where(val => val.number != lengthWithNumber.number)
-                            .ToList();
+                            .Where(val => val.number != lengthWithNumber.number) // Mantiene solo los elementos que no han sido cortados (diferente número).
+                            .ToList(); // Convierte el resultado en una nueva lista.
                     }
                 }
 
+                // Después de cortar lo más posible en la barra actual, añade la lista de cortes realizados para esta barra a la lista general.
                 optimizedCuts.Add(cuts);
             }
 
-            // Agregar cualquier corte que no pudo ser optimizado
+            // Si hay longitudes requeridas que no pudieron ser cortadas en las barras disponibles, agrégalas como una nueva lista.
             if (requiredLengthsWithNumbers.Count > 0)
             {
+                // Añade los cortes restantes que no pudieron ser optimizados en las barras anteriores.
                 optimizedCuts.Add(new List<(decimal length, int window, int number)>(requiredLengthsWithNumbers));
             }
 
+            // Retorna la lista de listas, donde cada lista representa los cortes realizados para una barra específica.
             return optimizedCuts;
         }
+
 
 
         private void btnImprimir_Click_1(object sender, EventArgs e)

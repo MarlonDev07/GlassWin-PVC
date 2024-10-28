@@ -1,7 +1,9 @@
 ﻿using AccesoDatos.Company.Quotes;
+using Dominio.Model.ClassWindows;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -437,6 +439,78 @@ namespace Negocio.Company.Quote
             catch
             {
                     return null ;
+            }
+        }
+
+        public bool GetDataWindows()
+        {
+            try
+            {
+                //Obtener los Datos del dt  
+                DataTable dt = ADQuote.GetDataWindows();
+                //llenar las propiedades de la clase clsWindows con los datos del dt
+                ClsWindows.Weight = Convert.ToDecimal(dt.Rows[0]["Width"]);
+                ClsWindows.heigt = Convert.ToDecimal(dt.Rows[0]["Height"]);
+                ClsWindows.Color = dt.Rows[0]["Color"].ToString();
+                ClsWindows.Vidrio = dt.Rows[0]["Glass"].ToString();
+                ClsWindows.Detalle = dt.Rows[0]["Description"].ToString();
+
+                //Detectar si el cedazo esta seleccionado, Buscando en la Descricion si viene la palabra "Cedazo"
+                if (dt.Rows[0]["Description"].ToString().Contains("Cedazo"))
+                {
+                    ClsWindows.Cedazo = true;
+                }
+                else
+                {
+                    ClsWindows.Cedazo = false;
+                }
+
+                // Dividir la descripción en líneas
+                var lines = dt.Rows[0]["Description"].ToString().Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var line in lines)
+                {
+                    // Remover espacios y separar por los dos puntos
+                    var keyValue = line.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (keyValue.Length == 2)
+                    {
+                        string key = keyValue[0].Trim();
+                        string value = keyValue[1].Trim();
+
+                        switch (key)
+                        {
+                            case "Ancho Fijo":
+                                ClsWindows.AnchoFijo = decimal.Parse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
+                                break;
+                            case "Alto Fijo":
+                                ClsWindows.AltoFijo = decimal.Parse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
+                                break;
+                            case "Aluminio":
+                                ClsWindows.Aluminio = value;
+                                break;
+                            case "Ubicación":
+                                ClsWindows.Ubicacion = value;
+                                break;
+                            case "Divisiones":
+                                ClsWindows.Diviciones = int.Parse(value);
+                                break;
+                            case "Vidrio Fijo":
+                                ClsWindows.VidrioFijo = value;
+                                break;
+                            default:
+                                Console.WriteLine($"Propiedad desconocida: {key}");
+                                break;
+                        }
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
             }
         }
 

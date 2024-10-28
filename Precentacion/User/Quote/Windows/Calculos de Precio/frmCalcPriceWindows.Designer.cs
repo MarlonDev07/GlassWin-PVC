@@ -169,7 +169,7 @@
             this.lblTituloCotizacion.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblTituloCotizacion.Location = new System.Drawing.Point(0, 0);
             this.lblTituloCotizacion.Name = "lblTituloCotizacion";
-            this.lblTituloCotizacion.Size = new System.Drawing.Size(1183, 37);
+            this.lblTituloCotizacion.Size = new System.Drawing.Size(1170, 37);
             this.lblTituloCotizacion.TabIndex = 2;
             this.lblTituloCotizacion.Text = "Cotizacion de Ventana:";
             this.lblTituloCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -182,7 +182,7 @@
             this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUbicacion.BackColor = System.Drawing.Color.Orange;
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(736, 8);
+            this.txtUbicacion.Location = new System.Drawing.Point(732, 8);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(162, 23);
             this.txtUbicacion.TabIndex = 46;
