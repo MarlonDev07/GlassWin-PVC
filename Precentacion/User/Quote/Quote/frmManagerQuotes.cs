@@ -117,7 +117,7 @@ namespace Precentacion.User.Quote.Quote
                     frmQuote.txtTotal.Text = frmQuote.precioTotalEdit.ToString("c");
 
                     frmQuote.txtidQuote.Text = dgvQuotes.CurrentRow.Cells[1].Value.ToString();
-                    frmQuote.label4.Text = "Edicion de Proforma";
+                    frmQuote.lblTitulo.Text = "Edicion de Proforma";
 
 
 

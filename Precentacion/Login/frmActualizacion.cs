@@ -6,11 +6,14 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using zPersonalizacion;
 
 namespace Precentacion.Login
 {
     public partial class frmActualizacion : Form
     {
+        #region Variables
+
         // URL del servidor FTP y nombre de usuario/contraseña
         private string ftpUrl = "ftp://138.59.135.48/";
         private string ftpUsername = "ftpUser";
@@ -20,26 +23,25 @@ namespace Precentacion.Login
         Version versionNueva;
         Version versionActual;
 
+        #endregion
+
+        #region Constructor
         public frmActualizacion()
         {
             InitializeComponent();
-            label1.Text = "Verificando actualizaciones...";
-
         }
+        #endregion
 
+        #region Eventos
         private async void frmActualizacion_Load(object sender, EventArgs e)
         {
-            // Mostrar el formulario
-            this.Show();
-
-            // Iniciar la barra de progreso
-            progressBar1.Style = ProgressBarStyle.Marquee;
-            timer1.Start();
-
             // Ejecutar la tarea de actualización en segundo plano
             await Actualizacion();
         }
+        #endregion
 
+        #region Metodos
+        // Método para actualización
         private async Task Actualizacion()
         {
             // Ejecutar VerificarActualizaciones en un subproceso separado
@@ -48,7 +50,7 @@ namespace Precentacion.Login
             // Descargar archivos de actualización si hay actualizaciones disponibles
             if (actualizacionesDisponibles)
             {
-                label1.Text = "Nueva versión disponible: " + versionNueva.ToString() + " Descargando...";
+                lblActualizacion.Text = "Nueva versión disponible: " + versionNueva.ToString() + " Descargando...";
                 bool descargaExitosa = await DescargarArchivosActualizacion();
 
                 if (descargaExitosa)
@@ -72,16 +74,7 @@ namespace Precentacion.Login
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //Actualizar la barra de progreso infinitamente
-            if (progressBar1.Value < 100)
-            {
-                progressBar1.Value += 1;
-                progressBar1.Value -= 1;
-            }
-        }
-
+        // Método para verificar actualizaciones
         public bool VerificarActualizaciones()
         {
 
@@ -113,19 +106,18 @@ namespace Precentacion.Login
                 else
                 {
                     // No hay actualizaciones disponibles
-                    MessageBox.Show("Tu aplicación está actualizada.", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GwMessageBox.Show("Tu aplicación está actualizada.", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al verificar actualizaciones: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                GwMessageBox.Show("Error al verificar actualizaciones: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        // Método para descargar archivos de actualización desde el servidor FTP
-        // Método para descargar archivos de actualización desde el servidor FTP
+        // Método para descargar archivos de actualización
         public async Task<bool> DescargarArchivosActualizacion()
         {
             string archivoZipUrl = ftpUrl + "GlassWin" + versionNueva.ToString() + ".zip";
@@ -214,12 +206,12 @@ namespace Precentacion.Login
             }
             catch (UnauthorizedAccessException ex)
             {
-                MessageBox.Show("Acceso denegado a la ruta de acceso: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                GwMessageBox.Show("Acceso denegado a la ruta de acceso: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al descargar archivos de actualización: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                GwMessageBox.Show("Error al descargar archivos de actualización: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -234,8 +226,9 @@ namespace Precentacion.Login
             shortcut.IconLocation = targetPath;
             shortcut.Save();
         }
+        #endregion
 
-        
+
 
 
 

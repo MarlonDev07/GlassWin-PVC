@@ -776,7 +776,7 @@ namespace Precentacion.User.Quote.Windows
                 //Añadir la Ubicacion
                 if (txtUbicacion.Text != "")
                 {
-                    description += "Ubicacion: " + txtUbicacion.Text + "\n";
+                    description += "Detalle: " + txtUbicacion.Text + "\n";
                 }
         
                 if (txtCantDefault.Text != "")
@@ -3282,6 +3282,16 @@ namespace Precentacion.User.Quote.Windows
         private void pbVentana_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtUbicacion_TextChanged(object sender, EventArgs e)
+        {
+            //Verificar que no pasen los 20 caracteres
+            if (txtUbicacion.Text.Length > 30)
+            {
+                MessageBox.Show("Solo se permiten 20 caracteres en este campo");
+               
+            }
         }
     }
 }

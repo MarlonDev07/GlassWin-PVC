@@ -1,40 +1,36 @@
-﻿using Dominio;
-using Dominio.ClassUser;
+﻿using AngleSharp.Text;
+using Dominio;
+using Dominio.Model.ClassArticuloExclusivo;
 using Dominio.Model.ClasscmbArticulo;
 using Dominio.Model.ClassWindows;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using MaterialSkin.Controls;
 using Negocio.Client;
 using Negocio.Company.Quote;
-using Precentacion.User.Bill;
 using Precentacion.User.Client;
 using Precentacion.User.DashBoard;
 using Precentacion.User.Quote.Accesorios;
 using Precentacion.User.Quote.Prefabricado;
 using Precentacion.User.Quote.SandBlasting;
 using Precentacion.User.Quote.Windows;
+using Precentacion.User.Quote.Windows.Calculos_de_Precio;
+using Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceVentanasFijas;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Text;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using Image = iTextSharp.text.Image;
-using System.Text.RegularExpressions;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
-using System.Xml;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Globalization;
-using Dominio.Model.ClassArticuloExclusivo;
-using Precentacion.User.Quote.Windows.Calculos_de_Precio;
-using Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceVentanasFijas;
+using System.Windows.Forms;
+using System.Xml;
+using zPersonalizacion;
+using Image = iTextSharp.text.Image;
 
 
 namespace Precentacion.User.Quote.Quote
@@ -62,166 +58,26 @@ namespace Precentacion.User.Quote.Quote
         #endregion
 
         #region Constructor
-
-        // Propiedades para el borde personalizado
-        private const int borderWidth = 45; // Grosor del borde
-        private Color borderColor = Color.Orange; // Color del borde
-
-        // Botones personalizados
-        private Button btnMinimize;
-        private Button btnMaximize;
-        private Button btnClose;
         public frmQuote()
         {
-
-
             InitializeComponent();
             loadFunction();
-            this.FormBorderStyle = FormBorderStyle.None; // Eliminar el borde predeterminado
-            this.Padding = new Padding(0, borderWidth, 0, 0); // Asegurar que el contenido no se superponga al borde superior
-            this.Paint += new PaintEventHandler(frmQuote_Paint); // Agregar el manejador del evento Paint
-            this.BackColor = Color.White; // Color de fondo del formulario
-
-            // Crear y configurar los botones personalizados
-            InitializeCustomButtons();
-            // VerificarIdQuote();
-
-            /*if (Edit)
-            {
-                btnSistemas.Enabled = false;
-                btnSanBlast.Enabled = false;
-                btnPrefabricado.Enabled = false;
-                btnExclusivo.Enabled = false;
-
-            }*/
-
         }
         #endregion
-        // Capa de presentación
-        private void VerificarIdQuote()
-        {
-            //int idQuote = Convert.ToInt32(txtidQuote.Text); // Asumiendo que el ID está en un TextBox
 
-            if (NQuote.ExisteIdQuote(Convert.ToInt32(txtidQuote.Text))) // Llamada al método de la capa de lógica de negocio
-            {
-                MessageBox.Show("El ID de la cotización existe en la tabla TotalDesglose.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("El ID de la cotización no existe en la tabla TotalDesglose.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void InitializeCustomButtons()
-        {
-            try
-            {
-                btnMinimize = new Button();
-                btnMinimize.Text = "_";
-                btnMinimize.Size = new Size(23, 23);
-                btnMinimize.Location = new Point(this.Width - 90, 0);
-                btnMinimize.Click += BtnMinimize_Click;
-                this.Controls.Add(btnMinimize);
-
-                btnMaximize = new Button();
-                btnMaximize.Text = "⬜";
-                btnMaximize.Size = new Size(23, 23);
-                btnMaximize.Location = new Point(this.Width - 60, 0);
-                btnMaximize.Click += BtnMaximize_Click;
-                this.Controls.Add(btnMaximize);
-
-                btnClose = new Button();
-                btnClose.Text = "X";
-                btnClose.Size = new Size(23, 23);
-                btnClose.Location = new Point(this.Width - 30, 0);
-                btnClose.Click += BtnClose_Click;
-                this.Controls.Add(btnClose);
-
-                cbIva.SelectedIndex = 6;
-                // Ejecutar el cálculo de IVA y precios automáticamente al cargar el formulario
-                cbIva_SelectedIndexChanged(this, EventArgs.Empty);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-
-        }
-
+        #region Eventos Barra de Titulo
+        //Boton Minimizar
         private void BtnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void BtnMaximize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = (this.WindowState == FormWindowState.Maximized) ? FormWindowState.Normal : FormWindowState.Maximized;
-        }
-
+        //Boton Cerrar
         private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void frmQuote_Paint(object sender, PaintEventArgs e)
-        {
-            try
-            {
-                // Crear un lápiz con el color y grosor deseado
-                using (Pen pen = new Pen(borderColor, borderWidth))
-                {
-                    // Dibujar solo el borde superior del formulario
-                    e.Graphics.DrawLine(pen, 0, 0, this.ClientSize.Width, 0);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            const int WM_NCPAINT = 0x85;
-            const int WM_NCHITTEST = 0x84;
-            const int HTCAPTION = 0x2;
-
-            if (m.Msg == WM_NCPAINT)
-            {
-                // Forzar la redibujación del borde
-                m.Result = IntPtr.Zero;
-                return;
-            }
-
-            if (m.Msg == WM_NCHITTEST)
-            {
-                // Permitir mover el formulario al hacer clic en la zona del borde
-                base.WndProc(ref m);
-                if ((int)m.Result == HTCAPTION)
-                {
-                    m.Result = (IntPtr)HTCAPTION;
-                    return;
-                }
-            }
-
-            base.WndProc(ref m);
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            this.Invalidate(); // Forzar la redibujación del formulario
-
-            // Ajustar la posición de los botones personalizados
-            if (btnMinimize != null && btnMaximize != null && btnClose != null)
-            {
-                btnMinimize.Location = new Point(this.Width - 90, 0);
-                btnMaximize.Location = new Point(this.Width - 60, 0);
-                btnClose.Location = new Point(this.Width - 30, 0);
-            }
-        }
-
+        #endregion
 
         #region LoadFunctions
         private void loadFunction()
@@ -251,15 +107,17 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                GwMessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
 
         }
+
         private void loadDate()
         {
             txtDate.Text = Date.ToString("dd/MM/yyyy");
         }
+
         public void loadWindows()
         {
             try
@@ -286,15 +144,16 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                GwMessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         public void LoadConditionals()
         {
             try
             {
-                //Vidrios Maky
-                if (CompanyCache.IdCompany == 205150849 || CompanyCache.IdCompany == 3101794685)
+                //Vidrios Maky, InnovaGlass y Usuario Prueba
+                if (CompanyCache.IdCompany == 205150849 || CompanyCache.IdCompany == 3101794685 || CompanyCache.IdCompany == 1230123)
                 {
                     cbOpcion.SelectedIndex = 0;
                     txtConditional2.Text = "2.El tiempo de entrega en promedio es de 15 días hábiles, y rige a partir de la cancelación del adelanto.";
@@ -307,6 +166,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional9.Visible = false;
                     txtConditional10.Visible = false;
                 }
+
                 //Vidrios DiAlex
                 if (CompanyCache.IdCompany == 111560456)
                 {
@@ -322,6 +182,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional9.Visible = false;
                     txtConditional10.Visible = false;
                 }
+
                 //Aluvi
                 if (CompanyCache.IdCompany == 31025820)
                 {
@@ -339,6 +200,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //Vidrios Altura
                 if (CompanyCache.IdCompany == 112540885)
                 {
@@ -356,7 +218,8 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Después del giro del 50%, no se aceptan devoluciones o cambios en el proyecto.";
 
                 }
-                //Vidrios Maky
+
+                //VitroStudio
                 if (CompanyCache.IdCompany == 25550555)
                 {
                     cbOpcion.Visible = false;
@@ -372,22 +235,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
-                //J123
-                if (CompanyCache.IdCompany == 1230123)
-                {
-                    cbOpcion.Visible = false;
-                    txtConditional1.Text = "1.Esta oferta incluye, materiales, mano de obra, transporte e instalación";
-                    txtConditional2.Text = "2.Oferta NO incluye desinstalación de buques existente";
-                    txtConditional3.Text = "3.Se cotizan productos marca Extralum";
-                    txtConditional4.Text = "4.Se requiere realizar la visita para tomar medidas rectificadas";
-                    txtConditional5.Text = "5.Forma de pago 50% adelanto 50% contra entrega";
-                    txtConditional6.Text = "6.Entrega de prefabricados de 8 a 20 días hábiles";
-                    txtConditional7.Text = "7.Por favor revisar cantidades, sistema y acabados";
-                    txtConditional8.Text = "8.Validez de cotización 8 días";
-                    txtConditional9.Text = "9.Precio puede variar según aumentos del mercado";
-                    txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
-                }
                 //Vitro Esparza
                 if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
                 {
@@ -404,6 +252,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //Prefalum
                 if (CompanyCache.IdCompany == 111111111)
                 {
@@ -420,6 +269,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //Vidrios Albo
                 if (CompanyCache.IdCompany == 3102154177)
                 {
@@ -433,18 +283,19 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional7.Text = "7.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //Mercado del Vidrio
                 if (CompanyCache.IdCompany == 3102879949)
-                {
-                    cbOpcion.Visible = false;
-                    txtConditional5.Text = "1.Forma de pago 50% adelanto 50% contra entrega";
-                    txtConditional6.Text = "2.Entrega de prefabricados de 3 a 6 días hábiles";
-                    txtConditional7.Text = "3.Por favor revisar cantidades, sistema y acabados";
-                    txtConditional8.Text = "4.Validez de cotización 8 días";
-                    txtConditional9.Text = "5.Precio puede variar según aumentos del mercado";
-                    txtConditional10.Text = "6.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
-
+                { 
+                    txtConditional1.Text = "1.Se cotizan productos marca Extralum";
+                    txtConditional2.Text = "2.Forma de pago 50% adelanto 50% contra entrega";
+                    txtConditional3.Text = "3.Entrega de prefabricados de 8 a 20 días hábiles";
+                    txtConditional4.Text = "4.Por favor revisar cantidades, sistema y acabados";
+                    txtConditional5.Text = "5.Validez de cotización 8 días";
+                    txtConditional6.Text = "6.Precio puede variar según aumentos del mercado";
+                    txtConditional7.Text = "7.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
                 }
+
                 //MS Soluciones
                 if (CompanyCache.IdCompany == 204260627)
                 {
@@ -461,6 +312,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //Constru
                 if (CompanyCache.IdCompany == 3101704274)
                 {
@@ -476,6 +328,7 @@ namespace Precentacion.User.Quote.Quote
 
 
                 }
+
                 //Usuario Prueba
                 if (CompanyCache.IdCompany == 999999999)
                 {
@@ -492,6 +345,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //Urbano
                 if (CompanyCache.IdCompany == 110640721)
                 {
@@ -508,6 +362,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //La familia
                 if (CompanyCache.IdCompany == 114420180)
                 {
@@ -524,6 +379,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //Glassmar
                 if (CompanyCache.IdCompany == 3105806704)
                 {
@@ -540,6 +396,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //La costa
                 if (CompanyCache.IdCompany == 109650325)
                 {
@@ -548,9 +405,8 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional2.Text = "2.Los vidrios no tienen garantía una vez instalados y aprobados por el cliente.";
                     txtConditional3.Text = "3.Trabajamos con un adelanto del 60% para compra de materiales y fabricación.";
                     txtConditional4.Text = "4.Contra entrega se cobra el otro 40% cuando el trabajo esté realizado.";
-
-
                 }
+
                 //Vidrios Dayra
                 if (CompanyCache.IdCompany == 9699999999)
                 {
@@ -567,6 +423,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "7.Todo esta contemplado según medidas tomadas en sitio,nuestra oferta no contempla andamios.";
 
                 }
+
                 //Viteco
                 if (CompanyCache.IdCompany == 503320196)
                 {
@@ -583,6 +440,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //Martinez
                 if (CompanyCache.IdCompany == 205520679)
                 {
@@ -594,6 +452,7 @@ namespace Precentacion.User.Quote.Quote
                   
 
                 }
+
                 //Vidriera Palmares
                 if (CompanyCache.IdCompany == 222222222)
                 {
@@ -610,6 +469,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //Perfect Glass
                 if (CompanyCache.IdCompany == 333333333)
                 {
@@ -626,6 +486,7 @@ namespace Precentacion.User.Quote.Quote
                     txtConditional10.Text = "10.Garantía 1 año contra defectos propios del sistema(cierres, rodajes, empaques) NO se incluye garantía sobre rayones o quebraduras de vidrios.";
 
                 }
+
                 //Innova
                 if (CompanyCache.IdCompany == 31028013)
                 {
@@ -645,11 +506,12 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+              GwMessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
 
         }
+
         public void LoadDataQuote()
         {
             try
@@ -667,7 +529,7 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+               GwMessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -676,7 +538,6 @@ namespace Precentacion.User.Quote.Quote
         #region Bottoms
         public void btnBuscar_Click(object sender, EventArgs e)
         {
-
             try
             {
                 List<clsClient> list = new List<clsClient>();
@@ -708,7 +569,7 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Mensaje: " + ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                GwMessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 frmManagerClient frm = new frmManagerClient();
                 frm.EventFormClose = false;
                 frm.Show();
@@ -716,6 +577,7 @@ namespace Precentacion.User.Quote.Quote
             }
 
         }
+
         private void btnSistemas_Click(object sender, EventArgs e)
         {
 
@@ -727,7 +589,7 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                GwMessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
         }
@@ -737,7 +599,7 @@ namespace Precentacion.User.Quote.Quote
             try { loadWindows(); }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                GwMessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
 
@@ -780,7 +642,7 @@ namespace Precentacion.User.Quote.Quote
                                     res = Generate(); // Usar el diseño habitual
                                     if (GeneratePlanos())
                                     {
-                                        MessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        GwMessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     break;
                                 case "Diseño 2 (precio total con portada de inicio)":
@@ -795,7 +657,7 @@ namespace Precentacion.User.Quote.Quote
                                         res = GeneratePDF2(descripcionTrabajo);
                                         if (GeneratePlanos())
                                         {
-                                            MessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            GwMessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         }
                                     }
                                     else
@@ -808,14 +670,14 @@ namespace Precentacion.User.Quote.Quote
                                     res = GeneratePDF3(); // Llamar a la función para el tercer diseño de PDF
                                     if (GeneratePlanos())
                                     {
-                                        MessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        GwMessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     break;
                                 case "Diseño 4 (Descripción)":
                                     res = GeneratePDF3_2(); // Llamar a la función para el tercer diseño de PDF
                                     if (GeneratePlanos())
                                     {
-                                        MessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        GwMessageBox.Show("Planos de Taller Generados", "Planos de Taller", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     break;
                             }
@@ -833,20 +695,20 @@ namespace Precentacion.User.Quote.Quote
                         if (res)
                         {
                             QuoteSave = 1;
-                            MessageBox.Show("Cotización Guardada", "Proforma Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            GwMessageBox.Show("Cotización Guardada", "Proforma Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             SendQuoteforWhathsaap();
                             LimpiarCampos();
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Error al Guardar la Cotización");
+                        GwMessageBox.Show("Error al Guardar la Cotización","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error. Por favor, verifique que haya ingresado bien todos los datos.\n" + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                GwMessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -868,7 +730,7 @@ namespace Precentacion.User.Quote.Quote
                     ClsWindows.IDQuote = Convert.ToInt32(txtidQuote.Text);
 
                     //preguntar si desea editar la ventana
-                    DialogResult result = MessageBox.Show("¿Desea editar la ventana n° " + dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString() + "?", "Editar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = GwMessageBox.Show("Desea Editar esta Ventana", "Edicion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     string systema = ClsWindows.System;
                     if (result == DialogResult.Yes)
                     {
@@ -920,7 +782,7 @@ namespace Precentacion.User.Quote.Quote
                         }
                         else
                         {
-                            MessageBox.Show("Error al Editar la Ventana");
+                            GwMessageBox.Show("Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
@@ -961,6 +823,7 @@ namespace Precentacion.User.Quote.Quote
                         }
                         catch (Exception EX)
                         {
+                            GwMessageBox.Show("Ocurrió un error." + EX.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else if (Description.Contains("Exclusivo"))
@@ -997,6 +860,7 @@ namespace Precentacion.User.Quote.Quote
                         }
                         catch (Exception EX)
                         {
+                            GwMessageBox.Show("Ocurrió un error." + EX.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
@@ -1015,17 +879,15 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error." + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                GwMessageBox.Show("Ocurrió un error." + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             { //Preguntar si desea eliminar la ventana
-                DialogResult result = MessageBox.Show("¿Desea eliminar la ventana n° " + dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString() + "?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = GwMessageBox.Show("¿Desea eliminar la ventana n° " + dgCotizaciones.CurrentRow.Cells["IdWindows"].Value.ToString() + "?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     //Obtener el id de la ventana seleccionada
@@ -1034,50 +896,23 @@ namespace Precentacion.User.Quote.Quote
                     bool res = NQuote.DeleteWindows(idWindows);
                     if (res)
                     {
-                        MessageBox.Show("Ventana Eliminada");
+                        GwMessageBox.Show("Ventana Eliminada","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         loadWindows();
                     }
                     else
                     {
-                        MessageBox.Show("Error al Eliminar la Ventana");
+                        GwMessageBox.Show("Error al Eliminar la Ventana","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error." + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                GwMessageBox.Show("Ocurrió un error." + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
 
         }
 
-        /*public void btnApply_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Validar si txtManoObra y txtDescuento son números
-                if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
-                {
-                    // Reinicializar las variables de cálculo
-                    SubTotal = 0;
-                    IVA = 0;
-                    Discount = descuento / 100; // Convertir a porcentaje
-                    Labour = manoObra / 100;    // Convertir a porcentaje
-                    Total = 0;
-
-                    // Recargar los datos de la ventana y calcular precios
-                    loadWindows();
-                }
-                else
-                {
-                    MessageBox.Show("El descuento y la mano de obra deben ser números");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error. Por favor, verifique que haya ingresado bien todos los datos.\n" + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }*/
         public void btnApply_Click(object sender, EventArgs e)
         {
 
@@ -1190,6 +1025,12 @@ namespace Precentacion.User.Quote.Quote
                                 int anchoImagen = img.Width;
                                 int altoImagen = img.Height;
 
+                                //Validar que si es Alto y ancho son mayores a 4 Bajarlo a 3
+                                if (anchoImagen > 4 && altoImagen > 4)
+                                {
+                                    anchoImagen = 3;
+                                    altoImagen = 3;
+                                }
                                 if (!esExclusivo)
                                 {
                                     decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[e.RowIndex].Cells[2].Value.ToString());
@@ -1226,7 +1067,7 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                GwMessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -1256,7 +1097,7 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                GwMessageBox.Show("Ocurrió un error: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
         }
@@ -1287,7 +1128,6 @@ namespace Precentacion.User.Quote.Quote
             //Hacer que el Formulario se adapte a la pantalla
             this.Location = new System.Drawing.Point(0, 0);
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-
         }
 
         private void agregarAccesorioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1300,7 +1140,7 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error." + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                GwMessageBox.Show("Ocurrió un error." + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
 
@@ -1316,7 +1156,7 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                GwMessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
 
@@ -1333,14 +1173,9 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
 
         }
-
-
-
 
         private void btnPrefabricado_Click(object sender, EventArgs e)
         {
@@ -1352,25 +1187,9 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                GwMessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
-
-        }
-
-        private void dgCotizaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            //Abre el HiperVinculo
-            //System.Diagnostics.Process.Start("C:\\GlassWin\\Debug\\Medidas de Fabricacion");
-
-
-
-
 
         }
 
@@ -1390,7 +1209,6 @@ namespace Precentacion.User.Quote.Quote
 
 
         }
-
         #endregion
 
         #region Metodos
@@ -1490,8 +1308,6 @@ namespace Precentacion.User.Quote.Quote
 
                 }
 
-
-
                 if (LimiteCredito != 0)
                 {
                     if (total > LimiteCredito)
@@ -1532,17 +1348,12 @@ namespace Precentacion.User.Quote.Quote
                     txtTotal.Text = Total.ToString("c", cultureCR);
                 }
 
-
-
-
-
-
-
             }
 
             // Asegurarse de que el IVA se calcule automáticamente con el subtotal actualizado
             cbIva_SelectedIndexChanged(this, EventArgs.Empty);
         }
+
         private void cbIva_SelectedIndexChanged(object sender, EventArgs e)
         {
             CultureInfo cultureCR = new CultureInfo("es-CR");
@@ -1573,6 +1384,7 @@ namespace Precentacion.User.Quote.Quote
 
             }
         }
+
         private bool ValidateFields()
         {
             if (txtidClient.Text == "")
@@ -1631,23 +1443,25 @@ namespace Precentacion.User.Quote.Quote
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                GwMessageBox.Show("Ocurrió un error. " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
         }
+
         private void dgCotizaciones_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             // Muestra el mensaje de error en la consola o en un MessageBox
             Console.WriteLine($"Error en la celda [{e.RowIndex}, {e.ColumnIndex}]: {e.Exception.Message}");
-            MessageBox.Show($"Error en la celda [{e.RowIndex}, {e.ColumnIndex}]: {e.Exception.Message}", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            GwMessageBox.Show($"Error en la celda [{e.RowIndex}, {e.ColumnIndex}]: {e.Exception.Message}", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // Opcionalmente, puedes evitar que el error se propague
             e.ThrowException = false;
         }
+
         private void SendQuoteforWhathsaap()
         {
             //Preguntar si desea enviar la cotizacion por whatsapp
-            DialogResult result = MessageBox.Show("¿Desea enviar la cotizacion por whatsapp?", "Enviar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = GwMessageBox.Show("¿Desea enviar la cotizacion por whatsapp?", "Enviar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 string message = "Hola, le envío la cotizacion n° " + txtidQuote.Text;
@@ -1656,6 +1470,7 @@ namespace Precentacion.User.Quote.Quote
             }
 
         }
+
         private void LimpiarCampos()
         {
             dgCotizaciones.DataSource = null;
@@ -1673,24 +1488,25 @@ namespace Precentacion.User.Quote.Quote
             loadIDQuote();
 
         }
+
         private decimal ObtenerAncho(string Descripcion)
         {
             if (!Descripcion.Contains("Exclusivo"))
             {
                 string patternAncho = @"\nAncho:\s*([\d,\.]+)";
                 System.Text.RegularExpressions.Match matchAncho = System.Text.RegularExpressions.Regex.Match(Descripcion, patternAncho);
-                string Ancho = matchAncho.Groups[1].Value/*.Replace(",", ".")*/;
+                string Ancho = matchAncho.Groups[1].Value;
                 decimal AnchoDecimal = 0;
                 if (Ancho != "")
                 {
-                    //if (Ancho.Contains("."))
-                    //{
-                    //  AnchoDecimal = Convert.ToDecimal(Ancho.Replace(".", ","));
-                    //}
-                    //else
-                    //{
-                    AnchoDecimal = Convert.ToDecimal(Ancho);
-                    //}
+                    if (Convert.ToDecimal(Ancho) >= 4) 
+                    {
+                        AnchoDecimal = 3;
+                    }
+                    else
+                    {
+                        AnchoDecimal = Convert.ToDecimal(Ancho);
+                    }                                  
                 }
 
                 return AnchoDecimal;
@@ -1700,6 +1516,7 @@ namespace Precentacion.User.Quote.Quote
                 return 1.5m;
             }
         }
+
         private decimal ObtenerAlto(string Descripcion)
         {
             if (!Descripcion.Contains("Exclusivo"))
@@ -1710,14 +1527,14 @@ namespace Precentacion.User.Quote.Quote
                 decimal AltoDecimal = 0;
                 if (Alto != "")
                 {
-                    // if (Alto.Contains("."))
-                    // {
-                    //  AltoDecimal = Convert.ToDecimal(Alto.Replace(".", ","));
-                    // }
-                    // else
-                    // {
-                    AltoDecimal = Convert.ToDecimal(Alto);
-                    //}
+                    if (Convert.ToDecimal(Alto) >= 4)
+                    {
+                        AltoDecimal = 3;
+                    }
+                    else
+                    {
+                        AltoDecimal = Convert.ToDecimal(Alto);
+                    }               
                 }
 
                 return AltoDecimal;
@@ -1727,15 +1544,254 @@ namespace Precentacion.User.Quote.Quote
                 return 1.5m;
             }
         }
+
         public void LimpiarDatosCliente() 
         {
             txtidClient.Text = "";
             txtAdreesClient.Text = "";
             txtTelefono.Text = "";
-            txtEmail.Text = "";
-            
+            txtEmail.Text = "";         
         }
 
+        private async void btnDolarCambio_Click(object sender, EventArgs e)
+        {
+            dolar = true;
+            colon = false;
+            cbIva.Enabled = false;
+            btnApply.Enabled = false;
+            // Obtener la fecha actual del sistema
+            string fechaActual = DateTime.Now.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            // Usar la fecha actual como fecha de inicio y fecha final
+            string fechaInicio = fechaActual;
+            string fechaFinal = fechaActual;
+
+            string valor = await TipoCambioService.ObtenerTipoCambioAsync(fechaInicio, fechaFinal);
+            Console.WriteLine($"Valor exacto recibido: '{valor}'");
+
+            // Elimina espacios en blanco alrededor
+            valor = valor.Trim();
+
+            Console.WriteLine($"Valor limpiado: '{valor}'");
+
+            // Intenta convertir el valor a decimal
+            if (decimal.TryParse(valor, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valorDecimal))
+            {
+                // Convertir a string y quitar ceros innecesarios usando el formato G29
+                string valorFinal = valorDecimal.ToString("G29", CultureInfo.InvariantCulture);
+                Console.WriteLine($"Valor convertido a decimal y limpiado: {valorFinal}");
+                tasaCambio = valorDecimal;
+
+                // Convertir el valor de txtTotal a decimal
+                if (Total != 0)
+                {
+                    // Calcular el valor en dólares
+                    decimal totalDolares = Total / tasaCambio;
+
+                    // Mostrar el valor en dólares en txtTotal
+                    txtTotal.Text = totalDolares.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
+
+                    //IVA
+                    // Calcular el valor en dólares
+                    decimal totalIVADolares = IVA / tasaCambio;
+
+                    // Mostrar el valor en dólares en txtTotal
+                    txtIVA.Text = totalIVADolares.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
+
+                    //Subtotal
+                    // Calcular el valor en dólares
+                    decimal subTotalDolares = SubTotal / tasaCambio;
+
+                    // Mostrar el valor en dólares en txtTotal
+                    txtSubtotal.Text = subTotalDolares.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show("El valor en colones no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se pudo convertir el valor a decimal.");
+                MessageBox.Show("No se pudo obtener la tasa de cambio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCambioDolar2_Click(object sender, EventArgs e)
+        {
+            colon = true;
+            dolar = false;
+            cbIva.Enabled = true;
+            btnApply.Enabled = true;
+            // Verificar si los valores ya están en dólares
+            bool yaEnDolares = txtTotal.Text.StartsWith("₡") || txtIVA.Text.StartsWith("₡") || txtSubtotal.Text.StartsWith("₡");
+
+            if (yaEnDolares)
+            {
+                MessageBox.Show("Los valores ya están en colones.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return; // Salir del método sin realizar la conversión
+            }
+
+            // Asegúrate de que la tasa de cambio ha sido asignada correctamente
+            if (tasaCambio > 0)
+            {
+                // Convertir el valor de txtTotal en dólares a decimal
+                if (decimal.TryParse(txtTotal.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out decimal totalDolares))
+                {
+                    // Calcular el valor en colones
+                    decimal totalColones = totalDolares * tasaCambio;
+
+                    // Mostrar el valor en colones en txtTotal
+                    txtTotal.Text = totalColones.ToString("c", CultureInfo.GetCultureInfo("es-CR"));
+
+                    // Convertir el valor de txtIVA en dólares a decimal
+                    if (decimal.TryParse(txtIVA.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out decimal ivaDolares))
+                    {
+                        // Calcular el valor en colones
+                        decimal ivaColones = ivaDolares * tasaCambio;
+
+                        // Mostrar el valor en colones en txtIVA
+                        txtIVA.Text = ivaColones.ToString("c", CultureInfo.GetCultureInfo("es-CR"));
+                    }
+                    else
+                    {
+                        MessageBox.Show("El valor del IVA en dólares no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    // Convertir el valor de txtSubtotal en dólares a decimal
+                    if (decimal.TryParse(txtSubtotal.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out decimal subtotalDolares))
+                    {
+                        // Calcular el valor en colones
+                        decimal subtotalColones = subtotalDolares * tasaCambio;
+
+                        // Mostrar el valor en colones en txtSubtotal
+                        txtSubtotal.Text = subtotalColones.ToString("c", CultureInfo.GetCultureInfo("es-CR"));
+                    }
+                    else
+                    {
+                        MessageBox.Show("El valor del subtotal en dólares no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El valor en dólares de total no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("La tasa de cambio no está disponible o no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void btnApplyLabour_Click(object sender, EventArgs e)
+        {
+            // Validar si txtManoObra y txtDescuento son números
+            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
+            {
+                // Limpiar variables
+                SubTotal = 0;
+                Labour = 0;
+                Discount = 0;
+                Total = 0;
+
+                Discount = descuento / 100;
+
+                // Calcular el subtotal sin impuestos ni ajustes
+                CalcPricesWithoutTax();
+
+                // Aplicar el descuento primero
+                SubTotal -= SubTotal * Discount;
+
+                // Calcular porcentaje de mano de obra y descuento
+                if (manoObra > 500)
+                {
+                    // Si manoObra es mayor a 100, es un monto fijo
+                    Labour = manoObra;
+                    SubTotal += Labour; // Solo sumar el valor de Labour
+                }
+                else
+                {
+                    // Si manoObra es menor o igual a 100, es un porcentaje
+                    Labour = manoObra / 100;
+                    // Aplicar la mano de obra como porcentaje al subtotal ya descontado
+                    SubTotal += SubTotal * Labour;
+                }
+
+                // Mostrar el subtotal con descuento y mano de obra aplicados
+                txtSubtotal.Text = SubTotal.ToString("c");
+                txtTotal.Text = SubTotal.ToString("c");
+
+                // El impuesto se aplicará después con el ComboBox cbIva
+            }
+            else
+            {
+                MessageBox.Show("Los campos de mano de obra y descuento deben ser números válidos.");
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            // Validar si txtManoObra y txtDescuento son números
+            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
+            {
+                // Limpiar variables
+                SubTotal = 0;
+                Labour = 0;
+                Discount = 0;
+                Total = 0;
+
+                Discount = descuento / 100;
+
+                // Calcular el subtotal sin impuestos ni ajustes
+                CalcPricesWithoutTax();
+
+                // Aplicar el descuento primero
+                SubTotal -= SubTotal * Discount;
+
+                // Calcular porcentaje de mano de obra y descuento
+                if (manoObra > 100)
+                {
+                    // Si manoObra es mayor a 100, es un monto fijo
+                    Labour = manoObra;
+                    SubTotal += Labour; // Solo sumar el valor de Labour
+                }
+                else
+                {
+                    // Si manoObra es menor o igual a 100, es un porcentaje
+                    Labour = manoObra / 100;
+                    // Aplicar la mano de obra como porcentaje al subtotal ya descontado
+                    SubTotal += SubTotal * Labour;
+                }
+
+                // Mostrar el subtotal con descuento y mano de obra aplicados
+                txtSubtotal.Text = SubTotal.ToString("c");
+                txtTotal.Text = SubTotal.ToString("c");
+
+                // El impuesto se aplicará después con el ComboBox cbIva
+            }
+            else
+            {
+                MessageBox.Show("Los campos de mano de obra y descuento deben ser números válidos.");
+            }
+        }
+
+        private void CalcPricesWithoutTax()
+        {
+            decimal total = 0;
+
+            // Calcular el precio base sumando los valores de la columna 'Price' del DataGridView
+            foreach (DataGridViewRow row in dgCotizaciones.Rows)
+            {
+                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+                total += price;
+            }
+
+            // Asignar el total al SubTotal
+            SubTotal = total;
+        }
 
         #endregion
 
@@ -1755,6 +1811,7 @@ namespace Precentacion.User.Quote.Quote
             // Unir las líneas con saltos de línea
             return string.Join("\n", lineas);
         }
+
         public bool Generate()
         {
             #region Crear el documento
@@ -1788,7 +1845,6 @@ namespace Precentacion.User.Quote.Quote
             // Asigna el objeto PdfWriter al documento
             document.Open();
             #endregion
-
 
             try
             {
@@ -2317,12 +2373,12 @@ namespace Precentacion.User.Quote.Quote
 
                 #endregion
 
+                #region Ajustes
                 // Cambiar el nombre de las columnas en el DataGridView
                 //dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
                 dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
                 dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
-
-
+                #endregion
 
                 #region Tabla de Productos
                 // Crear una tabla con el número de columnas de tu DataGridView
@@ -2419,15 +2475,8 @@ namespace Precentacion.User.Quote.Quote
                                     PdfPCell celdaImagen = new PdfPCell(img);
                                     celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
                                     celdaImagen.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                    celdaImagen.FixedHeight = altoVentana; // Ajustar la altura de la celda para coincidir con la imagen
+                                    celdaImagen.FixedHeight = altoVentana-100; // Ajustar la altura de la celda para coincidir con la imagen
                                     tabla.AddCell(celdaImagen);
-
-
-
-
-
-
-
                                 }
                                 else
                                 {
@@ -3278,9 +3327,6 @@ namespace Precentacion.User.Quote.Quote
             #endregion
         }
 
-        #endregion
-
-        #region Generacion de pdf DISEÑO 2
         private bool GeneratePDF2(string descripcionTrabajo)
         {
             #region Crear el documento
@@ -4214,13 +4260,6 @@ namespace Precentacion.User.Quote.Quote
                     };
                     filaTabla.AddCell(cellSegundaParte);
 
-
-
-
-
-
-
-
                     // Espacio entre la descripción y la imagen
                     filaTabla.AddCell(new PdfPCell(new Phrase(" ")) { Border = PdfPCell.NO_BORDER }); // Agregar un espacio adicional
 
@@ -4278,7 +4317,7 @@ namespace Precentacion.User.Quote.Quote
 
                                 if (anchoVentana > 220)
                                 {
-                                    anchoVentana = 200; // Reducir el ancho a 200 píxeles
+                                    anchoVentana = 150; // Reducir el ancho a 200 píxeles
                                 }
                                 if (altoVentana >= 200)
                                 {
@@ -4297,7 +4336,7 @@ namespace Precentacion.User.Quote.Quote
                                 iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
 
                                 // Ajustar el tamaño de la imagen con ScaleAbsolute
-                                img.ScaleAbsolute(anchoVentana, altoVentana);
+                                img.ScaleAbsolute(anchoVentana-10, altoVentana-10);
 
                                 // Crear una celda para la imagen
                                 PdfPCell cellImagenTemp = new PdfPCell(img)
@@ -4443,396 +4482,6 @@ namespace Precentacion.User.Quote.Quote
             }
             #endregion
         }
-        // Función para obtener las dimensiones de la descripción
-        private (decimal ancho, decimal alto) ObtenerDimensionesDeDescripcion(string descripcion)
-        {
-            decimal ancho = 0;
-            decimal alto = 0;
-
-            // Expresiones regulares para encontrar los valores de Ancho y Alto
-            var regexAncho = new Regex(@"Ancho:\s*(\d+(\.\d+)?)", RegexOptions.IgnoreCase);
-            var regexAlto = new Regex(@"Alto:\s*(\d+(\.\d+)?)", RegexOptions.IgnoreCase);
-
-            // Buscar los valores en la descripción
-            var matchAncho = regexAncho.Match(descripcion);
-            var matchAlto = regexAlto.Match(descripcion);
-
-            if (matchAncho.Success)
-            {
-                decimal.TryParse(matchAncho.Groups[1].Value, out ancho);
-            }
-            if (matchAlto.Success)
-            {
-                decimal.TryParse(matchAlto.Groups[1].Value, out alto);
-            }
-
-            return (ancho, alto);
-        }
-
-
-        #endregion
-
-        #region Mover form
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        // Variables para almacenar la posición del mouse
-        private bool isDragging = false;
-
-        private async void btnDolarCambio_Click(object sender, EventArgs e)
-        {
-            dolar = true;
-            colon = false;
-            cbIva.Enabled = false;
-            btnApply.Enabled = false;
-            // Obtener la fecha actual del sistema
-            string fechaActual = DateTime.Now.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-            // Usar la fecha actual como fecha de inicio y fecha final
-            string fechaInicio = fechaActual;
-            string fechaFinal = fechaActual;
-
-            string valor = await TipoCambioService.ObtenerTipoCambioAsync(fechaInicio, fechaFinal);
-            Console.WriteLine($"Valor exacto recibido: '{valor}'");
-
-            // Elimina espacios en blanco alrededor
-            valor = valor.Trim();
-
-            Console.WriteLine($"Valor limpiado: '{valor}'");
-
-            // Intenta convertir el valor a decimal
-            if (decimal.TryParse(valor, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valorDecimal))
-            {
-                // Convertir a string y quitar ceros innecesarios usando el formato G29
-                string valorFinal = valorDecimal.ToString("G29", CultureInfo.InvariantCulture);
-                Console.WriteLine($"Valor convertido a decimal y limpiado: {valorFinal}");
-                tasaCambio = valorDecimal;
-
-                // Convertir el valor de txtTotal a decimal
-                if (Total != 0)
-                {
-                    // Calcular el valor en dólares
-                    decimal totalDolares = Total / tasaCambio;
-
-                    // Mostrar el valor en dólares en txtTotal
-                    txtTotal.Text = totalDolares.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
-
-                    //IVA
-                    // Calcular el valor en dólares
-                    decimal totalIVADolares = IVA / tasaCambio;
-
-                    // Mostrar el valor en dólares en txtTotal
-                    txtIVA.Text = totalIVADolares.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
-
-                    //Subtotal
-                    // Calcular el valor en dólares
-                    decimal subTotalDolares = SubTotal / tasaCambio;
-
-                    // Mostrar el valor en dólares en txtTotal
-                    txtSubtotal.Text = subTotalDolares.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
-
-
-
-                }
-                else
-                {
-                    MessageBox.Show("El valor en colones no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                Console.WriteLine("No se pudo convertir el valor a decimal.");
-                MessageBox.Show("No se pudo obtener la tasa de cambio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnCambioDolar2_Click(object sender, EventArgs e)
-        {
-            colon = true;
-            dolar = false;
-            cbIva.Enabled = true;
-            btnApply.Enabled = true;
-            // Verificar si los valores ya están en dólares
-            bool yaEnDolares = txtTotal.Text.StartsWith("₡") || txtIVA.Text.StartsWith("₡") || txtSubtotal.Text.StartsWith("₡");
-
-            if (yaEnDolares)
-            {
-                MessageBox.Show("Los valores ya están en colones.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return; // Salir del método sin realizar la conversión
-            }
-
-            // Asegúrate de que la tasa de cambio ha sido asignada correctamente
-            if (tasaCambio > 0)
-            {
-                // Convertir el valor de txtTotal en dólares a decimal
-                if (decimal.TryParse(txtTotal.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out decimal totalDolares))
-                {
-                    // Calcular el valor en colones
-                    decimal totalColones = totalDolares * tasaCambio;
-
-                    // Mostrar el valor en colones en txtTotal
-                    txtTotal.Text = totalColones.ToString("c", CultureInfo.GetCultureInfo("es-CR"));
-
-                    // Convertir el valor de txtIVA en dólares a decimal
-                    if (decimal.TryParse(txtIVA.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out decimal ivaDolares))
-                    {
-                        // Calcular el valor en colones
-                        decimal ivaColones = ivaDolares * tasaCambio;
-
-                        // Mostrar el valor en colones en txtIVA
-                        txtIVA.Text = ivaColones.ToString("c", CultureInfo.GetCultureInfo("es-CR"));
-                    }
-                    else
-                    {
-                        MessageBox.Show("El valor del IVA en dólares no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    // Convertir el valor de txtSubtotal en dólares a decimal
-                    if (decimal.TryParse(txtSubtotal.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out decimal subtotalDolares))
-                    {
-                        // Calcular el valor en colones
-                        decimal subtotalColones = subtotalDolares * tasaCambio;
-
-                        // Mostrar el valor en colones en txtSubtotal
-                        txtSubtotal.Text = subtotalColones.ToString("c", CultureInfo.GetCultureInfo("es-CR"));
-                    }
-                    else
-                    {
-                        MessageBox.Show("El valor del subtotal en dólares no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("El valor en dólares de total no es válido.", "Error de conversión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("La tasa de cambio no está disponible o no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-
-        private Point startPoint = new Point(0, 0);
-
-        private void btnCargarDesglose_Click(object sender, EventArgs e)
-        {
-
-
-          
-        }
-
-
-
-
-
-
-        private void frmQuote_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isDragging)
-            {
-                Point p = PointToScreen(e.Location);
-                Location = new Point(p.X - startPoint.X, p.Y - startPoint.Y);
-            }
-        }
-
-        public void btnApplyLabour_Click(object sender, EventArgs e)
-        {
-            // Validar si txtManoObra y txtDescuento son números
-            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
-            {
-                // Limpiar variables
-                SubTotal = 0;
-                Labour = 0;
-                Discount = 0;
-                Total = 0;
-
-                Discount = descuento / 100;
-
-                // Calcular el subtotal sin impuestos ni ajustes
-                CalcPricesWithoutTax();
-
-                // Aplicar el descuento primero
-                SubTotal -= SubTotal * Discount;
-
-                // Calcular porcentaje de mano de obra y descuento
-                if (manoObra > 500)
-                {
-                    // Si manoObra es mayor a 100, es un monto fijo
-                    Labour = manoObra;
-                    SubTotal += Labour; // Solo sumar el valor de Labour
-                }
-                else
-                {
-                    // Si manoObra es menor o igual a 100, es un porcentaje
-                    Labour = manoObra / 100;
-                    // Aplicar la mano de obra como porcentaje al subtotal ya descontado
-                    SubTotal += SubTotal * Labour;
-                }
-
-                // Mostrar el subtotal con descuento y mano de obra aplicados
-                txtSubtotal.Text = SubTotal.ToString("c");
-                txtTotal.Text = SubTotal.ToString("c");
-
-                // El impuesto se aplicará después con el ComboBox cbIva
-            }
-            else
-            {
-                MessageBox.Show("Los campos de mano de obra y descuento deben ser números válidos.");
-            }
-        }
-
-
-        private void CalcPricesWithoutTax()
-        {
-            decimal total = 0;
-
-            // Calcular el precio base sumando los valores de la columna 'Price' del DataGridView
-            foreach (DataGridViewRow row in dgCotizaciones.Rows)
-            {
-                decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-                total += price;
-            }
-
-            // Asignar el total al SubTotal
-            SubTotal = total;
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            // Validar si txtManoObra y txtDescuento son números
-            if (decimal.TryParse(txtManoObra.Text, out decimal manoObra) && decimal.TryParse(txtDescuento.Text, out decimal descuento))
-            {
-                // Limpiar variables
-                SubTotal = 0;
-                Labour = 0;
-                Discount = 0;
-                Total = 0;
-
-                Discount = descuento / 100;
-
-                // Calcular el subtotal sin impuestos ni ajustes
-                CalcPricesWithoutTax();
-
-                // Aplicar el descuento primero
-                SubTotal -= SubTotal * Discount;
-
-                // Calcular porcentaje de mano de obra y descuento
-                if (manoObra > 100)
-                {
-                    // Si manoObra es mayor a 100, es un monto fijo
-                    Labour = manoObra;
-                    SubTotal += Labour; // Solo sumar el valor de Labour
-                }
-                else
-                {
-                    // Si manoObra es menor o igual a 100, es un porcentaje
-                    Labour = manoObra / 100;
-                    // Aplicar la mano de obra como porcentaje al subtotal ya descontado
-                    SubTotal += SubTotal * Labour;
-                }
-
-                // Mostrar el subtotal con descuento y mano de obra aplicados
-                txtSubtotal.Text = SubTotal.ToString("c");
-                txtTotal.Text = SubTotal.ToString("c");
-
-                // El impuesto se aplicará después con el ComboBox cbIva
-            }
-            else
-            {
-                MessageBox.Show("Los campos de mano de obra y descuento deben ser números válidos.");
-            }
-        }
-
-        private void frmQuote_MouseUp(object sender, MouseEventArgs e)
-        {
-            // Cuando el botón del mouse es soltado
-            if (e.Button == MouseButtons.Left)
-            {
-                isDragging = false;
-            }
-        }
-        private void frmQuote_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-        #endregion
-
-        #region Tasa Cambio
-        public class TipoCambioService
-        {
-            private static readonly string url = "https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx";
-            private static readonly int codigoIndicador = 317; // Código para tipo de cambio de compra
-            private static readonly string nombreUsuario = "Alexander Durán Varela";
-            private static readonly string indicadorSubNivel = "N";
-            private static readonly string correoElectronico = "alexduva21@gmail.com";
-            private static readonly string tokenSuscripcion = "VANUNMANAA"; // Reemplazar con tu token real
-
-            public static async Task<string> ObtenerTipoCambioAsync(string fechaInicio, string fechaFinal)
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    // Crear el contenido de la solicitud en formato XML (SOAP)
-                    var soapEnvelope = $@"
-                <soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
-                    <soap:Body>
-                        <ObtenerIndicadoresEconomicos xmlns='http://ws.sdde.bccr.fi.cr'>
-                            <Indicador>{codigoIndicador}</Indicador>
-                            <FechaInicio>{fechaInicio}</FechaInicio>
-                            <FechaFinal>{fechaFinal}</FechaFinal>
-                            <Nombre>{nombreUsuario}</Nombre>
-                            <SubNiveles>{indicadorSubNivel}</SubNiveles>
-                            <CorreoElectronico>{correoElectronico}</CorreoElectronico>
-                            <Token>{tokenSuscripcion}</Token>
-                        </ObtenerIndicadoresEconomicos>
-                    </soap:Body>
-                </soap:Envelope>";
-
-                    // Crear el contenido de la solicitud
-                    var content = new StringContent(soapEnvelope, Encoding.UTF8, "text/xml");
-
-                    // Agregar el encabezado SOAPAction
-                    client.DefaultRequestHeaders.Add("SOAPAction", "http://ws.sdde.bccr.fi.cr/ObtenerIndicadoresEconomicos");
-
-                    // Hacer la solicitud POST
-                    HttpResponseMessage response = await client.PostAsync(url, content);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string responseBody = await response.Content.ReadAsStringAsync();
-
-                        // Procesar el XML de respuesta
-                        XmlDocument doc = new XmlDocument();
-                        doc.LoadXml(responseBody);
-
-                        XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
-                        nsmgr.AddNamespace("soap", "http://schemas.xmlsoap.org/soap/envelope/");
-                        nsmgr.AddNamespace("diffgr", "urn:schemas-microsoft-com:xml-diffgram-v1");
-                        nsmgr.AddNamespace("msdata", "urn:schemas-microsoft-com:xml-msdata");
-
-                        // Extraer datos del XML
-                        XmlNode valorNode = doc.SelectSingleNode("//diffgr:diffgram/Datos_de_INGC011_CAT_INDICADORECONOMIC/INGC011_CAT_INDICADORECONOMIC/NUM_VALOR", nsmgr);
-
-                        if (valorNode != null)
-                        {
-                            return valorNode.InnerText; // Devolver el valor del tipo de cambio
-                        }
-                        else
-                        {
-                            return "No se encontraron los datos esperados en la respuesta.";
-                        }
-                    }
-                    else
-                    {
-                        return $"Error: {response.StatusCode}";
-                    }
-                }
-            }
-        }
-        #endregion Tasa Cambio
 
         public bool GeneratePDF3()
         {
@@ -5492,7 +5141,7 @@ namespace Precentacion.User.Quote.Quote
 
                                         if (anchoVentana > 220)
                                         {
-                                            anchoVentana = 200; // Reducir el ancho a 200 píxeles
+                                            anchoVentana = 150; // Reducir el ancho a 200 píxeles
                                         }
 
                                         if (altoVentana >= 200)
@@ -5511,7 +5160,7 @@ namespace Precentacion.User.Quote.Quote
                                         iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
 
                                         // Ajustar el tamaño de la imagen con ScaleAbsolute
-                                        img.ScaleAbsolute(anchoVentana, altoVentana);
+                                        img.ScaleAbsolute(anchoVentana - 10, altoVentana-10);
 
                                         cell = new PdfPCell(img);
                                         cell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -5533,6 +5182,1943 @@ namespace Precentacion.User.Quote.Quote
 
                                     // Crear la celda con el texto modificado
                                     cell = new PdfPCell(new Phrase(textoConViñetas, FontFactory.GetFont(FontFactory.HELVETICA)));
+                                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                                }
+                                else
+                                {
+                                    cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                }
+
+                                // Ajusta el tamaño de las celdas
+                                cell.FixedHeight = 150f; // Ajusta la altura según sea necesario
+                                cell.PaddingLeft = 10f; // Agrega un relleno a la izquierda para alinear el texto correctamente
+                                                        // Centrar contenido verticalmente
+                                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                            }
+                            else
+                            {
+                                cell = new PdfPCell(new Phrase("")); // Inicializa con una celda vacía si el valor es null
+                            }
+
+                            tabla.AddCell(cell);
+                        }
+                    }
+                }
+
+                // Crear una celda para mostrar el monto total con bordes y fondo
+                PdfPCell celdaMontoTotal = new PdfPCell(new Phrase("Monto Total: " + (dolar ? txtTotal.Text : "¢" + txtTotal.Text), FontFactory.GetFont(FontFactory.HELVETICA, 12, BaseColor.WHITE)));
+                celdaMontoTotal.Colspan = numeroDeColumnas; // Hacer que la celda abarque todas las columnas
+                celdaMontoTotal.HorizontalAlignment = Element.ALIGN_RIGHT; // Alinear el texto a la derecha
+                celdaMontoTotal.Border = iTextSharp.text.Rectangle.BOX; // Aplicar borde a la celda completa
+                celdaMontoTotal.BorderWidth = 1f; // Espesor del borde
+                celdaMontoTotal.BackgroundColor = new BaseColor(70, 130, 180); // Color de fondo
+                celdaMontoTotal.Padding = 10f; // Agregar un padding para mejorar la apariencia
+
+                // Agregar la celda a la tabla
+                tabla.AddCell(celdaMontoTotal);
+
+                // Agregar la tabla al documento
+                document.Add(tabla);
+
+                document.Add(new Paragraph(" ")); // Esto agrega un espacio en blanco en el documento
+
+                #endregion
+
+                #region Condiciones, Notas y Cuentas
+
+                //Agregar las Condiciones desde el txtConditional1 hasta el txtConditional7 en una tabla
+                PdfPTable tableCondiciones = new PdfPTable(1); // 1 columna
+                tableCondiciones.WidthPercentage = 97;
+                tableCondiciones.HorizontalAlignment = Element.ALIGN_CENTER;
+                PdfPCell cellCondiciones = new PdfPCell(); ;
+                cellCondiciones.HorizontalAlignment = Element.ALIGN_LEFT;
+                cellCondiciones.VerticalAlignment = Element.ALIGN_MIDDLE;
+                Paragraph paragraphCondiciones = new Paragraph();
+                paragraphCondiciones.Add(new Chunk("Condiciones", titleFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);// Salto de línea
+                paragraphCondiciones.Add(new Chunk(txtConditional1.Text, textFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);
+                paragraphCondiciones.Add(new Chunk(txtConditional2.Text, textFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);
+                paragraphCondiciones.Add(new Chunk(txtConditional3.Text, textFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);
+                paragraphCondiciones.Add(new Chunk(txtConditional4.Text, textFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);
+                paragraphCondiciones.Add(new Chunk(txtConditional5.Text, textFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);
+                paragraphCondiciones.Add(new Chunk(txtConditional6.Text, textFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);
+                paragraphCondiciones.Add(new Chunk(txtConditional7.Text, textFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);
+                paragraphCondiciones.Add(new Chunk(txtConditional8.Text, textFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);
+                paragraphCondiciones.Add(new Chunk(txtConditional9.Text, textFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);
+                paragraphCondiciones.Add(new Chunk(txtConditional10.Text, textFont));
+                paragraphCondiciones.Add(Chunk.NEWLINE);
+                cellCondiciones.AddElement(paragraphCondiciones);
+                tableCondiciones.AddCell(cellCondiciones);
+                document.Add(tableCondiciones);
+                document.Add(new Paragraph(" "));
+
+
+                if (CompanyCache.IdCompany == 205150849)
+                {
+                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(NotasParagraph);
+
+                    Paragraph Nota1Paragraph = new Paragraph("•1.Utilizamos toda nuestra experiencia y conocimiento en beneficio de la obra.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota1Paragraph);
+
+                    Paragraph Nota2Paragraph = new Paragraph("•2.Instalaciones Maky brinda garantía de un año por defecto de instalación, y garantía de un año en accesorios por defecto de fábrica.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota2Paragraph);
+
+                    Paragraph Nota3Paragraph = new Paragraph("•3.Se requiere que, previo al inicio del trabajo, todo el perímetro de la ventana esté listo para verificar medidas y mandar a producción.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota3Paragraph);
+
+                    Paragraph Nota4Paragraph = new Paragraph("•4.Todos los materiales que utiliza Instalaciones Maky son de alta calidad (EXTRALUM).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota4Paragraph);
+
+                    Paragraph Nota5Paragraph = new Paragraph("•5.El precio corresponde a materiales, fabricación, transporte e instalación, según medidas tomadas en la obra o suministradas por el cliente. Cualquier otro costo adicional será cotizado por aparte.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota5Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+                    document.Add(new Paragraph(" "));
+
+                    // Crear tabla con 5 columnas y ajustar porcentaje de ancho
+                    PdfPTable tablaCuentas = new PdfPTable(2);
+                    tablaCuentas.WidthPercentage = 100;
+
+                    // Agregar encabezados de las columnas
+                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Colones", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY))));
+                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Dolares", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY))));
+
+                    // Agregar fila con información de la cuenta
+                    tablaCuentas.AddCell(new PdfPCell(new Phrase("BANCO: BCR", textFont)));
+                    tablaCuentas.AddCell(new PdfPCell(new Phrase("BANCO: BCR", textFont)));
+                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Cuenta IBAN: CR09015202001375505431", textFont)));
+                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Cuenta IBAN: CR75015202001375505601", textFont)));
+                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Nombre: Vidrios e Instalaciones Maky S.A", textFont)));
+                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Nombre: Vidrios e Instalaciones Maky S.A", textFont)));
+                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Num.Identificacion: 3-101-897-998", textFont)));
+                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Num.Identificacion: 3-101-897-998", textFont)));
+
+
+                    // Agregar tabla al documento
+                    document.Add(tablaCuentas);
+                }
+                if (CompanyCache.IdCompany == 111560456)
+                {
+                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(NotasParagraph);
+
+                    Paragraph Nota1Paragraph = new Paragraph("•Nuestro equipo técnico es guiado por compañeros certificados por el Instituto Nacional de Aprendizaje I.N.A. GARANTIZANDO LA EXCELENTE INSTALACION DE LOS PRODUCTOS.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota1Paragraph);
+
+                    Paragraph Nota2Paragraph = new Paragraph("•Todo incluye transporte e instalación en la zona.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota2Paragraph);
+
+                    Paragraph Nota3Paragraph = new Paragraph("•Para este tipo de proyectos les ofrecemos una garantía de 12 meses en lo que se trate por daño de fábrica, mala instalación, no cubre por fenómenos sobre naturales.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota3Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("•Número de Cuenta CC: 200 01 114 018966 5", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("•Número de Cuenta IBAN : CR360 15111420010189660 ", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+
+                    Paragraph DetalleParagraph = new Paragraph("•Detalle: # de Cotización y Nombre el Cliente", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    DetalleParagraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(DetalleParagraph);
+
+                    Paragraph Detalle2Paragraph = new Paragraph("•Favor enviar comprobante de pago vía correo", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Detalle2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Detalle2Paragraph);
+                }
+                if (CompanyCache.IdCompany == 112540885)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    // Crear tabla con 2 columnas para organizar texto e imágenes
+                    PdfPTable table = new PdfPTable(1);
+                    table.WidthPercentage = 100; // Ajustar el ancho de la tabla al 100% del documento
+
+                    // Agregar las cuentas y los logos en una tabla
+                    // Cuenta Banco Popular
+                    string rutaBP = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\logo_bancopopular.png";
+                    Image imgBancoPopular = Image.GetInstance(rutaBP);
+                    imgBancoPopular.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoBP = new PdfPCell(imgBancoPopular);
+                    cellLogoBP.Border = PdfPCell.NO_BORDER;
+                    cellLogoBP.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoBP);
+
+                    PdfPCell cellTextBP = new PdfPCell(new Phrase("• Cuenta Banco Popular colones CR32016111120141093142.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextBP.Border = PdfPCell.NO_BORDER;
+                    cellTextBP.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextBP);
+
+                    // Cuenta IBAN
+                    string rutaIBAN = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\Logos-PR-BCR.png";
+                    Image imgIBAN = Image.GetInstance(rutaIBAN);
+                    imgIBAN.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoIBAN = new PdfPCell(imgIBAN);
+                    cellLogoIBAN.Border = PdfPCell.NO_BORDER;
+                    cellLogoIBAN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoIBAN);
+
+                    PdfPCell cellTextIBAN = new PdfPCell(new Phrase("• Cuenta IBAN colones CR36010200009449083184.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextIBAN.Border = PdfPCell.NO_BORDER;
+                    cellTextIBAN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextIBAN);
+
+                    // Cuenta BAC
+                    string rutaBAC = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\logo_bacredomatic.png";
+                    Image imgBAC = Image.GetInstance(rutaBAC);
+                    imgBAC.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoBAC = new PdfPCell(imgBAC);
+                    cellLogoBAC.Border = PdfPCell.NO_BORDER;
+                    cellLogoBAC.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoBAC);
+
+                    PdfPCell cellTextBAC = new PdfPCell(new Phrase("• Cuenta BAC colones 944908318.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextBAC.Border = PdfPCell.NO_BORDER;
+                    cellTextBAC.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextBAC);
+
+
+                    // Cuenta BN
+                    string rutaBN = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\bn.png";
+                    Image imgBN = Image.GetInstance(rutaBN);
+                    imgBN.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoBN = new PdfPCell(imgBN);
+                    cellLogoBN.Border = PdfPCell.NO_BORDER;
+                    cellLogoBN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoBN);
+
+                    PdfPCell cellTextBN = new PdfPCell(new Phrase("• Cuenta BN  CR37015112720010160574.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextBN.Border = PdfPCell.NO_BORDER;
+                    cellTextBN.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextBN);
+
+
+                    // SINPE Móvil
+                    string rutaSinpe = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\sinpe-movil-2.png";
+                    Image imgSINPE = Image.GetInstance(rutaSinpe);
+                    imgSINPE.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
+                    PdfPCell cellLogoSINPE = new PdfPCell(imgSINPE);
+                    cellLogoSINPE.Border = PdfPCell.NO_BORDER;
+                    cellLogoSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellLogoSINPE);
+
+                    PdfPCell cellTextSINPE = new PdfPCell(new Phrase("• Número SINPE Móvil 89089444.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
+                    cellTextSINPE.Border = PdfPCell.NO_BORDER;
+                    cellTextSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellTextSINPE);
+
+                    document.Add(table);
+                }
+                //J123
+                if (CompanyCache.IdCompany == 1230123)
+                {
+                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(NotasParagraph);
+
+                    Paragraph Nota1Paragraph = new Paragraph("•1.Utilizamos toda nuestra experiencia y conocimiento en beneficio de la obra.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota1Paragraph);
+
+                    Paragraph Nota2Paragraph = new Paragraph("•2.Instalaciones Maky brinda garantía de un año por defecto de instalación, y garantía de un año en accesorios por defecto de fábrica.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota2Paragraph);
+
+                    Paragraph Nota3Paragraph = new Paragraph("•3.Se requiere que, previo al inicio del trabajo, todo el perímetro de la ventana esté listo para verificar medidas y mandar a producción.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota3Paragraph);
+
+                    Paragraph Nota4Paragraph = new Paragraph("•4.Todos los materiales que utiliza Instalaciones Maky son de alta calidad (EXTRALUM).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota4Paragraph);
+
+                    Paragraph Nota5Paragraph = new Paragraph("•5.El precio corresponde a materiales, fabricación, transporte e instalación, según medidas tomadas en la obra o suministradas por el cliente. Cualquier otro costo adicional será cotizado por aparte.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota5Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                if (CompanyCache.IdCompany == 31025820)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("•BAC 914064795 C/CLIENTE 1020000914064798 BNCR REINIER ARTURO BRENES CALVO", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("•BNCR 200-01-033-086908-9 C/CLIENTE 15103320010869082 REINER BRENES CALVO,", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("•BAC C/IBAN CR50010200009140647958", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
+
+                    Paragraph Cuenta4Paragraph = new Paragraph("•BNCR C/IBAN CR62015103320010869082", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta4Paragraph);
+
+                    Paragraph Cuenta5Paragraph = new Paragraph("SINPE", FontFactory.GetFont(FontFactory.HELVETICA, 12, BaseColor.GRAY));
+                    Cuenta5Paragraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(Cuenta5Paragraph);
+
+                    Paragraph Cuenta6Paragraph = new Paragraph("•REINIER ARTURO BRENES CALVO / CEDULA 2-0628-0081", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta6Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta6Paragraph);
+
+                    Paragraph Cuenta7Paragraph = new Paragraph("•SINPE 8877-1193", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta7Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta7Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta8Paragraph = new Paragraph("•Contamos con servicio y repuestos para todo equipo suministrado. Somos Distribuidores autorizados de EXTRALUM Cta. # 003914 ESPEJOS DEL MUNDO # 2280", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta8Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta8Paragraph);
+
+                    Paragraph Cuenta9Paragraph = new Paragraph("•Nombre de la Persona Responsable…  REINIER BRENES CALVO 8877-1193", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta9Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta9Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    // Agregar una imagen al documento
+                    string imagePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Firma\\Firma Reiner.jpeg";
+                    Image img = Image.GetInstance(imagePath);
+                    img.ScaleToFit(200, 200); // Ajustar el tamaño de la imagen
+                    img.Alignment = Element.ALIGN_CENTER; // Alinear la imagen al centro
+                    document.Add(img); // Agregar la imagen al documento
+
+                }
+                if (CompanyCache.IdCompany == 25550555)
+                {
+                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(NotasParagraph);
+
+                    Paragraph Nota1Paragraph = new Paragraph("•1.Utilizamos toda nuestra experiencia y conocimiento en beneficio de la obra.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota1Paragraph);
+
+                    Paragraph Nota2Paragraph = new Paragraph("•2.brinda garantía de un año por defecto de instalación, y garantía de un año en accesorios por defecto de fábrica.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota2Paragraph);
+
+                    Paragraph Nota3Paragraph = new Paragraph("•3.Se requiere que, previo al inicio del trabajo, todo el perímetro de la ventana esté listo para verificar medidas y mandar a producción.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota3Paragraph);
+
+                    Paragraph Nota4Paragraph = new Paragraph("•4.Todos los materiales que utiliza Instalaciones Maky son de alta calidad (EXTRALUM).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota4Paragraph);
+
+                    Paragraph Nota5Paragraph = new Paragraph("•5.El precio corresponde a materiales, fabricación, transporte e instalación, según medidas tomadas en la obra o suministradas por el cliente. Cualquier otro costo adicional será cotizado por aparte.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota5Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones CR66015202250000607041", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares CR29015202001242164021 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //Prefalum
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //Mercado del vidrio
+                if (CompanyCache.IdCompany == 3102879949)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //Usuario Prueba
+                if (CompanyCache.IdCompany == 999999999)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(NotasParagraph);
+
+                    Paragraph Nota1Paragraph = new Paragraph("•1 Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota1Paragraph);
+
+                    Paragraph Nota2Paragraph = new Paragraph("•2.Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota2Paragraph);
+
+                    Paragraph Nota3Paragraph = new Paragraph("•3.No contempla desinstalación, ni desechos, ni acarreo de materiales existente en el sitio.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota3Paragraph);
+
+                    Paragraph Nota4Paragraph = new Paragraph("•4.La garantía es de 3 meses y queda sujeta desde el momento de la entrega y la revisión por parte del cliente y no a la mala instalación tales como: daños o mala manipulación de terceros ajenos a VIDROURBANO tales como golpes rupturas y rayones.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota4Paragraph);
+
+                    Paragraph Nota5Paragraph = new Paragraph("•5.La limpieza de los vidrios queda exclusivamente a cargo del CLIENTE.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota5Paragraph);
+
+                    Paragraph Nota6Paragraph = new Paragraph("•6.La Validez de la oferta es de 15 días naturales.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota6Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota6Paragraph);
+
+                    Paragraph Nota7Paragraph = new Paragraph("•7.El tiempo de Fabricación de 8 a 15 días hábiles laborables (ese tiempo puede variar dependiendo de la demanda de material y sistema requerido).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota7Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota7Paragraph);
+
+                    Paragraph Nota8Paragraph = new Paragraph("•8.El tiempo de entrega será de acuerdo con el vendedor.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota8Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota8Paragraph);
+
+                    Paragraph Nota9Paragraph = new Paragraph("•9.VIDROURBANO trabaja con materiales de estándar nacional.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota9Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota9Paragraph);
+
+                    Paragraph Nota10Paragraph = new Paragraph("•10.Esta oferta NO contempla el I.V.A.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Nota10Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Nota10Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph FormasPago = new Paragraph("Formas Generales de Pago", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    FormasPago.Alignment = Element.ALIGN_CENTER;
+                    document.Add(FormasPago);
+
+                    Paragraph Forma1 = new Paragraph("•1 Una vez puesto en firme la oferta se debe suministrar el 60% por adelantado.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Forma1.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Forma1);
+
+                    Paragraph Forma2 = new Paragraph("•2 El 40% restante al final a contra entrega y satisfacción del cliente.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
+                    Forma2.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Forma2);
+
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n •Numero de Cuenta BAC: 931518518 \n•Numero de Cuenta IBAN: CR56010200009315185188", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n•Numero de Cuenta IBAN: CR27015202001038479771", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+
+                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil a nombre de Julio Cesar Bonilla Rodriguez 85800953 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
+                }
+                //la familia
+                if (CompanyCache.IdCompany == 114420180)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //glassmar
+                if (CompanyCache.IdCompany == 3105806704)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //la costa
+                if (CompanyCache.IdCompany == 109650325)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta BCR Colones-Ahorro CR7801 5202 0010 4759 5592", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Cuenta BCR Dolares-Ahorro CR5401 5202 0010 4759 5830", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
+
+                    Paragraph Cuenta4Paragraph = new Paragraph("• Cuenta Banco Popular Colones CR3101 6100 1221 0000 0271", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta4Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta4Paragraph);
+
+                    Paragraph Cuenta5Paragraph = new Paragraph("• Cuenta Banco Nacional Colones CR6601 5114 5200 1004 1040", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta5Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta5Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• BAC en Colones CR3001 0200 0095 2855 5004 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //MS
+                if (CompanyCache.IdCompany == 204260627)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //Usuario Prueba
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //Viteco
+                if (CompanyCache.IdCompany == 503320196)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Banco Popular IBAN  CR40011610012010001560", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Banco Nacional IBAN  CR54015112720010041831", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil 8751-7492 (Eduardo Alberto Salazar Vega)\r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
+                }
+                //Vitro Esparza
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN Banco Nacional CR77015102720010316718", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Banco Nacional 200-01-027-031671-9", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Sinpe Móvil 8828-6440 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                //Vidriera Palmares
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+                    Paragraph CuentasParagraph2 = new Paragraph("Banco Nacional", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.GRAY));
+                    CuentasParagraph2.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph2);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones CR84015101910010039940", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares CR20015101920020050861 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+
+                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil a nombre de Vidriera Palmares S.A 87091108 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta3Paragraph);
+                }
+                if (CompanyCache.IdCompany == 333333333)
+                {
+                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
+                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
+                    document.Add(CuentasParagraph);
+
+                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta1Paragraph);
+
+                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
+                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(Cuenta2Paragraph);
+                }
+                #endregion
+
+                #region Cerrar el documento
+                // Cerrar el documento
+                document.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al Generar el PDF, Error: " + ex.Message);
+                return false;
+
+            }
+            #endregion
+        }
+
+        #region Planos pdf
+        public bool GeneratePlanos()
+        {
+            #region Crear el documento
+            try
+            {
+                // Obtener el directorio del escritorio y las carpetas necesarias
+                string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string CarpetaFactura = Path.Combine(escritorio, "Planos de Taller");
+                string carpetaNombre = Path.Combine(CarpetaFactura, txtidClient.Text.Trim());
+                string NameFile = "Plano de Taller n° " + txtidQuote.Text + ".pdf";
+
+                // Verificar si la carpeta "Proformas" existe, si no, crearla
+                if (!Directory.Exists(CarpetaFactura))
+                {
+                    Directory.CreateDirectory(CarpetaFactura);
+                }
+
+                // Verificar si la carpeta con el nombre existe, si no, crearla
+                if (!Directory.Exists(carpetaNombre))
+                {
+                    Directory.CreateDirectory(carpetaNombre);
+                }
+
+                // Crear la ruta completa del archivo PDF
+                string rutaArchivoPDF = Path.Combine(carpetaNombre, NameFile);
+
+                Document document = new Document();
+                // Crea un nuevo objeto PdfWriter para escribir el documento en un archivo
+                PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
+
+                // Asigna el objeto PdfWriter al documento
+                document.Open();
+                #endregion
+
+            #region Encabezado
+                // Crea una tabla con dos columnas
+                PdfPTable Encabezado = new PdfPTable(2);
+                Encabezado.WidthPercentage = 100;
+
+
+                // Agrega la imagen a la primera celda
+                string rutaLogo = "";
+                //Usuario de Prueba
+                if (CompanyCache.IdCompany == 999999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\UsuarioPrueba.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //La familia
+                if (CompanyCache.IdCompany == 114420180)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\familia.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                //V Dayra
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 3105806704)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\glassmar.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //laCosta
+                if (CompanyCache.IdCompany == 109650325)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\laCosta.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\constru.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //MS
+                if (CompanyCache.IdCompany == 204260627)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\ms.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Viteco
+                if (CompanyCache.IdCompany == 503320196)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Viteco.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vitro esparza
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vitroEsparza.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel Fin
+                //Prefalum, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Prefalum2.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\albo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Mercado del vidrio
+                if (CompanyCache.IdCompany == 3102879949)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\mercadoVidrio.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidriera Palmares, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrieraPalmares.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Perfect Glass, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 333333333)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\PerfectGlass.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31025820)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\AluviLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 3101794685)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 205150849)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\MakyLogo.png";
+                    rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 112540885)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosAlturaLogo.png";
+                    rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 1230123)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\GlassWinLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 25550555)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VitroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31028013)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\InnovaLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 111560456)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\DialexLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310108681)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310171783)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                PdfPCell imageCell = new PdfPCell(iTextSharp.text.Image.GetInstance(rutaLogo));
+                imageCell.Border = PdfPCell.NO_BORDER;
+                imageCell.FixedHeight = 120f; // Ajusta la altura de la imagen
+                imageCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                Encabezado.AddCell(imageCell);
+
+                // Crea un nuevo objeto Font para los textos
+                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
+                iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+                // Agrega los textos a la segunda celda
+                PdfPCell textCell = new PdfPCell();
+                textCell.Border = PdfPCell.NO_BORDER;
+
+                // Alinea el contenido de la celda al centro
+                textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+                // Agrega el párrafo y los chunks al documento
+                Paragraph paragraph = new Paragraph();
+                paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
+                paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, textFont));
+                paragraph.Add(Chunk.NEWLINE);
+                paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                paragraph.Add(Chunk.NEWLINE);
+                paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                paragraph.Add(Chunk.NEWLINE);
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
+
+                textCell.AddElement(paragraph);
+                Encabezado.AddCell(textCell);
+
+                // Establece el ancho de la celda de la tabla (ajusta según tus necesidades)
+                Encabezado.SetWidths(new float[] { 3f, 4f }); // Primer valor es el ancho de la celda de la imagen
+
+                // Agrega la tabla al documento
+                document.Add(Encabezado);
+
+                // Añade la palabra "COTIZACIÓN" debajo de la tabla
+                Paragraph cotizacionParagraph = new Paragraph("Planos Taller", titleFont);
+                cotizacionParagraph.Alignment = Element.ALIGN_CENTER;
+                document.Add(cotizacionParagraph);
+                document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                #endregion
+
+            #region Tabla de Informacion 
+                // Crear una tabla para los datos del proyecto y la información del cliente
+                PdfPTable datosTable = new PdfPTable(2);
+                datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
+                datosTable.LockedWidth = true;
+
+                // Celda 1: Datos del Proyecto
+                PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                {
+                    BackgroundColor = new BaseColor(70, 130, 180),
+                    BorderWidth = 1f,
+                    //Colspan = 1, // Fusionar una columna para "Datos del Proyecto"
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_CENTER
+                };
+                datosTable.AddCell(cellDatosProyecto);
+
+                // Celda 2: Información del Cliente
+                PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Cliente", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
+                {
+                    BackgroundColor = new BaseColor(70, 130, 180),
+                    BorderWidth = 1f,
+                    Colspan = 1, // Fusionar una columna para "Información del Cliente"
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellDatosCliente);
+
+                // Celda 3: Etiqueta "Cotización"
+                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCotizacion);
+
+                // Celda 4: Etiqueta "Cliente"
+                PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Cliente: " + txtidClient.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCliente);
+
+                // Celda 5: Etiqueta "Forma Pago"
+                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaFormaPago);
+
+                // Celda 6: Etiqueta "Teléfono"
+                PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaTelefono);
+
+                // Celda 6: Etiqueta "Dirección"
+                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaDireccion);
+
+                // Celda 7: Etiqueta "Correo"
+                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    BorderWidth = 1,
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    VerticalAlignment = Element.ALIGN_MIDDLE
+                };
+                datosTable.AddCell(cellEtiquetaCorreo);
+                document.Add(datosTable);
+                document.Add(new Paragraph(" "));
+
+                #endregion
+
+            #region Tabla de Productos
+                PdfPTable tabla = new PdfPTable(dgCotizaciones.Columns.Count - 1); // Restamos 1 para eliminar la columna "Precio"
+                tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades     
+                tabla.LockedWidth = true;
+                float[] tablaW = { 50f, 120f, 110f }; // Ajusta el ancho de las columnas omitiendo el de "Precio"
+                tabla.SetWidths(tablaW);
+
+                // Agregar encabezados de columna, omitiendo "Precio"
+                for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
+                {
+                    if (dgCotizaciones.Columns[i].HeaderText != "Precio") // Omitir la columna "Precio"
+                    {
+                        PdfPCell celda = new PdfPCell(new Phrase(dgCotizaciones.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
+                        celda.HorizontalAlignment = Element.ALIGN_CENTER;
+                        celda.BackgroundColor = new BaseColor(70, 130, 180);
+                        tabla.AddCell(celda);
+                    }
+                }
+
+                // Agregar las filas, omitiendo la columna "Precio"
+                for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dgCotizaciones.Columns.Count; j++)
+                    {
+                        if (dgCotizaciones.Columns[j].HeaderText != "Precio") // Omitir la columna "Precio"
+                        {
+                            if (dgCotizaciones[j, i].Value != null)
+                            {
+                                PdfPCell cell = null;
+
+                                if (dgCotizaciones.Columns[j].HeaderText == "Diseño")
+                                {
+                                    string rutaImagen = dgCotizaciones[j, i].Value.ToString();
+                                    System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                                    string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
+
+                                    // Reemplazar la versión en la ruta con la versión actual
+                                    string rutaCorregida = ReemplazarVersionEnRuta(rutaImagen, versionActualString);
+
+                                    // Obtener el directorio de trabajo actual
+                                    string directorioDeTrabajo = Directory.GetCurrentDirectory();
+                                    Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
+
+                                    string rutaAbsoluta;
+                                    bool esExclusivo = rutaCorregida.StartsWith("EXCLUSIVO:");
+                                    if (esExclusivo)
+                                    {
+                                        rutaCorregida = rutaCorregida.Replace("EXCLUSIVO:", "");
+                                    }
+
+                                    if (Path.IsPathRooted(rutaCorregida))
+                                    {
+                                        if (File.Exists(rutaCorregida))
+                                        {
+                                            rutaAbsoluta = rutaCorregida;
+                                        }
+                                        else
+                                        {
+                                            string fileName = Path.GetFileName(rutaCorregida);
+                                            rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaCorregida);
+                                        rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
+                                    }
+
+                                    if (!string.IsNullOrEmpty(rutaAbsoluta) && File.Exists(rutaAbsoluta))
+                                    {
+                                        // Obtener dimensiones en metros y convertirlas a píxeles
+                                        decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
+                                        decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
+
+                                        int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
+                                        int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
+
+                                        if (anchoVentana == 0) anchoVentana = 150;
+                                        if (altoVentana == 0) altoVentana = 100;
+
+                                        Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
+
+                                        if (anchoVentana >= 150 )
+                                        {
+                                            anchoVentana = 145;
+                                        }
+
+                                        if (altoVentana >= 140)
+                                        {
+                                            altoVentana = 135;
+                                        }
+
+
+
+                                        // Cargar la imagen y ajustar su tamaño
+                                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
+
+                                        // Ajustar el tamaño de la imagen con ScaleAbsolute
+                                        img.ScaleAbsolute(anchoVentana  , altoVentana );
+
+                                        PdfPCell celdaImagen = new PdfPCell(img);
+                                        celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
+                                        celdaImagen.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                        celdaImagen.FixedHeight = altoVentana;
+                                        tabla.AddCell(celdaImagen);
+                                    }
+                                    else
+                                    {
+                                        // Agregar una celda con texto "Sin Imagen"
+                                        cell = new PdfPCell(new Phrase("Sin Imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                        cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                        cell.FixedHeight = 50f;
+                                        tabla.AddCell(cell);
+                                    }
+                                }
+                                else
+                                {
+                                    if (dgCotizaciones.Columns[j].HeaderText == "Descripcion")
+                                    {
+                                        // Para la columna "Descripción", alinea el texto a la izquierda
+                                        cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
+                                        cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                                    }
+                                    else
+                                    {
+                                        cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+                                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                    }
+
+                                    // Ajusta el tamaño de las celdas
+                                    cell.FixedHeight = 150f;
+                                    cell.PaddingLeft = 10f;
+                                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                    tabla.AddCell(cell);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Agregar la tabla al documento
+                document.Add(tabla);
+
+                document.Add(new Paragraph(" "));
+
+                Paragraph firma = new Paragraph("   Firma del Cliente: ______________________________________________________________", textFont);
+                firma.Alignment = Element.ALIGN_LEFT;
+                document.Add(firma);
+
+                #endregion
+
+            #region Cerrar el documento
+                // Cerrar el documento
+                document.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            #endregion
+        }
+        #endregion
+
+        #region pdf 3.2
+        public bool GeneratePDF3_2()
+        {
+            #region Crear el documento
+            string rutaArchivoPDF = "";
+            Document document = new Document();
+            // Obtener el directorio del escritorio y las carpetas necesarias
+            string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string carpetaProformas = Path.Combine(escritorio, "Proformas");
+            string carpetaNombre = Path.Combine(carpetaProformas, txtidClient.Text.Trim());
+            string NameFile = "Cotizacion n° " + txtidQuote.Text + ".pdf";
+
+            // Verificar si la carpeta "Proformas" existe, si no, crearla
+            if (!Directory.Exists(carpetaProformas))
+            {
+                Directory.CreateDirectory(carpetaProformas);
+            }
+
+            // Verificar si la carpeta con el nombre existe, si no, crearla
+            if (!Directory.Exists(carpetaNombre))
+            {
+                Directory.CreateDirectory(carpetaNombre);
+            }
+
+            // Crear la ruta completa del archivo PDF
+            rutaArchivoPDF = Path.Combine(carpetaNombre, NameFile);
+
+
+            // Crea un nuevo objeto PdfWriter para escribir el documento en un archivo
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
+
+            // Asigna el objeto PdfWriter al documento
+            document.Open();
+            #endregion
+            try
+            {
+                #region Encabezado
+                // Crea una tabla con dos columnas
+                PdfPTable Encabezado = new PdfPTable(2);
+                Encabezado.WidthPercentage = 120;
+                string rutaLogo = "";
+                //Usuario de Prueba
+                if (CompanyCache.IdCompany == 999999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\UsuarioPrueba.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Urbano
+                if (CompanyCache.IdCompany == 110640721)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\urbano.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //laCosta
+                if (CompanyCache.IdCompany == 109650325)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\laCosta.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                //La familia
+                if (CompanyCache.IdCompany == 114420180)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\familia.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                if (CompanyCache.IdCompany == 3105806704)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\glassmar.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 9699999999)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vdayra.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                //Constru
+                if (CompanyCache.IdCompany == 3101704274)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\constru.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //MS
+                if (CompanyCache.IdCompany == 204260627)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\ms.png";
+                    rutaLogo = ruta + Url;
+
+                }
+
+                //Viteco
+                if (CompanyCache.IdCompany == 503320196)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Viteco.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vitro esparza
+                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\vitroEsparza.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel
+                if (CompanyCache.IdCompany == 205520679)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Usuario de Nel Fin
+                //Prefalum, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 111111111)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\Prefalum2.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidrios Albo
+                if (CompanyCache.IdCompany == 3102154177)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\albo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Mercado del vidrio
+                if (CompanyCache.IdCompany == 3102879949)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\mercadoVidrio.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Vidriera Palmares, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 222222222)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrieraPalmares.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                //Perfect Glass, cedula juridica de prueba
+                if (CompanyCache.IdCompany == 333333333)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\PerfectGlass.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31025820)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\AluviLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 3101794685)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 205150849)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\MakyLogo.png";
+                    rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 112540885)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosAlturaLogo.png";
+                    rutaLogo = ruta + Url;
+                }
+                if (CompanyCache.IdCompany == 1230123)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\GlassWinLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 25550555)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VitroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 31028013)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\InnovaLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 111560456)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\DialexLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310108681)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                if (CompanyCache.IdCompany == 310171783)
+                {
+                    //Obtener la Ruta de la Carpeta bin
+                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
+                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
+                    rutaLogo = ruta + Url;
+
+                }
+                PdfPCell imageCell = new PdfPCell(iTextSharp.text.Image.GetInstance(rutaLogo));
+                imageCell.Border = PdfPCell.NO_BORDER;
+                imageCell.FixedHeight = 120f; // Ajusta la altura de la imagen
+                imageCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                Encabezado.AddCell(imageCell);
+
+                // Crea un nuevo objeto Font para los textos
+                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
+                iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                iTextSharp.text.Font textFont2 = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 9, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
+                // Agrega los textos a la segunda celda
+                PdfPCell textCell = new PdfPCell();
+                textCell.Border = PdfPCell.NO_BORDER;
+
+                // Alinea el contenido de la celda al centro
+                textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+                // Agrega el párrafo y los chunks al documento
+                Paragraph paragraph = new Paragraph();
+                paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
+                paragraph.Add(Chunk.NEWLINE);// Salto de línea
+                if (CompanyCache.IdCompany == 999999999)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 9-999-99999", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 110640721)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-106-40721", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Barrio Cuba, San José, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "8580-0953", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "vidriourbano@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+                else if (CompanyCache.IdCompany == 114420180)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-144-20180", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "DECOPLAZA local 3, La Unión, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "8385-4893", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "gajosue@hotmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+                else if (CompanyCache.IdCompany == 3105806704)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-105-806704", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Residencial Los Anonos, San José, Escazú, Palermo, 10203", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "85288391 / 62426207", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "glassmarcr@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+
+                else if (CompanyCache.IdCompany == 109650325)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 1-096-50325", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Las Huacas, Guanacaste, Costa Rica", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "6163 6730", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "lacosta@gmail.com", textFont));
+
+
+                }
+                else if (CompanyCache.IdCompany == 9699999999)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-785963", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "San Pablo de Heredia, C.R.", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2101-4081 / 8462-8462", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidriosdayra.com / solucionesdayra@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 503320196)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 5-0332-0196", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Frente escual de Los Llanos.", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "+(506) 8751-7492/ 6337-2024", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "Vitecosr@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 3101704274)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-704274", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + "Naranjo, San Miguel", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + " 7010-5184 ", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "construserviciosdelnorte@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-623589", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2635-5510", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "Vitroesparzafacturadigital@outlook.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 205150849)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-897998", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 31028013)
+                {
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-801388", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("650 METROS NORESTE Y 350 METROS NOROESTE DE KFC, BOSQUES DON JOSE, NICOYA.", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 204260627)
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica : 2-042-60627", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: " + "2042-60627", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "marvinsalazar@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 111111111)
+                {
+                    paragraph.Add(new Chunk("EL COYOL ALAJUELA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "6134 7128", textFont));
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@prefalumcr.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "ventas@prefalumcr.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 3102154177)
+                {
+                    paragraph.Add(new Chunk("75 Mts Este de Mas X Menos, Rincón de Arias.", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-154177", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + "24940866 / 24944306", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+
+                else if (CompanyCache.IdCompany == 222222222)
+                {
+                    paragraph.Add(new Chunk("PALMARES, COSTA RICA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-101-176270", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "info@vidrierapalmares.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Sitio Web: " + "http://www.vidrierapalmares.com/", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else if (CompanyCache.IdCompany == 333333333)
+                {
+                    paragraph.Add(new Chunk("SAN RAMÓN, ALAJUELA.\r\n", textFont2));
+                    paragraph.Add(Chunk.NEWLINE);
+
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-333-33333", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("WhatsApp: +(506) " + "8671 5008", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Correo: " + "crperfectglass@gmail.com", textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                else
+                {
+                    paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
+                    paragraph.Add(Chunk.NEWLINE);
+                }
+                textCell.AddElement(paragraph);
+                Encabezado.AddCell(textCell);
+
+                // Establece el ancho de la celda de la tabla (ajusta según tus necesidades)
+                Encabezado.SetWidths(new float[] { 3f, 4f }); // Primer valor es el ancho de la celda de la imagen
+
+                // Agrega la tabla al documento
+                document.Add(Encabezado);
+
+                // Añade la palabra "COTIZACIÓN" debajo de la tabla
+                Paragraph cotizacionParagraph = new Paragraph("COTIZACIÓN", titleFont);
+                cotizacionParagraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(cotizacionParagraph);
+                document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
+
+                // Agregar una línea de separación
+                PdfPTable lineaTable = new PdfPTable(1);
+                lineaTable.TotalWidth = 525f;
+                lineaTable.LockedWidth = true;
+
+                PdfPCell cellLinea = new PdfPCell(new Phrase(" "))
+                {
+                    BorderWidthTop = 1f, // Línea en la parte superior
+                    BorderWidthBottom = 0f, // Sin borde en la parte inferior
+                    BorderWidthLeft = 0f, // Sin borde en la parte izquierda
+                    BorderWidthRight = 0f, // Sin borde en la parte derecha
+                    FixedHeight = 10f, // Altura fija para la celda
+                    HorizontalAlignment = Element.ALIGN_CENTER
+                };
+                lineaTable.AddCell(cellLinea);
+
+                document.Add(lineaTable);
+
+                document.Add(new Paragraph(" "));
+                #endregion
+
+
+                #region Tabla de Informacion 
+                // Crear una tabla para los datos del proyecto y la información del cliente
+                PdfPTable datosTable = new PdfPTable(2);
+                datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
+                datosTable.LockedWidth = true;
+
+                // Añadir celdas de datos en dos filas para asegurar que todas se muestren
+                // Fila 1
+                datosTable.AddCell(new PdfPCell(new Phrase("Cliente: " + txtidClient.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+                datosTable.AddCell(new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+
+
+                // Fila 2
+                datosTable.AddCell(new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+                datosTable.AddCell(new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+
+
+                // Fila 3
+                datosTable.AddCell(new PdfPCell(new Phrase("Correo: " + txtEmail.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+                datosTable.AddCell(new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+
+                // Verifica si txtAdreesClient.Text está vacío o es nulo
+                string direccionCliente = string.IsNullOrWhiteSpace(txtAdreesClient.Text) ? "Sin dirección" : txtAdreesClient.Text;
+
+                // Fila 4
+                datosTable.AddCell(new PdfPCell(new Phrase("Dirección Cliente: " + direccionCliente, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
+                {
+                    Border = PdfPCell.NO_BORDER,
+                    HorizontalAlignment = Element.ALIGN_LEFT
+                });
+                datosTable.AddCell(new PdfPCell(new Phrase("")) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
+
+
+
+
+
+                // Añadir tabla al documento
+                document.Add(datosTable);
+                document.Add(new Paragraph(" "));
+
+                #endregion
+
+                // Cambiar el nombre de las columnas en el DataGridView
+                dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
+                dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
+                dgCotizaciones.Columns["Description"].HeaderText = "Descripción"; // Cambio aquí
+
+                #region Tabla de Productos
+                // Cambiar el nombre de las columnas en el DataGridView
+                dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
+                dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
+                dgCotizaciones.Columns["Description"].HeaderText = "Descripción";
+
+                // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "ID Ventana" y "Diseño"
+                int numeroDeColumnas = dgCotizaciones.Columns.Count - 2; // Reducir el conteo de columnas solo por la columna "ID Ventana" y "Diseño"
+                PdfPTable tabla = new PdfPTable(numeroDeColumnas);
+                tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
+                tabla.LockedWidth = true;
+                float[] tablaW = new float[numeroDeColumnas]; // Crear un array de anchos de columna con el nuevo número de columnas
+
+                // Copia los anchos de columnas existentes, excepto la columna "ID Ventana" y "Diseño"
+                int k = 0;
+                for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
+                {
+                    if (dgCotizaciones.Columns[i].HeaderText != "ID Ventana" &&
+                        dgCotizaciones.Columns[i].HeaderText != "Diseño") // Omitir las columnas "ID Ventana" y "Diseño"
+                    {
+                        // Asignar un ancho menor a la columna "Precio"
+                        if (dgCotizaciones.Columns[i].HeaderText == "Precio")
+                        {
+                            tablaW[k] = 70f; // Ancho menor para la columna "Precio"
+                        }
+                        else
+                        {
+                            tablaW[k] = 190f; // Anchos más grandes para las otras columnas
+                        }
+                        k++;
+                    }
+                }
+
+                tabla.SetWidths(tablaW);
+
+                // Agregar encabezados de columna, omitiendo "ID Ventana" y "Diseño"
+                for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
+                {
+                    if (dgCotizaciones.Columns[i].HeaderText != "ID Ventana" &&
+                        dgCotizaciones.Columns[i].HeaderText != "Diseño") // Omitir también la columna "Diseño"
+                    {
+                        PdfPCell celda = new PdfPCell(new Phrase(dgCotizaciones.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
+                        celda.HorizontalAlignment = Element.ALIGN_CENTER;
+                        celda.BackgroundColor = new BaseColor(70, 130, 180);
+                        tabla.AddCell(celda);
+                    }
+                }
+
+                // Agregar filas de datos, omitiendo la columna "ID Ventana" y "Diseño"
+                for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dgCotizaciones.Columns.Count; j++)
+                    {
+                        if (dgCotizaciones.Columns[j].HeaderText != "ID Ventana" &&
+                            dgCotizaciones.Columns[j].HeaderText != "Diseño") // Omitir también la columna "Diseño"
+                        {
+                            PdfPCell cell = new PdfPCell(); // Inicializar la celda por defecto
+
+                            if (dgCotizaciones[j, i].Value != null)
+                            {
+                                if (dgCotizaciones.Columns[j].HeaderText == "Descripción")
+                                {
+                                    // Obtener el texto de la celda y formatearlo
+                                    string textoConViñetas = AgregarViñetas(dgCotizaciones[j, i].Value.ToString());
+
+                                    // Crear un párrafo para controlar mejor la alineación
+                                    Paragraph paragraph2 = new Paragraph(textoConViñetas, FontFactory.GetFont(FontFactory.HELVETICA, 10));
+                                    paragraph2.Alignment = Element.ALIGN_LEFT;  // Alineación del texto a la izquierda (viñetas)
+                                    paragraph2.SetLeading(0, 1.2f); // Controlar el espacio entre líneas
+
+                                    // Crear la celda con el párrafo
+                                    cell = new PdfPCell(paragraph2);
+                                    cell.PaddingLeft = 10f; // Ajusta el margen interno izquierdo
+                                    cell.PaddingRight = 10f; // Ajusta el margen interno derecho
+                                    cell.FixedHeight = 150f; // Ajusta la altura si es necesario
+                                    cell.HorizontalAlignment = Element.ALIGN_LEFT; // Justificar el contenido a la izquierda
+                                    cell.VerticalAlignment = Element.ALIGN_MIDDLE; // Centrar el contenido verticalmente
+                                }
+                                else if (dgCotizaciones.Columns[j].HeaderText == "Precio")
+                                {
+                                    // Obtener el valor de la celda y convertirlo a decimal
+                                    decimal precioColones = Convert.ToDecimal(dgCotizaciones[j, i].Value);
+
+                                    // Mantener el precio en colones
+                                    precioColones = Math.Round(precioColones, 2);
+                                    cell = new PdfPCell(new Phrase("¢" + precioColones.ToString("F2"), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+
+                                    // Alinear el texto a la izquierda
                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                 }
                                 else
@@ -6265,7 +7851,6 @@ namespace Precentacion.User.Quote.Quote
                     document.Add(Cuenta2Paragraph);
                 }
                 #endregion
-
                 #region Cerrar el documento
                 // Cerrar el documento
                 document.Close();
@@ -6280,6 +7865,7 @@ namespace Precentacion.User.Quote.Quote
             }
             #endregion
         }
+        #endregion
 
         #region pdf4
         public bool GeneratePDF4()
@@ -7759,1965 +9345,105 @@ namespace Precentacion.User.Quote.Quote
         }
         #endregion
 
-        #region Planos pdf
-        public bool GeneratePlanos()
+        private (decimal ancho, decimal alto) ObtenerDimensionesDeDescripcion(string descripcion)
         {
-                #region Crear el documento
-            try
+            decimal ancho = 0;
+            decimal alto = 0;
+
+
+            // Expresiones regulares para encontrar los valores de Ancho y Alto
+            var regexAncho = new Regex(@"Ancho:\s*(\d+(\.\d+)?)", RegexOptions.IgnoreCase);
+            var regexAlto = new Regex(@"Alto:\s*(\d+(\.\d+)?)", RegexOptions.IgnoreCase);
+
+            // Buscar los valores en la descripción
+            var matchAncho = regexAncho.Match(descripcion);
+            var matchAlto = regexAlto.Match(descripcion);
+
+            if (matchAncho.Success)
             {
-                // Obtener el directorio del escritorio y las carpetas necesarias
-                string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string CarpetaFactura = Path.Combine(escritorio, "Planos de Taller");
-                string carpetaNombre = Path.Combine(CarpetaFactura, txtidClient.Text.Trim());
-                string NameFile = "Plano de Taller n° " + txtidQuote.Text + ".pdf";
-
-                // Verificar si la carpeta "Proformas" existe, si no, crearla
-                if (!Directory.Exists(CarpetaFactura))
-                {
-                    Directory.CreateDirectory(CarpetaFactura);
-                }
-
-                // Verificar si la carpeta con el nombre existe, si no, crearla
-                if (!Directory.Exists(carpetaNombre))
-                {
-                    Directory.CreateDirectory(carpetaNombre);
-                }
-
-                // Crear la ruta completa del archivo PDF
-                string rutaArchivoPDF = Path.Combine(carpetaNombre, NameFile);
-
-                Document document = new Document();
-                // Crea un nuevo objeto PdfWriter para escribir el documento en un archivo
-                PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
-
-                // Asigna el objeto PdfWriter al documento
-                document.Open();
-                #endregion
-
-                #region Encabezado
-                // Crea una tabla con dos columnas
-                PdfPTable Encabezado = new PdfPTable(2);
-                Encabezado.WidthPercentage = 100;
-
-
-                // Agrega la imagen a la primera celda
-                string rutaLogo = "";
-                //Usuario de Prueba
-                if (CompanyCache.IdCompany == 999999999)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\UsuarioPrueba.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Urbano
-                if (CompanyCache.IdCompany == 110640721)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\urbano.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //La familia
-                if (CompanyCache.IdCompany == 114420180)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\familia.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                //V Dayra
-                if (CompanyCache.IdCompany == 9699999999)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\vdayra.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 3105806704)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\glassmar.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //laCosta
-                if (CompanyCache.IdCompany == 109650325)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\laCosta.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                //Constru
-                if (CompanyCache.IdCompany == 3101704274)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\constru.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //MS
-                if (CompanyCache.IdCompany == 204260627)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\ms.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Viteco
-                if (CompanyCache.IdCompany == 503320196)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\Viteco.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Vitro esparza
-                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\vitroEsparza.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Usuario de Nel
-                if (CompanyCache.IdCompany == 205520679)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Usuario de Nel Fin
-                //Prefalum, cedula juridica de prueba
-                if (CompanyCache.IdCompany == 111111111)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\Prefalum2.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Vidrios Albo
-                if (CompanyCache.IdCompany == 3102154177)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\albo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Mercado del vidrio
-                if (CompanyCache.IdCompany == 3102879949)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\mercadoVidrio.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Vidriera Palmares, cedula juridica de prueba
-                if (CompanyCache.IdCompany == 222222222)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidrieraPalmares.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Perfect Glass, cedula juridica de prueba
-                if (CompanyCache.IdCompany == 333333333)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\PerfectGlass.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 31025820)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\AluviLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 3101794685)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 205150849)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\MakyLogo.png";
-                    rutaLogo = ruta + Url;
-                }
-                if (CompanyCache.IdCompany == 112540885)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosAlturaLogo.png";
-                    rutaLogo = ruta + Url;
-                }
-                if (CompanyCache.IdCompany == 1230123)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\GlassWinLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 25550555)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VitroLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 31028013)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\InnovaLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 111560456)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\DialexLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 310108681)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 310171783)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                PdfPCell imageCell = new PdfPCell(iTextSharp.text.Image.GetInstance(rutaLogo));
-                imageCell.Border = PdfPCell.NO_BORDER;
-                imageCell.FixedHeight = 120f; // Ajusta la altura de la imagen
-                imageCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                Encabezado.AddCell(imageCell);
-
-                // Crea un nuevo objeto Font para los textos
-                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
-                iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-
-                // Agrega los textos a la segunda celda
-                PdfPCell textCell = new PdfPCell();
-                textCell.Border = PdfPCell.NO_BORDER;
-
-                // Alinea el contenido de la celda al centro
-                textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
-
-                // Agrega el párrafo y los chunks al documento
-                Paragraph paragraph = new Paragraph();
-                paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
-                paragraph.Add(Chunk.NEWLINE);// Salto de línea
-                paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, textFont));
-                paragraph.Add(Chunk.NEWLINE);
-                paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
-                paragraph.Add(Chunk.NEWLINE);
-                paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
-                paragraph.Add(Chunk.NEWLINE);
-                paragraph.Add(Chunk.NEWLINE);// Salto de línea
-
-                textCell.AddElement(paragraph);
-                Encabezado.AddCell(textCell);
-
-                // Establece el ancho de la celda de la tabla (ajusta según tus necesidades)
-                Encabezado.SetWidths(new float[] { 3f, 4f }); // Primer valor es el ancho de la celda de la imagen
-
-                // Agrega la tabla al documento
-                document.Add(Encabezado);
-
-                // Añade la palabra "COTIZACIÓN" debajo de la tabla
-                Paragraph cotizacionParagraph = new Paragraph("Planos Taller", titleFont);
-                cotizacionParagraph.Alignment = Element.ALIGN_CENTER;
-                document.Add(cotizacionParagraph);
-                document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                #endregion
-
-                #region Tabla de Informacion 
-                // Crear una tabla para los datos del proyecto y la información del cliente
-                PdfPTable datosTable = new PdfPTable(2);
-                datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
-                datosTable.LockedWidth = true;
-
-                // Celda 1: Datos del Proyecto
-                PdfPCell cellDatosProyecto = new PdfPCell(new Phrase("Datos del Proyecto", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
-                {
-                    BackgroundColor = new BaseColor(70, 130, 180),
-                    BorderWidth = 1f,
-                    //Colspan = 1, // Fusionar una columna para "Datos del Proyecto"
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_CENTER
-                };
-                datosTable.AddCell(cellDatosProyecto);
-
-                // Celda 2: Información del Cliente
-                PdfPCell cellDatosCliente = new PdfPCell(new Phrase("Información del Cliente", FontFactory.GetFont(FontFactory.HELVETICA, 16, BaseColor.WHITE)))
-                {
-                    BackgroundColor = new BaseColor(70, 130, 180),
-                    BorderWidth = 1f,
-                    Colspan = 1, // Fusionar una columna para "Información del Cliente"
-                    HorizontalAlignment = Element.ALIGN_CENTER,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellDatosCliente);
-
-                // Celda 3: Etiqueta "Cotización"
-                PdfPCell cellEtiquetaCotizacion = new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaCotizacion);
-
-                // Celda 4: Etiqueta "Cliente"
-                PdfPCell cellEtiquetaCliente = new PdfPCell(new Phrase("Cliente: " + txtidClient.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaCliente);
-
-                // Celda 5: Etiqueta "Forma Pago"
-                PdfPCell cellEtiquetaFormaPago = new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaFormaPago);
-
-                // Celda 6: Etiqueta "Teléfono"
-                PdfPCell cellEtiquetaTelefono = new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaTelefono);
-
-                // Celda 6: Etiqueta "Dirección"
-                PdfPCell cellEtiquetaDireccion = new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaDireccion);
-
-                // Celda 7: Etiqueta "Correo"
-                PdfPCell cellEtiquetaCorreo = new PdfPCell(new Phrase("Correo: " + txtEmail.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    BorderWidth = 1,
-                    HorizontalAlignment = Element.ALIGN_LEFT,
-                    VerticalAlignment = Element.ALIGN_MIDDLE
-                };
-                datosTable.AddCell(cellEtiquetaCorreo);
-                document.Add(datosTable);
-                document.Add(new Paragraph(" "));
-
-                #endregion
-
-                #region Tabla de Productos
-                PdfPTable tabla = new PdfPTable(dgCotizaciones.Columns.Count - 1); // Restamos 1 para eliminar la columna "Precio"
-                tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades     
-                tabla.LockedWidth = true;
-                float[] tablaW = { 50f, 120f, 110f }; // Ajusta el ancho de las columnas omitiendo el de "Precio"
-                tabla.SetWidths(tablaW);
-
-                // Agregar encabezados de columna, omitiendo "Precio"
-                for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
-                {
-                    if (dgCotizaciones.Columns[i].HeaderText != "Precio") // Omitir la columna "Precio"
-                    {
-                        PdfPCell celda = new PdfPCell(new Phrase(dgCotizaciones.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
-                        celda.HorizontalAlignment = Element.ALIGN_CENTER;
-                        celda.BackgroundColor = new BaseColor(70, 130, 180);
-                        tabla.AddCell(celda);
-                    }
-                }
-
-                // Agregar las filas, omitiendo la columna "Precio"
-                for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
-                {
-                    for (int j = 0; j < dgCotizaciones.Columns.Count; j++)
-                    {
-                        if (dgCotizaciones.Columns[j].HeaderText != "Precio") // Omitir la columna "Precio"
-                        {
-                            if (dgCotizaciones[j, i].Value != null)
-                            {
-                                PdfPCell cell = null;
-
-                                if (dgCotizaciones.Columns[j].HeaderText == "Diseño")
-                                {
-                                    string rutaImagen = dgCotizaciones[j, i].Value.ToString();
-                                    System.Version versionActual = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                                    string versionActualString = $"GlassWin{versionActual.Major}.{versionActual.Minor}.{versionActual.Build}.{versionActual.Revision}";
-
-                                    // Reemplazar la versión en la ruta con la versión actual
-                                    string rutaCorregida = ReemplazarVersionEnRuta(rutaImagen, versionActualString);
-
-                                    // Obtener el directorio de trabajo actual
-                                    string directorioDeTrabajo = Directory.GetCurrentDirectory();
-                                    Console.WriteLine($"Directorio de trabajo: {directorioDeTrabajo}");
-
-                                    string rutaAbsoluta;
-                                    bool esExclusivo = rutaCorregida.StartsWith("EXCLUSIVO:");
-                                    if (esExclusivo)
-                                    {
-                                        rutaCorregida = rutaCorregida.Replace("EXCLUSIVO:", "");
-                                    }
-
-                                    if (Path.IsPathRooted(rutaCorregida))
-                                    {
-                                        if (File.Exists(rutaCorregida))
-                                        {
-                                            rutaAbsoluta = rutaCorregida;
-                                        }
-                                        else
-                                        {
-                                            string fileName = Path.GetFileName(rutaCorregida);
-                                            rutaAbsoluta = Path.Combine(directorioDeTrabajo, "Images\\Windows", fileName);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        rutaAbsoluta = Path.Combine(directorioDeTrabajo, rutaCorregida);
-                                        rutaAbsoluta = Path.GetFullPath(rutaAbsoluta);
-                                    }
-
-                                    if (!string.IsNullOrEmpty(rutaAbsoluta) && File.Exists(rutaAbsoluta))
-                                    {
-                                        // Obtener dimensiones en metros y convertirlas a píxeles
-                                        decimal anchoEnMetros = ObtenerAncho(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
-                                        decimal alturaEnMetros = ObtenerAlto(dgCotizaciones.Rows[i].Cells[2].Value.ToString());
-
-                                        int anchoVentana = (int)(anchoEnMetros * MetrosAPixeles);
-                                        int altoVentana = (int)(alturaEnMetros * MetrosAPixeles);
-
-                                        if (anchoVentana == 0) anchoVentana = 150;
-                                        if (altoVentana == 0) altoVentana = 100;
-
-                                        Console.WriteLine($"Ancho ventana en píxeles: {anchoVentana}, Alto ventana en píxeles: {altoVentana}");
-
-                                        // Cargar la imagen y ajustar su tamaño
-                                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaAbsoluta);
-
-                                        // Ajustar el tamaño de la imagen con ScaleAbsolute
-                                        img.ScaleAbsolute(anchoVentana, altoVentana);
-
-                                        PdfPCell celdaImagen = new PdfPCell(img);
-                                        celdaImagen.HorizontalAlignment = Element.ALIGN_CENTER;
-                                        celdaImagen.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                        celdaImagen.FixedHeight = altoVentana;
-                                        tabla.AddCell(celdaImagen);
-                                    }
-                                    else
-                                    {
-                                        // Agregar una celda con texto "Sin Imagen"
-                                        cell = new PdfPCell(new Phrase("Sin Imagen", FontFactory.GetFont(FontFactory.HELVETICA, 12)));
-                                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                                        cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                        cell.FixedHeight = 50f;
-                                        tabla.AddCell(cell);
-                                    }
-                                }
-                                else
-                                {
-                                    if (dgCotizaciones.Columns[j].HeaderText == "Descripcion")
-                                    {
-                                        // Para la columna "Descripción", alinea el texto a la izquierda
-                                        cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA)));
-                                        cell.HorizontalAlignment = Element.ALIGN_LEFT;
-                                    }
-                                    else
-                                    {
-                                        cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
-                                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                                    }
-
-                                    // Ajusta el tamaño de las celdas
-                                    cell.FixedHeight = 150f;
-                                    cell.PaddingLeft = 10f;
-                                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                    tabla.AddCell(cell);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                // Agregar la tabla al documento
-                document.Add(tabla);
-
-                document.Add(new Paragraph(" "));
-
-                Paragraph firma = new Paragraph("   Firma del Cliente: ______________________________________________________________", textFont);
-                firma.Alignment = Element.ALIGN_LEFT;
-                document.Add(firma);
-
-                #endregion
-
-
-                #region Cerrar el documento
-                // Cerrar el documento
-                document.Close();
-                return true;
+                decimal.TryParse(matchAncho.Groups[1].Value, out ancho);
             }
-            catch (Exception)
+            if (matchAlto.Success)
             {
-                return false;
+                decimal.TryParse(matchAlto.Groups[1].Value, out alto);
             }
-            #endregion
+
+            return (ancho, alto);
         }
         #endregion
 
-        #region pdf 3.2
-        public bool GeneratePDF3_2()
+        #region Tasa Cambio
+        public class TipoCambioService
         {
-            #region Crear el documento
-            string rutaArchivoPDF = "";
-            Document document = new Document();
-            // Obtener el directorio del escritorio y las carpetas necesarias
-            string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string carpetaProformas = Path.Combine(escritorio, "Proformas");
-            string carpetaNombre = Path.Combine(carpetaProformas, txtidClient.Text.Trim());
-            string NameFile = "Cotizacion n° " + txtidQuote.Text + ".pdf";
+            private static readonly string url = "https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx";
+            private static readonly int codigoIndicador = 317; // Código para tipo de cambio de compra
+            private static readonly string nombreUsuario = "Alexander Durán Varela";
+            private static readonly string indicadorSubNivel = "N";
+            private static readonly string correoElectronico = "alexduva21@gmail.com";
+            private static readonly string tokenSuscripcion = "VANUNMANAA"; // Reemplazar con tu token real
 
-            // Verificar si la carpeta "Proformas" existe, si no, crearla
-            if (!Directory.Exists(carpetaProformas))
+            public static async Task<string> ObtenerTipoCambioAsync(string fechaInicio, string fechaFinal)
             {
-                Directory.CreateDirectory(carpetaProformas);
-            }
-
-            // Verificar si la carpeta con el nombre existe, si no, crearla
-            if (!Directory.Exists(carpetaNombre))
-            {
-                Directory.CreateDirectory(carpetaNombre);
-            }
-
-            // Crear la ruta completa del archivo PDF
-            rutaArchivoPDF = Path.Combine(carpetaNombre, NameFile);
-
-
-            // Crea un nuevo objeto PdfWriter para escribir el documento en un archivo
-            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaArchivoPDF, FileMode.Create));
-
-            // Asigna el objeto PdfWriter al documento
-            document.Open();
-            #endregion
-
-
-            try
-            {
-                #region Encabezado
-                // Crea una tabla con dos columnas
-                PdfPTable Encabezado = new PdfPTable(2);
-                Encabezado.WidthPercentage = 120;
-                string rutaLogo = "";
-                //Usuario de Prueba
-                if (CompanyCache.IdCompany == 999999999)
+                using (HttpClient client = new HttpClient())
                 {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\UsuarioPrueba.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Urbano
-                if (CompanyCache.IdCompany == 110640721)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\urbano.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //laCosta
-                if (CompanyCache.IdCompany == 109650325)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\laCosta.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                //La familia
-                if (CompanyCache.IdCompany == 114420180)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\familia.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                if (CompanyCache.IdCompany == 3105806704)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\glassmar.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 9699999999)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\vdayra.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                //Constru
-                if (CompanyCache.IdCompany == 3101704274)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\constru.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //MS
-                if (CompanyCache.IdCompany == 204260627)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\ms.png";
-                    rutaLogo = ruta + Url;
-
-                }
-
-                //Viteco
-                if (CompanyCache.IdCompany == 503320196)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\Viteco.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Vitro esparza
-                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\vitroEsparza.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Usuario de Nel
-                if (CompanyCache.IdCompany == 205520679)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosMartinez.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Usuario de Nel Fin
-                //Prefalum, cedula juridica de prueba
-                if (CompanyCache.IdCompany == 111111111)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\Prefalum2.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Vidrios Albo
-                if (CompanyCache.IdCompany == 3102154177)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\albo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Mercado del vidrio
-                if (CompanyCache.IdCompany == 3102879949)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\mercadoVidrio.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Vidriera Palmares, cedula juridica de prueba
-                if (CompanyCache.IdCompany == 222222222)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidrieraPalmares.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                //Perfect Glass, cedula juridica de prueba
-                if (CompanyCache.IdCompany == 333333333)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\PerfectGlass.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 31025820)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\AluviLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 3101794685)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\RioClaroLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 205150849)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\MakyLogo.png";
-                    rutaLogo = ruta + Url;
-                }
-                if (CompanyCache.IdCompany == 112540885)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosAlturaLogo.png";
-                    rutaLogo = ruta + Url;
-                }
-                if (CompanyCache.IdCompany == 1230123)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\GlassWinLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 25550555)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VitroLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 31028013)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\InnovaLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 111560456)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\DialexLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 310108681)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidrioCentroLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                if (CompanyCache.IdCompany == 310171783)
-                {
-                    //Obtener la Ruta de la Carpeta bin
-                    string ruta = Path.GetDirectoryName(Application.ExecutablePath);
-                    string Url = "\\Images\\Logos\\VidriosVegaLogo.png";
-                    rutaLogo = ruta + Url;
-
-                }
-                PdfPCell imageCell = new PdfPCell(iTextSharp.text.Image.GetInstance(rutaLogo));
-                imageCell.Border = PdfPCell.NO_BORDER;
-                imageCell.FixedHeight = 120f; // Ajusta la altura de la imagen
-                imageCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                Encabezado.AddCell(imageCell);
-
-                // Crea un nuevo objeto Font para los textos
-                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 19, iTextSharp.text.Font.BOLD, BaseColor.GRAY);
-                iTextSharp.text.Font textFont = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-                iTextSharp.text.Font textFont2 = new iTextSharp.text.Font(BaseFont.CreateFont(BaseFont.TIMES_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 9, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
-                // Agrega los textos a la segunda celda
-                PdfPCell textCell = new PdfPCell();
-                textCell.Border = PdfPCell.NO_BORDER;
-
-                // Alinea el contenido de la celda al centro
-                textCell.HorizontalAlignment = Element.ALIGN_RIGHT;
-
-                // Agrega el párrafo y los chunks al documento
-                Paragraph paragraph = new Paragraph();
-                paragraph.Add(new Chunk(CompanyCache.Name, titleFont));
-                paragraph.Add(Chunk.NEWLINE);// Salto de línea
-                if (CompanyCache.IdCompany == 999999999)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 9-999-99999", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + CompanyCache.Phone, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "UsuarioPrueba@gmail.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else if (CompanyCache.IdCompany == 110640721)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 1-106-40721", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + "Barrio Cuba, San José, Costa Rica", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + "8580-0953", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "vidriourbano@gmail.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-
-                else if (CompanyCache.IdCompany == 114420180)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 1-144-20180", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + "DECOPLAZA local 3, La Unión, Costa Rica", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + "8385-4893", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "gajosue@hotmail.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-
-                else if (CompanyCache.IdCompany == 3105806704)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 3-105-806704", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + "Residencial Los Anonos, San José, Escazú, Palermo, 10203", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + "85288391 / 62426207", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "glassmarcr@gmail.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-
-
-                else if (CompanyCache.IdCompany == 109650325)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 1-096-50325", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + "Las Huacas, Guanacaste, Costa Rica", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + "6163 6730", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "lacosta@gmail.com", textFont));
-
-
-                }
-                else if (CompanyCache.IdCompany == 9699999999)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-785963", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + "San Pablo de Heredia, C.R.", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + "2101-4081 / 8462-8462", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "info@vidriosdayra.com / solucionesdayra@gmail.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else if (CompanyCache.IdCompany == 503320196)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 5-0332-0196", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + "Frente escual de Los Llanos.", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + "+(506) 8751-7492/ 6337-2024", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "Vitecosr@gmail.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else if (CompanyCache.IdCompany == 3101704274)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-704274", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + "Naranjo, San Miguel", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + " 7010-5184 ", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "construserviciosdelnorte@gmail.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-623589", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + "2635-5510", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "Vitroesparzafacturadigital@outlook.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else if (CompanyCache.IdCompany == 205150849)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 3-101-897998", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else if (CompanyCache.IdCompany == 31028013)
-                {
-
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-801388", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("650 METROS NORESTE Y 350 METROS NOROESTE DE KFC, BOSQUES DON JOSE, NICOYA.", textFont2));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else if (CompanyCache.IdCompany == 204260627)
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica : 2-042-60627", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: " + "2042-60627", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "marvinsalazar@gmail.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else if (CompanyCache.IdCompany == 111111111)
-                {
-                    paragraph.Add(new Chunk("EL COYOL ALAJUELA.\r\n", textFont2));
-                    paragraph.Add(Chunk.NEWLINE);
-
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "1-111-11111", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Whatsapp: +(506) " + "6134 7128", textFont));
-                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "info@prefalumcr.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "ventas@prefalumcr.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else if (CompanyCache.IdCompany == 3102154177)
-                {
-                    paragraph.Add(new Chunk("75 Mts Este de Mas X Menos, Rincón de Arias.", textFont2));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-102-154177", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: +(506) " + "24940866 / 24944306", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-
-                else if (CompanyCache.IdCompany == 222222222)
-                {
-                    paragraph.Add(new Chunk("PALMARES, COSTA RICA.\r\n", textFont2));
-                    paragraph.Add(Chunk.NEWLINE);
-
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-101-176270", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "info@vidrierapalmares.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Sitio Web: " + "http://www.vidrierapalmares.com/", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else if (CompanyCache.IdCompany == 333333333)
-                {
-                    paragraph.Add(new Chunk("SAN RAMÓN, ALAJUELA.\r\n", textFont2));
-                    paragraph.Add(Chunk.NEWLINE);
-
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + "3-333-33333", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfono: +(506) " + CompanyCache.Phone, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("WhatsApp: +(506) " + "8671 5008", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Correo: " + "crperfectglass@gmail.com", textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                else
-                {
-                    paragraph.Add(new Chunk("Cédula Jurídica :" + CompanyCache.IdCompany, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Ubicados en: " + CompanyCache.Address, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                    paragraph.Add(new Chunk("Teléfonos: " + CompanyCache.Phone, textFont));
-                    paragraph.Add(Chunk.NEWLINE);
-                }
-                textCell.AddElement(paragraph);
-                Encabezado.AddCell(textCell);
-
-                // Establece el ancho de la celda de la tabla (ajusta según tus necesidades)
-                Encabezado.SetWidths(new float[] { 3f, 4f }); // Primer valor es el ancho de la celda de la imagen
-
-                // Agrega la tabla al documento
-                document.Add(Encabezado);
-
-                // Añade la palabra "COTIZACIÓN" debajo de la tabla
-                Paragraph cotizacionParagraph = new Paragraph("COTIZACIÓN", titleFont);
-                cotizacionParagraph.Alignment = Element.ALIGN_LEFT;
-                document.Add(cotizacionParagraph);
-                document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                // Agregar una línea de separación
-                PdfPTable lineaTable = new PdfPTable(1);
-                lineaTable.TotalWidth = 525f;
-                lineaTable.LockedWidth = true;
-
-                PdfPCell cellLinea = new PdfPCell(new Phrase(" "))
-                {
-                    BorderWidthTop = 1f, // Línea en la parte superior
-                    BorderWidthBottom = 0f, // Sin borde en la parte inferior
-                    BorderWidthLeft = 0f, // Sin borde en la parte izquierda
-                    BorderWidthRight = 0f, // Sin borde en la parte derecha
-                    FixedHeight = 10f, // Altura fija para la celda
-                    HorizontalAlignment = Element.ALIGN_CENTER
-                };
-                lineaTable.AddCell(cellLinea);
-
-                document.Add(lineaTable);
-
-                document.Add(new Paragraph(" "));
-                #endregion
-
-
-                #region Tabla de Informacion 
-                // Crear una tabla para los datos del proyecto y la información del cliente
-                PdfPTable datosTable = new PdfPTable(2);
-                datosTable.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
-                datosTable.LockedWidth = true;
-
-                // Añadir celdas de datos en dos filas para asegurar que todas se muestren
-                // Fila 1
-                datosTable.AddCell(new PdfPCell(new Phrase("Cliente: " + txtidClient.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
-                datosTable.AddCell(new PdfPCell(new Phrase("Cotización: " + txtidQuote.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
-
-
-                // Fila 2
-                datosTable.AddCell(new PdfPCell(new Phrase("Teléfono: " + txtTelefono.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
-                datosTable.AddCell(new PdfPCell(new Phrase("Fecha: " + txtDate.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
-
-
-                // Fila 3
-                datosTable.AddCell(new PdfPCell(new Phrase("Correo: " + txtEmail.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
-                datosTable.AddCell(new PdfPCell(new Phrase("Proyecto: " + txtProjetName.Text, FontFactory.GetFont(FontFactory.HELVETICA, 12))) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
-
-                // Verifica si txtAdreesClient.Text está vacío o es nulo
-                string direccionCliente = string.IsNullOrWhiteSpace(txtAdreesClient.Text) ? "Sin dirección" : txtAdreesClient.Text;
-
-                // Fila 4
-                datosTable.AddCell(new PdfPCell(new Phrase("Dirección Cliente: " + direccionCliente, FontFactory.GetFont(FontFactory.HELVETICA, 12)))
-                {
-                    Border = PdfPCell.NO_BORDER,
-                    HorizontalAlignment = Element.ALIGN_LEFT
-                });
-                datosTable.AddCell(new PdfPCell(new Phrase("")) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_LEFT });
-
-
-
-
-
-                // Añadir tabla al documento
-                document.Add(datosTable);
-                document.Add(new Paragraph(" "));
-
-                #endregion
-
-                // Cambiar el nombre de las columnas en el DataGridView
-                dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
-                dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
-                dgCotizaciones.Columns["Description"].HeaderText = "Descripción"; // Cambio aquí
-
-                #region Tabla de Productos
-                // Cambiar el nombre de las columnas en el DataGridView
-                dgCotizaciones.Columns["URL"].HeaderText = "Diseño";
-                dgCotizaciones.Columns["idWindows"].HeaderText = "ID Ventana";
-                dgCotizaciones.Columns["Description"].HeaderText = "Descripción";
-
-                // Crear una tabla con el número de columnas de tu DataGridView, menos la columna "ID Ventana" y "Diseño"
-                int numeroDeColumnas = dgCotizaciones.Columns.Count - 2; // Reducir el conteo de columnas solo por la columna "ID Ventana" y "Diseño"
-                PdfPTable tabla = new PdfPTable(numeroDeColumnas);
-                tabla.TotalWidth = 500f; // Ajusta el ancho total según tus necesidades
-                tabla.LockedWidth = true;
-                float[] tablaW = new float[numeroDeColumnas]; // Crear un array de anchos de columna con el nuevo número de columnas
-
-                // Copia los anchos de columnas existentes, excepto la columna "ID Ventana" y "Diseño"
-                int k = 0;
-                for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
-                {
-                    if (dgCotizaciones.Columns[i].HeaderText != "ID Ventana" &&
-                        dgCotizaciones.Columns[i].HeaderText != "Diseño") // Omitir las columnas "ID Ventana" y "Diseño"
+                    // Crear el contenido de la solicitud en formato XML (SOAP)
+                    var soapEnvelope = $@"
+                <soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
+                    <soap:Body>
+                        <ObtenerIndicadoresEconomicos xmlns='http://ws.sdde.bccr.fi.cr'>
+                            <Indicador>{codigoIndicador}</Indicador>
+                            <FechaInicio>{fechaInicio}</FechaInicio>
+                            <FechaFinal>{fechaFinal}</FechaFinal>
+                            <Nombre>{nombreUsuario}</Nombre>
+                            <SubNiveles>{indicadorSubNivel}</SubNiveles>
+                            <CorreoElectronico>{correoElectronico}</CorreoElectronico>
+                            <Token>{tokenSuscripcion}</Token>
+                        </ObtenerIndicadoresEconomicos>
+                    </soap:Body>
+                </soap:Envelope>";
+
+                    // Crear el contenido de la solicitud
+                    var content = new StringContent(soapEnvelope, Encoding.UTF8, "text/xml");
+
+                    // Agregar el encabezado SOAPAction
+                    client.DefaultRequestHeaders.Add("SOAPAction", "http://ws.sdde.bccr.fi.cr/ObtenerIndicadoresEconomicos");
+
+                    // Hacer la solicitud POST
+                    HttpResponseMessage response = await client.PostAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        // Asignar un ancho menor a la columna "Precio"
-                        if (dgCotizaciones.Columns[i].HeaderText == "Precio")
+                        string responseBody = await response.Content.ReadAsStringAsync();
+
+                        // Procesar el XML de respuesta
+                        XmlDocument doc = new XmlDocument();
+                        doc.LoadXml(responseBody);
+
+                        XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
+                        nsmgr.AddNamespace("soap", "http://schemas.xmlsoap.org/soap/envelope/");
+                        nsmgr.AddNamespace("diffgr", "urn:schemas-microsoft-com:xml-diffgram-v1");
+                        nsmgr.AddNamespace("msdata", "urn:schemas-microsoft-com:xml-msdata");
+
+                        // Extraer datos del XML
+                        XmlNode valorNode = doc.SelectSingleNode("//diffgr:diffgram/Datos_de_INGC011_CAT_INDICADORECONOMIC/INGC011_CAT_INDICADORECONOMIC/NUM_VALOR", nsmgr);
+
+                        if (valorNode != null)
                         {
-                            tablaW[k] = 70f; // Ancho menor para la columna "Precio"
+                            return valorNode.InnerText; // Devolver el valor del tipo de cambio
                         }
                         else
                         {
-                            tablaW[k] = 190f; // Anchos más grandes para las otras columnas
-                        }
-                        k++;
-                    }
-                }
-
-                tabla.SetWidths(tablaW);
-
-                // Agregar encabezados de columna, omitiendo "ID Ventana" y "Diseño"
-                for (int i = 0; i < dgCotizaciones.Columns.Count; i++)
-                {
-                    if (dgCotizaciones.Columns[i].HeaderText != "ID Ventana" &&
-                        dgCotizaciones.Columns[i].HeaderText != "Diseño") // Omitir también la columna "Diseño"
-                    {
-                        PdfPCell celda = new PdfPCell(new Phrase(dgCotizaciones.Columns[i].HeaderText, FontFactory.GetFont(FontFactory.HELVETICA, 13, BaseColor.WHITE))); // Reducimos el tamaño a 13 puntos
-                        celda.HorizontalAlignment = Element.ALIGN_CENTER;
-                        celda.BackgroundColor = new BaseColor(70, 130, 180);
-                        tabla.AddCell(celda);
-                    }
-                }
-
-                // Agregar filas de datos, omitiendo la columna "ID Ventana" y "Diseño"
-                for (int i = 0; i < dgCotizaciones.Rows.Count; i++)
-                {
-                    for (int j = 0; j < dgCotizaciones.Columns.Count; j++)
-                    {
-                        if (dgCotizaciones.Columns[j].HeaderText != "ID Ventana" &&
-                            dgCotizaciones.Columns[j].HeaderText != "Diseño") // Omitir también la columna "Diseño"
-                        {
-                            PdfPCell cell = new PdfPCell(); // Inicializar la celda por defecto
-
-                            if (dgCotizaciones[j, i].Value != null)
-                            {
-                                if (dgCotizaciones.Columns[j].HeaderText == "Descripción")
-                                {
-                                    // Obtener el texto de la celda y formatearlo
-                                    string textoConViñetas = AgregarViñetas(dgCotizaciones[j, i].Value.ToString());
-
-                                    // Crear un párrafo para controlar mejor la alineación
-                                    Paragraph paragraph2 = new Paragraph(textoConViñetas, FontFactory.GetFont(FontFactory.HELVETICA, 10));
-                                    paragraph2.Alignment = Element.ALIGN_LEFT;  // Alineación del texto a la izquierda (viñetas)
-                                    paragraph2.SetLeading(0, 1.2f); // Controlar el espacio entre líneas
-
-                                    // Crear la celda con el párrafo
-                                    cell = new PdfPCell(paragraph2);
-                                    cell.PaddingLeft = 10f; // Ajusta el margen interno izquierdo
-                                    cell.PaddingRight = 10f; // Ajusta el margen interno derecho
-                                    cell.FixedHeight = 150f; // Ajusta la altura si es necesario
-                                    cell.HorizontalAlignment = Element.ALIGN_LEFT; // Justificar el contenido a la izquierda
-                                    cell.VerticalAlignment = Element.ALIGN_MIDDLE; // Centrar el contenido verticalmente
-                                }
-                                else if (dgCotizaciones.Columns[j].HeaderText == "Precio")
-                                {
-                                    // Obtener el valor de la celda y convertirlo a decimal
-                                    decimal precioColones = Convert.ToDecimal(dgCotizaciones[j, i].Value);
-
-                                    // Mantener el precio en colones
-                                    precioColones = Math.Round(precioColones, 2);
-                                    cell = new PdfPCell(new Phrase("¢" + precioColones.ToString("F2"), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
-
-                                    // Alinear el texto a la izquierda
-                                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
-                                }
-                                else
-                                {
-                                    cell = new PdfPCell(new Phrase(dgCotizaciones[j, i].Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 10)));
-                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                                }
-
-                                // Ajusta el tamaño de las celdas
-                                cell.FixedHeight = 150f; // Ajusta la altura según sea necesario
-                                cell.PaddingLeft = 10f; // Agrega un relleno a la izquierda para alinear el texto correctamente
-                                                        // Centrar contenido verticalmente
-                                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                            }
-                            else
-                            {
-                                cell = new PdfPCell(new Phrase("")); // Inicializa con una celda vacía si el valor es null
-                            }
-
-                            tabla.AddCell(cell);
+                            return "No se encontraron los datos esperados en la respuesta.";
                         }
                     }
+                    else
+                    {
+                        return $"Error: {response.StatusCode}";
+                    }
                 }
-
-                // Crear una celda para mostrar el monto total con bordes y fondo
-                PdfPCell celdaMontoTotal = new PdfPCell(new Phrase("Monto Total: " + (dolar ? txtTotal.Text : "¢" + txtTotal.Text), FontFactory.GetFont(FontFactory.HELVETICA, 12, BaseColor.WHITE)));
-                celdaMontoTotal.Colspan = numeroDeColumnas; // Hacer que la celda abarque todas las columnas
-                celdaMontoTotal.HorizontalAlignment = Element.ALIGN_RIGHT; // Alinear el texto a la derecha
-                celdaMontoTotal.Border = iTextSharp.text.Rectangle.BOX; // Aplicar borde a la celda completa
-                celdaMontoTotal.BorderWidth = 1f; // Espesor del borde
-                celdaMontoTotal.BackgroundColor = new BaseColor(70, 130, 180); // Color de fondo
-                celdaMontoTotal.Padding = 10f; // Agregar un padding para mejorar la apariencia
-
-                // Agregar la celda a la tabla
-                tabla.AddCell(celdaMontoTotal);
-
-                // Agregar la tabla al documento
-                document.Add(tabla);
-
-                document.Add(new Paragraph(" ")); // Esto agrega un espacio en blanco en el documento
-
-                #endregion
-
-                #region Precios
-                /*
-                // Crear un párrafo para mostrar el monto total
-                Paragraph paragraphTotal = new Paragraph();
-
-                // Agregar el texto para el monto total
-                string textoTotal = "Monto Total: ";
-                if (dolar)
-                {
-                    textoTotal += txtTotal.Text;
-                }
-                else
-                {
-                    textoTotal += "¢" + txtTotal.Text;
-                }
-
-                // Crear una frase con el texto total
-                Phrase phraseTotal = new Phrase(textoTotal, FontFactory.GetFont(FontFactory.HELVETICA, 12, BaseColor.BLACK));
-
-                // Agregar la frase al párrafo
-                paragraphTotal.Add(phraseTotal);
-
-                // Configurar la alineación del párrafo
-                paragraphTotal.Alignment = Element.ALIGN_RIGHT; // Cambia a Element.ALIGN_LEFT si prefieres alinearlo a la izquierda
-
-                // Agregar el párrafo al documento
-                document.Add(paragraphTotal);
-                document.Add(new Paragraph(" ")); // Esto agrega un espacio en blanco en el documento
-                */
-                #endregion
-
-                #region Condiciones, Notas y Cuentas
-
-                //Agregar las Condiciones desde el txtConditional1 hasta el txtConditional7 en una tabla
-                PdfPTable tableCondiciones = new PdfPTable(1); // 1 columna
-                tableCondiciones.WidthPercentage = 97;
-                tableCondiciones.HorizontalAlignment = Element.ALIGN_CENTER;
-                PdfPCell cellCondiciones = new PdfPCell(); ;
-                cellCondiciones.HorizontalAlignment = Element.ALIGN_LEFT;
-                cellCondiciones.VerticalAlignment = Element.ALIGN_MIDDLE;
-                Paragraph paragraphCondiciones = new Paragraph();
-                paragraphCondiciones.Add(new Chunk("Condiciones", titleFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);// Salto de línea
-                paragraphCondiciones.Add(new Chunk(txtConditional1.Text, textFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk(txtConditional2.Text, textFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk(txtConditional3.Text, textFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk(txtConditional4.Text, textFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk(txtConditional5.Text, textFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk(txtConditional6.Text, textFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk(txtConditional7.Text, textFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk(txtConditional8.Text, textFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk(txtConditional9.Text, textFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);
-                paragraphCondiciones.Add(new Chunk(txtConditional10.Text, textFont));
-                paragraphCondiciones.Add(Chunk.NEWLINE);
-                cellCondiciones.AddElement(paragraphCondiciones);
-                tableCondiciones.AddCell(cellCondiciones);
-                document.Add(tableCondiciones);
-                document.Add(new Paragraph(" "));
-
-
-                if (CompanyCache.IdCompany == 205150849)
-                {
-                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(NotasParagraph);
-
-                    Paragraph Nota1Paragraph = new Paragraph("•1.Utilizamos toda nuestra experiencia y conocimiento en beneficio de la obra.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota1Paragraph);
-
-                    Paragraph Nota2Paragraph = new Paragraph("•2.Instalaciones Maky brinda garantía de un año por defecto de instalación, y garantía de un año en accesorios por defecto de fábrica.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota2Paragraph);
-
-                    Paragraph Nota3Paragraph = new Paragraph("•3.Se requiere que, previo al inicio del trabajo, todo el perímetro de la ventana esté listo para verificar medidas y mandar a producción.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota3Paragraph);
-
-                    Paragraph Nota4Paragraph = new Paragraph("•4.Todos los materiales que utiliza Instalaciones Maky son de alta calidad (EXTRALUM).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota4Paragraph);
-
-                    Paragraph Nota5Paragraph = new Paragraph("•5.El precio corresponde a materiales, fabricación, transporte e instalación, según medidas tomadas en la obra o suministradas por el cliente. Cualquier otro costo adicional será cotizado por aparte.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota5Paragraph);
-
-                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-                    document.Add(new Paragraph(" "));
-
-                    // Crear tabla con 5 columnas y ajustar porcentaje de ancho
-                    PdfPTable tablaCuentas = new PdfPTable(2);
-                    tablaCuentas.WidthPercentage = 100;
-
-                    // Agregar encabezados de las columnas
-                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Colones", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY))));
-                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Dolares", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY))));
-
-                    // Agregar fila con información de la cuenta
-                    tablaCuentas.AddCell(new PdfPCell(new Phrase("BANCO: BCR", textFont)));
-                    tablaCuentas.AddCell(new PdfPCell(new Phrase("BANCO: BCR", textFont)));
-                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Cuenta IBAN: CR09015202001375505431", textFont)));
-                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Cuenta IBAN: CR75015202001375505601", textFont)));
-                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Nombre: Vidrios e Instalaciones Maky S.A", textFont)));
-                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Nombre: Vidrios e Instalaciones Maky S.A", textFont)));
-                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Num.Identificacion: 3-101-897-998", textFont)));
-                    tablaCuentas.AddCell(new PdfPCell(new Phrase("Num.Identificacion: 3-101-897-998", textFont)));
-
-
-                    // Agregar tabla al documento
-                    document.Add(tablaCuentas);
-                }
-                if (CompanyCache.IdCompany == 111560456)
-                {
-                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(NotasParagraph);
-
-                    Paragraph Nota1Paragraph = new Paragraph("•Nuestro equipo técnico es guiado por compañeros certificados por el Instituto Nacional de Aprendizaje I.N.A. GARANTIZANDO LA EXCELENTE INSTALACION DE LOS PRODUCTOS.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota1Paragraph);
-
-                    Paragraph Nota2Paragraph = new Paragraph("•Todo incluye transporte e instalación en la zona.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota2Paragraph);
-
-                    Paragraph Nota3Paragraph = new Paragraph("•Para este tipo de proyectos les ofrecemos una garantía de 12 meses en lo que se trate por daño de fábrica, mala instalación, no cubre por fenómenos sobre naturales.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota3Paragraph);
-
-                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("•Número de Cuenta CC: 200 01 114 018966 5", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("•Número de Cuenta IBAN : CR360 15111420010189660 ", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-
-                    Paragraph DetalleParagraph = new Paragraph("•Detalle: # de Cotización y Nombre el Cliente", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    DetalleParagraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(DetalleParagraph);
-
-                    Paragraph Detalle2Paragraph = new Paragraph("•Favor enviar comprobante de pago vía correo", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Detalle2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Detalle2Paragraph);
-                }
-                if (CompanyCache.IdCompany == 112540885)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    // Crear tabla con 2 columnas para organizar texto e imágenes
-                    PdfPTable table = new PdfPTable(1);
-                    table.WidthPercentage = 100; // Ajustar el ancho de la tabla al 100% del documento
-
-                    // Agregar las cuentas y los logos en una tabla
-                    // Cuenta Banco Popular
-                    string rutaBP = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\logo_bancopopular.png";
-                    Image imgBancoPopular = Image.GetInstance(rutaBP);
-                    imgBancoPopular.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
-                    PdfPCell cellLogoBP = new PdfPCell(imgBancoPopular);
-                    cellLogoBP.Border = PdfPCell.NO_BORDER;
-                    cellLogoBP.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellLogoBP);
-
-                    PdfPCell cellTextBP = new PdfPCell(new Phrase("• Cuenta Banco Popular colones CR32016111120141093142.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
-                    cellTextBP.Border = PdfPCell.NO_BORDER;
-                    cellTextBP.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellTextBP);
-
-                    // Cuenta IBAN
-                    string rutaIBAN = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\Logos-PR-BCR.png";
-                    Image imgIBAN = Image.GetInstance(rutaIBAN);
-                    imgIBAN.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
-                    PdfPCell cellLogoIBAN = new PdfPCell(imgIBAN);
-                    cellLogoIBAN.Border = PdfPCell.NO_BORDER;
-                    cellLogoIBAN.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellLogoIBAN);
-
-                    PdfPCell cellTextIBAN = new PdfPCell(new Phrase("• Cuenta IBAN colones CR36010200009449083184.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
-                    cellTextIBAN.Border = PdfPCell.NO_BORDER;
-                    cellTextIBAN.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellTextIBAN);
-
-                    // Cuenta BAC
-                    string rutaBAC = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\logo_bacredomatic.png";
-                    Image imgBAC = Image.GetInstance(rutaBAC);
-                    imgBAC.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
-                    PdfPCell cellLogoBAC = new PdfPCell(imgBAC);
-                    cellLogoBAC.Border = PdfPCell.NO_BORDER;
-                    cellLogoBAC.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellLogoBAC);
-
-                    PdfPCell cellTextBAC = new PdfPCell(new Phrase("• Cuenta BAC colones 944908318.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
-                    cellTextBAC.Border = PdfPCell.NO_BORDER;
-                    cellTextBAC.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellTextBAC);
-
-
-                    // Cuenta BN
-                    string rutaBN = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\bn.png";
-                    Image imgBN = Image.GetInstance(rutaBN);
-                    imgBN.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
-                    PdfPCell cellLogoBN = new PdfPCell(imgBN);
-                    cellLogoBN.Border = PdfPCell.NO_BORDER;
-                    cellLogoBN.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellLogoBN);
-
-                    PdfPCell cellTextBN = new PdfPCell(new Phrase("• Cuenta BN  CR37015112720010160574.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
-                    cellTextBN.Border = PdfPCell.NO_BORDER;
-                    cellTextBN.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellTextBN);
-
-
-                    // SINPE Móvil
-                    string rutaSinpe = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Logos\\sinpe-movil-2.png";
-                    Image imgSINPE = Image.GetInstance(rutaSinpe);
-                    imgSINPE.ScaleToFit(50f, 50f); // Ajustar el tamaño de la imagen
-                    PdfPCell cellLogoSINPE = new PdfPCell(imgSINPE);
-                    cellLogoSINPE.Border = PdfPCell.NO_BORDER;
-                    cellLogoSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellLogoSINPE);
-
-                    PdfPCell cellTextSINPE = new PdfPCell(new Phrase("• Número SINPE Móvil 89089444.", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK)));
-                    cellTextSINPE.Border = PdfPCell.NO_BORDER;
-                    cellTextSINPE.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cellTextSINPE);
-
-                    document.Add(table);
-                }
-                //J123
-                if (CompanyCache.IdCompany == 1230123)
-                {
-                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(NotasParagraph);
-
-                    Paragraph Nota1Paragraph = new Paragraph("•1.Utilizamos toda nuestra experiencia y conocimiento en beneficio de la obra.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota1Paragraph);
-
-                    Paragraph Nota2Paragraph = new Paragraph("•2.Instalaciones Maky brinda garantía de un año por defecto de instalación, y garantía de un año en accesorios por defecto de fábrica.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota2Paragraph);
-
-                    Paragraph Nota3Paragraph = new Paragraph("•3.Se requiere que, previo al inicio del trabajo, todo el perímetro de la ventana esté listo para verificar medidas y mandar a producción.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota3Paragraph);
-
-                    Paragraph Nota4Paragraph = new Paragraph("•4.Todos los materiales que utiliza Instalaciones Maky son de alta calidad (EXTRALUM).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota4Paragraph);
-
-                    Paragraph Nota5Paragraph = new Paragraph("•5.El precio corresponde a materiales, fabricación, transporte e instalación, según medidas tomadas en la obra o suministradas por el cliente. Cualquier otro costo adicional será cotizado por aparte.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota5Paragraph);
-
-                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                if (CompanyCache.IdCompany == 31025820)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("•BAC 914064795 C/CLIENTE 1020000914064798 BNCR REINIER ARTURO BRENES CALVO", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("•BNCR 200-01-033-086908-9 C/CLIENTE 15103320010869082 REINER BRENES CALVO,", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-
-                    Paragraph Cuenta3Paragraph = new Paragraph("•BAC C/IBAN CR50010200009140647958", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta3Paragraph);
-
-                    Paragraph Cuenta4Paragraph = new Paragraph("•BNCR C/IBAN CR62015103320010869082", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta4Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta4Paragraph);
-
-                    Paragraph Cuenta5Paragraph = new Paragraph("SINPE", FontFactory.GetFont(FontFactory.HELVETICA, 12, BaseColor.GRAY));
-                    Cuenta5Paragraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(Cuenta5Paragraph);
-
-                    Paragraph Cuenta6Paragraph = new Paragraph("•REINIER ARTURO BRENES CALVO / CEDULA 2-0628-0081", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta6Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta6Paragraph);
-
-                    Paragraph Cuenta7Paragraph = new Paragraph("•SINPE 8877-1193", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta7Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta7Paragraph);
-
-                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                    Paragraph Cuenta8Paragraph = new Paragraph("•Contamos con servicio y repuestos para todo equipo suministrado. Somos Distribuidores autorizados de EXTRALUM Cta. # 003914 ESPEJOS DEL MUNDO # 2280", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta8Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta8Paragraph);
-
-                    Paragraph Cuenta9Paragraph = new Paragraph("•Nombre de la Persona Responsable…  REINIER BRENES CALVO 8877-1193", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta9Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta9Paragraph);
-
-                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                    // Agregar una imagen al documento
-                    string imagePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\Images\\Firma\\Firma Reiner.jpeg";
-                    Image img = Image.GetInstance(imagePath);
-                    img.ScaleToFit(200, 200); // Ajustar el tamaño de la imagen
-                    img.Alignment = Element.ALIGN_CENTER; // Alinear la imagen al centro
-                    document.Add(img); // Agregar la imagen al documento
-
-                }
-                if (CompanyCache.IdCompany == 25550555)
-                {
-                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(NotasParagraph);
-
-                    Paragraph Nota1Paragraph = new Paragraph("•1.Utilizamos toda nuestra experiencia y conocimiento en beneficio de la obra.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota1Paragraph);
-
-                    Paragraph Nota2Paragraph = new Paragraph("•2.brinda garantía de un año por defecto de instalación, y garantía de un año en accesorios por defecto de fábrica.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota2Paragraph);
-
-                    Paragraph Nota3Paragraph = new Paragraph("•3.Se requiere que, previo al inicio del trabajo, todo el perímetro de la ventana esté listo para verificar medidas y mandar a producción.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota3Paragraph);
-
-                    Paragraph Nota4Paragraph = new Paragraph("•4.Todos los materiales que utiliza Instalaciones Maky son de alta calidad (EXTRALUM).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota4Paragraph);
-
-                    Paragraph Nota5Paragraph = new Paragraph("•5.El precio corresponde a materiales, fabricación, transporte e instalación, según medidas tomadas en la obra o suministradas por el cliente. Cualquier otro costo adicional será cotizado por aparte.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota5Paragraph);
-
-                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones CR66015202250000607041", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares CR29015202001242164021 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                //Prefalum
-                if (CompanyCache.IdCompany == 111111111)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                //Mercado del vidrio
-                if (CompanyCache.IdCompany == 3102879949)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                //Usuario Prueba
-                if (CompanyCache.IdCompany == 999999999)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                //Urbano
-                if (CompanyCache.IdCompany == 110640721)
-                {
-                    Paragraph NotasParagraph = new Paragraph("NOTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    NotasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(NotasParagraph);
-
-                    Paragraph Nota1Paragraph = new Paragraph("•1 Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota1Paragraph);
-
-                    Paragraph Nota2Paragraph = new Paragraph("•2.Un vez aceptada la cotización por parte del cliente el mismo debe de devolverla firmada.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota2Paragraph);
-
-                    Paragraph Nota3Paragraph = new Paragraph("•3.No contempla desinstalación, ni desechos, ni acarreo de materiales existente en el sitio.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota3Paragraph);
-
-                    Paragraph Nota4Paragraph = new Paragraph("•4.La garantía es de 3 meses y queda sujeta desde el momento de la entrega y la revisión por parte del cliente y no a la mala instalación tales como: daños o mala manipulación de terceros ajenos a VIDROURBANO tales como golpes rupturas y rayones.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota4Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota4Paragraph);
-
-                    Paragraph Nota5Paragraph = new Paragraph("•5.La limpieza de los vidrios queda exclusivamente a cargo del CLIENTE.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota5Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota5Paragraph);
-
-                    Paragraph Nota6Paragraph = new Paragraph("•6.La Validez de la oferta es de 15 días naturales.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota6Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota6Paragraph);
-
-                    Paragraph Nota7Paragraph = new Paragraph("•7.El tiempo de Fabricación de 8 a 15 días hábiles laborables (ese tiempo puede variar dependiendo de la demanda de material y sistema requerido).", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota7Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota7Paragraph);
-
-                    Paragraph Nota8Paragraph = new Paragraph("•8.El tiempo de entrega será de acuerdo con el vendedor.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota8Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota8Paragraph);
-
-                    Paragraph Nota9Paragraph = new Paragraph("•9.VIDROURBANO trabaja con materiales de estándar nacional.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota9Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota9Paragraph);
-
-                    Paragraph Nota10Paragraph = new Paragraph("•10.Esta oferta NO contempla el I.V.A.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Nota10Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Nota10Paragraph);
-
-                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                    Paragraph FormasPago = new Paragraph("Formas Generales de Pago", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    FormasPago.Alignment = Element.ALIGN_CENTER;
-                    document.Add(FormasPago);
-
-                    Paragraph Forma1 = new Paragraph("•1 Una vez puesto en firme la oferta se debe suministrar el 60% por adelantado.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Forma1.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Forma1);
-
-                    Paragraph Forma2 = new Paragraph("•2 El 40% restante al final a contra entrega y satisfacción del cliente.", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.BLACK));
-                    Forma2.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Forma2);
-
-
-                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n •Numero de Cuenta BAC: 931518518 \n•Numero de Cuenta IBAN: CR56010200009315185188", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("•Cliente Julio Cesar Bonilla Rodriguez \n•Numero de Cuenta IBAN: CR27015202001038479771", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-
-                    document.Add(new Paragraph(" "));// Esto agrega un espacio en blanco en el documento
-
-                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil a nombre de Julio Cesar Bonilla Rodriguez 85800953 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta3Paragraph);
-                }
-                //la familia
-                if (CompanyCache.IdCompany == 114420180)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                //glassmar
-                if (CompanyCache.IdCompany == 3105806704)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                //la costa
-                if (CompanyCache.IdCompany == 109650325)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta BCR Colones-Ahorro CR7801 5202 0010 4759 5592", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta3Paragraph = new Paragraph("• Cuenta BCR Dolares-Ahorro CR5401 5202 0010 4759 5830", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta3Paragraph);
-
-                    Paragraph Cuenta4Paragraph = new Paragraph("• Cuenta Banco Popular Colones CR3101 6100 1221 0000 0271", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta4Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta4Paragraph);
-
-                    Paragraph Cuenta5Paragraph = new Paragraph("• Cuenta Banco Nacional Colones CR6601 5114 5200 1004 1040", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta5Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta5Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• BAC en Colones CR3001 0200 0095 2855 5004 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                if (CompanyCache.IdCompany == 9699999999)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                //MS
-                if (CompanyCache.IdCompany == 204260627)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                //Usuario Prueba
-                if (CompanyCache.IdCompany == 3101704274)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                //Viteco
-                if (CompanyCache.IdCompany == 503320196)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Banco Popular IBAN  CR40011610012010001560", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Banco Nacional IBAN  CR54015112720010041831", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-
-                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil 8751-7492 (Eduardo Alberto Salazar Vega)\r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta3Paragraph);
-                }
-                //Vitro Esparza
-                if (CompanyCache.IdCompany == 3101623589 || CompanyCache.IdCompany == 3101623581)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN Banco Nacional CR77015102720010316718", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta3Paragraph = new Paragraph("• Banco Nacional 200-01-027-031671-9", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta3Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Sinpe Móvil 8828-6440 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                //Vidriera Palmares
-                if (CompanyCache.IdCompany == 222222222)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-                    Paragraph CuentasParagraph2 = new Paragraph("Banco Nacional", FontFactory.GetFont(FontFactory.HELVETICA, 10, 1, BaseColor.GRAY));
-                    CuentasParagraph2.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph2);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones CR84015101910010039940", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares CR20015101920020050861 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-
-                    Paragraph Cuenta3Paragraph = new Paragraph("• Sinpe Móvil a nombre de Vidriera Palmares S.A 87091108 \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta3Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta3Paragraph);
-                }
-                if (CompanyCache.IdCompany == 333333333)
-                {
-                    Paragraph CuentasParagraph = new Paragraph("CUENTAS", FontFactory.GetFont(FontFactory.HELVETICA, 12, 1, BaseColor.GRAY));
-                    CuentasParagraph.Alignment = Element.ALIGN_CENTER;
-                    document.Add(CuentasParagraph);
-
-                    Paragraph Cuenta1Paragraph = new Paragraph("• Cuenta IBAN colones XXXXXXXXXXXXXXXXXXXX", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta1Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta1Paragraph);
-
-                    Paragraph Cuenta2Paragraph = new Paragraph("• Cuenta IBAN dólares XXXXXXXXXXXXXXXXXXXXX \r\n\r\n", FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK));
-                    Cuenta2Paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(Cuenta2Paragraph);
-                }
-                #endregion
-                #region Cerrar el documento
-                // Cerrar el documento
-                document.Close();
-                return true;
             }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Error al Generar el PDF, Error: " + ex.Message);
-                return false;
-
-            }
-            #endregion
         }
-        #endregion
-
+        #endregion   
     }
 }
 
