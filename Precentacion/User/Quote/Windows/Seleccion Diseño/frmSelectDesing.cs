@@ -214,7 +214,7 @@ namespace Precentacion.User.Quote.Windows
 
         private void btnFijoMMM_Click(object sender, EventArgs e)
         {
-            ClsWindows.Desing = "FijoMovilMovilMovil";
+            ClsWindows.Desing = "2ViasFijoMovilMovilMovil";
             frmCalcPriceWindows frm = new frmCalcPriceWindows();
             frm.Show();
             this.Close();
