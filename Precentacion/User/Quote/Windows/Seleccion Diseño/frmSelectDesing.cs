@@ -203,7 +203,7 @@ namespace Precentacion.User.Quote.Windows
             if (System.IO.File.Exists(imagePath))
             {
                 // Carga la imagen y asígnala al botón
-                btnFijoMMM.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\8040FijoMovilMovilMovil.jpeg");
+                //btnFijoMMM.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\8040FijoMovilMovilMovil.jpeg");
                 btn2ViasMMM.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Images\\SelectionDesigns\\SC MMM NATURAL.jpeg");
             }
             else
