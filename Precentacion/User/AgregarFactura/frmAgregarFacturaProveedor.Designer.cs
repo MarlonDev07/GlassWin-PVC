@@ -141,7 +141,7 @@
             // 
             // btnCancelBuscar
             // 
-            this.btnCancelBuscar.Location = new System.Drawing.Point(541, 6);
+            this.btnCancelBuscar.Location = new System.Drawing.Point(590, 5);
             this.btnCancelBuscar.Name = "btnCancelBuscar";
             this.btnCancelBuscar.Size = new System.Drawing.Size(119, 23);
             this.btnCancelBuscar.TabIndex = 12;
@@ -222,7 +222,7 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(406, 7);
+            this.txtBuscar.Location = new System.Drawing.Point(452, 6);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(100, 20);
             this.txtBuscar.TabIndex = 2;
@@ -234,9 +234,9 @@
             this.label7.Font = new System.Drawing.Font("Imprint MT Shadow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(229, 3);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(171, 25);
+            this.label7.Size = new System.Drawing.Size(239, 25);
             this.label7.TabIndex = 1;
-            this.label7.Text = "Factura/PDV/Bodega:";
+            this.label7.Text = "Factura/PDV/Bodega/Proyecto:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgvFacturas

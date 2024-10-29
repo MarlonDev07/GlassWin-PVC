@@ -397,8 +397,9 @@ namespace Precentacion.User.AgregarFactura
 
                 // Resto del código
                 string imagePath = string.Empty;
+                string Proyecto = cbProyecto.Text;
                 N_FactProveedor n_FactProveedor = new N_FactProveedor();
-                n_FactProveedor.InsertarFacturaProveedor(IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, montoTotal, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen);
+                n_FactProveedor.InsertarFacturaProveedor(IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, montoTotal, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen, Proyecto);
 
                 // Código para insertar en la tabla Gastos...
                 N_Gastos n_Gastos = new N_Gastos();
@@ -533,8 +534,9 @@ namespace Precentacion.User.AgregarFactura
                 }
 
                 // Actualizar la factura
+                string Proycto = cbProyecto.Text;
                 N_FactProveedor n_FactProveedor = new N_FactProveedor();
-                n_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, montoTotal, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen);
+                n_FactProveedor.ActualizarFacturaProveedor(IdFactura, IdProveedor, dtpFechaCompra.Value, dtpFechaVencimiento.Value, montoTotal, txtNumFactura.Text, txtPEV.Text, txtBodega.Text, rutaImagen, Proycto);
 
                 MessageBox.Show("Factura Editada Correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

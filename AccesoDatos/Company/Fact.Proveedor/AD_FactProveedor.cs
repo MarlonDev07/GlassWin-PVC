@@ -21,7 +21,7 @@ namespace AccesoDatos.Company.Fact.Proveedor
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Cnn.OpenConecction();
                 //cmd.CommandText = "Select RegProveedor.IdProvedor ,RegProveedor.Nombre, FacturaProveedor.IdFactura, FacturaProveedor.NumFactura, FacturaProveedor.FechaCompra, FacturaProveedor.FechaVencimiento, FacturaProveedor.Monto\r\nFrom FacturaProveedor\r\nINNER JOIN RegProveedor\r\nON FacturaProveedor.IdProveedor = RegProveedor.IdProvedor WHERE FacturaProveedor.IdEmpresa = @Id and FacturaProveedor.Monto != 0";
-                cmd.CommandText = "Select RegProveedor.IdProvedor ,RegProveedor.Nombre, FacturaProveedor.IdFactura, FacturaProveedor.NumFactura, FacturaProveedor.FechaCompra, FacturaProveedor.FechaVencimiento, FacturaProveedor.Monto, FacturaProveedor.PEV, FacturaProveedor.bodega, FacturaProveedor.urlFactura\r\nFrom FacturaProveedor\r\nINNER JOIN RegProveedor\r\nON FacturaProveedor.IdProveedor = RegProveedor.IdProvedor WHERE FacturaProveedor.IdEmpresa = @Id and FacturaProveedor.Monto != 0";
+                cmd.CommandText = "Select RegProveedor.IdProvedor ,RegProveedor.Nombre, FacturaProveedor.IdFactura, FacturaProveedor.NumFactura, FacturaProveedor.FechaCompra, FacturaProveedor.FechaVencimiento, FacturaProveedor.Monto, FacturaProveedor.PEV, FacturaProveedor.bodega, FacturaProveedor.urlFactura,  FacturaProveedor.Proyecto\r\nFrom FacturaProveedor\r\nINNER JOIN RegProveedor\r\nON FacturaProveedor.IdProveedor = RegProveedor.IdProvedor WHERE FacturaProveedor.IdEmpresa = @Id and FacturaProveedor.Monto != 0";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@Id", CompanyCache.IdCompany);
                 Read = cmd.ExecuteReader();
@@ -43,7 +43,7 @@ namespace AccesoDatos.Company.Fact.Proveedor
                 SqlDataReader Read;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Cnn.OpenConecction();
-                cmd.CommandText = "Select RegProveedor.IdProvedor ,RegProveedor.Nombre, FacturaProveedor.IdFactura, FacturaProveedor.NumFactura, FacturaProveedor.FechaCompra, FacturaProveedor.FechaVencimiento, FacturaProveedor.Monto, FacturaProveedor.PEV, FacturaProveedor.bodega\r\nFrom FacturaProveedor\r\nINNER JOIN RegProveedor\r\nON FacturaProveedor.IdProveedor = RegProveedor.IdProvedor WHERE FacturaProveedor.IdEmpresa = @Id and FacturaProveedor.Monto = 0";
+                cmd.CommandText = "Select RegProveedor.IdProvedor ,RegProveedor.Nombre, FacturaProveedor.IdFactura, FacturaProveedor.NumFactura, FacturaProveedor.FechaCompra, FacturaProveedor.FechaVencimiento, FacturaProveedor.Monto, FacturaProveedor.PEV, FacturaProveedor.bodega, ,RegProveedor.Proyecto\r\nFrom FacturaProveedor\r\nINNER JOIN RegProveedor\r\nON FacturaProveedor.IdProveedor = RegProveedor.IdProvedor WHERE FacturaProveedor.IdEmpresa = @Id and FacturaProveedor.Monto = 0";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@Id", CompanyCache.IdCompany);
                 Read = cmd.ExecuteReader();
@@ -89,14 +89,14 @@ namespace AccesoDatos.Company.Fact.Proveedor
 
 
 
-        public bool InsertarFacturaProveedor(int IdProveedor, DateTime FechaCompra,DateTime FechaVencimiento, decimal Monto, string NumFactura, string pev, string bodega, string urlFactura)
+        public bool InsertarFacturaProveedor(int IdProveedor, DateTime FechaCompra,DateTime FechaVencimiento, decimal Monto, string NumFactura, string pev, string bodega, string urlFactura, string Proyecto)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Cnn.OpenConecction();
-                string query = @"INSERT INTO FacturaProveedor (IdEmpresa, IdProveedor, FechaCompra, FechaVencimiento, Monto, NumFactura, PEV, bodega, urlFactura)
-                         VALUES (@IdEmpresa, @IdProveedor, @FechaCompra, @FechaVencimiento, @Monto, @NumFactura, @PEV, @bodega, @urlFactura)";
+                string query = @"INSERT INTO FacturaProveedor (IdEmpresa, IdProveedor, FechaCompra, FechaVencimiento, Monto, NumFactura, PEV, bodega, urlFactura, Proyecto)
+                         VALUES (@IdEmpresa, @IdProveedor, @FechaCompra, @FechaVencimiento, @Monto, @NumFactura, @PEV, @bodega, @urlFactura, @Proyecto)";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdEmpresa", CompanyCache.IdCompany);
                 cmd.Parameters.AddWithValue("@IdProveedor", IdProveedor);
@@ -107,6 +107,7 @@ namespace AccesoDatos.Company.Fact.Proveedor
                 cmd.Parameters.AddWithValue("@PEV", pev);
                 cmd.Parameters.AddWithValue("@bodega", bodega);
                 cmd.Parameters.AddWithValue("@urlFactura", urlFactura);
+                cmd.Parameters.AddWithValue("@Proyecto", Proyecto);
 
                 cmd.CommandText = query;
                 cmd.ExecuteNonQuery();
@@ -147,13 +148,13 @@ namespace AccesoDatos.Company.Fact.Proveedor
             }
         }
 
-        public bool ActualizarFacturaProveedor(int IdFactura, int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, decimal Monto, string NumFactura, string pev, string bodega, string urlFactura)
+        public bool ActualizarFacturaProveedor(int IdFactura, int IdProveedor, DateTime FechaCompra, DateTime FechaVencimiento, decimal Monto, string NumFactura, string pev, string bodega, string urlFactura, string Proyecto)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = Cnn.OpenConecction();
-                string query = @"UPDATE FacturaProveedor SET IdProveedor = @IdProveedor, FechaCompra = @FechaCompra, FechaVencimiento = @FechaVencimiento, Monto = @Monto, NumFactura = @NumFactura, PEV = @pev, bodega = @bodega, urlFactura = @urlFactura
+                string query = @"UPDATE FacturaProveedor SET IdProveedor = @IdProveedor, FechaCompra = @FechaCompra, FechaVencimiento = @FechaVencimiento, Monto = @Monto, NumFactura = @NumFactura, PEV = @pev, bodega = @bodega, urlFactura = @urlFactura, Proyecto = @Proyecto
                          WHERE IdFactura = @IdFactura";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdFactura", IdFactura);
@@ -165,6 +166,8 @@ namespace AccesoDatos.Company.Fact.Proveedor
                 cmd.Parameters.AddWithValue("@PEV", pev);
                 cmd.Parameters.AddWithValue("@bodega", bodega);
                 cmd.Parameters.AddWithValue("@urlFactura", urlFactura);
+                cmd.Parameters.AddWithValue("@Proyecto", Proyecto);
+
 
                 cmd.CommandText = query;
                 cmd.ExecuteNonQuery();
