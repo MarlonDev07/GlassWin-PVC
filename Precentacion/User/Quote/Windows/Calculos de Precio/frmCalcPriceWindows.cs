@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using zPersonalizacion;
 using Application = System.Windows.Forms.Application;
 
 namespace Precentacion.User.Quote.Windows
@@ -181,14 +182,14 @@ namespace Precentacion.User.Quote.Windows
                 }
                 else
                 {
-                    MessageBox.Show("Color no disponible");
+                    GwMessageBox.Show("Imagen no Encontrada, Posiblemente el Sistema no este Disponible","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     Console.WriteLine(path);
                 }
 
             }
-            catch (Exception)
+            catch (Exception EX)
             {
-                MessageBox.Show("Error al cargar la imagen");
+                GwMessageBox.Show("Error al Cargar Imagen: "+EX.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void loadGlass()
