@@ -575,6 +575,9 @@
     <Compile Include="User\RegProveedor\frmRegistroProveedor.Designer.cs">
       <DependentUpon>frmRegistroProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="zPersonalizacion\btnCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="zPersonalizacion\frmMessageBoxCustom.cs">
       <SubType>Form</SubType>
     </Compile>
