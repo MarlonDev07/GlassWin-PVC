@@ -1,4 +1,5 @@
 ﻿using AccesoDatos.DataBase;
+using Dominio.Model.ClassComboArticulos;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -587,38 +588,55 @@ namespace AccesoDatos.Company.LoadProducts
             }
         }
         #region InserWindows
-        public bool insertWindows(string Description,string URL,decimal Width,decimal Height,string Glass,string Color,string TypeLock,decimal Price,int IdQuote, string System, string Desing) 
-		{
-			try
-			{
-				//Insertar Windows mediante un sp llamado sp_InsertarWindows
-				ClsConnection con = new ClsConnection();
-				SqlCommand cmd = new SqlCommand("sp_InsertarWindows", con.OpenConecction());
-				cmd.CommandType = CommandType.StoredProcedure;
-				cmd.Parameters.AddWithValue("@Description", Description);
-				cmd.Parameters.AddWithValue("@URL", URL);
-				cmd.Parameters.AddWithValue("@Width", Width);
-				cmd.Parameters.AddWithValue("@Height", Height);
-				cmd.Parameters.AddWithValue("@Glass", Glass);
-				cmd.Parameters.AddWithValue("@Color", Color);
-				cmd.Parameters.AddWithValue("@TypeLock", TypeLock);
-				cmd.Parameters.AddWithValue("@Price", Price);
-				cmd.Parameters.AddWithValue("@IdQuote", IdQuote);
-				cmd.Parameters.AddWithValue("@System", System);
-				cmd.Parameters.AddWithValue("@Design", Desing);
+        public bool insertWindows(string Description, string URL, decimal Width, decimal Height, string Glass, string Color, string TypeLock, decimal Price, int IdQuote, string System, string Design)
+        {
+            try
+            {
+                // Crear la conexión y el comando
+                ClsConnection con = new ClsConnection();
+                SqlCommand cmd = new SqlCommand("sp_InsertarWindows", con.OpenConecction());
+                cmd.CommandType = CommandType.StoredProcedure;
 
-				cmd.ExecuteNonQuery();
-				con.CloseConnection();
-				return true;
-			}
-			catch (Exception)
-			{
+                // Agregar los parámetros de entrada
+                cmd.Parameters.AddWithValue("@Description", Description);
+                cmd.Parameters.AddWithValue("@URL", URL);
+                cmd.Parameters.AddWithValue("@Width", Width);
+                cmd.Parameters.AddWithValue("@Height", Height);
+                cmd.Parameters.AddWithValue("@Glass", Glass);
+                cmd.Parameters.AddWithValue("@Color", Color);
+                cmd.Parameters.AddWithValue("@TypeLock", TypeLock);
+                cmd.Parameters.AddWithValue("@Price", Price);
+                cmd.Parameters.AddWithValue("@IdQuote", IdQuote);
+                cmd.Parameters.AddWithValue("@System", System);
+                cmd.Parameters.AddWithValue("@Design", Design);
 
-				return false;
-			}
-		}
+                // Agregar el parámetro de salida para obtener el ID insertado
+                SqlParameter outputIdParam = new SqlParameter("@NewWindowID", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outputIdParam);
 
-		public bool EditWindows(int IdWindows, string Description, string URL, decimal Width, decimal Height, string Glass, string Color, string TypeLock, decimal Price, int IdQuote, string System, string Desing) 
+                // Ejecutar el comando
+                cmd.ExecuteNonQuery();
+
+                // Cerrar la conexión
+                con.CloseConnection();
+
+                // Devolver el ID insertado
+                cls_ComboArticulos.IdWindows = (int)outputIdParam.Value;
+
+                return true;
+            }
+            catch (Exception)
+            {
+                // Si ocurre un error, retornar -1 o algún otro valor que indique fallo
+                return false;
+            }
+        }
+
+
+        public bool EditWindows(int IdWindows, string Description, string URL, decimal Width, decimal Height, string Glass, string Color, string TypeLock, decimal Price, int IdQuote, string System, string Desing) 
 		{
             try
             {
