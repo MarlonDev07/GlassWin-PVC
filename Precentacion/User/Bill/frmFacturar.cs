@@ -2745,8 +2745,11 @@ namespace Precentacion.User.Bill
                         }
                         else
                         {
-                            row.Cells[4].Value = row.Cells[3].Value;//2
-                            row.Cells[5].Value = row.Cells[3].Value;//2
+                            row.Cells[4].Value = row.Cells[3].Value;
+                            decimal metraje = Convert.ToDecimal(row.Cells[3].Value);
+                            decimal Tamaño = Convert.ToDecimal(row.Cells[4].Value);
+                            decimal Cantidad = metraje / Tamaño;
+                            row.Cells[5].Value = Cantidad;
                         }
                     }
                     if (UserCache.Name == "InnovaGlass")

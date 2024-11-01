@@ -36,7 +36,7 @@ namespace AccesoDatos.DataBase
                 {
                     connectionString = ConfigurationManager.ConnectionStrings["GWAlbo"].ConnectionString;
                     Conexion = new SqlConnection(connectionString);
-                }//
+                }
                 else if(CompanyCache.IdCompany == 3101623581)
                 {
                     connectionString = ConfigurationManager.ConnectionStrings["GWVitroEsparza"].ConnectionString;
