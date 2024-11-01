@@ -222,6 +222,21 @@ namespace Negocio.Products
                 return null;
             }   
         }
+        public decimal ObtenerTamañoVidrio(string Descripcion) 
+        {
+            try
+            {
+                CD_Products Products = new CD_Products();
+                decimal Tamaño;
+                Tamaño = Products.CargarTamañoPiezaVidrio(Descripcion);
+                return Tamaño;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+        }
         #endregion
 
 

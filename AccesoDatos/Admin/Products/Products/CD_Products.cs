@@ -387,6 +387,7 @@ namespace AccesoDatos.Products
 
                         // Añadir parámetros para cada artículo en la lista
                         cmd.Parameters.AddWithValue("@Nombre" + i, List[i].Nombre);
+                        Console.WriteLine(List[i].Nombre);
                         cmd.Parameters.AddWithValue("@Color" + i, List[i].Color);
                         cmd.Parameters.AddWithValue("@Proveedor" + i, List[i].Supplier);
                     }
@@ -408,6 +409,20 @@ namespace AccesoDatos.Products
                 Console.WriteLine(ex.Message);
                 return null;
             }
+        }
+
+        public decimal CargarTamañoPiezaVidrio(string Descripcion) 
+        {
+            DataTable table = new DataTable();
+            string query = "SELECT p.Tamaño FROM Price p JOIN Product pr ON p.idProduct = pr.idProduct where Description = @Nombre";
+            using (SqlCommand cmd = new SqlCommand(query, Cnn.OpenConecction()))
+            {
+                cmd.Parameters.AddWithValue("@Nombre", Descripcion);
+                SqlDataReader reader = cmd.ExecuteReader();
+                table.Load(reader);
+                Cnn.CloseConnection();
+            }
+            return Convert.ToDecimal(table.Rows[0][0]);
         }
 
     }

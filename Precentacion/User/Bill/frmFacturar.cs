@@ -2741,11 +2741,19 @@ namespace Precentacion.User.Bill
                         string nombreProducto = row.Cells[0].Value.ToString().Trim(); // Asegúrate de usar el índice correcto para el nombre del producto
                         if (tamanos.ContainsKey(nombreProducto))
                         {
+                            
+                            Console.WriteLine(nombreProducto);
                             row.Cells[4].Value = tamanos[nombreProducto]; // Usa el índice correcto para la columna "Tamaño"
                         }
                         else
                         {
-                            row.Cells[4].Value = row.Cells[3].Value;
+                            if (nombreProducto.Contains("Vid"))
+                            {
+                                decimal TamañoVid = products.ObtenerTamañoVidrio(nombreProducto);
+                                row.Cells[4].Value = TamañoVid;
+                                continue;
+                            }
+                            row.Cells[4].Value = "1";
                             decimal metraje = Convert.ToDecimal(row.Cells[3].Value);
                             decimal Tamaño = Convert.ToDecimal(row.Cells[4].Value);
                             decimal Cantidad = metraje / Tamaño;
@@ -2901,6 +2909,7 @@ namespace Precentacion.User.Bill
                     {
                         PriceProductClass priceProduct = new PriceProductClass();
                         priceProduct.Nombre = item.Cells[0].Value.ToString();
+                        Console.WriteLine(priceProduct.Nombre);
                         priceProduct.Supplier = cbProveedorDesglose.SelectedValue.ToString();
                         priceProduct.Color = "Natural";
                         Lista.Add(priceProduct);
