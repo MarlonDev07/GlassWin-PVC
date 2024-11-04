@@ -912,36 +912,39 @@ namespace Precentacion.User.Quote.Windows
                                 {
                                     ((frmQuote)frm).loadWindows();
                                 }
-                                MessageBox.Show("Ventana Editada correctamente");
+                                GwMessageBox.Show("Ventana Editada correctamente","Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 ClsWindows.Lock = "";
                                 //Cerrar la ventana
                                 this.Close();
                             }
                             else
                             {
-                                MessageBox.Show("Error al Editar la ventana");
+                                GwMessageBox.Show("Error al Editar la ventana","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                             }
                         }
                         else
                         {
 
-                            if (loadProduct.insertWindows(description, URL, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, ClsWindows.Lock, totalPrice, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing))
+                            // Declarar una variable para capturar el mensaje de error
+                            string errorMessage;
+
+                            // Llamar al método insertWindows y pasar 'out' para errorMessage
+                            if (loadProduct.insertWindows(description, URL, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, ClsWindows.Lock, totalPrice, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing, out errorMessage))
                             {
-                                //Actualize el data grid en la pantalla de cotizaciones
-                                //primero verifique si el formulario esta abierto
+                                // Actualizar el DataGrid en la pantalla de cotizaciones
                                 Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
                                 if (frm != null)
                                 {
                                     ((frmQuote)frm).loadWindows();
                                 }
-                                MessageBox.Show("Ventana agregada correctamente");
+                                GwMessageBox.Show("Ventana Agregada correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 ClsWindows.Lock = "";
                                 CleanController();
-
                             }
                             else
                             {
-                                MessageBox.Show("Error al agregar la ventana");
+                                // Mostrar el mensaje de error específico
+                                GwMessageBox.Show("Error al Agregar la ventana: "+errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }

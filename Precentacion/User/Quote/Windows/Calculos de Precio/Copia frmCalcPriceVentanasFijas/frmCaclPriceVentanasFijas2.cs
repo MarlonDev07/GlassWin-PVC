@@ -249,21 +249,22 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio.Copia_frmCalcPriceV
 
                 if (this.update == false)
                 {
-                    //Guardar Ventana
-                    bool result = n_LoadProduct.insertWindows(Description, URL, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", PrecioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing);
+                    string errorMessage; // Variable para capturar el mensaje de error
+
+                    // Guardar Ventana
+                    bool result = n_LoadProduct.insertWindows(Description, URL, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", PrecioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing, out errorMessage);
                     if (result)
                     {
                         MessageBox.Show("Ventana Guardada Correctamente", "Guardado Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ActualizarCotizacion();
                         LimpiarCampos();
-
-
                     }
                     else
                     {
-                        MessageBox.Show("No se Pudo Guardar la Ventana", "Guardado Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        // Muestra el mensaje de error específico
+                        MessageBox.Show("No se Pudo Guardar la Ventana: " + errorMessage, "Guardado Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
                 }
                 else 
                 {

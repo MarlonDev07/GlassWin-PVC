@@ -443,16 +443,27 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
             description += "Ubicación: " + txtUbicacion.Text + "\n";
             if (this.Update == false)
             {
-                if (n_LoadProduct.insertWindows(description, RutaImagen, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", precioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing))
+                string errorMessage; // Variable para capturar el mensaje de error
+
+                // Intentar guardar la ventana
+                if (n_LoadProduct.insertWindows(description, RutaImagen, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", precioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing, out errorMessage))
                 {
-                    LimpiarCampos();
+                    LimpiarCampos(); // Limpia los campos del formulario
                     MessageBox.Show("Ventana guardada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Actualiza el DataGrid si el formulario frmQuote está abierto
                     Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
                     if (frm != null)
                     {
                         ((frmQuote)frm).loadWindows();
                     }
                 }
+                else
+                {
+                    // Muestra el mensaje de error específico
+                    MessageBox.Show("No se pudo guardar la ventana: " + errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             else 
             {

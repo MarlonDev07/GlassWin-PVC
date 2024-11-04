@@ -12741,17 +12741,24 @@ namespace Negocio.LoadProduct
         #endregion
 
         #region Insert
-        public bool insertWindows(string Description, string URL, decimal Width, decimal Height, string Glass, string Color, string TypeLock, decimal Price, int IdQuote, string System, string Desing)
+        public bool insertWindows(string Description, string URL, decimal Width, decimal Height, string Glass, string Color, string TypeLock, decimal Price, int IdQuote, string System, string Desing, out string errorMessage)
         {
+            // Inicializar el mensaje de error
+            errorMessage = string.Empty;
+
             try
             {
-                return loadProduct.insertWindows(Description, URL, Width, Height, Glass, Color, TypeLock, Price, IdQuote, System, Desing);
+                // Llamar al método de la capa de datos y pasar 'out' para errorMessage
+                return loadProduct.insertWindows(Description, URL, Width, Height, Glass, Color, TypeLock, Price, IdQuote, System, Desing, out errorMessage);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                // En caso de una excepción en la lógica de negocio, asignar el mensaje de error
+                errorMessage = ex.Message;
                 return false;
             }
         }
+
 
         public bool EditWindows(string IDWindows, string Description, string URL, decimal Width, decimal Height, string Glass, string Color, string TypeLock, decimal Price, int IdQuote, string System, string Desing)
         {

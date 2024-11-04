@@ -612,8 +612,12 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
 
             if (this.update == false)
             {
-                if (n_LoadProduct.insertWindows(Description, Url, clsPuertaBaño.WeightTotal, clsPuertaBaño.heigt, cbVidrio.Text, cbColor.Text, "", clsPuertaBaño.Price, ClsWindows.IDQuote, clsPuertaBaño.System, clsPuertaBaño.Desing))
+                string errorMessage; // Variable para capturar el mensaje de error
+
+                // Intentar guardar la puerta de baño
+                if (n_LoadProduct.insertWindows(Description, Url, clsPuertaBaño.WeightTotal, clsPuertaBaño.heigt, cbVidrio.Text, cbColor.Text, "", clsPuertaBaño.Price, ClsWindows.IDQuote, clsPuertaBaño.System, clsPuertaBaño.Desing, out errorMessage))
                 {
+                    // Actualiza el DataGrid si el formulario frmQuote está abierto
                     Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
                     if (frm != null)
                     {
@@ -623,8 +627,10 @@ namespace Precentacion.User.Quote.Windows.Calculos_de_Precio
                 }
                 else
                 {
-                    MessageBox.Show("Error al guardar la puerta de baño", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Muestra el mensaje de error específico
+                    MessageBox.Show("Error al guardar la puerta de baño: " + errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
             else 
             {

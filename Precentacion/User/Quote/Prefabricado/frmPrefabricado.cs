@@ -368,7 +368,14 @@ namespace Precentacion.User.Quote.Prefabricado
                             }
                             else
                             {
-                                n_LoadProduct.insertWindows(description, "", Convert.ToDecimal(row.Cells[2].Value), Convert.ToDecimal(row.Cells[3].Value), "", "", "", Convert.ToDecimal(row.Cells[8].Value), ClsWindows.IDQuote, "cmbArticulos", "");
+                                string errorMessage;
+
+                                // Intentar llamar a insertWindows y verificar si ocurre un error
+                                if (!n_LoadProduct.insertWindows(description, "", Convert.ToDecimal(row.Cells[2].Value), Convert.ToDecimal(row.Cells[3].Value), "", "", "", Convert.ToDecimal(row.Cells[8].Value), ClsWindows.IDQuote, "cmbArticulos", "", out errorMessage))
+                                {
+                                    // Mostrar el mensaje de error específico si ocurre una falla
+                                    MessageBox.Show("Error al agregar el artículo: " + errorMessage);
+                                }
                             }
 
                         }

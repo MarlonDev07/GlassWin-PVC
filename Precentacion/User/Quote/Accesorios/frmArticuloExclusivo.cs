@@ -80,15 +80,24 @@ namespace Precentacion.User.Quote.Accesorios
                         string Descripcion = txtDescripcion.Text;
                         Descripcion += Environment.NewLine;
                         Descripcion += "Exclusivo";
+                        // Declarar una variable para capturar el mensaje de error
+                        string errorMessage;
 
-                        if (SaveWindows.insertWindows(Descripcion, rutaImagen, 0, 0, "", "", "", Convert.ToDecimal(txtPrecio.Text), ClsWindows.IDQuote, "", ""))
+                        // Llamar al método insertWindows y pasar 'out' para capturar el mensaje de error
+                        if (SaveWindows.insertWindows(Descripcion, rutaImagen, 0, 0, "", "", "", Convert.ToDecimal(txtPrecio.Text), ClsWindows.IDQuote, "", "", out errorMessage))
                         {
+                            // Si el formulario de cotización está abierto, recargar las ventanas
                             Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
                             if (frm != null)
                             {
                                 ((frmQuote)frm).loadWindows();
                             }
-                            MessageBox.Show("Articulo Agregado");
+                            MessageBox.Show("Artículo agregado correctamente");
+                        }
+                        else
+                        {
+                            // Mostrar el mensaje de error específico si ocurre una falla
+                            MessageBox.Show("Error al agregar el artículo: " + errorMessage);
                         }
                     }
 

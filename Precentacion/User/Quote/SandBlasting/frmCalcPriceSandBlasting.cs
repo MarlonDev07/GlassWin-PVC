@@ -196,10 +196,13 @@ namespace Precentacion.User.Quote.SandBlasting
              
                 //Llamar al Metodo de Guardar
                 N_LoadProduct objNegocio = new N_LoadProduct();
-                if (objNegocio.insertWindows(descripcion, RutaIMagen, Convert.ToDecimal(txtAlto.Text),Convert.ToDecimal(txtAncho.Text), "","","", SubTotal,ClsWindows.IDQuote,"SandBlasting",cbDiseño.Text))
+                string errorMessage; // Variable para capturar el mensaje de error
+
+                if (objNegocio.insertWindows(descripcion, RutaIMagen, Convert.ToDecimal(txtAlto.Text), Convert.ToDecimal(txtAncho.Text), "", "", "", SubTotal, ClsWindows.IDQuote, "SandBlasting", cbDiseño.Text, out errorMessage))
                 {
                     MessageBox.Show("Guardado Correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //Recargar el Formulario Quote
+
+                    // Recargar el Formulario Quote
                     Form frmQ = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
                     if (frmQ != null)
                     {
@@ -209,9 +212,11 @@ namespace Precentacion.User.Quote.SandBlasting
                 }
                 else
                 {
-                    MessageBox.Show("Error al Guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Muestra el mensaje de error específico
+                    MessageBox.Show("Error al Guardar: " + errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-               
+
+
 
             }
             catch (Exception)

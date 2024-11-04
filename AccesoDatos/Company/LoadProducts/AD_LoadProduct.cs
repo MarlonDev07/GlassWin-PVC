@@ -588,10 +588,12 @@ namespace AccesoDatos.Company.LoadProducts
             }
         }
         #region InserWindows
-        public bool insertWindows(string Description, string URL, decimal Width, decimal Height, string Glass, string Color, string TypeLock, decimal Price, int IdQuote, string System, string Design)
+        public bool insertWindows(string Description, string URL, decimal Width, decimal Height, string Glass, string Color, string TypeLock, decimal Price, int IdQuote, string System, string Design, out string errorMessage)
         {
+            errorMessage = string.Empty;
             try
             {
+               
                 // Crear la conexión y el comando
                 ClsConnection con = new ClsConnection();
                 SqlCommand cmd = new SqlCommand("sp_InsertarWindows", con.OpenConecction());
@@ -628,9 +630,9 @@ namespace AccesoDatos.Company.LoadProducts
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // Si ocurre un error, retornar -1 o algún otro valor que indique fallo
+                errorMessage = ex.Message;
                 return false;
             }
         }

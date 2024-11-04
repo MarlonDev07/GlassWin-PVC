@@ -50,8 +50,13 @@ namespace Precentacion.User.Quote.Accesorios
                 string description = CreateDescription(CantidadVidrios, "Vidrio");
                 string Color = dgvAccesorios.CurrentRow.Cells[7].Value.ToString();
 
-                if (load.insertWindows(description, url, 0, 0, "", Color, "", PrecioVidrio, ClsWindows.IDQuote, "", ""))
+                // Declarar una variable para capturar el mensaje de error
+                string errorMessage;
+
+                // Llamar al método insertWindows y pasar 'out' para capturar el mensaje de error
+                if (load.insertWindows(description, url, 0, 0, "", Color, "", PrecioVidrio, ClsWindows.IDQuote, "", "", out errorMessage))
                 {
+                    // Si el formulario de cotización está abierto, recargar las ventanas
                     Form frmQ = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
                     if (frmQ != null)
                     {
@@ -59,6 +64,12 @@ namespace Precentacion.User.Quote.Accesorios
                     }
                     MessageBox.Show("Artículo Agregado");
                 }
+                else
+                {
+                    // Mostrar el mensaje de error específico si ocurre una falla
+                    MessageBox.Show("Error al agregar el artículo: " + errorMessage);
+                }
+
             }
             else
             {
@@ -78,15 +89,25 @@ namespace Precentacion.User.Quote.Accesorios
                         try
                         {
                             decimal Precio = CalculoPrecio(int.Parse(Cantidad), decimal.Parse(Metraje));
-                            if (load.insertWindows(description, url, 0, 0, "", Color, "", Precio, ClsWindows.IDQuote, "", ""))
+                            string errorMessage; // Variable para capturar el mensaje de error
+
+                            // Intentar insertar el artículo
+                            if (load.insertWindows(description, url, 0, 0, "", Color, "", Precio, ClsWindows.IDQuote, "", "", out errorMessage))
                             {
+                                // Actualiza el DataGrid si el formulario frmQuote está abierto
                                 Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmQuote);
                                 if (frm != null)
                                 {
                                     ((frmQuote)frm).loadWindows();
                                 }
-                                MessageBox.Show("Artículo Agregado");
+                                MessageBox.Show("Artículo Agregado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
+                            else
+                            {
+                                // Muestra el mensaje de error específico
+                                MessageBox.Show("Error al agregar el artículo: " + errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
                         }
                         catch (Exception)
                         {

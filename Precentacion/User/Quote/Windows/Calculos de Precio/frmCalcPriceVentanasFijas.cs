@@ -520,21 +520,23 @@ namespace Precentacion.User.Quote.Windows
 
                 if (this.update == false)
                 {
-                    //Guardar Ventana
-                    bool result = n_LoadProduct.insertWindows(Description, URL, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", PrecioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing);
+                    string errorMessage; // Variable para capturar el mensaje de error
+
+                    // Intentar guardar la ventana
+                    bool result = n_LoadProduct.insertWindows(Description, URL, ClsWindows.Weight, ClsWindows.heigt, cbVidrio.Text, cbColor.Text, "", PrecioTotal, ClsWindows.IDQuote, ClsWindows.System, ClsWindows.Desing, out errorMessage);
+
                     if (result)
                     {
                         MessageBox.Show("Ventana Guardada Correctamente", "Guardado Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ActualizarCotizacion();
-                        LimpiarCampos();
-
-
+                        ActualizarCotizacion(); // Actualiza la cotización si es necesario
+                        LimpiarCampos(); // Limpia los campos del formulario
                     }
                     else
                     {
-                        MessageBox.Show("No se Pudo Guardar la Ventana", "Guardado Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        // Muestra el mensaje de error específico
+                        MessageBox.Show("No se Pudo Guardar la Ventana: " + errorMessage, "Guardado Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
                 }
                 else 
                 {
