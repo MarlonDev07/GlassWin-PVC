@@ -101,7 +101,6 @@ namespace Precentacion.User.Quote.Prefabricado
             }
         }
 
-
         public void ActualizarTotalPrecio()
         {
             decimal totalPrecio = 0;
@@ -118,7 +117,15 @@ namespace Precentacion.User.Quote.Prefabricado
             txtTotalCMB.Text = totalPrecio.ToString("c"); // Mostrar total con 2 decimales
         }
 
+        public void ConfigMaterialSkin()
+        {
+            MaterialSkin.MaterialSkinManager materialSkinManager = MaterialSkin.MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
+            //Colores anaranjados
+            materialSkinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Orange800, MaterialSkin.Primary.Orange900, MaterialSkin.Primary.Orange500, MaterialSkin.Accent.Orange700, MaterialSkin.TextShade.WHITE);
 
+        }
         #endregion
 
         private void btnCargar_Click(object sender, EventArgs e)
