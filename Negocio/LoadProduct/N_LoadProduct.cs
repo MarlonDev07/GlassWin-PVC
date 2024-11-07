@@ -142,7 +142,11 @@ namespace Negocio.LoadProduct
                 return null;
             }
         }
-
+        
+        public DataTable LoadPrefabricadoDesglose(int IdWindows) 
+        {
+            return loadProduct.LoadPrefabricadoDesglose(IdWindows);
+        }
 
 
 

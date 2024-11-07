@@ -1,7 +1,9 @@
-﻿using Dominio.Model.ClassWindows;
+﻿using Dominio.Model.ClassComboArticulos;
+using Dominio.Model.ClassWindows;
 using Negocio.Company.Quote;
 using Negocio.LoadProduct;
 using Negocio.Proveedor;
+using Precentacion.User.Quote.Prefabricado;
 using Precentacion.User.Quote.Quote;
 using Precentacion.User.Quote.Windows.Calculos_de_Precio;
 using Precentacion.User.Quote.Windows.Seleccion_Diseño;
@@ -899,6 +901,11 @@ namespace Precentacion.User.Quote.Windows
                         if (TempTotal != 0)
                         {
                             totalPrice = TempTotal;
+                        }
+                        if (cls_ComboArticulos.Abierto)
+                        {
+                            description += "VTPrefabricado" + "\n";
+                            totalPrice = 0;
                         }
 
                         if (Update == "Update")
@@ -3295,6 +3302,39 @@ namespace Precentacion.User.Quote.Windows
             {
                 MessageBox.Show("Solo se permiten 20 caracteres en este campo");
                
+            }
+        }
+
+        private void prefabricadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cls_ComboArticulos.Abierto)
+            {
+                if (totalPrice != 0)
+                {
+                    cls_ComboArticulos.Precio = totalPrice;
+
+
+
+                    Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmPrefabricado);
+                    if (frm != null)
+                    {
+                        ((frmPrefabricado)frm).ActualizarTotalPrecio();
+                    }
+                    btnInsertar_Click(sender, e);
+
+                    GwMessageBox.Show("Se ah añadido la Ventana", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cls_ComboArticulos.Abierto = false;
+                    this.Close();
+                }
+                else
+                {
+                    GwMessageBox.Show("Debe cotizar Primero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+            }
+            else
+            {
+                GwMessageBox.Show("No se puede Enviar a prefabricado ya que no esta agregando prefabricados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

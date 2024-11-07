@@ -123,6 +123,22 @@ namespace Precentacion.User.Quote.Quote
             try
             {
                 DataTable dt = NQuote.LoadWindows(Convert.ToInt32(txtidQuote.Text));
+                //Buscar en la tabla en la columna de Descripcion si existe la palabra "VTPrefabricado"
+                foreach (DataRow row in dt.Rows)
+                {
+                    //Validar que la fila tenga datos
+                    if (row["Description"].ToString() != "")
+                    {
+                        //Validar que la fila contenga la palabra "VTPrefabricado"
+                        if (row["Description"].ToString().Contains("VTPrefabricado"))
+                        {
+                            //Eliminar la fila
+                            dt.Rows.Remove(row);
+                            break;
+                        }
+                    }
+                }
+
                 dgCotizaciones.DataSource = dt;
                 dgCotizaciones.RowTemplate.Height = 250;
                 dgCotizaciones.Columns[0].Width = 90;

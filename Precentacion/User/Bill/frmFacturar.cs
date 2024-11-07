@@ -110,7 +110,6 @@ namespace Precentacion.User.Bill
         {
             dt = NQuote.WindowsData(Convert.ToInt32(txtidQuote.Text));
         }
-
         private void dgvWindowsLoad()
         {
             // Cargar el DataGridView
@@ -184,6 +183,7 @@ namespace Precentacion.User.Bill
                     double Alto = Convert.ToDouble(row.Cells[4].Value);
                     ClsWindows.heigt = Convert.ToDecimal(Alto);
 
+
                     //Obtener el Color de la Ventana
                     string Color = row.Cells[6].Value.ToString();
 
@@ -195,7 +195,11 @@ namespace Precentacion.User.Bill
 
                     string pattern = @"Cantidad:\s*(\d+)";
                     System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(DescripcionCantidad, pattern);
-                    int Cantidad = Convert.ToInt32(match.Groups[1].Value);
+                    int Cantidad = 0;
+                    if (match.Groups[1].Value != "")
+                    {
+                        Cantidad = Convert.ToInt32(match.Groups[1].Value);
+                    }
 
 
 
@@ -238,6 +242,8 @@ namespace Precentacion.User.Bill
 
 
 
+
+                    //Verificar si es Prefabricado
 
                     //Obtener el Sistema de la Ventana
                     string Sistema = row.Cells[10].Value.ToString();
@@ -310,14 +316,29 @@ namespace Precentacion.User.Bill
                             // Agregar las filas del dtAluminioFijo al dtAluminio original
                             dtAluminio.Merge(dtAluminioFijo);
                         }
-
-                        // Obtener el Total del Aluminio                     
-                        DataTable dtAluminioSistema = NLoadProduct.loadAluminioDesglose(Color, Sistema, cbProveedorDesglose.SelectedValue.ToString());
+                        DataTable dtAluminioSistema = new DataTable();
+                        if (Sistema == "Prefabricado")
+                        {
+                            dtAluminioSistema = NLoadProduct.LoadPrefabricadoDesglose(Convert.ToInt32(row.Cells[0].Value));
+                        }
+                        else
+                        {
+                            // Obtener el Total del Aluminio                     
+                             dtAluminioSistema = NLoadProduct.loadAluminioDesglose(Color, Sistema, cbProveedorDesglose.SelectedValue.ToString());
+                        }
 
                         // Obtener el Metraje del dtAluminioSistema y multiplicarlo por la Cantidad de Ventanas                    
                         foreach (DataRow item in dtAluminioSistema.Rows)
                         {
-                            item["Metraje"] = Convert.ToDecimal(item["Metraje"]) * Convert.ToDecimal(Cantidad);
+                            if (Sistema == "Prefabricado")
+                            {
+                                item["Metraje"] = Convert.ToDecimal(item["Metraje"]);
+                            }
+                            else
+                            {
+                                item["Metraje"] = Convert.ToDecimal(item["Metraje"]) * Convert.ToDecimal(Cantidad);
+                            }
+                        
                         }
 
                         // Agregar las filas del dtAluminioSistema al dtAluminio original
@@ -634,9 +655,7 @@ namespace Precentacion.User.Bill
             catch (Exception)
             {
             }
-            
-
-
+           
         }      
         private void dgvRectificacionLoad()
         {
@@ -672,11 +691,6 @@ namespace Precentacion.User.Bill
 
             //Alto de la celda
             dgvRectificacion.RowTemplate.Height = 300;
-
-
-
-
-
         }
         private void MostrarPrecio()
         {
@@ -1080,7 +1094,7 @@ namespace Precentacion.User.Bill
         #endregion
 
         #region Desglose de Material
-            private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
             {
                 if (tabControl.SelectedIndex == 2)
                 {
@@ -1090,16 +1104,9 @@ namespace Precentacion.User.Bill
                         ConfigDataGridDesglose();
                         //Caragar el Tamaño de la Pieza
                         CargarTamañoPieza();
-
                     }
 
                 }
-                if (tabControl.SelectedIndex == 3)
-                {
-               
-                }
-
-
             }
 
         private void dgvDesglose_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -2647,7 +2654,6 @@ namespace Precentacion.User.Bill
             }
         }
 
-
         private void btnGenerarDesglose_Click(object sender, EventArgs e)
         {
 
@@ -2894,10 +2900,7 @@ namespace Precentacion.User.Bill
             }
         }
 
-
         // Método para cargar datos en el DataGridView
-
-
         private List<PriceProductClass> CargarLista() 
             {
                 //Cargar la Lita con el dgvDesglose
@@ -2909,7 +2912,6 @@ namespace Precentacion.User.Bill
                     {
                         PriceProductClass priceProduct = new PriceProductClass();
                         priceProduct.Nombre = item.Cells[0].Value.ToString();
-                        Console.WriteLine(priceProduct.Nombre);
                         priceProduct.Supplier = cbProveedorDesglose.SelectedValue.ToString();
                         priceProduct.Color = "Natural";
                         Lista.Add(priceProduct);
@@ -4829,12 +4831,10 @@ namespace Precentacion.User.Bill
         {
             GenerarPdfHojaProduccion();
         }
-
         private void lblTitleFactura_Click(object sender, EventArgs e)
         {
 
         }
-
         private void cbProveedorDesglose_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Limpia todas las filas y columnas del DataGridView
@@ -4847,7 +4847,6 @@ namespace Precentacion.User.Bill
             ConfigDataGridDesglose();
             CargarTamañoPieza();
         }
-
         private void frmFacturar_FormClosed(object sender, FormClosedEventArgs e)
         {
           frmManagerQuotes frmManagerQuotes = new frmManagerQuotes();
@@ -4908,7 +4907,6 @@ namespace Precentacion.User.Bill
                 return 1.5m;
             }
         }
-
         private void dgvDesglose_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             // Mostrar un mensaje de error
@@ -4934,7 +4932,6 @@ namespace Precentacion.User.Bill
             // Indicar que el error ha sido manejado
             e.ThrowException = false;
         }
-
         private void label4_Click(object sender, EventArgs e)
         {
 
@@ -4969,7 +4966,6 @@ namespace Precentacion.User.Bill
                 // MessageBox.Show("Error al cargar los datos: " + ex.Message);
             }
         }
-
         public static class Prompt
         {
             public static (string, string) ShowDialog(string text1, string text2, string caption)
@@ -5002,9 +4998,6 @@ namespace Precentacion.User.Bill
                 return (textBox1.Text, textBox2.Text);
             }
         }
-
-
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             bandera = true;
@@ -5076,10 +5069,6 @@ namespace Precentacion.User.Bill
             // Cambiar a la pestaña que contiene el DataGridView (tabPageTotal)
             tabControl.SelectedTab = tabPageTotal;
         }
-
-
-
-
         private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
             // Verificar si se está intentando seleccionar la pestaña tabPageTotal y la bandera es false
@@ -5092,7 +5081,6 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("No puede acceder a esta pestaña en este momento.");
             }
         }
-
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Verifica que haya una fila seleccionada
@@ -5125,8 +5113,6 @@ namespace Precentacion.User.Bill
                 MessageBox.Show("Por favor, selecciona una fila para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
         private void dgvTotal_MouseClick(object sender, MouseEventArgs e)
         {
             // Verifica si se ha hecho clic con el botón derecho del mouse

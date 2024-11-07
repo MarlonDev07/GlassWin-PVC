@@ -17,7 +17,7 @@ namespace Precentacion
        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmActualizacion());
+            Application.Run(new frmLogin());
         }
     }
 }

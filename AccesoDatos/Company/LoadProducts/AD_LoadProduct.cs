@@ -74,6 +74,36 @@ namespace AccesoDatos.Company.LoadProducts
             }
         }
 
+        public DataTable LoadPrefabricadoDesglose(int IdWindows) 
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                ClsConnection con = new ClsConnection();
+                string sql = "";
+
+                if (UserCache.Name != "InnovaGlass")
+                {
+                    sql = "SELECT P.Description,  PP.SalePrice,  PP.Cost, AC.Metraje, AC.Cantidad  FROM   ArticulosCombo AC  INNER JOIN  Price PP ON AC.IdPrice = PP.IdPrice INNER JOIN  Product P ON PP.IdProduct = P.IdProduct WHERE  AC.IdWindows = '"+IdWindows+"'";
+                }
+                else
+                {
+                    sql = "SELECT P.Description,  PP.SalePrice,  PP.Cost FROM   ArticulosCombo AC  INNER JOIN  Price PP ON AC.IdPrice = PP.IdPrice INNER JOIN  Product P ON PP.IdProduct = P.IdProduct WHERE  AC.IdWindows = '" + IdWindows + "'";
+                }
+                SqlDataAdapter da = new SqlDataAdapter(sql, con.OpenConecction());
+                da.Fill(dt);
+                con.CloseConnection();
+                return dt;
+
+            }
+            catch (Exception)
+            {
+
+                return null;
+
+            }
+        }
+
 
 
         public DataTable loadAluminioDesglose()

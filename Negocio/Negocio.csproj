@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accesorios\N_Accesorios.cs" />
+    <Compile Include="LN_ComboPrefabricado.cs" />
     <Compile Include="Company\Account\N_BankAccount.cs" />
     <Compile Include="Company\Account\N_CxC.cs" />
     <Compile Include="Company\Account\N_CxP.cs" />

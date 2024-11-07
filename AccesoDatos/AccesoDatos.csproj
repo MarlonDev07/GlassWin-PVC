@@ -116,6 +116,7 @@
     <Compile Include="Company\Accounts\AD_MoveBank.cs" />
     <Compile Include="Company\AdmProyecto\AD_AdmProyecto.cs" />
     <Compile Include="Company\AdmProyecto\AD_Gastos.cs" />
+    <Compile Include="Company\AD_ComboPrefabricado.cs" />
     <Compile Include="Company\Bill\AD_BILL.cs" />
     <Compile Include="Company\Client\AD_Client.cs" />
     <Compile Include="Company\Company\CD_Company.cs" />

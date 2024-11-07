@@ -62,6 +62,8 @@
             this.cotizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verDesgloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enviarProformaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proformaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prefabricadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbMultConLLave = new System.Windows.Forms.CheckBox();
             this.cbCilindro = new System.Windows.Forms.CheckBox();
             this.cbImpacto = new System.Windows.Forms.CheckBox();
@@ -169,7 +171,7 @@
             this.lblTituloCotizacion.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblTituloCotizacion.Location = new System.Drawing.Point(0, 0);
             this.lblTituloCotizacion.Name = "lblTituloCotizacion";
-            this.lblTituloCotizacion.Size = new System.Drawing.Size(1183, 37);
+            this.lblTituloCotizacion.Size = new System.Drawing.Size(1182, 37);
             this.lblTituloCotizacion.TabIndex = 2;
             this.lblTituloCotizacion.Text = "Cotizacion de Ventana:";
             this.lblTituloCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -182,7 +184,7 @@
             this.txtUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUbicacion.BackColor = System.Drawing.Color.Orange;
             this.txtUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.Location = new System.Drawing.Point(659, 8);
+            this.txtUbicacion.Location = new System.Drawing.Point(644, 8);
             this.txtUbicacion.MaxLength = 30;
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -244,10 +246,26 @@
             // 
             // enviarProformaToolStripMenuItem
             // 
+            this.enviarProformaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.proformaToolStripMenuItem,
+            this.prefabricadoToolStripMenuItem});
             this.enviarProformaToolStripMenuItem.Name = "enviarProformaToolStripMenuItem";
             this.enviarProformaToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.enviarProformaToolStripMenuItem.Text = "Enviar Proforma";
-            this.enviarProformaToolStripMenuItem.Click += new System.EventHandler(this.enviarProformaToolStripMenuItem_Click);
+            this.enviarProformaToolStripMenuItem.Text = "Enviar";
+            // 
+            // proformaToolStripMenuItem
+            // 
+            this.proformaToolStripMenuItem.Name = "proformaToolStripMenuItem";
+            this.proformaToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.proformaToolStripMenuItem.Text = " Proforma";
+            this.proformaToolStripMenuItem.Click += new System.EventHandler(this.enviarProformaToolStripMenuItem_Click);
+            // 
+            // prefabricadoToolStripMenuItem
+            // 
+            this.prefabricadoToolStripMenuItem.Name = "prefabricadoToolStripMenuItem";
+            this.prefabricadoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.prefabricadoToolStripMenuItem.Text = "Prefabricado";
+            this.prefabricadoToolStripMenuItem.Click += new System.EventHandler(this.prefabricadoToolStripMenuItem_Click);
             // 
             // cbMultConLLave
             // 
@@ -1022,7 +1040,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(272, 7);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(293, 24);
+            this.lblDescripcion.Size = new System.Drawing.Size(278, 24);
             this.lblDescripcion.TabIndex = 31;
             this.lblDescripcion.Text = "Descripción";
             // 
@@ -1032,7 +1050,7 @@
             this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(571, 6);
+            this.label1.Location = new System.Drawing.Point(556, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 24);
             this.label1.TabIndex = 63;
@@ -1080,7 +1098,7 @@
             this.PanelDetalle.Controls.Add(this.lblAluminio);
             this.PanelDetalle.Controls.Add(this.lblArticulo);
             this.PanelDetalle.Controls.Add(this.lblDetalleCotizacion);
-            this.PanelDetalle.Location = new System.Drawing.Point(0, 283);
+            this.PanelDetalle.Location = new System.Drawing.Point(-1, 37);
             this.PanelDetalle.Name = "PanelDetalle";
             this.PanelDetalle.Size = new System.Drawing.Size(1183, 620);
             this.PanelDetalle.TabIndex = 74;
@@ -1457,7 +1475,7 @@
             // 
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(1089, 3);
+            this.btnCerrar.Location = new System.Drawing.Point(1074, 3);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(36, 29);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1469,7 +1487,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1017, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(1002, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(51, 29);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1616,5 +1634,7 @@
         private System.Windows.Forms.CheckBox cbkUmbral;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtCantDefault;
+        private System.Windows.Forms.ToolStripMenuItem proformaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prefabricadoToolStripMenuItem;
     }
 }
